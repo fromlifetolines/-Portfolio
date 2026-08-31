@@ -55,141 +55,226 @@ class SoundEngine {
 
 const audio = new SoundEngine();
 
-// 2. High-Fidelity Cinematic Particle Galaxy Engine (Inspired by langhuihui/galaxy)
+// 2. High-End Cinematic Solar System & Deep Galaxy Engine
 function init3D() {
   const container = document.getElementById('webgl-canvas');
   if (!container) return;
   container.innerHTML = '';
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 25, 45);
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
+  camera.position.set(0, 55, 95);
   camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.3;
   container.appendChild(renderer.domElement);
 
-  // 1. 動態生成柔和發光星塵粒子紋理 (Radial Glow Alpha Texture)
-  function createParticleTexture() {
+  // 1. 動態 Procedural 行星表面與大氣紋理生成器 (Canvas Generated Textures)
+  function createPlanetTexture(type) {
     const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
+    canvas.width = 512;
+    canvas.height = 256;
     const ctx = canvas.getContext('2d');
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.2, 'rgba(255, 200, 150, 0.8)');
-    gradient.addColorStop(0.5, 'rgba(100, 180, 255, 0.2)');
-    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
+
+    if (type === 'sun') {
+      const grad = ctx.createLinearGradient(0, 0, 512, 256);
+      grad.addColorStop(0, '#ffcc00');
+      grad.addColorStop(0.5, '#ff6600');
+      grad.addColorStop(1, '#ff3300');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 512, 256);
+      for (let i = 0; i < 400; i++) {
+        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.4)' : 'rgba(255,100,0,0.3)';
+        ctx.fillRect(Math.random() * 512, Math.random() * 256, Math.random() * 6, Math.random() * 4);
+      }
+    } else if (type === 'earth') {
+      ctx.fillStyle = '#0f3875';
+      ctx.fillRect(0, 0, 512, 256);
+      // 大陸板塊與雲層
+      ctx.fillStyle = '#227744';
+      for (let i = 0; i < 40; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * 512, Math.random() * 256, Math.random() * 35 + 10, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      for (let i = 0; i < 60; i++) {
+        ctx.fillRect(Math.random() * 512, Math.random() * 256, Math.random() * 70, Math.random() * 8);
+      }
+    } else if (type === 'jupiter') {
+      for (let y = 0; y < 256; y += 4) {
+        const shade = Math.sin(y * 0.1) * 30 + 180;
+        ctx.fillStyle = `rgb(${shade + 40}, ${shade}, ${shade - 30})`;
+        ctx.fillRect(0, y, 512, 4);
+      }
+      // 大紅斑
+      ctx.fillStyle = '#cc4422';
+      ctx.beginPath();
+      ctx.ellipse(320, 160, 45, 22, 0, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (type === 'mars') {
+      ctx.fillStyle = '#b33917';
+      ctx.fillRect(0, 0, 512, 256);
+      ctx.fillStyle = '#802008';
+      for (let i = 0; i < 50; i++) {
+        ctx.fillRect(Math.random() * 512, Math.random() * 256, Math.random() * 40, Math.random() * 15);
+      }
+    } else {
+      ctx.fillStyle = '#888899';
+      ctx.fillRect(0, 0, 512, 256);
+    }
     return new THREE.CanvasTexture(canvas);
   }
 
-  const particleTexture = createParticleTexture();
+  // 2. 太陽系主容器與燈光
+  const universeGroup = new THREE.Group();
+  scene.add(universeGroup);
 
-  // 2. 銀河系核心容器
-  const galaxyGroup = new THREE.Group();
-  scene.add(galaxyGroup);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
 
-  // --- 3. 對數螺旋星系 (Spiral Galaxy - 16,000 Particles) ---
-  const galaxyParams = {
-    count: 16000,
-    size: 0.28,
-    radius: 35,
-    branches: 4,
-    spin: 1.2,
-    randomness: 0.45,
-    power: 3.5,
-    insideColor: '#ffe099', // 核心暖金
-    outsideColor: '#00d2ff' // 外圍冷青藍
-  };
+  const sunLight = new THREE.PointLight(0xfff0dd, 4.5, 350, 0.6);
+  sunLight.position.set(0, 0, 0);
+  universeGroup.add(sunLight);
 
-  const galaxyGeo = new THREE.BufferGeometry();
-  const positions = new Float32Array(galaxyParams.count * 3);
-  const colors = new Float32Array(galaxyParams.count * 3);
-  const scales = new Float32Array(galaxyParams.count);
+  // --- 3. 太陽 (The Sun with Solar Corona) ---
+  const sunGeo = new THREE.SphereGeometry(6.5, 48, 48);
+  const sunMat = new THREE.MeshBasicMaterial({
+    map: createPlanetTexture('sun')
+  });
+  const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+  universeGroup.add(sunMesh);
 
-  const colorInside = new THREE.Color(galaxyParams.insideColor);
-  const colorOutside = new THREE.Color(galaxyParams.outsideColor);
+  // 日冕發光層 (Solar Corona)
+  const coronaGeo = new THREE.SphereGeometry(7.8, 32, 32);
+  const coronaMat = new THREE.MeshBasicMaterial({
+    color: 0xff6a00,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.35
+  });
+  const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
+  universeGroup.add(coronaMesh);
 
-  for (let i = 0; i < galaxyParams.count; i++) {
+  // --- 4. 10,000 顆發光螺旋星系旋臂 (Spiral Arms Starfield) ---
+  const starGeo = new THREE.BufferGeometry();
+  const starCount = 10000;
+  const starPositions = new Float32Array(starCount * 3);
+  const starColors = new Float32Array(starCount * 3);
+
+  for (let i = 0; i < starCount; i++) {
     const i3 = i * 3;
-    const radius = Math.random() * galaxyParams.radius;
-    const spinAngle = radius * galaxyParams.spin;
-    const branchAngle = ((i % galaxyParams.branches) / galaxyParams.branches) * Math.PI * 2;
+    const r = Math.random() * 140 + 10;
+    const branch = (i % 3) * ((2 * Math.PI) / 3);
+    const spin = r * 0.04;
 
-    const randomX = Math.pow(Math.random(), galaxyParams.power) * (Math.random() < 0.5 ? 1 : -1) * galaxyParams.randomness * radius;
-    const randomY = Math.pow(Math.random(), galaxyParams.power) * (Math.random() < 0.5 ? 1 : -1) * (galaxyParams.randomness * 0.5) * radius;
-    const randomZ = Math.pow(Math.random(), galaxyParams.power) * (Math.random() < 0.5 ? 1 : -1) * galaxyParams.randomness * radius;
+    const randX = (Math.random() - 0.5) * (r * 0.25);
+    const randY = (Math.random() - 0.5) * 12;
+    const randZ = (Math.random() - 0.5) * (r * 0.25);
 
-    positions[i3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
-    positions[i3 + 1] = randomY;
-    positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
+    starPositions[i3] = Math.cos(branch + spin) * r + randX;
+    starPositions[i3 + 1] = randY;
+    starPositions[i3 + 2] = Math.sin(branch + spin) * r + randZ;
 
-    // 依據半徑進行光譜漸層過渡
-    const mixedColor = colorInside.clone().lerp(colorOutside, radius / galaxyParams.radius);
-    colors[i3] = mixedColor.r;
-    colors[i3 + 1] = mixedColor.g;
-    colors[i3 + 2] = mixedColor.b;
-
-    scales[i] = Math.random() * 0.8 + 0.2;
+    const color = new THREE.Color(r < 50 ? 0xffccaa : 0x66ccff);
+    starColors[i3] = color.r;
+    starColors[i3 + 1] = color.g;
+    starColors[i3 + 2] = color.b;
   }
 
-  galaxyGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  galaxyGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-  const galaxyMat = new THREE.PointsMaterial({
-    size: galaxyParams.size,
-    map: particleTexture,
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+  starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+  const starMat = new THREE.PointsMaterial({
+    size: 0.5,
     vertexColors: true,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
     transparent: true,
-    opacity: 0.85
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+  });
+  const galaxyStars = new THREE.Points(starGeo, starMat);
+  universeGroup.add(galaxyStars);
+
+  // --- 5. 實體行星配置 (大尺寸、具備高解析度與自轉) ---
+  const planetsConfig = [
+    { name: '水星 Mercury', size: 1.1, dist: 12, speed: 0.024, color: 0x9e9e9e, texture: 'mercury' },
+    { name: '金星 Venus',   size: 1.7, dist: 18, speed: 0.017, color: 0xe3bb7b, texture: 'venus' },
+    { name: '地球 Earth',   size: 2.0, dist: 26, speed: 0.012, color: 0x2277ff, texture: 'earth', hasMoon: true },
+    { name: '火星 Mars',    size: 1.4, dist: 35, speed: 0.009, color: 0xcc4422, texture: 'mars' },
+    { name: '木星 Jupiter', size: 4.8, dist: 49, speed: 0.006, color: 0xd4a373, texture: 'jupiter' },
+    { name: '土星 Saturn',  size: 3.8, dist: 65, speed: 0.004, color: 0xe2bf7d, texture: 'saturn', hasRings: true },
+    { name: '天王星 Uranus', size: 2.6, dist: 78, speed: 0.003, color: 0x70d6ff, texture: 'uranus' },
+    { name: '海王星 Neptune',size: 2.5, dist: 90, speed: 0.002, color: 0x3344ff, texture: 'neptune' },
+    { name: '冥王星 Pluto',  size: 0.9, dist: 100, speed: 0.0015, color: 0xaa9988, texture: 'pluto' }
+  ];
+
+  const planetNodes = [];
+
+  planetsConfig.forEach(p => {
+    const orbitGroup = new THREE.Group();
+    universeGroup.add(orbitGroup);
+
+    // 發光半透明軌道
+    const orbitCurve = new THREE.EllipseCurve(0, 0, p.dist, p.dist, 0, 2 * Math.PI, false, 0);
+    const orbitPoints = orbitCurve.getPoints(128);
+    const orbitGeo = new THREE.BufferGeometry().setFromPoints(orbitPoints.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
+    const orbitMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.12 });
+    const orbitLine = new THREE.Line(orbitGeo, orbitMat);
+    universeGroup.add(orbitLine);
+
+    // 行星本體
+    const pGeo = new THREE.SphereGeometry(p.size, 32, 32);
+    const pMat = new THREE.MeshStandardMaterial({
+      map: createPlanetTexture(p.texture),
+      roughness: 0.6,
+      metalness: 0.1
+    });
+    const pMesh = new THREE.Mesh(pGeo, pMat);
+    pMesh.position.x = p.dist;
+    pMesh.castShadow = true;
+    pMesh.receiveShadow = true;
+    orbitGroup.add(pMesh);
+
+    // 土星光環
+    if (p.hasRings) {
+      const ringGeo = new THREE.RingGeometry(p.size * 1.3, p.size * 2.4, 64);
+      const ringMat = new THREE.MeshStandardMaterial({
+        color: 0xc8b27a,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.8
+      });
+      const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+      ringMesh.rotation.x = Math.PI / 2.3;
+      ringMesh.rotation.y = 0.2;
+      pMesh.add(ringMesh);
+    }
+
+    // 地球月球
+    if (p.hasMoon) {
+      const moonPivot = new THREE.Group();
+      pMesh.add(moonPivot);
+      const moonGeo = new THREE.SphereGeometry(0.45, 16, 16);
+      const moonMat = new THREE.MeshStandardMaterial({ color: 0xd8d8d8, roughness: 0.9 });
+      const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+      moonMesh.position.x = 3.4;
+      moonPivot.add(moonMesh);
+      p.moonPivot = moonPivot;
+    }
+
+    planetNodes.push({
+      orbit: orbitGroup,
+      mesh: pMesh,
+      speed: p.speed,
+      angle: Math.random() * Math.PI * 2,
+      moonPivot: p.moonPivot
+    });
   });
 
-  const galaxyPoints = new THREE.Points(galaxyGeo, galaxyMat);
-  galaxyGroup.add(galaxyPoints);
-
-  // --- 4. 超亮超大質量星系黑洞核心 (Supermassive Galactic Core) ---
-  const coreGeo = new THREE.SphereGeometry(1.5, 32, 32);
-  const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-  const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-  galaxyGroup.add(coreMesh);
-
-  // 核心等離子光暈 (Volumetric Core Glow)
-  const glowGeo = new THREE.SphereGeometry(4.2, 32, 32);
-  const glowMat = new THREE.ShaderMaterial({
-    uniforms: { c: { type: "f", value: 0.3 }, p: { type: "f", value: 3.0 }, glowColor: { type: "c", value: new THREE.Color(0xff8800) } },
-    vertexShader: `
-      varying vec3 vNormal;
-      void main() {
-        vNormal = normalize(normalMatrix * normal);
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `,
-    fragmentShader: `
-      uniform vec3 glowColor;
-      uniform float c;
-      uniform float p;
-      varying vec3 vNormal;
-      void main() {
-        float intensity = pow(c - dot(vNormal, vec3(0, 0, 1.0)), p);
-        gl_FragColor = vec4(glowColor, intensity);
-      }
-    `,
-    side: THREE.BackSide,
-    blending: THREE.AdditiveBlending,
-    transparent: true
-  });
-  const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-  galaxyGroup.add(glowMesh);
-
-  // --- 5. 游標引力與動力學循環 ---
+  // --- 6. 游標互動與動畫循環 ---
   let mouseX = 0, mouseY = 0;
   let targetX = 0, targetY = 0;
 
@@ -201,18 +286,28 @@ function init3D() {
   function animate() {
     requestAnimationFrame(animate);
 
-    targetX += (mouseX - targetX) * 0.03;
-    targetY += (mouseY - targetY) * 0.03;
+    targetX += (mouseX - targetX) * 0.04;
+    targetY += (mouseY - targetY) * 0.04;
 
-    // 銀河系整體的螺旋旋轉與微幅空間傾角
-    galaxyPoints.rotation.y -= 0.0012;
-    galaxyGroup.rotation.y = targetX * 0.5;
-    galaxyGroup.rotation.x = 0.65 + (targetY * 0.3);
+    universeGroup.rotation.y = targetX * 0.4;
+    universeGroup.rotation.x = 0.55 + (targetY * 0.25);
 
-    // 核心脈衝動效
-    const time = Date.now() * 0.002;
-    const pulse = 1 + Math.sin(time) * 0.08;
-    coreMesh.scale.set(pulse, pulse, pulse);
+    // 太陽旋轉與日冕
+    sunMesh.rotation.y += 0.002;
+    coronaMesh.rotation.y -= 0.003;
+    coronaMesh.rotation.z += 0.001;
+
+    // 行星公轉與自轉
+    planetNodes.forEach(node => {
+      node.angle += node.speed * 0.4;
+      node.orbit.rotation.y = node.angle;
+      node.mesh.rotation.y += 0.015;
+      if (node.moonPivot) {
+        node.moonPivot.rotation.y += 0.035;
+      }
+    });
+
+    galaxyStars.rotation.y -= 0.0004;
 
     renderer.render(scene, camera);
   }
