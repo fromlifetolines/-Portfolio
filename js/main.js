@@ -55,25 +55,25 @@ class SoundEngine {
 
 const audio = new SoundEngine();
 
-// 2. High-Precision Realistic Solar System Engine (Ref: q-jade/solar-system)
+// 2. High-Precision Realistic Solar System Engine (Vibrant, Clear, HD Textures)
 function init3D() {
   const container = document.getElementById('webgl-canvas');
   if (!container) return;
   container.innerHTML = '';
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 3000);
-  camera.position.set(0, 75, 130);
+  const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 3000);
+  camera.position.set(0, 50, 95);
   camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.4;
+  renderer.toneMappingExposure = 1.3;
   container.appendChild(renderer.domElement);
 
-  // --- 1. 高擬真 Canvas Procedural 貼圖生成器 ---
+  // --- 1. 高擬真 Canvas Procedural 貼圖生成器 (高彩度與細緻細節) ---
   function generateTexture(type) {
     const canvas = document.createElement('canvas');
     canvas.width = 1024;
@@ -82,61 +82,100 @@ function init3D() {
 
     if (type === 'sun') {
       const grad = ctx.createLinearGradient(0, 0, 1024, 512);
-      grad.addColorStop(0, '#ffaa00');
-      grad.addColorStop(0.5, '#ff4400');
-      grad.addColorStop(1, '#ff1100');
+      grad.addColorStop(0, '#ffbb00');
+      grad.addColorStop(0.5, '#ff5500');
+      grad.addColorStop(1, '#ff2200');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1024, 512);
       for (let i = 0; i < 800; i++) {
-        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,200,0.5)' : 'rgba(255,80,0,0.3)';
+        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,200,0.6)' : 'rgba(255,80,0,0.4)';
         ctx.beginPath();
         ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 6 + 1, 0, Math.PI * 2);
         ctx.fill();
       }
-    } else if (type === 'earth') {
-      ctx.fillStyle = '#0b2559';
+    } else if (type === 'mercury') {
+      ctx.fillStyle = '#9e9e9e';
       ctx.fillRect(0, 0, 1024, 512);
-      // 大陸地塊
-      ctx.fillStyle = '#1e5e2f';
-      for (let i = 0; i < 45; i++) {
+      ctx.fillStyle = '#616161';
+      for (let i = 0; i < 60; i++) {
         ctx.beginPath();
-        ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 60 + 20, 0, Math.PI * 2);
+        ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 20 + 5, 0, Math.PI * 2);
         ctx.fill();
       }
-      // 大氣雲層
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-      for (let i = 0; i < 90; i++) {
-        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 140 + 30, Math.random() * 12 + 2);
+    } else if (type === 'venus') {
+      const grad = ctx.createLinearGradient(0, 0, 0, 512);
+      grad.addColorStop(0, '#e5c185');
+      grad.addColorStop(0.5, '#c69255');
+      grad.addColorStop(1, '#e5c185');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 1024, 512);
+      ctx.fillStyle = 'rgba(255, 235, 180, 0.4)';
+      for (let i = 0; i < 40; i++) {
+        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 120 + 20, Math.random() * 15 + 4);
       }
+    } else if (type === 'earth') {
+      // 鮮明深藍海洋
+      ctx.fillStyle = '#154c8a';
+      ctx.fillRect(0, 0, 1024, 512);
+      // 綠色大陸地塊
+      ctx.fillStyle = '#2e8b57';
+      for (let i = 0; i < 45; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 60 + 25, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // 大氣白雲層
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      for (let i = 0; i < 80; i++) {
+        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 140 + 30, Math.random() * 14 + 3);
+      }
+    } else if (type === 'mars') {
+      ctx.fillStyle = '#c8441b';
+      ctx.fillRect(0, 0, 1024, 512);
+      ctx.fillStyle = '#7a2208';
+      for (let i = 0; i < 60; i++) {
+        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 60 + 10, Math.random() * 20 + 5);
+      }
+      // 極冠白冰
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.fillRect(0, 0, 1024, 25);
+      ctx.fillRect(0, 487, 1024, 25);
     } else if (type === 'jupiter') {
       for (let y = 0; y < 512; y += 4) {
         const sinVal = Math.sin(y * 0.06);
-        const r = Math.floor(180 + sinVal * 40);
-        const g = Math.floor(130 + sinVal * 30);
-        const b = Math.floor(90 + sinVal * 20);
+        const r = Math.floor(210 + sinVal * 35);
+        const g = Math.floor(150 + sinVal * 30);
+        const b = Math.floor(100 + sinVal * 25);
         ctx.fillStyle = `rgb(${r},${g},${b})`;
         ctx.fillRect(0, y, 1024, 4);
       }
-      // 大紅斑
-      ctx.fillStyle = '#b03b1e';
+      // 木星大紅斑
+      ctx.fillStyle = '#c0392b';
       ctx.beginPath();
-      ctx.ellipse(650, 320, 70, 35, 0, 0, Math.PI * 2);
+      ctx.ellipse(650, 320, 75, 38, 0, 0, Math.PI * 2);
       ctx.fill();
-    } else if (type === 'mars') {
-      ctx.fillStyle = '#a83c1b';
-      ctx.fillRect(0, 0, 1024, 512);
-      ctx.fillStyle = '#6b2009';
-      for (let i = 0; i < 70; i++) {
-        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 50 + 10, Math.random() * 20 + 5);
-      }
     } else if (type === 'saturn') {
       for (let y = 0; y < 512; y += 4) {
-        const shade = Math.floor(200 + Math.sin(y * 0.08) * 30);
+        const shade = Math.floor(220 + Math.sin(y * 0.08) * 25);
         ctx.fillStyle = `rgb(${shade}, ${shade - 25}, ${shade - 65})`;
         ctx.fillRect(0, y, 1024, 4);
       }
+    } else if (type === 'uranus') {
+      ctx.fillStyle = '#7de3f4';
+      ctx.fillRect(0, 0, 1024, 512);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+      for (let i = 0; i < 20; i++) {
+        ctx.fillRect(0, Math.random() * 512, 1024, Math.random() * 15 + 5);
+      }
+    } else if (type === 'neptune') {
+      ctx.fillStyle = '#2747d8';
+      ctx.fillRect(0, 0, 1024, 512);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      for (let i = 0; i < 25; i++) {
+        ctx.fillRect(0, Math.random() * 512, 1024, Math.random() * 12 + 4);
+      }
     } else {
-      ctx.fillStyle = '#7a8599';
+      ctx.fillStyle = '#9e978e';
       ctx.fillRect(0, 0, 1024, 512);
     }
     return new THREE.CanvasTexture(canvas);
@@ -146,59 +185,61 @@ function init3D() {
   const universe = new THREE.Group();
   scene.add(universe);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+  // 全域均勻環境光 (確保星球清晰明亮)
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
   scene.add(ambientLight);
 
-  const sunLight = new THREE.PointLight(0xffeedd, 5.0, 500, 0.5);
+  // 太陽中心點光源
+  const sunLight = new THREE.PointLight(0xffeedd, 3.5, 600, 0.4);
   sunLight.position.set(0, 0, 0);
   universe.add(sunLight);
 
-  // --- 3. 發光太陽核心與大氣日冕 (Sun & Volumetric Corona) ---
-  const sunGeo = new THREE.SphereGeometry(7.5, 64, 64);
+  // --- 3. 發光太陽核心與日冕 ---
+  const sunGeo = new THREE.SphereGeometry(6.2, 48, 48);
   const sunMat = new THREE.MeshBasicMaterial({ map: generateTexture('sun') });
   const sunMesh = new THREE.Mesh(sunGeo, sunMat);
   universe.add(sunMesh);
 
-  // 日冕發光層
-  const coronaGeo = new THREE.SphereGeometry(9.2, 32, 32);
+  // 日冕微光層
+  const coronaGeo = new THREE.SphereGeometry(7.6, 32, 32);
   const coronaMat = new THREE.MeshBasicMaterial({
     color: 0xff5500,
     wireframe: true,
     transparent: true,
-    opacity: 0.28
+    opacity: 0.25
   });
   const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
   universe.add(coronaMesh);
 
-  // --- 4. 小行星帶 (Asteroid Belt: 火星與木星之間 2,000 顆立體石礫) ---
+  // --- 4. 小行星帶 (Asteroid Belt: 火星與木星之間 1,500 顆立體微粒) ---
   const asteroidGeo = new THREE.BufferGeometry();
-  const asteroidCount = 2000;
+  const asteroidCount = 1500;
   const asteroidPos = new Float32Array(asteroidCount * 3);
 
   for (let i = 0; i < asteroidCount; i++) {
     const i3 = i * 3;
-    const radius = Math.random() * 10 + 46;
+    const radius = Math.random() * 7 + 43;
     const angle = Math.random() * Math.PI * 2;
-    asteroidPos[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 4;
-    asteroidPos[i3 + 1] = (Math.random() - 0.5) * 3;
-    asteroidPos[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 4;
+    asteroidPos[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 3;
+    asteroidPos[i3 + 1] = (Math.random() - 0.5) * 2;
+    asteroidPos[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 3;
   }
   asteroidGeo.setAttribute('position', new THREE.BufferAttribute(asteroidPos, 3));
-  const asteroidMat = new THREE.PointsMaterial({ color: 0x887766, size: 0.6, transparent: true, opacity: 0.7 });
+  const asteroidMat = new THREE.PointsMaterial({ color: 0xb09880, size: 0.55, transparent: true, opacity: 0.75 });
   const asteroidBelt = new THREE.Points(asteroidGeo, asteroidMat);
   universe.add(asteroidBelt);
 
-  // --- 5. 8 大行星與冥王星實體配置 ---
+  // --- 5. 8 大行星與冥王星實體配置 (尺寸比例調整，確保全覽清晰) ---
   const planetsConfig = [
-    { name: 'Mercury', size: 1.2, dist: 14, speed: 0.024, type: 'mercury' },
-    { name: 'Venus',   size: 1.9, dist: 22, speed: 0.018, type: 'venus' },
-    { name: 'Earth',   size: 2.2, dist: 31, speed: 0.013, type: 'earth', hasMoon: true },
-    { name: 'Mars',    size: 1.5, dist: 40, speed: 0.010, type: 'mars' },
-    { name: 'Jupiter', size: 5.6, dist: 64, speed: 0.006, type: 'jupiter' },
-    { name: 'Saturn',  size: 4.4, dist: 84, speed: 0.004, type: 'saturn', hasRings: true },
-    { name: 'Uranus',  size: 3.0, dist: 102, speed: 0.003, type: 'uranus' },
-    { name: 'Neptune', size: 2.9, dist: 118, speed: 0.002, type: 'neptune' },
-    { name: 'Pluto',   size: 0.9, dist: 130, speed: 0.0015, type: 'pluto' }
+    { name: 'Mercury', size: 1.1, dist: 13, speed: 0.026, type: 'mercury' },
+    { name: 'Venus',   size: 1.7, dist: 20, speed: 0.019, type: 'venus' },
+    { name: 'Earth',   size: 2.0, dist: 28, speed: 0.014, type: 'earth', hasMoon: true },
+    { name: 'Mars',    size: 1.4, dist: 37, speed: 0.011, type: 'mars' },
+    { name: 'Jupiter', size: 4.8, dist: 56, speed: 0.007, type: 'jupiter' },
+    { name: 'Saturn',  size: 3.8, dist: 72, speed: 0.005, type: 'saturn', hasRings: true },
+    { name: 'Uranus',  size: 2.6, dist: 86, speed: 0.0035, type: 'uranus' },
+    { name: 'Neptune', size: 2.5, dist: 98, speed: 0.0025, type: 'neptune' },
+    { name: 'Pluto',   size: 0.9, dist: 108, speed: 0.0018, type: 'pluto' }
   ];
 
   const planetNodes = [];
@@ -207,20 +248,20 @@ function init3D() {
     const orbitGroup = new THREE.Group();
     universe.add(orbitGroup);
 
-    // 發光半透明立體軌道
+    // 發光半透明圓形軌道
     const orbitCurve = new THREE.EllipseCurve(0, 0, p.dist, p.dist, 0, 2 * Math.PI, false, 0);
     const orbitPoints = orbitCurve.getPoints(128);
     const orbitGeo = new THREE.BufferGeometry().setFromPoints(orbitPoints.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
-    const orbitMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.08 });
+    const orbitMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.15 });
     const orbitLine = new THREE.Line(orbitGeo, orbitMat);
     universe.add(orbitLine);
 
-    // 行星本體
+    // 行星 3D 實體球
     const pGeo = new THREE.SphereGeometry(p.size, 32, 32);
     const pMat = new THREE.MeshStandardMaterial({
       map: generateTexture(p.type),
-      roughness: 0.7,
-      metalness: 0.1
+      roughness: 0.5,
+      metalness: 0.15
     });
     const pMesh = new THREE.Mesh(pGeo, pMat);
     pMesh.position.x = p.dist;
@@ -230,7 +271,7 @@ function init3D() {
     if (p.hasRings) {
       const ringGeo = new THREE.RingGeometry(p.size * 1.3, p.size * 2.5, 64);
       const ringMat = new THREE.MeshStandardMaterial({
-        color: 0xc8b27a,
+        color: 0xd4be88,
         side: THREE.DoubleSide,
         transparent: true,
         opacity: 0.85
@@ -240,14 +281,14 @@ function init3D() {
       pMesh.add(ringMesh);
     }
 
-    // 地球月球公轉系統 (Earth Moon)
+    // 地球月球公轉系統 (Moon)
     if (p.hasMoon) {
       const moonPivot = new THREE.Group();
       pMesh.add(moonPivot);
-      const moonGeo = new THREE.SphereGeometry(0.5, 16, 16);
-      const moonMat = new THREE.MeshStandardMaterial({ color: 0xcccccc, roughness: 0.9 });
+      const moonGeo = new THREE.SphereGeometry(0.45, 16, 16);
+      const moonMat = new THREE.MeshStandardMaterial({ color: 0xd8d8d8, roughness: 0.8 });
       const moonMesh = new THREE.Mesh(moonGeo, moonMat);
-      moonMesh.position.x = 4.0;
+      moonMesh.position.x = 3.6;
       moonPivot.add(moonMesh);
       p.moonPivot = moonPivot;
     }
@@ -261,15 +302,15 @@ function init3D() {
     });
   });
 
-  // --- 6. 深空背景星辰 (3,000 顆宇宙微塵) ---
+  // --- 6. 深空背景星辰 (2,000 顆宇宙微塵) ---
   const starGeo = new THREE.BufferGeometry();
-  const starCount = 3000;
+  const starCount = 2000;
   const starPos = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount * 3; i++) {
-    starPos[i] = (Math.random() - 0.5) * 600;
+    starPos[i] = (Math.random() - 0.5) * 500;
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, transparent: true, opacity: 0.6 });
+  const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, transparent: true, opacity: 0.5 });
   const bgStars = new THREE.Points(starGeo, starMat);
   universe.add(bgStars);
 
@@ -289,14 +330,14 @@ function init3D() {
     targetY += (mouseY - targetY) * 0.04;
 
     universe.rotation.y = targetX * 0.35;
-    universe.rotation.x = 0.65 + (targetY * 0.2);
+    universe.rotation.x = 0.55 + (targetY * 0.2);
 
-    // 太陽與日冕
+    // 太陽與日冕自轉
     sunMesh.rotation.y += 0.002;
     coronaMesh.rotation.y -= 0.003;
 
     // 小行星帶自轉
-    asteroidBelt.rotation.y += 0.001;
+    asteroidBelt.rotation.y += 0.0008;
 
     // 行星公轉與自轉
     planetNodes.forEach(node => {
