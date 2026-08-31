@@ -55,191 +55,339 @@ class SoundEngine {
 
 const audio = new SoundEngine();
 
-// 2. High-Precision Realistic Solar System Engine (Vibrant, Clear, HD Textures)
+// 2. AAA Cinematic Photorealistic Solar System Engine
 function init3D() {
   const container = document.getElementById('webgl-canvas');
   if (!container) return;
   container.innerHTML = '';
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 3000);
-  camera.position.set(0, 50, 95);
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 4000);
+  camera.position.set(0, 55, 110);
   camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.3;
+  renderer.toneMappingExposure = 1.4;
   container.appendChild(renderer.domElement);
 
-  // --- 1. 高擬真 Canvas Procedural 貼圖生成器 (高彩度與細緻細節) ---
-  function generateTexture(type) {
+  // --- 高階噪點演算法 (Perlin / Fractal Simplex Noise Generator for Photorealism) ---
+  function createNoiseMap(width, height, octaves = 6, persistence = 0.5) {
     const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 512;
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.createImageData(width, height);
+    const data = imgData.data;
+
+    // 快速多頻率 Perlin 偽隨機噪點合成
+    const permutation = [];
+    for (let i = 0; i < 256; i++) permutation[i] = Math.floor(Math.random() * 256);
+    const p = new Array(512);
+    for (let i = 0; i < 512; i++) p[i] = permutation[i & 255];
+
+    function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+    function lerp(t, a, b) { return a + t * (b - a); }
+    function grad(hash, x, y) {
+      const h = hash & 7;
+      const u = h < 4 ? x : y;
+      const v = h < 4 ? y : x;
+      return ((h & 1) === 0 ? u : -u) + ((h & 2) === 0 ? v : -v);
+    }
+    function noise(x, y) {
+      const X = Math.floor(x) & 255;
+      const Y = Math.floor(y) & 255;
+      x -= Math.floor(x);
+      y -= Math.floor(y);
+      const u = fade(x);
+      const v = fade(y);
+      const A = p[X] + Y, B = p[X + 1] + Y;
+      return lerp(v, lerp(u, grad(p[A], x, y), grad(p[B], x - 1, y)),
+                     lerp(u, grad(p[A + 1], x, y - 1), grad(p[B + 1], x - 1, y - 1)));
+    }
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        let total = 0;
+        let frequency = 0.008;
+        let amplitude = 1;
+        let maxValue = 0;
+        for (let o = 0; o < octaves; o++) {
+          total += noise(x * frequency, y * frequency) * amplitude;
+          maxValue += amplitude;
+          amplitude *= persistence;
+          frequency *= 2;
+        }
+        const val = Math.floor(((total / maxValue) + 1) * 0.5 * 255);
+        const idx = (y * width + x) * 4;
+        data[idx] = val;
+        data[idx + 1] = val;
+        data[idx + 2] = val;
+        data[idx + 3] = 255;
+      }
+    }
+    ctx.putImageData(imgData, 0, 0);
+    return canvas;
+  }
+
+  // --- 生成真實物理級行星貼圖 ---
+  function generateCinematicTexture(planetType) {
+    const width = 1024, height = 512;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext('2d');
 
-    if (type === 'sun') {
-      const grad = ctx.createLinearGradient(0, 0, 1024, 512);
-      grad.addColorStop(0, '#ffbb00');
-      grad.addColorStop(0.5, '#ff5500');
-      grad.addColorStop(1, '#ff2200');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 1024, 512);
-      for (let i = 0; i < 800; i++) {
-        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,200,0.6)' : 'rgba(255,80,0,0.4)';
-        ctx.beginPath();
-        ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 6 + 1, 0, Math.PI * 2);
-        ctx.fill();
+    const noiseCanvas = createNoiseMap(width, height, 5, 0.55);
+    const noiseCtx = noiseCanvas.getContext('2d');
+    const nData = noiseCtx.getImageData(0, 0, width, height).data;
+
+    const imgData = ctx.createImageData(width, height);
+    const d = imgData.data;
+
+    if (planetType === 'earth') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        if (n < 0.46) {
+          // 深海至淺海漸層
+          const oceanT = n / 0.46;
+          d[idx] = Math.floor(10 * oceanT);
+          d[idx + 1] = Math.floor(35 + 45 * oceanT);
+          d[idx + 2] = Math.floor(90 + 90 * oceanT);
+        } else if (n < 0.50) {
+          // 海岸沙灘
+          d[idx] = 194; d[idx + 1] = 178; d[idx + 2] = 128;
+        } else if (n < 0.72) {
+          // 植被與山地
+          const landT = (n - 0.50) / 0.22;
+          d[idx] = Math.floor(34 + 60 * landT);
+          d[idx + 1] = Math.floor(95 + 40 * landT);
+          d[idx + 2] = Math.floor(34 + 20 * landT);
+        } else {
+          // 高山雪原
+          const snowT = (n - 0.72) / 0.28;
+          d[idx] = Math.floor(160 + 95 * snowT);
+          d[idx + 1] = Math.floor(160 + 95 * snowT);
+          d[idx + 2] = Math.floor(170 + 85 * snowT);
+        }
+        d[idx + 3] = 255;
       }
-    } else if (type === 'mercury') {
-      ctx.fillStyle = '#9e9e9e';
-      ctx.fillRect(0, 0, 1024, 512);
-      ctx.fillStyle = '#616161';
-      for (let i = 0; i < 60; i++) {
-        ctx.beginPath();
-        ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 20 + 5, 0, Math.PI * 2);
-        ctx.fill();
+    } else if (planetType === 'jupiter') {
+      for (let y = 0; y < height; y++) {
+        const bandNoise = Math.sin(y * 0.08) * 0.5 + 0.5;
+        for (let x = 0; x < width; x++) {
+          const i = y * width + x;
+          const n = nData[i * 4] / 255;
+          const idx = i * 4;
+          const blend = (bandNoise * 0.65 + n * 0.35);
+          // 木星大氣湍流色系
+          d[idx] = Math.floor(190 + 55 * Math.sin(blend * Math.PI * 3));
+          d[idx + 1] = Math.floor(140 + 40 * Math.cos(blend * Math.PI * 2));
+          d[idx + 2] = Math.floor(90 + 35 * blend);
+          d[idx + 3] = 255;
+
+          // 注入木星大紅斑 (Great Red Spot)
+          const dx = (x - 680) / 75;
+          const dy = (y - 320) / 38;
+          if (dx * dx + dy * dy < 1.0) {
+            d[idx] = 185;
+            d[idx + 1] = 60;
+            d[idx + 2] = 35;
+          }
+        }
       }
-    } else if (type === 'venus') {
-      const grad = ctx.createLinearGradient(0, 0, 0, 512);
-      grad.addColorStop(0, '#e5c185');
-      grad.addColorStop(0.5, '#c69255');
-      grad.addColorStop(1, '#e5c185');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 1024, 512);
-      ctx.fillStyle = 'rgba(255, 235, 180, 0.4)';
-      for (let i = 0; i < 40; i++) {
-        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 120 + 20, Math.random() * 15 + 4);
+    } else if (planetType === 'mars') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        d[idx] = Math.floor(165 + 65 * n);
+        d[idx + 1] = Math.floor(55 + 40 * n);
+        d[idx + 2] = Math.floor(25 + 25 * n);
+        d[idx + 3] = 255;
       }
-    } else if (type === 'earth') {
-      // 鮮明深藍海洋
-      ctx.fillStyle = '#154c8a';
-      ctx.fillRect(0, 0, 1024, 512);
-      // 綠色大陸地塊
-      ctx.fillStyle = '#2e8b57';
-      for (let i = 0; i < 45; i++) {
-        ctx.beginPath();
-        ctx.arc(Math.random() * 1024, Math.random() * 512, Math.random() * 60 + 25, 0, Math.PI * 2);
-        ctx.fill();
+    } else if (planetType === 'venus') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        d[idx] = Math.floor(215 + 35 * n);
+        d[idx + 1] = Math.floor(175 + 40 * n);
+        d[idx + 2] = Math.floor(110 + 30 * n);
+        d[idx + 3] = 255;
       }
-      // 大氣白雲層
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-      for (let i = 0; i < 80; i++) {
-        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 140 + 30, Math.random() * 14 + 3);
+    } else if (planetType === 'saturn') {
+      for (let y = 0; y < height; y++) {
+        const band = Math.sin(y * 0.05) * 0.5 + 0.5;
+        for (let x = 0; x < width; x++) {
+          const i = y * width + x;
+          const n = nData[i * 4] / 255;
+          const idx = i * 4;
+          const v = band * 0.7 + n * 0.3;
+          d[idx] = Math.floor(210 + 35 * v);
+          d[idx + 1] = Math.floor(190 + 30 * v);
+          d[idx + 2] = Math.floor(140 + 25 * v);
+          d[idx + 3] = 255;
+        }
       }
-    } else if (type === 'mars') {
-      ctx.fillStyle = '#c8441b';
-      ctx.fillRect(0, 0, 1024, 512);
-      ctx.fillStyle = '#7a2208';
-      for (let i = 0; i < 60; i++) {
-        ctx.fillRect(Math.random() * 1024, Math.random() * 512, Math.random() * 60 + 10, Math.random() * 20 + 5);
+    } else if (planetType === 'sun') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        // 太陽等離子高動態表面
+        d[idx] = 255;
+        d[idx + 1] = Math.floor(130 + 125 * n);
+        d[idx + 2] = Math.floor(20 + 60 * Math.pow(n, 3));
+        d[idx + 3] = 255;
       }
-      // 極冠白冰
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      ctx.fillRect(0, 0, 1024, 25);
-      ctx.fillRect(0, 487, 1024, 25);
-    } else if (type === 'jupiter') {
-      for (let y = 0; y < 512; y += 4) {
-        const sinVal = Math.sin(y * 0.06);
-        const r = Math.floor(210 + sinVal * 35);
-        const g = Math.floor(150 + sinVal * 30);
-        const b = Math.floor(100 + sinVal * 25);
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
-        ctx.fillRect(0, y, 1024, 4);
+    } else if (planetType === 'clouds') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        d[idx] = 255;
+        d[idx + 1] = 255;
+        d[idx + 2] = 255;
+        d[idx + 3] = n > 0.52 ? Math.floor((n - 0.52) / 0.48 * 220) : 0;
       }
-      // 木星大紅斑
-      ctx.fillStyle = '#c0392b';
-      ctx.beginPath();
-      ctx.ellipse(650, 320, 75, 38, 0, 0, Math.PI * 2);
-      ctx.fill();
-    } else if (type === 'saturn') {
-      for (let y = 0; y < 512; y += 4) {
-        const shade = Math.floor(220 + Math.sin(y * 0.08) * 25);
-        ctx.fillStyle = `rgb(${shade}, ${shade - 25}, ${shade - 65})`;
-        ctx.fillRect(0, y, 1024, 4);
+    } else if (planetType === 'neptune') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        d[idx] = Math.floor(20 + 30 * n);
+        d[idx + 1] = Math.floor(65 + 60 * n);
+        d[idx + 2] = Math.floor(200 + 55 * n);
+        d[idx + 3] = 255;
       }
-    } else if (type === 'uranus') {
-      ctx.fillStyle = '#7de3f4';
-      ctx.fillRect(0, 0, 1024, 512);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-      for (let i = 0; i < 20; i++) {
-        ctx.fillRect(0, Math.random() * 512, 1024, Math.random() * 15 + 5);
-      }
-    } else if (type === 'neptune') {
-      ctx.fillStyle = '#2747d8';
-      ctx.fillRect(0, 0, 1024, 512);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-      for (let i = 0; i < 25; i++) {
-        ctx.fillRect(0, Math.random() * 512, 1024, Math.random() * 12 + 4);
+    } else if (planetType === 'uranus') {
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        d[idx] = Math.floor(100 + 40 * n);
+        d[idx + 1] = Math.floor(210 + 40 * n);
+        d[idx + 2] = Math.floor(225 + 30 * n);
+        d[idx + 3] = 255;
       }
     } else {
-      ctx.fillStyle = '#9e978e';
-      ctx.fillRect(0, 0, 1024, 512);
+      // 水星 / 冥王星 隕石坑地貌
+      for (let i = 0; i < width * height; i++) {
+        const n = nData[i * 4] / 255;
+        const idx = i * 4;
+        d[idx] = Math.floor(120 + 70 * n);
+        d[idx + 1] = Math.floor(120 + 70 * n);
+        d[idx + 2] = Math.floor(125 + 70 * n);
+        d[idx + 3] = 255;
+      }
     }
+
+    ctx.putImageData(imgData, 0, 0);
     return new THREE.CanvasTexture(canvas);
   }
 
-  // --- 2. 空間光照與主系容器 ---
+  // --- 生成土星卡西尼環縫真實紋理 (Saturn Ring Alpha Gradient) ---
+  function generateSaturnRingTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createLinearGradient(0, 0, 512, 0);
+    grad.addColorStop(0.0, 'rgba(0,0,0,0)');
+    grad.addColorStop(0.15, 'rgba(180,165,135,0.7)');
+    grad.addColorStop(0.48, 'rgba(215,195,160,0.9)');
+    grad.addColorStop(0.52, 'rgba(10,10,10,0.05)'); // 卡西尼縫 (Cassini Division)
+    grad.addColorStop(0.56, 'rgba(195,175,140,0.85)');
+    grad.addColorStop(0.88, 'rgba(160,140,115,0.5)');
+    grad.addColorStop(1.0, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 512, 1);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.wrapS = THREE.ClampToEdgeWrapping;
+    texture.wrapT = THREE.ClampToEdgeWrapping;
+    return texture;
+  }
+
+  // --- 3. 宇宙主容器與真實太空點光源 ---
   const universe = new THREE.Group();
   scene.add(universe);
 
-  // 全域均勻環境光 (確保星球清晰明亮)
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+  // 微弱深空環境光 (保留背光面真實陰影與晨昏線)
+  const ambientLight = new THREE.AmbientLight(0x1a2233, 0.45);
   scene.add(ambientLight);
 
-  // 太陽中心點光源
-  const sunLight = new THREE.PointLight(0xffeedd, 3.5, 600, 0.4);
+  // 太陽中心真實強光
+  const sunLight = new THREE.PointLight(0xfffaed, 5.2, 800, 0.5);
   sunLight.position.set(0, 0, 0);
   universe.add(sunLight);
 
-  // --- 3. 發光太陽核心與日冕 ---
-  const sunGeo = new THREE.SphereGeometry(6.2, 48, 48);
-  const sunMat = new THREE.MeshBasicMaterial({ map: generateTexture('sun') });
+  // --- 4. 電影級等離子發光太陽 (The Sun with Volumetric Radial Corona) ---
+  const sunGeo = new THREE.SphereGeometry(6.8, 64, 64);
+  const sunMat = new THREE.MeshBasicMaterial({
+    map: generateCinematicTexture('sun')
+  });
   const sunMesh = new THREE.Mesh(sunGeo, sunMat);
   universe.add(sunMesh);
 
-  // 日冕微光層
-  const coronaGeo = new THREE.SphereGeometry(7.6, 32, 32);
-  const coronaMat = new THREE.MeshBasicMaterial({
-    color: 0xff5500,
-    wireframe: true,
+  // 太陽真實柔和輝光層 (Additive Blending Halo)
+  function createSunGlowTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(64, 64, 20, 64, 64, 64);
+    grad.addColorStop(0, 'rgba(255, 200, 50, 1)');
+    grad.addColorStop(0.3, 'rgba(255, 100, 10, 0.5)');
+    grad.addColorStop(0.7, 'rgba(255, 50, 0, 0.15)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 128, 128);
+    return new THREE.CanvasTexture(canvas);
+  }
+  const sunSpriteMat = new THREE.SpriteMaterial({
+    map: createSunGlowTexture(),
+    blending: THREE.AdditiveBlending,
     transparent: true,
-    opacity: 0.25
+    opacity: 0.95
   });
-  const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
-  universe.add(coronaMesh);
+  const sunSprite = new THREE.Sprite(sunSpriteMat);
+  sunSprite.scale.set(38, 38, 1);
+  universe.add(sunSprite);
 
-  // --- 4. 小行星帶 (Asteroid Belt: 火星與木星之間 1,500 顆立體微粒) ---
+  // --- 5. 小行星帶 (Asteroid Belt: 3,000 顆三維不規則微粒) ---
   const asteroidGeo = new THREE.BufferGeometry();
-  const asteroidCount = 1500;
+  const asteroidCount = 3500;
   const asteroidPos = new Float32Array(asteroidCount * 3);
+  const asteroidScales = new Float32Array(asteroidCount);
 
   for (let i = 0; i < asteroidCount; i++) {
     const i3 = i * 3;
-    const radius = Math.random() * 7 + 43;
-    const angle = Math.random() * Math.PI * 2;
-    asteroidPos[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 3;
+    const r = Math.random() * 8 + 44;
+    const theta = Math.random() * Math.PI * 2;
+    asteroidPos[i3] = Math.cos(theta) * r + (Math.random() - 0.5) * 3;
     asteroidPos[i3 + 1] = (Math.random() - 0.5) * 2;
-    asteroidPos[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 3;
+    asteroidPos[i3 + 2] = Math.sin(theta) * r + (Math.random() - 0.5) * 3;
+    asteroidScales[i] = Math.random() * 0.4 + 0.15;
   }
   asteroidGeo.setAttribute('position', new THREE.BufferAttribute(asteroidPos, 3));
-  const asteroidMat = new THREE.PointsMaterial({ color: 0xb09880, size: 0.55, transparent: true, opacity: 0.75 });
+  const asteroidMat = new THREE.PointsMaterial({
+    color: 0x998877,
+    size: 0.45,
+    transparent: true,
+    opacity: 0.8
+  });
   const asteroidBelt = new THREE.Points(asteroidGeo, asteroidMat);
   universe.add(asteroidBelt);
 
-  // --- 5. 8 大行星與冥王星實體配置 (尺寸比例調整，確保全覽清晰) ---
+  // --- 6. 8 大行星與冥王星 (高動態光影與物理細節) ---
   const planetsConfig = [
-    { name: 'Mercury', size: 1.1, dist: 13, speed: 0.026, type: 'mercury' },
-    { name: 'Venus',   size: 1.7, dist: 20, speed: 0.019, type: 'venus' },
-    { name: 'Earth',   size: 2.0, dist: 28, speed: 0.014, type: 'earth', hasMoon: true },
-    { name: 'Mars',    size: 1.4, dist: 37, speed: 0.011, type: 'mars' },
-    { name: 'Jupiter', size: 4.8, dist: 56, speed: 0.007, type: 'jupiter' },
-    { name: 'Saturn',  size: 3.8, dist: 72, speed: 0.005, type: 'saturn', hasRings: true },
-    { name: 'Uranus',  size: 2.6, dist: 86, speed: 0.0035, type: 'uranus' },
-    { name: 'Neptune', size: 2.5, dist: 98, speed: 0.0025, type: 'neptune' },
-    { name: 'Pluto',   size: 0.9, dist: 108, speed: 0.0018, type: 'pluto' }
+    { name: 'Mercury', size: 1.1, dist: 13.5, speed: 0.024, type: 'mercury', bumpScale: 0.05 },
+    { name: 'Venus',   size: 1.7, dist: 20.5, speed: 0.018, type: 'venus', hasAtmosphere: true, atmosColor: 0xffd180 },
+    { name: 'Earth',   size: 2.1, dist: 29.0, speed: 0.013, type: 'earth', hasClouds: true, hasMoon: true, hasAtmosphere: true, atmosColor: 0x00a2ff },
+    { name: 'Mars',    size: 1.4, dist: 38.0, speed: 0.010, type: 'mars', hasAtmosphere: true, atmosColor: 0xcc5533 },
+    { name: 'Jupiter', size: 5.2, dist: 58.0, speed: 0.006, type: 'jupiter' },
+    { name: 'Saturn',  size: 4.2, dist: 75.0, speed: 0.004, type: 'saturn', hasRings: true },
+    { name: 'Uranus',  size: 2.7, dist: 90.0, speed: 0.003, type: 'uranus', hasAtmosphere: true, atmosColor: 0x7de3f4 },
+    { name: 'Neptune', size: 2.6, dist: 104.0, speed: 0.002, type: 'neptune', hasAtmosphere: true, atmosColor: 0x2747d8 },
+    { name: 'Pluto',   size: 0.9, dist: 115.0, speed: 0.0014, type: 'pluto' }
   ];
 
   const planetNodes = [];
@@ -248,73 +396,147 @@ function init3D() {
     const orbitGroup = new THREE.Group();
     universe.add(orbitGroup);
 
-    // 發光半透明圓形軌道
+    // 幽微細緻的軌道線
     const orbitCurve = new THREE.EllipseCurve(0, 0, p.dist, p.dist, 0, 2 * Math.PI, false, 0);
-    const orbitPoints = orbitCurve.getPoints(128);
+    const orbitPoints = orbitCurve.getPoints(160);
     const orbitGeo = new THREE.BufferGeometry().setFromPoints(orbitPoints.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
-    const orbitMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.15 });
+    const orbitMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.08 });
     const orbitLine = new THREE.Line(orbitGeo, orbitMat);
     universe.add(orbitLine);
 
-    // 行星 3D 實體球
-    const pGeo = new THREE.SphereGeometry(p.size, 32, 32);
+    // 行星主體網格 (MeshStandardMaterial 呈現深邃明暗交界線)
+    const pGeo = new THREE.SphereGeometry(p.size, 48, 48);
+    const texture = generateCinematicTexture(p.type);
     const pMat = new THREE.MeshStandardMaterial({
-      map: generateTexture(p.type),
-      roughness: 0.5,
-      metalness: 0.15
+      map: texture,
+      roughness: 0.75,
+      metalness: 0.1
     });
     const pMesh = new THREE.Mesh(pGeo, pMat);
     pMesh.position.x = p.dist;
     orbitGroup.add(pMesh);
 
-    // 土星光環 (Saturn Rings)
+    // 大氣發光層 (Atmospheric Rim Fresnel)
+    if (p.hasAtmosphere) {
+      const atmosGeo = new THREE.SphereGeometry(p.size * 1.05, 32, 32);
+      const atmosMat = new THREE.ShaderMaterial({
+        uniforms: {
+          color: { value: new THREE.Color(p.atmosColor) }
+        },
+        vertexShader: `
+          varying vec3 vNormal;
+          void main() {
+            vNormal = normalize(normalMatrix * normal);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform vec3 color;
+          varying vec3 vNormal;
+          void main() {
+            float intensity = pow(0.7 - dot(vNormal, vec3(0, 0, 1.0)), 2.5);
+            gl_FragColor = vec4(color, intensity * 0.7);
+          }
+        `,
+        blending: THREE.AdditiveBlending,
+        side: THREE.BackSide,
+        transparent: true
+      });
+      const atmosMesh = new THREE.Mesh(atmosGeo, atmosMat);
+      pMesh.add(atmosMesh);
+    }
+
+    // 地球獨立雙層雲層 (Earth Dynamic Clouds)
+    let cloudsMesh = null;
+    if (p.hasClouds) {
+      const cloudGeo = new THREE.SphereGeometry(p.size * 1.02, 48, 48);
+      const cloudMat = new THREE.MeshStandardMaterial({
+        map: generateCinematicTexture('clouds'),
+        transparent: true,
+        opacity: 0.8,
+        blending: THREE.AdditiveBlending
+      });
+      cloudsMesh = new THREE.Mesh(cloudGeo, cloudMat);
+      pMesh.add(cloudsMesh);
+    }
+
+    // 土星環 (Saturn Rings with Cassini Division)
     if (p.hasRings) {
-      const ringGeo = new THREE.RingGeometry(p.size * 1.3, p.size * 2.5, 64);
+      const ringGeo = new THREE.RingGeometry(p.size * 1.35, p.size * 2.6, 64);
+      // 修正 Ring UV 映射
+      const pos = ringGeo.attributes.position;
+      const v3 = new THREE.Vector3();
+      for (let i = 0; i < pos.count; i++) {
+        v3.fromBufferAttribute(pos, i);
+        ringGeo.attributes.uv.setXY(i, (v3.length() - p.size * 1.35) / (p.size * 1.25), 0.5);
+      }
       const ringMat = new THREE.MeshStandardMaterial({
-        color: 0xd4be88,
+        map: generateSaturnRingTexture(),
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.85
+        roughness: 0.6
       });
       const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-      ringMesh.rotation.x = Math.PI / 2.3;
+      ringMesh.rotation.x = Math.PI / 2.35;
+      ringMesh.rotation.y = 0.15;
       pMesh.add(ringMesh);
     }
 
-    // 地球月球公轉系統 (Moon)
+    // 地球月球公轉系統 (Earth Moon)
+    let moonPivot = null;
     if (p.hasMoon) {
-      const moonPivot = new THREE.Group();
+      moonPivot = new THREE.Group();
       pMesh.add(moonPivot);
-      const moonGeo = new THREE.SphereGeometry(0.45, 16, 16);
-      const moonMat = new THREE.MeshStandardMaterial({ color: 0xd8d8d8, roughness: 0.8 });
+      const moonGeo = new THREE.SphereGeometry(0.48, 24, 24);
+      const moonMat = new THREE.MeshStandardMaterial({
+        map: generateCinematicTexture('moon'),
+        roughness: 0.9
+      });
       const moonMesh = new THREE.Mesh(moonGeo, moonMat);
-      moonMesh.position.x = 3.6;
+      moonMesh.position.x = 3.8;
       moonPivot.add(moonMesh);
-      p.moonPivot = moonPivot;
     }
 
     planetNodes.push({
       orbit: orbitGroup,
       mesh: pMesh,
+      clouds: cloudsMesh,
       speed: p.speed,
       angle: Math.random() * Math.PI * 2,
-      moonPivot: p.moonPivot
+      moonPivot: moonPivot
     });
   });
 
-  // --- 6. 深空背景星辰 (2,000 顆宇宙微塵) ---
+  // --- 7. 深空銀河星雲背景 (4,000 顆深邃冷暖星光) ---
   const starGeo = new THREE.BufferGeometry();
-  const starCount = 2000;
+  const starCount = 4000;
   const starPos = new Float32Array(starCount * 3);
-  for (let i = 0; i < starCount * 3; i++) {
-    starPos[i] = (Math.random() - 0.5) * 500;
+  const starColors = new Float32Array(starCount * 3);
+
+  for (let i = 0; i < starCount; i++) {
+    const i3 = i * 3;
+    starPos[i3] = (Math.random() - 0.5) * 800;
+    starPos[i3 + 1] = (Math.random() - 0.5) * 800;
+    starPos[i3 + 2] = (Math.random() - 0.5) * 800;
+
+    const shade = Math.random();
+    const c = new THREE.Color(shade > 0.7 ? 0xffeedd : (shade > 0.3 ? 0x99ccff : 0xffffff));
+    starColors[i3] = c.r;
+    starColors[i3 + 1] = c.g;
+    starColors[i3 + 2] = c.b;
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, transparent: true, opacity: 0.5 });
+  starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+  const starMat = new THREE.PointsMaterial({
+    size: 0.6,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.75
+  });
   const bgStars = new THREE.Points(starGeo, starMat);
   universe.add(bgStars);
 
-  // --- 7. 動畫渲染循環與滑鼠視差 ---
+  // --- 8. 動畫渲染循環與滑鼠空間引力 ---
   let mouseX = 0, mouseY = 0;
   let targetX = 0, targetY = 0;
 
@@ -326,26 +548,30 @@ function init3D() {
   function animate() {
     requestAnimationFrame(animate);
 
-    targetX += (mouseX - targetX) * 0.04;
-    targetY += (mouseY - targetY) * 0.04;
+    targetX += (mouseX - targetX) * 0.035;
+    targetY += (mouseY - targetY) * 0.035;
 
     universe.rotation.y = targetX * 0.35;
-    universe.rotation.x = 0.55 + (targetY * 0.2);
+    universe.rotation.x = 0.58 + (targetY * 0.2);
 
-    // 太陽與日冕自轉
-    sunMesh.rotation.y += 0.002;
-    coronaMesh.rotation.y -= 0.003;
+    // 太陽自轉與微幅呼吸脈衝
+    sunMesh.rotation.y += 0.0018;
 
     // 小行星帶自轉
-    asteroidBelt.rotation.y += 0.0008;
+    asteroidBelt.rotation.y += 0.0006;
 
-    // 行星公轉與自轉
+    // 行星公轉、自轉與大氣雲層相對運動
     planetNodes.forEach(node => {
-      node.angle += node.speed * 0.4;
+      node.angle += node.speed * 0.35;
       node.orbit.rotation.y = node.angle;
       node.mesh.rotation.y += 0.015;
+
+      // 地球雲層以不同速度獨立流動
+      if (node.clouds) {
+        node.clouds.rotation.y += 0.018;
+      }
       if (node.moonPivot) {
-        node.moonPivot.rotation.y += 0.035;
+        node.moonPivot.rotation.y += 0.03;
       }
     });
 
