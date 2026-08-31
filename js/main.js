@@ -55,14 +55,17 @@ class SoundEngine {
 
 const audio = new SoundEngine();
 
-// 2. Three.js Interactive 3D Solar System & Galaxy Engine
+// 2. Three.js 實體 3D 銀河系與九大行星引擎 (無任何方塊)
 function init3D() {
   const container = document.getElementById('webgl-canvas');
   if (!container) return;
 
+  // 清空畫布容器避免重複疊加
+  container.innerHTML = '';
+
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 32, 65);
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 40, 70);
   camera.lookAt(0, 0, 0);
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -70,123 +73,133 @@ function init3D() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
-  // --- 1. 深度銀河星空背景 (Galaxy Starfield) ---
+  // 1. 光源配置 (讓實體星球有立體光影)
+  const ambientLight = new THREE.AmbientLight(0x404040, 2);
+  scene.add(ambientLight);
+
+  const sunLight = new THREE.PointLight(0xffffff, 3, 200);
+  sunLight.position.set(0, 0, 0);
+  scene.add(sunLight);
+
+  // 2. 太陽系主體容器
+  const solarSystem = new THREE.Group();
+  scene.add(solarSystem);
+
+  // --- 太陽核心 (發光球體) ---
+  const sunGeo = new THREE.SphereGeometry(4.2, 32, 32);
+  const sunMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 });
+  const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+  solarSystem.add(sunMesh);
+
+  // 太陽外層光暈
+  const glowGeo = new THREE.SphereGeometry(4.8, 32, 32);
+  const glowMat = new THREE.MeshBasicMaterial({
+    color: 0xff4500,
+    transparent: true,
+    opacity: 0.3
+  });
+  const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+  solarSystem.add(glowMesh);
+
+  // --- 圓形星空星辰 (使用圓形紋理，告別方形粒子) ---
+  function createCircleTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 16;
+    canvas.height = 16;
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(8, 8, 8, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    return new THREE.CanvasTexture(canvas);
+  }
+
   const starGeo = new THREE.BufferGeometry();
-  const starCount = 1200;
+  const starCount = 800;
   const starPos = new Float32Array(starCount * 3);
-  const starColors = new Float32Array(starCount * 3);
-
-  for (let i = 0; i < starCount * 3; i += 3) {
-    starPos[i] = (Math.random() - 0.5) * 220;
-    starPos[i + 1] = (Math.random() - 0.5) * 220;
-    starPos[i + 2] = (Math.random() - 0.5) * 220;
-
-    // 銀河冷白、淡藍與金黃混色星光
-    const shade = Math.random();
-    starColors[i] = shade > 0.8 ? 1 : 0.6;
-    starColors[i + 1] = shade > 0.5 ? 0.8 : 0.7;
-    starColors[i + 2] = 1;
+  for (let i = 0; i < starCount * 3; i++) {
+    starPos[i] = (Math.random() - 0.5) * 250;
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
-
   const starMat = new THREE.PointsMaterial({
-    size: 0.35,
-    vertexColors: true,
+    size: 0.8,
+    map: createCircleTexture(),
     transparent: true,
-    opacity: 0.75
+    opacity: 0.7
   });
   const starField = new THREE.Points(starGeo, starMat);
   scene.add(starField);
 
-  // --- 2. 太陽系主體容器 (Solar System Pivot) ---
-  const solarSystem = new THREE.Group();
-  scene.add(solarSystem);
-
-  // 太陽中心 (The Sun)
-  const sunGeo = new THREE.SphereGeometry(3.6, 32, 32);
-  const sunMat = new THREE.MeshBasicMaterial({ color: 0xFFAA00 });
-  const sun = new THREE.Mesh(sunGeo, sunMat);
-  solarSystem.add(sun);
-
-  // 太陽大氣發光光暈 (Sun Glow Halo)
-  const glowGeo = new THREE.SphereGeometry(4.4, 24, 24);
-  const glowMat = new THREE.MeshBasicMaterial({
-    color: 0xFF4500,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.25
-  });
-  const sunGlow = new THREE.Mesh(glowGeo, glowMat);
-  solarSystem.add(sunGlow);
-
-  // --- 3. 行星數據配置 (Planets Registry) ---
+  // --- 九大行星配置 (全為真實 3D 球體) ---
   const planetsConfig = [
-    { name: 'Mercury', size: 0.45, dist: 6.5, speed: 0.035, color: 0xA5A5A5 },
-    { name: 'Venus',   size: 0.85, dist: 9.5, speed: 0.024, color: 0xE3BB7B },
-    { name: 'Earth',   size: 0.95, dist: 13.5, speed: 0.018, color: 0x2277FF, hasMoon: true },
-    { name: 'Mars',    size: 0.60, dist: 17.5, speed: 0.014, color: 0xCC4422 },
-    { name: 'Jupiter', size: 2.20, dist: 23.5, speed: 0.009, color: 0xDDAA77 },
-    { name: 'Saturn',  size: 1.80, dist: 31.0, speed: 0.007, color: 0xE2BF7D, hasRings: true },
-    { name: 'Uranus',  size: 1.30, dist: 38.0, speed: 0.005, color: 0x70D6FF },
-    { name: 'Neptune', size: 1.25, dist: 44.0, speed: 0.004, color: 0x3344FF },
-    { name: 'Pluto',   size: 0.35, dist: 49.0, speed: 0.003, color: 0x998877 }
+    { name: '水星 Mercury', size: 0.6, dist: 7, speed: 0.030, color: 0xaaaaaa },
+    { name: '金星 Venus',   size: 1.0, dist: 11, speed: 0.022, color: 0xe3bb7b },
+    { name: '地球 Earth',   size: 1.1, dist: 16, speed: 0.016, color: 0x2277ff, hasMoon: true },
+    { name: '火星 Mars',    size: 0.8, dist: 21, speed: 0.013, color: 0xcc4422 },
+    { name: '木星 Jupiter', size: 2.6, dist: 28, speed: 0.008, color: 0xddaa77 },
+    { name: '土星 Saturn',  size: 2.2, dist: 37, speed: 0.006, color: 0xe2bf7d, hasRings: true },
+    { name: '天王星 Uranus', size: 1.6, dist: 45, speed: 0.004, color: 0x70d6ff },
+    { name: '海王星 Neptune',size: 1.5, dist: 52, speed: 0.003, color: 0x3344ff },
+    { name: '冥王星 Pluto',  size: 0.5, dist: 58, speed: 0.002, color: 0x998877 }
   ];
 
   const planetNodes = [];
 
   planetsConfig.forEach(p => {
-    // 公轉軌道空物件
     const orbitPivot = new THREE.Group();
     solarSystem.add(orbitPivot);
 
-    // 繪製軌道線 (Orbit Path Line)
+    // 繪製細緻圓形公轉軌道
     const orbitCurve = new THREE.EllipseCurve(0, 0, p.dist, p.dist, 0, 2 * Math.PI, false, 0);
-    const points = orbitCurve.getPoints(64);
+    const points = orbitCurve.getPoints(100);
     const orbitLineGeo = new THREE.BufferGeometry().setFromPoints(points.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
-    const orbitLineMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06 });
+    const orbitLineMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
     const orbitLine = new THREE.Line(orbitLineGeo, orbitLineMat);
     solarSystem.add(orbitLine);
 
-    // 行星本體
-    const pGeo = new THREE.SphereGeometry(p.size, 24, 24);
-    const pMat = new THREE.MeshBasicMaterial({ color: p.color });
+    // 行星 3D 圓球本體
+    const pGeo = new THREE.SphereGeometry(p.size, 32, 32);
+    const pMat = new THREE.MeshStandardMaterial({ color: p.color, roughness: 0.6 });
     const pMesh = new THREE.Mesh(pGeo, pMat);
     pMesh.position.x = p.dist;
     orbitPivot.add(pMesh);
 
-    // 土星光環 (Saturn Rings)
+    // 土星環 (Saturn Rings)
     if (p.hasRings) {
-      const ringGeo = new THREE.RingGeometry(p.size * 1.4, p.size * 2.3, 32);
+      const ringGeo = new THREE.RingGeometry(p.size * 1.3, p.size * 2.2, 32);
       const ringMat = new THREE.MeshBasicMaterial({
-        color: 0xCBB68A,
+        color: 0xcbb68a,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.6
+        opacity: 0.7
       });
       const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-      ringMesh.rotation.x = Math.PI / 2.3;
+      ringMesh.rotation.x = Math.PI / 2.4;
       pMesh.add(ringMesh);
     }
 
-    // 地球月球 (Earth Moon)
+    // 地球月球 (Moon)
     if (p.hasMoon) {
-      const moonGeo = new THREE.SphereGeometry(0.2, 12, 12);
-      const moonMat = new THREE.MeshBasicMaterial({ color: 0xDDDDDD });
+      const moonPivot = new THREE.Group();
+      pMesh.add(moonPivot);
+      const moonGeo = new THREE.SphereGeometry(0.25, 16, 16);
+      const moonMat = new THREE.MeshStandardMaterial({ color: 0xdddddd });
       const moonMesh = new THREE.Mesh(moonGeo, moonMat);
-      moonMesh.position.x = 1.6;
-      pMesh.add(moonMesh);
+      moonMesh.position.x = 2.0;
+      moonPivot.add(moonMesh);
+      p.moonPivot = moonPivot;
     }
 
     planetNodes.push({
       orbit: orbitPivot,
       mesh: pMesh,
       speed: p.speed,
-      angle: Math.random() * Math.PI * 2
+      angle: Math.random() * Math.PI * 2,
+      moonPivot: p.moonPivot
     });
   });
 
-  // --- 4. 游標互動與動畫渲染循環 ---
+  // 游標互動
   let mouseX = 0, mouseY = 0;
   let targetX = 0, targetY = 0;
 
@@ -198,28 +211,28 @@ function init3D() {
   function animate() {
     requestAnimationFrame(animate);
 
-    // 滑鼠平滑慣性跟隨
-    targetX += (mouseX - targetX) * 0.04;
-    targetY += (mouseY - targetY) * 0.04;
+    targetX += (mouseX - targetX) * 0.05;
+    targetY += (mouseY - targetY) * 0.05;
 
-    solarSystem.rotation.y = targetX * 0.35;
-    solarSystem.rotation.x = 0.45 + (targetY * 0.25);
+    // 視差俯仰角
+    solarSystem.rotation.y = targetX * 0.4;
+    solarSystem.rotation.x = 0.5 + (targetY * 0.25);
 
-    // 太陽旋轉與呼吸動效
-    sun.rotation.y += 0.003;
-    sunGlow.rotation.y -= 0.002;
-    sunGlow.rotation.z += 0.001;
+    // 太陽與光暈自轉
+    sunMesh.rotation.y += 0.004;
+    glowMesh.rotation.y -= 0.002;
 
     // 行星公轉與自轉
     planetNodes.forEach(node => {
-      node.angle += node.speed * 0.6;
+      node.angle += node.speed * 0.5;
       node.orbit.rotation.y = node.angle;
       node.mesh.rotation.y += 0.02;
+      if (node.moonPivot) {
+        node.moonPivot.rotation.y += 0.05;
+      }
     });
 
-    // 銀河背景微動
-    starField.rotation.y -= 0.0003;
-
+    starField.rotation.y -= 0.0002;
     renderer.render(scene, camera);
   }
   animate();
