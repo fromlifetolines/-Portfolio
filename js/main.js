@@ -191,7 +191,7 @@ function init3D() {
   `;
 
   const sunUniforms = { time: { value: 0 } };
-  const sunGeo = new THREE.SphereGeometry(6.2, 64, 64);
+  const sunGeo = new THREE.SphereGeometry(6.0, 64, 64);
   const sunMat = new THREE.ShaderMaterial({
     vertexShader: SUN_VS,
     fragmentShader: SUN_FS,
@@ -200,40 +200,42 @@ function init3D() {
   const sunMesh = new THREE.Mesh(sunGeo, sunMat);
   solarSystem.add(sunMesh);
 
-  // 日冕動態火焰
+  // 日冕動態火焰 (depthWrite: false 避免遮擋背景行星與軌道)
   const coronaUniforms = { time: { value: 0 } };
-  const coronaGeo = new THREE.SphereGeometry(7.6, 64, 64);
+  const coronaGeo = new THREE.SphereGeometry(6.5, 64, 64);
   const coronaMat = new THREE.ShaderMaterial({
     vertexShader: CORONA_VS,
     fragmentShader: CORONA_FS,
     uniforms: coronaUniforms,
     side: THREE.BackSide,
     transparent: true,
+    depthWrite: false,
     blending: THREE.AdditiveBlending
   });
   const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
   solarSystem.add(coronaMesh);
 
-  // 外部柔和發光 Halo Sprite
+  // 外部柔和發光 Halo (透明加法混色 + depthWrite: false，徹底消除方塊裁切陰影)
   const haloCanvas = document.createElement('canvas');
-  haloCanvas.width = 256;
-  haloCanvas.height = 256;
+  haloCanvas.width = 512;
+  haloCanvas.height = 512;
   const haloCtx = haloCanvas.getContext('2d');
-  const haloGrad = haloCtx.createRadialGradient(128, 128, 10, 128, 128, 128);
-  haloGrad.addColorStop(0, 'rgba(255, 230, 120, 0.85)');
-  haloGrad.addColorStop(0.2, 'rgba(255, 120, 20, 0.45)');
-  haloGrad.addColorStop(0.6, 'rgba(255, 60, 0, 0.15)');
+  const haloGrad = haloCtx.createRadialGradient(256, 256, 20, 256, 256, 256);
+  haloGrad.addColorStop(0, 'rgba(255, 220, 100, 0.7)');
+  haloGrad.addColorStop(0.2, 'rgba(255, 120, 20, 0.35)');
+  haloGrad.addColorStop(0.5, 'rgba(255, 60, 0, 0.08)');
   haloGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
   haloCtx.fillStyle = haloGrad;
-  haloCtx.fillRect(0, 0, 256, 256);
+  haloCtx.fillRect(0, 0, 512, 512);
 
   const haloMat = new THREE.SpriteMaterial({
     map: new THREE.CanvasTexture(haloCanvas),
     transparent: true,
+    depthWrite: false,
     blending: THREE.AdditiveBlending
   });
   const sunHalo = new THREE.Sprite(haloMat);
-  sunHalo.scale.set(32, 32, 1);
+  sunHalo.scale.set(24, 24, 1);
   solarSystem.add(sunHalo);
 
   // --- 3. NASA 9 大實體天體 (本機零 404 高畫質貼圖庫 - Ref: N3rson) ---
