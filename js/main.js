@@ -374,13 +374,62 @@ function init3D() {
   const stars = new THREE.Points(starGeo, starMat);
   scene.add(stars);
 
-  // --- 6. 滑鼠物理視差與動畫循環 ---
+  // --- 6. 3D 鏡頭交互控制：滾輪平滑縮放 + 空白處拖曳旋轉 ---
+  let zoomDistance = 86;
+  let targetZoomDistance = 86;
+  const minZoom = 15;
+  const maxZoom = 200;
+
+  let isDragging = false;
+  let prevMouseX = 0;
+  let prevMouseY = 0;
+  let rotX = 0.55;
+  let rotY = 0;
+  let targetRotX = 0.55;
+  let targetRotY = 0;
   let mouseX = 0, mouseY = 0;
-  let targetX = 0, targetY = 0;
+
+  // 滑鼠滾輪縮放 (拉近拉遠)
+  window.addEventListener('wheel', (e) => {
+    if (e.target.closest('.os-window') || e.target.closest('.dock-container')) return;
+    e.preventDefault();
+    const zoomFactor = e.deltaY * 0.08;
+    targetZoomDistance = Math.min(Math.max(targetZoomDistance + zoomFactor, minZoom), maxZoom);
+  }, { passive: false });
+
+  // 拖曳旋轉背景
+  window.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.os-window') || e.target.closest('.dock-container') || e.target.closest('.system-bar') || e.target.closest('.desktop-icon')) return;
+    isDragging = true;
+    prevMouseX = e.clientX;
+    prevMouseY = e.clientY;
+  });
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    if (isDragging) {
+      const deltaX = e.clientX - prevMouseX;
+      const deltaY = e.clientY - prevMouseY;
+      targetRotY += deltaX * 0.006;
+      targetRotX += deltaY * 0.006;
+      targetRotX = Math.min(Math.max(targetRotX, 0.05), Math.PI * 0.48);
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+    } else {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // 雙擊空白處平滑重置最佳視角
+  window.addEventListener('dblclick', (e) => {
+    if (e.target.closest('.os-window') || e.target.closest('.dock-container') || e.target.closest('.system-bar') || e.target.closest('.desktop-icon')) return;
+    targetZoomDistance = 86;
+    targetRotX = 0.55;
+    targetRotY = 0;
   });
 
   let clock = new THREE.Clock();
@@ -395,11 +444,18 @@ function init3D() {
     sunUniforms.time.value = elapsedTime;
     coronaUniforms.time.value = elapsedTime;
 
-    targetX += (mouseX - targetX) * 0.04;
-    targetY += (mouseY - targetY) * 0.04;
+    // 鏡頭平滑插值 (阻尼運動)
+    zoomDistance += (targetZoomDistance - zoomDistance) * 0.08;
+    rotX += (targetRotX - rotX) * 0.08;
+    rotY += (targetRotY - rotY) * 0.08;
 
-    solarSystem.rotation.y = targetX * 0.25;
-    solarSystem.rotation.x = 0.55 + (targetY * 0.15);
+    const pitch = rotX + (isDragging ? 0 : mouseY * 0.04);
+    const yaw = rotY + (isDragging ? 0 : mouseX * 0.06);
+
+    camera.position.x = Math.sin(yaw) * Math.cos(pitch) * zoomDistance;
+    camera.position.y = Math.sin(pitch) * zoomDistance;
+    camera.position.z = Math.cos(yaw) * Math.cos(pitch) * zoomDistance;
+    camera.lookAt(0, 0, 0);
 
     sunMesh.rotation.y += 0.002;
     coronaMesh.rotation.y -= 0.001;
