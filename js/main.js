@@ -699,6 +699,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     dock.addEventListener('mouseleave', () => {
+      items.forEach(item => gsap.to(item, { scale: 1, y: 0, duration: 0.25 }));
+    });
+  }
+
   // 3D Card Perspective Mouse Tilt Physics
   document.querySelectorAll('.tilt-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
