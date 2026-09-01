@@ -56,7 +56,7 @@ class SoundEngine {
 
 const audio = new SoundEngine();
 
-// 2. AAA Photorealistic 3D Solar System & GLSL Plasma Sun Engine
+// 2. AAA Photorealistic 3D Solar System & Deep Space Light Engine
 function init3D() {
   const container = document.getElementById('webgl-canvas');
   if (!container) return;
@@ -71,25 +71,23 @@ function init3D() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.3;
+  renderer.toneMappingExposure = 1.35;
   container.appendChild(renderer.domElement);
 
   const textureLoader = new THREE.TextureLoader();
 
-  // 1. 太陽系主體容器與宇宙光照
+  // 1. 太陽系主體容器與真實天文點光源 (深邃宇宙暗部 + 太陽中心強光)
   const solarSystem = new THREE.Group();
   scene.add(solarSystem);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+  // 深空冷色微弱環境光（避免背陽面全死黑，保留幽暗輪廓）
+  const ambientLight = new THREE.AmbientLight(0x0c1222, 0.35);
   scene.add(ambientLight);
 
-  const sunLight = new THREE.PointLight(0xfffaed, 3.8, 600, 0.5);
+  // 太陽中心真實物理點光源 (Sun Point Light)
+  const sunLight = new THREE.PointLight(0xfff8ee, 4.8, 0, 0);
   sunLight.position.set(0, 0, 0);
   solarSystem.add(sunLight);
-
-  const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  dirLight.position.set(0, 50, 40);
-  scene.add(dirLight);
 
   // --- 2. 頂級 GLSL 3D 動態等離子太陽 (NASA Plasma Shader - Ref: maoxin1234) ---
   const COMMON_GLSL = `
@@ -200,7 +198,7 @@ function init3D() {
   const sunMesh = new THREE.Mesh(sunGeo, sunMat);
   solarSystem.add(sunMesh);
 
-  // 日冕動態火焰 (depthWrite: false 避免遮擋背景行星與軌道)
+  // 日冕動態火焰
   const coronaUniforms = { time: { value: 0 } };
   const coronaGeo = new THREE.SphereGeometry(6.5, 64, 64);
   const coronaMat = new THREE.ShaderMaterial({
@@ -215,7 +213,7 @@ function init3D() {
   const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
   solarSystem.add(coronaMesh);
 
-  // 外部柔和發光 Halo (透明加法混色 + depthWrite: false，徹底消除方塊裁切陰影)
+  // 外部柔和發光 Halo
   const haloCanvas = document.createElement('canvas');
   haloCanvas.width = 512;
   haloCanvas.height = 512;
@@ -238,7 +236,95 @@ function init3D() {
   sunHalo.scale.set(24, 24, 1);
   solarSystem.add(sunHalo);
 
-  // --- 3. NASA 9 大實體天體 (本機零 404 高畫質貼圖庫 - Ref: N3rson) ---
+  // --- 3. 地球專屬：真實晝夜晨昏 (Day/Night Terminator) + 夜間萬家燈火著色器 ---
+  const EARTH_VS = `
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+    varying vec3 vViewPos;
+
+    void main() {
+      vUv = uv;
+      vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+      vec4 worldPos = modelMatrix * vec4(position, 1.0);
+      vSunDir = normalize(-worldPos.xyz);
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      vViewPos = -mvPosition.xyz;
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  `;
+
+  const EARTH_FS = `
+    uniform sampler2D dayTexture;
+    uniform sampler2D nightTexture;
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+    varying vec3 vViewPos;
+
+    void main() {
+      vec3 normal = normalize(vWorldNormal);
+      vec3 sunDir = normalize(vSunDir);
+      float nDotL = dot(normal, sunDir);
+
+      // 晨昏線光影平滑過渡
+      float dayFactor = smoothstep(-0.15, 0.25, nDotL);
+      float nightFactor = 1.0 - smoothstep(-0.25, 0.1, nDotL);
+
+      vec4 dayCol = texture2D(dayTexture, vUv);
+      vec4 nightCol = texture2D(nightTexture, vUv);
+
+      // 白天光照（含微光漫射）
+      vec3 ambient = vec3(0.02, 0.04, 0.08) * dayCol.rgb;
+      vec3 daylight = dayCol.rgb * (dayFactor * 1.25);
+
+      // 夜間城市燈光（向陽面熄滅，背陽面亮起暖金色燈火）
+      vec3 nightlight = nightCol.rgb * vec3(1.8, 1.4, 0.85) * nightFactor;
+
+      // 大氣層向陽藍色邊緣散射 (Atmospheric Rim Scatter)
+      vec3 viewDir = normalize(vViewPos);
+      float rim = 1.0 - max(dot(normal, viewDir), 0.0);
+      vec3 atmosphereGlow = vec3(0.18, 0.55, 1.0) * pow(rim, 3.2) * dayFactor * 0.9;
+
+      vec3 finalCol = daylight + ambient + nightlight + atmosphereGlow;
+      gl_FragColor = vec4(finalCol, 1.0);
+    }
+  `;
+
+  const CLOUDS_VS = `
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+      vec4 worldPos = modelMatrix * vec4(position, 1.0);
+      vSunDir = normalize(-worldPos.xyz);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `;
+
+  const CLOUDS_FS = `
+    uniform sampler2D cloudTexture;
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+
+    void main() {
+      vec4 cloudMap = texture2D(cloudTexture, vUv);
+      float nDotL = dot(normalize(vWorldNormal), normalize(vSunDir));
+      float dayFactor = smoothstep(-0.15, 0.25, nDotL);
+
+      // 雲層在向陽面明亮反射白光，在背陽面變暗
+      vec3 cloudColor = vec3(1.0, 1.0, 1.0) * (dayFactor * 1.1 + 0.05);
+      float alpha = cloudMap.r * (dayFactor * 0.65 + 0.15);
+
+      gl_FragColor = vec4(cloudColor, alpha);
+    }
+  `;
+
+  // --- 4. NASA 9 大實體天體配置 ---
   const planetsConfig = [
     { name: 'Mercury', size: 0.95, dist: 11.5, speed: 0.024, texture: './assets/planets/mercury.jpg' },
     { name: 'Venus',   size: 1.45, dist: 16.8, speed: 0.017, texture: './assets/planets/venus.jpg' },
@@ -261,41 +347,62 @@ function init3D() {
     const orbitCurve = new THREE.EllipseCurve(0, 0, p.dist, p.dist, 0, 2 * Math.PI, false, 0);
     const orbitPoints = orbitCurve.getPoints(128);
     const orbitGeo = new THREE.BufferGeometry().setFromPoints(orbitPoints.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
-    const orbitMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 });
+    const orbitMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.09 });
     const orbitLine = new THREE.Line(orbitGeo, orbitMat);
     solarSystem.add(orbitLine);
 
     // 行星實體
     const pGeo = new THREE.SphereGeometry(p.size, 64, 64);
-    const pMat = new THREE.MeshStandardMaterial({
-      map: textureLoader.load(p.texture),
-      roughness: 0.65,
-      metalness: 0.1
-    });
-    const pMesh = new THREE.Mesh(pGeo, pMat);
+    let pMesh;
+
+    if (p.isEarth) {
+      // 地球專屬晝夜晨昏著色器材質
+      const earthMat = new THREE.ShaderMaterial({
+        vertexShader: EARTH_VS,
+        fragmentShader: EARTH_FS,
+        uniforms: {
+          dayTexture: { value: textureLoader.load(p.texture) },
+          nightTexture: { value: textureLoader.load('./assets/planets/earth_night.jpg') }
+        }
+      });
+      pMesh = new THREE.Mesh(pGeo, earthMat);
+    } else {
+      // 其他天體採用物理標準材質 (向陽面耀眼、背陽面深邃)
+      const pMat = new THREE.MeshStandardMaterial({
+        map: textureLoader.load(p.texture),
+        roughness: 0.88,
+        metalness: 0.02
+      });
+      pMesh = new THREE.Mesh(pGeo, pMat);
+    }
+
     pMesh.position.x = p.dist;
     orbitGroup.add(pMesh);
 
-    // 地球專屬：NASA 實體大氣雲層與月球
+    // 地球專屬：動態半透明大氣雲層與月球
     if (p.isEarth) {
       const cloudGeo = new THREE.SphereGeometry(p.size + 0.05, 64, 64);
-      const cloudMat = new THREE.MeshStandardMaterial({
-        map: textureLoader.load('./assets/planets/earth_clouds.jpg'),
+      const cloudMat = new THREE.ShaderMaterial({
+        vertexShader: CLOUDS_VS,
+        fragmentShader: CLOUDS_FS,
+        uniforms: {
+          cloudTexture: { value: textureLoader.load('./assets/planets/earth_clouds.jpg') }
+        },
         transparent: true,
-        opacity: 0.6,
         blending: THREE.AdditiveBlending
       });
       const cloudMesh = new THREE.Mesh(cloudGeo, cloudMat);
       pMesh.add(cloudMesh);
       p.cloudMesh = cloudMesh;
 
-      // 月球
+      // 月球 (受太陽單一光源照明產生真實月相)
       const moonPivot = new THREE.Group();
       pMesh.add(moonPivot);
       const moonGeo = new THREE.SphereGeometry(0.4, 32, 32);
       const moonMat = new THREE.MeshStandardMaterial({
         map: textureLoader.load('./assets/planets/moon.jpg'),
-        roughness: 0.85
+        roughness: 0.95,
+        metalness: 0.0
       });
       const moonMesh = new THREE.Mesh(moonGeo, moonMat);
       moonMesh.position.x = 2.9;
@@ -315,11 +422,12 @@ function init3D() {
         const u = (dist - p.size * 1.25) / (p.size * 1.2);
         uvs.setXY(i, u, 0.5);
       }
-      const ringMat = new THREE.MeshBasicMaterial({
+      const ringMat = new THREE.MeshStandardMaterial({
         map: textureLoader.load('./assets/planets/saturn_ring.png'),
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.95
+        roughness: 0.85,
+        metalness: 0.05
       });
       const ringMesh = new THREE.Mesh(ringGeo, ringMat);
       ringMesh.rotation.x = Math.PI / 2.3;
@@ -336,7 +444,7 @@ function init3D() {
     });
   });
 
-  // --- 4. 小行星帶 (Asteroids - 火星與木星之間) ---
+  // --- 5. 小行星帶 (Asteroids - 火星與木星之間) ---
   const asteroidGeo = new THREE.BufferGeometry();
   const asteroidCount = 1600;
   const asteroidPos = new Float32Array(asteroidCount * 3);
@@ -349,11 +457,11 @@ function init3D() {
     asteroidPos[i3 + 2] = Math.sin(angle) * r + (Math.random() - 0.5) * 2;
   }
   asteroidGeo.setAttribute('position', new THREE.BufferAttribute(asteroidPos, 3));
-  const asteroidMat = new THREE.PointsMaterial({ color: 0xBBA890, size: 0.45, transparent: true, opacity: 0.75 });
+  const asteroidMat = new THREE.PointsMaterial({ color: 0x9A8870, size: 0.45, transparent: true, opacity: 0.7 });
   const asteroidBelt = new THREE.Points(asteroidGeo, asteroidMat);
   solarSystem.add(asteroidBelt);
 
-  // --- 5. 宇宙深空背景 (4,000 顆立體彩色星光) ---
+  // --- 6. 宇宙深空背景 (4,000 顆立體彩色星光) ---
   const starGeo = new THREE.BufferGeometry();
   const starCount = 4000;
   const starPos = new Float32Array(starCount * 3);
@@ -376,7 +484,7 @@ function init3D() {
   const stars = new THREE.Points(starGeo, starMat);
   scene.add(stars);
 
-  // --- 6. 3D 鏡頭交互控制：滾輪平滑縮放 + 空白處拖曳旋轉 ---
+  // --- 7. 3D 鏡頭交互控制：滾輪平滑縮放 + 空白處拖曳旋轉 ---
   let zoomDistance = 86;
   let targetZoomDistance = 86;
   const minZoom = 15;
