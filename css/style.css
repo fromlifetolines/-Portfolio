@@ -2,18 +2,25 @@
    MODERN ORGANIC KINETIC DESIGN SYSTEM (Ref: Layers.ai / Motionsites)
    ======================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@500;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --bg-deep: #050608;
-  --glass-bg: rgba(15, 18, 25, 0.72);
+  --glass-bg: rgba(12, 16, 26, 0.78);
   --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-glow: rgba(255, 140, 50, 0.15);
+  --glass-glow: rgba(255, 122, 48, 0.18);
   --accent-warm: #ff7a30;
   --accent-cyan: #38bdf8;
   --accent-emerald: #34d399;
-  --text-main: #f3f4f6;
+  --accent-pink: #f472b6;
+  --text-main: #f9fafb;
   --text-sub: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -21,55 +28,82 @@ body {
   color: var(--text-main);
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
-  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
 }
 
 .syne { font-family: 'Syne', sans-serif; }
 .mono { font-family: 'JetBrains Mono', monospace; }
 
-/* 微細膠片質感噪點層 */
+/* 膠片質感微噪點 */
 .noise-overlay {
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
 
-/* 現代柔光頂部欄 */
+/* 現代流光頂部導航欄 (Floating Header) */
 .system-bar {
-  background: rgba(8, 10, 15, 0.65);
-  backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(8, 11, 18, 0.7);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
   border-bottom: 1px solid var(--glass-border);
 }
 
-/* 現代有機玻璃視窗 (Organic Glass Container) */
+.nav-pill {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.nav-pill.active {
+  background: rgba(255, 122, 48, 0.15);
+  border-color: rgba(255, 122, 48, 0.3);
+  color: #ff9d66;
+}
+
+/* 現代有機玻璃視窗主體 (Organic Glass Window) */
 .os-window {
   position: absolute;
   background: var(--glass-bg);
-  backdrop-filter: blur(32px) saturate(190%);
-  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  backdrop-filter: blur(36px) saturate(200%);
+  -webkit-backdrop-filter: blur(36px) saturate(200%);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.8),
-              0 0 40px -10px var(--glass-glow);
-  border-radius: 20px;
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.85),
+              0 0 50px -10px var(--glass-glow),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.os-window.active-window {
+  border-color: rgba(255, 140, 60, 0.4);
+  box-shadow: 0 45px 110px -15px rgba(0, 0, 0, 0.9),
+              0 0 60px -5px rgba(255, 122, 48, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 .window-header {
-  padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.025);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   cursor: grab;
 }
-
 .window-header:active { cursor: grabbing; }
 
 /* 現代柔光控制燈 */
 .traffic-btn {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   transition: all 0.2s ease;
 }
@@ -78,81 +112,56 @@ body {
 .traffic-max { background: #27c93f; }
 .traffic-btn:hover { transform: scale(1.15); filter: brightness(1.2); }
 
-/* Desktop Grid & Icons */
-.desktop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  grid-auto-rows: 120px;
-  gap: 16px;
-  padding: 50px 24px;
-  position: relative;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.desktop-icon {
-  pointer-events: auto;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.desktop-icon:hover {
-  transform: translateY(-5px);
-}
-
-.desktop-icon:hover .icon-box {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 122, 48, 0.15);
-}
-
-/* 作品卡片流光與鏡頭微動態 (Kinetic Project Cards) */
-.project-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 16px;
+/* 現代設計卡片 (Kinetic Design Cards) */
+.kinetic-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
-.project-card:hover {
+.kinetic-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6),
-              0 0 30px -5px rgba(255, 122, 48, 0.2);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 35px -5px rgba(255, 122, 48, 0.15);
 }
 
-.project-card img {
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+.kinetic-card img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.project-card:hover img {
-  transform: scale(1.06);
+.kinetic-card:hover img {
+  transform: scale(1.05);
 }
 
-/* 懸浮現代 Dock 欄 */
+/* 懸浮現代 Dock 欄 (Pill Dock) */
 .dock-container {
   position: fixed;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
-  padding: 8px 14px;
-  background: rgba(12, 15, 22, 0.65);
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(10, 14, 22, 0.72);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
   z-index: 50;
 }
 
 .dock-item {
   position: relative;
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
@@ -164,26 +173,29 @@ body {
 
 .dock-item:hover {
   transform: translateY(-8px) scale(1.15);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 122, 48, 0.2);
 }
 
 .dock-tooltip {
   position: absolute;
-  top: -38px;
+  top: -42px;
   left: 50%;
   transform: translateX(-50%) scale(0.85);
   opacity: 0;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(8, 10, 15, 0.92);
+  backdrop-filter: blur(12px);
   color: #fff;
-  padding: 4px 10px;
-  border-radius: 8px;
+  padding: 5px 12px;
+  border-radius: 10px;
   font-size: 11px;
+  font-weight: 600;
   white-space: nowrap;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dock-item:hover .dock-tooltip {
@@ -191,24 +203,15 @@ body {
   transform: translateX(-50%) scale(1);
 }
 
-/* Scannable Text Utilities */
-.selectable-text {
-  user-select: text;
-}
-.selectable-text * {
-  user-select: text;
-}
+/* 文字可選取 */
+.selectable-text { user-select: text; }
+.selectable-text * { user-select: text; }
 
-/* Smooth Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* 細緻微滾動條 */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
