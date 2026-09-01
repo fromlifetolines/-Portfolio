@@ -612,6 +612,11 @@ function openWindow(winId) {
   win.classList.remove('hidden');
   focusWindow(win);
 
+  const v = win.querySelector('video');
+  if (v) {
+    v.play().catch(() => {});
+  }
+
   gsap.fromTo(win, 
     { scale: 0.9, opacity: 0, y: 20 },
     { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
