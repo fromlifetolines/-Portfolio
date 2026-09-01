@@ -3,287 +3,495 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FROM LIFE TO LINES // 生活線條 2026 先鋒作品集</title>
+  <title>From Life To Lines 生活線條 // 先鋒設計作品集 2026</title>
   
-  <!-- 核心字體：Geist & Geist Mono -->
+  <!-- 核心字體：Geist & Geist Mono & Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CDN 依賴庫 -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            geist: ['Geist', 'sans-serif'],
-            mono: ['Geist Mono', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <link rel="stylesheet" href="./css/style.css?v=2026_new_era">
+  <link rel="stylesheet" href="./css/style.css?v=2026_solar_cinematic_v17">
 </head>
-<body class="bg-black text-white font-geist overflow-hidden antialiased select-none">
+<body class="relative bg-black text-white font-sans overflow-hidden antialiased select-none">
 
-  <!-- 膠片質感微噪點層 -->
+  <!-- 微細膠片質感噪點層 -->
   <div class="noise-overlay"></div>
 
-  <!-- 滿版全螢幕電影級循環背景 (Full-Viewport Kinetic Video) -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
-    <video 
-      autoplay 
-      muted 
-      loop 
-      playsinline 
-      class="absolute w-full h-full object-cover object-[70%_center] filter brightness-[0.72] contrast-[1.08] scale-[1.02] transition-transform duration-1000"
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4"
-    ></video>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 pointer-events-none"></div>
-  </div>
+  <!-- 3D 太陽星系真實物理渲染底層 (WebGL Three.js Canvas) -->
+  <div id="webgl-canvas" class="fixed inset-0 pointer-events-none z-0"></div>
 
-  <!-- 頂部現代先鋒導航列 (Floating Modern Navbar) -->
-  <header class="relative z-30 flex items-center justify-between px-6 py-5 md:px-12 lg:px-16">
-    <!-- 左側 Logo 與即時動態標籤 -->
-    <div class="flex items-center gap-4">
-      <a href="./index.html" class="text-lg font-semibold tracking-tight text-white sm:text-xl flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-        FROM LIFE TO LINES
-      </a>
-      <span class="hidden lg:inline-block font-mono text-[11px] text-white/40 tracking-wider">[ 10+ YRS // DATA X VISUAL CRAFT ]</span>
+  <!-- 頂部現代流光先鋒導航欄 -->
+  <header class="system-bar fixed top-0 left-0 right-0 h-14 px-6 flex items-center justify-between z-50 select-none">
+    <div class="flex items-center space-x-6">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="openWindow('win-about')">
+        <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 animate-pulse shadow-[0_0_12px_rgba(255,122,48,0.8)]"></span>
+        <span class="syne font-bold tracking-wider text-sm text-white flex items-center gap-1.5">
+          FROM LIFE TO LINES <span class="text-zinc-400 font-normal text-xs">[生活線條]</span>
+        </span>
+      </div>
+
+      <div class="hidden lg:block h-4 w-px bg-white/10"></div>
+
+      <nav class="hidden md:flex items-center gap-2 text-xs">
+        <button onclick="openWindow('win-about')" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-300 hover:text-white border border-white/5 hover:border-white/20 transition flex items-center gap-1.5">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-orange-400"></i> 關於我
+        </button>
+        <button onclick="openWindow('win-services')" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-300 hover:text-white border border-white/5 hover:border-white/20 transition flex items-center gap-1.5">
+          <i data-lucide="briefcase" class="w-3.5 h-3.5 text-emerald-400"></i> 服務與案例
+        </button>
+        <button onclick="openWindow('win-projects')" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-300 hover:text-white border border-white/5 hover:border-white/20 transition flex items-center gap-1.5">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-cyan-400"></i> 精選作品庫
+        </button>
+        <button onclick="openWindow('win-showreel')" class="nav-pill px-3.5 py-1.5 rounded-full text-orange-300 hover:text-orange-200 border border-orange-500/20 hover:border-orange-500/40 bg-orange-500/10 transition flex items-center gap-1.5 font-semibold">
+          <i data-lucide="play" class="w-3.5 h-3.5 text-orange-400 fill-orange-400"></i> 動態展示
+        </button>
+      </nav>
     </div>
 
-    <!-- 桌面端導航連結 -->
-    <nav class="hidden md:flex items-center space-x-8 text-sm text-white/80">
-      <button onclick="toggleProjectsDrawer()" class="hover:text-white transition-colors">Projects 精選作品</button>
-      <button onclick="toggleAboutModal()" class="hover:text-white transition-colors">Philosophy 設計哲學</button>
-      <button onclick="toggleServicesModal()" class="hover:text-white transition-colors">Services 服務矩陣</button>
-      <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
-        <span>Instagram</span>
-        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-      </a>
-    </nav>
-
-    <!-- 右側 CTA 與 行動端漢堡選單按鈕 -->
-    <div class="flex items-center gap-3">
-      <a href="mailto:howardhuang720818@gmail.com" class="hidden sm:inline-flex rounded-lg bg-white px-5 py-2 text-sm font-medium text-black hover:scale-105 transition-transform">
-        Let's Talk
-      </a>
-
-      <!-- 行動端漢堡按鈕 (帶 90° 旋轉切換動畫) -->
-      <button id="menu-btn" onclick="toggleMobileMenu()" class="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-md border border-white/10 md:hidden active:scale-90 transition">
-        <i id="icon-menu" data-lucide="menu" class="w-5 h-5 text-white transition-all duration-300"></i>
-        <i id="icon-close" data-lucide="x" class="w-5 h-5 text-white absolute transition-all duration-300 opacity-0 scale-50 -rotate-90"></i>
+    <div class="flex items-center space-x-4">
+      <div class="hidden sm:flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+        <span class="font-mono text-[11px] text-zinc-200 font-medium tracking-wide">10+ YRS // DATA x VISUAL CRAFT</span>
+      </div>
+      <span id="live-clock" class="font-mono text-zinc-400 text-xs hidden sm:inline">TPE --:--:--</span>
+      <button id="audio-toggle" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 hover:text-white transition">
+        <i data-lucide="volume-2" class="w-4 h-4"></i>
       </button>
     </div>
   </header>
 
-  <!-- 行動端全螢幕玻璃導航抽屜 -->
-  <div id="mobile-menu" class="fixed inset-x-0 top-0 z-20 h-0 opacity-0 pointer-events-none bg-black/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-center px-8">
-    <div id="mobile-content" class="flex flex-col space-y-6 text-3xl font-medium text-white/90 translate-y-8 opacity-0 transition-all duration-500">
-      <button onclick="toggleProjectsDrawer(); toggleMobileMenu();" class="text-left hover:text-white">01. Projects 精選作品</button>
-      <button onclick="toggleAboutModal(); toggleMobileMenu();" class="text-left hover:text-white">02. Philosophy 設計哲學</button>
-      <button onclick="toggleServicesModal(); toggleMobileMenu();" class="text-left hover:text-white">03. Services 服務範疇</button>
-      <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="hover:text-white flex items-center justify-between">
-        <span>04. Instagram</span>
-        <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-      </a>
-      <a href="mailto:howardhuang720818@gmail.com" class="mt-4 rounded-full bg-white px-8 py-3.5 text-center text-base font-medium text-black hover:scale-105 transition-transform">
-        Let's Talk 立即諮詢
-      </a>
-    </div>
-  </div>
-
-  <!-- 主視覺英雄內容層 (Hero Content // Staggered Animation) -->
-  <main class="relative z-10 flex flex-col justify-between h-[calc(100vh-80px)] px-6 pb-10 pt-8 sm:pb-12 sm:pt-14 md:px-12 md:pb-16 md:pt-16 lg:px-16">
-    
-    <!-- Top Section (標題敘事) -->
-    <div class="max-w-4xl">
-      <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3.5 py-1 border border-white/10 text-xs sm:text-sm text-white/90 mb-4 sm:mb-6 animate-fade-slide-up-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        Brand & Visual Storytelling
+  <!-- 桌面左側快速啟動圖標 (固定於左上側邊，完全不遮擋中央太陽與各大行星運行動態) -->
+  <main class="desktop-grid">
+    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-about')">
+      <div class="icon-box">
+        <i data-lucide="user" class="w-6 h-6 text-orange-400 group-hover:scale-110 transition"></i>
       </div>
-      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-[1.05] tracking-tight text-white animate-fade-slide-up-2">
-        Shaping visual<br>
-        narratives,<br>
-        one pixel at a time.
-      </h1>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">01. 關於我</span>
     </div>
 
-    <!-- Bottom Section (理念與核心 CTA) -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <p class="text-sm sm:text-base md:text-lg leading-relaxed text-white/70 max-w-sm sm:max-w-lg animate-fade-slide-up-3 font-light">
-        融合 10+ 年 Google Ads 數據策略思維與極致視覺工藝，將複雜商業價值轉化為具備靈魂的視覺語言。
-      </p>
-
-      <div class="animate-fade-slide-up-4 flex items-center gap-3">
-        <button onclick="toggleProjectsDrawer()" class="rounded-lg bg-white px-6 py-3.5 text-sm font-medium text-black hover:scale-105 transition-transform inline-flex items-center gap-2 shadow-2xl">
-          <span>Explore Works</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </button>
-        <button onclick="toggleAboutModal()" class="rounded-lg bg-white/10 backdrop-blur-md border border-white/15 px-5 py-3.5 text-sm font-medium text-white hover:bg-white/20 transition">
-          About Me
-        </button>
+    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-services')">
+      <div class="icon-box">
+        <i data-lucide="briefcase" class="w-6 h-6 text-emerald-400 group-hover:scale-110 transition"></i>
       </div>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">02. 服務案例</span>
+    </div>
+
+    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-projects')">
+      <div class="icon-box">
+        <i data-lucide="layers" class="w-6 h-6 text-cyan-400 group-hover:scale-110 transition"></i>
+      </div>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">03. 精選作品</span>
+    </div>
+
+    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-showreel')">
+      <div class="icon-box">
+        <i data-lucide="play-square" class="w-6 h-6 text-orange-500 group-hover:scale-110 transition"></i>
+      </div>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">04. 4K 放映</span>
     </div>
   </main>
 
   <!-- ========================================================
-       沉浸式全螢幕作品抽屜 (Immersive Curated Projects Drawer)
+       WINDOW 01: 關於我 (ABOUT ME // THE DUAL ESSENCE)
        ======================================================== -->
-  <div id="projects-drawer" class="fixed inset-0 z-40 bg-black/90 backdrop-blur-3xl translate-y-full opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto px-6 py-12 md:px-16">
-    <div class="max-w-6xl mx-auto space-y-12">
-      <div class="flex justify-between items-end border-b border-white/10 pb-6">
-        <div>
-          <span class="font-mono text-xs text-orange-400 uppercase tracking-widest">[ CURATED WORKS 2026 ]</span>
-          <h2 class="text-3xl md:text-5xl font-medium text-white tracking-tight mt-2">精選商業與先鋒案例</h2>
-        </div>
-        <button onclick="toggleProjectsDrawer()" class="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
-          <i data-lucide="x" class="w-6 h-6"></i>
-        </button>
+  <div id="win-about" class="os-window w-[94vw] max-w-[700px] top-20 left-4 md:left-[24vw] z-30 hidden">
+    <div class="window-header flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <button onclick="closeWindow('win-about')" class="traffic-btn traffic-close"></button>
+        <button onclick="closeWindow('win-about')" class="traffic-btn traffic-min"></button>
+        <button class="traffic-btn traffic-max"></button>
+        <span class="syne text-xs text-white font-bold ml-2">FROM LIFE TO LINES // 生活線條</span>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-semibold">DATA_DRIVEN_DESIGNER</span>
+    </div>
+
+    <div class="p-8 space-y-6 overflow-y-auto max-h-[75vh] selectable-text">
+      <!-- 核心哲學金句 -->
+      <div class="relative p-6 rounded-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 shadow-lg">
+        <div class="font-mono text-xs text-orange-400 uppercase tracking-widest mb-2">// DESIGN & STRATEGY PHILOSOPHY</div>
+        <p class="syne text-lg md:text-xl font-bold text-white leading-snug">
+          「好的設計，是溝通的橋樑；好的行銷，是價值的傳遞。<br class="hidden sm:inline">
+          <span class="bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">真正的商業價值，來自於對『人』的深刻理解與數據的精準洞察。</span>」
+        </p>
       </div>
 
-      <!-- 6 大作品大片式畫廊網格 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- PROJECT 01: AURA SPATIAL -->
-        <a href="./portfolio-brand.html" class="project-tile group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-white/30 transition-all p-4 space-y-4">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-zinc-950 relative">
-            <img src="./assets/aura-exploded.jpg" alt="AURA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute top-3 left-3 bg-black/70 backdrop-blur px-2.5 py-1 rounded-md font-mono text-[10px] text-cyan-400">BRANDING & 3D</div>
-          </div>
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-emerald-400 font-medium">
-              <span>AURA SPATIAL AUDIO</span>
-              <span>+34.8% CR</span>
-            </div>
-            <p class="text-xs text-zinc-400 mt-1">微工業機能美學：將聲學濾波器與微晶片轉化為品牌核心視覺資產。</p>
-          </div>
-        </a>
+      <!-- 10+ 年雙核心經歷 -->
+      <div class="text-sm text-zinc-300 leading-relaxed space-y-3.5 font-light">
+        <p>
+          在行銷與設計領域深耕逾 <strong class="text-white font-semibold underline decoration-orange-500/50 underline-offset-4">10 年</strong>，我從 <strong class="text-white">Google Ads 廣告諮詢師</strong> 出發，建立了對成效數據、用戶心理與商業目標的敏銳直覺。
+        </p>
+        <p>
+          如今，我將嚴謹的數據邏輯轉化為極具感染力的視覺語言，透過專業的品牌識別、3D 動態渲染與 UI/UX 體驗規劃，為品牌打造兼具深度、靈魂與高轉化率的商業作品。
+        </p>
+      </div>
 
-        <!-- PROJECT 02: OAT & BOTANIC -->
-        <a href="./portfolio-ecommerce.html" class="project-tile group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-white/30 transition-all p-4 space-y-4">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-zinc-950 relative">
-            <img src="./assets/oat-packaging.jpg" alt="OAT & BOTANIC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute top-3 left-3 bg-black/70 backdrop-blur px-2.5 py-1 rounded-md font-mono text-[10px] text-emerald-400">PACKAGING & D2C</div>
+      <!-- 3 大能力指標卡 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-2">
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition space-y-1.5">
+          <div class="text-orange-400 font-bold text-xs flex items-center gap-1.5">
+            <i data-lucide="trending-up" class="w-4 h-4"></i> 數據驅動視覺
           </div>
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-emerald-400 font-medium">
-              <span>OAT & BOTANIC</span>
-              <span>+38.6% 營收</span>
-            </div>
-            <p class="text-xs text-zinc-400 mt-1">未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與高轉化排版。</p>
+          <p class="text-xs text-zinc-400 leading-normal">10+ 年實戰，結合廣告分析將訊息化為高轉化作品。</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/30 transition space-y-1.5">
+          <div class="text-cyan-400 font-bold text-xs flex items-center gap-1.5">
+            <i data-lucide="target" class="w-4 h-4"></i> 整合行銷策略
           </div>
-        </a>
+          <p class="text-xs text-zinc-400 leading-normal">Google 廣告背景，涵蓋產品企劃 (PM) 與預算導向方案。</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition space-y-1.5">
+          <div class="text-emerald-400 font-bold text-xs flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> 一站式全案設計
+          </div>
+          <p class="text-xs text-zinc-400 leading-normal">電商美編、網站規劃到實體包裝全方位支援。</p>
+        </div>
+      </div>
 
-        <!-- PROJECT 03: NEXUS AI -->
-        <a href="./portfolio-web.html" class="project-tile group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-white/30 transition-all p-4 space-y-4">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-zinc-950 relative">
-            <img src="./assets/nexus-ui.jpg" alt="NEXUS AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute top-3 left-3 bg-black/70 backdrop-blur px-2.5 py-1 rounded-md font-mono text-[10px] text-orange-400">SAAS & SYSTEM</div>
-          </div>
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-orange-400 font-medium">
-              <span>NEXUS AI SUITE</span>
-              <span>載入 1.1s | 轉化 +40%</span>
-            </div>
-            <p class="text-xs text-zinc-400 mt-1">高密度資訊儀表板與節點式畫布系統，實現 100% Design-to-Code 先鋒落地。</p>
-          </div>
+      <!-- 底部引導按鈕 -->
+      <div class="flex flex-wrap gap-3 pt-2">
+        <button onclick="openWindow('win-projects')" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-bold shadow-lg shadow-orange-500/25 transition">
+          探索精選專案 (VIEW PROJECTS) →
+        </button>
+        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 text-xs font-medium flex items-center gap-2 transition">
+          <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i> Instagram 專頁
         </a>
-
-        <!-- PROJECT 04: HYDRATE LAB ADS -->
-        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="project-tile group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-white/30 transition-all p-4 space-y-4">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-zinc-950 relative">
-            <img src="./assets/marketing-ads.jpg" alt="HYDRATE LAB" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute top-3 left-3 bg-black/70 backdrop-blur px-2.5 py-1 rounded-md font-mono text-[10px] text-emerald-400">ADS & GROWTH</div>
-          </div>
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-emerald-400 font-medium">
-              <span>HYDRATE LAB 全渠道廣告</span>
-              <span>ROAS 4.8x</span>
-            </div>
-            <p class="text-xs text-zinc-400 mt-1">Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到訂單的商業閉環。</p>
-          </div>
-        </a>
-
-        <!-- PROJECT 05: CHRONO ARCHIVE SEO -->
-        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="project-tile group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-white/30 transition-all p-4 space-y-4">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-zinc-950 relative">
-            <img src="./assets/chrono-ui.jpg" alt="CHRONO ARCHIVE" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute top-3 left-3 bg-black/70 backdrop-blur px-2.5 py-1 rounded-md font-mono text-[10px] text-cyan-400">SEO & CONTENT</div>
-          </div>
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-cyan-400 font-medium">
-              <span>CHRONO ARCHIVE 知識庫</span>
-              <span>自然流量 +210%</span>
-            </div>
-            <p class="text-xs text-zinc-400 mt-1">結構化資料標記與長尾關鍵字內容工程，取得鐘錶領域搜尋前三名排名。</p>
-          </div>
-        </a>
-
-        <!-- PROJECT 06: FROM LIFE TO LINES BRAND -->
-        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="project-tile group rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-white/30 transition-all p-4 space-y-4">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-zinc-950 relative">
-            <img src="./assets/brand-identity.jpg" alt="FROM LIFE TO LINES" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute top-3 left-3 bg-black/70 backdrop-blur px-2.5 py-1 rounded-md font-mono text-[10px] text-pink-400">IDENTITY & ART</div>
-          </div>
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-pink-400 font-medium">
-              <span>FROM LIFE TO LINES</span>
-              <span>社群互動 +185%</span>
-            </div>
-            <p class="text-xs text-zinc-400 mt-1">以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與靈魂的個人品牌。</p>
-          </div>
-        </a>
-
       </div>
     </div>
   </div>
 
   <!-- ========================================================
-       ABOUT ME / PHILOSOPHY 懸浮卡片
+       WINDOW 02: 服務與案例 (SERVICES & ECOSYSTEM)
        ======================================================== -->
-  <div id="about-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
-    <div class="relative w-full max-w-2xl bg-zinc-950/90 border border-white/15 rounded-3xl p-8 md:p-10 shadow-2xl space-y-6">
-      <button onclick="toggleAboutModal()" class="absolute top-6 right-6 p-2 text-zinc-400 hover:text-white transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
+  <div id="win-services" class="os-window w-[94vw] max-w-[820px] top-20 left-4 md:left-[22vw] z-20 hidden">
+    <div class="window-header flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <button onclick="closeWindow('win-services')" class="traffic-btn traffic-close"></button>
+        <button onclick="closeWindow('win-services')" class="traffic-btn traffic-min"></button>
+        <button class="traffic-btn traffic-max"></button>
+        <span class="syne text-xs text-white font-bold ml-2">CORE SERVICES // 6 大專業服務體系</span>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">6_CAPABILITIES</span>
+    </div>
 
-      <span class="font-mono text-xs text-orange-400 uppercase tracking-widest">[ DESIGN PHILOSOPHY // 關於生活線條 ]</span>
-      
-      <h3 class="text-2xl md:text-3xl font-medium text-white tracking-tight leading-snug">
-        「好的設計，是溝通的橋樑；<br>好的行銷，是價值的傳遞。」
-      </h3>
-
-      <div class="text-sm text-zinc-300 leading-relaxed space-y-4 font-light">
-        <p>
-          在行銷與設計領域深耕逾 <strong>10 年</strong>，我從 <strong>Google Ads 代理商的廣告諮詢師</strong>出發，建立了對數據成效的敏銳度與策略思維。如今，我將這份邏輯轉化為視覺語言，透過專業的品牌識別、3D 動態渲染與 UI/UX 體驗規劃，為品牌打造兼具深度、靈魂與高轉化率的商業作品。
-        </p>
+    <div class="p-8 space-y-6 overflow-y-auto max-h-[75vh] selectable-text">
+      <div>
+        <h3 class="syne text-2xl font-bold text-white tracking-tight">全鏈路商業設計與成長策略</h3>
+        <p class="text-zinc-400 text-xs mt-1">點擊各項服務可直接查看其對應的實際落地案例與數據成效。</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
-        <div class="p-4 rounded-xl bg-white/5 border border-white/5 font-mono text-xs space-y-1">
-          <div class="text-orange-400 font-bold">01. 數據驅動視覺</div>
-          <div class="text-zinc-400">10+ 年實戰，結合廣告分析將訊息化為高轉化作品。</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 01. 數位行銷 -->
+        <div class="project-card p-5 space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-bold">SERVICE 01</span>
+            <span class="font-mono text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">ROAS 4.8x</span>
+          </div>
+          <h4 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="trending-up" class="w-4 h-4 text-orange-400"></i> 數位行銷與行銷策略
+          </h4>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            結合 Google Ads 顧問背景，提供全渠道轉換漏斗建構、預算分配與業績導向企劃。
+          </p>
+          <div class="pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+            <span class="text-zinc-300 font-medium">案例：HYDRATE 轉換漏斗企劃</span>
+            <button onclick="openWindow('win-projects')" class="text-orange-400 hover:text-orange-300 font-semibold flex items-center gap-1">查看作品 →</button>
+          </div>
         </div>
-        <div class="p-4 rounded-xl bg-white/5 border border-white/5 font-mono text-xs space-y-1">
-          <div class="text-cyan-400 font-bold">02. 整合行銷策略</div>
-          <div class="text-zinc-400">Google 廣告背景，涵蓋產品企劃 (PM) 與預算導向方案。</div>
+
+        <!-- 02. SEO -->
+        <div class="project-card p-5 space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold">SERVICE 02</span>
+            <span class="font-mono text-xs text-cyan-400 font-bold bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">自然流量 +210%</span>
+          </div>
+          <h4 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="search" class="w-4 h-4 text-cyan-400"></i> 搜尋引擎優化 (SEO)
+          </h4>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            網站資訊架構重組、語意化標籤部署與長尾關鍵字佈局，獲取高價值精準自然流量。
+          </p>
+          <div class="pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+            <span class="text-zinc-300 font-medium">案例：CHRONO 品牌 SEO 矩陣</span>
+            <button onclick="openWindow('win-projects')" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">查看作品 →</button>
+          </div>
         </div>
-        <div class="p-4 rounded-xl bg-white/5 border border-white/5 font-mono text-xs space-y-1">
-          <div class="text-emerald-400 font-bold">03. 一站式全案落地</div>
-          <div class="text-zinc-400">電商美編、網站規劃到實體包裝全方位支援。</div>
+
+        <!-- 03. 品牌與 3D -->
+        <div class="project-card p-5 space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold">SERVICE 03</span>
+            <span class="font-mono text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">預購轉化 +34.8%</span>
+          </div>
+          <h4 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i> 視覺設計與品牌設計
+          </h4>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            拒絕模板化 AI 垃圾，以微工業工程美學與 3D 渲染打造具備高度辨識度的硬核品牌。
+          </p>
+          <div class="pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+            <span class="text-zinc-300 font-medium">案例：AURA 空間聲學識別</span>
+            <a href="./portfolio-brand.html" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">完整案例 →</a>
+          </div>
+        </div>
+
+        <!-- 04. 包裝設計 -->
+        <div class="project-card p-5 space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">SERVICE 04</span>
+            <span class="font-mono text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">D2C 銷售 +38.6%</span>
+          </div>
+          <h4 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="package" class="w-4 h-4 text-emerald-400"></i> 包裝設計與印刷文宣
+          </h4>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            從刀模展開圖、再生紙材質感挑選到易開罐印刷，打通實體貨架與電商開箱體驗。
+          </p>
+          <div class="pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+            <span class="text-zinc-300 font-medium">案例：OAT & BOTANIC 純素咖啡</span>
+            <a href="./portfolio-ecommerce.html" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">完整案例 →</a>
+          </div>
+        </div>
+
+        <!-- 05. 標誌插圖 -->
+        <div class="project-card p-5 space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 font-bold">SERVICE 05</span>
+            <span class="font-mono text-xs text-pink-400 font-bold bg-pink-500/10 px-2 py-0.5 rounded-full border border-pink-500/20">社群互動 +185%</span>
+          </div>
+          <h4 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="pen-tool" class="w-4 h-4 text-pink-400"></i> 標誌設計與商業插圖
+          </h4>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            天真手繪線條與向量幾何結合，為品牌注入人文溫度與易於社群傳播的視覺符號。
+          </p>
+          <div class="pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+            <span class="text-zinc-300 font-medium">案例：生活線條 品牌標誌</span>
+            <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="text-pink-400 hover:text-pink-300 font-semibold flex items-center gap-1">Instagram 專頁 →</a>
+          </div>
+        </div>
+
+        <!-- 06. UI/UX -->
+        <div class="project-card p-5 space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-bold">SERVICE 06</span>
+            <span class="font-mono text-xs text-orange-400 font-bold bg-orange-500/10 px-2 py-0.5 rounded-full border border-orange-500/20">載入 1.1s | 轉化 +40%</span>
+          </div>
+          <h4 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="layout" class="w-4 h-4 text-orange-400"></i> 使用者體驗設計 (UI/UX)
+          </h4>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            高密度資訊儀表板、響應式斷點佈局與模組化 Design System，實現 100% 程式碼落地。
+          </p>
+          <div class="pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+            <span class="text-zinc-300 font-medium">案例：NEXUS AI 模組化介面</span>
+            <a href="./portfolio-web.html" class="text-orange-400 hover:text-orange-300 font-semibold flex items-center gap-1">完整案例 →</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="./js/main.js?v=2026_new_era"></script>
+  <!-- ========================================================
+       WINDOW 03: 精選作品 (FEATURED WORKS DIRECTORY // 6 大旗艦案例)
+       ======================================================== -->
+  <div id="win-projects" class="os-window w-[94vw] max-w-[880px] top-20 left-4 md:left-[26vw] z-20 hidden">
+    <div class="window-header flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <button onclick="closeWindow('win-projects')" class="traffic-btn traffic-close"></button>
+        <button onclick="closeWindow('win-projects')" class="traffic-btn traffic-min"></button>
+        <button class="traffic-btn traffic-max"></button>
+        <span class="syne text-xs text-white font-bold ml-2">FEATURED WORKS // 6 大旗艦作品庫</span>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">6_FEATURED_CASES</span>
+    </div>
+
+    <div class="p-8 space-y-6 overflow-y-auto max-h-[75vh] selectable-text">
+      
+      <!-- 01. AURA SPATIAL -->
+      <div class="project-card p-5 flex flex-col md:flex-row gap-5 items-center justify-between">
+        <div class="w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
+          <img src="./assets/aura-exploded.jpg" alt="AURA Audio" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold">01 // BRAND & 3D</span>
+            <span class="font-mono text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">預購轉換率 +34.8%</span>
+          </div>
+          <h4 class="syne text-lg font-bold text-white">AURA 空間聲學耳機系統 (Spatial Audio)</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">微工業機能美學：將聲學濾波器與微晶片轉化為品牌核心視覺資產，拒絕同質化科技極簡。</p>
+          <div class="pt-1">
+            <a href="./portfolio-brand.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-bold rounded-xl transition">
+              探索完整案例 (READ CASE STUDY) →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02. OAT & BOTANIC -->
+      <div class="project-card p-5 flex flex-col md:flex-row gap-5 items-center justify-between">
+        <div class="w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
+          <img src="./assets/oat-packaging.jpg" alt="OAT BOTANIC" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">02 // D2C & PACKAGING</span>
+            <span class="font-mono text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">電商銷售提升 +38.6%</span>
+          </div>
+          <h4 class="syne text-lg font-bold text-white">OAT & BOTANIC 純素冷萃低碳咖啡</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與 D2C 高轉化排版系統。</p>
+          <div class="pt-1">
+            <a href="./portfolio-ecommerce.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold rounded-xl transition">
+              探索完整案例 (READ CASE STUDY) →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03. NEXUS AI -->
+      <div class="project-card p-5 flex flex-col md:flex-row gap-5 items-center justify-between">
+        <div class="w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
+          <img src="./assets/nexus-ui.jpg" alt="NEXUS AI" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-bold">03 // SAAS & UI/UX</span>
+            <span class="font-mono text-[11px] text-orange-400 font-bold bg-orange-500/10 px-2 py-0.5 rounded-full border border-orange-500/20">載入 1.1s | 轉化 +40%</span>
+          </div>
+          <h4 class="syne text-lg font-bold text-white">NEXUS AI 模組化協作平台與動態介面</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">高密度資訊儀表板與節點式畫布系統，實現 100% Design-to-Code 先鋒落地。</p>
+          <div class="pt-1">
+            <a href="./portfolio-web.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 text-orange-300 text-xs font-bold rounded-xl transition">
+              探索完整案例 (READ CASE STUDY) →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04. HYDRATE LAB ADS -->
+      <div class="project-card p-5 flex flex-col md:flex-row gap-5 items-center justify-between">
+        <div class="w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
+          <img src="./assets/marketing-ads.jpg" alt="HYDRATE LAB" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-bold">04 // ADS & GROWTH</span>
+            <span class="font-mono text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">ROAS 4.8x | CPA -32%</span>
+          </div>
+          <h4 class="syne text-lg font-bold text-white">HYDRATE LAB 全渠道廣告轉換漏斗</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到訂單的商業閉環。</p>
+          <div class="pt-1">
+            <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 text-xs font-medium rounded-xl transition">
+              <i data-lucide="instagram" class="w-3.5 h-3.5 text-pink-400"></i> IG 作品精選 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05. CHRONO ARCHIVE SEO -->
+      <div class="project-card p-5 flex flex-col md:flex-row gap-5 items-center justify-between">
+        <div class="w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
+          <img src="./assets/chrono-ui.jpg" alt="CHRONO ARCHIVE" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold">05 // SEO & CONTENT</span>
+            <span class="font-mono text-[11px] text-cyan-400 font-bold bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">自然搜尋流量 +210%</span>
+          </div>
+          <h4 class="syne text-lg font-bold text-white">CHRONO ARCHIVE 知識庫與 SEO 矩陣</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">結構化資料標記與長尾關鍵字內容工程，取得鐘錶領域搜尋前三名排名。</p>
+          <div class="pt-1">
+            <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 text-xs font-medium rounded-xl transition">
+              <i data-lucide="instagram" class="w-3.5 h-3.5 text-pink-400"></i> IG 作品精選 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06. FROM LIFE TO LINES BRAND -->
+      <div class="project-card p-5 flex flex-col md:flex-row gap-5 items-center justify-between">
+        <div class="w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
+          <img src="./assets/brand-identity.jpg" alt="From Life To Lines" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 space-y-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 font-bold">06 // IDENTITY & ART</span>
+            <span class="font-mono text-[11px] text-pink-400 font-bold bg-pink-500/10 px-2 py-0.5 rounded-full border border-pink-500/20">社群互動 +185%</span>
+          </div>
+          <h4 class="syne text-lg font-bold text-white">From Life To Lines 生活線條 品牌識別</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與靈魂的個人品牌。</p>
+          <div class="pt-1">
+            <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 text-pink-300 text-xs font-bold rounded-xl transition">
+              前往 Instagram 專頁 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================
+       WINDOW 04: 動態展示 (DYNAMIC SHOWREEL // 4K 劇院放映)
+       ======================================================== -->
+  <div id="win-showreel" class="os-window w-[94vw] max-w-[720px] top-20 left-4 md:left-[30vw] z-20 hidden">
+    <div class="window-header flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <button onclick="closeWindow('win-showreel')" class="traffic-btn traffic-close"></button>
+        <button onclick="closeWindow('win-showreel')" class="traffic-btn traffic-min"></button>
+        <button class="traffic-btn traffic-max"></button>
+        <span class="syne text-xs text-white font-bold ml-2">2026_SHOWREEL.mp4</span>
+      </div>
+      <span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-bold">[4K 60FPS // CINEMA]</span>
+    </div>
+    <div class="p-6">
+      <div class="w-full aspect-video rounded-2xl bg-black/80 border border-white/15 relative overflow-hidden shadow-2xl">
+        <video src="./assets/aura-hero-video.mp4?v=2" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-black/70 backdrop-blur-xl px-4 py-2.5 rounded-xl border border-white/10 shadow-lg">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span>
+            <span class="syne text-xs text-white font-bold tracking-wide">AURA // SPATIAL SOUND SYSTEM</span>
+          </div>
+          <span class="font-mono text-[11px] text-cyan-400 font-semibold">STATUS: 4K_LIVE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部懸浮現代膠囊 Dock 欄 -->
+  <footer class="dock-container" id="main-dock">
+    <div class="dock-item" onclick="openWindow('win-about')">
+      <i data-lucide="user" class="w-5 h-5 text-orange-400"></i>
+      <div class="dock-tooltip">01. 關於我</div>
+    </div>
+    <div class="dock-item" onclick="openWindow('win-services')">
+      <i data-lucide="briefcase" class="w-5 h-5 text-emerald-400"></i>
+      <div class="dock-tooltip">02. 服務與案例</div>
+    </div>
+    <div class="dock-item" onclick="openWindow('win-projects')">
+      <i data-lucide="layers" class="w-5 h-5 text-cyan-400"></i>
+      <div class="dock-tooltip">03. 精選作品庫</div>
+    </div>
+    <div class="dock-item" onclick="openWindow('win-showreel')">
+      <i data-lucide="play-square" class="w-5 h-5 text-orange-500"></i>
+      <div class="dock-tooltip">04. 4K Showreel</div>
+    </div>
+    <div class="w-px h-6 bg-white/15 mx-1 self-center"></div>
+    <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="dock-item">
+      <i data-lucide="instagram" class="w-5 h-5 text-pink-400"></i>
+      <div class="dock-tooltip">Instagram 專頁</div>
+    </a>
+    <a href="https://github.com/fromlifetolines/-Portfolio" target="_blank" class="dock-item">
+      <i data-lucide="github" class="w-5 h-5 text-zinc-300"></i>
+      <div class="dock-tooltip">GitHub 倉庫</div>
+    </a>
+  </footer>
+
+  <script src="./js/main.js?v=2026_solar_cinematic_v17"></script>
 </body>
 </html>
