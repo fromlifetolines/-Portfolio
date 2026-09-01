@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="./css/style.css?v=2026_organic_v15">
+  <link rel="stylesheet" href="./css/style.css?v=2026_organic_v16">
 </head>
 <body class="relative">
 
@@ -58,41 +58,41 @@
     </div>
   </header>
 
-  <!-- 桌面快速啟動懸浮圖標 -->
-  <main class="desktop-grid mt-14">
+  <!-- 桌面左側快速啟動圖標 (固定於左上角，完全不遮擋中央太陽與星系) -->
+  <main class="desktop-grid">
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-about')">
-      <div class="icon-box w-16 h-16 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 flex items-center justify-center mb-2 transition">
-        <i data-lucide="user" class="w-7 h-7 text-orange-400 group-hover:scale-110 transition"></i>
+      <div class="icon-box">
+        <i data-lucide="user" class="w-6 h-6 text-orange-400 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-xs font-semibold text-zinc-200 bg-black/60 backdrop-blur px-2.5 py-1 rounded-full border border-white/10">01. 關於我</span>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/60 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">01. 關於我</span>
     </div>
 
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-services')">
-      <div class="icon-box w-16 h-16 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 flex items-center justify-center mb-2 transition">
-        <i data-lucide="briefcase" class="w-7 h-7 text-emerald-400 group-hover:scale-110 transition"></i>
+      <div class="icon-box">
+        <i data-lucide="briefcase" class="w-6 h-6 text-emerald-400 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-xs font-semibold text-zinc-200 bg-black/60 backdrop-blur px-2.5 py-1 rounded-full border border-white/10">02. 服務與案例</span>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/60 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">02. 服務案例</span>
     </div>
 
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-projects')">
-      <div class="icon-box w-16 h-16 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 flex items-center justify-center mb-2 transition">
-        <i data-lucide="layers" class="w-7 h-7 text-cyan-400 group-hover:scale-110 transition"></i>
+      <div class="icon-box">
+        <i data-lucide="layers" class="w-6 h-6 text-cyan-400 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-xs font-semibold text-zinc-200 bg-black/60 backdrop-blur px-2.5 py-1 rounded-full border border-white/10">03. 精選作品</span>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/60 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">03. 精選作品</span>
     </div>
 
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-showreel')">
-      <div class="icon-box w-16 h-16 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 flex items-center justify-center mb-2 transition">
-        <i data-lucide="play-square" class="w-7 h-7 text-orange-500 group-hover:scale-110 transition"></i>
+      <div class="icon-box">
+        <i data-lucide="play-square" class="w-6 h-6 text-orange-500 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-xs font-semibold text-zinc-200 bg-black/60 backdrop-blur px-2.5 py-1 rounded-full border border-white/10">04. 動態展示</span>
+      <span class="text-[11px] font-semibold text-zinc-300 bg-black/60 backdrop-blur px-2 py-0.5 rounded-full border border-white/10">04. 動態展示</span>
     </div>
   </main>
 
   <!-- ========================================================
        WINDOW 01: 關於我 (ABOUT ME // THE DUAL ESSENCE)
        ======================================================== -->
-  <div id="win-about" class="os-window w-[94vw] max-w-[700px] top-20 left-4 md:left-24 z-30">
+  <div id="win-about" class="os-window w-[94vw] max-w-[700px] top-20 left-4 md:left-[24vw] z-30 hidden">
     <div class="window-header flex items-center justify-between">
       <div class="flex items-center gap-2.5">
         <button onclick="closeWindow('win-about')" class="traffic-btn traffic-close"></button>

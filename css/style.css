@@ -6,7 +6,7 @@
 
 :root {
   --bg-deep: #050608;
-  --glass-bg: rgba(12, 16, 26, 0.78);
+  --glass-bg: rgba(12, 16, 26, 0.82);
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-glow: rgba(255, 122, 48, 0.18);
   --accent-warm: #ff7a30;
@@ -66,6 +66,49 @@ body {
   background: rgba(255, 122, 48, 0.15);
   border-color: rgba(255, 122, 48, 0.3);
   color: #ff9d66;
+}
+
+/* 左側現代桌面圖標欄 (Left Desktop Icon Strip - 鎖定左側，絕不遮擋中央太陽與行星) */
+.desktop-grid {
+  position: absolute;
+  top: 70px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.desktop-icon {
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktop-icon:hover {
+  transform: translateY(-4px);
+}
+
+.desktop-icon .icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(18, 22, 34, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktop-icon:hover .icon-box {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 122, 48, 0.2);
 }
 
 /* 現代有機玻璃視窗主體 (Organic Glass Window) */
