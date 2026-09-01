@@ -37,7 +37,7 @@ body {
 }
 
 .syne { font-family: 'Syne', sans-serif; }
-.font-mono { font-family: 'Geist Mono', monospace; }
+.font-mono, .mono { font-family: 'Geist Mono', monospace; }
 
 /* 膠片質感微噪點層 */
 .noise-overlay {

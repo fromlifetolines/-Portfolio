@@ -26,74 +26,59 @@
   <!-- 3D 太陽星系真實物理渲染底層 (WebGL Three.js Canvas) -->
   <div id="webgl-canvas" class="fixed inset-0 pointer-events-none z-0"></div>
 
-  <!-- 頂部現代先鋒導航欄 (Floating Studio Navbar) -->
-  <header class="system-bar fixed top-0 left-0 right-0 h-14 px-6 md:px-12 flex items-center justify-between z-50 select-none">
-    <div class="flex items-center space-x-6">
-      <div class="flex items-center gap-2.5 cursor-pointer" onclick="openWindow('win-about')">
-        <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 animate-pulse shadow-[0_0_12px_rgba(255,122,48,0.8)]"></span>
-        <span class="syne font-bold tracking-wider text-sm text-white flex items-center gap-1.5">
-          FROM LIFE TO LINES <span class="text-zinc-400 font-normal text-xs">[生活線條]</span>
-        </span>
-      </div>
-
-      <div class="hidden lg:block h-4 w-px bg-white/10"></div>
-
-      <nav class="hidden md:flex items-center gap-2 text-xs">
-        <button onclick="openWindow('win-about')" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-300 hover:text-white border border-white/5 hover:border-white/20 transition flex items-center gap-1.5">
-          <i data-lucide="user" class="w-3.5 h-3.5 text-orange-400"></i> 關於我
-        </button>
-        <button onclick="openWindow('win-services')" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-300 hover:text-white border border-white/5 hover:border-white/20 transition flex items-center gap-1.5">
-          <i data-lucide="briefcase" class="w-3.5 h-3.5 text-emerald-400"></i> 服務與案例
-        </button>
-        <button onclick="openWindow('win-projects')" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-300 hover:text-white border border-white/5 hover:border-white/20 transition flex items-center gap-1.5">
-          <i data-lucide="layers" class="w-3.5 h-3.5 text-cyan-400"></i> 精選作品庫
-        </button>
-        <button onclick="openWindow('win-showreel')" class="nav-pill px-3.5 py-1.5 rounded-full text-orange-300 hover:text-orange-200 border border-orange-500/20 hover:border-orange-500/40 bg-orange-500/10 transition flex items-center gap-1.5 font-semibold">
-          <i data-lucide="play" class="w-3.5 h-3.5 text-orange-400 fill-orange-400"></i> 4K 放映
-        </button>
+  <!-- 頂部系統導航列 -->
+  <header class="system-bar fixed top-0 left-0 right-0 h-11 px-4 flex items-center justify-between z-50 text-xs select-none">
+    <div class="flex items-center space-x-3">
+      <span class="font-bold flex items-center gap-2 text-white">
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+        FROM LIFE TO LINES <span class="mono text-zinc-500 font-normal text-[11px] hidden sm:inline">[生活線條]</span>
+      </span>
+      <span class="text-zinc-600">|</span>
+      <nav class="hidden md:flex items-center space-x-1 mono text-[11px]">
+        <button onclick="openWindow('win-about')" class="px-2 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition">[ 01_ABOUT 設計定位 ]</button>
+        <button onclick="openWindow('win-services')" class="px-2 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition">[ 02_SERVICES 服務矩陣 ]</button>
+        <button onclick="openWindow('win-projects')" class="px-2 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition">[ 03_PROJECTS 精選專案 ]</button>
+        <button onclick="openWindow('win-showreel')" class="px-2 py-1 rounded text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 transition">[ 04_SHOWREEL 動態展示 ]</button>
       </nav>
     </div>
 
-    <div class="flex items-center space-x-4">
-      <div class="hidden sm:flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
-        <span class="font-mono text-[11px] text-zinc-200 font-medium tracking-wide">10+ YRS // DATA x VISUAL CRAFT</span>
+    <div class="flex items-center space-x-3">
+      <div class="hidden sm:flex items-center gap-1.5 bg-zinc-900/80 px-2.5 py-1 rounded border border-white/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <span class="mono text-[10px] text-zinc-300 uppercase tracking-wide">10+ YRS // DATA X DESIGN</span>
       </div>
-      <span id="live-clock" class="font-mono text-zinc-400 text-xs hidden sm:inline">TPE --:--:--</span>
-      <button id="audio-toggle" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 hover:text-white transition">
-        <i data-lucide="volume-2" class="w-4 h-4"></i>
-      </button>
+      <span id="live-clock" class="mono text-zinc-400 text-[11px]">TPE --:--:--</span>
     </div>
   </header>
 
-  <!-- 桌面左側快速啟動圖標 (固定於左上側邊，完全不遮擋中央太陽與各大行星) -->
-  <main class="desktop-grid">
+  <!-- 桌面圖示網格 (以瀏覽器 OS 點擊 Icon 形式探索) -->
+  <main class="desktop-grid mt-12">
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-about')">
-      <div class="icon-box">
+      <div class="icon-box w-14 h-14 rounded-2xl bg-zinc-900/70 backdrop-blur-md border border-white/10 flex items-center justify-center mb-1.5 transition">
         <i data-lucide="user" class="w-6 h-6 text-orange-400 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2.5 py-0.5 rounded-full border border-white/10">01. 關於我</span>
+      <span class="mono text-[11px] text-center text-zinc-300 bg-black/50 px-2 py-0.5 rounded border border-white/5">01_ABOUT.os</span>
     </div>
 
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-services')">
-      <div class="icon-box">
+      <div class="icon-box w-14 h-14 rounded-2xl bg-zinc-900/70 backdrop-blur-md border border-white/10 flex items-center justify-center mb-1.5 transition">
         <i data-lucide="briefcase" class="w-6 h-6 text-emerald-400 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2.5 py-0.5 rounded-full border border-white/10">02. 服務案例</span>
+      <span class="mono text-[11px] text-center text-zinc-300 bg-black/50 px-2 py-0.5 rounded border border-white/5">02_SERVICES.os</span>
     </div>
 
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-projects')">
-      <div class="icon-box">
+      <div class="icon-box w-14 h-14 rounded-2xl bg-zinc-900/70 backdrop-blur-md border border-white/10 flex items-center justify-center mb-1.5 transition">
         <i data-lucide="layers" class="w-6 h-6 text-cyan-400 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2.5 py-0.5 rounded-full border border-white/10">03. 精選作品</span>
+      <span class="mono text-[11px] text-center text-zinc-300 bg-black/50 px-2 py-0.5 rounded border border-white/5">03_PROJECTS.os</span>
     </div>
 
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-showreel')">
-      <div class="icon-box">
-        <i data-lucide="play-square" class="w-6 h-6 text-orange-500 group-hover:scale-110 transition"></i>
+      <div class="icon-box w-14 h-14 rounded-2xl bg-zinc-900/70 backdrop-blur-md border border-white/10 flex items-center justify-center mb-1.5 transition">
+        <i data-lucide="play-circle" class="w-6 h-6 text-orange-500 group-hover:scale-110 transition"></i>
       </div>
-      <span class="text-[11px] font-semibold text-zinc-300 bg-black/70 backdrop-blur px-2.5 py-0.5 rounded-full border border-white/10">04. 4K 放映</span>
+      <span class="mono text-[11px] text-center text-zinc-300 bg-black/50 px-2 py-0.5 rounded border border-white/5">04_SHOWREEL.mp4</span>
     </div>
   </main>
 
