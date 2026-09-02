@@ -596,6 +596,45 @@ function init3D() {
   });
 }
 
+// 視窗開關微動態音效 (音量提升 10%：0.04 -> 0.044)
+function playWindowSound(type = 'open') {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    const ctx = new AudioContext();
+    
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    const now = ctx.currentTime;
+
+    if (type === 'open') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+      // 原音量 0.04 提升 10% -> 0.044
+      gain.gain.setValueAtTime(0.044, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } else {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(660, now);
+      osc.frequency.exponentialRampToValueAtTime(330, now + 0.06);
+      // 原音量 0.04 提升 10% -> 0.044
+      gain.gain.setValueAtTime(0.044, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+      osc.start(now);
+      osc.stop(now + 0.06);
+    }
+  } catch (e) {
+    // 靜默處理音訊限制
+  }
+}
+
 // 3. Multi-Window Management Engine (Fluid Kinetic Transitions)
 let topZ = 100;
 function focusWindow(el) {
@@ -608,7 +647,7 @@ function focusWindow(el) {
 function openWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
-  audio.playOpen();
+  playWindowSound('open');
   win.classList.remove('hidden');
   focusWindow(win);
 
@@ -626,7 +665,7 @@ function openWindow(winId) {
 function closeWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
-  audio.playBlip(300, 0.08, 'square');
+  playWindowSound('close');
   gsap.to(win, {
     scale: 0.9,
     opacity: 0,
