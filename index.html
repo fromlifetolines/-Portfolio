@@ -526,16 +526,26 @@
   </div>
 
   <!-- ========================================================
-       WINDOW 05: NFC 智慧名片 (極致高透 + 4大核心技術優勢 + 官網導流)
+       WINDOW 05: NFC 智慧名片 (背景 100% 滿版無裁切 + 極致通透)
        ======================================================== -->
-  <div id="win-nfc" class="os-window w-[95vw] max-w-[860px] top-20 left-3 md:left-[24vw] z-30 hidden">
-    <!-- 視窗內部電影級循環動態視頻背景 (Kinetic Studio Video Loop) -->
-    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[32px]">
-      <video autoplay muted loop playsinline class="window-video-bg" src="./assets/studio-hero-loop.mp4"></video>
-      <div class="window-video-overlay"></div>
+  <div id="win-nfc" class="os-window relative overflow-hidden w-[95vw] max-w-[880px] top-20 left-3 md:left-[24vw] z-30 hidden !bg-black/20 !backdrop-blur-md border border-white/15 shadow-2xl">
+    
+    <!-- 滿版無裁切動態背景影片層 -->
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        class="w-full h-full object-cover object-center filter brightness-[1.05] contrast-[1.02]"
+        src="./assets/studio-hero-loop.mp4"
+      ></video>
+      <!-- 微透漸層，確保文字易讀性同時保留 100% 鮮豔光彩 -->
+      <div class="absolute inset-0 bg-black/35 pointer-events-none"></div>
     </div>
 
-    <div class="window-header relative z-10 flex items-center justify-between !bg-white/5 border-b border-white/10">
+    <!-- 視窗頂部標題列 -->
+    <div class="window-header relative z-10 flex items-center justify-between !bg-white/5 border-b border-white/10 backdrop-blur-sm">
       <div class="flex items-center gap-2">
         <button onclick="closeWindow('win-nfc')" class="traffic-btn traffic-close"></button>
         <button onclick="closeWindow('win-nfc')" class="traffic-btn traffic-min"></button>
@@ -545,6 +555,7 @@
       <span class="mono text-[10px] text-[#ccff00] bg-[#ccff00]/10 px-2 py-0.5 rounded border border-[#ccff00]/30 font-bold">[SMART_NFC_ECOSYSTEM]</span>
     </div>
 
+    <!-- 內容主體：relative z-10 確保浮於滿版影片之上 -->
     <div class="relative z-10 p-6 md:p-8 space-y-6 overflow-y-auto max-h-[75vh] bg-transparent selectable-text">
       
       <!-- 標題與核心宣言 -->
@@ -556,21 +567,21 @@
         <h3 class="syne text-xl md:text-2xl font-bold text-white tracking-tight drop-shadow-md">
           超越傳統名片：軟硬整合的智慧商務人脈系統
         </h3>
-        <p class="text-xs text-zinc-300 mt-1 drop-shadow font-light leading-relaxed max-w-2xl">
+        <p class="text-xs text-zinc-200 mt-1 drop-shadow font-light leading-relaxed max-w-2xl">
           不僅是霧面沉黑的頂級 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務增長引擎。
         </p>
       </div>
 
-      <!-- 4 大核心技術優勢 (高透磨砂玻璃卡片) -->
+      <!-- 4 大核心技術優勢 (透光毛玻璃卡片) -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
         <!-- 01. OCR 智能名片掃描 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 hover:border-[#ccff00]/50 transition-all space-y-2.5">
+        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-[#ccff00]/50 transition-all space-y-2.5">
           <div class="flex items-center justify-between border-b border-white/15 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="scan-line" class="w-4 h-4 text-[#ccff00]"></i> 01. OCR 名片掃描辨識系統
             </h4>
-            <span class="mono text-[10px] text-[#ccff00] font-bold">AI OCR</span>
+            <span class="mono text-[10px] text-[#ccff00]">AI OCR</span>
           </div>
           <p class="text-xs text-zinc-300 leading-relaxed font-light">
             收到對方的傳統紙本名片？透過系統內建的 AI 視覺辨識，拍照 1 秒精準辨識姓名、電話、公司與統編，自動建立數位聯絡簿，徹底終結紙張堆積。
@@ -578,12 +589,12 @@
         </div>
 
         <!-- 02. 雙向交換聯絡資訊 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 hover:border-cyan-400/50 transition-all space-y-2.5">
+        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-cyan-400/50 transition-all space-y-2.5">
           <div class="flex items-center justify-between border-b border-white/15 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="arrow-left-right" class="w-4 h-4 text-cyan-400"></i> 02. 雙向聯絡資訊即時交換
             </h4>
-            <span class="mono text-[10px] text-cyan-400 font-bold">2-WAY SYNC</span>
+            <span class="mono text-[10px] text-cyan-400">2-WAY SYNC</span>
           </div>
           <p class="text-xs text-zinc-300 leading-relaxed font-light">
             商務溝通不該是單行道。手機碰觸感應後，對方不僅能一鍵將你加入通訊錄（vCard 3.0），更可直接回傳其姓名與聯絡方式，現場完成名單雙向閉環。
@@ -591,12 +602,12 @@
         </div>
 
         <!-- 03. 行銷成效追蹤 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 hover:border-orange-400/50 transition-all space-y-2.5">
+        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-orange-400/50 transition-all space-y-2.5">
           <div class="flex items-center justify-between border-b border-white/15 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="line-chart" class="w-4 h-4 text-orange-400"></i> 03. 行銷追蹤與成效分析 (Analytics)
             </h4>
-            <span class="mono text-[10px] text-orange-400 font-bold">TRACKING</span>
+            <span class="mono text-[10px] text-orange-400">TRACKING</span>
           </div>
           <p class="text-xs text-zinc-300 leading-relaxed font-light">
             發揮 10+ 年 Google Ads 數據思維：深度整合 GA4、Meta Pixel 與點擊事件追蹤，精準分析名片被感應的次數、社群點擊率與高價值客戶互動足跡。
@@ -604,12 +615,12 @@
         </div>
 
         <!-- 04. 企業級 CRM 串接 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 hover:border-emerald-400/50 transition-all space-y-2.5">
+        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-emerald-400/50 transition-all space-y-2.5">
           <div class="flex items-center justify-between border-b border-white/15 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i> 04. 企業矩陣授權與 CRM 串接
             </h4>
-            <span class="mono text-[10px] text-emerald-400 font-bold">ENTERPRISE CRM</span>
+            <span class="mono text-[10px] text-emerald-400">ENTERPRISE CRM</span>
           </div>
           <p class="text-xs text-zinc-300 leading-relaxed font-light">
             支援企業批量團隊管理（Tier 1–3 方案），業務外出開發獲得的人脈資料可直接無縫對接至 Salesforce、HubSpot 或自建 CRM，保障企業商務資產。
@@ -619,18 +630,18 @@
       </div>
 
       <!-- 底部硬體工藝規格膠囊 -->
-      <div class="p-4 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div class="p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div class="flex flex-wrap items-center gap-2">
-          <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 mono text-[11px]">沉黑霧面防刮 PVC</span>
-          <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 mono text-[11px]">NTAG216 高頻晶片</span>
-          <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 mono text-[11px]">AES-256 安全加密</span>
-          <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-zinc-300 mono text-[11px]">免裝 App 0.5s 感應</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300 font-mono text-[11px]">沉黑霧面防刮 PVC</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300 font-mono text-[11px]">NTAG216 高頻晶片</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300 font-mono text-[11px]">AES-256 安全加密</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300 font-mono text-[11px]">免裝 App 0.5s 感應</span>
         </div>
         <span class="mono text-[#ccff00] text-[11px] font-bold">個人版 / 企業客製方案全面支援</span>
       </div>
 
-      <!-- 底部直達官方網站列 -->
-      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/10 text-xs text-zinc-300">
+      <!-- 底部直達官方首頁列 -->
+      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-xs text-zinc-300">
         <div class="flex flex-wrap items-center gap-4 mono text-[11px]">
           <a href="https://www.fromlifetolines.com" target="_blank" class="hover:text-[#ccff00] transition flex items-center gap-1.5 font-bold text-white">
             <i data-lucide="globe" class="w-3.5 h-3.5 text-[#ccff00]"></i> 官方網站：www.fromlifetolines.com
