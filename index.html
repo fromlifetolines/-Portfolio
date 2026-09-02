@@ -211,9 +211,9 @@
   </div>
 
   <!-- ========================================================
-       WINDOW 02: 服務項目 (完全依照名片三大領域與真實項目重構)
+       WINDOW 02: 服務項目與實體產品 (3D 互動 + NFC 硬體 + 官方網域)
        ======================================================== -->
-  <div id="win-services" class="os-window w-[94vw] max-w-[840px] top-20 left-4 md:left-[24vw] z-20 hidden">
+  <div id="win-services" class="os-window w-[95vw] max-w-[880px] top-16 left-3 md:left-[22vw] z-20 hidden">
     <!-- 視窗內部電影級循環動態視頻背景 (Kinetic Studio Video Loop) -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[32px]">
       <video autoplay muted loop playsinline class="window-video-bg" src="./assets/studio-hero-loop.mp4"></video>
@@ -225,87 +225,133 @@
         <button onclick="closeWindow('win-services')" class="traffic-btn traffic-close"></button>
         <button onclick="closeWindow('win-services')" class="traffic-btn traffic-min"></button>
         <button class="traffic-btn traffic-max"></button>
-        <span class="mono text-xs text-zinc-300 ml-2 font-bold">SERVICES // 設計服務項目</span>
+        <span class="mono text-xs text-zinc-300 ml-2 font-bold">SERVICES & HARDWARE // 設計服務與實體產品</span>
       </div>
-      <span class="mono text-[10px] text-[#ccff00] font-bold">[OFFICIAL_CAPABILITIES]</span>
+      <span class="mono text-[10px] text-[#ccff00] font-bold">[4_CORE_CAPABILITIES]</span>
     </div>
 
-    <div class="relative z-10 p-6 md:p-8 space-y-6 overflow-y-auto max-h-[75vh] selectable-text">
-      <div>
-        <h3 class="syne text-xl md:text-2xl font-bold text-white tracking-tight">全方位的視覺與品牌設計服務</h3>
-        <p class="text-xs text-zinc-400 mt-1">從品牌定位、實體平面印刷到高成效數位網頁，提供一站式視覺解決方案。</p>
+    <div class="relative z-10 p-6 md:p-8 space-y-6 overflow-y-auto max-h-[76vh] bg-zinc-950/90 selectable-text">
+      
+      <!-- 標題與核心定位 -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-white/10 pb-5">
+        <div>
+          <span class="mono text-[10px] text-[#ccff00] uppercase tracking-widest">[ END-TO-END CREATIVE STUDIO ]</span>
+          <h3 class="syne text-2xl font-extrabold text-white tracking-tight mt-1">全鏈路商業視覺與科技硬體設計</h3>
+        </div>
+        <p class="text-xs text-zinc-400 font-light max-w-xs">
+          從品牌策略、高轉化介面到實體 NFC 智慧卡片，將生活線條收斂為高價值的商業實體。
+        </p>
       </div>
 
-      <!-- 依照名片背面的三大板塊 3 欄式清晰排版 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- 4 大核心板塊：3 大設計服務 + 1 大實體硬體旗艦 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
         <!-- 01 品牌設計 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 hover:border-white/20 transition space-y-3">
-          <div class="flex items-center justify-between border-b border-white/10 pb-2">
-            <h4 class="syne text-base font-bold text-white">品牌設計</h4>
-            <span class="mono text-[10px] text-[#ccff00] font-bold">BRAND</span>
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all space-y-3 group">
+          <div class="flex items-center justify-between">
+            <span class="syne text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#ccff00]"></span> 01. 品牌設計
+            </span>
+            <span class="mono text-[10px] text-zinc-500">BRAND IDENTITY</span>
           </div>
-          <ul class="space-y-2 text-xs text-zinc-300 font-light">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>品牌健檢</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>品牌命名</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>品牌定位</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>品牌策略</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>商標設計</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>文案企劃</li>
-          </ul>
+          <p class="text-xs text-zinc-400 font-light">打造具備自動溢價能力與深度靈魂的識別系統。</p>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-[#ccff00]/40 transition">品牌健檢</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-[#ccff00]/40 transition">品牌命名</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-[#ccff00]/40 transition">品牌定位</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-[#ccff00]/40 transition">品牌策略</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-[#ccff00]/40 transition">商標設計</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-[#ccff00]/40 transition">文案企劃</span>
+          </div>
         </div>
 
-        <!-- 02 視覺設計 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 hover:border-white/20 transition space-y-3">
-          <div class="flex items-center justify-between border-b border-white/10 pb-2">
-            <h4 class="syne text-base font-bold text-white">視覺設計</h4>
-            <span class="mono text-[10px] text-cyan-400 font-bold">VISUAL</span>
+        <!-- 02 視覺與包裝設計 -->
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all space-y-3 group">
+          <div class="flex items-center justify-between">
+            <span class="syne text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span> 02. 視覺與平面包裝
+            </span>
+            <span class="mono text-[10px] text-zinc-500">VISUAL & PACKAGING</span>
           </div>
-          <ul class="space-y-2 text-xs text-zinc-300 font-light">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>名片設計</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>包裝設計</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>海報設計</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>型錄設計</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>社群素材</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>DM 設計</li>
-          </ul>
+          <p class="text-xs text-zinc-400 font-light">打通實體貨架、未塗布紙盒工藝與電商開箱體驗。</p>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-cyan-400/40 transition">名片設計</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-cyan-400/40 transition">包裝設計</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-cyan-400/40 transition">海報設計</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-cyan-400/40 transition">型錄設計</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-cyan-400/40 transition">社群素材</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-cyan-400/40 transition">DM 設計</span>
+          </div>
         </div>
 
-        <!-- 03 網頁設計 -->
-        <div class="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 hover:border-white/20 transition space-y-3">
-          <div class="flex items-center justify-between border-b border-white/10 pb-2">
-            <h4 class="syne text-base font-bold text-white">網頁設計</h4>
-            <span class="mono text-[10px] text-orange-400 font-bold">WEB</span>
+        <!-- 03 數位網頁與 UI/UX -->
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all space-y-3 group">
+          <div class="flex items-center justify-between">
+            <span class="syne text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-orange-400"></span> 03. 數位體驗 (UI/UX & Web)
+            </span>
+            <span class="mono text-[10px] text-zinc-500">DIGITAL ARCHITECTURE</span>
           </div>
-          <ul class="space-y-2 text-xs text-zinc-300 font-light">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>視覺風格設定</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>UI/UX 設計</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>RWD 響應式</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>內容架構</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>SEO 與 GA4</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>廣告投放</li>
-          </ul>
+          <p class="text-xs text-zinc-400 font-light">以 10+ 年 Google 廣告成效為骨架的高轉換率動態網頁。</p>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-orange-400/40 transition">視覺風格設定</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-orange-400/40 transition">UI/UX 設計</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-orange-400/40 transition">RWD 響應式</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-orange-400/40 transition">內容架構</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-orange-400/40 transition">SEO 與 GA4</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] text-zinc-300 hover:text-white hover:border-orange-400/40 transition">廣告投放策略</span>
+          </div>
+        </div>
+
+        <!-- 04 實體產品：NFC 智慧電子名片 (3D 擬真卡片展示) -->
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-zinc-900/90 via-black to-zinc-950 border border-[#ccff00]/30 hover:border-[#ccff00]/70 transition-all space-y-3 relative overflow-hidden group shadow-[0_0_30px_rgba(204,255,0,0.05)]">
+          <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-[#ccff00]/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="flex items-center justify-between">
+            <span class="syne text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#ccff00] animate-ping"></span> 04. 實體產品：NFC 智慧名片
+            </span>
+            <span class="mono text-[10px] text-[#ccff00] bg-[#ccff00]/10 px-2 py-0.5 rounded border border-[#ccff00]/20 font-bold">PROPRIETARY HARDWARE</span>
+          </div>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed">
+            自研旗艦硬體：霧面沉黑 PVC 結合 NTAG216 晶片與 AES-256 加密，免 App 輕觸手機 0.5 秒即刻聯結全球人脈。
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 rounded-md bg-black/60 border border-[#ccff00]/30 text-[11px] text-[#ccff00] font-mono">霧面 PVC 工藝</span>
+            <span class="px-2.5 py-1 rounded-md bg-black/60 border border-[#ccff00]/30 text-[11px] text-[#ccff00] font-mono">AES-256 加密</span>
+            <span class="px-2.5 py-1 rounded-md bg-black/60 border border-[#ccff00]/30 text-[11px] text-[#ccff00] font-mono">vCard 3.0 自動同步</span>
+            <span class="px-2.5 py-1 rounded-md bg-black/60 border border-[#ccff00]/30 text-[11px] text-[#ccff00] font-mono">一觸即達</span>
+          </div>
+          <div class="pt-2 flex justify-between items-center">
+            <a href="https://www.fromlifetolines.com/product.html" target="_blank" class="mono text-[11px] text-[#ccff00] hover:underline flex items-center gap-1 font-bold">
+              了解 NFC 旗艦卡片規格 →
+            </a>
+            <span class="mono text-[10px] text-zinc-500">FROM LIFE TO LINES.</span>
+          </div>
         </div>
 
       </div>
 
-      <!-- 名片聯絡資訊列 -->
-      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-zinc-950/80 border border-white/10 text-xs text-zinc-300">
-        <div class="flex flex-wrap items-center gap-4">
+      <!-- 底部完整官方聯絡列 (包含官網 www.fromlifetolines.com) -->
+      <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-300">
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 mono text-[11px]">
+          <a href="https://www.fromlifetolines.com" target="_blank" class="hover:text-[#ccff00] transition flex items-center gap-1.5 font-bold text-white">
+            <i data-lucide="globe" class="w-3.5 h-3.5 text-[#ccff00]"></i> www.fromlifetolines.com
+          </a>
           <a href="tel:0978751607" class="hover:text-white transition flex items-center gap-1.5">
-            <i data-lucide="phone" class="w-3.5 h-3.5 text-[#ccff00]"></i> 0978-751-607
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-zinc-400"></i> 0978-751-607
           </a>
           <a href="mailto:fromlifetolines@gmail.com" class="hover:text-white transition flex items-center gap-1.5">
-            <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i> fromlifetolines@gmail.com
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-zinc-400"></i> fromlifetolines@gmail.com
           </a>
           <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="hover:text-white transition flex items-center gap-1.5">
             <svg class="w-3.5 h-3.5 text-pink-400 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> @FromLifeToLines
           </a>
         </div>
-        <button onclick="openWindow('win-projects')" class="mono text-xs text-[#ccff00] hover:underline font-bold">
-          查看精選專案 →
+        <button onclick="openWindow('win-projects')" class="mono text-xs text-black bg-[#ccff00] hover:bg-[#b8e600] px-4 py-2 rounded-xl font-bold transition flex items-center gap-1.5 whitespace-nowrap shadow-[0_0_15px_rgba(204,255,0,0.3)]">
+          探索精選作品 →
         </button>
       </div>
+
     </div>
   </div>
 
