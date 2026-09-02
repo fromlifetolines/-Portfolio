@@ -3,7 +3,7 @@
  * Ref: maoxin1234/solar-system-3d & Layers.ai New Era
  */
 
-// 1. Procedural Web Audio Synthesizer (Zero MP3 404s)
+// 1. Procedural Web Audio Synthesizer (Zero MP3 404s) - 原本音效增益提升 15%
 class SoundEngine {
   constructor() {
     this.ctx = null;
@@ -27,7 +27,8 @@ class SoundEngine {
     osc.type = type;
     osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(freq * 0.5, this.ctx.currentTime + duration);
-    gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+    // 原音量 0.08 提升 15% -> 0.092
+    gain.gain.setValueAtTime(0.092, this.ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
@@ -38,13 +39,15 @@ class SoundEngine {
   playOpen() {
     if (this.isMuted) return;
     this.init();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
     const now = this.ctx.currentTime;
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(220, now);
     osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
-    gain.gain.setValueAtTime(0.06, now);
+    // 原音量 0.06 提升 15% -> 0.069
+    gain.gain.setValueAtTime(0.069, now);
     gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
@@ -596,45 +599,6 @@ function init3D() {
   });
 }
 
-// 視窗開關微動態音效 (音量提升 10%：0.04 -> 0.044)
-function playWindowSound(type = 'open') {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-    
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    const now = ctx.currentTime;
-
-    if (type === 'open') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
-      // 原音量 0.04 提升 10% -> 0.044
-      gain.gain.setValueAtTime(0.044, now);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
-      osc.start(now);
-      osc.stop(now + 0.08);
-    } else {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(660, now);
-      osc.frequency.exponentialRampToValueAtTime(330, now + 0.06);
-      // 原音量 0.04 提升 10% -> 0.044
-      gain.gain.setValueAtTime(0.044, now);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
-      osc.start(now);
-      osc.stop(now + 0.06);
-    }
-  } catch (e) {
-    // 靜默處理音訊限制
-  }
-}
-
 // 3. Multi-Window Management Engine (Fluid Kinetic Transitions)
 let topZ = 100;
 function focusWindow(el) {
@@ -647,7 +611,7 @@ function focusWindow(el) {
 function openWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
-  playWindowSound('open');
+  audio.playOpen();
   win.classList.remove('hidden');
   focusWindow(win);
 
@@ -665,7 +629,7 @@ function openWindow(winId) {
 function closeWindow(winId) {
   const win = document.getElementById(winId);
   if (!win) return;
-  playWindowSound('close');
+  audio.playBlip(300, 0.08, 'square');
   gsap.to(win, {
     scale: 0.9,
     opacity: 0,
