@@ -27,11 +27,10 @@
   <div id="webgl-canvas" class="fixed inset-0 pointer-events-none z-0"></div>
 
   <!-- ========================================================
-       系統頂部導航列 (完美同步官網螢光綠標識與字體)
+       系統頂部導航列 (新增 05_NFC 智慧名片)
        ======================================================== -->
   <header class="system-bar fixed top-0 left-0 right-0 h-11 px-5 flex items-center justify-between z-50 text-xs select-none">
     <div class="flex items-center space-x-4">
-      <!-- 官網標準視覺標識 -->
       <a href="./index.html" class="flex items-center gap-2.5 group">
         <span class="w-2.5 h-2.5 rounded-full bg-[#ccff00] shadow-[0_0_10px_#ccff00] animate-pulse"></span>
         <span class="font-extrabold tracking-tight text-white text-[13px] sm:text-sm uppercase font-sans">
@@ -41,9 +40,10 @@
       <span class="text-zinc-600">|</span>
       <nav class="hidden md:flex items-center space-x-1 mono text-[11px]">
         <button onclick="openWindow('win-about')" class="px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition">[ 01_ABOUT 設計定位 ]</button>
-        <button onclick="openWindow('win-services')" class="px-2.5 py-1 rounded text-[#ccff00] hover:text-[#e5ff80] hover:bg-white/5 transition font-bold">[ 02_SERVICES 服務項目 ]</button>
+        <button onclick="openWindow('win-services')" class="px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition">[ 02_SERVICES 服務項目 ]</button>
         <button onclick="openWindow('win-projects')" class="px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition">[ 03_PROJECTS 精選專案 ]</button>
         <button onclick="openWindow('win-showreel')" class="px-2.5 py-1 rounded text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 transition">[ 04_SHOWREEL 動態展示 ]</button>
+        <button onclick="openWindow('win-nfc')" class="px-2.5 py-1 rounded text-[#ccff00] hover:text-[#e5ff80] hover:bg-[#ccff00]/10 transition font-bold">[ 05_NFC 智慧名片 ]</button>
       </nav>
     </div>
 
@@ -57,7 +57,7 @@
   </header>
 
   <!-- ========================================================
-       桌面圖標網格 (02 改為「服務項目」)
+       桌面圖標網格 (新增 05_NFC.os)
        ======================================================== -->
   <main class="desktop-grid mt-12">
     <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-about')">
@@ -86,6 +86,13 @@
         <i data-lucide="play-square" class="w-6 h-6 text-orange-500 group-hover:scale-110 transition"></i>
       </div>
       <span class="mono text-[11px] text-center text-zinc-300 bg-black/50 px-2 py-0.5 rounded border border-white/5">04_SHOWREEL.mp4</span>
+    </div>
+
+    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-nfc')">
+      <div class="icon-box w-14 h-14 rounded-2xl bg-zinc-900/70 backdrop-blur-md border border-[#ccff00]/30 flex items-center justify-center mb-1.5 transition group-hover:border-[#ccff00] shadow-[0_0_15px_rgba(204,255,0,0.15)]">
+        <i data-lucide="credit-card" class="w-6 h-6 text-[#ccff00] group-hover:scale-110 transition"></i>
+      </div>
+      <span class="mono text-[11px] text-center text-[#ccff00] bg-black/50 px-2 py-0.5 rounded border border-[#ccff00]/30 font-bold">05_NFC.os</span>
     </div>
   </main>
 
@@ -518,6 +525,95 @@
     </div>
   </div>
 
+  <!-- ========================================================
+       WINDOW 05: NFC 智慧名片 (極致通透 + 高彩動態無遮擋)
+       ======================================================== -->
+  <div id="win-nfc" class="os-window w-[94vw] max-w-[820px] top-24 left-4 md:left-[26vw] z-30 hidden">
+    <!-- 視窗內部電影級循環動態視頻背景 (Kinetic Studio Video Loop) -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[32px]">
+      <video autoplay muted loop playsinline class="window-video-bg" src="./assets/studio-hero-loop.mp4"></video>
+      <div class="window-video-overlay"></div>
+    </div>
+
+    <div class="window-header relative z-10 flex items-center justify-between !bg-white/5 border-b border-white/10">
+      <div class="flex items-center gap-2">
+        <button onclick="closeWindow('win-nfc')" class="traffic-btn traffic-close"></button>
+        <button onclick="closeWindow('win-nfc')" class="traffic-btn traffic-min"></button>
+        <button class="traffic-btn traffic-max"></button>
+        <span class="mono text-xs text-zinc-300 ml-2 font-bold">HARDWARE // FLTL NFC 智慧名片旗艦專案</span>
+      </div>
+      <span class="mono text-[10px] text-[#ccff00] bg-[#ccff00]/10 px-2 py-0.5 rounded border border-[#ccff00]/30 font-bold">[PROPRIETARY_HARDWARE]</span>
+    </div>
+
+    <div class="relative z-10 p-6 md:p-8 space-y-6 overflow-y-auto max-h-[75vh] bg-transparent selectable-text">
+      
+      <!-- 標題宣言 -->
+      <div>
+        <div class="inline-flex items-center gap-2 mono text-[10px] text-[#ccff00] tracking-widest uppercase mb-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-ping"></span>
+          FLTL HARDWARE LAB // PHYSICAL PRODUCT
+        </div>
+        <h3 class="syne text-xl md:text-2xl font-bold text-white tracking-tight drop-shadow-md">
+          碰觸瞬間，連結無限：新世代智慧名片
+        </h3>
+        <p class="text-xs text-zinc-300 mt-1 drop-shadow font-light">
+          告別傳統紙本易丟失與改版作廢的浪費。霧面沉黑工藝結合自研晶片，一觸 0.5 秒直接封裝人脈。
+        </p>
+      </div>
+
+      <!-- 雙欄架構：左側實體卡片規格 / 右側痛點與轉化 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- 卡片特點 01 -->
+        <div class="p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 hover:border-[#ccff00]/50 transition-all space-y-3">
+          <div class="flex items-center justify-between border-b border-white/15 pb-2">
+            <h4 class="syne text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="cpu" class="w-4 h-4 text-[#ccff00]"></i> 硬體工藝與規格
+            </h4>
+            <span class="mono text-[10px] text-[#ccff00] font-bold">SPECS</span>
+          </div>
+          <ul class="space-y-2 text-xs text-zinc-200">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>頂級沉黑霧面 PVC</strong>：耐磨防刮，極致商務手感。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>NTAG216 高頻晶片</strong>：支援 iOS 與 Android 雙系統。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>免安裝 App</strong>：輕碰手機 0.5 秒直接開啟專屬頁面。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>vCard 3.0 自動同步</strong>：單鍵直接存入對方手機通訊錄。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>AES-256 安全加密</strong>：企業級安全防護機制。</li>
+          </ul>
+        </div>
+
+        <!-- 商業價值 02 -->
+        <div class="p-5 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/15 hover:border-[#ccff00]/50 transition-all space-y-3">
+          <div class="flex items-center justify-between border-b border-white/15 pb-2">
+            <h4 class="syne text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4 text-[#ccff00]"></i> 商業溝通價值
+            </h4>
+            <span class="mono text-[10px] text-[#ccff00] font-bold">VALUE</span>
+          </div>
+          <ul class="space-y-2 text-xs text-zinc-200">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>零印刷廢棄物</strong>：電話職稱換了，後台隨改隨用。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>自帶先鋒記憶點</strong>：見面拿出的瞬間即展現科技美感。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>支援企業批量客製</strong>：團隊成員統一管理。</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] shadow-[0_0_6px_#ccff00]"></span><strong>定價透明</strong>：個人版 NT$ 990 起，終身免月費。</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 底部直達購買按鈕與官方網站列 -->
+      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-white/10 text-xs text-zinc-300">
+        <div class="flex flex-wrap items-center gap-4 mono text-[11px]">
+          <a href="https://www.fromlifetolines.com/product.html" target="_blank" class="hover:text-[#ccff00] transition flex items-center gap-1.5 font-bold text-white">
+            <i data-lucide="globe" class="w-3.5 h-3.5 text-[#ccff00]"></i> 官方產品專頁：fromlifetolines.com/product.html
+          </a>
+        </div>
+        <a href="https://www.fromlifetolines.com/product.html" target="_blank" class="mono text-xs text-black bg-[#ccff00] hover:bg-[#b8e600] px-4 py-2 rounded-xl font-bold transition flex items-center gap-1.5 shadow-[0_0_15px_rgba(204,255,0,0.3)]">
+          立即前往官網選購 NFC 名片 →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
   <!-- 底部懸浮現代膠囊 Dock 欄 -->
   <footer class="dock-container" id="main-dock">
     <div class="dock-item" onclick="openWindow('win-about')">
@@ -525,16 +621,20 @@
       <div class="dock-tooltip">01. 關於我</div>
     </div>
     <div class="dock-item" onclick="openWindow('win-services')">
-      <i data-lucide="briefcase" class="w-5 h-5 text-emerald-400"></i>
-      <div class="dock-tooltip">02. 服務與案例</div>
+      <i data-lucide="briefcase" class="w-5 h-5 text-[#ccff00]"></i>
+      <div class="dock-tooltip">02. 服務項目</div>
     </div>
     <div class="dock-item" onclick="openWindow('win-projects')">
       <i data-lucide="layers" class="w-5 h-5 text-cyan-400"></i>
-      <div class="dock-tooltip">03. 精選作品庫</div>
+      <div class="dock-tooltip">03. 精選專案</div>
     </div>
     <div class="dock-item" onclick="openWindow('win-showreel')">
       <i data-lucide="play-square" class="w-5 h-5 text-orange-500"></i>
-      <div class="dock-tooltip">04. 4K Showreel</div>
+      <div class="dock-tooltip">04. 動態展示</div>
+    </div>
+    <div class="dock-item" onclick="openWindow('win-nfc')">
+      <i data-lucide="credit-card" class="w-5 h-5 text-[#ccff00]"></i>
+      <div class="dock-tooltip">05. NFC 智慧名片</div>
     </div>
     <div class="w-px h-6 bg-white/15 mx-1 self-center"></div>
     <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="dock-item" aria-label="Instagram">
