@@ -3,7 +3,7 @@
  * Ref: maoxin1234/solar-system-3d & Layers.ai New Era
  */
 
-// 1. Procedural Web Audio Synthesizer (Zero MP3 404s) - 原本音效增益提升 15%
+// 1. Procedural Web Audio Synthesizer (Zero MP3 404s) - 原本音效增益提升 30%
 class SoundEngine {
   constructor() {
     this.ctx = null;
@@ -27,8 +27,8 @@ class SoundEngine {
     osc.type = type;
     osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(freq * 0.5, this.ctx.currentTime + duration);
-    // 原音量 0.08 提升 15% -> 0.092
-    gain.gain.setValueAtTime(0.092, this.ctx.currentTime);
+    // 原音量提升 30% (0.08 -> 0.11)
+    gain.gain.setValueAtTime(0.11, this.ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
@@ -46,8 +46,8 @@ class SoundEngine {
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(220, now);
     osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
-    // 原音量 0.06 提升 15% -> 0.069
-    gain.gain.setValueAtTime(0.069, now);
+    // 原音量提升 30% (0.06 -> 0.085)
+    gain.gain.setValueAtTime(0.085, now);
     gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
