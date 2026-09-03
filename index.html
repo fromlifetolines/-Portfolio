@@ -361,138 +361,123 @@
   </div>
 
   <!-- ========================================================
-       WINDOW 03: 精選作品 (FEATURED WORKS // 6 大旗艦案例)
+       WINDOW 03: 精選專案 (原版橫向條列排版 + 100% 滿版通透動態水幕)
        ======================================================== -->
-  <div id="win-projects" class="os-window w-[94vw] max-w-[1140px] top-16 left-4 md:left-[7vw] z-20 hidden !bg-black/20 !backdrop-blur-md border border-white/15 overflow-hidden">
-    <!-- 視窗內部電影級循環動態視頻背景 (100% 滿版無裁切、色彩飽和鮮明) -->
-    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[32px]">
-      <video autoplay muted loop playsinline class="window-video-bg filter brightness-[1.15] contrast-[1.1] saturate-[1.3]" style="object-position: 85% center;" src="./assets/studio-hero-loop.mp4"></video>
-      <div class="window-video-overlay !hidden"></div>
+  <div id="win-projects" class="os-window relative overflow-hidden w-[95vw] max-w-[820px] top-20 left-3 md:left-[24vw] z-30 hidden !bg-black/20 !backdrop-blur-md border border-white/15 shadow-2xl">
+    
+    <!-- 滿版高清動態背景影片層 (0% 裁切，通透水幕) -->
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden" style="margin: 0 !important; padding: 0 !important;">
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        class="w-full h-full object-cover filter brightness-[1.12] contrast-[1.08] saturate-[1.3]"
+        style="object-position: 85% center !important;"
+        src="./assets/studio-hero-loop.mp4"
+      ></video>
+      <!-- 極輕量微透漸層，確保文字清晰同時 100% 透出後方水流與游魚 -->
+      <div class="absolute inset-0 bg-black/25 pointer-events-none"></div>
     </div>
 
     <!-- 視窗標題列 -->
-    <div class="window-header relative z-10 flex items-center justify-between">
+    <div class="window-header relative z-10 flex items-center justify-between !bg-white/5 border-b border-white/10 backdrop-blur-sm">
       <div class="flex items-center gap-2">
-        <div class="traffic-lights flex items-center gap-1.5" onclick="event.stopPropagation()">
-          <button onclick="closeWindow('win-projects')" class="traffic-btn traffic-close" aria-label="Close"></button>
-          <button onclick="closeWindow('win-projects')" class="traffic-btn traffic-min" aria-label="Minimize"></button>
-          <button onclick="toggleMaximize('win-projects')" class="traffic-btn traffic-max" aria-label="Maximize"></button>
-        </div>
-        <span class="mono text-xs text-zinc-300 ml-2 font-bold">03_PROJECTS // 精選旗艦案例</span>
+        <button onclick="closeWindow('win-projects')" class="traffic-btn traffic-close" aria-label="Close"></button>
+        <button onclick="closeWindow('win-projects')" class="traffic-btn traffic-min" aria-label="Minimize"></button>
+        <button onclick="toggleMaximize('win-projects')" class="traffic-btn traffic-max" aria-label="Maximize"></button>
+        <span class="mono text-xs text-zinc-300 ml-2 font-bold" data-i18n="nav_projects">03_PROJECTS // 精選專案</span>
       </div>
-      <span class="mono text-[10px] text-cyan-400 font-bold" data-i18n="win_proj_badge">6 FLAGSHIP CASE STUDIES</span>
+      <span class="mono text-[10px] text-cyan-400 font-bold">[FEATURED_CASES]</span>
     </div>
 
-    <!-- 內容主體 -->
-    <div class="relative z-10 p-6 md:p-8 space-y-8 overflow-y-auto max-h-[75vh] selectable-text">
-      <div>
-        <h3 class="syne text-xl md:text-2xl font-bold text-white tracking-tight" data-i18n="win_proj_title">精選專案目錄 // FEATURED WORKS DIRECTORY</h3>
-        <p class="text-xs text-zinc-300 mt-1" data-i18n="win_proj_desc">6 大旗艦實體與數位落地案例：涵蓋 3D 視覺、包裝工程、互動介面與全渠道廣告成效。</p>
+    <!-- 內部專案清單：橫向俐落條列式，卡片具備微透毛玻璃，絕不擋死背景 -->
+    <div class="relative z-10 p-5 md:p-6 space-y-3.5 overflow-y-auto max-h-[72vh] bg-transparent selectable-text">
+      
+      <!-- 頂部標題說明 -->
+      <div class="border-b border-white/10 pb-3">
+        <h3 class="syne text-lg md:text-xl font-bold text-white tracking-tight" data-i18n="projects_title">精選專案目錄 // FEATURED WORKS</h3>
+        <p class="text-xs text-zinc-300 font-light mt-0.5" data-i18n="projects_desc">精選實體與數位落地案例：涵蓋 3D 視覺、包裝工程、互動介面與全渠道廣告成效。</p>
       </div>
 
-      <!-- 6 大精選專案卡片 (輕透微光玻璃卡片，完全透出後方游魚與水光動態) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Case 01: AURA 空間聲學耳機系統 -->
-        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="./assets/aura-exploded.jpg" alt="AURA 空間聲學耳機系統" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p1_tag">
-              [ 概念設計 / 3D 視覺系統 ]
-            </div>
+      <!-- 專案 01: AURA -->
+      <div class="p-3.5 rounded-xl bg-black/35 backdrop-blur-md border border-white/10 hover:border-cyan-400/50 transition-all flex flex-col md:flex-row gap-4 items-center justify-between group">
+        <img src="./assets/aura-exploded.jpg" alt="AURA Audio" class="w-full md:w-36 h-24 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="flex-1 space-y-1 w-full">
+          <div class="flex items-center gap-2">
+            <span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/30" data-i18n="tag_aura">[ 概念設計 / 3D 視覺系統 ]</span>
           </div>
-          <div class="p-6 space-y-2">
-            <h4 class="syne text-lg font-bold text-white group-hover:text-orange-400 transition" data-i18n="p1_title">AURA 空間聲學耳機系統</h4>
-            <p class="text-xs text-zinc-300 leading-relaxed font-light" data-i18n="p1_desc">
-              微工業機能美學：將聲學濾波器與微晶片轉化為品牌核心視覺資產，拒絕同質化科技極簡。
-            </p>
-          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors" data-i18n="title_aura">AURA 空間聲學耳機系統 (Spatial Audio)</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="desc_aura">微工業機能美學：將聲學濾波器與微晶片轉化為品牌核心視覺資產，拒絕同質化科技極簡。</p>
         </div>
-
-        <!-- Case 02: OAT & BOTANIC 純素冷萃低碳咖啡 -->
-        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="./assets/oat-packaging.jpg" alt="OAT & BOTANIC 純素冷萃低碳咖啡" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#ccff00]" data-i18n="p2_tag">
-              [ 包裝設計 / D2C 電商排版 ]
-            </div>
-          </div>
-          <div class="p-6 space-y-2">
-            <h4 class="syne text-lg font-bold text-white group-hover:text-[#ccff00] transition" data-i18n="p2_title">OAT & BOTANIC 純素冷萃低碳咖啡</h4>
-            <p class="text-xs text-zinc-300 leading-relaxed font-light" data-i18n="p2_desc">
-              未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與 D2C 高轉化排版系統。
-            </p>
-          </div>
-        </div>
-
-        <!-- Case 03: NEXUS AI 模組化協作平台 -->
-        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="./assets/nexus-ui.jpg" alt="NEXUS AI 模組化協作平台" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-cyan-400" data-i18n="p3_tag">
-              [ UI/UX 設計 / 節點畫布系統 ]
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <h4 class="syne text-lg font-bold text-white group-hover:text-cyan-400 transition" data-i18n="p3_title">NEXUS AI 模組化協作平台</h4>
-            <p class="text-xs text-zinc-300 leading-relaxed font-light" data-i18n="p3_desc">
-              高密度資訊儀表板與節點式畫布系統，實現結構清晰、好操作的深色介面設計。
-            </p>
-            <a href="./portfolio-web.html" class="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 font-bold transition">
-              <span data-i18n="p3_btn">探索完整案例 (READ CASE STUDY) →</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Case 04: HYDRATE LAB 全渠道廣告架構 -->
-        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="./assets/marketing-ads.jpg" alt="HYDRATE LAB 全渠道廣告架構" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p4_tag">
-              [ 廣告投放 / 高轉換 Landing Page ]
-            </div>
-          </div>
-          <div class="p-6 space-y-2">
-            <h4 class="syne text-lg font-bold text-white group-hover:text-orange-400 transition" data-i18n="p4_title">HYDRATE LAB 全渠道廣告架構</h4>
-            <p class="text-xs text-zinc-300 leading-relaxed font-light" data-i18n="p4_desc">
-              Google Ads 搜索與多媒體廣告架構，搭配目標明確的 Landing Page，完成從曝光到名單的溝通流程。
-            </p>
-          </div>
-        </div>
-
-        <!-- Case 05: CHRONO ARCHIVE 鐘錶知識庫 -->
-        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="./assets/chrono-ui.jpg" alt="CHRONO ARCHIVE 鐘錶知識庫" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-emerald-400" data-i18n="p5_tag">
-              [ 內容工程 / 知識典藏介面 ]
-            </div>
-          </div>
-          <div class="p-6 space-y-2">
-            <h4 class="syne text-lg font-bold text-white group-hover:text-emerald-400 transition" data-i18n="p5_title">CHRONO ARCHIVE 鐘錶知識庫</h4>
-            <p class="text-xs text-zinc-300 leading-relaxed font-light" data-i18n="p5_desc">
-              結構化資料標記與長尾關鍵字內容工程，建立具權威感與易讀性的典藏知識介面。
-            </p>
-          </div>
-        </div>
-
-        <!-- Case 06: From Life To Lines 生活線條 品牌識別 -->
-        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
-          <div class="relative aspect-[16/10] overflow-hidden">
-            <img src="./assets/brand-identity.jpg" alt="From Life To Lines 生活線條 品牌識別" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-pink-400" data-i18n="p6_tag">
-              [ 品牌識別 / 視覺系統指南 ]
-            </div>
-          </div>
-          <div class="p-6 space-y-2">
-            <h4 class="syne text-lg font-bold text-white group-hover:text-pink-400 transition" data-i18n="p6_title">From Life To Lines 生活線條 品牌識別</h4>
-            <p class="text-xs text-zinc-300 leading-relaxed font-light" data-i18n="p6_desc">
-              以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美感的個人品牌。
-            </p>
-          </div>
-        </div>
-
+        <a href="./portfolio-brand.html" class="w-full md:w-auto px-3.5 py-2 bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-xs font-bold rounded-lg text-center whitespace-nowrap transition" data-i18n="btn_view_case">完整案例 →</a>
       </div>
+
+      <!-- 專案 02: OAT & BOTANIC -->
+      <div class="p-3.5 rounded-xl bg-black/35 backdrop-blur-md border border-white/10 hover:border-emerald-400/50 transition-all flex flex-col md:flex-row gap-4 items-center justify-between group">
+        <img src="./assets/oat-packaging.jpg" alt="OAT BOTANIC" class="w-full md:w-36 h-24 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="flex-1 space-y-1 w-full">
+          <div class="flex items-center gap-2">
+            <span class="mono text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30" data-i18n="tag_oat">[ 概念設計 / 包裝與電商 ]</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors" data-i18n="title_oat">OAT & BOTANIC 純素冷萃低碳咖啡</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="desc_oat">未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與 D2C 高轉化排版系統。</p>
+        </div>
+        <a href="./portfolio-ecommerce.html" class="w-full md:w-auto px-3.5 py-2 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-bold rounded-lg text-center whitespace-nowrap transition" data-i18n="btn_view_case">完整案例 →</a>
+      </div>
+
+      <!-- 專案 03: NEXUS AI -->
+      <div class="p-3.5 rounded-xl bg-black/35 backdrop-blur-md border border-white/10 hover:border-orange-400/50 transition-all flex flex-col md:flex-row gap-4 items-center justify-between group">
+        <img src="./assets/nexus-ui.jpg" alt="NEXUS AI" class="w-full md:w-36 h-24 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="flex-1 space-y-1 w-full">
+          <div class="flex items-center gap-2">
+            <span class="mono text-[10px] px-2 py-0.5 rounded bg-orange-500/15 text-orange-400 border border-orange-500/30" data-i18n="tag_nexus">[ 概念設計 / 介面與動態 ]</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-orange-300 transition-colors" data-i18n="title_nexus">NEXUS AI 模組化協作平台與動態介面</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="desc_nexus">高密度資訊儀表板與節點式畫布系統，實現 100% Design-to-Code 先鋒落地。</p>
+        </div>
+        <a href="./portfolio-web.html" class="w-full md:w-auto px-3.5 py-2 bg-orange-500/15 hover:bg-orange-500/25 border border-orange-500/30 text-orange-300 text-xs font-bold rounded-lg text-center whitespace-nowrap transition" data-i18n="btn_view_case">完整案例 →</a>
+      </div>
+
+      <!-- 專案 04: HYDRATE LAB -->
+      <div class="p-3.5 rounded-xl bg-black/35 backdrop-blur-md border border-white/10 hover:border-cyan-400/50 transition-all flex flex-col md:flex-row gap-4 items-center justify-between group">
+        <img src="./assets/marketing-ads.jpg" alt="HYDRATE LAB" class="w-full md:w-36 h-24 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="flex-1 space-y-1 w-full">
+          <div class="flex items-center gap-2">
+            <span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/30" data-i18n="tag_hydrate">[ 商業投放 / 廣告動線 ]</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors" data-i18n="title_hydrate">HYDRATE LAB 全渠道廣告轉換漏斗</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="desc_hydrate">Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到訂單的商業閉環。</p>
+        </div>
+        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="w-full md:w-auto px-3.5 py-2 bg-white/10 hover:bg-white/15 border border-white/20 text-zinc-200 text-xs rounded-lg text-center whitespace-nowrap transition" data-i18n="btn_ig_work">IG 作品精選 →</a>
+      </div>
+
+      <!-- 專案 05: CHRONO ARCHIVE -->
+      <div class="p-3.5 rounded-xl bg-black/35 backdrop-blur-md border border-white/10 hover:border-amber-400/50 transition-all flex flex-col md:flex-row gap-4 items-center justify-between group">
+        <img src="./assets/chrono-ui.jpg" alt="CHRONO ARCHIVE" class="w-full md:w-36 h-24 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="flex-1 space-y-1 w-full">
+          <div class="flex items-center gap-2">
+            <span class="mono text-[10px] px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30" data-i18n="tag_chrono">[ 內容工程 / SEO 架構 ]</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-amber-300 transition-colors" data-i18n="title_chrono">CHRONO ARCHIVE 知識庫與 SEO 矩陣</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="desc_chrono">結構化資料標記與長尾關鍵字內容工程，取得鐘錶領域搜尋前三名排名。</p>
+        </div>
+        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="w-full md:w-auto px-3.5 py-2 bg-white/10 hover:bg-white/15 border border-white/20 text-zinc-200 text-xs rounded-lg text-center whitespace-nowrap transition" data-i18n="btn_ig_work">IG 作品精選 →</a>
+      </div>
+
+      <!-- 專案 06: From Life To Lines -->
+      <div class="p-3.5 rounded-xl bg-black/35 backdrop-blur-md border border-white/10 hover:border-pink-400/50 transition-all flex flex-col md:flex-row gap-4 items-center justify-between group">
+        <img src="./assets/brand-identity.jpg" alt="From Life To Lines" class="w-full md:w-36 h-24 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+        <div class="flex-1 space-y-1 w-full">
+          <div class="flex items-center gap-2">
+            <span class="mono text-[10px] px-2 py-0.5 rounded bg-pink-500/15 text-pink-400 border border-pink-500/30" data-i18n="tag_fltl">[ 品牌識別 / 視覺系統 ]</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-pink-300 transition-colors" data-i18n="title_fltl">From Life To Lines 生活線條 品牌識別</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="desc_fltl">以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與靈魂的個人品牌。</p>
+        </div>
+        <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="w-full md:w-auto px-3.5 py-2 bg-white/10 hover:bg-white/15 border border-white/20 text-zinc-200 text-xs rounded-lg text-center whitespace-nowrap transition" data-i18n="btn_ig_work">前往 Instagram →</a>
+      </div>
+
     </div>
   </div>
 
