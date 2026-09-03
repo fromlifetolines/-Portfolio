@@ -1139,20 +1139,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3D Card Perspective Mouse Tilt Physics
-  document.querySelectorAll('.tilt-card').forEach(card => {
+  // 3D Card Perspective Mouse Tilt Physics & Cursor Spotlight
+  const projectCards = document.querySelectorAll('#win-projects .selectable-text > div.group, .tilt-card');
+  projectCards.forEach(card => {
+    // 動態注入卡片表面光斑層
+    let spotlight = card.querySelector('.card-spotlight');
+    if (!spotlight) {
+      spotlight = document.createElement('div');
+      spotlight.className = 'card-spotlight';
+      card.appendChild(spotlight);
+    }
+
+    const img = card.querySelector('img');
+    const content = card.querySelector('.flex-1');
+
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      const offsetX = (x / rect.width) - 0.5;
+      const offsetY = (y / rect.height) - 0.5;
+
+      // 同步更新 CSS 游標光斑位置與顯現
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+      spotlight.style.opacity = '1';
+
+      // 卡片 3D 空間微幅傾斜與向上浮起
+      gsap.to(card, {
+        rotationX: -offsetY * 12,
+        rotationY: offsetX * 12,
+        y: -3,
+        transformPerspective: 1000,
+        duration: 0.25,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      });
+
+      // 內部縮圖與內容微幅浮起視差
+      if (img) gsap.to(img, { z: 14, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
+      if (content) gsap.to(content, { z: 10, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
     });
+
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      spotlight.style.opacity = '0';
+
+      // 彈簧阻尼平滑復原
+      gsap.to(card, {
+        rotationX: 0,
+        rotationY: 0,
+        y: 0,
+        duration: 0.6,
+        ease: 'elastic.out(1, 0.45)',
+        overwrite: 'auto'
+      });
+
+      if (img) gsap.to(img, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+      if (content) gsap.to(content, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
     });
   });
 });

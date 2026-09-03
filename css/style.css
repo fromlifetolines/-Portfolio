@@ -374,19 +374,37 @@ body {
   display: none !important;
 }
 
-#win-projects .tilt-card {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  border-radius: 16px;
+/* 03_PROJECTS 橫向條列卡片 3D 空間透視與動態微光 */
+#win-projects .selectable-text > div.group {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#win-projects .tilt-card:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(34, 211, 238, 0.4) !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6),
-              0 0 25px rgba(34, 211, 238, 0.2) !important;
+#win-projects .selectable-text > div.group:hover {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.7),
+              0 0 25px -3px rgba(56, 189, 248, 0.2) !important;
+}
+
+#win-projects .selectable-text > div.group > * {
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 6;
+}
+
+/* 卡片表面游標光斑層 */
+.card-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.12), transparent 80%);
+  z-index: 5;
 }
 
 /* 3D 視差傾斜卡片 (3D Kinetic Tilt Card) */
