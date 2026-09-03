@@ -363,14 +363,30 @@ body {
    03_PROJECTS 高通透毛玻璃與大片案例排版 (Translucent Editorial)
    ======================================================== */
 #win-projects {
-  background: rgba(8, 12, 20, 0.45) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  overflow: hidden !important;
 }
 
 #win-projects .window-video-overlay {
-  background: radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0) 0%, rgba(5, 8, 16, 0.22) 100%),
-              linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.22) 100%) !important;
+  display: none !important;
+}
+
+#win-projects .tilt-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-radius: 16px;
+}
+
+#win-projects .tilt-card:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(34, 211, 238, 0.4) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6),
+              0 0 25px rgba(34, 211, 238, 0.2) !important;
 }
 
 /* 3D 視差傾斜卡片 (3D Kinetic Tilt Card) */
@@ -431,13 +447,15 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: bottom center;
+  will-change: transform;
 }
 
 .dock-item:hover {
-  transform: translateY(-8px) scale(1.15);
   background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 122, 48, 0.2);
+}
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 122, 48, 0.2);
 }
 
