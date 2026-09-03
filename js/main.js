@@ -1,9 +1,12 @@
 /**
- * From Life To Lines // Japanese Cream Minimalist & Bilingual i18n Controller 2026
- * Warm Cream Palette, Sumi Charcoal Ink, Client-Side Instant i18n Engine
+ * Pioneer 2026 Interactive OS Desktop Controller & Solar System Engine
+ * Ref: maoxin1234/solar-system-3d & Layers.ai New Era
+ * Integrated with Bilingual i18n Engine (Zero Delay Switch)
  */
 
-// 1. Procedural Web Audio Synthesizer (Acoustic Feedback)
+// ========================================================
+// 1. Procedural Web Audio Synthesizer (Zero MP3 404s)
+// ========================================================
 class SoundEngine {
   constructor() {
     this.ctx = null;
@@ -17,7 +20,7 @@ class SoundEngine {
     }
   }
 
-  playBlip(freq = 520, duration = 0.04, type = 'sine') {
+  playBlip(freq = 600, duration = 0.05, type = 'sine') {
     if (this.isMuted) return;
     this.init();
     if (this.ctx.state === 'suspended') this.ctx.resume();
@@ -26,8 +29,8 @@ class SoundEngine {
     const gain = this.ctx.createGain();
     osc.type = type;
     osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(freq * 0.6, this.ctx.currentTime + duration);
-    gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(freq * 0.5, this.ctx.currentTime + duration);
+    gain.gain.setValueAtTime(0.11, this.ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
@@ -43,279 +46,847 @@ class SoundEngine {
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
     osc.type = 'triangle';
-    osc.frequency.setValueAtTime(260, now);
-    osc.frequency.exponentialRampToValueAtTime(680, now + 0.1);
-    gain.gain.setValueAtTime(0.05, now);
-    gain.gain.linearRampToValueAtTime(0.001, now + 0.1);
+    osc.frequency.setValueAtTime(220, now);
+    osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+    gain.gain.setValueAtTime(0.085, now);
+    gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
     osc.connect(gain);
     gain.connect(this.ctx.destination);
     osc.start();
-    osc.stop(now + 0.1);
+    osc.stop(now + 0.12);
   }
 }
 
 const audio = new SoundEngine();
 
-// 2. Comprehensive Bilingual i18n Translation Dictionary
+// ========================================================
+// 2. AAA Photorealistic 3D Solar System & Deep Space Light Engine
+// ========================================================
+function init3D() {
+  const container = document.getElementById('webgl-canvas');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 4000);
+  camera.position.set(0, 52, 86);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.35;
+  container.appendChild(renderer.domElement);
+
+  const textureLoader = new THREE.TextureLoader();
+
+  // 1. 太陽系主體容器與真實天文點光源
+  const solarSystem = new THREE.Group();
+  scene.add(solarSystem);
+
+  const ambientLight = new THREE.AmbientLight(0x0c1222, 0.35);
+  scene.add(ambientLight);
+
+  const sunLight = new THREE.PointLight(0xfff8ee, 4.8, 0, 0);
+  sunLight.position.set(0, 0, 0);
+  solarSystem.add(sunLight);
+
+  // --- 2. GLSL 3D 動態等離子太陽 (NASA Plasma Shader) ---
+  const COMMON_GLSL = `
+    float hash3(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
+    float noise3(vec3 p){
+      vec3 i=floor(p), f=fract(p);
+      vec3 u=f*f*(3.0-2.0*f);
+      return mix(
+        mix(mix(hash3(i+vec3(0,0,0)), hash3(i+vec3(1,0,0)), u.x),
+            mix(hash3(i+vec3(0,1,0)), hash3(i+vec3(1,1,0)), u.x), u.y),
+        mix(mix(hash3(i+vec3(0,0,1)), hash3(i+vec3(1,0,1)), u.x),
+            mix(hash3(i+vec3(0,1,1)), hash3(i+vec3(1,1,1)), u.x), u.y),
+        u.z);
+    }
+    float fbm(vec3 p){
+      float v=0.0, a=0.5;
+      for(int i=0;i<5;i++){ v += a*noise3(p); p *= 2.0; a *= 0.5; }
+      return v;
+    }
+    float turb(vec3 p){
+      float v=0.0, a=0.5;
+      for(int i=0;i<5;i++){ v += a*abs(noise3(p)*2.0-1.0); p *= 2.0; a *= 0.5; }
+      return v;
+    }
+  `;
+
+  const SUN_VS = `
+    varying vec3 vN; varying vec3 vP; varying vec3 vLocal;
+    void main(){
+      vN = normalize(normalMatrix * normal);
+      vLocal = normalize(position);
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      vP = mv.xyz;
+      gl_Position = projectionMatrix * mv;
+    }
+  `;
+
+  const SUN_FS = COMMON_GLSL + `
+    uniform float time;
+    varying vec3 vN; varying vec3 vP; varying vec3 vLocal;
+    void main(){
+      vec3 wp = vLocal;
+      vec3 p1 = wp * 2.5 + vec3(time*0.04, time*0.05, -time*0.03);
+      vec3 p2 = wp * 6.5 - vec3(time*0.08, 0.0, time*0.06);
+      vec3 p3 = wp * 14.0 + vec3(0.0, -time*0.1, time*0.08);
+      float t = turb(p1) * 0.6 + fbm(p2) * 0.3 + noise3(p3) * 0.1;
+      t = clamp(t * 1.5 - 0.05, 0.0, 1.6);
+      
+      vec3 dark  = vec3(0.40, 0.08, 0.0);
+      vec3 mid   = vec3(2.20, 0.75, 0.10);
+      vec3 hot   = vec3(3.60, 2.10, 0.45);
+      vec3 white = vec3(4.80, 3.80, 2.50);
+      vec3 col;
+      if (t < 0.45)      col = mix(dark, mid, t/0.45);
+      else if (t < 0.85) col = mix(mid, hot, (t-0.45)/0.4);
+      else               col = mix(hot, white, (t-0.85)/0.75);
+
+      float spot = noise3(wp * 1.3 + vec3(20.0, 7.0, 11.0));
+      if (spot > 0.62) col *= mix(1.0, 0.15, smoothstep(0.62, 0.85, spot));
+
+      float grain = noise3(wp * 35.0 + vec3(time*0.4, 0.0, 0.0));
+      col *= 0.85 + grain * 0.3;
+
+      vec3 vd = normalize(-vP);
+      float rim = 1.0 - max(dot(normalize(vN), vd), 0.0);
+      col += vec3(3.5, 1.6, 0.4) * pow(rim, 2.0) * 0.6;
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  const CORONA_VS = `
+    varying vec3 vN; varying vec3 vP; varying vec3 vLocal;
+    void main(){
+      vN = normalize(normalMatrix * normal);
+      vLocal = normalize(position);
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      vP = mv.xyz;
+      gl_Position = projectionMatrix * mv;
+    }
+  `;
+
+  const CORONA_FS = COMMON_GLSL + `
+    uniform float time;
+    varying vec3 vN; varying vec3 vP; varying vec3 vLocal;
+    void main(){
+      vec3 vd = normalize(-vP);
+      float fres = 1.0 - max(dot(normalize(vN), vd), 0.0);
+      fres = pow(fres, 1.6);
+      vec3 wp = vLocal;
+      float flame = turb(wp * 3.2 + vec3(time*0.08, -time*0.06, time*0.07));
+      flame += fbm(wp * 9.0 - vec3(0.0, time*0.12, time*0.1)) * 0.4;
+      flame = clamp(flame, 0.0, 1.8);
+      float prom = pow(noise3(wp * 1.8 + vec3(0.0, time*0.04, 0.0)), 3.0) * 4.0;
+      vec3 baseCol = vec3(2.8, 1.1, 0.3);
+      vec3 col = baseCol * (0.6 + flame + prom * 0.6);
+      float alpha = fres * (0.45 + flame * 0.35);
+      gl_FragColor = vec4(col, alpha);
+    }
+  `;
+
+  const sunUniforms = { time: { value: 0 } };
+  const sunGeo = new THREE.SphereGeometry(6.0, 64, 64);
+  const sunMat = new THREE.ShaderMaterial({
+    vertexShader: SUN_VS,
+    fragmentShader: SUN_FS,
+    uniforms: sunUniforms
+  });
+  const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+  solarSystem.add(sunMesh);
+
+  // 日冕動態火焰
+  const coronaUniforms = { time: { value: 0 } };
+  const coronaGeo = new THREE.SphereGeometry(6.5, 64, 64);
+  const coronaMat = new THREE.ShaderMaterial({
+    vertexShader: CORONA_VS,
+    fragmentShader: CORONA_FS,
+    uniforms: coronaUniforms,
+    side: THREE.BackSide,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
+  solarSystem.add(coronaMesh);
+
+  // 外部柔和發光 Halo
+  const haloCanvas = document.createElement('canvas');
+  haloCanvas.width = 512;
+  haloCanvas.height = 512;
+  const haloCtx = haloCanvas.getContext('2d');
+  const haloGrad = haloCtx.createRadialGradient(256, 256, 20, 256, 256, 256);
+  haloGrad.addColorStop(0, 'rgba(255, 220, 100, 0.7)');
+  haloGrad.addColorStop(0.2, 'rgba(255, 120, 20, 0.35)');
+  haloGrad.addColorStop(0.5, 'rgba(255, 60, 0, 0.08)');
+  haloGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  haloCtx.fillStyle = haloGrad;
+  haloCtx.fillRect(0, 0, 512, 512);
+
+  const haloMat = new THREE.SpriteMaterial({
+    map: new THREE.CanvasTexture(haloCanvas),
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const sunHalo = new THREE.Sprite(haloMat);
+  sunHalo.scale.set(24, 24, 1);
+  solarSystem.add(sunHalo);
+
+  // --- 3. 地球專屬：晝夜晨昏 (Day/Night Terminator) + 夜間萬家燈火 ---
+  const EARTH_VS = `
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+    varying vec3 vViewPos;
+
+    void main() {
+      vUv = uv;
+      vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+      vec4 worldPos = modelMatrix * vec4(position, 1.0);
+      vSunDir = normalize(-worldPos.xyz);
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      vViewPos = -mvPosition.xyz;
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  `;
+
+  const EARTH_FS = `
+    uniform sampler2D dayTexture;
+    uniform sampler2D nightTexture;
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+    varying vec3 vViewPos;
+
+    void main() {
+      vec3 normal = normalize(vWorldNormal);
+      vec3 sunDir = normalize(vSunDir);
+      float nDotL = dot(normal, sunDir);
+
+      float dayFactor = smoothstep(-0.15, 0.25, nDotL);
+      float nightFactor = 1.0 - smoothstep(-0.25, 0.1, nDotL);
+
+      vec4 dayCol = texture2D(dayTexture, vUv);
+      vec4 nightCol = texture2D(nightTexture, vUv);
+
+      vec3 ambient = vec3(0.02, 0.04, 0.08) * dayCol.rgb;
+      vec3 daylight = dayCol.rgb * (dayFactor * 1.25);
+      vec3 nightlight = nightCol.rgb * vec3(1.8, 1.4, 0.85) * nightFactor;
+
+      vec3 viewDir = normalize(vViewPos);
+      float rim = 1.0 - max(dot(normal, viewDir), 0.0);
+      vec3 atmosphereGlow = vec3(0.18, 0.55, 1.0) * pow(rim, 3.2) * dayFactor * 0.9;
+
+      vec3 finalCol = daylight + ambient + nightlight + atmosphereGlow;
+      gl_FragColor = vec4(finalCol, 1.0);
+    }
+  `;
+
+  const CLOUDS_VS = `
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+      vec4 worldPos = modelMatrix * vec4(position, 1.0);
+      vSunDir = normalize(-worldPos.xyz);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `;
+
+  const CLOUDS_FS = `
+    uniform sampler2D cloudTexture;
+    varying vec3 vWorldNormal;
+    varying vec3 vSunDir;
+    varying vec2 vUv;
+
+    void main() {
+      vec4 cloudMap = texture2D(cloudTexture, vUv);
+      float nDotL = dot(normalize(vWorldNormal), normalize(vSunDir));
+      float dayFactor = smoothstep(-0.15, 0.25, nDotL);
+
+      vec3 cloudColor = vec3(1.0, 1.0, 1.0) * (dayFactor * 1.1 + 0.05);
+      float alpha = cloudMap.r * (dayFactor * 0.65 + 0.15);
+
+      gl_FragColor = vec4(cloudColor, alpha);
+    }
+  `;
+
+  // --- 4. NASA 9 大實體天體配置 ---
+  const planetsConfig = [
+    { name: 'Mercury', size: 0.95, dist: 11.5, speed: 0.024, texture: './assets/planets/mercury.jpg' },
+    { name: 'Venus',   size: 1.45, dist: 16.8, speed: 0.017, texture: './assets/planets/venus.jpg' },
+    { name: 'Earth',   size: 1.65, dist: 22.8, speed: 0.012, texture: './assets/planets/earth.jpg', isEarth: true },
+    { name: 'Mars',    size: 1.15, dist: 28.5, speed: 0.009, texture: './assets/planets/mars.jpg' },
+    { name: 'Jupiter', size: 3.8,  dist: 38.5, speed: 0.006, texture: './assets/planets/jupiter.jpg' },
+    { name: 'Saturn',  size: 3.1,  dist: 49.5, speed: 0.004, texture: './assets/planets/saturn.jpg', hasRings: true },
+    { name: 'Uranus',  size: 2.2,  dist: 59.8, speed: 0.003, texture: './assets/planets/uranus.jpg' },
+    { name: 'Neptune', size: 2.1,  dist: 69.2, speed: 0.002, texture: './assets/planets/neptune.jpg' },
+    { name: 'Pluto',   size: 0.75, dist: 77.0, speed: 0.0015, texture: './assets/planets/pluto.jpg' }
+  ];
+
+  const planetNodes = [];
+
+  planetsConfig.forEach(p => {
+    const orbitGroup = new THREE.Group();
+    solarSystem.add(orbitGroup);
+
+    // 軌道線
+    const orbitCurve = new THREE.EllipseCurve(0, 0, p.dist, p.dist, 0, 2 * Math.PI, false, 0);
+    const orbitPoints = orbitCurve.getPoints(128);
+    const orbitGeo = new THREE.BufferGeometry().setFromPoints(orbitPoints.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
+    const orbitMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.09 });
+    const orbitLine = new THREE.Line(orbitGeo, orbitMat);
+    solarSystem.add(orbitLine);
+
+    // 行星實體
+    const pGeo = new THREE.SphereGeometry(p.size, 64, 64);
+    let pMesh;
+
+    if (p.isEarth) {
+      const earthMat = new THREE.ShaderMaterial({
+        vertexShader: EARTH_VS,
+        fragmentShader: EARTH_FS,
+        uniforms: {
+          dayTexture: { value: textureLoader.load(p.texture) },
+          nightTexture: { value: textureLoader.load('./assets/planets/earth_night.jpg') }
+        }
+      });
+      pMesh = new THREE.Mesh(pGeo, earthMat);
+    } else {
+      const pMat = new THREE.MeshStandardMaterial({
+        map: textureLoader.load(p.texture),
+        roughness: 0.88,
+        metalness: 0.02
+      });
+      pMesh = new THREE.Mesh(pGeo, pMat);
+    }
+
+    pMesh.position.x = p.dist;
+    orbitGroup.add(pMesh);
+
+    // 地球專屬：動態半透明大氣雲層與月球
+    if (p.isEarth) {
+      const cloudGeo = new THREE.SphereGeometry(p.size + 0.05, 64, 64);
+      const cloudMat = new THREE.ShaderMaterial({
+        vertexShader: CLOUDS_VS,
+        fragmentShader: CLOUDS_FS,
+        uniforms: {
+          cloudTexture: { value: textureLoader.load('./assets/planets/earth_clouds.jpg') }
+        },
+        transparent: true,
+        blending: THREE.AdditiveBlending
+      });
+      const cloudMesh = new THREE.Mesh(cloudGeo, cloudMat);
+      pMesh.add(cloudMesh);
+      p.cloudMesh = cloudMesh;
+
+      // 月球
+      const moonPivot = new THREE.Group();
+      pMesh.add(moonPivot);
+      const moonGeo = new THREE.SphereGeometry(0.4, 32, 32);
+      const moonMat = new THREE.MeshStandardMaterial({
+        map: textureLoader.load('./assets/planets/moon.jpg'),
+        roughness: 0.95,
+        metalness: 0.0
+      });
+      const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+      moonMesh.position.x = 2.9;
+      moonPivot.add(moonMesh);
+      p.moonPivot = moonPivot;
+    }
+
+    // 土星專屬：光環
+    if (p.hasRings) {
+      const ringGeo = new THREE.RingGeometry(p.size * 1.25, p.size * 2.45, 64);
+      const pos = ringGeo.attributes.position;
+      const uvs = ringGeo.attributes.uv;
+      for (let i = 0; i < pos.count; i++) {
+        const vx = pos.getX(i);
+        const vy = pos.getY(i);
+        const dist = Math.sqrt(vx * vx + vy * vy);
+        const u = (dist - p.size * 1.25) / (p.size * 1.2);
+        uvs.setXY(i, u, 0.5);
+      }
+      const ringMat = new THREE.MeshStandardMaterial({
+        map: textureLoader.load('./assets/planets/saturn_ring.png'),
+        side: THREE.DoubleSide,
+        transparent: true,
+        roughness: 0.85,
+        metalness: 0.05
+      });
+      const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+      ringMesh.rotation.x = Math.PI / 2.3;
+      pMesh.add(ringMesh);
+    }
+
+    planetNodes.push({
+      orbit: orbitGroup,
+      mesh: pMesh,
+      speed: p.speed,
+      angle: Math.random() * Math.PI * 2,
+      cloudMesh: p.cloudMesh,
+      moonPivot: p.moonPivot
+    });
+  });
+
+  // --- 5. 小行星帶 (Asteroid Belt) ---
+  const asteroidGeo = new THREE.BufferGeometry();
+  const asteroidCount = 1600;
+  const asteroidPos = new Float32Array(asteroidCount * 3);
+  for (let i = 0; i < asteroidCount; i++) {
+    const i3 = i * 3;
+    const r = Math.random() * 6 + 32.5;
+    const angle = Math.random() * Math.PI * 2;
+    asteroidPos[i3] = Math.cos(angle) * r + (Math.random() - 0.5) * 2;
+    asteroidPos[i3 + 1] = (Math.random() - 0.5) * 1.8;
+    asteroidPos[i3 + 2] = Math.sin(angle) * r + (Math.random() - 0.5) * 2;
+  }
+  asteroidGeo.setAttribute('position', new THREE.BufferAttribute(asteroidPos, 3));
+  const asteroidMat = new THREE.PointsMaterial({ color: 0x9A8870, size: 0.45, transparent: true, opacity: 0.7 });
+  const asteroidBelt = new THREE.Points(asteroidGeo, asteroidMat);
+  solarSystem.add(asteroidBelt);
+
+  // --- 6. 宇宙深空背景 (4,000 顆立體彩色星光) ---
+  const starGeo = new THREE.BufferGeometry();
+  const starCount = 4000;
+  const starPos = new Float32Array(starCount * 3);
+  const starCol = new Float32Array(starCount * 3);
+  for (let i = 0; i < starCount; i++) {
+    const i3 = i * 3;
+    starPos[i3] = (Math.random() - 0.5) * 800;
+    starPos[i3 + 1] = (Math.random() - 0.5) * 800;
+    starPos[i3 + 2] = (Math.random() - 0.5) * 800;
+
+    const t = Math.random();
+    const c = t < 0.7 ? [1, 1, 1] : t < 0.88 ? [0.75, 0.88, 1] : [1, 0.85, 0.7];
+    starCol[i3] = c[0];
+    starCol[i3 + 1] = c[1];
+    starCol[i3 + 2] = c[2];
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  starGeo.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
+  const starMat = new THREE.PointsMaterial({ size: 0.6, vertexColors: true, transparent: true, opacity: 0.85 });
+  const stars = new THREE.Points(starGeo, starMat);
+  scene.add(stars);
+
+  // --- 7. 3D 鏡頭交互控制：滾輪平滑縮放 + 空白處拖曳旋轉 ---
+  let zoomDistance = 86;
+  let targetZoomDistance = 86;
+  const minZoom = 15;
+  const maxZoom = 200;
+
+  let isDragging = false;
+  let prevMouseX = 0;
+  let prevMouseY = 0;
+  let rotX = 0.55;
+  let rotY = 0;
+  let targetRotX = 0.55;
+  let targetRotY = 0;
+  let mouseX = 0, mouseY = 0;
+
+  // 滑鼠滾輪縮放 (拉近拉遠)
+  window.addEventListener('wheel', (e) => {
+    if (e.target.closest('.os-window') || e.target.closest('.dock-container')) return;
+    e.preventDefault();
+    const zoomFactor = e.deltaY * 0.08;
+    targetZoomDistance = Math.min(Math.max(targetZoomDistance + zoomFactor, minZoom), maxZoom);
+  }, { passive: false });
+
+  // 拖曳旋轉背景
+  window.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.os-window') || e.target.closest('.dock-container') || e.target.closest('.system-bar') || e.target.closest('.desktop-icon')) return;
+    isDragging = true;
+    prevMouseX = e.clientX;
+    prevMouseY = e.clientY;
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      const deltaX = e.clientX - prevMouseX;
+      const deltaY = e.clientY - prevMouseY;
+      targetRotY += deltaX * 0.006;
+      targetRotX += deltaY * 0.006;
+      targetRotX = Math.min(Math.max(targetRotX, 0.05), Math.PI * 0.48);
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+    } else {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // 雙擊空白處平滑重置最佳視角
+  window.addEventListener('dblclick', (e) => {
+    if (e.target.closest('.os-window') || e.target.closest('.dock-container') || e.target.closest('.system-bar') || e.target.closest('.desktop-icon')) return;
+    targetZoomDistance = 86;
+    targetRotX = 0.55;
+    targetRotY = 0;
+  });
+
+  let clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const delta = clock.getDelta();
+    const elapsedTime = clock.getElapsedTime();
+
+    sunUniforms.time.value = elapsedTime;
+    coronaUniforms.time.value = elapsedTime;
+
+    zoomDistance += (targetZoomDistance - zoomDistance) * 0.08;
+    rotX += (targetRotX - rotX) * 0.08;
+    rotY += (targetRotY - rotY) * 0.08;
+
+    const pitch = rotX + (isDragging ? 0 : mouseY * 0.04);
+    const yaw = rotY + (isDragging ? 0 : mouseX * 0.06);
+
+    camera.position.x = Math.sin(yaw) * Math.cos(pitch) * zoomDistance;
+    camera.position.y = Math.sin(pitch) * zoomDistance;
+    camera.position.z = Math.cos(yaw) * Math.cos(pitch) * zoomDistance;
+    camera.lookAt(0, 0, 0);
+
+    sunMesh.rotation.y += 0.002;
+    coronaMesh.rotation.y -= 0.001;
+    asteroidBelt.rotation.y += 0.0008;
+
+    planetNodes.forEach(node => {
+      node.angle += node.speed * 0.3;
+      node.orbit.rotation.y = node.angle;
+      node.mesh.rotation.y += 0.015;
+
+      if (node.cloudMesh) {
+        node.cloudMesh.rotation.y += 0.02;
+      }
+      if (node.moonPivot) {
+        node.moonPivot.rotation.y += 0.03;
+      }
+    });
+
+    stars.rotation.y -= 0.0001;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+// ========================================================
+// 3. Multi-Window Management Engine (Fluid Kinetic Transitions)
+// ========================================================
+let topZ = 100;
+function focusWindow(el) {
+  topZ += 1;
+  el.style.zIndex = topZ;
+  document.querySelectorAll('.os-window').forEach(w => w.classList.remove('active-window'));
+  el.classList.add('active-window');
+}
+
+function openWindow(winId) {
+  const win = document.getElementById(winId);
+  if (!win) return;
+  audio.playOpen();
+  win.classList.remove('hidden');
+  focusWindow(win);
+
+  const v = win.querySelector('video');
+  if (v) {
+    v.play().catch(() => {});
+  }
+
+  gsap.fromTo(win, 
+    { scale: 0.92, opacity: 0 },
+    { scale: 1, opacity: 1, duration: 0.32, ease: 'power3.out' }
+  );
+}
+
+function closeWindow(winId) {
+  const win = document.getElementById(winId);
+  if (!win) return;
+  audio.playBlip(300, 0.08, 'square');
+  gsap.to(win, {
+    scale: 0.92,
+    opacity: 0,
+    duration: 0.22,
+    ease: 'power2.in',
+    onComplete: () => {
+      win.classList.add('hidden');
+      const v = win.querySelector('video');
+      if (v) v.pause();
+    }
+  });
+}
+
+function toggleMaximize(winId) {
+  const win = document.getElementById(winId);
+  if (!win) return;
+  audio.playBlip(550, 0.04);
+  win.classList.toggle('is-maximized');
+}
+
+// ========================================================
+// 4. Bilingual i18n Engine (Zero Delay Client-Side Switcher)
+// ========================================================
 const i18nData = {
   zh: {
-    // Navigation
-    nav_about: '關於我',
-    nav_capabilities: '核心能力',
-    nav_projects: '精選專案',
-    nav_showreel: '動態展示',
-    nav_services: '設計服務',
-    nav_nfc: '智慧名片',
-    nav_contact_btn: '聯絡委託',
-    mobile_nav_title: '選單導航',
-    mobile_about: '01. 關於我 (ABOUT)',
-    mobile_capabilities: '02. 核心能力 (CAPABILITIES)',
-    mobile_projects: '03. 精選專案 (PROJECTS)',
-    mobile_showreel: '04. 動態展示 (SHOWREEL)',
-    mobile_services: '05. 設計服務 (SERVICES)',
-    mobile_nfc: '06. 智慧名片 (NFC HARDWARE)',
-    mobile_contact_btn: '立即聯絡委託',
+    // Navigation & Desktop Icons
+    nav_about: '[ 01_ABOUT 設計定位 ]',
+    nav_services: '[ 02_SERVICES 服務項目 ]',
+    nav_projects: '[ 03_PROJECTS 精選專案 ]',
+    nav_showreel: '[ 04_SHOWREEL 動態展示 ]',
+    nav_nfc: '[ 05_NFC 智慧名片 ]',
+    
+    icon_about: '01_ABOUT.os',
+    icon_services: '02_SERVICES.os',
+    icon_projects: '03_PROJECTS.os',
+    icon_showreel: '04_SHOWREEL.mp4',
+    icon_nfc: '05_NFC.os',
 
-    // Hero / About Me
-    hero_badge: '10+ YRS / GOOGLE ADS & COMMERCIAL DESIGN',
-    hero_title_html: '好的設計解決溝通問題，<br class="hidden sm:inline">好的行銷帶來商業轉換。',
-    hero_subtitle: 'Clear communication through craft, measurable conversion with data.',
-    hero_desc_1: '從 Google Ads 廣告諮詢起步，我花了 10 年在轉換率、跳出率與預算投放裡找答案。在打開排版軟體前，我習慣先釐清視覺要溝通給誰、能不能帶來實質訂單。',
-    hero_desc_2: '不做無效益的純裝飾，專注於將商業策略轉化為清楚、耐看且能直接執行的視覺系統。從品牌識別、包裝印刷、客製化網頁到實體 NFC 智慧名片，協助品牌建立穩固的市場溝通標準。',
-    metric_1_label: '實戰經歷',
-    metric_1_val: '10+ 年',
-    metric_1_sub: '商業數據與視覺整合',
-    metric_2_label: '行銷效益',
-    metric_2_val: 'ROAS 4.8x',
-    metric_2_sub: '平均廣告導流指標',
-    metric_3_label: '交付全案',
-    metric_3_val: '全案整合',
-    metric_3_sub: '品牌 × 網頁 × 實體硬體',
-    btn_explore_projects: '探索精選專案 ↓',
-    btn_brand_site: '品牌官網',
+    // 01_ABOUT Window
+    win_about_badge: '10+ YRS DATA x DESIGN',
+    win_about_tag: '10+ Yrs Google Ads & Commercial Design',
+    win_about_title_html: '好的設計解決溝通問題，<br class="hidden sm:inline">好的行銷帶來商業轉換。',
+    win_about_subtitle: 'Clear communication. Measurable conversion.',
+    win_about_desc_1: '從 Google Ads 廣告諮詢起步，我花了 10 年在轉換率、跳出率與投放預算裡找答案。這段經歷讓我養成習慣：在打開 Illustrator 或做 3D 渲染前，先釐清這套視覺要溝通給誰、能不能帶來實際訂單。',
+    win_about_desc_2: '我不做脫離商業目標的裝飾性設計。從品牌識別、包裝印刷、客製化網站到實體 NFC 智慧名片，我專注於將商業策略轉化為清楚、耐看且能直接落地的視覺系統。',
+    win_about_cap_tag: '// CORE CAPABILITIES // 核心專業能力',
+    win_about_cap1_title: '商業與廣告數據',
+    win_about_cap1_desc: '熟悉 Google Ads 廣告架構、A/B 測試與 Landing Page 動線規劃，確保設計投入能反映在名單收集與銷售成效上。',
+    win_about_cap2_title: '品牌與包裝工藝',
+    win_about_cap2_desc: '整合商標識別、包裝刀模展開、紙材挑選到實體打樣，確保螢幕上的提案能完整呈現在實體成品中。',
+    win_about_cap3_title: '數位介面與互動建置',
+    win_about_cap3_desc: '專注於結構清晰的網頁設計（UI/UX）、RWD 響應式排版與流暢微動態，建立易於閱讀與操作的品牌官網。',
+    win_about_btn_explore: '探索精選專案 (PROJECTS) →',
+    win_about_brand_site: '品牌官網',
 
-    // Capabilities
-    cap_tag: '// 01. CORE CAPABILITIES',
-    cap_title: '核心能力矩陣',
-    cap_subtitle: '結合廣告成效邏輯與細緻視覺執行，提供真正能帶來業務成長的解決方案。',
-    cap_1_title: '01. 商業與廣告數據',
-    cap_1_badge: 'ROAS 4.8x',
-    cap_1_desc: '熟悉 Google Ads 架構、A/B 測試與 Landing Page 動線，確保設計投入能轉化為名單與營收。',
-    cap_2_title: '02. 品牌與包裝實務',
-    cap_2_badge: 'Print & Packaging',
-    cap_2_desc: '整合商標識別、包裝刀模展開、紙材挑選到實體打樣，確保送印成品與螢幕提案具備一致水準。',
-    cap_3_title: '03. 數位介面與互動建置',
-    cap_3_badge: 'UI/UX & Code',
-    cap_3_desc: '專注結構清晰的排版、RWD 響應式介面與流暢微動態，建立載入迅速、易於操作的品牌官網。',
+    // 02_SERVICES Window
+    win_serv_badge: '[OFFICIAL_CAPABILITIES]',
+    win_serv_title: '全方位的視覺與品牌設計服務',
+    win_serv_desc: '從品牌定位、實體平面印刷到高成效數位網頁，提供一站式視覺解決方案。',
+    win_serv_b_title: '品牌設計',
+    win_serv_b_1: '品牌健檢',
+    win_serv_b_2: '品牌命名',
+    win_serv_b_3: '品牌定位',
+    win_serv_b_4: '品牌策略',
+    win_serv_b_5: '商標設計',
+    win_serv_b_6: '文案企劃',
+    win_serv_v_title: '視覺設計',
+    win_serv_v_1: '名片設計',
+    win_serv_v_2: '包裝設計',
+    win_serv_v_3: '海報設計',
+    win_serv_v_4: '型錄設計',
+    win_serv_v_5: '社群素材',
+    win_serv_v_6: 'DM 設計',
+    win_serv_w_title: '網頁設計',
+    win_serv_w_1: '視覺風格設定',
+    win_serv_w_2: 'UI/UX 設計',
+    win_serv_w_3: 'RWD 響應式',
+    win_serv_w_4: '內容架構',
+    win_serv_w_5: 'SEO 與 GA4',
+    win_serv_w_6: '廣告投放',
+    win_serv_btn_view: '查看精選專案 →',
 
-    // Projects
-    proj_tag: '// 02. FEATURED WORKS',
-    proj_title: '精選專案庫',
-    proj_subtitle: '涵蓋 3D 視覺、包裝與電商、介面動效與廣告投放，每個專案皆清楚標註屬性與設計策略。',
-    p1_tag: '[ 概念設計 / 3D 視覺系統 ]',
+    // 03_PROJECTS Window
+    win_proj_badge: '6 FLAGSHIP CASE STUDIES',
+    win_proj_title: '精選專案目錄 // FEATURED WORKS DIRECTORY',
+    win_proj_desc: '6 大旗艦實體與數位落地案例：涵蓋 3D 視覺、包裝工程、互動介面與全渠道廣告成效。',
     p1_title: 'AURA 空間聲學耳機系統',
+    p1_tag: '[ 概念設計 / 3D 視覺系統 ]',
     p1_desc: '微工業機能美學：將聲學濾波器與微晶片轉化為品牌核心視覺資產，拒絕同質化科技極簡。',
-    btn_read_case: '探索完整案例 (READ CASE STUDY)',
-    p2_tag: '[ 概念設計 / 包裝與電商 ]',
     p2_title: 'OAT & BOTANIC 純素冷萃低碳咖啡',
+    p2_tag: '[ 包裝設計 / D2C 電商排版 ]',
     p2_desc: '未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與 D2C 高轉化排版系統。',
-    p3_tag: '[ 概念設計 / 介面與動效系統 ]',
     p3_title: 'NEXUS AI 模組化協作平台',
+    p3_tag: '[ UI/UX 設計 / 節點畫布系統 ]',
     p3_desc: '高密度資訊儀表板與節點式畫布系統，實現結構清晰、好操作的深色介面設計。',
-    p4_tag: '[ 商業投放 / 廣告與動線規劃 ]',
+    p3_btn: '探索完整案例 (READ CASE STUDY) →',
     p4_title: 'HYDRATE LAB 全渠道廣告架構',
+    p4_tag: '[ 廣告投放 / 高轉換 Landing Page ]',
     p4_desc: 'Google Ads 搜索與多媒體廣告架構，搭配目標明確的 Landing Page，完成從曝光到名單的溝通流程。',
-    btn_ig_works: 'Instagram 作品精選',
-    p5_tag: '[ 內容工程 / SEO 結構化設計 ]',
     p5_title: 'CHRONO ARCHIVE 鐘錶知識庫',
+    p5_tag: '[ 內容工程 / 知識典藏介面 ]',
     p5_desc: '結構化資料標記與長尾關鍵字內容工程，建立具權威感與易讀性的典藏知識介面。',
-    p6_tag: '[ 品牌識別 / 視覺系統 ]',
     p6_title: 'From Life To Lines 生活線條 品牌識別',
+    p6_tag: '[ 品牌識別 / 視覺系統指南 ]',
     p6_desc: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美感的個人品牌。',
-    btn_ig_page: '前往 Instagram 專頁',
 
-    // Motion Showcase
-    showreel_tag: '// 03. MOTION & SPATIAL',
-    showreel_title: '4K 動態展示影院',
-    showreel_badge: '[4K 60FPS // LIVE CINEMA]',
-    showreel_desc: 'AURA 空間聲學系統概念展示片：融合 3D 渲染流體光澤、深色曲面螢幕 UI 與微工業工程細節。',
+    // 04_SHOWREEL Window
+    win_showreel_badge: '[4K 60FPS // LIVE CINEMA]',
+    win_showreel_title: '4K 動態展示影院',
+    win_showreel_status: 'STATUS: 4K_LIVE',
+    win_showreel_desc: 'AURA 空間聲學系統概念展示片：融合 3D 渲染流體光澤、深色曲面螢幕 UI 與微工業工程細節。',
 
-    // Services
-    serv_tag: '// 04. CAPABILITIES & SERVICES',
-    serv_title: '設計服務項目',
-    serv_subtitle: '依照名片背面三大核心範疇，提供從品牌定位、實體平面印刷到高成效數位網頁的一站式視覺解決方案。',
-    serv_b_title: '品牌設計',
-    serv_b_badge: '[BRAND]',
-    serv_v_title: '視覺設計',
-    serv_v_badge: '[VISUAL]',
-    serv_w_title: '網頁設計',
-    serv_w_badge: '[WEB]',
-
-    // NFC Smart Card
-    nfc_tag: 'FLTL SMART HARDWARE LAB // PROPRIETARY ENGINE',
-    nfc_title: '超越傳統名片：軟硬整合的智慧商務人脈系統',
-    nfc_desc: '不僅是霧面沉黑的頂級 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務增長引擎。',
+    // 05_NFC Window
+    win_nfc_badge: '[SMART_NFC_ECOSYSTEM]',
+    win_nfc_tag: 'FLTL SMART HARDWARE LAB // PROPRIETARY ENGINE',
+    win_nfc_title: '超越傳統名片：軟硬整合的智慧商務人脈系統',
+    win_nfc_desc: '不僅是霧面沉黑的頂級 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務增長引擎。',
     nfc_f1_title: '01. OCR 名片掃描辨識系統',
-    nfc_f1_desc: '收到對方的傳統紙本名片？拍照 1 秒由 AI 辨識姓名、電話、公司與統編，自動建立數位聯絡簿，徹底終結紙張堆積。',
+    nfc_f1_desc: '收到對方的傳統紙本名片？透過系統內建的 AI 視覺辨識，拍照 1 秒精準辨識姓名、電話、公司與統編，自動建立數位聯絡簿，徹底終結紙張堆積。',
     nfc_f2_title: '02. 雙向聯絡資訊即時交換',
-    nfc_f2_desc: '手機碰觸感應後，對方不僅能一鍵加入通訊錄（vCard 3.0），更可直接回傳其姓名與聯絡方式，現場完成名單雙向閉環。',
+    nfc_f2_desc: '商務溝通不該是單行道。手機碰觸感應後，對方不僅能一鍵將你加入通訊錄（vCard 3.0），更可直接回傳其姓名與聯絡方式，現場完成名單雙向閉環。',
     nfc_f3_title: '03. 行銷追蹤與成效分析 (Analytics)',
-    nfc_f3_desc: '發揮 10+ 年 Google Ads 數據思維：深度整合 GA4、Meta Pixel 與點擊事件追蹤，精準分析名片被感應次數與客戶互動足跡。',
-    nfc_f4_title: '04. 企業級 CRM 串接',
-    nfc_f4_desc: '支援企業批量團隊管理（Tier 1–3 方案），業務外出開發獲得的人脈資料可直接無縫對接至 Salesforce、HubSpot 或自建 CRM。',
+    nfc_f3_desc: '發揮 10+ 年 Google Ads 數據思維：深度整合 GA4、Meta Pixel 與點擊事件追蹤，精準分析名片被感應的次數、社群點擊率與高價值客戶互動足跡。',
+    nfc_f4_title: '04. 企業矩陣授權與 CRM 串接',
+    nfc_f4_desc: '支援企業批量團隊管理（Tier 1–3 方案），業務外出開發獲得的人脈資料可直接無縫對接至 Salesforce、HubSpot 或自建 CRM，保障企業商務資產。',
     nfc_spec_1: '沉黑霧面防刮 PVC',
     nfc_spec_2: 'NTAG216 高頻晶片',
     nfc_spec_3: 'AES-256 安全加密',
     nfc_spec_4: '免裝 App 0.5s 感應',
-    nfc_btn_more: '前往品牌官網了解更多 →',
+    nfc_spec_tier: '個人版 / 企業客製方案全面支援',
+    nfc_btn_more: '前往官方網站了解更多 →',
 
-    // Contact & Footer
-    contact_tag: '// START A CONVERSATION',
-    contact_title: '準備好開始您的專案了嗎？',
-    contact_desc: '好的設計解決溝通問題，好的行銷帶來商業轉換。如果您有品牌識別、包裝印刷、客製網頁建置或 NFC 系統需求，歡迎直接聯繫。',
-    contact_p_label: '直接通話',
-    contact_p_desc: '專案顧問與電話諮詢',
-    contact_m_label: '電子郵箱',
-    contact_m_desc: '提案邀請與商務合作',
-    contact_w_label: '官方品牌站',
-    contact_w_desc: '生活線條官方主站',
-    copyright: '© 2026 FROM LIFE TO LINES. ALL RIGHTS RESERVED.'
+    // Dock Tooltips
+    dock_about: '01. 關於我',
+    dock_services: '02. 服務項目',
+    dock_projects: '03. 精選專案',
+    dock_showreel: '04. 動態展示',
+    dock_nfc: '05. 智慧名片',
+    dock_github: 'GitHub 官方首頁'
   },
-
   en: {
-    // Navigation
-    nav_about: 'About',
-    nav_capabilities: 'Capabilities',
-    nav_projects: 'Works',
-    nav_showreel: 'Showreel',
-    nav_services: 'Services',
-    nav_nfc: 'NFC Card',
-    nav_contact_btn: 'Contact Me',
-    mobile_nav_title: 'Navigation Menu',
-    mobile_about: '01. About',
-    mobile_capabilities: '02. Capabilities',
-    mobile_projects: '03. Works',
-    mobile_showreel: '04. Showreel',
-    mobile_services: '05. Services',
-    mobile_nfc: '06. NFC Hardware',
-    mobile_contact_btn: 'Contact Me Now',
+    // Navigation & Desktop Icons
+    nav_about: '[ 01_ABOUT Positioning ]',
+    nav_services: '[ 02_SERVICES Capabilities ]',
+    nav_projects: '[ 03_PROJECTS Works ]',
+    nav_showreel: '[ 04_SHOWREEL Cinema ]',
+    nav_nfc: '[ 05_NFC Smart Card ]',
+    
+    icon_about: '01_ABOUT.os',
+    icon_services: '02_SERVICES.os',
+    icon_projects: '03_PROJECTS.os',
+    icon_showreel: '04_SHOWREEL.mp4',
+    icon_nfc: '05_NFC.os',
 
-    // Hero / About Me
-    hero_badge: '10+ YRS / GOOGLE ADS & COMMERCIAL DESIGN',
-    hero_title_html: 'Clear communication through craft,<br class="hidden sm:inline">measurable conversion with data.',
-    hero_subtitle: 'Designing purposeful identities and high-performing digital systems.',
-    hero_desc_1: 'Starting in Google Ads consulting, I spent 10 years finding answers in conversion rates, bounce metrics, and ad budgets. Before opening design software, I clarify who the visual speaks to and whether it drives real revenue.',
-    hero_desc_2: 'No purely decorative fluff—just clean, enduring, and actionable design systems. From brand identities and packaging print production to bespoke web development and smart NFC hardware, I build structured visual foundations.',
-    metric_1_label: 'Experience',
-    metric_1_val: '10+ Yrs',
-    metric_1_sub: 'Data Strategy & Visual Craft',
-    metric_2_label: 'Ad Performance',
-    metric_2_val: 'ROAS 4.8x',
-    metric_2_sub: 'Average Campaign Benchmark',
-    metric_3_label: 'End-to-End',
-    metric_3_val: 'Full Scope',
-    metric_3_sub: 'Brand × Web × Hardware',
-    btn_explore_projects: 'Explore Selected Works ↓',
-    btn_brand_site: 'Official Website',
+    // 01_ABOUT Window
+    win_about_badge: '10+ YRS DATA x DESIGN',
+    win_about_tag: '10+ Yrs Google Ads & Commercial Design',
+    win_about_title_html: 'Good design resolves communication,<br class="hidden sm:inline">effective marketing drives conversion.',
+    win_about_subtitle: 'Clear communication. Measurable conversion.',
+    win_about_desc_1: 'Starting in Google Ads consulting, I spent 10 years analyzing conversion rates, bounce rates, and media ROI. This shaped my core discipline: before opening Illustrator or rendering 3D, clarify who the visual speaks to and how it yields measurable business outcomes.',
+    win_about_desc_2: 'I reject decorative design detached from commercial goals. From brand identity, packaging engineering, bespoke web platforms to physical NFC smart hardware, I engineer durable, articulate, production-ready visual systems built on commercial strategy.',
+    win_about_cap_tag: '// CORE CAPABILITIES // TECHNICAL EXPERTISE',
+    win_about_cap1_title: 'Commercial & Ad Data',
+    win_about_cap1_desc: 'Mastery over Google Ads architecture, A/B testing, and Landing Page UX funnels to ensure design investments yield measurable lead conversions.',
+    win_about_cap2_title: 'Brand & Packaging Craft',
+    win_about_cap2_desc: 'Integrating brand identity, die-cut packaging blueprints, paper substrate selection, and physical prototyping from screen to real-world finish.',
+    win_about_cap3_title: 'Digital Interface & Interaction',
+    win_about_cap3_desc: 'Crafting high-clarity UI/UX, responsive layouts, and kinetic micro-interactions for modern, ergonomic web platforms.',
+    win_about_btn_explore: 'Explore Featured Works (PROJECTS) →',
+    win_about_brand_site: 'Brand Site',
 
-    // Capabilities
-    cap_tag: '// 01. CORE CAPABILITIES',
-    cap_title: 'Core Capabilities',
-    cap_subtitle: 'Bridging strategic performance marketing with refined visual craft to unlock measurable business growth.',
-    cap_1_title: '01. Commercial Ads & Data',
-    cap_1_badge: 'ROAS 4.8x',
-    cap_1_desc: 'Google Ads architecture, conversion funnels, and landing page UX focused on measurable revenue and high ROAS.',
-    cap_2_title: '02. Branding & Packaging Craft',
-    cap_2_badge: 'Print & Packaging',
-    cap_2_desc: 'From brand identities to packaging die-lines, tactile paper curation, and factory print-proof verification.',
-    cap_3_title: '03. Digital Interface & Web Dev',
-    cap_3_badge: 'UI/UX & Code',
-    cap_3_desc: 'Clean typography, responsive layouts, and lightweight interactions built for modern web performance.',
+    // 02_SERVICES Window
+    win_serv_badge: '[OFFICIAL_CAPABILITIES]',
+    win_serv_title: 'Comprehensive Brand & Visual Design Services',
+    win_serv_desc: 'End-to-end creative solutions spanning brand positioning, print packaging, and high-conversion web development.',
+    win_serv_b_title: 'Brand Design',
+    win_serv_b_1: 'Brand Audit',
+    win_serv_b_2: 'Brand Naming',
+    win_serv_b_3: 'Brand Positioning',
+    win_serv_b_4: 'Brand Strategy',
+    win_serv_b_5: 'Identity & Logo',
+    win_serv_b_6: 'Copywriting Strategy',
+    win_serv_v_title: 'Visual Design',
+    win_serv_v_1: 'Business Card Design',
+    win_serv_v_2: 'Packaging Design',
+    win_serv_v_3: 'Poster Design',
+    win_serv_v_4: 'Catalog & Brochure',
+    win_serv_v_5: 'Social Media Content',
+    win_serv_v_6: 'Direct Mail / Print DM',
+    win_serv_w_title: 'Web Design',
+    win_serv_w_1: 'Visual Style Guidelines',
+    win_serv_w_2: 'UI/UX Design',
+    win_serv_w_3: 'Responsive Layouts (RWD)',
+    win_serv_w_4: 'Information Architecture',
+    win_serv_w_5: 'SEO & GA4 Analytics',
+    win_serv_w_6: 'Digital Ad Campaigns',
+    win_serv_btn_view: 'View Featured Projects →',
 
-    // Projects
-    proj_tag: '// 02. FEATURED WORKS',
-    proj_title: 'Curated Project Archive',
-    proj_subtitle: 'Spanning 3D spatial visuals, sustainable e-commerce packaging, UI design systems, and full-funnel ad campaigns.',
+    // 03_PROJECTS Window
+    win_proj_badge: '6 FLAGSHIP CASE STUDIES',
+    win_proj_title: 'Featured Works Directory // Flagship Case Studies',
+    win_proj_desc: '6 Flagship commercial projects across 3D visualization, packaging engineering, interactive UI, and omnichannel ad architectures.',
+    p1_title: 'AURA Spatial Audio System',
     p1_tag: '[ Concept / 3D Visual System ]',
-    p1_title: 'AURA Spatial Audio Headphone System',
-    p1_desc: 'Micro-industrial aesthetics: transforming acoustic filters and microchips into iconic brand visuals without tech clichés.',
-    btn_read_case: 'Read Case Study (FULL ARCHIVE)',
-    p2_tag: '[ Concept / Packaging & E-Commerce ]',
-    p2_title: 'OAT & BOTANIC Vegan Cold Brew Coffee',
-    p2_desc: 'Uncoated recycled cardboard packaging and tactile paper craft paired with a high-converting D2C layout.',
-    p3_tag: '[ Concept / UI & Motion System ]',
-    p3_title: 'NEXUS AI Modular Workspace Platform',
-    p3_desc: 'High-density information dashboards and node-based canvas interface designed for intuitive, dark-mode workflows.',
-    p4_tag: '[ Commercial / Ads & Growth ]',
-    p4_title: 'HYDRATE LAB Omnichannel Conversion Funnel',
-    p4_desc: 'Google Ads search and display architecture paired with purpose-driven landing pages for seamless lead acquisition.',
-    btn_ig_works: 'Instagram Highlights',
-    p5_tag: '[ Content Eng / Structured SEO ]',
-    p5_title: 'CHRONO ARCHIVE Horology Knowledge Base',
-    p5_desc: 'Structured schema markup and editorial SEO strategy, delivering an authoritative, scannable archive for enthusiasts.',
-    p6_tag: '[ Brand Identity / Visual System ]',
+    p1_desc: 'Micro-industrial functional aesthetics: turning acoustic filters and microchips into core visual assets, rejecting generic tech minimalism.',
+    p2_title: 'OAT & BOTANIC Vegan Cold Brew',
+    p2_tag: '[ Packaging Design / D2C E-commerce ]',
+    p2_desc: 'Uncoated recycled paperboard packaging fusing sustainability with high-conversion D2C e-commerce typography.',
+    p3_title: 'NEXUS AI Modular Platform',
+    p3_tag: '[ UI/UX Design / Node Canvas ]',
+    p3_desc: 'High-density telemetry dashboard and node-based canvas delivering clarity and ergonomic dark mode UI.',
+    p3_btn: 'Read Full Case Study (READ CASE STUDY) →',
+    p4_title: 'HYDRATE LAB Omnichannel Ad Campaign',
+    p4_tag: '[ Ad Campaign / High-Conversion LP ]',
+    p4_desc: 'Google Ads search and display architecture paired with targeted Landing Pages for seamless lead acquisition.',
+    p5_title: 'CHRONO ARCHIVE Horology Database',
+    p5_tag: '[ Content Engineering / Archive UI ]',
+    p5_desc: 'Structured metadata indexing and long-tail SEO engineering creating an authoritative horological archive.',
     p6_title: 'From Life To Lines Brand Identity',
-    p6_desc: 'Minimalist line work and authentic hand-drawn strokes conveying emotional resonance and distinct personality.',
-    btn_ig_page: 'Visit Instagram Page',
+    p6_tag: '[ Brand Identity / Visual Guidelines ]',
+    p6_desc: 'Minimalist linework conveying emotional resonance, establishing a brand balancing commercial clarity and artistry.',
 
-    // Motion Showcase
-    showreel_tag: '// 03. MOTION & SPATIAL',
-    showreel_title: '4K Cinema Showcase',
-    showreel_badge: '[4K 60FPS // LIVE CINEMA]',
-    showreel_desc: 'AURA Spatial Sound concept reel: combining 3D fluid reflections, curved interface graphics, and micro-industrial engineering details.',
+    // 04_SHOWREEL Window
+    win_showreel_badge: '[4K 60FPS // LIVE CINEMA]',
+    win_showreel_title: '4K Motion Cinema Showcase',
+    win_showreel_status: 'STATUS: 4K_LIVE',
+    win_showreel_desc: 'AURA spatial audio conceptual film: combining 3D fluid lighting, dark curved screen UI, and micro-engineering details.',
 
-    // Services
-    serv_tag: '// 04. CAPABILITIES & SERVICES',
-    serv_title: 'Design Services Directory',
-    serv_subtitle: 'Aligned with official business card specializations, providing end-to-end creative and commercial solutions.',
-    serv_b_title: 'Brand Identity',
-    serv_b_badge: '[BRAND]',
-    serv_v_title: 'Visual Design',
-    serv_v_badge: '[VISUAL]',
-    serv_w_title: 'Web & Digital',
-    serv_w_badge: '[WEB]',
-
-    // NFC Smart Card
-    nfc_tag: 'FLTL SMART HARDWARE LAB // PROPRIETARY ENGINE',
-    nfc_title: 'Beyond Paper Cards: Integrated Smart Business Networking',
-    nfc_desc: 'More than a matte black premium NFC card—a full-spectrum growth engine combining AI OCR scanning, two-way data sync, GA4 analytics, and CRM integration.',
-    nfc_f1_title: '01. AI OCR Business Card Scanner',
-    nfc_f1_desc: 'Handed a traditional paper card? Scan it with on-device AI in 1 second to parse names, phone numbers, and company details directly into your contacts.',
-    nfc_f2_title: '02. Two-Way Instant Contact Sync',
-    nfc_f2_desc: 'Networking is a two-way street. When tapped, contacts can save your vCard 3.0 profile and immediately submit their own contact details back.',
+    // 05_NFC Window
+    win_nfc_badge: '[SMART_NFC_ECOSYSTEM]',
+    win_nfc_tag: 'FLTL SMART HARDWARE LAB // PROPRIETARY ENGINE',
+    win_nfc_title: 'Beyond Traditional Cards: Smart Hardware Networking Ecosystem',
+    win_nfc_desc: 'More than a matte black premium NFC card: a growth engine integrating AI optical scanning, two-way sync, marketing analytics, and enterprise CRM.',
+    nfc_f1_title: '01. AI Optical Card Scanner (OCR)',
+    nfc_f1_desc: 'Received a paper business card? Snap a photo in 1 second for AI extraction of name, phone, company, and tax ID into digital contacts.',
+    nfc_f2_title: '02. Instant Two-Way Contact Sync',
+    nfc_f2_desc: 'Networking is never one-way. Upon tap, recipients can save your contact (vCard 3.0) and instantly transmit their info back, completing the loop.',
     nfc_f3_title: '03. Marketing Analytics & Funnel Tracking',
-    nfc_f3_desc: 'Infused with 10+ years of Google Ads data mindset: integrated GA4 and Meta Pixel tracking to evaluate tap frequencies and high-value user footprints.',
-    nfc_f4_title: '04. Enterprise CRM Integration',
-    nfc_f4_desc: 'Supports multi-seat team management with direct API synchronization into Salesforce, HubSpot, or bespoke company CRMs.',
-    nfc_spec_1: 'Matte Scratch-Resistant PVC',
+    nfc_f3_desc: 'Applying 10+ years of Google Ads data science: deep GA4 and Meta Pixel integration to track tap counts and high-value customer journeys.',
+    nfc_f4_title: '04. Enterprise Matrix & CRM Integration',
+    nfc_f4_desc: 'Enterprise multi-seat management with direct data pipeline syncing to Salesforce, HubSpot, or bespoke CRMs.',
+    nfc_spec_1: 'Matte Black Anti-Scratch PVC',
     nfc_spec_2: 'NTAG216 High-Frequency Chip',
     nfc_spec_3: 'AES-256 Security Encryption',
-    nfc_spec_4: 'Zero App Required 0.5s Tap',
-    nfc_btn_more: 'Learn More on Official Site →',
+    nfc_spec_4: 'No-App Instant 0.5s Tap',
+    nfc_spec_tier: 'Personal & Enterprise Tiers Supported',
+    nfc_btn_more: 'Visit Official Website to Learn More →',
 
-    // Contact & Footer
-    contact_tag: '// START A CONVERSATION',
-    contact_title: 'Ready to build your next project?',
-    contact_desc: 'Clear communication solves design challenges; data-driven strategy drives commercial conversion. For brand identity, packaging, web development, or smart NFC systems, feel free to reach out.',
-    contact_p_label: 'Direct Phone',
-    contact_p_desc: 'Project inquiries and consulting',
-    contact_m_label: 'Email Address',
-    contact_m_desc: 'RFP and business collaboration',
-    contact_w_label: 'Brand Website',
-    contact_w_desc: 'Official From Life To Lines portal',
-    copyright: '© 2026 FROM LIFE TO LINES. ALL RIGHTS RESERVED.'
+    // Dock Tooltips
+    dock_about: '01. About Me',
+    dock_services: '02. Services',
+    dock_projects: '03. Projects',
+    dock_showreel: '04. Showreel',
+    dock_nfc: '05. Smart NFC',
+    dock_github: 'GitHub Profile'
   }
 };
 
-// Current active language state
 let currentLang = 'zh';
 
-// 3. Language Switching Engine
 function setLanguage(lang) {
   if (!i18nData[lang]) lang = 'zh';
   currentLang = lang;
 
-  // 1. Update textContent elements
+  // 1. TextContent updates
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (i18nData[lang][key]) {
@@ -323,7 +894,7 @@ function setLanguage(lang) {
     }
   });
 
-  // 2. Update innerHTML elements
+  // 2. HTML content updates
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (i18nData[lang][key]) {
@@ -331,7 +902,7 @@ function setLanguage(lang) {
     }
   });
 
-  // 3. Update active pill indicators on language toggle buttons
+  // 3. Update pill indicators on toggle buttons
   document.querySelectorAll('.lang-opt').forEach(opt => {
     if (opt.getAttribute('data-lang') === lang) {
       opt.classList.add('active');
@@ -340,81 +911,110 @@ function setLanguage(lang) {
     }
   });
 
-  // 4. Update document language attribute
   document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
 
-  // 5. Store in LocalStorage
   try {
     localStorage.setItem('fltl_lang', lang);
   } catch (e) {}
-
-  audio.playBlip(620, 0.03);
 }
 
-// 4. Mobile Navigation Drawer Controls
-function openMobileDrawer() {
-  const drawer = document.getElementById('mobile-drawer');
-  const backdrop = document.getElementById('mobile-backdrop');
-  if (!drawer || !backdrop) return;
-  audio.playOpen();
-  backdrop.classList.remove('hidden');
-  setTimeout(() => {
-    backdrop.classList.remove('opacity-0');
-    backdrop.classList.add('opacity-100');
-    drawer.classList.remove('-translate-y-full');
-    drawer.classList.add('translate-y-0');
-  }, 10);
-  document.body.style.overflow = 'hidden';
-}
+// ========================================================
+// 5. Initialization & Telemetry
+// ========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) lucide.createIcons();
+  init3D();
 
-function closeMobileDrawer() {
-  const drawer = document.getElementById('mobile-drawer');
-  const backdrop = document.getElementById('mobile-backdrop');
-  if (!drawer || !backdrop) return;
-  audio.playBlip(380, 0.04);
-  drawer.classList.remove('translate-y-0');
-  drawer.classList.add('-translate-y-full');
-  backdrop.classList.remove('opacity-100');
-  backdrop.classList.add('opacity-0');
-  setTimeout(() => {
-    backdrop.classList.add('hidden');
-    document.body.style.overflow = '';
-  }, 350);
-}
+  // Clock Telemetry
+  function updateTime() {
+    const clockEl = document.getElementById('live-clock');
+    if (!clockEl) return;
+    const now = new Date();
+    const tpe = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Taipei', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(now);
+    clockEl.innerText = `TPE ${tpe} (UTC+8)`;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
 
-// 5. Scroll-Spy Navigation Highlighting
-function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  const onScroll = () => {
-    const scrollPos = window.scrollY + 160;
-
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-
-      if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      }
+  // Audio Toggle Button
+  const audioBtn = document.getElementById('audio-toggle');
+  if (audioBtn) {
+    audioBtn.addEventListener('click', () => {
+      audio.isMuted = !audio.isMuted;
+      audioBtn.innerHTML = audio.isMuted ? '<i data-lucide="volume-x" class="w-4 h-4 text-red-400"></i>' : '<i data-lucide="volume-2" class="w-4 h-4 text-green-400"></i>';
+      lucide.createIcons();
+      if (!audio.isMuted) audio.playBlip(700, 0.05);
     });
-  };
+  }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-}
+  // Setup GSAP Draggables for Windows with cancel parameter to protect traffic lights & buttons
+  document.querySelectorAll('.os-window').forEach(win => {
+    win.addEventListener('mousedown', () => focusWindow(win));
+    if (window.Draggable) {
+      Draggable.create(win, {
+        handle: win.querySelector('.window-header'),
+        bounds: window,
+        edgeResistance: 0.65,
+        cancel: '.traffic-btn, .traffic-lights, button, a, svg',
+        onPress: () => {
+          focusWindow(win);
+          audio.playBlip(480, 0.03);
+        }
+      });
+    }
+  });
 
-// 6. 3D Card Mouse Perspective Physics (Desktop only)
-function initTiltCards() {
-  if (window.matchMedia('(pointer: coarse)').matches) return;
+  // Language Toggle Button listener
+  const langToggleBtn = document.getElementById('lang-toggle');
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      audio.playBlip(620, 0.04);
+      setLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    });
+  }
 
+  // Check saved language preference
+  try {
+    const saved = localStorage.getItem('fltl_lang');
+    if (saved === 'en' || saved === 'zh') {
+      setLanguage(saved);
+    } else if (navigator.language && !navigator.language.startsWith('zh')) {
+      setLanguage('en');
+    } else {
+      setLanguage('zh');
+    }
+  } catch (e) {
+    setLanguage('zh');
+  }
+
+  // macOS Dock Hover Scale Physics
+  const dock = document.getElementById('main-dock');
+  if (dock) {
+    const items = dock.querySelectorAll('.dock-item');
+    dock.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+
+      items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
+        const distance = Math.abs(mouseX - itemCenter);
+        const maxDist = 120;
+
+        if (distance < maxDist) {
+          const scale = 1 + (0.45 * (1 - distance / maxDist));
+          gsap.to(item, { scale: scale, y: -(scale - 1) * 16, duration: 0.15 });
+        } else {
+          gsap.to(item, { scale: 1, y: 0, duration: 0.15 });
+        }
+      });
+    });
+
+    dock.addEventListener('mouseleave', () => {
+      items.forEach(item => gsap.to(item, { scale: 1, y: 0, duration: 0.25 }));
+    });
+  }
+
+  // 3D Card Perspective Mouse Tilt Physics
   document.querySelectorAll('.tilt-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -422,95 +1022,12 @@ function initTiltCards() {
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
-
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-    });
-  });
-}
-
-// 7. Clock Telemetry (Taipei UTC+8)
-function initClock() {
-  const clockEl = document.getElementById('live-clock');
-  if (!clockEl) return;
-  const updateTime = () => {
-    const now = new Date();
-    const tpe = new Intl.DateTimeFormat('en-GB', { 
-      timeZone: 'Asia/Taipei', 
-      hour: '2-digit', 
-      minute: '2-digit', 
-      second: '2-digit' 
-    }).format(now);
-    clockEl.innerText = `TPE ${tpe}`;
-  };
-  setInterval(updateTime, 1000);
-  updateTime();
-}
-
-// 8. DOM Initialization
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.lucide) lucide.createIcons();
-
-  // Initialize saved or browser language
-  let preferredLang = 'zh';
-  try {
-    const stored = localStorage.getItem('fltl_lang');
-    if (stored && (stored === 'zh' || stored === 'en')) {
-      preferredLang = stored;
-    } else if (navigator.language && !navigator.language.startsWith('zh')) {
-      preferredLang = 'en';
-    }
-  } catch (e) {}
-
-  setLanguage(preferredLang);
-
-  // Setup Language Toggle buttons
-  const langToggleBtn = document.getElementById('lang-toggle');
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      const nextLang = currentLang === 'zh' ? 'en' : 'zh';
-      setLanguage(nextLang);
-    });
-  }
-
-  const mobileLangToggleBtn = document.getElementById('mobile-lang-toggle');
-  if (mobileLangToggleBtn) {
-    mobileLangToggleBtn.addEventListener('click', () => {
-      const nextLang = currentLang === 'zh' ? 'en' : 'zh';
-      setLanguage(nextLang);
-    });
-  }
-
-  initScrollSpy();
-  initTiltCards();
-  initClock();
-
-  // Mobile menu button event listeners
-  const btnOpenMobile = document.getElementById('btn-mobile-menu');
-  const btnCloseMobile = document.getElementById('btn-close-mobile');
-  const mobileBackdrop = document.getElementById('mobile-backdrop');
-
-  if (btnOpenMobile) btnOpenMobile.addEventListener('click', openMobileDrawer);
-  if (btnCloseMobile) btnCloseMobile.addEventListener('click', closeMobileDrawer);
-  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileDrawer);
-
-  // Close drawer upon clicking any mobile nav link
-  document.querySelectorAll('#mobile-drawer a').forEach(link => {
-    link.addEventListener('click', () => {
-      closeMobileDrawer();
-    });
-  });
-
-  // Acoustic click feedback for interactive links & buttons
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('click', () => {
-      if (!el.getAttribute('onclick') && el.id !== 'lang-toggle') {
-        audio.playBlip(540, 0.02);
-      }
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     });
   });
 });

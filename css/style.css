@@ -1,253 +1,350 @@
-/* ==========================================================================
-   From Life To Lines // Japanese Cream Minimalist Stylesheet 2026
-   Warm Cream, Sumi Charcoal Ink, Terracotta & Sage Palette
-   ========================================================================== */
+/* ========================================================
+   CINEMATIC KINETIC STUDIO DESIGN SYSTEM (Geist Stack + 3D Solar Base)
+   Ref: Layers.ai New Era / Foldcraft Studio / Pioneer Interactive OS
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap');
 
 :root {
-  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Noto Sans TC', 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Geist Mono', monospace;
-  --font-display: 'Syne', sans-serif;
-
-  /* Palette: Sumi Ink & Washi Translucent Glass */
-  --bg-base: transparent;
-  --bg-sub: rgba(255, 255, 255, 0.2);
-  --bg-card: rgba(255, 255, 255, 0.32);
-  --border-card: rgba(255, 255, 255, 0.45);
-  --border-card-hover: rgba(255, 255, 255, 0.75);
-
-  --text-main: #18181B;
-  --text-muted: #524E48;
-  --text-light: #78736B;
-
-  /* Accents */
-  --accent-terracotta: #C45A3C;
-  --accent-terracotta-hover: #AA472B;
-  --accent-terracotta-soft: rgba(196, 90, 60, 0.12);
-  --accent-sage: #5A7365;
-  --accent-sage-soft: rgba(90, 115, 101, 0.12);
-
-  /* Shadows */
-  --shadow-diffuse: 0 20px 50px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(255, 255, 255, 0.5) inset;
-  --shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(255, 255, 255, 0.65) inset;
+  --bg-deep: #050608;
+  --glass-bg: rgba(6, 9, 16, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-glow: rgba(255, 122, 48, 0.25);
+  --accent-warm: #ff7a30;
+  --accent-cyan: #38bdf8;
+  --accent-emerald: #34d399;
+  --accent-pink: #f472b6;
+  --accent-lime: #ccff00;
+  --text-main: #f9fafb;
+  --text-sub: #9ca3af;
 }
 
-/* Reset & Global Baseline */
-*, *::before, *::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-  background: transparent;
+body {
+  background-color: #000000;
   color: var(--text-main);
-  font-family: var(--font-sans);
+  font-family: 'Geist', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
-  max-width: 100vw;
-  background: transparent;
-  color: var(--text-main);
-  line-height: 1.75;
-  letter-spacing: 0.02em;
-}
+.syne { font-family: 'Syne', sans-serif; }
+.font-mono, .mono { font-family: 'Geist Mono', monospace; }
 
-/* Typography Helpers */
-.syne { font-family: var(--font-display); }
-.mono { font-family: var(--font-mono); }
-.serif-italic { 
-  font-family: var(--font-serif); 
-  font-style: italic; 
-}
-
-/* Tactile Paper Texture */
-.paper-texture {
+/* 膠片質感微噪點層 */
+.noise-overlay {
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
 
-/* Fixed High-Clarity Dynamic Background Video */
-#global-video-bg, .global-video-bg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 85% center;
-  filter: brightness(1.05) contrast(1.1) saturate(135%);
-  z-index: 0;
-  pointer-events: none;
-  will-change: transform;
-  transform: translateZ(0);
+/* 現代流光頂部導航欄 (Floating Modern Navbar) */
+.system-bar {
+  background: rgba(6, 8, 14, 0.78);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.global-video-layer {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.global-video-scrim {
-  display: none !important;
-}
-
-/* Modern Fixed Glass Navigation */
-.fixed-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(20px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-  z-index: 50;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Nav links styling */
-.nav-link {
+.nav-pill {
   position: relative;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: #383530;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.nav-pill.active {
+  background: rgba(255, 122, 48, 0.15);
+  border-color: rgba(255, 122, 48, 0.3);
+  color: #ff9d66;
 }
 
-.nav-link:hover, .nav-link.active {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.nav-link.active {
-  color: var(--accent-terracotta);
-  background: var(--accent-terracotta-soft);
-  border: 1px solid rgba(196, 90, 60, 0.25);
-}
-
-/* Language Toggle Capsule */
+/* i18n Language Toggle Capsule */
 .lang-toggle-btn {
   display: inline-flex;
   align-items: center;
-  padding: 3px 6px;
+  padding: 2px 4px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   cursor: pointer;
-  transition: all 0.2s ease;
   user-select: none;
+  transition: all 0.2s ease;
 }
 
 .lang-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .lang-opt {
   padding: 2px 8px;
   border-radius: 9999px;
-  color: #524E48;
+  color: #9ca3af;
   transition: all 0.2s ease;
 }
 
 .lang-opt.active {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text-main);
-  font-weight: 600;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 122, 48, 0.25);
+  color: #ff9d66;
+  font-weight: 700;
+  border: 1px solid rgba(255, 122, 48, 0.45);
 }
 
-/* Translucent Washi Glass Panels & Cards (通透和紙毛玻璃) */
-.editorial-card, .glass-panel, .glass-card {
-  background: rgba(255, 255, 255, 0.32) !important;
-  backdrop-filter: blur(24px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(255, 255, 255, 0.5) inset !important;
-  border-radius: 24px;
-  transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
+/* 左側桌面圖標欄 (Left Desktop Icons - 固定於左側，完全不遮擋中央 3D 太陽與星系) */
+.desktop-grid {
+  position: absolute;
+  top: 68px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 20;
+  pointer-events: none;
 }
 
-.editorial-card:hover, .glass-panel:hover, .glass-card:hover {
-  background: rgba(255, 255, 255, 0.42) !important;
-  border-color: rgba(255, 255, 255, 0.7) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(255, 255, 255, 0.65) inset !important;
+.desktop-icon {
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 3D Perspective Mouse Tilt */
+.desktop-icon:hover {
+  transform: translateY(-4px);
+}
+
+.desktop-icon .icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(14, 18, 30, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktop-icon:hover .icon-box {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 122, 48, 0.25);
+}
+
+/* 旗艦大片級視窗主體 (Cinematic Split Showcase Canvas) */
+.os-window {
+  position: absolute;
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 50px 140px -20px rgba(0, 0, 0, 0.95),
+              0 0 70px -10px var(--glass-glow),
+              inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.os-window.active-window {
+  border-color: rgba(255, 140, 60, 0.5);
+  box-shadow: 0 55px 150px -15px rgba(0, 0, 0, 0.98),
+              0 0 80px -5px rgba(255, 122, 48, 0.35),
+              inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+/* 視窗最大化狀態 */
+.os-window.is-maximized {
+  top: 50px !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 84px !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  border-radius: 20px !important;
+  transform: none !important;
+}
+
+.os-window.is-maximized > div:last-child {
+  max-height: calc(100vh - 150px) !important;
+}
+
+/* 視窗內部動態大片視頻層 (Kinetic Video Background - Ultra Vivid & Razor Sharp) */
+.window-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  filter: brightness(1.15) contrast(1.25) saturate(140%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.window-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0) 0%, rgba(5, 8, 16, 0.42) 100%),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.window-header {
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: grab;
+}
+.window-header:active { cursor: grabbing; }
+
+/* 現代柔光控制燈 */
+.traffic-lights {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.traffic-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.traffic-close { background: #ff5f56; }
+.traffic-min { background: #ffbd2e; }
+.traffic-max { background: #27c93f; }
+.traffic-btn:hover { transform: scale(1.18); filter: brightness(1.2); }
+
+/* 3D 視差傾斜卡片 (3D Kinetic Tilt Card) */
 .tilt-card {
-  transition: transform 0.15s ease-out, border-color 0.3s ease;
+  background: rgba(14, 18, 30, 0.68);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
   will-change: transform;
 }
 
-/* Badges */
-.badge-terracotta {
-  background: var(--accent-terracotta-soft);
-  color: var(--accent-terracotta);
-  border: 1px solid rgba(196, 90, 60, 0.2);
+.tilt-card:hover {
+  background: rgba(22, 28, 46, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8),
+              0 0 40px -5px rgba(255, 122, 48, 0.25);
 }
 
-.badge-sage {
-  background: var(--accent-sage-soft);
-  color: var(--accent-sage);
-  border: 1px solid rgba(90, 115, 101, 0.2);
+.tilt-card img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.badge-stone {
-  background: rgba(120, 115, 107, 0.08);
-  color: var(--text-muted);
-  border: 1px solid rgba(120, 115, 107, 0.18);
+.tilt-card:hover img {
+  transform: scale(1.06);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* 懸浮現代 Dock 欄 (Pill Dock) */
+.dock-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(8, 12, 20, 0.8);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.65),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  z-index: 50;
 }
-::-webkit-scrollbar-track {
-  background: var(--bg-base);
+
+.dock-item {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+.dock-item:hover {
+  transform: translateY(-8px) scale(1.15);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 122, 48, 0.2);
+}
+
+.dock-tooltip {
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(6, 8, 14, 0.95);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* 文字可選取 */
+.selectable-text { user-select: text; }
+.selectable-text * { user-select: text; }
+
+/* 細緻微滾動條 */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(60, 50, 40, 0.15);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(60, 50, 40, 0.3);
-}
-
-/* Mobile Drawer Transitions */
-#mobile-drawer {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-
-/* Focus and Accessibility */
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--accent-terracotta);
-  outline-offset: 3px;
+  background: var(--accent-warm);
 }
