@@ -363,15 +363,7 @@ body {
    03_PROJECTS 高通透毛玻璃與大片案例排版 (Translucent Editorial)
    ======================================================== */
 #win-projects {
-  background: rgba(0, 0, 0, 0.2) !important;
-  backdrop-filter: blur(16px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   overflow: hidden !important;
-}
-
-#win-projects .window-video-overlay {
-  display: none !important;
 }
 
 /* 03_PROJECTS 橫向條列卡片 3D 空間透視與動態微光 */
