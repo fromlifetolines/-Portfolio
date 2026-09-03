@@ -49,6 +49,11 @@ body {
   z-index: 1;
 }
 
+/* 確保 3D Canvas 不阻擋滑鼠點擊 */
+#webgl-canvas {
+  pointer-events: none !important;
+}
+
 /* 現代流光頂部導航欄 (Floating Modern Navbar) */
 .system-bar {
   background: rgba(6, 8, 14, 0.78);
@@ -106,7 +111,9 @@ body {
   border: 1px solid rgba(255, 122, 48, 0.45);
 }
 
-/* 左側桌面圖標欄 (Left Desktop Icons - 固定於左側，完全不遮擋中央 3D 太陽與星系) */
+/* ========================================================
+   左側桌面圖標欄與先鋒系統資料夾 (Pioneer OS Frosted Glass Folders)
+   ======================================================== */
 .desktop-grid {
   position: absolute;
   top: 68px;
@@ -120,6 +127,10 @@ body {
 
 .desktop-icon {
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -127,29 +138,136 @@ body {
   transform: translateY(-4px);
 }
 
-.desktop-icon .icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  background: rgba(14, 18, 30, 0.75);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+/* 先鋒雙層磨砂資料夾容器 */
+.folder-container {
+  position: relative;
+  width: 54px;
+  height: 44px;
+  perspective: 400px;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.6));
+  transition: filter 0.3s ease;
+}
+
+.desktop-icon:hover .folder-container {
+  filter: drop-shadow(0 12px 24px rgba(255, 122, 48, 0.3));
+}
+
+/* 左上方頁耳 (Tab Fold) */
+.folder-tab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 9px;
+  background: rgba(28, 34, 52, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1;
+}
+
+/* 資料夾後背板 (Back Plate) */
+.folder-back {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 54px;
+  height: 38px;
+  background: linear-gradient(145deg, rgba(20, 26, 42, 0.88), rgba(8, 12, 22, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 3px 8px 8px 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* 內部檔案紙頁 (Peeking Sheet) */
+.folder-sheet {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 42px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+  z-index: 3;
+}
+
+.desktop-icon:hover .folder-sheet {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.26);
+}
+
+/* 半透明磨砂前蓋 (Frosted Front Flap) */
+.folder-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 54px;
+  height: 32px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 3px 3px 8px 8px;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 4;
 }
 
-.desktop-icon:hover .icon-box {
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 122, 48, 0.25);
+.desktop-icon:hover .folder-front {
+  transform: rotateX(-14deg) translateY(1px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08));
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
-/* 旗艦大片級視窗主體 (Cinematic Split Showcase Canvas) */
+/* 04_SHOWREEL 影音磁帶 / 播放文件造型 (Cyber Media Tape) */
+.media-container {
+  position: relative;
+  width: 54px;
+  height: 44px;
+  background: linear-gradient(145deg, rgba(32, 18, 36, 0.88), rgba(14, 8, 18, 0.95));
+  border: 1px solid rgba(244, 114, 182, 0.35);
+  border-radius: 8px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.desktop-icon:hover .media-container {
+  border-color: rgba(244, 114, 182, 0.7);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 22px rgba(244, 114, 182, 0.4);
+}
+
+.media-tape-spools {
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  right: 6px;
+  height: 5px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0px, rgba(255,255,255,0.25) 4px, transparent 4px, transparent 8px);
+  border-radius: 2px;
+}
+
+/* ========================================================
+   旗艦大片級視窗主體 (Cinematic Split Showcase Canvas)
+   ======================================================== */
 .os-window {
   position: absolute;
   background: var(--glass-bg);
@@ -191,7 +309,7 @@ body {
   max-height: calc(100vh - 150px) !important;
 }
 
-/* 視窗內部動態大片視頻層 (Kinetic Video Background - Ultra Vivid & Razor Sharp) */
+/* 視窗內部動態視頻層 (Kinetic Video Background) */
 .window-video-bg {
   position: absolute;
   inset: 0;
@@ -207,8 +325,8 @@ body {
 .window-video-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0) 0%, rgba(5, 8, 16, 0.42) 100%),
-              linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.45) 100%);
+  background: radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0) 0%, rgba(5, 8, 16, 0.38) 100%),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.35) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -241,32 +359,46 @@ body {
 .traffic-max { background: #27c93f; }
 .traffic-btn:hover { transform: scale(1.18); filter: brightness(1.2); }
 
+/* ========================================================
+   03_PROJECTS 高通透毛玻璃與大片案例排版 (Translucent Editorial)
+   ======================================================== */
+#win-projects {
+  background: rgba(8, 12, 20, 0.45) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+#win-projects .window-video-overlay {
+  background: radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0) 0%, rgba(5, 8, 16, 0.22) 100%),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.22) 100%) !important;
+}
+
 /* 3D 視差傾斜卡片 (3D Kinetic Tilt Card) */
 .tilt-card {
-  background: rgba(14, 18, 30, 0.68);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(14, 18, 30, 0.38) !important;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
 .tilt-card:hover {
-  background: rgba(22, 28, 46, 0.85);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8),
-              0 0 40px -5px rgba(255, 122, 48, 0.25);
+  background: rgba(22, 28, 46, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.75),
+              0 0 35px -5px rgba(255, 122, 48, 0.22);
 }
 
 .tilt-card img {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tilt-card:hover img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* 懸浮現代 Dock 欄 (Pill Dock) */

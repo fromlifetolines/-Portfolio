@@ -16,7 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="./css/style.css?v=2026_galaxy_os_v1">
+  <link rel="stylesheet" href="./css/style.css?v=2026_galaxy_os_v2">
 </head>
 <body class="relative bg-black text-white font-sans overflow-hidden antialiased select-none">
 
@@ -68,42 +68,68 @@
   </header>
 
   <!-- ========================================================
-       左側桌面檔案圖標欄 (Desktop Grid)
+       左側桌面檔案圖標欄 (Desktop Grid - 先鋒磨砂資料夾化)
        ======================================================== -->
   <aside class="desktop-grid">
-    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-about')">
-      <div class="icon-box">
-        <i data-lucide="user" class="w-6 h-6 text-orange-400 group-hover:scale-110 transition-transform"></i>
+    <!-- 01_ABOUT 資料夾 -->
+    <div class="desktop-icon group" onclick="openWindow('win-about')">
+      <div class="folder-container">
+        <div class="folder-tab"></div>
+        <div class="folder-back"></div>
+        <div class="folder-sheet"></div>
+        <div class="folder-front">
+          <i data-lucide="user" class="w-5 h-5 text-orange-400 group-hover:scale-110 transition-transform"></i>
+        </div>
       </div>
-      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow" data-i18n="icon_about">01_ABOUT.os</span>
+      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow mt-1" data-i18n="icon_about">01_ABOUT.os</span>
     </div>
 
-    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-services')">
-      <div class="icon-box">
-        <i data-lucide="briefcase" class="w-6 h-6 text-[#ccff00] group-hover:scale-110 transition-transform"></i>
+    <!-- 02_SERVICES 資料夾 -->
+    <div class="desktop-icon group" onclick="openWindow('win-services')">
+      <div class="folder-container">
+        <div class="folder-tab"></div>
+        <div class="folder-back"></div>
+        <div class="folder-sheet"></div>
+        <div class="folder-front">
+          <i data-lucide="briefcase" class="w-5 h-5 text-[#ccff00] group-hover:scale-110 transition-transform"></i>
+        </div>
       </div>
-      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow" data-i18n="icon_services">02_SERVICES.os</span>
+      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow mt-1" data-i18n="icon_services">02_SERVICES.os</span>
     </div>
 
-    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-projects')">
-      <div class="icon-box">
-        <i data-lucide="layers" class="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+    <!-- 03_PROJECTS 資料夾 -->
+    <div class="desktop-icon group" onclick="openWindow('win-projects')">
+      <div class="folder-container">
+        <div class="folder-tab"></div>
+        <div class="folder-back"></div>
+        <div class="folder-sheet"></div>
+        <div class="folder-front">
+          <i data-lucide="layers" class="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+        </div>
       </div>
-      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow" data-i18n="icon_projects">03_PROJECTS.os</span>
+      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow mt-1" data-i18n="icon_projects">03_PROJECTS.os</span>
     </div>
 
-    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-showreel')">
-      <div class="icon-box">
-        <i data-lucide="play-circle" class="w-6 h-6 text-pink-400 group-hover:scale-110 transition-transform"></i>
+    <!-- 04_SHOWREEL 影音磁帶 / 播放文件 -->
+    <div class="desktop-icon group" onclick="openWindow('win-showreel')">
+      <div class="media-container">
+        <div class="media-tape-spools"></div>
+        <i data-lucide="play-circle" class="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform mt-1"></i>
       </div>
-      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow" data-i18n="icon_showreel">04_SHOWREEL.mp4</span>
+      <span class="mono text-[10px] text-zinc-300 group-hover:text-white tracking-wider uppercase drop-shadow mt-1" data-i18n="icon_showreel">04_SHOWREEL.mp4</span>
     </div>
 
-    <div class="desktop-icon flex flex-col items-center cursor-pointer group" onclick="openWindow('win-nfc')">
-      <div class="icon-box">
-        <i data-lucide="cpu" class="w-6 h-6 text-[#ccff00] group-hover:scale-110 transition-transform"></i>
+    <!-- 05_NFC 資料夾 -->
+    <div class="desktop-icon group" onclick="openWindow('win-nfc')">
+      <div class="folder-container">
+        <div class="folder-tab"></div>
+        <div class="folder-back"></div>
+        <div class="folder-sheet"></div>
+        <div class="folder-front">
+          <i data-lucide="cpu" class="w-5 h-5 text-[#ccff00] group-hover:scale-110 transition-transform"></i>
+        </div>
       </div>
-      <span class="mono text-[10px] text-[#ccff00] group-hover:text-[#e5ff80] tracking-wider uppercase drop-shadow font-bold" data-i18n="icon_nfc">05_NFC.os</span>
+      <span class="mono text-[10px] text-[#ccff00] group-hover:text-[#e5ff80] tracking-wider uppercase drop-shadow font-bold mt-1" data-i18n="icon_nfc">05_NFC.os</span>
     </div>
   </aside>
 
@@ -371,7 +397,7 @@
         <div class="tilt-card group">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/aura-exploded.jpg" alt="AURA 空間聲學耳機系統" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p1_tag">
               [ 概念設計 / 3D 視覺系統 ]
             </div>
@@ -388,7 +414,7 @@
         <div class="tilt-card group">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/oat-packaging.jpg" alt="OAT & BOTANIC 純素冷萃低碳咖啡" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[#ccff00]" data-i18n="p2_tag">
               [ 包裝設計 / D2C 電商排版 ]
             </div>
@@ -405,7 +431,7 @@
         <div class="tilt-card group">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/nexus-ui.jpg" alt="NEXUS AI 模組化協作平台" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-cyan-400" data-i18n="p3_tag">
               [ UI/UX 設計 / 節點畫布系統 ]
             </div>
@@ -425,7 +451,7 @@
         <div class="tilt-card group">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/marketing-ads.jpg" alt="HYDRATE LAB 全渠道廣告架構" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p4_tag">
               [ 廣告投放 / 高轉換 Landing Page ]
             </div>
@@ -442,7 +468,7 @@
         <div class="tilt-card group">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/chrono-ui.jpg" alt="CHRONO ARCHIVE 鐘錶知識庫" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-emerald-400" data-i18n="p5_tag">
               [ 內容工程 / 知識典藏介面 ]
             </div>
@@ -459,7 +485,7 @@
         <div class="tilt-card group">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/brand-identity.jpg" alt="From Life To Lines 生活線條 品牌識別" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-pink-400" data-i18n="p6_tag">
               [ 品牌識別 / 視覺系統指南 ]
             </div>

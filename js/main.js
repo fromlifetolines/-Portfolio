@@ -133,30 +133,47 @@ function init3D() {
     varying vec3 vN; varying vec3 vP; varying vec3 vLocal;
     void main(){
       vec3 wp = vLocal;
-      vec3 p1 = wp * 2.5 + vec3(time*0.04, time*0.05, -time*0.03);
-      vec3 p2 = wp * 6.5 - vec3(time*0.08, 0.0, time*0.06);
-      vec3 p3 = wp * 14.0 + vec3(0.0, -time*0.1, time*0.08);
-      float t = turb(p1) * 0.6 + fbm(p2) * 0.3 + noise3(p3) * 0.1;
-      t = clamp(t * 1.5 - 0.05, 0.0, 1.6);
       
-      vec3 dark  = vec3(0.40, 0.08, 0.0);
-      vec3 mid   = vec3(2.20, 0.75, 0.10);
-      vec3 hot   = vec3(3.60, 2.10, 0.45);
-      vec3 white = vec3(4.80, 3.80, 2.50);
+      // Multi-Octave boiling plasma noise
+      vec3 p1 = wp * 3.0 + vec3(time * 0.05, time * 0.06, -time * 0.04);
+      vec3 p2 = wp * 7.5 - vec3(time * 0.09, 0.0, time * 0.07);
+      vec3 p3 = wp * 16.0 + vec3(0.0, -time * 0.14, time * 0.1);
+      
+      // Solar granulation cells (米粒組織)
+      float gran = turb(wp * 22.0 + vec3(time * 0.12, 0.0, 0.0)) * 0.45;
+      float plasma = turb(p1) * 0.55 + fbm(p2) * 0.35 + noise3(p3) * 0.15 + gran * 0.2;
+      plasma = clamp(plasma * 1.6 - 0.1, 0.0, 1.8);
+      
+      // Thermonuclear gradient: Magma Red -> Intense Orange -> Radiant Gold -> Superhot White
+      vec3 magmaRed  = vec3(0.48, 0.06, 0.01);
+      vec3 plasmaOrg  = vec3(2.40, 0.75, 0.08);
+      vec3 solarGold  = vec3(4.20, 2.30, 0.45);
+      vec3 coreWhite  = vec3(5.80, 4.60, 3.20);
+      
       vec3 col;
-      if (t < 0.45)      col = mix(dark, mid, t/0.45);
-      else if (t < 0.85) col = mix(mid, hot, (t-0.45)/0.4);
-      else               col = mix(hot, white, (t-0.85)/0.75);
+      if (plasma < 0.42) {
+        col = mix(magmaRed, plasmaOrg, plasma / 0.42);
+      } else if (plasma < 0.82) {
+        col = mix(plasmaOrg, solarGold, (plasma - 0.42) / 0.40);
+      } else {
+        col = mix(solarGold, coreWhite, (plasma - 0.82) / 0.78);
+      }
 
-      float spot = noise3(wp * 1.3 + vec3(20.0, 7.0, 11.0));
-      if (spot > 0.62) col *= mix(1.0, 0.15, smoothstep(0.62, 0.85, spot));
+      // Dynamic Sunspots (黑子群)
+      float spotNoise = noise3(wp * 1.6 + vec3(14.0, 8.0, 22.0));
+      if (spotNoise > 0.64) {
+        col *= mix(1.0, 0.12, smoothstep(0.64, 0.88, spotNoise));
+      }
 
-      float grain = noise3(wp * 35.0 + vec3(time*0.4, 0.0, 0.0));
-      col *= 0.85 + grain * 0.3;
+      // Micro-photosphere boiling grain
+      float grain = noise3(wp * 42.0 + vec3(time * 0.5, 0.0, 0.0));
+      col *= 0.88 + grain * 0.24;
 
+      // Limb Darkening & Rim Flare (邊緣日珥發光)
       vec3 vd = normalize(-vP);
       float rim = 1.0 - max(dot(normalize(vN), vd), 0.0);
-      col += vec3(3.5, 1.6, 0.4) * pow(rim, 2.0) * 0.6;
+      col += vec3(4.2, 1.9, 0.5) * pow(rim, 2.2) * 0.75;
+      
       gl_FragColor = vec4(col, 1.0);
     }
   `;
@@ -178,15 +195,22 @@ function init3D() {
     void main(){
       vec3 vd = normalize(-vP);
       float fres = 1.0 - max(dot(normalize(vN), vd), 0.0);
-      fres = pow(fres, 1.6);
+      fres = pow(fres, 1.4);
+      
       vec3 wp = vLocal;
-      float flame = turb(wp * 3.2 + vec3(time*0.08, -time*0.06, time*0.07));
-      flame += fbm(wp * 9.0 - vec3(0.0, time*0.12, time*0.1)) * 0.4;
-      flame = clamp(flame, 0.0, 1.8);
-      float prom = pow(noise3(wp * 1.8 + vec3(0.0, time*0.04, 0.0)), 3.0) * 4.0;
-      vec3 baseCol = vec3(2.8, 1.1, 0.3);
-      vec3 col = baseCol * (0.6 + flame + prom * 0.6);
-      float alpha = fres * (0.45 + flame * 0.35);
+      // High dynamic plasma eruptions & solar tongues (動態日珥噴發)
+      float flame1 = turb(wp * 3.5 + vec3(time * 0.1, -time * 0.08, time * 0.09));
+      float flame2 = fbm(wp * 10.0 - vec3(0.0, time * 0.16, time * 0.12)) * 0.5;
+      float flame = clamp(flame1 + flame2, 0.0, 2.2);
+      
+      // Giant Solar Prominences (日珥卷弧)
+      float prom = pow(noise3(wp * 2.2 + vec3(0.0, time * 0.06, 0.0)), 2.8) * 5.0;
+      
+      vec3 baseCol = vec3(3.2, 1.3, 0.35);
+      vec3 hotCol = vec3(5.0, 2.8, 0.9);
+      vec3 col = mix(baseCol, hotCol, flame * 0.45) * (0.7 + flame * 0.8 + prom * 0.8);
+      float alpha = fres * (0.5 + flame * 0.45);
+      
       gl_FragColor = vec4(col, alpha);
     }
   `;
@@ -456,16 +480,23 @@ function init3D() {
   const asteroidBelt = new THREE.Points(asteroidGeo, asteroidMat);
   solarSystem.add(asteroidBelt);
 
-  // --- 6. 宇宙深空背景 (4,000 顆立體彩色星光) ---
+  // --- 6. 宇宙深空背景 (4,000 顆立體彩色星光 + 初始位置記憶) ---
   const starGeo = new THREE.BufferGeometry();
   const starCount = 4000;
   const starPos = new Float32Array(starCount * 3);
+  const starOrigPos = new Float32Array(starCount * 3);
   const starCol = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount; i++) {
     const i3 = i * 3;
-    starPos[i3] = (Math.random() - 0.5) * 800;
-    starPos[i3 + 1] = (Math.random() - 0.5) * 800;
-    starPos[i3 + 2] = (Math.random() - 0.5) * 800;
+    const px = (Math.random() - 0.5) * 800;
+    const py = (Math.random() - 0.5) * 800;
+    const pz = (Math.random() - 0.5) * 800;
+    starPos[i3]     = px;
+    starPos[i3 + 1] = py;
+    starPos[i3 + 2] = pz;
+    starOrigPos[i3]     = px;
+    starOrigPos[i3 + 1] = py;
+    starOrigPos[i3 + 2] = pz;
 
     const t = Math.random();
     const c = t < 0.7 ? [1, 1, 1] : t < 0.88 ? [0.75, 0.88, 1] : [1, 0.85, 0.7];
@@ -475,11 +506,11 @@ function init3D() {
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
   starGeo.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
-  const starMat = new THREE.PointsMaterial({ size: 0.6, vertexColors: true, transparent: true, opacity: 0.85 });
+  const starMat = new THREE.PointsMaterial({ size: 0.65, vertexColors: true, transparent: true, opacity: 0.85 });
   const stars = new THREE.Points(starGeo, starMat);
   scene.add(stars);
 
-  // --- 7. 3D 鏡頭交互控制：滾輪平滑縮放 + 空白處拖曳旋轉 ---
+  // --- 7. 3D 鏡頭交互控制：滾輪平滑縮放 + 空白處拖曳旋轉 + 空間射線投射 ---
   let zoomDistance = 86;
   let targetZoomDistance = 86;
   const minZoom = 15;
@@ -493,6 +524,11 @@ function init3D() {
   let targetRotX = 0.55;
   let targetRotY = 0;
   let mouseX = 0, mouseY = 0;
+
+  // 滑鼠空間射線投射器 (用於星塵物理排斥漣漪)
+  const mouseRaycaster = new THREE.Raycaster();
+  const mouseScreenVec = new THREE.Vector2(-999, -999);
+  let hasMouseMoved = false;
 
   // 滑鼠滾輪縮放 (拉近拉遠)
   window.addEventListener('wheel', (e) => {
@@ -511,6 +547,10 @@ function init3D() {
   });
 
   window.addEventListener('mousemove', (e) => {
+    hasMouseMoved = true;
+    mouseScreenVec.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseScreenVec.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
     if (isDragging) {
       const deltaX = e.clientX - prevMouseX;
       const deltaY = e.clientY - prevMouseY;
@@ -563,6 +603,57 @@ function init3D() {
     sunMesh.rotation.y += 0.002;
     coronaMesh.rotation.y -= 0.001;
     asteroidBelt.rotation.y += 0.0008;
+
+    // --- 滑鼠物理斥力星塵漣漪 (Raycasting Dynamic Star Ripple) ---
+    if (hasMouseMoved) {
+      mouseRaycaster.setFromCamera(mouseScreenVec, camera);
+      const rayOrigin = mouseRaycaster.ray.origin;
+      const rayDir = mouseRaycaster.ray.direction;
+      const repulsionRadius = 18.0;
+      const repulsionForce = 9.0;
+      const radiusSq = repulsionRadius * repulsionRadius;
+      const posArr = starGeo.attributes.position.array;
+
+      for (let i = 0; i < starCount; i++) {
+        const i3 = i * 3;
+        const px = posArr[i3];
+        const py = posArr[i3 + 1];
+        const pz = posArr[i3 + 2];
+
+        // 空間射線投射：計算星辰至射線的最短垂直距離
+        const vx = px - rayOrigin.x;
+        const vy = py - rayOrigin.y;
+        const vz = pz - rayOrigin.z;
+        const t = vx * rayDir.x + vy * rayDir.y + vz * rayDir.z;
+
+        if (t > 0.0) {
+          const cx = rayOrigin.x + rayDir.x * t;
+          const cy = rayOrigin.y + rayDir.y * t;
+          const cz = rayOrigin.z + rayDir.z * t;
+
+          const diffX = px - cx;
+          const diffY = py - cy;
+          const diffZ = pz - cz;
+          const distSq = diffX * diffX + diffY * diffY + diffZ * diffZ;
+
+          // 當星辰進入滑鼠半徑 18 單位內時，產生向外推散的排斥位移
+          if (distSq < radiusSq && distSq > 0.0001) {
+            const dist = Math.sqrt(distSq);
+            const factor = (1.0 - dist / repulsionRadius) * repulsionForce;
+            const invDist = 1.0 / dist;
+            posArr[i3]     += diffX * invDist * factor;
+            posArr[i3 + 1] += diffY * invDist * factor;
+            posArr[i3 + 2] += diffZ * invDist * factor;
+          }
+        }
+
+        // 滑鼠移開後，粒子以平滑阻尼（Lerp 0.05）自然回彈歸位
+        posArr[i3]     += (starOrigPos[i3] - posArr[i3]) * 0.05;
+        posArr[i3 + 1] += (starOrigPos[i3 + 1] - posArr[i3 + 1]) * 0.05;
+        posArr[i3 + 2] += (starOrigPos[i3 + 2] - posArr[i3 + 2]) * 0.05;
+      }
+      starGeo.attributes.position.needsUpdate = true;
+    }
 
     planetNodes.forEach(node => {
       node.angle += node.speed * 0.3;
