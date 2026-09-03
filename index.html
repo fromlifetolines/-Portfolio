@@ -526,22 +526,14 @@
   </div>
 
   <!-- ========================================================
-       WINDOW 05: NFC 智慧名片 (背景 100% 滿版無裁切 + 極致通透)
+       WINDOW 05: NFC 智慧名片 (100% 同步 01~03 原版電影級鮮豔度 + 右側全景無裁切)
        ======================================================== -->
-  <div id="win-nfc" class="os-window relative overflow-hidden w-[95vw] max-w-[880px] top-20 left-3 md:left-[24vw] z-30 hidden !bg-black/20 !backdrop-blur-md border border-white/15 shadow-2xl">
+  <div id="win-nfc" class="os-window w-[95vw] max-w-[880px] top-20 left-3 md:left-[24vw] z-30 hidden">
     
-    <!-- 滿版無裁切動態背景影片層 -->
-    <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        class="w-full h-full object-cover object-center filter brightness-[1.05] contrast-[1.02]"
-        src="./assets/studio-hero-loop.mp4"
-      ></video>
-      <!-- 微透漸層，確保文字易讀性同時保留 100% 鮮豔光彩 -->
-      <div class="absolute inset-0 bg-black/35 pointer-events-none"></div>
+    <!-- 視窗內部電影級循環動態視頻背景 (Kinetic Studio Video Loop - 100% 同步 01~03) -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[32px]">
+      <video autoplay muted loop playsinline class="window-video-bg" style="object-position: 85% center;" src="./assets/studio-hero-loop.mp4"></video>
+      <div class="window-video-overlay"></div>
     </div>
 
     <!-- 視窗頂部標題列 -->
@@ -576,8 +568,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
         <!-- 01. OCR 智能名片掃描 -->
-        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-[#ccff00]/50 transition-all space-y-2.5">
-          <div class="flex items-center justify-between border-b border-white/15 pb-2">
+        <div class="p-5 rounded-xl bg-zinc-950/30 backdrop-blur-sm border border-white/10 hover:border-[#ccff00]/50 transition-all space-y-2.5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="scan-line" class="w-4 h-4 text-[#ccff00]"></i> 01. OCR 名片掃描辨識系統
             </h4>
@@ -589,8 +581,8 @@
         </div>
 
         <!-- 02. 雙向交換聯絡資訊 -->
-        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-cyan-400/50 transition-all space-y-2.5">
-          <div class="flex items-center justify-between border-b border-white/15 pb-2">
+        <div class="p-5 rounded-xl bg-zinc-950/30 backdrop-blur-sm border border-white/10 hover:border-cyan-400/50 transition-all space-y-2.5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="arrow-left-right" class="w-4 h-4 text-cyan-400"></i> 02. 雙向聯絡資訊即時交換
             </h4>
@@ -602,8 +594,8 @@
         </div>
 
         <!-- 03. 行銷成效追蹤 -->
-        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-orange-400/50 transition-all space-y-2.5">
-          <div class="flex items-center justify-between border-b border-white/15 pb-2">
+        <div class="p-5 rounded-xl bg-zinc-950/30 backdrop-blur-sm border border-white/10 hover:border-orange-400/50 transition-all space-y-2.5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="line-chart" class="w-4 h-4 text-orange-400"></i> 03. 行銷追蹤與成效分析 (Analytics)
             </h4>
@@ -615,8 +607,8 @@
         </div>
 
         <!-- 04. 企業級 CRM 串接 -->
-        <div class="p-5 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-emerald-400/50 transition-all space-y-2.5">
-          <div class="flex items-center justify-between border-b border-white/15 pb-2">
+        <div class="p-5 rounded-xl bg-zinc-950/30 backdrop-blur-sm border border-white/10 hover:border-emerald-400/50 transition-all space-y-2.5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2">
             <h4 class="syne text-sm font-bold text-white flex items-center gap-2">
               <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i> 04. 企業矩陣授權與 CRM 串接
             </h4>
@@ -630,7 +622,7 @@
       </div>
 
       <!-- 底部硬體工藝規格膠囊 -->
-      <div class="p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div class="p-4 rounded-xl bg-zinc-950/30 backdrop-blur-sm border border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div class="flex flex-wrap items-center gap-2">
           <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300 font-mono text-[11px]">沉黑霧面防刮 PVC</span>
           <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300 font-mono text-[11px]">NTAG216 高頻晶片</span>
@@ -641,7 +633,7 @@
       </div>
 
       <!-- 底部直達官方首頁列 -->
-      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-xs text-zinc-300">
+      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-zinc-950/30 backdrop-blur-sm border border-white/10 text-xs text-zinc-300">
         <div class="flex flex-wrap items-center gap-4 mono text-[11px]">
           <a href="https://www.fromlifetolines.com" target="_blank" class="hover:text-[#ccff00] transition flex items-center gap-1.5 font-bold text-white">
             <i data-lucide="globe" class="w-3.5 h-3.5 text-[#ccff00]"></i> 官方網站：www.fromlifetolines.com
