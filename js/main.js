@@ -134,45 +134,43 @@ function init3D() {
     void main(){
       vec3 wp = vLocal;
       
-      // Multi-Octave boiling plasma noise
-      vec3 p1 = wp * 3.0 + vec3(time * 0.05, time * 0.06, -time * 0.04);
-      vec3 p2 = wp * 7.5 - vec3(time * 0.09, 0.0, time * 0.07);
-      vec3 p3 = wp * 16.0 + vec3(0.0, -time * 0.14, time * 0.1);
+      // Multi-Octave boiling plasma noise with sharp convection cells
+      vec3 p1 = wp * 3.2 + vec3(time * 0.06, time * 0.08, -time * 0.05);
+      vec3 p2 = wp * 8.5 - vec3(time * 0.12, 0.0, time * 0.09);
+      vec3 p3 = wp * 18.0 + vec3(0.0, -time * 0.18, time * 0.14);
       
-      // Solar granulation cells (米粒組織)
-      float gran = turb(wp * 22.0 + vec3(time * 0.12, 0.0, 0.0)) * 0.45;
-      float plasma = turb(p1) * 0.55 + fbm(p2) * 0.35 + noise3(p3) * 0.15 + gran * 0.2;
-      plasma = clamp(plasma * 1.6 - 0.1, 0.0, 1.8);
+      // 米粒對流組織 (Convection granulation) 階梯性銳化
+      float gran = turb(wp * 26.0 + vec3(time * 0.15, 0.0, 0.0));
+      gran = smoothstep(0.25, 0.75, gran);
       
-      // Thermonuclear gradient: Magma Red -> Intense Orange -> Radiant Gold -> Superhot White
-      vec3 magmaRed  = vec3(0.48, 0.06, 0.01);
-      vec3 plasmaOrg  = vec3(2.40, 0.75, 0.08);
-      vec3 solarGold  = vec3(4.20, 2.30, 0.45);
-      vec3 coreWhite  = vec3(5.80, 4.60, 3.20);
+      float plasma = turb(p1) * 0.55 + fbm(p2) * 0.35 + noise3(p3) * 0.15 + gran * 0.35;
+      
+      // 色彩精確階梯性銳化：純白熱核 (#FFFFFF)、熾熱金 (#FFB700)、狂暴深熔岩紅 (#CC2200)
+      vec3 magmaRed  = vec3(0.85, 0.14, 0.0);   // #CC2200
+      vec3 hotGold   = vec3(4.20, 2.30, 0.15);  // #FFB700
+      vec3 whiteCore = vec3(7.20, 6.40, 5.80);  // #FFFFFF
       
       vec3 col;
-      if (plasma < 0.42) {
-        col = mix(magmaRed, plasmaOrg, plasma / 0.42);
-      } else if (plasma < 0.82) {
-        col = mix(plasmaOrg, solarGold, (plasma - 0.42) / 0.40);
+      if (plasma < 0.45) {
+        col = mix(magmaRed, hotGold, smoothstep(0.08, 0.45, plasma));
       } else {
-        col = mix(solarGold, coreWhite, (plasma - 0.82) / 0.78);
+        col = mix(hotGold, whiteCore, smoothstep(0.45, 1.15, plasma));
       }
 
-      // Dynamic Sunspots (黑子群)
-      float spotNoise = noise3(wp * 1.6 + vec3(14.0, 8.0, 22.0));
-      if (spotNoise > 0.64) {
-        col *= mix(1.0, 0.12, smoothstep(0.64, 0.88, spotNoise));
+      // 動態太陽黑子群 (Sunspots)
+      float spotNoise = noise3(wp * 1.8 + vec3(14.0, 8.0, 22.0));
+      if (spotNoise > 0.65) {
+        col *= mix(1.0, 0.08, smoothstep(0.65, 0.88, spotNoise));
       }
 
-      // Micro-photosphere boiling grain
-      float grain = noise3(wp * 42.0 + vec3(time * 0.5, 0.0, 0.0));
-      col *= 0.88 + grain * 0.24;
+      // 微光球沸騰米粒組織 (Micro-photospheric grain)
+      float grain = noise3(wp * 48.0 + vec3(time * 0.6, 0.0, 0.0));
+      col *= 0.85 + grain * 0.3;
 
-      // Limb Darkening & Rim Flare (邊緣日珥發光)
+      // 邊緣高對比發光 (Limb darkening & Prominence rim)
       vec3 vd = normalize(-vP);
       float rim = 1.0 - max(dot(normalize(vN), vd), 0.0);
-      col += vec3(4.2, 1.9, 0.5) * pow(rim, 2.2) * 0.75;
+      col += vec3(5.5, 2.8, 0.6) * pow(rim, 2.5) * 0.9;
       
       gl_FragColor = vec4(col, 1.0);
     }
@@ -195,22 +193,28 @@ function init3D() {
     void main(){
       vec3 vd = normalize(-vP);
       float fres = 1.0 - max(dot(normalize(vN), vd), 0.0);
-      fres = pow(fres, 1.4);
+      fres = pow(fres, 1.3);
       
       vec3 wp = vLocal;
-      // High dynamic plasma eruptions & solar tongues (動態日珥噴發)
-      float flame1 = turb(wp * 3.5 + vec3(time * 0.1, -time * 0.08, time * 0.09));
-      float flame2 = fbm(wp * 10.0 - vec3(0.0, time * 0.16, time * 0.12)) * 0.5;
-      float flame = clamp(flame1 + flame2, 0.0, 2.2);
+      // 狂暴熱核噴發火焰與旋轉日珥弧線 (Solar Prominence Loops & Eruptions)
+      float flame1 = turb(wp * 4.0 + vec3(time * 0.12, -time * 0.08, time * 0.1));
+      float flame2 = fbm(wp * 9.0 - vec3(0.0, time * 0.18, time * 0.14)) * 0.5;
+      float flame = flame1 + flame2;
       
-      // Giant Solar Prominences (日珥卷弧)
-      float prom = pow(noise3(wp * 2.2 + vec3(0.0, time * 0.06, 0.0)), 2.8) * 5.0;
+      // 動態日珥卷弧 (Prominence Arcs) - 尖銳高對比能量環
+      float prom = pow(noise3(wp * 2.5 + vec3(0.0, time * 0.08, 0.0)), 2.8) * 4.5;
       
-      vec3 baseCol = vec3(3.2, 1.3, 0.35);
-      vec3 hotCol = vec3(5.0, 2.8, 0.9);
-      vec3 col = mix(baseCol, hotCol, flame * 0.45) * (0.7 + flame * 0.8 + prom * 0.8);
-      float alpha = fres * (0.5 + flame * 0.45);
-      
+      // 階梯性純白熱核、熾熱金與狂暴深熔岩紅
+      vec3 magmaRed  = vec3(1.2, 0.14, 0.0);   // #CC2200
+      vec3 hotGold   = vec3(4.5, 2.4, 0.15);   // #FFB700
+      vec3 whiteCore = vec3(7.0, 6.2, 5.5);    // #FFFFFF
+
+      float intensity = flame + prom * 0.7;
+      vec3 col = mix(magmaRed, hotGold, smoothstep(0.2, 0.8, intensity));
+      col = mix(col, whiteCore, smoothstep(0.8, 1.5, intensity));
+
+      // 邊緣火舌銳利切斷，拒絕模糊煙霧感
+      float alpha = fres * smoothstep(0.15, 0.85, intensity);
       gl_FragColor = vec4(col, alpha);
     }
   `;
@@ -227,7 +231,7 @@ function init3D() {
 
   // 日冕動態火焰
   const coronaUniforms = { time: { value: 0 } };
-  const coronaGeo = new THREE.SphereGeometry(6.5, 64, 64);
+  const coronaGeo = new THREE.SphereGeometry(6.6, 64, 64);
   const coronaMat = new THREE.ShaderMaterial({
     vertexShader: CORONA_VS,
     fragmentShader: CORONA_FS,
@@ -294,21 +298,25 @@ function init3D() {
       vec3 sunDir = normalize(vSunDir);
       float nDotL = dot(normal, sunDir);
 
-      float dayFactor = smoothstep(-0.15, 0.25, nDotL);
-      float nightFactor = 1.0 - smoothstep(-0.25, 0.1, nDotL);
+      // 晨昏線自然過渡
+      float dayFactor = smoothstep(-0.10, 0.20, nDotL);
+      float nightFactor = 1.0 - smoothstep(-0.20, 0.05, nDotL);
 
       vec4 dayCol = texture2D(dayTexture, vUv);
       vec4 nightCol = texture2D(nightTexture, vUv);
 
-      vec3 ambient = vec3(0.02, 0.04, 0.08) * dayCol.rgb;
-      vec3 daylight = dayCol.rgb * (dayFactor * 1.25);
-      vec3 nightlight = nightCol.rgb * vec3(1.8, 1.4, 0.85) * nightFactor;
+      // 白天光照：保持 NASA 高清大陸、山脈與海洋清晰飽和，杜絕整片死白
+      vec3 ambient = vec3(0.015, 0.025, 0.04) * dayCol.rgb;
+      vec3 daylight = dayCol.rgb * (dayFactor * 1.08) + ambient;
+      vec3 nightlight = nightCol.rgb * vec3(1.8, 1.3, 0.7) * nightFactor;
 
+      // 大氣散射輝光：嚴格限制在星球極外緣輪廓 (Rim Limb，厚度 < 0.05)
       vec3 viewDir = normalize(vViewPos);
       float rim = 1.0 - max(dot(normal, viewDir), 0.0);
-      vec3 atmosphereGlow = vec3(0.18, 0.55, 1.0) * pow(rim, 3.2) * dayFactor * 0.9;
+      float thinRim = pow(rim, 6.0) * smoothstep(0.75, 1.0, rim);
+      vec3 atmosphereGlow = vec3(0.2, 0.6, 1.0) * thinRim * (dayFactor * 0.85);
 
-      vec3 finalCol = daylight + ambient + nightlight + atmosphereGlow;
+      vec3 finalCol = daylight + nightlight + atmosphereGlow;
       gl_FragColor = vec4(finalCol, 1.0);
     }
   `;
@@ -338,8 +346,9 @@ function init3D() {
       float nDotL = dot(normalize(vWorldNormal), normalize(vSunDir));
       float dayFactor = smoothstep(-0.15, 0.25, nDotL);
 
-      vec3 cloudColor = vec3(1.0, 1.0, 1.0) * (dayFactor * 1.1 + 0.05);
-      float alpha = cloudMap.r * (dayFactor * 0.65 + 0.15);
+      // 薄紗飄動雲層：隨晝夜自然變換，透明度上限精準鎖定 0.28
+      vec3 cloudColor = vec3(0.96, 0.98, 1.0) * (dayFactor * 0.85 + 0.15);
+      float alpha = cloudMap.r * 0.28 * (dayFactor * 0.7 + 0.3);
 
       gl_FragColor = vec4(cloudColor, alpha);
     }
@@ -398,7 +407,7 @@ function init3D() {
     pMesh.position.x = p.dist;
     orbitGroup.add(pMesh);
 
-    // 地球專屬：動態半透明大氣雲層與月球
+    // 地球專屬：薄紗大氣雲層 (NormalBlending + 0.28 opacity) 與月球
     if (p.isEarth) {
       const cloudGeo = new THREE.SphereGeometry(p.size + 0.05, 64, 64);
       const cloudMat = new THREE.ShaderMaterial({
@@ -408,7 +417,8 @@ function init3D() {
           cloudTexture: { value: textureLoader.load('./assets/planets/earth_clouds.jpg') }
         },
         transparent: true,
-        blending: THREE.AdditiveBlending
+        depthWrite: false,
+        blending: THREE.NormalBlending
       });
       const cloudMesh = new THREE.Mesh(cloudGeo, cloudMat);
       pMesh.add(cloudMesh);
@@ -525,9 +535,8 @@ function init3D() {
   let targetRotY = 0;
   let mouseX = 0, mouseY = 0;
 
-  // 滑鼠空間射線投射器 (用於星塵物理排斥漣漪)
-  const mouseRaycaster = new THREE.Raycaster();
-  const mouseScreenVec = new THREE.Vector2(-999, -999);
+  // 滑鼠螢幕像素座標 (用於星塵超感流體真空漣漪)
+  let mousePixelX = -9999, mousePixelY = -9999;
   let hasMouseMoved = false;
 
   // 滑鼠滾輪縮放 (拉近拉遠)
@@ -548,8 +557,8 @@ function init3D() {
 
   window.addEventListener('mousemove', (e) => {
     hasMouseMoved = true;
-    mouseScreenVec.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseScreenVec.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    mousePixelX = e.clientX;
+    mousePixelY = e.clientY;
 
     if (isDragging) {
       const deltaX = e.clientX - prevMouseX;
@@ -576,6 +585,12 @@ function init3D() {
     targetRotX = 0.55;
     targetRotY = 0;
   });
+
+  // 預先配置星塵矩陣運算向量，避免每幀垃圾回收 (Zero GC)
+  const projMatrix = new THREE.Matrix4();
+  const camDir = new THREE.Vector3();
+  const camRight = new THREE.Vector3();
+  const camUp = new THREE.Vector3();
 
   let clock = new THREE.Clock();
 
@@ -604,53 +619,63 @@ function init3D() {
     coronaMesh.rotation.y -= 0.001;
     asteroidBelt.rotation.y += 0.0008;
 
-    // --- 滑鼠物理斥力星塵漣漪 (Raycasting Dynamic Star Ripple) ---
+    // --- 星塵粒子超感流體推開漣漪 (Screen-Space 140px Radius & Force 35.0，有界目標位移) ---
     if (hasMouseMoved) {
-      mouseRaycaster.setFromCamera(mouseScreenVec, camera);
-      const rayOrigin = mouseRaycaster.ray.origin;
-      const rayDir = mouseRaycaster.ray.direction;
-      const repulsionRadius = 18.0;
-      const repulsionForce = 9.0;
-      const radiusSq = repulsionRadius * repulsionRadius;
+      projMatrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+      const me = projMatrix.elements;
+      camera.getWorldDirection(camDir);
+      camRight.crossVectors(camDir, camera.up).normalize();
+      camUp.crossVectors(camRight, camDir).normalize();
+      const rx = camRight.x, ry = camRight.y, rz = camRight.z;
+      const ux = camUp.x, uy = camUp.y, uz = camUp.z;
+
       const posArr = starGeo.attributes.position.array;
+      const radiusPx = 140.0;
+      const radiusSq = radiusPx * radiusPx;
+      const forceMultiplier = 35.0;
 
       for (let i = 0; i < starCount; i++) {
         const i3 = i * 3;
-        const px = posArr[i3];
-        const py = posArr[i3 + 1];
-        const pz = posArr[i3 + 2];
+        const ox = starOrigPos[i3];
+        const oy = starOrigPos[i3 + 1];
+        const oz = starOrigPos[i3 + 2];
 
-        // 空間射線投射：計算星辰至射線的最短垂直距離
-        const vx = px - rayOrigin.x;
-        const vy = py - rayOrigin.y;
-        const vz = pz - rayOrigin.z;
-        const t = vx * rayDir.x + vy * rayDir.y + vz * rayDir.z;
+        // 投影原始座標至 2D 螢幕像素
+        const w = me[3] * ox + me[7] * oy + me[11] * oz + me[15];
+        let targetX = ox;
+        let targetY = oy;
+        let targetZ = oz;
 
-        if (t > 0.0) {
-          const cx = rayOrigin.x + rayDir.x * t;
-          const cy = rayOrigin.y + rayDir.y * t;
-          const cz = rayOrigin.z + rayDir.z * t;
+        if (w > 0.0) {
+          const invW = 1.0 / w;
+          const ndcX = (me[0] * ox + me[4] * oy + me[8] * oz + me[12]) * invW;
+          const ndcY = (me[1] * ox + me[5] * oy + me[9] * oz + me[13]) * invW;
+          const sx = (ndcX * 0.5 + 0.5) * window.innerWidth;
+          const sy = (-ndcY * 0.5 + 0.5) * window.innerHeight;
 
-          const diffX = px - cx;
-          const diffY = py - cy;
-          const diffZ = pz - cz;
-          const distSq = diffX * diffX + diffY * diffY + diffZ * diffZ;
+          const dx = sx - mousePixelX;
+          const dy = sy - mousePixelY;
+          const distSq = dx * dx + dy * dy;
 
-          // 當星辰進入滑鼠半徑 18 單位內時，產生向外推散的排斥位移
-          if (distSq < radiusSq && distSq > 0.0001) {
+          // 當游標進入 140 像素半徑內，計算背離游標的外推目標位置
+          if (distSq < radiusSq && distSq > 0.001) {
             const dist = Math.sqrt(distSq);
-            const factor = (1.0 - dist / repulsionRadius) * repulsionForce;
-            const invDist = 1.0 / dist;
-            posArr[i3]     += diffX * invDist * factor;
-            posArr[i3 + 1] += diffY * invDist * factor;
-            posArr[i3 + 2] += diffZ * invDist * factor;
+            const force = (1.0 - dist / radiusPx) * forceMultiplier;
+            const invD = 1.0 / dist;
+            const uX = dx * invD;
+            const uY = -dy * invD;
+            const depthScale = Math.max(w * 0.012, 0.4);
+
+            targetX += (rx * uX + ux * uY) * force * depthScale;
+            targetY += (ry * uX + uy * uY) * force * depthScale;
+            targetZ += (rz * uX + uz * uY) * force * depthScale;
           }
         }
 
-        // 滑鼠移開後，粒子以平滑阻尼（Lerp 0.05）自然回彈歸位
-        posArr[i3]     += (starOrigPos[i3] - posArr[i3]) * 0.05;
-        posArr[i3 + 1] += (starOrigPos[i3 + 1] - posArr[i3 + 1]) * 0.05;
-        posArr[i3 + 2] += (starOrigPos[i3 + 2] - posArr[i3 + 2]) * 0.05;
+        // 平滑彈簧阻尼自然回彈 (Lerp 0.08，嚴格有界，永不飛散)
+        posArr[i3]     += (targetX - posArr[i3]) * 0.08;
+        posArr[i3 + 1] += (targetY - posArr[i3 + 1]) * 0.08;
+        posArr[i3 + 2] += (targetZ - posArr[i3 + 2]) * 0.08;
       }
       starGeo.attributes.position.needsUpdate = true;
     }
@@ -1078,30 +1103,39 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage('zh');
   }
 
-  // macOS Dock Hover Scale Physics
+  // macOS Dock True Gaussian Magnification Physics (Jitter-free using layout offsets)
   const dock = document.getElementById('main-dock');
   if (dock) {
     const items = dock.querySelectorAll('.dock-item');
+    const maxRadius = 120;
+
     dock.addEventListener('mousemove', (e) => {
+      const dockRect = dock.getBoundingClientRect();
       const mouseX = e.clientX;
 
       items.forEach(item => {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.left + itemRect.width / 2;
+        // 使用 offsetLeft + dockRect.left 計算未受 transform 縮放影響的固定排版中心點，杜絕抖動震盪
+        const itemCenter = dockRect.left + item.offsetLeft + item.offsetWidth / 2;
         const distance = Math.abs(mouseX - itemCenter);
-        const maxDist = 120;
 
-        if (distance < maxDist) {
-          const scale = 1 + (0.45 * (1 - distance / maxDist));
-          gsap.to(item, { scale: scale, y: -(scale - 1) * 16, duration: 0.15 });
+        if (distance < maxRadius) {
+          // 高斯衰減曲線 (影響半徑 120px)
+          const norm = distance / maxRadius;
+          const curve = Math.cos((norm * Math.PI) / 2); // 中心為 1.0，邊界為 0.0
+          // 滑鼠正上方圖標放大至 1.55 倍，兩側相鄰依序為 1.28 倍、1.12 倍
+          const scale = 1.0 + 0.55 * Math.pow(curve, 1.45);
+          const yLift = -(scale - 1.0) * 22;
+          gsap.to(item, { scale: scale, y: yLift, duration: 0.1, overwrite: 'auto', ease: 'power2.out' });
         } else {
-          gsap.to(item, { scale: 1, y: 0, duration: 0.15 });
+          gsap.to(item, { scale: 1.0, y: 0, duration: 0.15, overwrite: 'auto', ease: 'power2.out' });
         }
       });
     });
 
     dock.addEventListener('mouseleave', () => {
-      items.forEach(item => gsap.to(item, { scale: 1, y: 0, duration: 0.25 }));
+      items.forEach(item => {
+        gsap.to(item, { scale: 1.0, y: 0, duration: 0.28, overwrite: 'auto', ease: 'elastic.out(1, 0.4)' });
+      });
     });
   }
 

@@ -16,7 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="./css/style.css?v=2026_galaxy_os_v2">
+  <link rel="stylesheet" href="./css/style.css?v=2026_galaxy_os_v3">
 </head>
 <body class="relative bg-black text-white font-sans overflow-hidden antialiased select-none">
 
@@ -363,11 +363,11 @@
   <!-- ========================================================
        WINDOW 03: 精選作品 (FEATURED WORKS // 6 大旗艦案例)
        ======================================================== -->
-  <div id="win-projects" class="os-window w-[94vw] max-w-[1140px] top-16 left-4 md:left-[7vw] z-20 hidden">
-    <!-- 視窗內部電影級循環動態視頻背景 -->
+  <div id="win-projects" class="os-window w-[94vw] max-w-[1140px] top-16 left-4 md:left-[7vw] z-20 hidden !bg-black/20 !backdrop-blur-md border border-white/15 overflow-hidden">
+    <!-- 視窗內部電影級循環動態視頻背景 (100% 滿版無裁切、色彩飽和鮮明) -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-[32px]">
-      <video autoplay muted loop playsinline class="window-video-bg" style="object-position: 85% center;" src="./assets/studio-hero-loop.mp4"></video>
-      <div class="window-video-overlay"></div>
+      <video autoplay muted loop playsinline class="window-video-bg filter brightness-[1.15] contrast-[1.1] saturate-[1.3]" style="object-position: 85% center;" src="./assets/studio-hero-loop.mp4"></video>
+      <div class="window-video-overlay !hidden"></div>
     </div>
 
     <!-- 視窗標題列 -->
@@ -390,15 +390,14 @@
         <p class="text-xs text-zinc-300 mt-1" data-i18n="win_proj_desc">6 大旗艦實體與數位落地案例：涵蓋 3D 視覺、包裝工程、互動介面與全渠道廣告成效。</p>
       </div>
 
-      <!-- 6 大精選專案卡片 (2 欄大片風格排版) -->
+      <!-- 6 大精選專案卡片 (輕透微光玻璃卡片，完全透出後方游魚與水光動態) -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <!-- Case 01: AURA 空間聲學耳機系統 -->
-        <div class="tilt-card group">
+        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/aura-exploded.jpg" alt="AURA 空間聲學耳機系統" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p1_tag">
+            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p1_tag">
               [ 概念設計 / 3D 視覺系統 ]
             </div>
           </div>
@@ -411,11 +410,10 @@
         </div>
 
         <!-- Case 02: OAT & BOTANIC 純素冷萃低碳咖啡 -->
-        <div class="tilt-card group">
+        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/oat-packaging.jpg" alt="OAT & BOTANIC 純素冷萃低碳咖啡" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[#ccff00]" data-i18n="p2_tag">
+            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-[#ccff00]" data-i18n="p2_tag">
               [ 包裝設計 / D2C 電商排版 ]
             </div>
           </div>
@@ -428,11 +426,10 @@
         </div>
 
         <!-- Case 03: NEXUS AI 模組化協作平台 -->
-        <div class="tilt-card group">
+        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/nexus-ui.jpg" alt="NEXUS AI 模組化協作平台" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-cyan-400" data-i18n="p3_tag">
+            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-cyan-400" data-i18n="p3_tag">
               [ UI/UX 設計 / 節點畫布系統 ]
             </div>
           </div>
@@ -448,11 +445,10 @@
         </div>
 
         <!-- Case 04: HYDRATE LAB 全渠道廣告架構 -->
-        <div class="tilt-card group">
+        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/marketing-ads.jpg" alt="HYDRATE LAB 全渠道廣告架構" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p4_tag">
+            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-orange-400" data-i18n="p4_tag">
               [ 廣告投放 / 高轉換 Landing Page ]
             </div>
           </div>
@@ -465,11 +461,10 @@
         </div>
 
         <!-- Case 05: CHRONO ARCHIVE 鐘錶知識庫 -->
-        <div class="tilt-card group">
+        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/chrono-ui.jpg" alt="CHRONO ARCHIVE 鐘錶知識庫" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-emerald-400" data-i18n="p5_tag">
+            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-emerald-400" data-i18n="p5_tag">
               [ 內容工程 / 知識典藏介面 ]
             </div>
           </div>
@@ -482,11 +477,10 @@
         </div>
 
         <!-- Case 06: From Life To Lines 生活線條 品牌識別 -->
-        <div class="tilt-card group">
+        <div class="tilt-card group bg-white/5 border border-white/10 hover:border-cyan-400/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all">
           <div class="relative aspect-[16/10] overflow-hidden">
             <img src="./assets/brand-identity.jpg" alt="From Life To Lines 生活線條 品牌識別" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-pink-400" data-i18n="p6_tag">
+            <div class="absolute top-3 right-3 mono text-[10px] px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-pink-400" data-i18n="p6_tag">
               [ 品牌識別 / 視覺系統指南 ]
             </div>
           </div>
@@ -683,6 +677,14 @@
       <div class="dock-tooltip" data-i18n="dock_nfc">05. 智慧名片</div>
     </div>
     <div class="w-[1px] h-6 bg-white/15 self-center mx-1"></div>
+    <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="dock-item" aria-label="Instagram">
+      <svg class="w-5 h-5 text-pink-400 fill-none stroke-current hover:text-white transition" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+      <div class="dock-tooltip">Instagram</div>
+    </a>
     <a href="https://github.com/fromlifetolines" target="_blank" class="dock-item" aria-label="GitHub">
       <svg class="w-5 h-5 text-zinc-300 fill-current hover:text-white transition" viewBox="0 0 24 24">
         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
@@ -691,6 +693,6 @@
     </a>
   </footer>
 
-  <script src="./js/main.js?v=2026_galaxy_os_v1"></script>
+  <script src="./js/main.js?v=2026_galaxy_os_v3"></script>
 </body>
 </html>
