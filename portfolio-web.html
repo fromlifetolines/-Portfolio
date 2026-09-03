@@ -1,364 +1,92 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS AI // 模組化協作平台與動態介面 旗艦案例研究 2026</title>
-  
-  <!-- 核心字體：Geist & Geist Mono & Syne -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+  <title>NEXUS AI // 旗艦案例研究 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#050608',
-            'neon-orange': '#FF4500',
-            'cyber-cyan': '#38BDF8',
-          },
-          fontFamily: {
-            sans: ['"Geist"', '"Noto Sans TC"', 'sans-serif'],
-            mono: ['"Geist Mono"', 'monospace'],
-            syne: ['"Syne"', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <link rel="stylesheet" href="./css/style.css?v=2026_galaxy_os_v3">
-
-  <style>
-    .film-grain {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
-    }
-    .tech-card {
-      background: rgba(14, 18, 26, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    .tech-card:hover {
-      border-color: rgba(255, 69, 0, 0.4);
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 69, 0, 0.15);
-    }
-  </style>
+  <link rel="stylesheet" href="./css/style.css?v=2026_organic_v15">
 </head>
-<body class="bg-obsidian text-[#f3f4f6] font-sans antialiased overflow-x-hidden selection:bg-neon-orange/30 selection:text-neon-orange min-h-screen relative">
+<body class="bg-[#050608] text-[#f3f4f6] overflow-y-auto h-auto min-h-screen">
+  <div class="noise-overlay"></div>
 
-  <!-- 全站微噪點膠片層 -->
-  <div class="fixed inset-0 pointer-events-none z-50 film-grain"></div>
-
-  <!-- ========================================================
-       頂部常駐返航列 (Top Sticky Navigation)
-       ======================================================== -->
-  <header class="sticky top-0 z-40 bg-obsidian/85 backdrop-blur-2xl border-b border-white/10 px-6 py-4 flex justify-between items-center transition-all duration-300">
-    <a href="./index.html" class="mono text-xs text-zinc-300 hover:text-neon-orange flex items-center gap-2 group transition">
-      <span class="inline-block transform group-hover:-translate-x-1 transition-transform">←</span>
-      <span>返回主控台 (Back to OS)</span>
+  <header class="sticky top-0 z-40 bg-[#080b12]/80 backdrop-blur-2xl border-b border-white/10 px-6 py-4 flex justify-between items-center">
+    <a href="./index.html" class="mono text-xs text-zinc-400 hover:text-white flex items-center gap-1.5 transition">
+      ← BACK TO OS DESKTOP
     </a>
-    <div class="flex items-center gap-3">
-      <span class="mono text-[11px] text-zinc-400 tracking-wider hidden sm:inline">[CASE // 03 — B2B SAAS & UI/UX]</span>
-      <span class="px-3 py-1 rounded-full bg-neon-orange/15 border border-neon-orange/30 text-neon-orange text-[11px] font-mono font-bold flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-neon-orange animate-pulse"></span>
-        <span>PRODUCTION ACTIVE</span>
-      </span>
-    </div>
+    <span class="mono text-xs text-orange-400 font-bold">[CASE // 03 - SAAS & UI/UX]</span>
   </header>
 
-  <main class="max-w-6xl mx-auto px-5 sm:px-8 py-12 md:py-20 space-y-20 md:space-y-28">
+  <main class="max-w-4xl mx-auto px-6 py-12 selectable-text space-y-12">
+    <div class="space-y-4 border-b border-white/10 pb-8">
+      <div class="inline-block mono text-xs px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-semibold">
+        SAAS PLATFORM & UI/UX SYSTEM
+      </div>
+      <h1 class="syne text-4xl md:text-5xl font-extrabold tracking-tight text-white">NEXUS AI</h1>
+      <p class="text-zinc-400 text-base leading-relaxed">
+        模組化協作平台與節點畫布介面：以極致性能與高密度資訊架構重塑 AI 開發者體驗。
+      </p>
 
-    <!-- ========================================================
-         SECTION 01: 案例首屏 (Hero Case Header)
-         ======================================================== -->
-    <section class="space-y-10 border-b border-white/10 pb-16 md:pb-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-4">
+        <div class="p-4 bg-white/[0.03] rounded-2xl border border-white/10">
+          <div class="text-[11px] text-zinc-500 font-medium">首頁加載速度</div>
+          <div class="text-2xl font-bold text-orange-400 mt-0.5">1.1 秒</div>
+        </div>
+        <div class="p-4 bg-white/[0.03] rounded-2xl border border-white/10">
+          <div class="text-[11px] text-zinc-500 font-medium">註冊轉換率</div>
+          <div class="text-2xl font-bold text-emerald-400 mt-0.5">+40.0%</div>
+        </div>
+        <div class="p-4 bg-white/[0.03] rounded-2xl border border-white/10">
+          <div class="text-[11px] text-zinc-500 font-medium">設計到代碼 (D2C)</div>
+          <div class="text-2xl font-bold text-white mt-0.5">100%</div>
+        </div>
+        <div class="p-4 bg-white/[0.03] rounded-2xl border border-white/10">
+          <div class="text-[11px] text-zinc-500 font-medium">用戶滿意度 (CSAT)</div>
+          <div class="text-2xl font-bold text-orange-400 mt-0.5">4.9 / 5.0</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="space-y-6">
+      <h2 class="mono text-xs uppercase tracking-widest text-zinc-500">// THE INTERACTION SYSTEM & DASHBOARD</h2>
       
-      <!-- 分類膠囊標籤 -->
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="mono text-[11px] px-3 py-1 rounded-full bg-neon-orange/15 text-neon-orange border border-neon-orange/30 font-bold tracking-wider">
-          B2B SAAS PLATFORM
-        </span>
-        <span class="mono text-[11px] px-3 py-1 rounded-full bg-cyber-cyan/15 text-cyber-cyan border border-cyber-cyan/30 font-medium">
-          NODE-BASED CANVAS ENGINE
-        </span>
-        <span class="mono text-[11px] px-3 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10">
-          DESIGN-TO-CODE PIPELINE
-        </span>
-      </div>
-
-      <!-- 標題與核心定位 -->
-      <div class="space-y-4">
-        <h1 class="syne text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
-          NEXUS AI<span class="text-neon-orange">.</span><br>
-          <span class="text-2xl sm:text-4xl md:text-5xl font-bold text-zinc-300 block mt-2">
-            模組化協作平台與動態介面系統
-          </span>
-        </h1>
-        <p class="text-zinc-300 text-base md:text-lg max-w-3xl leading-relaxed font-light pt-2">
-          專為 AI 開發團隊與企業架構師打造的高密度節點視覺化工作空間。徹底打破傳統多窗口切換的割裂體驗，將大語言模型推論鏈、資料流節點畫布（Canvas Engine）與即時遙測儀表板合而為一，實現 100% 像素級 Design-to-Code 先鋒落地。
+      <div class="rounded-2xl bg-white/[0.03] border border-white/10 overflow-hidden space-y-4 p-5">
+        <img src="./assets/nexus-ui.jpg" alt="NEXUS AI Curved Monitor UI" class="w-full rounded-xl object-cover">
+        <div class="flex justify-between items-center mono text-xs pt-1">
+          <span class="text-white font-bold">曲面螢幕深色模式儀表板與節點畫布系統</span>
+          <span class="text-orange-400">[UI_SYS_03]</span>
+        </div>
+        <p class="text-xs text-zinc-400 leading-relaxed">
+          高密度數據視覺化（Real-Time Insights）、節點流程編輯器（Canvas v1.2）與即時代碼編輯器的無縫協同佈局。
         </p>
-      </div>
-
-      <!-- 三大核心商業與效能指標卡片 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
-        
-        <!-- 指標 01: 載入速度 -->
-        <div class="p-6 rounded-2xl tech-card relative overflow-hidden group">
-          <div class="flex items-center justify-between text-xs mono text-zinc-400 mb-2">
-            <span>PERFORMANCE // LCP</span>
-            <span class="text-cyber-cyan">✦ ULTRA-FAST</span>
-          </div>
-          <div class="syne text-4xl md:text-5xl text-white font-extrabold tracking-tight">
-            1.1<span class="text-neon-orange text-2xl font-mono">s</span>
-          </div>
-          <p class="text-xs text-zinc-300 mt-2 font-light leading-relaxed">
-            首頁與工作區極速載入：原生極簡組件與代碼分割，LCP 核心體驗指標大幅超越同業標準。
-          </p>
-        </div>
-
-        <!-- 指標 02: 註冊轉化率 -->
-        <div class="p-6 rounded-2xl tech-card relative overflow-hidden group">
-          <div class="flex items-center justify-between text-xs mono text-zinc-400 mb-2">
-            <span>CONVERSION RATE</span>
-            <span class="text-emerald-400">✦ GROWTH</span>
-          </div>
-          <div class="syne text-4xl md:text-5xl text-emerald-400 font-extrabold tracking-tight">
-            +40.2<span class="text-2xl font-mono">%</span>
-          </div>
-          <p class="text-xs text-zinc-300 mt-2 font-light leading-relaxed">
-            新用戶註冊轉化大幅飆升：即時互動沙盒預覽體驗降低決策門檻，顯著提高企業付費轉換。
-          </p>
-        </div>
-
-        <!-- 指標 03: 節點運算延遲 -->
-        <div class="p-6 rounded-2xl tech-card relative overflow-hidden group">
-          <div class="flex items-center justify-between text-xs mono text-zinc-400 mb-2">
-            <span>CANVAS LATENCY</span>
-            <span class="text-neon-orange">✦ REAL-TIME</span>
-          </div>
-          <div class="syne text-4xl md:text-5xl text-neon-orange font-extrabold tracking-tight">
-            &lt; 12<span class="text-2xl font-mono">ms</span>
-          </div>
-          <p class="text-xs text-zinc-300 mt-2 font-light leading-relaxed">
-            硬體加速節點畫布：WebAssembly + WebGL 繪圖核心，60+ 複雜模型節點連線零掉幀。
-          </p>
-        </div>
-
-      </div>
-
-      <!-- 旗艦儀表板高清全幅主視覺展示 -->
-      <div class="rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-black/80 relative group">
-        <div class="h-10 px-5 bg-black/60 backdrop-blur-md border-b border-white/10 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-            <span class="mono text-xs text-zinc-400 ml-2">nexus-dashboard-v2.4 // DARK MODE CURVED CANVAS</span>
-          </div>
-          <div class="mono text-[11px] text-neon-orange font-bold">
-            LATENCY: 8ms | 64 NODES
-          </div>
-        </div>
-        <img 
-          src="./assets/nexus-ui.jpg" 
-          alt="NEXUS AI Curved Monitor UI" 
-          class="w-full object-cover group-hover:scale-[1.01] transition-transform duration-700"
-        >
-        <div class="absolute bottom-4 right-4 mono text-[11px] px-3 py-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/15 text-zinc-300 flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span>CURVED MONITOR TELEMETRY ENGINE</span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ========================================================
-         SECTION 02: 系統架構解析 (System Architecture)
-         ======================================================== -->
-    <section class="space-y-12">
-      <div class="border-b border-white/10 pb-6">
-        <div class="mono text-xs text-neon-orange tracking-widest uppercase mb-1">// SYSTEM ARCHITECTURE</div>
-        <h2 class="syne text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-          三大核心工程模組拆解
-        </h2>
-        <p class="text-sm text-zinc-400 mt-2 max-w-2xl font-light leading-relaxed">
-          拒絕花拳繡腿，專注解決工程師與企業高頻操作時的資訊超載與延遲痛點。
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
-
-        <!-- 模組 01 -->
-        <div class="p-8 rounded-3xl tech-card space-y-5 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-2xl bg-cyber-cyan/15 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan">
-              <i data-lucide="layout-grid" class="w-6 h-6"></i>
-            </div>
-            <div class="space-y-1">
-              <span class="mono text-[10px] text-zinc-500 uppercase tracking-widest">MODULE 01 // INTERFACE</span>
-              <h3 class="syne text-xl font-bold text-white group-hover:text-cyber-cyan transition-colors">
-                高密度資訊節點儀表板
-              </h3>
-            </div>
-            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-              在曲面螢幕深色環境下，採用階梯式色彩對比矩陣。關鍵狀態標註使用電光橙與科技青藍，非核心遙測資訊降噪為低明度暖灰，有效降低長時間除錯時的視覺疲勞達 45%。
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] mono text-cyber-cyan">
-            <span>DARK MODE CANVAS</span>
-            <span>ERGONOMIC UI</span>
-          </div>
-        </div>
-
-        <!-- 模組 02 -->
-        <div class="p-8 rounded-3xl tech-card space-y-5 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-2xl bg-neon-orange/15 border border-neon-orange/30 flex items-center justify-center text-neon-orange">
-              <i data-lucide="smartphone" class="w-6 h-6"></i>
-            </div>
-            <div class="space-y-1">
-              <span class="mono text-[10px] text-zinc-500 uppercase tracking-widest">MODULE 02 // RESPONSIVENESS</span>
-              <h3 class="syne text-xl font-bold text-white group-hover:text-neon-orange transition-colors">
-                全斷點流體響應式佈局
-              </h3>
-            </div>
-            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-              針對 4K 巨幅曲面螢幕、筆記型電腦與行動平板進行無損適配。桌面端展開三欄全景協同畫布；平板端支援手勢平移縮放；手機端自動切換為即時警報監控與精簡日誌流。
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] mono text-neon-orange">
-            <span>FLUID RWD ENGINE</span>
-            <span>MULTI-DEVICE ADAPT</span>
-          </div>
-        </div>
-
-        <!-- 模組 03 -->
-        <div class="p-8 rounded-3xl tech-card space-y-5 flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-              <i data-lucide="code-2" class="w-6 h-6"></i>
-            </div>
-            <div class="space-y-1">
-              <span class="mono text-[10px] text-zinc-500 uppercase tracking-widest">MODULE 03 // PIPELINE</span>
-              <h3 class="syne text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-                100% Design-to-Code 落地
-              </h3>
-            </div>
-            <p class="text-xs text-zinc-300 font-light leading-relaxed">
-              全面以 Tailwind CSS 配合 React 模組化組件系統打造。設計規範與前端代碼實體雙向同步，從 Figma Tokens 到線上生產環境零落差交付，大幅縮短跨團隊溝通摩擦。
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] mono text-emerald-400">
-            <span>TAILWIND + REACT</span>
-            <span>TOKEN DIRECT SYNC</span>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- ========================================================
-         SECTION 03: 商業成果與落地成效 (Impact & Metric Outcomes)
-         ======================================================== -->
-    <section class="p-8 md:p-12 rounded-3xl tech-card space-y-8 border border-white/15">
+    <section class="space-y-8 border-t border-white/10 pt-8">
       <div class="space-y-2">
-        <span class="mono text-xs text-neon-orange uppercase tracking-widest">// COMMERCIAL OUTCOMES</span>
-        <h2 class="syne text-2xl md:text-4xl font-extrabold text-white tracking-tight">
-          商業落地成效與市場反響
-        </h2>
-        <p class="text-sm text-zinc-300 font-light leading-relaxed">
-          透過 10+ 年 Google Ads 與企業數據化思維介入，NEXUS AI 成功突破一般開發者工具的低轉化瓶頸：
+        <h3 class="syne text-xl font-bold text-white">01. 開發者體驗瓶頸 (The Friction)</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">
+          AI 工作流通常涉及多窗口反覆切換（數據分析、節點調試、代碼編寫），造成嚴重的認知負擔與上下文遺失。
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
-        <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
-          <div class="mono text-xs text-zinc-400">新用戶完成首個工作流</div>
-          <div class="syne text-3xl font-extrabold text-white mt-1">4.2 <span class="text-sm font-mono text-neon-orange">分鐘</span></div>
-          <div class="text-[11px] text-zinc-400 mt-1">上手時間縮短 62%</div>
-        </div>
-        <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
-          <div class="mono text-xs text-zinc-400">企業試用轉付費率</div>
-          <div class="syne text-3xl font-extrabold text-emerald-400 mt-1">31.5%</div>
-          <div class="text-[11px] text-zinc-400 mt-1">高於產業均值 2.4 倍</div>
-        </div>
-        <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
-          <div class="mono text-xs text-zinc-400">日均活躍節點調度</div>
-          <div class="syne text-3xl font-extrabold text-cyber-cyan mt-1">1,800K+</div>
-          <div class="text-[11px] text-zinc-400 mt-1">高併發穩定運行</div>
-        </div>
-        <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
-          <div class="mono text-xs text-zinc-400">用戶滿意度 (CSAT)</div>
-          <div class="syne text-3xl font-extrabold text-neon-orange mt-1">4.92 <span class="text-sm font-mono text-zinc-400">/ 5.0</span></div>
-          <div class="text-[11px] text-zinc-400 mt-1">專業評審高度肯定</div>
-        </div>
+      <div class="space-y-2">
+        <h3 class="syne text-xl font-bold text-white">02. 解決方案 (The Solution)</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">
+          打造三欄式全景沉浸畫布，將「節點連接」、「即時模型吞吐數據圖表」與「Code Editor」融合在同一視野，實現零延遲實時協同。
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="syne text-xl font-bold text-white">03. 商業成效 (Business Impact)</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">
+          平台新用戶試用註冊率提升 40%，工作流調試平均耗時縮短 52%，成功落地為企業級 AI 基礎設施。
+        </p>
       </div>
     </section>
-
-    <!-- ========================================================
-         SECTION 04: 頁尾導航與官方聯絡 (Footer & Navigation)
-         ======================================================== -->
-    <section class="border-t border-white/10 pt-12 pb-12 space-y-12">
-      
-      <!-- 下一個案例跳轉橫幅 -->
-      <div class="p-8 md:p-10 rounded-3xl bg-gradient-to-r from-white/[0.04] to-neon-orange/[0.06] border border-white/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-neon-orange/40 transition-all duration-300 group">
-        <div class="space-y-2">
-          <span class="mono text-xs text-neon-orange uppercase tracking-widest">NEXT CASE STUDY // 02</span>
-          <h3 class="syne text-2xl md:text-3xl font-bold text-white group-hover:text-neon-orange transition-colors">
-            OAT & BOTANIC 純素冷萃低碳咖啡
-          </h3>
-          <p class="text-xs text-zinc-400 font-light">
-            低碳純素冷萃咖啡包裝工程與未塗布再生紙實體刊物重塑。
-          </p>
-        </div>
-        <a 
-          href="./portfolio-ecommerce.html" 
-          class="px-6 py-3.5 rounded-full bg-neon-orange text-white font-bold text-xs mono tracking-wider hover:bg-orange-600 hover:scale-105 transition-all duration-300 flex items-center gap-2 whitespace-nowrap shadow-lg shadow-neon-orange/20"
-        >
-          <span>深入案例：純素咖啡包裝</span>
-          <span>→</span>
-        </a>
-      </div>
-
-      <!-- 官方聯絡資訊與版權列 -->
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-zinc-400 mono">
-        <div class="space-y-1">
-          <div class="text-white font-bold tracking-wider">FROM LIFE TO LINES. // 生活線條 品牌與數位先鋒工藝</div>
-          <div>Commercial Strategy × Visual Craft × Space Tech 2026</div>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-5">
-          <a href="mailto:fromlifetolines@gmail.com" class="hover:text-neon-orange transition flex items-center gap-1.5">
-            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
-            <span>fromlifetolines@gmail.com</span>
-          </a>
-          <a href="tel:0978751607" class="hover:text-neon-orange transition flex items-center gap-1.5">
-            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
-            <span>0978-751-607</span>
-          </a>
-          <a href="https://github.com/fromlifetolines" target="_blank" class="hover:text-white transition">
-            GitHub
-          </a>
-          <a href="https://www.instagram.com/fromlifetolines/" target="_blank" class="hover:text-white transition">
-            Instagram
-          </a>
-        </div>
-      </div>
-
-    </section>
-
   </main>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
-    });
-  </script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

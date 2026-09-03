@@ -1140,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 3D Card Perspective Mouse Tilt Physics & Cursor Spotlight
-  const projectCards = document.querySelectorAll('#win-projects .group, .tilt-card');
+  const projectCards = document.querySelectorAll('#win-projects .selectable-text > div.group, .tilt-card');
   projectCards.forEach(card => {
     // 動態注入卡片表面光斑層
     let spotlight = card.querySelector('.card-spotlight');
@@ -1150,8 +1150,8 @@ document.addEventListener('DOMContentLoaded', () => {
       card.appendChild(spotlight);
     }
 
-    const imgWrapper = card.querySelector('.aspect-\\[16\\/10\\], img');
-    const titleBlock = card.querySelector('h4')?.parentElement;
+    const img = card.querySelector('img');
+    const content = card.querySelector('.flex-1');
 
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -1177,8 +1177,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // 內部縮圖與內容微幅浮起視差
-      if (imgWrapper) gsap.to(imgWrapper, { z: 14, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
-      if (titleBlock) gsap.to(titleBlock, { z: 10, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
+      if (img) gsap.to(img, { z: 14, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
+      if (content) gsap.to(content, { z: 10, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
     });
 
     card.addEventListener('mouseleave', () => {
@@ -1194,8 +1194,8 @@ document.addEventListener('DOMContentLoaded', () => {
         overwrite: 'auto'
       });
 
-      if (imgWrapper) gsap.to(imgWrapper, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-      if (titleBlock) gsap.to(titleBlock, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+      if (img) gsap.to(img, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+      if (content) gsap.to(content, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
     });
   });
 });
