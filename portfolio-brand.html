@@ -62,59 +62,77 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
 
-        <!-- 左卡片：預售廣告主視覺 (視覺設計師核心) -->
-        <div class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 space-y-3">
-          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 relative bg-black/60">
+        <!-- 左卡片：預售廣告主視覺 (The Hook) -->
+        <div class="p-5 rounded-2xl bg-zinc-900/40 border border-white/10 hover:border-white/20 transition-all space-y-4">
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10 relative bg-[#111]">
             <img src="./assets/aura-exploded.jpg" alt="AURA Key Visual" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 left-2 mono text-[10px] px-2 py-0.5 rounded bg-black/80 text-cyan-300 border border-cyan-500/30">
-              CAMPAIGN_KV // KEY VISUAL ASSET
+            <!-- 廣告數據懸浮標籤 -->
+            <div class="absolute top-3 right-3 flex flex-col gap-1.5 items-end">
+              <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
+                <span class="mono text-[9px] text-white font-bold">CTR 8.4%</span>
+              </div>
+              <div class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+                <span class="mono text-[9px] text-white">CPC $0.85</span>
+              </div>
+            </div>
+            <div class="absolute bottom-3 left-3 mono text-[9px] px-2.5 py-1 rounded bg-black/80 text-zinc-300 border border-white/10">
+              GOOGLE_ADS // KV_ASSET
             </div>
           </div>
-          <div class="flex justify-between items-center mono text-xs">
-            <span class="text-zinc-200 font-bold">預售檔期廣告核心主視覺</span>
-            <span class="text-cyan-400">[CAMPAIGN_KV]</span>
+          <div>
+            <div class="flex justify-between items-center mono text-xs mb-1.5">
+              <span class="text-zinc-100 font-bold tracking-wide">廣告素材與視覺策略</span>
+              <span class="text-[#ccff00]">[CAMPAIGN_ASSET]</span>
+            </div>
+            <p class="text-xs text-zinc-400 font-light leading-relaxed">
+              將精密 3D 內部結構轉化為 Google Ads 與社群廣告的核心視覺。以高解析度的硬體深度突破市場同質性，有效降低點擊成本並獲取高意向名單。
+            </p>
           </div>
-          <p class="text-xs text-zinc-400 font-light leading-relaxed">
-            將產品內部結構轉化為高辨識度的宣傳主視覺，運用於 Google Ads 廣告素材與預售 Landing Page，以視覺化規格說明打動發燒友，達成 34.8% 預購轉化率。
-          </p>
         </div>
 
-        <!-- 右卡片：實體包裝刀模與印刷工程 (包裝設計師核心，原生向量展開圖) -->
-        <div class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 space-y-3 flex flex-col justify-between">
-          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-zinc-950 p-4 flex flex-col justify-between font-mono text-[10px] relative">
-            <div class="flex justify-between items-center border-b border-white/10 pb-2">
-              <span class="text-white font-bold tracking-wider">PACKAGING // DIE-LINE SPEC</span>
-              <span class="text-cyan-400">220×190×75 mm</span>
-            </div>
-            
-            <!-- 專業包裝結構刀模展開示意 SVG -->
-            <svg class="w-full h-24 stroke-zinc-500 fill-none" viewBox="0 0 320 100">
-              <!-- 盒身主體展開 -->
-              <rect x="70" y="25" width="80" height="50" stroke="#71717a" stroke-width="1.5" fill="#18181b" />
-              <rect x="150" y="25" width="80" height="50" stroke="#71717a" stroke-width="1.5" fill="#18181b" />
-              <!-- 盒蓋與側邊折片 (虛線表示折線，實線表示裁切線) -->
-              <rect x="70" y="5" width="80" height="20" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,3" />
-              <rect x="70" y="75" width="80" height="20" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,3" />
-              <rect x="10" y="25" width="60" height="50" stroke="#71717a" stroke-width="1.5" />
-              <rect x="230" y="25" width="60" height="50" stroke="#71717a" stroke-width="1.5" />
-              <!-- 標籤印刷位置標記 -->
-              <rect x="165" y="35" width="50" height="20" stroke="#22d3ee" stroke-width="1" fill="#083344" />
-              <text x="170" y="48" fill="#22d3ee" font-size="6" font-family="monospace">LABEL // SPOT UV</text>
-            </svg>
+        <!-- 右卡片：高階 UI/UX 落地頁組件 (The Conversion) -->
+        <div class="p-5 rounded-2xl bg-zinc-900/40 border border-white/10 hover:border-white/20 transition-all space-y-4 flex flex-col justify-between">
+          
+          <!-- 純 CSS 建構的頂級 UI Component Mockup (告別醜陋 SVG) -->
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10 bg-[#050608] p-5 flex flex-col justify-between relative shadow-inner select-none">
+            <!-- Ambient UI Glow -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/15 blur-[40px] rounded-full pointer-events-none"></div>
 
-            <div class="flex justify-between text-[9px] text-zinc-400 border-t border-white/10 pt-1.5">
-              <span>紙材：450gsm 灰色未塗布厚卡</span>
-              <span>油墨：PANTONE 801C + 局部光</span>
+            <!-- UI Header -->
+            <div class="flex justify-between items-start z-10">
+              <div>
+                <div class="mono text-[9px] text-cyan-400 tracking-widest uppercase mb-1.5">PRE-ORDER PLATFORM</div>
+                <div class="syne text-xl font-extrabold text-white leading-none tracking-tight">AURA Spatial</div>
+                <div class="text-[10px] text-zinc-500 mt-1.5 font-light">Next-Gen Acoustic Wearable</div>
+              </div>
+              <div class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mono text-[9px] text-emerald-400 font-bold flex items-center gap-1.5">
+                <span class="w-1 h-1 rounded-full bg-emerald-400"></span> IN STOCK
+              </div>
+            </div>
+
+            <!-- UI Action Area (Nested Island CTA) -->
+            <div class="mt-auto space-y-3 z-10 border-t border-white/10 pt-3">
+              <div class="flex justify-between items-end">
+                <div class="mono text-2xl font-light text-white tracking-tight">$399<span class="text-xs text-zinc-500 ml-1">.00</span></div>
+              </div>
+              <!-- 高階嵌套式按鈕設計 (Button-in-Button Architecture) -->
+              <button class="w-full flex items-center justify-between bg-zinc-100 hover:bg-white text-black rounded-full pl-5 pr-1.5 py-1.5 transition-all group cursor-default">
+                <span class="syne text-[11px] font-bold tracking-wide">RESERVE NOW</span>
+                <div class="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+              </button>
             </div>
           </div>
 
           <div>
-            <div class="flex justify-between items-center mono text-xs mt-1">
-              <span class="text-zinc-200 font-bold">實體包裝結構與刀模規範</span>
-              <span class="text-cyan-400">[PACKAGING_CRAFT]</span>
+            <div class="flex justify-between items-center mono text-xs mb-1.5">
+              <span class="text-zinc-100 font-bold tracking-wide">高轉換 Landing Page 介面</span>
+              <span class="text-cyan-400">[CONVERSION_UI]</span>
             </div>
-            <p class="text-xs text-zinc-400 font-light leading-relaxed mt-1">
-              規劃天地蓋折疊結構與內部環保防震卡槽，選用 450gsm 灰卡紙漿質地搭配特別色印刷，確保開箱體驗具備札實的實體手感與環保標準。
+            <p class="text-xs text-zinc-400 font-light leading-relaxed">
+              結合 UI/UX 結構化排版與高階「嵌套式按鈕」微互動組件。確保從廣告點擊進站的訪客擁有極低認知阻力的結帳動線，成功促成 34.8% 預購轉化率。
             </p>
           </div>
         </div>
