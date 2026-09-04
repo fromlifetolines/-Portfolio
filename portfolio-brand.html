@@ -25,7 +25,7 @@
       </div>
       <h1 class="syne text-4xl md:text-5xl font-extrabold tracking-tight text-white">AURA SPATIAL AUDIO</h1>
       <p class="text-zinc-400 text-base leading-relaxed">
-        微工業機能美學（Micro-Industrial）：將聲學濾波器與微晶片轉化為品牌核心視覺資產，拒絕同質化科技極簡。
+        將聲學濾波器、動圈單元與微晶片線路轉化為視覺元素。捨棄市場上千篇一律的純白科技極簡，以清晰的結構拆解向發燒友傳遞硬體價值。
       </p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 mono">
@@ -57,49 +57,59 @@
           <span class="text-white font-bold">Titanium Acoustic Core 爆炸拆解圖</span>
           <span class="text-cyan-400">[SCHEMATIC_01]</span>
         </div>
-        <p class="text-xs text-zinc-400">40mm 鈹振膜動圈單元與超低延遲空間計算 PCB 板結構標註，將內部精密工程轉化為外部視覺賣點。</p>
+        <p class="text-xs text-zinc-400 font-light leading-relaxed">40mm 鈹振膜動圈單元與超低延遲空間計算 PCB 板結構標註，將內部精密工程轉化為外部視覺賣點。</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 左卡片：深色官網介面 (對應手錶/儀表板 UI) -->
         <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-3">
-          <img src="./assets/aura-ui.jpg" alt="AURA Web UI" class="w-full aspect-video rounded object-cover">
+          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-black/60">
+            <img src="./assets/aura-ui.jpg" alt="AURA Web Interface" class="w-full h-full object-cover">
+          </div>
           <div class="flex justify-between items-center mono text-xs">
-            <span class="text-zinc-300 font-bold">先鋒深色官網 UI 系統</span>
+            <span class="text-zinc-200 font-bold">深色官網 UI 系統</span>
             <span class="text-cyan-400">[WEB_SYS]</span>
           </div>
-          <p class="text-xs text-zinc-400">磨砂玻璃面板結合即時聲學頻率響應圖，打造極致沉浸的發燒友選購介面。</p>
+          <p class="text-xs text-zinc-400 font-light leading-relaxed">
+            曲面螢幕高密度資訊排版，結合即時聲學頻率響應圖與精密參數面板，打造專注於預購轉化的發燒友選購介面。
+          </p>
         </div>
 
+        <!-- 右卡片：實體紙盒包裝 (徹底修正配圖！改用 aura-packaging.jpg) -->
         <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-3">
-          <img src="./assets/aura-packaging.jpg" alt="AURA Packaging" class="w-full aspect-video rounded object-cover">
+          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-black/60">
+            <img src="./assets/aura-packaging.jpg" alt="AURA Packaging Box" class="w-full h-full object-cover">
+          </div>
           <div class="flex justify-between items-center mono text-xs">
-            <span class="text-zinc-300 font-bold">再生未塗布紙盒包裝</span>
+            <span class="text-zinc-200 font-bold">再生未塗布紙盒包裝</span>
             <span class="text-cyan-400">[PRINT_CRAFT]</span>
           </div>
-          <p class="text-xs text-zinc-400">實體灰色紙漿觸感搭配電光青微工業工程標籤，建立難以被 AI 複製的物理開箱溫度。</p>
+          <p class="text-xs text-zinc-400 font-light leading-relaxed">
+            選用未塗布再生厚卡紙搭配實體工程標籤印刷，強調真實紙漿纖維觸感，建立兼具環保與精密工業質感的開箱體驗。
+          </p>
         </div>
       </div>
     </section>
 
     <section class="space-y-8 border-t border-white/10 pt-8">
       <div class="space-y-2">
-        <h3 class="syne text-xl font-bold text-white">01. 市場挑戰 (The Challenge)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed">
-          市面上的耳機品牌充斥著同質化的極簡蘋果風，消費者難以區分產品本質差異。AURA 主打專業級空間聲學晶片，需要一套能讓專業音樂製作人與發燒友信服的硬核視覺語言。
+        <h3 class="syne text-xl font-bold text-white">01. 市場挑戰與限制 (The Challenge)</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light">
+          市面上的高階耳機包裝與宣傳大多走向封閉式極簡，消費者很難從外觀看見內部零件的工藝差異。預購期需要一套能讓發燒友與大眾一眼看出硬體規格的視覺呈現。
         </p>
       </div>
 
       <div class="space-y-2">
-        <h3 class="syne text-xl font-bold text-white">02. 策略切入點 (Strategy)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed">
-          我們反其道而行，捨棄「將科技隱藏」的慣例，將微晶片、濾波器與聲學測試曲線解構，直接融入 Logo、包裝與網頁動效中，塑造出「工程即美學」的高端專業定位。
+        <h3 class="syne text-xl font-bold text-white">02. 核心設計決策 (Design Decisions)</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light">
+          我們把耳機內部 40mm 鈹振膜動圈、PCB 電路板與調音濾波器直接展開，製作 3D 零件爆炸圖作為主視覺核心。透過 Illustrator 規劃精密工程標籤，讓內部細節成為外部顯眼的產品亮點。
         </p>
       </div>
 
       <div class="space-y-2">
-        <h3 class="syne text-xl font-bold text-white">03. 商業成果 (Impact & ROI)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed">
-          上線首週預購轉換率提升 34.8%，平均停留時長達到 3 分 42 秒，成功獲得 2026 Awwwards Site of the Day 提名。
+        <h3 class="syne text-xl font-bold text-white">03. 落地執行與印刷實務 (Production & Impact)</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light">
+          包裝實體選用未塗布灰色厚卡紙盒，搭配電光青微型標籤。網頁端則搭配深色 RWD 響應式介面，以高對比圖文降低理解門檻，促成預售頁面達成 34.8% 訂單轉換率。
         </p>
       </div>
     </section>
