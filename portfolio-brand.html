@@ -60,33 +60,52 @@
         <p class="text-xs text-zinc-400 font-light leading-relaxed">40mm 鈹振膜動圈單元與超低延遲空間計算 PCB 板結構標註，將內部精密工程轉化為外部視覺賣點。</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- 左卡片：深色官網介面 (對應手錶/儀表板 UI) -->
-        <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-3">
-          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-black/60">
-            <img src="./assets/aura-ui.jpg" alt="AURA Web Interface" class="w-full h-full object-cover">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+        <!-- 左卡片：同款耳機 40mm 鈹振膜核心微距特寫 -->
+        <div class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 space-y-3">
+          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 relative bg-black/60">
+            <!-- 放大聚焦於頂部同款耳機核心動圈區域，確保產品完全一致 -->
+            <img src="./assets/aura-exploded.jpg" alt="Acoustic Core Detail" class="w-full h-full object-cover scale-150 origin-[35%_50%]">
+            <div class="absolute bottom-2 left-2 mono text-[10px] px-2 py-0.5 rounded bg-black/70 text-cyan-300 border border-cyan-500/30">
+              MACRO_ZOOM // 40mm BERYLLIUM DRIVER
+            </div>
           </div>
           <div class="flex justify-between items-center mono text-xs">
-            <span class="text-zinc-200 font-bold">深色官網 UI 系統</span>
-            <span class="text-cyan-400">[WEB_SYS]</span>
+            <span class="text-zinc-200 font-bold">聲學驅動核心微距</span>
+            <span class="text-cyan-400">[HARDWARE_CORE]</span>
           </div>
           <p class="text-xs text-zinc-400 font-light leading-relaxed">
-            曲面螢幕高密度資訊排版，結合即時聲學頻率響應圖與精密參數面板，打造專注於預購轉化的發燒友選購介面。
+            聚焦於 40mm 鈹振膜動圈與超低延遲音腔結構，將內部微米級金屬濾網與精密螺栓轉化為標誌性工程細節。
           </p>
         </div>
 
-        <!-- 右卡片：實體紙盒包裝 (徹底修正配圖！改用 aura-packaging.jpg) -->
-        <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-3">
-          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-black/60">
-            <img src="./assets/aura-packaging.jpg" alt="AURA Packaging Box" class="w-full h-full object-cover">
+        <!-- 右卡片：微工業聲學工程藍圖 (原生向量，徹底告別手錶圖) -->
+        <div class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 space-y-3 flex flex-col justify-between">
+          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 bg-black/80 p-4 flex flex-col justify-between font-mono text-[11px] text-zinc-400 relative">
+            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+              <span class="text-white font-bold">AURA // FREQ_RESPONSE</span>
+              <span class="text-cyan-400">20Hz - 40kHz</span>
+            </div>
+            <!-- 聲學響應曲線示意向量 -->
+            <svg class="w-full h-16 stroke-cyan-400 fill-none" viewBox="0 0 300 60">
+              <path d="M 0 45 Q 60 40, 100 25 T 180 25 T 240 35 T 300 40" stroke-width="2" />
+              <line x1="0" y1="50" x2="300" y2="50" stroke="#333" stroke-dasharray="4" />
+            </svg>
+            <div class="flex justify-between text-[10px] text-zinc-500 border-t border-white/5 pt-1">
+              <span>THD: &lt; 0.05%</span>
+              <span>IMPEDANCE: 32Ω</span>
+              <span>CODE: ISO-14067</span>
+            </div>
           </div>
-          <div class="flex justify-between items-center mono text-xs">
-            <span class="text-zinc-200 font-bold">再生未塗布紙盒包裝</span>
-            <span class="text-cyan-400">[PRINT_CRAFT]</span>
+          <div>
+            <div class="flex justify-between items-center mono text-xs mt-1">
+              <span class="text-zinc-200 font-bold">精密聲學工程規範系統</span>
+              <span class="text-cyan-400">[SPEC_SYSTEM]</span>
+            </div>
+            <p class="text-xs text-zinc-400 font-light leading-relaxed mt-1">
+              以瑞士排版網格結合實測聲學曲線與工業參數，為專業音響發燒友提供清晰具說服力的硬體技術依據。
+            </p>
           </div>
-          <p class="text-xs text-zinc-400 font-light leading-relaxed">
-            選用未塗布再生厚卡紙搭配實體工程標籤印刷，強調真實紙漿纖維觸感，建立兼具環保與精密工業質感的開箱體驗。
-          </p>
         </div>
       </div>
     </section>
