@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FLTL NFC Smart Business Card // 旗艦專案案例研究 2026</title>
+  <meta name="description" content="FLTL NFC Smart Business Card 實體卡片設計與數位連結體驗案例研究。以沉曜黑霧面 PVC、螢光綠波紋與被動式 NFC 技術，打造從實體遞交到數位作品集的完整品牌體驗。">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="./css/style.css">
@@ -24,61 +25,63 @@
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 py-12 selectable-text space-y-16">
+  <main class="max-w-4xl mx-auto px-6 py-12 selectable-text space-y-20">
 
-    <!-- 01. PROJECT HERO (Oversized Editorial Typography) -->
-    <div class="space-y-6 border-b border-white/10 pb-10">
-      <div class="inline-flex items-center gap-2 mono text-xs text-[#ccff00]">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
-        FLAGSHIP CASE STUDY // 01
+    <!-- 01 — HERO (Editorial Header + Strongest Verified Product Image) -->
+    <section class="space-y-8 border-b border-white/10 pb-12">
+      <div class="space-y-4">
+        <div class="inline-flex items-center gap-2 mono text-xs text-[#ccff00]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
+          FLAGSHIP CASE STUDY // 01
+        </div>
+        
+        <div class="space-y-3">
+          <h1 class="syne text-4xl sm:text-6xl font-extrabold tracking-tight text-white uppercase leading-[1.08]">
+            FLTL NFC<br>
+            <span class="text-[#ccff00]">SMART BUSINESS CARD</span>
+          </h1>
+          <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+            一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。
+          </p>
+        </div>
+
+        <!-- Quiet Editorial Metadata Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4 border-t border-white/10 mono text-xs">
+          <div>
+            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">TYPE</div>
+            <div class="text-zinc-200 font-medium mt-1">Self-Initiated Product</div>
+          </div>
+          <div>
+            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">ROLE</div>
+            <div class="text-zinc-200 font-medium mt-1">Brand, Product & Exp Design</div>
+          </div>
+          <div>
+            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">DISCIPLINES</div>
+            <div class="text-zinc-200 font-medium mt-1">Identity / Packaging / NFC</div>
+          </div>
+          <div>
+            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">YEAR</div>
+            <div class="text-[#ccff00] font-medium mt-1">2026</div>
+          </div>
+        </div>
       </div>
-      
+
+      <!-- Hero Visual: Strongest Verified Packaging / Product Presentation -->
       <div class="space-y-3">
-        <h1 class="syne text-4xl sm:text-6xl font-extrabold tracking-tight text-white uppercase leading-[1.08]">
-          FLTL NFC<br>
-          <span class="text-[#ccff00]">SMART BUSINESS CARD</span>
-        </h1>
-        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
-          一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。
-        </p>
+        <div class="aspect-[1024/571] rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] relative group shadow-2xl">
+          <img src="./assets/fltl-nfc-hero.jpg?v=20260924_master" alt="FLTL NFC 實體卡片整體視覺呈現" class="w-full h-full object-cover" loading="eager" fetchpriority="high">
+          <div class="absolute bottom-4 right-4 mono text-[10px] px-2.5 py-1 rounded bg-black/80 text-[#ccff00] border border-[#ccff00]/30 backdrop-blur">
+            PRODUCT VISUALIZATION // 2026
+          </div>
+        </div>
+        <div class="flex justify-between items-baseline text-xs text-zinc-500 mono pt-1">
+          <span>01 / 實體卡片雙面視覺立體展示：正面立座與背面平放</span>
+          <span>MATTE BLACK PVC × NFC</span>
+        </div>
       </div>
+    </section>
 
-      <!-- Quiet Editorial Metadata Row (Section 09: No Boxed Cards) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4 border-t border-white/10 mono text-xs">
-        <div>
-          <div class="text-[10px] text-zinc-500 uppercase tracking-widest">TYPE</div>
-          <div class="text-zinc-200 font-medium mt-1">Self-Initiated Product</div>
-        </div>
-        <div>
-          <div class="text-[10px] text-zinc-500 uppercase tracking-widest">ROLE</div>
-          <div class="text-zinc-200 font-medium mt-1">Brand, Product & Exp Design</div>
-        </div>
-        <div>
-          <div class="text-[10px] text-zinc-500 uppercase tracking-widest">DISCIPLINES</div>
-          <div class="text-zinc-200 font-medium mt-1">Identity / Packaging / NFC</div>
-        </div>
-        <div>
-          <div class="text-[10px] text-zinc-500 uppercase tracking-widest">YEAR</div>
-          <div class="text-[#ccff00] font-medium mt-1">2026</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 02. HERO VISUAL (Full-Width Flagship Presentation) -->
-    <div class="space-y-3">
-      <div class="aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] relative group">
-        <img src="./assets/fltl-nfc-card.png" alt="FLTL NFC 實體卡片設計" class="w-full h-full object-cover">
-        <div class="absolute bottom-4 right-4 mono text-[10px] px-2.5 py-1 rounded bg-black/80 text-[#ccff00] border border-[#ccff00]/30 backdrop-blur">
-          PHYSICAL PROTOTYPE // 2026
-        </div>
-      </div>
-      <div class="flex justify-between items-baseline text-xs text-zinc-500 mono pt-1">
-        <span>01 / 實體卡片正面視覺與同心波紋感應熱區</span>
-        <span>MATTE BLACK PVC</span>
-      </div>
-    </div>
-
-    <!-- 03. THE IDEA -->
+    <!-- 02 — THE IDEA -->
     <section class="space-y-4 max-w-2xl">
       <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 02. THE IDEA</div>
       <h2 class="syne text-2xl sm:text-3xl font-bold text-white leading-snug">
@@ -92,127 +95,356 @@
       </p>
     </section>
 
-    <!-- 04. VISUAL SYSTEM -->
-    <section class="space-y-6">
-      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 03. VISUAL SYSTEM & LINELIKE IDENTITY</div>
-      <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
-        黑色純粹基底 × 螢光綠精準線條
-      </h2>
-      <p class="text-sm text-zinc-300 leading-relaxed font-light max-w-2xl">
-        視覺系統承襲個人品牌「From Life To Lines」的核心哲學：極致克制的沉黑背景，搭配代表數位生命力的螢光石灰綠（#CCFF00）。同心圓線條幾何不僅是視覺識別，同時具備直觀引導手指與手機感應熱區的功能。
-      </p>
+    <!-- 03 — THE CARD (MASTER ARTWORK: FRONT & BACK) -->
+    <section class="space-y-8">
+      <div class="space-y-2">
+        <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 03. THE CARD</div>
+        <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
+          MASTER ARTWORK // 正面與背面標準設計規範
+        </h2>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light max-w-2xl">
+          本專案以兩款核心主圖（Master Artworks）作為實體卡片印製與視覺幾何的唯一真實基準。所有後續衍生之情境渲染與拍攝，皆嚴格依循此二維幾何規範。
+        </p>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-        <div class="aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] relative">
-          <img src="./assets/brand-identity.jpg" alt="FLTL Visual Identity System" class="w-full h-full object-cover">
-          <div class="absolute bottom-3 left-3 mono text-[10px] px-2 py-0.5 rounded bg-black/80 text-zinc-300 border border-white/10">
-            BRAND IDENTITY GUIDELINES
+      <!-- Vertical Editorial Stacking on Mobile / Responsive Grid Preserving 100% Composition -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2">
+        
+        <!-- CARD FRONT MASTER -->
+        <div class="space-y-3">
+          <div class="flex justify-between items-center mono text-xs">
+            <span class="text-white font-bold tracking-wider">FRONT // 01</span>
+            <span class="text-[#ccff00] text-[10px]">MASTER DESIGN</span>
+          </div>
+          <div class="aspect-[1010/638] rounded-2xl overflow-hidden border border-white/10 bg-black/60 relative group shadow-xl">
+            <img src="./assets/fltl-nfc-front.png?v=20260924_master" alt="FLTL NFC Card Front Master Artwork" class="w-full h-full object-contain" loading="lazy" decoding="async">
+            <div class="absolute bottom-3 left-3 mono text-[10px] px-2.5 py-0.5 rounded bg-black/85 text-zinc-300 border border-white/10 backdrop-blur">
+              FRONT MASTER ARTWORK
+            </div>
+          </div>
+          <div class="space-y-1.5 mono text-xs text-zinc-400 pt-1">
+            <div class="text-zinc-200 font-medium">FROM LIFE TO LINES + 側向信號波紋</div>
+            <p class="text-zinc-400 text-[11px] leading-relaxed font-light">
+              沉曜黑無光澤 PVC 基底。左上方配置 FROM LIFE TO LINES 標題與標誌性螢光綠原點；右側集中呈現流動等高信號波紋，於右側邊緣結合半圓截切 FLTL 幾何字標。
+            </p>
           </div>
         </div>
-        <div class="aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] p-8 flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="mono text-[10px] text-zinc-500 uppercase tracking-widest">COLOR SPECIFICATION</div>
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-full bg-[#050608] border border-white/20"></span>
-              <div>
-                <div class="text-xs font-bold text-white">Obsidian Black</div>
-                <div class="mono text-[10px] text-zinc-500">#050608 // 沉曜黑</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-full bg-[#ccff00]"></span>
-              <div>
-                <div class="text-xs font-bold text-white">Electric Lime</div>
-                <div class="mono text-[10px] text-zinc-500">#CCFF00 // 螢光線條綠</div>
-              </div>
+
+        <!-- CARD BACK MASTER -->
+        <div class="space-y-3">
+          <div class="flex justify-between items-center mono text-xs">
+            <span class="text-white font-bold tracking-wider">BACK // 02</span>
+            <span class="text-[#ccff00] text-[10px]">MASTER DESIGN</span>
+          </div>
+          <div class="aspect-[1011/638] rounded-2xl overflow-hidden border border-white/10 bg-black/60 relative group shadow-xl">
+            <img src="./assets/fltl-nfc-back.png?v=20260924_master" alt="FLTL NFC Card Back Master Artwork" class="w-full h-full object-contain" loading="lazy" decoding="async">
+            <div class="absolute bottom-3 left-3 mono text-[10px] px-2.5 py-0.5 rounded bg-black/85 text-zinc-300 border border-white/10 backdrop-blur">
+              BACK MASTER ARTWORK
             </div>
           </div>
-          <div class="pt-6 border-t border-white/10 mono text-xs text-zinc-400 space-y-1">
-            <div>TYPOGRAPHY: Syne + Geist Mono</div>
-            <div>GEOMETRY: Concentric Ripple Grid</div>
+          <div class="space-y-1.5 mono text-xs text-zinc-400 pt-1">
+            <div class="text-zinc-200 font-medium">FLTL. MONOGRAM + 同心感應熱區</div>
+            <p class="text-zinc-400 text-[11px] leading-relaxed font-light">
+              沉曜黑無光澤 PVC 基底。中央置中 FLTL. 經典幾何標誌與綠色句點；周圍環繞非對稱同心等高線組，依白、灰、螢光綠之層次向外擴散，直覺象徵 NFC 射頻波幅。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 04 — VISUAL SYSTEM -->
+    <section class="space-y-6">
+      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 04. VISUAL SYSTEM</div>
+      <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
+        四大設計語彙：色彩、字標與信號等高線系統
+      </h2>
+      <p class="text-sm text-zinc-300 leading-relaxed font-light max-w-2xl">
+        視覺系統承襲個人品牌「From Life To Lines」的核心哲學，將抽象的生命體驗提煉為嚴謹的幾何線條。全卡視覺由四項關鍵元素構成：
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 mono text-xs">
+        <!-- Element 1: Black -->
+        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-lg bg-[#050608] border border-white/20 shadow-inner"></span>
+            <div>
+              <div class="text-white font-bold text-sm">BLACK</div>
+              <div class="text-[10px] text-zinc-500">#050608 // 沉曜黑</div>
+            </div>
+          </div>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            無光澤消光基底，吸收環境雜亂漫射光，營造沉穩、內斂且具備實體厚度的高階商務觸感。
+          </p>
+        </div>
+
+        <!-- Element 2: Electric Lime -->
+        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-lg bg-[#ccff00] shadow-sm"></span>
+            <div>
+              <div class="text-white font-bold text-sm">#CCFF00</div>
+              <div class="text-[10px] text-zinc-500">ELECTRIC LIME // 螢光綠</div>
+            </div>
+          </div>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            高彩度訊號點綴，作為視覺定錨點與近場觸碰引導熱區，象徵數位能量與即時連結。
+          </p>
+        </div>
+
+        <!-- Element 3: FLTL Monogram -->
+        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center font-bold text-white text-[11px] syne">
+              FLTL.
+            </span>
+            <div>
+              <div class="text-white font-bold text-sm">MONOGRAM</div>
+              <div class="text-[10px] text-zinc-500">GEOMETRIC IDENTITY</div>
+            </div>
+          </div>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            幾何對稱結構字標，結合實體卡片正面半圓截切與背面正中央定錨，建立強烈的品牌辨識度。
+          </p>
+        </div>
+
+        <!-- Element 4: Contour / Signal Lines -->
+        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center text-[#ccff00]">
+              <i data-lucide="radio" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <div class="text-white font-bold text-sm">SIGNAL LINES</div>
+              <div class="text-[10px] text-zinc-500">CONTOUR WAVE SYSTEM</div>
+            </div>
+          </div>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            模擬射頻訊號擴散之非規則等高線條，賦予靜態平面動態漣漪感，形成獨特觸覺與視覺層次。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — PRODUCT DETAIL -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 05. PRODUCT DETAIL</div>
+        <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
+          材質、表面細節與邊緣工藝探索
+        </h2>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light max-w-2xl">
+          透過高精度立體微距視覺化，探索霧面防指紋 PVC 表層、圓角打磨邊緣與微凸微壓印刷線條在光影斜射下的立體質感。
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="aspect-[1024/646] rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] relative group shadow-2xl">
+          <img src="./assets/fltl-nfc-macro.jpg?v=20260924_master" alt="FLTL NFC 卡片微距表面材質與邊緣細節" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="absolute bottom-4 right-4 mono text-[10px] px-2.5 py-1 rounded bg-black/80 text-zinc-300 border border-white/15 backdrop-blur">
+            SURFACE & PRINT IMPRESSION // VISUALIZATION
+          </div>
+        </div>
+        <div class="flex justify-between items-baseline text-xs text-zinc-500 mono pt-1">
+          <span>04 / 實體卡片表面霧度與幾何線條邊緣微距呈現</span>
+          <span>ANTIGLARE FINISH // 0.84MM GAUGE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — FRONT × BACK -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 06. FRONT × BACK</div>
+        <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
+          雙面幾何對話：動態波紋與同心收束
+        </h2>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light max-w-2xl">
+          正面側向延伸的波紋指引單手持卡手勢；背面中央對稱的等高圈組則引導智慧手機鏡頭旁的 NFC 天線進行精確感應。
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="aspect-[1024/571] rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] relative group shadow-2xl">
+          <img src="./assets/fltl-nfc-dual.jpg?v=20260924_master" alt="FLTL NFC 雙面水平平放對比" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="absolute bottom-4 right-4 mono text-[10px] px-2.5 py-1 rounded bg-black/80 text-[#ccff00] border border-[#ccff00]/30 backdrop-blur">
+            DUAL-SURFACE FLATLAY // 2026
+          </div>
+        </div>
+        <div class="flex justify-between items-baseline text-xs text-zinc-500 mono pt-1">
+          <span>05 / 正面與背面實體排版在工程格線底座上的水平展示</span>
+          <span>SYMMETRY & RATIO DIALOGUE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — TAP EXPERIENCE -->
+    <section class="space-y-6">
+      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 07. TAP EXPERIENCE</div>
+      <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
+        零學習成本感應動線：實體碰觸至數位作品集
+      </h2>
+      <p class="text-sm text-zinc-300 leading-relaxed font-light max-w-2xl">
+        回歸 NFC 本質的純粹互動架構。免除掃描 QR Code 的對焦等待與安裝獨立 App 的摩擦，透過硬體層級的被動感應，實現「碰觸即達」的無感切換。
+      </p>
+
+      <!-- 
+        ASSET REQUIRED: FLTL NFC TAP EXPERIENCE
+        Recommended asset: hand + physical FLTL card + smartphone showing the real tap interaction.
+        Placeholder container designed with elegant minimal architectural aesthetic.
+      -->
+      <div class="p-8 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+          <!-- Step 1 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 mono text-xs text-[#ccff00]">
+              <span class="w-6 h-6 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center font-bold">01</span>
+              <span>PHYSICAL CARD</span>
+            </div>
+            <div class="syne text-base font-bold text-white">實體遞交與握持</div>
+            <p class="text-zinc-400 text-xs font-light leading-relaxed">
+              雙手遞出具備沉穩質感的 0.84mm 沉黑霧面卡體，建立專業而有溫度的第一印象。
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 mono text-xs text-[#ccff00]">
+              <span class="w-6 h-6 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center font-bold">02</span>
+              <span>TAP INTERACTION</span>
+            </div>
+            <div class="syne text-base font-bold text-white">輕觸感應天線熱區</div>
+            <p class="text-zinc-400 text-xs font-light leading-relaxed">
+              手機頂部輕觸卡片同心波紋區域，晶片被動式供電並於毫秒內廣播 URL，免安裝專屬 App。
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 mono text-xs text-[#ccff00]">
+              <span class="w-6 h-6 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center font-bold">03</span>
+              <span>DIGITAL PROFILE</span>
+            </div>
+            <div class="syne text-base font-bold text-white">數位名片與作品展示</div>
+            <p class="text-zinc-400 text-xs font-light leading-relaxed">
+              手機原生瀏覽器即時展開響應式聯絡入口，一鍵儲存通訊錄並瀏覽最新作品集專案。
+            </p>
+          </div>
+        </div>
+
+        <!-- Architectural Interaction Flow Banner -->
+        <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mono text-xs text-zinc-500">
+          <div class="flex items-center gap-2">
+            <i data-lucide="nfc" class="w-4 h-4 text-[#ccff00]"></i>
+            <span>TRANSMISSION: 13.56 MHz PASSIVE INDUCTION // ZERO BATTERY</span>
+          </div>
+          <div class="text-[11px] text-zinc-400">
+            COMPATIBILITY: iOS (CoreNFC) & Android NFC Native
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 05. THE PHYSICAL CARD & TAP EXPERIENCE -->
+    <!-- 08 — PACKAGING -->
     <section class="space-y-6">
-      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 04. PHYSICAL CARD × NFC INTERACTION</div>
-      <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
-        沉黑霧面 PVC 觸感與零學習感應動線
-      </h2>
-      <p class="text-sm text-zinc-300 leading-relaxed font-light max-w-2xl">
-        卡體選用厚度 0.84mm 沉黑霧面防刮 PVC 材質，邊緣圓角打磨細緻。內嵌被動式高頻 NFC 晶片，無需電池供電，現代智慧手機輕觸感應區即可在毫秒內喚起專屬數位名片。
-      </p>
-
-      <!-- Editorial Flow Sequence: Physical -> Tap -> Digital -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 mono text-xs">
-        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-2">
-          <div class="text-[10px] text-[#ccff00]">STEP 01</div>
-          <div class="text-white font-bold text-sm">PHYSICAL TOUCH</div>
-          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
-            雙手遞出具備沉穩質感的沉黑霧面卡體，建立專業而有溫度的第一印象。
-          </p>
-        </div>
-        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-2">
-          <div class="text-[10px] text-[#ccff00]">STEP 02</div>
-          <div class="text-white font-bold text-sm">CONTACTLESS TAP</div>
-          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
-            手機頂部輕觸右側同心線紋區域，晶片被動感應，免安裝任何 App。
-          </p>
-        </div>
-        <div class="p-6 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-2">
-          <div class="text-[10px] text-[#ccff00]">STEP 03</div>
-          <div class="text-white font-bold text-sm">DIGITAL GATEWAY</div>
-          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
-            即時開啟響應式數位名片，一鍵保存聯絡方式並瀏覽最新作品集。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06. PACKAGING & UNBOXING TOUCHPOINT -->
-    <section class="space-y-6">
-      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 05. PACKAGING & UNBOXING EXPERIENCE</div>
+      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 08. PACKAGING SPECIFICATION</div>
       <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
         專屬三折式封套包裝：開箱接觸點的完整性
       </h2>
       <p class="text-sm text-zinc-300 leading-relaxed font-light max-w-2xl">
-        產品體驗不只停留在卡片本身。我們規劃了專屬三折式硬卡封套：外部採沉黑無光澤紙質搭配鋼印 FLTL 識別；展開後呈現鮮明的螢光綠內層，精準卡槽固定卡體，下方印刷專屬序號與品牌理念。
+        產品體驗不只停留在卡片本身。我們規劃了專屬三折式硬卡封套，堅持輕量化紙質包裝，以精準開箱層次取代厚重塑膠或過度包裝。
       </p>
 
-      <div class="p-8 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-4">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mono text-xs text-zinc-300">
-          <div>
-            <span class="text-zinc-500 block text-[10px] uppercase">EXTERIOR</span>
-            <span>沉曜黑無光澤厚卡 × 霧面鋼印識別</span>
+      <!-- 
+        ASSET REQUIRED: OPEN PACKAGING INTERIOR & REMOVAL SEQUENCE
+        Verified design direction: black tri-fold paper envelope, FLTL identity, embossed/blind embossed central FLTL, fluorescent lime #CCFF00 interior, precision card slot, FLTL detail visible after card removal. Do NOT substitute rigid box.
+      -->
+      <div class="p-8 rounded-2xl bg-zinc-950/40 border border-white/10 space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mono text-xs">
+          <div class="space-y-2">
+            <span class="text-zinc-500 block text-[10px] uppercase tracking-wider">01 // EXTERIOR ENVELOPE</span>
+            <div class="text-white font-bold text-sm">沉曜黑無光澤三折紙套</div>
+            <p class="text-zinc-400 text-[11px] font-light leading-relaxed">
+              350gsm 沉黑未塗佈美術厚紙，中央採用霧面鋼印（Blind Embossing）FLTL 標誌，低調呈現微凸光影。
+            </p>
           </div>
-          <div>
-            <span class="text-zinc-500 block text-[10px] uppercase">INTERIOR</span>
-            <span>螢光石灰綠內襯 × 精密切割卡槽</span>
+          <div class="space-y-2">
+            <span class="text-zinc-500 block text-[10px] uppercase tracking-wider">02 // INTERIOR REVEAL</span>
+            <div class="text-white font-bold text-sm">螢光石灰綠襯底內頁</div>
+            <p class="text-zinc-400 text-[11px] font-light leading-relaxed">
+              翻開封套即刻映入純粹螢光綠（#CCFF00）強烈對比內襯，創造開箱時驚艷的視覺張力。
+            </p>
           </div>
-          <div>
-            <span class="text-zinc-500 block text-[10px] uppercase">TOUCHPOINT</span>
-            <span>開箱至遞出的連貫品牌語彙</span>
+          <div class="space-y-2">
+            <span class="text-zinc-500 block text-[10px] uppercase tracking-wider">03 // CARD SLOT & DISCOVERY</span>
+            <div class="text-white font-bold text-sm">精密切割卡槽與底層銘刻</div>
+            <p class="text-zinc-400 text-[11px] font-light leading-relaxed">
+              高精度雷射割線卡槽牢固嵌合卡體；取出卡片後，底層顯露隱藏之 FLTL 品牌理念字句。
+            </p>
           </div>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between mono text-[11px] text-zinc-500">
+          <span>PACKAGING FORMAT: TRI-FOLD PAPER ENVELOPE (ZERO RIGID PLASTIC)</span>
+          <span class="text-zinc-400">FINISH: BLIND EMBOSS + FLUORESCENT INK</span>
         </div>
       </div>
     </section>
 
-    <!-- 07. PHYSICAL × DIGITAL -->
+    <!-- 09 — PHYSICAL × DIGITAL -->
     <section class="space-y-4 max-w-2xl">
-      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 06. PHYSICAL × DIGITAL COHESION</div>
+      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 09. PHYSICAL × DIGITAL COHESION</div>
       <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
         品牌、物件、包裝與數位終點的一致性
       </h2>
       <p class="text-sm text-zinc-300 leading-relaxed font-light">
-        真正的跨領域設計，在於消除實體與數位之間的體驗割裂感。當使用者從精緻封套中取出卡片、觸碰手機、直到螢幕亮起個人作品集，所有的色彩、字體大小、留白節奏與線條幾何，皆遵循同一套嚴格的美學體系。
+        真正的跨領域設計，在於消除實體與數位之間的體驗割裂感。從精緻三折封套中取出卡片、遞出卡片、觸碰智慧手機、直到螢幕即時載入個人作品集，所有的色彩、字體比例、留白節奏與線條幾何，皆遵循同一套嚴格的美學體系。
       </p>
+      <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 mono text-xs text-zinc-400">
+        <div class="border-l-2 border-white/20 pl-3">
+          <span class="text-white font-bold block">PHYSICAL IDENTITY</span>
+          <span class="text-[11px]">霧面 PVC 觸感與線條語彙</span>
+        </div>
+        <div class="border-l-2 border-[#ccff00] pl-3">
+          <span class="text-white font-bold block">NFC INTERACTION</span>
+          <span class="text-[11px]">免接觸無阻力感應跳轉</span>
+        </div>
+        <div class="border-l-2 border-white/20 pl-3">
+          <span class="text-white font-bold block">DIGITAL GATEWAY</span>
+          <span class="text-[11px]">響應式個人品牌與作品集</span>
+        </div>
+      </div>
     </section>
 
-    <!-- 08. WHAT THIS PROJECT DEMONSTRATES (Clean Typographic List, Section 10) -->
+    <!-- 10 — BRAND WORLD (Editorial Art Direction) -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 10. BRAND WORLD</div>
+        <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
+          品牌世界觀：天然礦物與數位精準線條的張力
+        </h2>
+        <p class="text-sm text-zinc-400 leading-relaxed font-light max-w-2xl">
+          本區呈現專案之情境視覺（Art Direction），探索粗獷黑曜石天然鑿面與高精度數位等高線條之間的材質張力，體現「From Life To Lines」由自然萬物淬鍊為理性線條的哲學脈絡。
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="aspect-[1024/646] rounded-2xl overflow-hidden border border-white/10 bg-[#090b0e] relative group shadow-2xl">
+          <img src="./assets/fltl-nfc-stone.jpg?v=20260924_master" alt="FLTL NFC 放置於粗獷黑曜石底座之藝術指導畫面" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="absolute bottom-4 right-4 mono text-[10px] px-2.5 py-1 rounded bg-black/80 text-zinc-300 border border-white/15 backdrop-blur">
+            EDITORIAL ART DIRECTION // 2026
+          </div>
+        </div>
+        <div class="flex justify-between items-baseline text-xs text-zinc-500 mono pt-1">
+          <span>06 / 黑曜石原石底座與卡片背面同心漣漪的材質對比</span>
+          <span>RAW MINERAL × PRECISION GEOMETRY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 — WHAT THIS PROJECT DEMONSTRATES -->
     <section class="space-y-6 border-t border-white/10 pt-10">
-      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 07. CORE CAPABILITIES DEMONSTRATED</div>
+      <div class="mono text-xs text-[#ccff00] font-bold tracking-widest uppercase">// 11. WHAT THIS PROJECT DEMONSTRATES</div>
       <h2 class="syne text-2xl sm:text-3xl font-bold text-white">
         本專案展示之核心專業能力
       </h2>
@@ -224,11 +456,11 @@
           <span class="text-zinc-300">將抽象線條哲學轉化為具備商業識別度與延展性的品牌視覺系統</span>
         </div>
         <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <span class="text-[#ccff00] font-bold text-sm">02. PHYSICAL PRODUCT PRESENTATION</span>
-          <span class="text-zinc-300">掌握實體 PVC 材質紋理、耐磨塗層規格與觸感設計細節</span>
+          <span class="text-[#ccff00] font-bold text-sm">02. PRODUCT PRESENTATION</span>
+          <span class="text-zinc-300">掌握實體 PVC 材質紋理、耐磨塗層規格與微觀觸感之高階視覺呈現</span>
         </div>
         <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <span class="text-[#ccff00] font-bold text-sm">03. PACKAGING DESIGN & UNBOXING</span>
+          <span class="text-[#ccff00] font-bold text-sm">03. PACKAGING DESIGN</span>
           <span class="text-zinc-300">規劃開箱層次與三折封套結構，強化實體交付時的品牌儀式感</span>
         </div>
         <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -242,18 +474,33 @@
       </div>
     </section>
 
-    <!-- 09. CONTACT & NEXT PROJECT (Quiet CTA, Section 21) -->
-    <div class="border-t border-white/10 pt-12 space-y-8">
-      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+    <!-- 12 — CLOSING VISUAL & NEXT PROJECT -->
+    <div class="border-t border-white/10 pt-12 space-y-10">
+      
+      <!-- Closing Statement -->
+      <div class="space-y-4 text-center sm:text-left">
+        <div class="mono text-xs text-zinc-500 uppercase tracking-widest">PHILOSOPHY // CLOSING NOTE</div>
+        <div class="syne text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
+          FROM PHYSICAL IDENTITY<br>
+          <span class="text-[#ccff00]">TO DIGITAL CONNECTION.</span>
+        </div>
+        <p class="text-zinc-400 text-sm font-light max-w-xl">
+          跨越實體與數位的界線，讓每一次遞出都成為具備溫度與長久價值的專業連結。
+        </p>
+      </div>
+
+      <!-- Quiet Contact CTA -->
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 p-6 rounded-2xl bg-zinc-950/40 border border-white/10">
         <div>
           <div class="mono text-[10px] text-zinc-500 uppercase tracking-widest">HAVE A PROJECT IN MIND?</div>
-          <div class="syne text-xl font-bold text-white mt-1">LET'S TALK →</div>
+          <div class="syne text-lg font-bold text-white mt-1">LET'S TALK →</div>
         </div>
         <a href="mailto:howard.design@fltl.io" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ccff00] hover:bg-[#b8e600] text-black font-bold text-xs transition">
           <i data-lucide="mail" class="w-4 h-4"></i> START A CONVERSATION
         </a>
       </div>
 
+      <!-- Navigation Footers -->
       <div class="flex justify-between items-center pt-6 border-t border-white/10 mono text-xs">
         <a href="./index.html" class="text-zinc-400 hover:text-white flex items-center gap-1.5 transition">
           <i data-lucide="arrow-left" class="w-4 h-4"></i> 返回作品集首頁
