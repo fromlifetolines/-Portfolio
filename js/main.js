@@ -866,8 +866,8 @@ const projects = [
     slug: 'aura-spatial-audio',
     projectType: 'CONCEPT PROJECT',
     year: '2026',
-    categories: ['Hardware', '3D Visual', 'Packaging Concept'],
-    disciplines: '3D Visualization, Exploded View, Packaging Concept, Hardware Aesthetics',
+    categories: ['Product Visualization', '3D Visualization', 'Packaging Concept', 'Art Direction'],
+    disciplines: 'Product Visualization, 3D Visualization, Exploded View, Packaging Concept, Art Direction',
     role: 'Visual Design / Art Direction',
     thumbnail: './assets/aura-exploded.jpg?v=20260904_final',
     featured: false,
@@ -993,9 +993,9 @@ const projects = [
 const i18nData = {
   zh: {
     // Entry Gate
-    gate_badge: 'HOWARD PORTFOLIO OS 2.0 // 2026',
+    gate_badge: 'HOWARD PORTFOLIO OS // 2026',
     gate_desc: '10+ 年跨足視覺設計、廣告行銷策略與數位體驗。專注於將策略思考與視覺工藝轉化為清晰動人的品牌體驗。',
-    gate_eyebrow: 'HOWARD HUANG // PORTFOLIO OS 2.0',
+    gate_eyebrow: 'HOWARD HUANG // PORTFOLIO OS',
     gate_title: 'DESIGN × MARKETING × DIGITAL EXPERIENCE',
     gate_subtitle: '10+ 年橫跨設計、廣告與數位行銷 // 互動式作品集 2026',
     gate_btn_primary: '查看精選作品',
@@ -1055,7 +1055,7 @@ const i18nData = {
     win_about_title: '02_ABOUT // 關於我',
     win_about_badge: '[ABOUT_ME]',
     about_positioning_primary: '我跨足視覺設計、廣告策略與數位體驗。廣告背景讓我不僅將設計視為視覺產出，更視為溝通：什麼需要被理解、什麼應該被記住，以及體驗該引導何種行動。',
-    about_positioning_secondary: '透過品牌「From Life To Lines 生活線條（FLTL）」，我將策略思考轉化為清晰俐落的視覺系統與跨媒介體驗，在美感、訊息層級與商業目的之間取得精準平衡。',
+    about_positioning_secondary: '透過品牌「From Life To Lines 生活線條（FLTL）」，我將策略思考轉化為清晰俐落的視覺系統與跨媒介體驗，在美感、訊息層級與溝通目的之間建立一致性。',
     about_pillar1_title: 'VISUAL DESIGN',
     about_p1_item1: 'Brand Identity 品牌識別',
     about_p1_item2: 'Graphic Design 平面視覺',
@@ -1142,9 +1142,9 @@ const i18nData = {
   },
   en: {
     // Entry Gate
-    gate_badge: 'HOWARD PORTFOLIO OS 2.0 // 2026',
+    gate_badge: 'HOWARD PORTFOLIO OS // 2026',
     gate_desc: '10+ years across visual design, marketing strategy, and digital experiences. Transforming strategic insight into engaging brand touchpoints.',
-    gate_eyebrow: 'HOWARD HUANG // PORTFOLIO OS 2.0',
+    gate_eyebrow: 'HOWARD HUANG // PORTFOLIO OS',
     gate_title: 'DESIGN × MARKETING × DIGITAL EXPERIENCE',
     gate_subtitle: '10+ Years Across Design, Advertising & Digital Marketing // Interactive Portfolio 2026',
     gate_btn_primary: 'VIEW SELECTED WORK',
@@ -1204,7 +1204,7 @@ const i18nData = {
     win_about_title: '02_ABOUT // About Me',
     win_about_badge: '[ABOUT_ME]',
     about_positioning_primary: 'I work across visual design, marketing and digital experience. My background in advertising helps me approach design not only as visual execution, but as communication: what needs to be understood, what should be remembered, and what action the experience should support.',
-    about_positioning_secondary: 'Through my brand "From Life To Lines (FLTL)", I translate strategic insight into disciplined visual systems and digital experiences, balancing aesthetics, narrative hierarchy, and commercial intent.',
+    about_positioning_secondary: 'Through my brand "From Life To Lines (FLTL)", I translate strategic insight into disciplined visual systems and digital experiences, building consistency across visual expression, message hierarchy and communication objectives.',
     about_pillar1_title: 'VISUAL DESIGN',
     about_p1_item1: 'Brand Identity',
     about_p1_item2: 'Graphic Design',
