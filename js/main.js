@@ -1144,12 +1144,12 @@ const i18nData = {
     gate_btn_primary: '[ VIEW SELECTED WORK ]',
     gate_btn_secondary: 'Explore the OS →',
 
-    // Navigation
-    nav_projects: '[ 01_SELECTED WORK Selected Works ]',
-    nav_about: '[ 02_ABOUT About Me ]',
-    nav_services: '[ 03_CAPABILITIES Capabilities ]',
-    nav_showreel: '[ 04_EXPERIMENTS Experiments ]',
-    nav_nfc: '[ 05_NFC Smart Card ]',
+    // Navigation (01 to 05 Priority)
+    nav_projects: '[ 01_SELECTED WORK ]',
+    nav_about: '[ 02_ABOUT ]',
+    nav_services: '[ 03_CAPABILITIES ]',
+    nav_showreel: '[ 04_EXPERIMENTS ]',
+    nav_nfc: '[ 05_NFC PRODUCT ]',
     
     // Desktop Icons
     icon_projects: '01_WORKS.os',

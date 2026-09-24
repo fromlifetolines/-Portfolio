@@ -60,25 +60,25 @@
   <!-- ========================================================
        系統頂部導航列 (System Bar)
        ======================================================== -->
-  <header class="system-bar fixed top-0 left-0 right-0 h-11 px-4 sm:px-6 flex items-center justify-between z-50 text-xs select-none">
-    <div class="flex items-center space-x-3 sm:space-x-4">
-      <a href="./index.html" class="flex items-center gap-2 group">
+  <header class="system-bar fixed top-0 left-0 right-0 h-11 px-3 sm:px-6 flex items-center justify-between z-50 text-xs select-none flex-nowrap whitespace-nowrap">
+    <div class="flex items-center space-x-2 sm:space-x-3 xl:space-x-4 min-w-0 flex-shrink-0">
+      <a href="./index.html" class="flex items-center gap-2 group flex-shrink-0">
         <span class="w-2.5 h-2.5 rounded-full bg-[#ccff00] shadow-[0_0_10px_#ccff00] animate-pulse"></span>
-        <span class="font-extrabold tracking-tight text-white text-[13px] sm:text-sm uppercase font-sans">
+        <span class="font-extrabold tracking-tight text-white text-[13px] sm:text-sm uppercase font-sans whitespace-nowrap">
           FROM LIFE TO LINES.
         </span>
       </a>
-      <span class="text-zinc-600 hidden sm:inline">|</span>
-      <nav class="hidden md:flex items-center space-x-1 mono text-[11px]">
-        <button onclick="openWindow('win-projects')" class="px-2.5 py-1 rounded text-cyan-300 hover:text-white hover:bg-white/10 transition font-bold" data-i18n="nav_projects">[ 01_SELECTED WORK 精選作品 ]</button>
-        <button onclick="openWindow('win-about')" class="px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition" data-i18n="nav_about">[ 02_ABOUT 關於我 ]</button>
-        <button onclick="openWindow('win-services')" class="px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition" data-i18n="nav_services">[ 03_CAPABILITIES 專業能力 ]</button>
-        <button onclick="openWindow('win-showreel')" class="px-2.5 py-1 rounded text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 transition" data-i18n="nav_showreel">[ 04_EXPERIMENTS 實驗動態 ]</button>
-        <button onclick="openWindow('win-nfc')" class="px-2.5 py-1 rounded text-[#ccff00] hover:text-[#e5ff80] hover:bg-[#ccff00]/10 transition font-bold" data-i18n="nav_nfc">[ 05_NFC 智慧名片 ]</button>
+      <span class="text-zinc-600 hidden sm:inline flex-shrink-0">|</span>
+      <nav class="hidden md:flex items-center space-x-1 mono text-[10.5px] xl:text-[11px] whitespace-nowrap flex-nowrap">
+        <button onclick="openWindow('win-projects')" class="px-2 xl:px-2.5 py-1 rounded text-cyan-300 hover:text-white hover:bg-white/10 transition font-bold whitespace-nowrap flex-shrink-0" data-i18n="nav_projects">[ 01_SELECTED WORK 精選作品 ]</button>
+        <button onclick="openWindow('win-about')" class="px-2 xl:px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition whitespace-nowrap flex-shrink-0" data-i18n="nav_about">[ 02_ABOUT 關於我 ]</button>
+        <button onclick="openWindow('win-services')" class="px-2 xl:px-2.5 py-1 rounded text-zinc-300 hover:text-white hover:bg-white/10 transition whitespace-nowrap flex-shrink-0" data-i18n="nav_services">[ 03_CAPABILITIES 專業能力 ]</button>
+        <button onclick="openWindow('win-showreel')" class="px-2 xl:px-2.5 py-1 rounded text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 transition whitespace-nowrap flex-shrink-0" data-i18n="nav_showreel">[ 04_EXPERIMENTS 實驗動態 ]</button>
+        <button onclick="openWindow('win-nfc')" class="px-2 xl:px-2.5 py-1 rounded text-[#ccff00] hover:text-[#e5ff80] hover:bg-[#ccff00]/10 transition font-bold whitespace-nowrap flex-shrink-0" data-i18n="nav_nfc">[ 05_NFC 智慧名片 ]</button>
       </nav>
     </div>
 
-    <div class="flex items-center space-x-2.5 sm:space-x-3">
+    <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
       <!-- i18n Bilingual Capsule Switcher -->
       <button id="lang-toggle" class="lang-toggle-btn" aria-label="切換語系 / Switch Language">
         <span class="lang-opt active" data-lang="zh">中文</span>

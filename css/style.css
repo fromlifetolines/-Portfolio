@@ -60,7 +60,24 @@ body {
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
   border-bottom: 1px solid var(--glass-border);
+  white-space: nowrap;
 }
+
+.system-bar nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.system-bar nav button {
+  white-space: nowrap !important;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.25;
+}
+
 
 .nav-pill {
   position: relative;
