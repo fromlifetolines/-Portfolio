@@ -474,17 +474,11 @@
             </span>
           </div>
 
-          <!-- 中央模擬實體卡片視覺 -->
-          <div class="relative z-10 my-auto flex items-center justify-center">
-            <div class="w-full max-w-[320px] sm:max-w-[380px] aspect-[1.586/1] rounded-xl bg-gradient-to-tr from-[#0a0a0a] via-[#161616] to-[#222] border border-white/20 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex flex-col justify-between transform group-hover:scale-105 group-hover:-rotate-1 transition-all duration-500">
-              <div class="flex justify-between items-start">
-                <span class="font-extrabold text-xs tracking-tight text-white uppercase font-sans">FROM LIFE TO LINES.</span>
-                <i data-lucide="nfc" class="w-4 h-4 text-[#ccff00]"></i>
-              </div>
-              <div class="space-y-0.5">
-                <div class="mono text-[10px] text-zinc-400">SMART BUSINESS HARDWARE</div>
-                <div class="mono text-[9px] text-zinc-500">NTAG216 • AI OCR • 2-WAY SYNC</div>
-              </div>
+          <!-- 中央真實實體名片正面視覺 -->
+          <div class="relative z-10 my-auto flex items-center justify-center py-4">
+            <div class="w-full max-w-[340px] sm:max-w-[400px] aspect-[1.583/1] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_35px_rgba(204,255,0,0.18)] border border-white/20 transform group-hover:scale-[1.03] group-hover:-rotate-1 transition-all duration-500 relative bg-[#050706]">
+              <img src="./assets/fltl-nfc-card.png" alt="FLTL NFC 智慧名片正面" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 pointer-events-none"></div>
             </div>
           </div>
 
@@ -790,6 +784,23 @@
         <p class="text-xs text-zinc-200 mt-1 drop-shadow font-light leading-relaxed max-w-2xl" data-i18n="win_nfc_desc">
           不僅是沉黑霧面的質感 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務人脈系統。
         </p>
+      </div>
+
+      <!-- 實體卡片正視圖規格特寫展示區 -->
+      <div class="p-5 md:p-6 rounded-2xl bg-zinc-950/40 backdrop-blur-sm border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="w-full max-w-[300px] sm:max-w-[340px] aspect-[1.583/1] rounded-2xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_25px_rgba(204,255,0,0.15)] flex-shrink-0 group bg-[#050706]">
+          <img src="./assets/fltl-nfc-card.png" alt="FLTL NFC 智慧名片正面" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="space-y-3 flex-1 text-left">
+          <div class="inline-flex items-center gap-2 mono text-[10px] text-[#ccff00] bg-[#ccff00]/10 px-2.5 py-1 rounded border border-[#ccff00]/30 font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
+            PHYSICAL HARDWARE // FRONT VIEW
+          </div>
+          <h4 class="syne text-base md:text-lg font-bold text-white" data-i18n="nfc_spec_title">沉黑霧面防刮塗層 × 極致同心線紋幾何</h4>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed" data-i18n="nfc_spec_desc">
+            以「From Life To Lines」線條哲學出發，右側同心漣漪紋路精準引導手機感應熱區。內嵌高靈敏度 NTAG216 高頻晶片，無需充電、無需安裝 App，手機輕觸即可毫秒喚起個人數位名片與商務生態。
+          </p>
+        </div>
       </div>
 
       <!-- 4 大核心功能特點 (透光毛玻璃卡片) -->
