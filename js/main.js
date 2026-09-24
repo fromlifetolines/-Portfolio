@@ -846,7 +846,7 @@ const projects = [
     role: 'Brand, Product & Experience Design',
     thumbnail: './assets/fltl-nfc-card.png',
     featured: true,
-    caseUrl: 'win-nfc',
+    caseUrl: './portfolio-nfc.html',
     zh: {
       title: 'FLTL NFC 智慧商務名片',
       projectType: '自發產品 (Self-Initiated Product)',
@@ -1022,53 +1022,57 @@ const i18nData = {
     projects_desc: '實體產品、概念研究與數位體驗：以視覺為核心，展現設計力、產品思維與跨媒介落地能力。',
     badge_self_product: '[SELF-INITIATED PRODUCT]',
     badge_concept: '[CONCEPT PROJECT]',
-    title_nfc_card: 'FLTL NFC 智慧商務名片 (Self-Initiated Product)',
-    role_nfc_card: 'Role: Brand, Product & Experience Design',
+    title_nfc_card: 'FLTL NFC 智慧商務名片',
+    role_nfc_card: 'Brand Identity / Card Design / Packaging / NFC Experience',
     desc_nfc_card: '一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。',
-    btn_view_nfc_details: '查看智慧名片 (05_NFC) →',
-    btn_visit_fltl: '前往品牌官網 FLTL →',
+    btn_view_nfc_details: '[ 05_NFC 系統快速視窗 ]',
+    btn_visit_fltl: 'FLTL 官網 →',
 
     role_aura: '視覺設計 / 藝術指導',
     title_aura: '02. AURA 空間聲學耳機系統 (Spatial Audio)',
-    desc_aura: '微工業機能美學：將硬體內部結構與晶片概念轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 概念圖與天地蓋包裝概念。',
+    desc_aura: '微工業機能美學：將耳機內部精密聲學濾波器與微晶片轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 爆炸圖與天地蓋實體包裝概念。',
 
     role_oat: '品牌與包裝設計',
     title_oat: '03. OAT & BOTANIC 純素冷萃低碳咖啡',
-    desc_oat: '以未塗布再生紙材為概念方向，探索自然觸感與編輯式排版的包裝視覺。',
+    desc_oat: '從紙材、印刷與視覺表現的關係出發，在概念階段建立包裝材質與印刷方向。未塗布再生紙盒融合永續理念與雜誌感生活消費品 D2C 視覺節奏。',
 
     role_nexus: '產品 UI/UX 設計',
     title_nexus: '04. NEXUS AI 模組化協作平台與動態介面',
     desc_nexus: '全景曲面螢幕三欄式工作台，探索高密度資料視覺化、節點流程邏輯與深色開發者介面系統。',
 
     tag_hydrate: '[ 概念研究 / 著陸頁架構 ]',
-    title_hydrate: 'HYDRATE LAB 著陸頁架構與轉換動線概念',
+    title_hydrate: 'HYDRATE LAB 全渠道廣告轉換動線',
     desc_hydrate: '探索搜尋廣告訊息、Landing Page 資訊層級與 CTA，如何形成一致的轉換路徑。',
 
     tag_fltl: '[ 自發專案 / 品牌識別 ]',
     title_fltl: 'From Life To Lines 生活線條 品牌識別',
     desc_fltl: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美感的個人品牌。',
 
-    btn_view_case: '完整案例研究 (Case Study) →',
+    btn_view_case: 'VIEW CASE →',
     btn_ig_work: 'IG 作品精選 →',
 
     // 02_ABOUT 關於我
     win_about_title: '02_ABOUT // 關於我',
     win_about_badge: '[ABOUT_ME]',
-    about_quote: '「好的設計，是溝通的橋樑；好的行銷，是價值的傳遞。」',
-    about_quote_sub: '真正的商業價值，來自於對人的深刻理解與數據的精準洞察。',
-    about_bio_1: '在行銷與設計領域深耕超過 10 年，我從 Google Ads 代理商的廣告諮詢出發，建立了對成效數據的理解與策略思維。如今，我透過品牌「From Life To Lines 生活線條（FLTL）」，將這份思維帶入視覺設計，透過專業操作為品牌打造兼具訊息層級與視覺質感的形象。',
-    about_bio_2: '我將行銷思維帶入視覺設計，讓設計不只處理美感，也更重視訊息層級、受眾理解與實際溝通目的。',
-    about_card1_tag: '01. 數據思維與視覺傳達',
-    about_card1_title: '數據思維的視覺傳達',
-    about_card1_desc: '運用逾 10 年平面設計經驗，精通 Photoshop 與 Illustrator，將品牌訊息轉化為層次分明的作品，並以策略思維深化設計溝通力。',
-    about_card2_tag: '02. 整合溝通策略',
-    about_card2_title: '整合式品牌溝通策略',
-    about_card2_desc: '結合 Google 廣告背景，提供包含產品企劃（PM）、市場理解與目標導向的整合方案，從策略到視覺執行協助清晰溝通。',
-    about_card3_tag: '03. 數位與實體設計',
-    about_card3_title: '跨媒介視覺設計',
-    about_card3_desc: '從電商視覺、網站規劃、Banner 設計到各式實體文宣、名片與海報，提供全方位視覺支援，梳理品牌傳達層次。',
-    about_skills_title: '// 擅長技能 CORE COMPETENCIES',
-    btn_explore_projects: '瀏覽精選作品集 (01_SELECTED WORK) →',
+    about_positioning_primary: '我跨足視覺設計、廣告策略與數位體驗。廣告背景讓我不僅將設計視為視覺產出，更視為溝通：什麼需要被理解、什麼應該被記住，以及體驗該引導何種行動。',
+    about_positioning_secondary: '透過品牌「From Life To Lines 生活線條（FLTL）」，我將策略思考轉化為清晰俐落的視覺系統與跨媒介體驗，在美感、訊息層級與商業目的之間取得精準平衡。',
+    about_pillar1_title: 'VISUAL DESIGN',
+    about_p1_item1: 'Brand Identity 品牌識別',
+    about_p1_item2: 'Graphic Design 平面視覺',
+    about_p1_item3: 'Campaign Visual 廣告主視覺',
+    about_p1_item4: 'Packaging Design 包裝設計',
+    about_pillar2_title: 'DIGITAL EXPERIENCE',
+    about_p2_item1: 'Web Design 網頁設計',
+    about_p2_item2: 'UI/UX 介面與體驗',
+    about_p2_item3: 'Landing Page 著陸頁架構',
+    about_p2_item4: 'Interactive Prototype 互動原型',
+    about_pillar3_title: 'MARKETING THINKING',
+    about_p3_item1: 'Advertising Creative 廣告創意',
+    about_p3_item2: 'Content Direction 內容策略',
+    about_p3_item3: 'Campaign Thinking 檔期思維',
+    about_p3_item4: 'Conversion Structure 轉換架構',
+    about_tools_title: '// TOOLS 創作工具與環境',
+    btn_explore_projects: '瀏覽精選專案 (01_SELECTED WORK) →',
 
     // 03_CAPABILITIES 專業能力
     win_serv_title_nav: '03_CAPABILITIES // 專業能力',
@@ -1167,52 +1171,56 @@ const i18nData = {
     projects_desc: 'Physical products, concept studies, and digital experiences: visual-first presentation demonstrating design execution and strategic thinking.',
     badge_self_product: '[SELF-INITIATED PRODUCT]',
     badge_concept: '[CONCEPT PROJECT]',
-    title_nfc_card: 'FLTL NFC Smart Business Card (Self-Initiated Product)',
-    role_nfc_card: 'Role: Brand, Product & Experience Design',
+    title_nfc_card: 'FLTL NFC Smart Business Card',
+    role_nfc_card: 'Brand Identity / Card Design / Packaging / NFC Experience',
     desc_nfc_card: 'A self-initiated product exploring the connection between physical card design and digital identity. NFC interaction extends the traditional business card into a faster, updateable digital contact experience.',
-    btn_view_nfc_details: 'View Smart NFC Details (05_NFC) →',
-    btn_visit_fltl: 'Visit FLTL Website →',
+    btn_view_nfc_details: '[ 05_NFC Quick Overview ]',
+    btn_visit_fltl: 'FLTL Website →',
 
     role_aura: 'Visual Design / Art Direction',
     title_aura: '02. AURA Spatial Audio System',
-    desc_aura: 'Micro-industrial functional aesthetics: turning internal architecture concepts into core visual assets, exploring internal visualization and packaging concepts.',
+    desc_aura: 'Micro-industrial aesthetics: translating precision acoustic hardware and chips into core brand visuals, exploring exploded 3D graphics and rigid-box physical packaging.',
 
     role_oat: 'Brand & Packaging Design',
     title_oat: '03. OAT & BOTANIC Vegan Cold Brew Coffee',
-    desc_oat: 'A packaging concept exploring uncoated recycled-paper textures and editorial D2C typography.',
+    desc_oat: 'Establishing tactile packaging and print direction during early concept phase. Uncoated recycled board meets sustainable principles and D2C editorial rhythm.',
 
     role_nexus: 'Product UI/UX Designer',
-    title_nexus: '04. NEXUS AI Modular Platform & Motion UI',
+    title_nexus: '04. NEXUS AI Modular Workspace',
     desc_nexus: 'Panoramic curved display 3-pane workstation exploring high-density telemetry, node workflow logic, and ergonomic dark mode developer UI.',
 
     tag_hydrate: '[ Concept Project / LP Structure ]',
-    title_hydrate: 'HYDRATE LAB Landing Page & Conversion Journey Concept',
+    title_hydrate: 'HYDRATE LAB Omnichannel Conversion Journey Concept',
     desc_hydrate: 'A concept exploring how search-ad messaging, landing-page hierarchy and CTA structure can form a coherent conversion journey.',
 
     tag_fltl: '[ Self-Initiated Project / Brand Identity ]',
     title_fltl: 'From Life To Lines Brand Identity',
     desc_fltl: 'Minimalist linework conveying emotional resonance, establishing a lifestyle brand balancing commercial clarity and artistry.',
 
-    btn_view_case: 'View Case Study →',
+    btn_view_case: 'VIEW CASE →',
     btn_ig_work: 'IG Works →',
 
     // 02_ABOUT About Me
     win_about_title: '02_ABOUT // About Me',
     win_about_badge: '[ABOUT_ME]',
-    about_quote: '"Great design is a bridge for communication; great marketing is the delivery of value."',
-    about_quote_sub: 'True commercial value stems from understanding human needs and analyzing data accurately.',
-    about_bio_1: 'With over a decade of experience across marketing and visual design, I began as a Google Ads specialist, building analytical thinking and audience insight. Today, through my brand "From Life To Lines (FLTL)", I bring this mindset into visual design, crafting brand assets that balance aesthetics, message hierarchy, and clarity.',
-    about_bio_2: 'I bring marketing thinking into visual design, balancing aesthetics with message hierarchy, audience understanding and communication objectives.',
-    about_card1_tag: '01. Strategic Visuals',
-    about_card1_title: 'Data-Aware Visual Communication',
-    about_card1_desc: 'Over 10 years of expertise in Photoshop and Illustrator, transforming product messaging into clear, hierarchy-driven visual assets.',
-    about_card2_tag: '02. Integrated Strategy',
-    about_card2_title: 'Integrated Communication Strategy',
-    about_card2_desc: 'Leveraging a Google Ads background and product workflows to provide structured planning and goal-oriented communication design.',
-    about_card3_tag: '03. Turnkey Solutions',
-    about_card3_title: 'Cross-Medium Design Solutions',
-    about_card3_desc: 'From e-commerce visual assets and web design to physical collaterals, business cards, and exhibition posters.',
-    about_skills_title: '// CORE COMPETENCIES & SKILLS',
+    about_positioning_primary: 'I work across visual design, marketing and digital experience. My background in advertising helps me approach design not only as visual execution, but as communication: what needs to be understood, what should be remembered, and what action the experience should support.',
+    about_positioning_secondary: 'Through my brand "From Life To Lines (FLTL)", I translate strategic insight into disciplined visual systems and digital experiences, balancing aesthetics, narrative hierarchy, and commercial intent.',
+    about_pillar1_title: 'VISUAL DESIGN',
+    about_p1_item1: 'Brand Identity',
+    about_p1_item2: 'Graphic Design',
+    about_p1_item3: 'Campaign Visual',
+    about_p1_item4: 'Packaging Design',
+    about_pillar2_title: 'DIGITAL EXPERIENCE',
+    about_p2_item1: 'Web Design',
+    about_p2_item2: 'UI/UX Design',
+    about_p2_item3: 'Landing Page Structure',
+    about_p2_item4: 'Interactive Prototype',
+    about_pillar3_title: 'MARKETING THINKING',
+    about_p3_item1: 'Advertising Creative',
+    about_p3_item2: 'Content Direction',
+    about_p3_item3: 'Campaign Thinking',
+    about_p3_item4: 'Conversion Structure',
+    about_tools_title: '// TOOLS & ENVIRONMENT',
     btn_explore_projects: 'Explore Selected Work (01_SELECTED WORK) →',
 
     // 03_CAPABILITIES Capabilities
@@ -1444,50 +1452,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3D Card Perspective Mouse Tilt Physics & Cursor Spotlight
-  if (!isMobile && !prefersReducedMotion) {
-    const projectCards = document.querySelectorAll('#win-projects .work-stage-card, .tilt-card');
-    projectCards.forEach(card => {
-      let spotlight = card.querySelector('.card-spotlight');
-      if (!spotlight) {
-        spotlight = document.createElement('div');
-        spotlight.className = 'card-spotlight';
-        card.appendChild(spotlight);
-      }
-
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const offsetX = (x / rect.width) - 0.5;
-        const offsetY = (y / rect.height) - 0.5;
-
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-        spotlight.style.opacity = '1';
-
-        gsap.to(card, {
-          rotationX: -offsetY * 8,
-          rotationY: offsetX * 8,
-          y: -2,
-          transformPerspective: 1000,
-          duration: 0.25,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-      });
-
-      card.addEventListener('mouseleave', () => {
-        spotlight.style.opacity = '0';
-        gsap.to(card, {
-          rotationX: 0,
-          rotationY: 0,
-          y: 0,
-          duration: 0.6,
-          ease: 'elastic.out(1, 0.45)',
-          overwrite: 'auto'
-        });
-      });
-    });
-  }
+  // Section 17 Motion Restraint: Unnecessary 3D card perspective tilt and cursor spotlight removed.
+  // Clean hover transitions and image scales are handled via CSS for editorial elegance.
 });
