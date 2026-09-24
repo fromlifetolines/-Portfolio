@@ -1,6 +1,6 @@
 /* ========================================================
    CINEMATIC KINETIC STUDIO DESIGN SYSTEM (Geist Stack + 3D Solar Base)
-   Ref: Layers.ai New Era / Foldcraft Studio / Pioneer Interactive OS
+   Howard Portfolio OS 2.0
    ======================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap');
@@ -129,7 +129,7 @@ body {
 }
 
 /* ========================================================
-   左側桌面圖標欄與先鋒系統資料夾 (Pioneer OS Frosted Glass Folders)
+   左側桌面圖標欄與系統資料夾 (OS Desktop Frosted Glass Folders)
    ======================================================== */
 .desktop-grid {
   position: absolute;
@@ -155,7 +155,7 @@ body {
   transform: translateY(-4px);
 }
 
-/* 先鋒雙層磨砂資料夾容器 */
+/* 雙層磨砂資料夾容器 */
 .folder-container {
   position: relative;
   width: 54px;

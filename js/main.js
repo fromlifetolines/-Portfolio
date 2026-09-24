@@ -1,5 +1,5 @@
 /**
- * Pioneer 2026 Interactive OS Desktop Controller & Solar System Engine
+ * Howard Portfolio OS 2.0 Desktop Controller & Solar System Engine
  * Ref: maoxin1234/solar-system-3d & Layers.ai New Era
  * Integrated with Bilingual i18n Engine (Zero Delay Switch)
  */
@@ -842,22 +842,22 @@ const projects = [
     projectType: 'SELF-INITIATED PRODUCT',
     year: '2026',
     categories: ['Product', 'Brand', 'Packaging', 'Digital Experience'],
-    disciplines: 'Brand Strategy, Card Design, Packaging Concept, NFC Interaction',
+    disciplines: 'Brand Identity, Card Design, Packaging, NFC Experience, Digital Experience',
     role: 'Brand, Product & Experience Design',
     thumbnail: './assets/fltl-nfc-card.png',
     featured: true,
     caseUrl: 'win-nfc',
     zh: {
-      title: 'FLTL NFC 智慧商務名片系統',
-      projectType: '自有產品 (Self-Initiated Product)',
+      title: 'FLTL NFC 智慧商務名片',
+      projectType: '自發產品 (Self-Initiated Product)',
       role: '品牌、產品與體驗設計',
-      desc: '沉黑霧面防刮 NFC 實體卡，整合 AI 視覺 OCR 辨識、雙向通訊錄即時同步、行銷成效追蹤與企業 CRM 串接的軟硬整合人脈系統。'
+      desc: '一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。'
     },
     en: {
-      title: 'FLTL NFC Smart Business Card System',
+      title: 'FLTL NFC Smart Business Card',
       projectType: 'Self-Initiated Product',
       role: 'Brand, Product & Experience Design',
-      desc: 'Matte black anti-scratch NFC physical card integrating AI OCR scanning, instant two-way contact sync, marketing analytics, and enterprise CRM pipelines.'
+      desc: 'A self-initiated product exploring the connection between physical card design and digital identity. NFC interaction extends the traditional business card into a faster, updateable digital contact experience.'
     }
   },
   {
@@ -867,7 +867,7 @@ const projects = [
     projectType: 'CONCEPT PROJECT',
     year: '2026',
     categories: ['Hardware', '3D Visual', 'Packaging Concept'],
-    disciplines: '3D Visualization, Exploded View, Packaging Concept, Industrial Aesthetics',
+    disciplines: '3D Visualization, Exploded View, Packaging Concept, Hardware Aesthetics',
     role: 'Visual Design / Art Direction',
     thumbnail: './assets/aura-exploded.jpg?v=20260904_final',
     featured: false,
@@ -876,13 +876,13 @@ const projects = [
       title: 'AURA 空間聲學耳機系統 (Spatial Audio)',
       projectType: '概念研究 (Concept Project)',
       role: '視覺設計 / 藝術指導',
-      desc: '微工業機能美學：將耳機內部精密聲學濾波器與微晶片轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 爆炸圖與天地蓋實體包裝概念。'
+      desc: '微工業機能美學：將硬體內部結構與晶片概念轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 概念圖與天地蓋包裝概念。'
     },
     en: {
       title: 'AURA Spatial Audio System',
       projectType: 'Concept Project',
       role: 'Visual Design / Art Direction',
-      desc: 'Micro-industrial functional aesthetics: turning acoustic filters and microchips into core visual assets, exploring internal visualization and packaging concepts.'
+      desc: 'Micro-industrial functional aesthetics: turning internal architecture concepts into core visual assets, exploring internal visualization and packaging concepts.'
     }
   },
   {
@@ -901,13 +901,13 @@ const projects = [
       title: 'OAT & BOTANIC 純素冷萃低碳咖啡',
       projectType: '概念研究 (Concept Project)',
       role: '品牌與包裝設計',
-      desc: '未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與雜誌感生活消費品 D2C 視覺節奏。'
+      desc: '以未塗布再生紙材為概念方向，探索自然觸感與編輯式排版的包裝視覺。'
     },
     en: {
       title: 'OAT & BOTANIC Vegan Cold Brew Coffee',
       projectType: 'Concept Project',
       role: 'Brand & Packaging Design',
-      desc: 'Uncoated recycled paperboard packaging fusing sustainability with tactile editorial D2C e-commerce typography.'
+      desc: 'A packaging concept exploring uncoated recycled-paper textures and editorial D2C typography.'
     }
   },
   {
@@ -937,34 +937,34 @@ const projects = [
   },
   {
     id: 'hydrate-lab',
-    title: 'HYDRATE LAB Performance Funnel',
+    title: 'HYDRATE LAB Performance Funnel Concept',
     slug: 'hydrate-lab',
-    projectType: 'CAMPAIGN & LANDING PAGE',
+    projectType: 'CONCEPT PROJECT',
     year: '2026',
     categories: ['Performance Ad', 'Landing Page'],
-    disciplines: 'Google Ads Search, Landing Page Design, Conversion Funnel',
-    role: 'Creative & Marketing Direction',
+    disciplines: 'Ad Messaging, Landing Page Hierarchy, CTA Conversion Journey',
+    role: 'Visual Design & Conversion Structure',
     thumbnail: './assets/marketing-ads.jpg',
     featured: false,
     caseUrl: 'https://www.instagram.com/fromlifetolines/',
     zh: {
-      title: 'HYDRATE LAB 全渠道廣告轉換動線',
-      projectType: '商業投放與著陸頁 (Campaign & LP)',
-      role: '行銷企劃與視覺設計',
-      desc: 'Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到名單收集的商業閉環。'
+      title: 'HYDRATE LAB 著陸頁架構與轉換動線概念',
+      projectType: '概念研究 (Concept Project)',
+      role: '視覺設計與轉換架構',
+      desc: '探索搜尋廣告訊息、Landing Page 資訊層級與 CTA，如何形成一致的轉換路徑。'
     },
     en: {
-      title: 'HYDRATE LAB Omnichannel Ad Funnel',
-      projectType: 'Campaign & Landing Page',
-      role: 'Marketing Strategy & Visual Design',
-      desc: 'Google Ads search campaigns paired with landing page architecture for full end-to-end customer acquisition.'
+      title: 'HYDRATE LAB Landing Page & Conversion Journey Concept',
+      projectType: 'Concept Project',
+      role: 'Visual Design & Conversion Structure',
+      desc: 'A concept exploring how search-ad messaging, landing-page hierarchy and CTA structure can form a coherent conversion journey.'
     }
   },
   {
     id: 'fltl-identity',
     title: 'From Life To Lines Brand Identity',
     slug: 'fltl-identity',
-    projectType: 'BRAND IDENTITY & STUDIO',
+    projectType: 'SELF-INITIATED PROJECT',
     year: '2026',
     categories: ['Branding', 'Visual Identity'],
     disciplines: 'Brand System, Illustration, Typography Guidelines',
@@ -974,13 +974,13 @@ const projects = [
     caseUrl: 'https://www.fromlifetolines.com',
     zh: {
       title: 'From Life To Lines 生活線條 品牌識別',
-      projectType: '品牌識別與工作室 (Brand & Studio)',
+      projectType: '自發專案 (Self-Initiated Project)',
       role: '創辦人與藝術指導',
       desc: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美學的生活風格個人品牌。'
     },
     en: {
       title: 'From Life To Lines Brand Identity',
-      projectType: 'Brand Identity & Studio',
+      projectType: 'Self-Initiated Project',
       role: 'Founder & Creative Director',
       desc: 'Minimalist linework conveying emotional resonance, establishing a lifestyle brand balancing commercial clarity and artistry.'
     }
@@ -1022,29 +1022,29 @@ const i18nData = {
     projects_desc: '實體產品、概念研究與數位體驗：以視覺為核心，展現設計力、產品思維與跨媒介落地能力。',
     badge_self_product: '[SELF-INITIATED PRODUCT]',
     badge_concept: '[CONCEPT PROJECT]',
-    title_nfc_card: 'FLTL NFC 智慧商務名片系統 (Smart Hardware & Ecosystem)',
+    title_nfc_card: 'FLTL NFC 智慧商務名片 (Self-Initiated Product)',
     role_nfc_card: 'Role: Brand, Product & Experience Design',
-    desc_nfc_card: '沉黑霧面防刮 NFC 實體卡，整合 AI 視覺 OCR 辨識、雙向通訊錄即時同步、行銷成效追蹤與企業 CRM 串接的軟硬整合人脈系統。以實體硬體為觸點，建立無紙化商務增長引擎。',
-    btn_view_nfc_details: '查看智慧名片系統 (05_NFC) →',
+    desc_nfc_card: '一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。',
+    btn_view_nfc_details: '查看智慧名片 (05_NFC) →',
     btn_visit_fltl: '前往品牌官網 FLTL →',
 
     role_aura: '視覺設計 / 藝術指導',
     title_aura: '02. AURA 空間聲學耳機系統 (Spatial Audio)',
-    desc_aura: '微工業機能美學：將耳機內部精密聲學濾波器與微晶片轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 爆炸圖與天地蓋實體包裝概念。',
+    desc_aura: '微工業機能美學：將硬體內部結構與晶片概念轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 概念圖與天地蓋包裝概念。',
 
     role_oat: '品牌與包裝設計',
     title_oat: '03. OAT & BOTANIC 純素冷萃低碳咖啡',
-    desc_oat: '未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與雜誌感生活消費品 D2C 視覺節奏。',
+    desc_oat: '以未塗布再生紙材為概念方向，探索自然觸感與編輯式排版的包裝視覺。',
 
     role_nexus: '產品 UI/UX 設計',
     title_nexus: '04. NEXUS AI 模組化協作平台與動態介面',
     desc_nexus: '全景曲面螢幕三欄式工作台，探索高密度資料視覺化、節點流程邏輯與深色開發者介面系統。',
 
-    tag_hydrate: '[ 廣告企劃 / 著陸頁設計 ]',
-    title_hydrate: 'HYDRATE LAB 全渠道廣告轉換動線',
-    desc_hydrate: 'Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到訂單的商業閉環。',
+    tag_hydrate: '[ 概念研究 / 著陸頁架構 ]',
+    title_hydrate: 'HYDRATE LAB 著陸頁架構與轉換動線概念',
+    desc_hydrate: '探索搜尋廣告訊息、Landing Page 資訊層級與 CTA，如何形成一致的轉換路徑。',
 
-    tag_fltl: '[ 品牌識別 / 視覺系統 ]',
+    tag_fltl: '[ 自發專案 / 品牌識別 ]',
     title_fltl: 'From Life To Lines 生活線條 品牌識別',
     desc_fltl: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美感的個人品牌。',
 
@@ -1056,17 +1056,17 @@ const i18nData = {
     win_about_badge: '[ABOUT_ME]',
     about_quote: '「好的設計，是溝通的橋樑；好的行銷，是價值的傳遞。」',
     about_quote_sub: '真正的商業價值，來自於對人的深刻理解與數據的精準洞察。',
-    about_bio_1: '在行銷與設計領域深耕超過 10 年，我從 Google Ads 代理商的廣告諮詢師出發，建立了對成效數據的敏銳度與策略思維。如今，我透過品牌「From Life To Lines 生活線條（FLTL）」，將這份邏輯轉化為視覺語言，透過 Adobe Photoshop 與 Illustrator 的專業操作，為品牌打造兼具美學與商業價值的形象。',
-    about_bio_2: '我擅長將複雜的數據轉化為直觀的視覺溝通，確保每一次設計都能精準觸及目標受眾，並帶來可衡量的商業成果。',
-    about_card1_tag: '01. 數據驅動視覺',
-    about_card1_title: '數據驅動的視覺傳達',
-    about_card1_desc: '運用逾 10 年平面設計經驗，精通 Photoshop 與 Illustrator，將品牌訊息轉化為觸動人心的作品，並結合成效分析確保設計價值。',
-    about_card2_tag: '02. 整合行銷策略',
-    about_card2_title: '整合式品牌行銷策略',
-    about_card2_desc: '結合 Google 廣告背景，提供包含產品企劃（PM）、預算分析與業績目標導向的整合方案，從策略到執行全面提升市場表現。',
-    about_card3_tag: '03. 一站式解決方案',
-    about_card3_title: '一站式數位與實體設計',
-    about_card3_desc: '從電商美編、網站規劃、Banner 設計到各式實體文宣、名片與海報，提供全方位視覺與行銷支援，簡化品牌建設流程。',
+    about_bio_1: '在行銷與設計領域深耕超過 10 年，我從 Google Ads 代理商的廣告諮詢出發，建立了對成效數據的理解與策略思維。如今，我透過品牌「From Life To Lines 生活線條（FLTL）」，將這份思維帶入視覺設計，透過專業操作為品牌打造兼具訊息層級與視覺質感的形象。',
+    about_bio_2: '我將行銷思維帶入視覺設計，讓設計不只處理美感，也更重視訊息層級、受眾理解與實際溝通目的。',
+    about_card1_tag: '01. 數據思維與視覺傳達',
+    about_card1_title: '數據思維的視覺傳達',
+    about_card1_desc: '運用逾 10 年平面設計經驗，精通 Photoshop 與 Illustrator，將品牌訊息轉化為層次分明的作品，並以策略思維深化設計溝通力。',
+    about_card2_tag: '02. 整合溝通策略',
+    about_card2_title: '整合式品牌溝通策略',
+    about_card2_desc: '結合 Google 廣告背景，提供包含產品企劃（PM）、市場理解與目標導向的整合方案，從策略到視覺執行協助清晰溝通。',
+    about_card3_tag: '03. 數位與實體設計',
+    about_card3_title: '跨媒介視覺設計',
+    about_card3_desc: '從電商視覺、網站規劃、Banner 設計到各式實體文宣、名片與海報，提供全方位視覺支援，梳理品牌傳達層次。',
     about_skills_title: '// 擅長技能 CORE COMPETENCIES',
     btn_explore_projects: '瀏覽精選作品集 (01_SELECTED WORK) →',
 
@@ -1074,7 +1074,7 @@ const i18nData = {
     win_serv_title_nav: '03_CAPABILITIES // 專業能力',
     win_serv_badge: '[CAPABILITIES]',
     win_serv_title: '設計 × 行銷 × 數位體驗 實戰能力',
-    win_serv_desc: '橫跨實體品牌、數位產品與商業廣告成效，具備完整跨媒介交付能力。',
+    win_serv_desc: '橫跨實體品牌、數位產品與廣告視覺，具備跨媒介設計與策略思考能力。',
     cap_g1_title: 'BRAND & VISUAL 品牌與視覺',
     cap_g1_1: '品牌識別系統 (Brand Identity & Logo)',
     cap_g1_2: '平面視覺設計 (Graphic & Print Design)',
@@ -1083,7 +1083,7 @@ const i18nData = {
     cap_g2_title: 'DIGITAL EXPERIENCE 數位體驗',
     cap_g2_1: '使用者介面與體驗 (UX/UI Design)',
     cap_g2_2: '品牌響應式網站 (Responsive Web Design)',
-    cap_g2_3: '高轉換著陸頁 (Landing Page Design)',
+    cap_g2_3: '著陸頁設計與轉換架構 (Landing Page Design & Conversion Structure)',
     cap_g2_4: '互動原型演繹 (Interactive Prototypes)',
     cap_g3_title: 'MARKETING 行銷思維',
     cap_g3_1: '廣告創意發想 (Advertising Creative)',
@@ -1106,26 +1106,26 @@ const i18nData = {
     win_showreel_desc: '本區塊彙整個人在互動介面、3D 渲染與技術探索上的前瞻研究。所有項目均為實驗性質，旨在探索設計工具與程式碼結合的前沿表現。',
 
     // 05_NFC 智慧名片
-    win_nfc_title_nav: '05_NFC // 智慧名片系統',
+    win_nfc_title_nav: '05_NFC // 智慧商務名片',
     win_nfc_badge: '[SELF-INITIATED PRODUCT]',
-    win_nfc_tag: 'FLTL SMART HARDWARE LAB // SELF-INITIATED PRODUCT',
-    win_nfc_title: '超越傳統名片：軟硬整合的智慧商務人脈系統',
-    win_nfc_desc: '不僅是沉黑霧面的質感 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務人脈系統。',
+    win_nfc_tag: 'FLTL NFC SMART BUSINESS CARD // SELF-INITIATED PRODUCT',
+    win_nfc_title: 'FLTL NFC 智慧商務名片',
+    win_nfc_desc: '一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。',
     nfc_spec_title: '沉黑霧面防刮塗層 × 極致同心線紋幾何',
-    nfc_spec_desc: '以「From Life To Lines」線條哲學出發，右側同心漣漪紋路精準引導手機感應熱區。內嵌高靈敏度 NTAG216 高頻晶片，無需充電、無需安裝 App，手機輕觸即可毫秒喚起個人數位名片與商務生態。',
-    nfc_f1_title: '01. OCR 名片掃描辨識系統',
-    nfc_f1_desc: '收到對方的傳統紙本名片？透過系統內建的 AI 視覺辨識，拍照快速辨識姓名、電話、公司與統編，自動建立數位聯絡簿，終結紙張堆積。',
-    nfc_f2_title: '02. 雙向聯絡資訊即時交換',
-    nfc_f2_desc: '商務溝通不該是單行道。手機碰觸感應後，對方不僅能一鍵將你加入通訊錄（vCard 3.0），更可直接回傳其姓名與聯絡方式，現場完成名單雙向保存。',
-    nfc_f3_title: '03. 行銷追蹤與成效分析 (Analytics)',
-    nfc_f3_desc: '整合 Google Ads 數據分析思維：深度串接 GA4 與點擊事件追蹤，清楚掌握名片被感應的頻次、社群連結點擊率與客戶互動路徑。',
-    nfc_f4_title: '04. 企業矩陣授權與 CRM 串接',
-    nfc_f4_desc: '支援企業批量團隊管理（Tier 1–3 方案），業務外出開發獲得的人脈資料可無縫對接至 Salesforce、HubSpot 或自建 CRM，保障企業商務資產。',
+    nfc_spec_desc: '以「From Life To Lines」線條哲學出發，右側同心漣漪紋路引導手機感應區域。內嵌高靈敏度 NTAG216 高頻晶片，無需充電、無需安裝 App，手機輕觸即可喚起個人數位聯絡頁面。',
+    nfc_f1_title: '01. 實體卡片工藝與視覺識別',
+    nfc_f1_desc: '沉黑霧面防刮質感卡體，結合極簡線條幾何與燙印層次，傳遞專業沈穩的實體第一印象。',
+    nfc_f2_title: '02. NFC 免裝 App 感應交互',
+    nfc_f2_desc: '內嵌 NTAG216 晶片，支援主流 iOS 與 Android 設備輕觸讀取，免額外下載程式即可開啟。',
+    nfc_f3_title: '03. 可動態更新的數位聯絡入口',
+    nfc_f3_desc: '打破傳統紙名片印製後無法更動的限制，透過數位頁面隨時維護最新職稱、作品集與社群入口。',
+    nfc_f4_title: '04. 品牌與包裝周邊整合',
+    nfc_f4_desc: '延伸卡體視覺至專屬封套與包裝細節，探索從開箱到遞出卡片的一致性品牌接觸點體驗。',
     nfc_spec_1: '沉黑霧面防刮 PVC',
     nfc_spec_2: 'NTAG216 高頻晶片',
-    nfc_spec_3: 'AES-256 安全加密',
+    nfc_spec_3: '被動式感應 (免額外供電)',
     nfc_spec_4: '免裝 App 碰觸感應',
-    nfc_spec_tier: '個人版 / 企業客製方案全面支援',
+    nfc_spec_tier: '自發產品原型設計 (Self-Initiated Prototype)',
     nfc_btn_more: '前往官方網站了解更多 →',
 
     // Dock Tooltips
@@ -1167,29 +1167,29 @@ const i18nData = {
     projects_desc: 'Physical products, concept studies, and digital experiences: visual-first presentation demonstrating design execution and strategic thinking.',
     badge_self_product: '[SELF-INITIATED PRODUCT]',
     badge_concept: '[CONCEPT PROJECT]',
-    title_nfc_card: 'FLTL NFC Smart Business Card System (Hardware & Ecosystem)',
+    title_nfc_card: 'FLTL NFC Smart Business Card (Self-Initiated Product)',
     role_nfc_card: 'Role: Brand, Product & Experience Design',
-    desc_nfc_card: 'Matte black anti-scratch NFC physical card integrating AI OCR scanning, instant two-way contact sync, marketing analytics, and enterprise CRM pipelines. A physical anchor for paperless networking.',
+    desc_nfc_card: 'A self-initiated product exploring the connection between physical card design and digital identity. NFC interaction extends the traditional business card into a faster, updateable digital contact experience.',
     btn_view_nfc_details: 'View Smart NFC Details (05_NFC) →',
     btn_visit_fltl: 'Visit FLTL Website →',
 
     role_aura: 'Visual Design / Art Direction',
     title_aura: '02. AURA Spatial Audio System',
-    desc_aura: 'Micro-industrial functional aesthetics: turning acoustic filters and microchips into core visual assets, exploring internal visualization and packaging concepts.',
+    desc_aura: 'Micro-industrial functional aesthetics: turning internal architecture concepts into core visual assets, exploring internal visualization and packaging concepts.',
 
     role_oat: 'Brand & Packaging Design',
     title_oat: '03. OAT & BOTANIC Vegan Cold Brew Coffee',
-    desc_oat: 'Uncoated recycled paperboard packaging fusing sustainability with tactile editorial D2C e-commerce typography.',
+    desc_oat: 'A packaging concept exploring uncoated recycled-paper textures and editorial D2C typography.',
 
     role_nexus: 'Product UI/UX Designer',
     title_nexus: '04. NEXUS AI Modular Platform & Motion UI',
     desc_nexus: 'Panoramic curved display 3-pane workstation exploring high-density telemetry, node workflow logic, and ergonomic dark mode developer UI.',
 
-    tag_hydrate: '[ Ad Campaign & Landing Page ]',
-    title_hydrate: 'HYDRATE LAB Omnichannel Ad Funnel',
-    desc_hydrate: 'Google Ads search campaigns paired with landing page architecture for full end-to-end customer acquisition.',
+    tag_hydrate: '[ Concept Project / LP Structure ]',
+    title_hydrate: 'HYDRATE LAB Landing Page & Conversion Journey Concept',
+    desc_hydrate: 'A concept exploring how search-ad messaging, landing-page hierarchy and CTA structure can form a coherent conversion journey.',
 
-    tag_fltl: '[ Brand Identity & Visual System ]',
+    tag_fltl: '[ Self-Initiated Project / Brand Identity ]',
     title_fltl: 'From Life To Lines Brand Identity',
     desc_fltl: 'Minimalist linework conveying emotional resonance, establishing a lifestyle brand balancing commercial clarity and artistry.',
 
@@ -1201,17 +1201,17 @@ const i18nData = {
     win_about_badge: '[ABOUT_ME]',
     about_quote: '"Great design is a bridge for communication; great marketing is the delivery of value."',
     about_quote_sub: 'True commercial value stems from understanding human needs and analyzing data accurately.',
-    about_bio_1: 'With over a decade of experience in marketing and visual design, I began as a certified Google Ads Consultant, mastering performance tracking and audience behavior. Today, through my brand "From Life To Lines (FLTL)", I translate that analytical mindset into Photoshop and Illustrator to create brand identities that are both refined and commercially effective.',
-    about_bio_2: 'I specialize in turning complex data into clear visual communication, ensuring every design reaches target audiences and yields measurable outcomes.',
+    about_bio_1: 'With over a decade of experience across marketing and visual design, I began as a Google Ads specialist, building analytical thinking and audience insight. Today, through my brand "From Life To Lines (FLTL)", I bring this mindset into visual design, crafting brand assets that balance aesthetics, message hierarchy, and clarity.',
+    about_bio_2: 'I bring marketing thinking into visual design, balancing aesthetics with message hierarchy, audience understanding and communication objectives.',
     about_card1_tag: '01. Strategic Visuals',
-    about_card1_title: 'Data-Driven Visual Communication',
-    about_card1_desc: 'Over 10 years of expertise in Photoshop and Illustrator, transforming product messaging into high-converting visual assets.',
+    about_card1_title: 'Data-Aware Visual Communication',
+    about_card1_desc: 'Over 10 years of expertise in Photoshop and Illustrator, transforming product messaging into clear, hierarchy-driven visual assets.',
     about_card2_tag: '02. Integrated Strategy',
-    about_card2_title: 'Integrated Brand Marketing',
-    about_card2_desc: 'Leveraging a Google Ads background and product PM workflows to provide budget analysis and goal-oriented marketing roadmaps.',
+    about_card2_title: 'Integrated Communication Strategy',
+    about_card2_desc: 'Leveraging a Google Ads background and product workflows to provide structured planning and goal-oriented communication design.',
     about_card3_tag: '03. Turnkey Solutions',
-    about_card3_title: 'Digital and Physical Design Solutions',
-    about_card3_desc: 'From e-commerce graphics and website planning to physical business cards, packaging die-lines, and posters.',
+    about_card3_title: 'Cross-Medium Design Solutions',
+    about_card3_desc: 'From e-commerce visual assets and web design to physical collaterals, business cards, and exhibition posters.',
     about_skills_title: '// CORE COMPETENCIES & SKILLS',
     btn_explore_projects: 'Explore Selected Work (01_SELECTED WORK) →',
 
@@ -1219,7 +1219,7 @@ const i18nData = {
     win_serv_title_nav: '03_CAPABILITIES // Core Capabilities',
     win_serv_badge: '[CAPABILITIES]',
     win_serv_title: 'Design × Marketing × Digital Experience Capabilities',
-    win_serv_desc: 'Spanning physical branding, digital products, and commercial advertising performance with full cross-touchpoint delivery.',
+    win_serv_desc: 'Spanning physical branding, digital products, and advertising visuals with cross-medium craft and strategic thinking.',
     cap_g1_title: 'BRAND & VISUAL',
     cap_g1_1: 'Brand Identity & Logo Systems',
     cap_g1_2: 'Graphic & Print Design',
@@ -1228,7 +1228,7 @@ const i18nData = {
     cap_g2_title: 'DIGITAL EXPERIENCE',
     cap_g2_1: 'UX/UI Product Design',
     cap_g2_2: 'Responsive Web Design (RWD)',
-    cap_g2_3: 'High-Conversion Landing Pages',
+    cap_g2_3: 'Landing Page Design & Conversion Structure',
     cap_g2_4: 'Interactive Prototypes',
     cap_g3_title: 'MARKETING THINKING',
     cap_g3_1: 'Advertising Creative Concepts',
@@ -1251,26 +1251,26 @@ const i18nData = {
     win_showreel_desc: 'Curated explorations across interactive UI, 3D WebGL rendering, and generative experiments. All works are self-initiated research exploring the frontier of design and code.',
 
     // 05_NFC Smart Card
-    win_nfc_title_nav: '05_NFC // Smart NFC Card',
+    win_nfc_title_nav: '05_NFC // Smart Business Card',
     win_nfc_badge: '[SELF-INITIATED PRODUCT]',
-    win_nfc_tag: 'FLTL SMART HARDWARE LAB // SELF-INITIATED PRODUCT',
-    win_nfc_title: 'Beyond Traditional Cards: Smart Hardware Networking Ecosystem',
-    win_nfc_desc: 'More than a matte black premium NFC card: a growth engine integrating AI optical scanning, two-way sync, marketing analytics, and enterprise CRM pipelines.',
+    win_nfc_tag: 'FLTL NFC SMART BUSINESS CARD // SELF-INITIATED PRODUCT',
+    win_nfc_title: 'FLTL NFC Smart Business Card',
+    win_nfc_desc: 'A self-initiated product exploring the connection between physical card design and digital identity. NFC interaction extends the traditional business card into a faster, updateable digital contact experience.',
     nfc_spec_title: 'Matte Black Anti-Scratch Finish × Concentric Linework Geometry',
     nfc_spec_desc: 'Rooted in the "From Life To Lines" linework philosophy, the concentric contour gradient guides the intuitive tap zone. Embedded with high-sensitivity NTAG216 chip—battery-free, zero app install required, instant launch on tap.',
-    nfc_f1_title: '01. AI Optical Card Scanner (OCR)',
-    nfc_f1_desc: 'Received a paper card? Quick snapshot for AI extraction of name, phone, company, and tax ID into digital contacts.',
-    nfc_f2_title: '02. Instant Two-Way Contact Sync',
-    nfc_f2_desc: 'Networking is never one-way. Upon tap, recipients save your contact (vCard 3.0) and can instantly transmit their info back, completing the loop.',
-    nfc_f3_title: '03. Marketing Analytics & Funnel Tracking',
-    nfc_f3_desc: 'Applying Google Ads data discipline: deep GA4 and event tracking to analyze tap frequency, link clicks, and audience paths.',
-    nfc_f4_title: '04. Enterprise Matrix & CRM Integration',
-    nfc_f4_desc: 'Enterprise multi-seat management with direct data pipeline syncing to Salesforce, HubSpot, or bespoke CRMs.',
+    nfc_f1_title: '01. Physical Card Craft & Visual Identity',
+    nfc_f1_desc: 'Matte black anti-scratch texture paired with minimalist linework geometry and foil stamping for a lasting physical impression.',
+    nfc_f2_title: '02. NFC Tap Interaction (No App Required)',
+    nfc_f2_desc: 'Embedded NTAG216 chip supports instantaneous contactless reading across modern iOS and Android devices.',
+    nfc_f3_title: '03. Dynamic Digital Contact Gateway',
+    nfc_f3_desc: 'Extends static paper cards into an updateable digital contact profile for credentials, portfolio links, and channels.',
+    nfc_f4_title: '04. Brand & Packaging Integration',
+    nfc_f4_desc: 'Extending card aesthetics to custom sleeves and packaging details, creating a cohesive unboxing touchpoint.',
     nfc_spec_1: 'Matte Black Anti-Scratch PVC',
     nfc_spec_2: 'NTAG216 High-Frequency Chip',
-    nfc_spec_3: 'AES-256 Security Encryption',
+    nfc_spec_3: 'Passive Inductive Power (Battery-Free)',
     nfc_spec_4: 'No-App Instant Tap',
-    nfc_spec_tier: 'Personal & Enterprise Tiers Supported',
+    nfc_spec_tier: 'Self-Initiated Prototype',
     nfc_btn_more: 'Visit Official Website to Learn More →',
 
     // Dock Tooltips
