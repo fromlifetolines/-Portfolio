@@ -594,8 +594,37 @@ function init3D() {
 
   let clock = new THREE.Clock();
 
+  let isPageVisible = !document.hidden;
+  let animationFrameId = null;
+
+  document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    if (isPageVisible) {
+      clock.getDelta(); // prevent delta jump
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    } else {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    }
+  });
+
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function animate() {
-    requestAnimationFrame(animate);
+    if (!isPageVisible) {
+      animationFrameId = null;
+      return;
+    }
+    animationFrameId = requestAnimationFrame(animate);
+
+    if (prefersReducedMotion) {
+      renderer.render(scene, camera);
+      return;
+    }
 
     const delta = clock.getDelta();
     const elapsedTime = clock.getElapsedTime();
@@ -706,9 +735,10 @@ function init3D() {
 }
 
 // ========================================================
-// 3. Multi-Window Management Engine (Fluid Kinetic Transitions)
+// 3. Multi-Window Management & Entry Gate Engine
 // ========================================================
 let topZ = 100;
+
 function focusWindow(el) {
   topZ += 1;
   el.style.zIndex = topZ;
@@ -732,6 +762,8 @@ function openWindow(winId) {
     { scale: 0.92, opacity: 0 },
     { scale: 1, opacity: 1, duration: 0.32, ease: 'power3.out' }
   );
+
+  trackPortfolioEvent('selected_work_open', { windowId: winId });
 }
 
 function closeWindow(winId) {
@@ -749,6 +781,7 @@ function closeWindow(winId) {
       if (v) v.pause();
     }
   });
+  trackPortfolioEvent('window_close', { windowId: winId });
 }
 
 function toggleMaximize(winId) {
@@ -758,26 +791,268 @@ function toggleMaximize(winId) {
   win.classList.toggle('is-maximized');
 }
 
+// First-Visit Entry Gate Controller (Section 05)
+function enterSelectedWork() {
+  dismissEntryGate();
+  openWindow('win-projects');
+  trackPortfolioEvent('entry_view_work_click', { destination: 'win-projects' });
+}
+
+function dismissEntryGate() {
+  const gate = document.getElementById('entry-gate');
+  if (!gate) return;
+  audio.playBlip(520, 0.05);
+  gsap.to(gate, {
+    opacity: 0,
+    scale: 0.96,
+    duration: 0.35,
+    ease: 'power2.inOut',
+    onComplete: () => {
+      gate.style.display = 'none';
+    }
+  });
+  trackPortfolioEvent('entry_explore_os_click');
+}
+
+// Lightweight Analytics / Telemetry Hook (Section 26)
+function trackPortfolioEvent(eventName, params = {}) {
+  try {
+    if (window.dataLayer && Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({ event: eventName, ...params });
+    }
+    window.dispatchEvent(new CustomEvent('portfolio_event', { detail: { eventName, ...params } }));
+  } catch (e) {}
+}
+window.trackPortfolioEvent = trackPortfolioEvent;
+window.enterSelectedWork = enterSelectedWork;
+window.dismissEntryGate = dismissEntryGate;
+window.openWindow = openWindow;
+window.closeWindow = closeWindow;
+window.toggleMaximize = toggleMaximize;
+window.focusWindow = focusWindow;
+
 // ========================================================
-// 4. Bilingual i18n Engine (Zero Delay Client-Side Switcher)
+// 4. Central Project Data Model (Section 10)
+// ========================================================
+const projects = [
+  {
+    id: 'fltl-nfc',
+    title: 'FLTL NFC Smart Business Card',
+    slug: 'nfc-smart-card',
+    projectType: 'SELF-INITIATED PRODUCT',
+    year: '2026',
+    categories: ['Product', 'Brand', 'Packaging', 'Digital Experience'],
+    disciplines: 'Brand Strategy, Card Design, Packaging Concept, NFC Interaction',
+    role: 'Brand, Product & Experience Design',
+    thumbnail: './assets/brand-identity.jpg',
+    featured: true,
+    caseUrl: 'win-nfc',
+    zh: {
+      title: 'FLTL NFC 智慧商務名片系統',
+      projectType: '自有產品 (Self-Initiated Product)',
+      role: '品牌、產品與體驗設計',
+      desc: '沉黑霧面防刮 NFC 實體卡，整合 AI 視覺 OCR 辨識、雙向通訊錄即時同步、行銷成效追蹤與企業 CRM 串接的軟硬整合人脈系統。'
+    },
+    en: {
+      title: 'FLTL NFC Smart Business Card System',
+      projectType: 'Self-Initiated Product',
+      role: 'Brand, Product & Experience Design',
+      desc: 'Matte black anti-scratch NFC physical card integrating AI OCR scanning, instant two-way contact sync, marketing analytics, and enterprise CRM pipelines.'
+    }
+  },
+  {
+    id: 'aura',
+    title: 'AURA Spatial Audio System',
+    slug: 'aura-spatial-audio',
+    projectType: 'CONCEPT PROJECT',
+    year: '2026',
+    categories: ['Hardware', '3D Visual', 'Packaging Concept'],
+    disciplines: '3D Visualization, Exploded View, Packaging Concept, Industrial Aesthetics',
+    role: 'Visual Design / Art Direction',
+    thumbnail: './assets/aura-exploded.jpg?v=20260904_final',
+    featured: false,
+    caseUrl: './portfolio-brand.html',
+    zh: {
+      title: 'AURA 空間聲學耳機系統 (Spatial Audio)',
+      projectType: '概念研究 (Concept Project)',
+      role: '視覺設計 / 藝術指導',
+      desc: '微工業機能美學：將耳機內部精密聲學濾波器與微晶片轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 爆炸圖與天地蓋實體包裝概念。'
+    },
+    en: {
+      title: 'AURA Spatial Audio System',
+      projectType: 'Concept Project',
+      role: 'Visual Design / Art Direction',
+      desc: 'Micro-industrial functional aesthetics: turning acoustic filters and microchips into core visual assets, exploring internal visualization and packaging concepts.'
+    }
+  },
+  {
+    id: 'oat-botanic',
+    title: 'OAT & BOTANIC Cold Brew',
+    slug: 'oat-and-botanic',
+    projectType: 'CONCEPT PROJECT',
+    year: '2026',
+    categories: ['Packaging', 'D2C', 'Branding'],
+    disciplines: 'Sustainable Packaging Concept, D2C Typography, Editorial Aesthetics',
+    role: 'Brand & Packaging Design',
+    thumbnail: './assets/oat-packaging.jpg',
+    featured: false,
+    caseUrl: './portfolio-ecommerce.html',
+    zh: {
+      title: 'OAT & BOTANIC 純素冷萃低碳咖啡',
+      projectType: '概念研究 (Concept Project)',
+      role: '品牌與包裝設計',
+      desc: '未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與雜誌感生活消費品 D2C 視覺節奏。'
+    },
+    en: {
+      title: 'OAT & BOTANIC Vegan Cold Brew Coffee',
+      projectType: 'Concept Project',
+      role: 'Brand & Packaging Design',
+      desc: 'Uncoated recycled paperboard packaging fusing sustainability with tactile editorial D2C e-commerce typography.'
+    }
+  },
+  {
+    id: 'nexus-ai',
+    title: 'NEXUS AI Modular Platform',
+    slug: 'nexus-ai',
+    projectType: 'CONCEPT PROJECT',
+    year: '2026',
+    categories: ['SaaS', 'UI/UX', 'Node Canvas'],
+    disciplines: 'Telemetry Dashboard, Node Workflow, Dark Mode Design System',
+    role: 'Product UI/UX Designer',
+    thumbnail: './assets/nexus-ui.jpg',
+    featured: false,
+    caseUrl: './portfolio-web.html',
+    zh: {
+      title: 'NEXUS AI 模組化協作平台與動態介面',
+      projectType: '概念研究 (Concept Project)',
+      role: '產品 UI/UX 設計',
+      desc: '全景曲面螢幕三欄式工作台，探索高密度資料視覺化、節點流程邏輯與深色開發者介面系統。'
+    },
+    en: {
+      title: 'NEXUS AI Modular Platform & Motion UI',
+      projectType: 'Concept Project',
+      role: 'Product UI/UX Designer',
+      desc: 'High-density telemetry dashboard and node-based canvas delivering clarity and ergonomic dark mode developer UI.'
+    }
+  },
+  {
+    id: 'hydrate-lab',
+    title: 'HYDRATE LAB Performance Funnel',
+    slug: 'hydrate-lab',
+    projectType: 'CAMPAIGN & LANDING PAGE',
+    year: '2026',
+    categories: ['Performance Ad', 'Landing Page'],
+    disciplines: 'Google Ads Search, Landing Page Design, Conversion Funnel',
+    role: 'Creative & Marketing Direction',
+    thumbnail: './assets/marketing-ads.jpg',
+    featured: false,
+    caseUrl: 'https://www.instagram.com/fromlifetolines/',
+    zh: {
+      title: 'HYDRATE LAB 全渠道廣告轉換動線',
+      projectType: '商業投放與著陸頁 (Campaign & LP)',
+      role: '行銷企劃與視覺設計',
+      desc: 'Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到名單收集的商業閉環。'
+    },
+    en: {
+      title: 'HYDRATE LAB Omnichannel Ad Funnel',
+      projectType: 'Campaign & Landing Page',
+      role: 'Marketing Strategy & Visual Design',
+      desc: 'Google Ads search campaigns paired with landing page architecture for full end-to-end customer acquisition.'
+    }
+  },
+  {
+    id: 'fltl-identity',
+    title: 'From Life To Lines Brand Identity',
+    slug: 'fltl-identity',
+    projectType: 'BRAND IDENTITY & STUDIO',
+    year: '2026',
+    categories: ['Branding', 'Visual Identity'],
+    disciplines: 'Brand System, Illustration, Typography Guidelines',
+    role: 'Founder & Creative Director',
+    thumbnail: './assets/brand-identity.jpg',
+    featured: false,
+    caseUrl: 'https://www.fromlifetolines.com',
+    zh: {
+      title: 'From Life To Lines 生活線條 品牌識別',
+      projectType: '品牌識別與工作室 (Brand & Studio)',
+      role: '創辦人與藝術指導',
+      desc: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美學的生活風格個人品牌。'
+    },
+    en: {
+      title: 'From Life To Lines Brand Identity',
+      projectType: 'Brand Identity & Studio',
+      role: 'Founder & Creative Director',
+      desc: 'Minimalist linework conveying emotional resonance, establishing a lifestyle brand balancing commercial clarity and artistry.'
+    }
+  }
+];
+
+// ========================================================
+// 5. Bilingual i18n Engine (Zero Delay Client-Side Switcher)
 // ========================================================
 const i18nData = {
   zh: {
-    // Navigation & Desktop Icons
-    nav_about: '[ 01_ABOUT 關於我 ]',
-    nav_services: '[ 02_SERVICES 服務項目 ]',
-    nav_projects: '[ 03_PROJECTS 精選專案 ]',
-    nav_showreel: '[ 04_SHOWREEL 動態展示 ]',
+    // Entry Gate
+    gate_badge: 'HOWARD PORTFOLIO OS 2.0 // 2026',
+    gate_desc: '10+ 年跨足視覺設計、廣告行銷策略與數位體驗。專注於將策略思考與視覺工藝轉化為清晰動人的品牌體驗。',
+    gate_eyebrow: 'HOWARD HUANG // PORTFOLIO OS 2.0',
+    gate_title: 'DESIGN × MARKETING × DIGITAL EXPERIENCE',
+    gate_subtitle: '10+ 年橫跨設計、廣告與數位行銷 // 互動式作品集 2026',
+    gate_btn_primary: '[ VIEW SELECTED WORK 查看精選作品 ]',
+    gate_btn_secondary: 'Explore the OS 探索系統環境 →',
+
+    // Navigation (01 to 05 Priority)
+    nav_projects: '[ 01_SELECTED WORK 精選作品 ]',
+    nav_about: '[ 02_ABOUT 關於我 ]',
+    nav_services: '[ 03_CAPABILITIES 專業能力 ]',
+    nav_showreel: '[ 04_EXPERIMENTS 實驗動態 ]',
     nav_nfc: '[ 05_NFC 智慧名片 ]',
     
-    icon_about: '01_ABOUT.os',
-    icon_services: '02_SERVICES.os',
-    icon_projects: '03_PROJECTS.os',
-    icon_showreel: '04_SHOWREEL.mp4',
+    // Desktop Icons
+    icon_projects: '01_WORKS.os',
+    icon_about: '02_ABOUT.os',
+    icon_services: '03_CAPABILITIES.os',
+    icon_showreel: '04_EXPERIMENTS.mp4',
     icon_nfc: '05_NFC.os',
 
-    // 01_ABOUT 關於我
-    win_about_title: '01_ABOUT // 關於我',
+    // 01_SELECTED WORK
+    win_proj_title_nav: '01_SELECTED WORK // 精選作品集',
+    win_proj_badge: '[SELECTED_WORKS]',
+    projects_title: '精選專案目錄 // SELECTED WORK',
+    projects_desc: '實體產品、概念研究與數位體驗：以視覺為核心，展現設計力、產品思維與跨媒介落地能力。',
+    badge_self_product: '[SELF-INITIATED PRODUCT]',
+    badge_concept: '[CONCEPT PROJECT]',
+    title_nfc_card: 'FLTL NFC 智慧商務名片系統 (Smart Hardware & Ecosystem)',
+    role_nfc_card: 'Role: Brand, Product & Experience Design',
+    desc_nfc_card: '沉黑霧面防刮 NFC 實體卡，整合 AI 視覺 OCR 辨識、雙向通訊錄即時同步、行銷成效追蹤與企業 CRM 串接的軟硬整合人脈系統。以實體硬體為觸點，建立無紙化商務增長引擎。',
+    btn_view_nfc_details: '查看智慧名片系統 (05_NFC) →',
+    btn_visit_fltl: '前往品牌官網 FLTL →',
+
+    role_aura: '視覺設計 / 藝術指導',
+    title_aura: '02. AURA 空間聲學耳機系統 (Spatial Audio)',
+    desc_aura: '微工業機能美學：將耳機內部精密聲學濾波器與微晶片轉化為品牌核心視覺資產，探索硬體內部視覺化、3D 爆炸圖與天地蓋實體包裝概念。',
+
+    role_oat: '品牌與包裝設計',
+    title_oat: '03. OAT & BOTANIC 純素冷萃低碳咖啡',
+    desc_oat: '未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與雜誌感生活消費品 D2C 視覺節奏。',
+
+    role_nexus: '產品 UI/UX 設計',
+    title_nexus: '04. NEXUS AI 模組化協作平台與動態介面',
+    desc_nexus: '全景曲面螢幕三欄式工作台，探索高密度資料視覺化、節點流程邏輯與深色開發者介面系統。',
+
+    tag_hydrate: '[ 廣告企劃 / 著陸頁設計 ]',
+    title_hydrate: 'HYDRATE LAB 全渠道廣告轉換動線',
+    desc_hydrate: 'Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到訂單的商業閉環。',
+
+    tag_fltl: '[ 品牌識別 / 視覺系統 ]',
+    title_fltl: 'From Life To Lines 生活線條 品牌識別',
+    desc_fltl: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美感的個人品牌。',
+
+    btn_view_case: '完整案例研究 (Case Study) →',
+    btn_ig_work: 'IG 作品精選 →',
+
+    // 02_ABOUT 關於我
+    win_about_title: '02_ABOUT // 關於我',
     win_about_badge: '[ABOUT_ME]',
     about_quote: '「好的設計，是溝通的橋樑；好的行銷，是價值的傳遞。」',
     about_quote_sub: '真正的商業價值，來自於對人的深刻理解與數據的精準洞察。',
@@ -793,118 +1068,134 @@ const i18nData = {
     about_card3_title: '一站式數位與實體設計',
     about_card3_desc: '從電商美編、網站規劃、Banner 設計到各式實體文宣、名片與海報，提供全方位視覺與行銷支援，簡化品牌建設流程。',
     about_skills_title: '// 擅長技能 CORE COMPETENCIES',
-    btn_explore_projects: '瀏覽精選專案 →',
+    btn_explore_projects: '瀏覽精選作品集 (01_SELECTED WORK) →',
 
-    // 02_SERVICES Window
-    win_serv_badge: '[OFFICIAL_CAPABILITIES]',
-    win_serv_title: '全方位的視覺與品牌設計服務',
-    win_serv_desc: '從品牌定位、實體平面印刷到高成效數位網頁，提供一站式視覺解決方案。',
-    win_serv_b_title: '品牌設計',
-    win_serv_b_1: '品牌健檢',
-    win_serv_b_2: '品牌命名',
-    win_serv_b_3: '品牌定位',
-    win_serv_b_4: '品牌策略',
-    win_serv_b_5: '商標設計',
-    win_serv_b_6: '文案企劃',
-    win_serv_v_title: '視覺設計',
-    win_serv_v_1: '名片設計',
-    win_serv_v_2: '包裝設計',
-    win_serv_v_3: '海報設計',
-    win_serv_v_4: '型錄設計',
-    win_serv_v_5: '社群素材',
-    win_serv_v_6: 'DM 設計',
-    win_serv_w_title: '網頁設計',
-    win_serv_w_1: '視覺風格設定',
-    win_serv_w_2: 'UI/UX 設計',
-    win_serv_w_3: 'RWD 響應式',
-    win_serv_w_4: '內容架構',
-    win_serv_w_5: 'SEO 與 GA4',
-    win_serv_w_6: '廣告投放',
-    win_serv_btn_view: '查看精選專案 →',
+    // 03_CAPABILITIES 專業能力
+    win_serv_title_nav: '03_CAPABILITIES // 專業能力',
+    win_serv_badge: '[CAPABILITIES]',
+    win_serv_title: '設計 × 行銷 × 數位體驗 實戰能力',
+    win_serv_desc: '橫跨實體品牌、數位產品與商業廣告成效，具備完整跨媒介交付能力。',
+    cap_g1_title: 'BRAND & VISUAL 品牌與視覺',
+    cap_g1_1: '品牌識別系統 (Brand Identity & Logo)',
+    cap_g1_2: '平面視覺設計 (Graphic & Print Design)',
+    cap_g1_3: '宣傳廣告主視覺 (Campaign Key Visual)',
+    cap_g1_4: '實體包裝概念推演 (Packaging Concept)',
+    cap_g2_title: 'DIGITAL EXPERIENCE 數位體驗',
+    cap_g2_1: '使用者介面與體驗 (UX/UI Design)',
+    cap_g2_2: '品牌響應式網站 (Responsive Web Design)',
+    cap_g2_3: '高轉換著陸頁 (Landing Page Design)',
+    cap_g2_4: '互動原型演繹 (Interactive Prototypes)',
+    cap_g3_title: 'MARKETING 行銷思維',
+    cap_g3_1: '廣告創意發想 (Advertising Creative)',
+    cap_g3_2: '檔期行銷企劃 (Campaign Planning)',
+    cap_g3_3: '內容策略指導 (Content Direction)',
+    cap_g3_4: '數位廣告投放策略 (Digital Marketing)',
+    cap_g4_title: 'EXPERIMENT 前瞻實驗',
+    cap_g4_1: '創意程式碼設計 (Creative Coding)',
+    cap_g4_2: '互動式網頁介面 (Interactive UI / WebGL)',
+    cap_g4_3: 'AI 輔助快速原型 (AI-Assisted Prototyping)',
+    cap_g4_4: '探索型程式建構 (Vibe Coding Prototypes)',
+    contact_heading: 'HAVE A PROJECT IN MIND? LET\'S TALK →',
+    win_serv_btn_view: '瀏覽精選作品集 (01_SELECTED WORK) →',
 
-    // 03_PROJECTS Window
-    win_proj_badge: '6 FLAGSHIP CASE STUDIES',
-    win_proj_title: '精選專案目錄 // FEATURED WORKS DIRECTORY',
-    win_proj_desc: '6 大旗艦實體與數位落地案例：涵蓋 3D 視覺、包裝工程、互動介面與全渠道廣告成效。',
-    projects_title: '精選專案目錄 // FEATURED WORKS DIRECTORY',
-    projects_desc: '6 大旗艦實體與數位落地案例：涵蓋 3D 視覺、包裝工程、互動介面與全渠道廣告成效。',
-    btn_view_case: '完整案例 →',
-    btn_ig_work: 'IG 作品精選 →',
+    // 04_EXPERIMENTS 實驗動態
+    win_showreel_title: '04_EXPERIMENTS // 實驗動態',
+    win_showreel_badge: '[EXPERIMENTS_LAB]',
+    win_showreel_status: '4K 60FPS',
+    exp_title: '創意程式碼與數位動態實驗 // EXPERIMENTAL WORK',
+    win_showreel_desc: '本區塊彙整個人在互動介面、3D 渲染與技術探索上的前瞻研究。所有項目均為實驗性質，旨在探索設計工具與程式碼結合的前沿表現。',
 
-    tag_aura: '[ 概念設計 / 3D 視覺系統 ]',
-    title_aura: 'AURA 空間聲學耳機系統 (Spatial Audio)',
-    desc_aura: '微工業機能美學：將聲學濾波器與微晶片轉化為品牌核心視覺資產，拒絕同質化科技極簡。',
-
-    tag_oat: '[ 概念設計 / 包裝與電商 ]',
-    title_oat: 'OAT & BOTANIC 純素冷萃低碳咖啡',
-    desc_oat: '未塗布再生紙盒與實體觸感包裝，融合低碳永續理念與 D2C 高轉化排版系統。',
-
-    tag_nexus: '[ 概念設計 / 介面與動態 ]',
-    title_nexus: 'NEXUS AI 模組化協作平台與動態介面',
-    desc_nexus: '高密度資訊儀表板與節點式畫布系統，實現結構清晰、好操作的深色介面設計。',
-
-    tag_hydrate: '[ 商業投放 / 廣告動線 ]',
-    title_hydrate: 'HYDRATE LAB 全渠道廣告轉換漏斗',
-    desc_hydrate: 'Google Ads 搜索廣告結合高轉換 Landing Page，完成從曝光到訂單的商業閉環。',
-
-    tag_chrono: '[ 內容工程 / SEO 架構 ]',
-    title_chrono: 'CHRONO ARCHIVE 知識庫與 SEO 矩陣',
-    desc_chrono: '結構化資料標記與長尾關鍵字內容工程，取得鐘錶領域搜尋前三名排名。',
-
-    tag_fltl: '[ 品牌識別 / 視覺系統 ]',
-    title_fltl: 'From Life To Lines 生活線條 品牌識別',
-    desc_fltl: '以極簡線條與手繪筆觸傳遞情感共鳴，建立兼具商業力與獨特美感的個人品牌。',
-
-    // 04_SHOWREEL Window
-    win_showreel_badge: '[4K 60FPS // LIVE CINEMA]',
-    win_showreel_title: '4K 動態展示影院',
-    win_showreel_status: 'STATUS: 4K_LIVE',
-    win_showreel_desc: 'AURA 空間聲學系統概念展示片：融合 3D 渲染流體光澤、深色曲面螢幕 UI 與微工業工程細節。',
-
-    // 05_NFC Window
-    win_nfc_badge: '[SMART_NFC_ECOSYSTEM]',
-    win_nfc_tag: 'FLTL SMART HARDWARE LAB // PROPRIETARY ENGINE',
+    // 05_NFC 智慧名片
+    win_nfc_title_nav: '05_NFC // 智慧名片系統',
+    win_nfc_badge: '[SELF-INITIATED PRODUCT]',
+    win_nfc_tag: 'FLTL SMART HARDWARE LAB // SELF-INITIATED PRODUCT',
     win_nfc_title: '超越傳統名片：軟硬整合的智慧商務人脈系統',
-    win_nfc_desc: '不僅是霧面沉黑的頂級 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務增長引擎。',
+    win_nfc_desc: '不僅是沉黑霧面的質感 NFC 實體卡片，更是結合了 AI 視覺掃描、雙向資訊交換、數據成效追蹤與企業 CRM 串接的全方位商務人脈系統。',
     nfc_f1_title: '01. OCR 名片掃描辨識系統',
-    nfc_f1_desc: '收到對方的傳統紙本名片？透過系統內建的 AI 視覺辨識，拍照 1 秒精準辨識姓名、電話、公司與統編，自動建立數位聯絡簿，徹底終結紙張堆積。',
+    nfc_f1_desc: '收到對方的傳統紙本名片？透過系統內建的 AI 視覺辨識，拍照快速辨識姓名、電話、公司與統編，自動建立數位聯絡簿，終結紙張堆積。',
     nfc_f2_title: '02. 雙向聯絡資訊即時交換',
-    nfc_f2_desc: '商務溝通不該是單行道。手機碰觸感應後，對方不僅能一鍵將你加入通訊錄（vCard 3.0），更可直接回傳其姓名與聯絡方式，現場完成名單雙向閉環。',
+    nfc_f2_desc: '商務溝通不該是單行道。手機碰觸感應後，對方不僅能一鍵將你加入通訊錄（vCard 3.0），更可直接回傳其姓名與聯絡方式，現場完成名單雙向保存。',
     nfc_f3_title: '03. 行銷追蹤與成效分析 (Analytics)',
-    nfc_f3_desc: '發揮 10+ 年 Google Ads 數據思維：深度整合 GA4、Meta Pixel 與點擊事件追蹤，精準分析名片被感應的次數、社群點擊率與高價值客戶互動足跡。',
+    nfc_f3_desc: '整合 Google Ads 數據分析思維：深度串接 GA4 與點擊事件追蹤，清楚掌握名片被感應的頻次、社群連結點擊率與客戶互動路徑。',
     nfc_f4_title: '04. 企業矩陣授權與 CRM 串接',
-    nfc_f4_desc: '支援企業批量團隊管理（Tier 1–3 方案），業務外出開發獲得的人脈資料可直接無縫對接至 Salesforce、HubSpot 或自建 CRM，保障企業商務資產。',
+    nfc_f4_desc: '支援企業批量團隊管理（Tier 1–3 方案），業務外出開發獲得的人脈資料可無縫對接至 Salesforce、HubSpot 或自建 CRM，保障企業商務資產。',
     nfc_spec_1: '沉黑霧面防刮 PVC',
     nfc_spec_2: 'NTAG216 高頻晶片',
     nfc_spec_3: 'AES-256 安全加密',
-    nfc_spec_4: '免裝 App 0.5s 感應',
+    nfc_spec_4: '免裝 App 碰觸感應',
     nfc_spec_tier: '個人版 / 企業客製方案全面支援',
     nfc_btn_more: '前往官方網站了解更多 →',
 
     // Dock Tooltips
-    dock_about: '01. 關於我',
-    dock_services: '02. 服務項目',
-    dock_projects: '03. 精選專案',
-    dock_showreel: '04. 動態展示',
+    dock_projects: '01. 精選作品',
+    dock_about: '02. 關於我',
+    dock_services: '03. 專業能力',
+    dock_showreel: '04. 實驗動態',
     dock_nfc: '05. 智慧名片',
     dock_github: 'GitHub 官方首頁'
   },
   en: {
-    // Navigation & Desktop Icons
-    nav_about: '[ 01_ABOUT About Me ]',
-    nav_services: '[ 02_SERVICES Capabilities ]',
-    nav_projects: '[ 03_PROJECTS Works ]',
-    nav_showreel: '[ 04_SHOWREEL Cinema ]',
+    // Entry Gate
+    gate_badge: 'HOWARD PORTFOLIO OS 2.0 // 2026',
+    gate_desc: '10+ years across visual design, marketing strategy, and digital experiences. Transforming strategic insight into engaging brand touchpoints.',
+    gate_eyebrow: 'HOWARD HUANG // PORTFOLIO OS 2.0',
+    gate_title: 'DESIGN × MARKETING × DIGITAL EXPERIENCE',
+    gate_subtitle: '10+ Years Across Design, Advertising & Digital Marketing // Interactive Portfolio 2026',
+    gate_btn_primary: '[ VIEW SELECTED WORK ]',
+    gate_btn_secondary: 'Explore the OS →',
+
+    // Navigation
+    nav_projects: '[ 01_SELECTED WORK Selected Works ]',
+    nav_about: '[ 02_ABOUT About Me ]',
+    nav_services: '[ 03_CAPABILITIES Capabilities ]',
+    nav_showreel: '[ 04_EXPERIMENTS Experiments ]',
     nav_nfc: '[ 05_NFC Smart Card ]',
     
-    icon_about: '01_ABOUT.os',
-    icon_services: '02_SERVICES.os',
-    icon_projects: '03_PROJECTS.os',
-    icon_showreel: '04_SHOWREEL.mp4',
+    // Desktop Icons
+    icon_projects: '01_WORKS.os',
+    icon_about: '02_ABOUT.os',
+    icon_services: '03_CAPABILITIES.os',
+    icon_showreel: '04_EXPERIMENTS.mp4',
     icon_nfc: '05_NFC.os',
 
-    // 01_ABOUT About Me
-    win_about_title: '01_ABOUT // About Me',
+    // 01_SELECTED WORK
+    win_proj_title_nav: '01_SELECTED WORK // Selected Projects',
+    win_proj_badge: '[SELECTED_WORKS]',
+    projects_title: 'Selected Works Directory // Editorial Showcase',
+    projects_desc: 'Physical products, concept studies, and digital experiences: visual-first presentation demonstrating design execution and strategic thinking.',
+    badge_self_product: '[SELF-INITIATED PRODUCT]',
+    badge_concept: '[CONCEPT PROJECT]',
+    title_nfc_card: 'FLTL NFC Smart Business Card System (Hardware & Ecosystem)',
+    role_nfc_card: 'Role: Brand, Product & Experience Design',
+    desc_nfc_card: 'Matte black anti-scratch NFC physical card integrating AI OCR scanning, instant two-way contact sync, marketing analytics, and enterprise CRM pipelines. A physical anchor for paperless networking.',
+    btn_view_nfc_details: 'View Smart NFC Details (05_NFC) →',
+    btn_visit_fltl: 'Visit FLTL Website →',
+
+    role_aura: 'Visual Design / Art Direction',
+    title_aura: '02. AURA Spatial Audio System',
+    desc_aura: 'Micro-industrial functional aesthetics: turning acoustic filters and microchips into core visual assets, exploring internal visualization and packaging concepts.',
+
+    role_oat: 'Brand & Packaging Design',
+    title_oat: '03. OAT & BOTANIC Vegan Cold Brew Coffee',
+    desc_oat: 'Uncoated recycled paperboard packaging fusing sustainability with tactile editorial D2C e-commerce typography.',
+
+    role_nexus: 'Product UI/UX Designer',
+    title_nexus: '04. NEXUS AI Modular Platform & Motion UI',
+    desc_nexus: 'Panoramic curved display 3-pane workstation exploring high-density telemetry, node workflow logic, and ergonomic dark mode developer UI.',
+
+    tag_hydrate: '[ Ad Campaign & Landing Page ]',
+    title_hydrate: 'HYDRATE LAB Omnichannel Ad Funnel',
+    desc_hydrate: 'Google Ads search campaigns paired with landing page architecture for full end-to-end customer acquisition.',
+
+    tag_fltl: '[ Brand Identity & Visual System ]',
+    title_fltl: 'From Life To Lines Brand Identity',
+    desc_fltl: 'Minimalist linework conveying emotional resonance, establishing a lifestyle brand balancing commercial clarity and artistry.',
+
+    btn_view_case: 'View Case Study →',
+    btn_ig_work: 'IG Works →',
+
+    // 02_ABOUT About Me
+    win_about_title: '02_ABOUT // About Me',
     win_about_badge: '[ABOUT_ME]',
     about_quote: '"Great design is a bridge for communication; great marketing is the delivery of value."',
     about_quote_sub: 'True commercial value stems from understanding human needs and analyzing data accurately.',
@@ -920,99 +1211,69 @@ const i18nData = {
     about_card3_title: 'Digital and Physical Design Solutions',
     about_card3_desc: 'From e-commerce graphics and website planning to physical business cards, packaging die-lines, and posters.',
     about_skills_title: '// CORE COMPETENCIES & SKILLS',
-    btn_explore_projects: 'Explore Featured Works →',
+    btn_explore_projects: 'Explore Selected Work (01_SELECTED WORK) →',
 
-    // 02_SERVICES Window
-    win_serv_badge: '[OFFICIAL_CAPABILITIES]',
-    win_serv_title: 'Comprehensive Brand & Visual Design Services',
-    win_serv_desc: 'End-to-end creative solutions spanning brand positioning, print packaging, and high-conversion web development.',
-    win_serv_b_title: 'Brand Design',
-    win_serv_b_1: 'Brand Audit',
-    win_serv_b_2: 'Brand Naming',
-    win_serv_b_3: 'Brand Positioning',
-    win_serv_b_4: 'Brand Strategy',
-    win_serv_b_5: 'Identity & Logo',
-    win_serv_b_6: 'Copywriting Strategy',
-    win_serv_v_title: 'Visual Design',
-    win_serv_v_1: 'Business Card Design',
-    win_serv_v_2: 'Packaging Design',
-    win_serv_v_3: 'Poster Design',
-    win_serv_v_4: 'Catalog & Brochure',
-    win_serv_v_5: 'Social Media Content',
-    win_serv_v_6: 'Direct Mail / Print DM',
-    win_serv_w_title: 'Web Design',
-    win_serv_w_1: 'Visual Style Guidelines',
-    win_serv_w_2: 'UI/UX Design',
-    win_serv_w_3: 'Responsive Layouts (RWD)',
-    win_serv_w_4: 'Information Architecture',
-    win_serv_w_5: 'SEO & GA4 Analytics',
-    win_serv_w_6: 'Digital Ad Campaigns',
-    win_serv_btn_view: 'View Featured Projects →',
+    // 03_CAPABILITIES Capabilities
+    win_serv_title_nav: '03_CAPABILITIES // Core Capabilities',
+    win_serv_badge: '[CAPABILITIES]',
+    win_serv_title: 'Design × Marketing × Digital Experience Capabilities',
+    win_serv_desc: 'Spanning physical branding, digital products, and commercial advertising performance with full cross-touchpoint delivery.',
+    cap_g1_title: 'BRAND & VISUAL',
+    cap_g1_1: 'Brand Identity & Logo Systems',
+    cap_g1_2: 'Graphic & Print Design',
+    cap_g1_3: 'Campaign Key Visuals',
+    cap_g1_4: 'Packaging Concept Development',
+    cap_g2_title: 'DIGITAL EXPERIENCE',
+    cap_g2_1: 'UX/UI Product Design',
+    cap_g2_2: 'Responsive Web Design (RWD)',
+    cap_g2_3: 'High-Conversion Landing Pages',
+    cap_g2_4: 'Interactive Prototypes',
+    cap_g3_title: 'MARKETING THINKING',
+    cap_g3_1: 'Advertising Creative Concepts',
+    cap_g3_2: 'Campaign Planning & Media Ops',
+    cap_g3_3: 'Content Direction & Strategy',
+    cap_g3_4: 'Digital Marketing & PPC Strategy',
+    cap_g4_title: 'EXPERIMENT & EXPLORATION',
+    cap_g4_1: 'Creative Coding & Micro-Interactions',
+    cap_g4_2: 'Interactive UI & WebGL Graphics',
+    cap_g4_3: 'AI-Assisted Rapid Prototyping',
+    cap_g4_4: 'Vibe Coding & Interface Logic',
+    contact_heading: 'HAVE A PROJECT IN MIND? LET\'S TALK →',
+    win_serv_btn_view: 'Explore Selected Work (01_SELECTED WORK) →',
 
-    // 03_PROJECTS Window
-    win_proj_badge: '6 FLAGSHIP CASE STUDIES',
-    win_proj_title: 'Featured Works Directory // Flagship Case Studies',
-    win_proj_desc: '6 Flagship commercial projects across 3D visualization, packaging engineering, interactive UI, and omnichannel ad architectures.',
-    projects_title: 'Featured Works Directory // Flagship Case Studies',
-    projects_desc: '6 Flagship commercial projects across 3D visualization, packaging engineering, interactive UI, and omnichannel ad architectures.',
-    btn_view_case: 'View Case Study →',
-    btn_ig_work: 'IG Works →',
+    // 04_EXPERIMENTS Experiments
+    win_showreel_title: '04_EXPERIMENTS // Creative Experiments',
+    win_showreel_badge: '[EXPERIMENTS_LAB]',
+    win_showreel_status: '4K 60FPS',
+    exp_title: 'Creative Coding & Motion Experiments // Experimental Lab',
+    win_showreel_desc: 'Curated explorations across interactive UI, 3D WebGL rendering, and generative experiments. All works are self-initiated research exploring the frontier of design and code.',
 
-    tag_aura: '[ Concept / 3D Visual System ]',
-    title_aura: 'AURA Spatial Audio System',
-    desc_aura: 'Micro-industrial functional aesthetics: turning acoustic filters and microchips into core visual assets, rejecting generic tech minimalism.',
-
-    tag_oat: '[ Concept / Packaging & E-Commerce ]',
-    title_oat: 'OAT & BOTANIC Vegan Cold Brew Coffee',
-    desc_oat: 'Uncoated recycled paperboard packaging fusing sustainability with high-conversion D2C e-commerce typography.',
-
-    tag_nexus: '[ Concept / UI & Interaction ]',
-    title_nexus: 'NEXUS AI Modular Platform & Motion UI',
-    desc_nexus: 'High-density telemetry dashboard and node-based canvas delivering clarity and ergonomic dark mode UI.',
-
-    tag_hydrate: '[ Commercial Media / Ad Funnel ]',
-    title_hydrate: 'HYDRATE LAB Omnichannel Ad Conversion Funnel',
-    desc_hydrate: 'Google Ads search campaigns paired with high-conversion Landing Pages for full end-to-end lead acquisition.',
-
-    tag_chrono: '[ Content Engineering / Archive ]',
-    title_chrono: 'CHRONO ARCHIVE Horology Knowledge Database',
-    desc_chrono: 'Structured schema markup and long-tail SEO content architecture creating an authoritative reference library.',
-
-    tag_fltl: '[ Brand Identity / Visual Guidelines ]',
-    title_fltl: 'From Life To Lines Brand Identity',
-    desc_fltl: 'Minimalist linework conveying emotional resonance, establishing a brand balancing commercial clarity and artistry.',
-
-    // 04_SHOWREEL Window
-    win_showreel_badge: '[4K 60FPS // LIVE CINEMA]',
-    win_showreel_title: '4K Motion Cinema Showcase',
-    win_showreel_status: 'STATUS: 4K_LIVE',
-    win_showreel_desc: 'AURA spatial audio conceptual film: combining 3D fluid lighting, dark curved screen UI, and micro-engineering details.',
-
-    // 05_NFC Window
-    win_nfc_badge: '[SMART_NFC_ECOSYSTEM]',
-    win_nfc_tag: 'FLTL SMART HARDWARE LAB // PROPRIETARY ENGINE',
+    // 05_NFC Smart Card
+    win_nfc_title_nav: '05_NFC // Smart NFC Card',
+    win_nfc_badge: '[SELF-INITIATED PRODUCT]',
+    win_nfc_tag: 'FLTL SMART HARDWARE LAB // SELF-INITIATED PRODUCT',
     win_nfc_title: 'Beyond Traditional Cards: Smart Hardware Networking Ecosystem',
-    win_nfc_desc: 'More than a matte black premium NFC card: a growth engine integrating AI optical scanning, two-way sync, marketing analytics, and enterprise CRM.',
+    win_nfc_desc: 'More than a matte black premium NFC card: a growth engine integrating AI optical scanning, two-way sync, marketing analytics, and enterprise CRM pipelines.',
     nfc_f1_title: '01. AI Optical Card Scanner (OCR)',
-    nfc_f1_desc: 'Received a paper business card? Snap a photo in 1 second for AI extraction of name, phone, company, and tax ID into digital contacts.',
+    nfc_f1_desc: 'Received a paper card? Quick snapshot for AI extraction of name, phone, company, and tax ID into digital contacts.',
     nfc_f2_title: '02. Instant Two-Way Contact Sync',
-    nfc_f2_desc: 'Networking is never one-way. Upon tap, recipients can save your contact (vCard 3.0) and instantly transmit their info back, completing the loop.',
+    nfc_f2_desc: 'Networking is never one-way. Upon tap, recipients save your contact (vCard 3.0) and can instantly transmit their info back, completing the loop.',
     nfc_f3_title: '03. Marketing Analytics & Funnel Tracking',
-    nfc_f3_desc: 'Applying 10+ years of Google Ads data science: deep GA4 and Meta Pixel integration to track tap counts and high-value customer journeys.',
+    nfc_f3_desc: 'Applying Google Ads data discipline: deep GA4 and event tracking to analyze tap frequency, link clicks, and audience paths.',
     nfc_f4_title: '04. Enterprise Matrix & CRM Integration',
     nfc_f4_desc: 'Enterprise multi-seat management with direct data pipeline syncing to Salesforce, HubSpot, or bespoke CRMs.',
     nfc_spec_1: 'Matte Black Anti-Scratch PVC',
     nfc_spec_2: 'NTAG216 High-Frequency Chip',
     nfc_spec_3: 'AES-256 Security Encryption',
-    nfc_spec_4: 'No-App Instant 0.5s Tap',
+    nfc_spec_4: 'No-App Instant Tap',
     nfc_spec_tier: 'Personal & Enterprise Tiers Supported',
     nfc_btn_more: 'Visit Official Website to Learn More →',
 
     // Dock Tooltips
-    dock_about: '01. About Me',
-    dock_services: '02. Services',
-    dock_projects: '03. Projects',
-    dock_showreel: '04. Showreel',
+    dock_projects: '01. Selected Work',
+    dock_about: '02. About Me',
+    dock_services: '03. Capabilities',
+    dock_showreel: '04. Experiments',
     dock_nfc: '05. Smart NFC',
     dock_github: 'GitHub Profile'
   }
@@ -1055,6 +1316,8 @@ function setLanguage(lang) {
     localStorage.setItem('fltl_lang', lang);
   } catch (e) {}
 }
+window.setLanguage = setLanguage;
+window.projects = projects;
 
 // ========================================================
 // 5. Initialization & Telemetry
@@ -1086,9 +1349,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Setup GSAP Draggables for Windows with cancel parameter to protect traffic lights & buttons
+  // Section 19: Do NOT use draggable desktop windows on mobile
+  const isMobile = window.innerWidth <= 768;
   document.querySelectorAll('.os-window').forEach(win => {
     win.addEventListener('mousedown', () => focusWindow(win));
-    if (window.Draggable) {
+    win.addEventListener('touchstart', () => focusWindow(win), { passive: true });
+    if (window.Draggable && !isMobile) {
       Draggable.create(win, {
         handle: win.querySelector('.window-header'),
         bounds: window,
@@ -1099,6 +1365,22 @@ document.addEventListener('DOMContentLoaded', () => {
           audio.playBlip(480, 0.03);
         }
       });
+    }
+  });
+
+  // ESC Key listener (Section 24 Accessibility: ESC window close)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const gate = document.getElementById('entry-gate');
+      if (gate && gate.style.display !== 'none' && !gate.classList.contains('hidden')) {
+        dismissEntryGate();
+        return;
+      }
+      const openWindows = Array.from(document.querySelectorAll('.os-window:not(.hidden)'));
+      if (openWindows.length > 0) {
+        openWindows.sort((a, b) => (parseInt(b.style.zIndex || '0', 10) - parseInt(a.style.zIndex || '0', 10)));
+        closeWindow(openWindows[0].id);
+      }
     }
   });
 
@@ -1127,7 +1409,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // macOS Dock True Gaussian Magnification Physics (Jitter-free using layout offsets)
   const dock = document.getElementById('main-dock');
-  if (dock) {
+  if (dock && !isMobile && !prefersReducedMotion) {
     const items = dock.querySelectorAll('.dock-item');
     const maxRadius = 120;
 
@@ -1136,15 +1418,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const mouseX = e.clientX;
 
       items.forEach(item => {
-        // 使用 offsetLeft + dockRect.left 計算未受 transform 縮放影響的固定排版中心點，杜絕抖動震盪
         const itemCenter = dockRect.left + item.offsetLeft + item.offsetWidth / 2;
         const distance = Math.abs(mouseX - itemCenter);
 
         if (distance < maxRadius) {
-          // 高斯衰減曲線 (影響半徑 120px)
           const norm = distance / maxRadius;
-          const curve = Math.cos((norm * Math.PI) / 2); // 中心為 1.0，邊界為 0.0
-          // 滑鼠正上方圖標放大至 1.55 倍，兩側相鄰依序為 1.28 倍、1.12 倍
+          const curve = Math.cos((norm * Math.PI) / 2);
           const scale = 1.0 + 0.55 * Math.pow(curve, 1.45);
           const yLift = -(scale - 1.0) * 22;
           gsap.to(item, { scale: scale, y: yLift, duration: 0.1, overwrite: 'auto', ease: 'power2.out' });
@@ -1162,62 +1441,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 3D Card Perspective Mouse Tilt Physics & Cursor Spotlight
-  const projectCards = document.querySelectorAll('#win-projects .selectable-text > div.group, .tilt-card');
-  projectCards.forEach(card => {
-    // 動態注入卡片表面光斑層
-    let spotlight = card.querySelector('.card-spotlight');
-    if (!spotlight) {
-      spotlight = document.createElement('div');
-      spotlight.className = 'card-spotlight';
-      card.appendChild(spotlight);
-    }
+  if (!isMobile && !prefersReducedMotion) {
+    const projectCards = document.querySelectorAll('#win-projects .work-stage-card, .tilt-card');
+    projectCards.forEach(card => {
+      let spotlight = card.querySelector('.card-spotlight');
+      if (!spotlight) {
+        spotlight = document.createElement('div');
+        spotlight.className = 'card-spotlight';
+        card.appendChild(spotlight);
+      }
 
-    const img = card.querySelector('img');
-    const content = card.querySelector('.flex-1');
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const offsetX = (x / rect.width) - 0.5;
+        const offsetY = (y / rect.height) - 0.5;
 
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const offsetX = (x / rect.width) - 0.5;
-      const offsetY = (y / rect.height) - 0.5;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+        spotlight.style.opacity = '1';
 
-      // 同步更新 CSS 游標光斑位置與顯現
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-      spotlight.style.opacity = '1';
-
-      // 卡片 3D 空間微幅傾斜與向上浮起
-      gsap.to(card, {
-        rotationX: -offsetY * 12,
-        rotationY: offsetX * 12,
-        y: -3,
-        transformPerspective: 1000,
-        duration: 0.25,
-        ease: 'power2.out',
-        overwrite: 'auto'
+        gsap.to(card, {
+          rotationX: -offsetY * 8,
+          rotationY: offsetX * 8,
+          y: -2,
+          transformPerspective: 1000,
+          duration: 0.25,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
       });
 
-      // 內部縮圖與內容微幅浮起視差
-      if (img) gsap.to(img, { z: 14, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
-      if (content) gsap.to(content, { z: 10, duration: 0.25, ease: 'power2.out', overwrite: 'auto' });
-    });
-
-    card.addEventListener('mouseleave', () => {
-      spotlight.style.opacity = '0';
-
-      // 彈簧阻尼平滑復原
-      gsap.to(card, {
-        rotationX: 0,
-        rotationY: 0,
-        y: 0,
-        duration: 0.6,
-        ease: 'elastic.out(1, 0.45)',
-        overwrite: 'auto'
+      card.addEventListener('mouseleave', () => {
+        spotlight.style.opacity = '0';
+        gsap.to(card, {
+          rotationX: 0,
+          rotationY: 0,
+          y: 0,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.45)',
+          overwrite: 'auto'
+        });
       });
-
-      if (img) gsap.to(img, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-      if (content) gsap.to(content, { z: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
     });
-  });
+  }
 });

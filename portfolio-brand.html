@@ -3,132 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA Spatial Audio // 旗艦案例研究 2026</title>
+  <title>AURA Spatial Audio // 概念案例研究 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="bg-[#0D0D0E] text-[#EDEDED] overflow-y-auto h-auto min-h-screen">
+<body class="bg-[#050608] text-[#EDEDED] overflow-y-auto h-auto min-h-screen">
   <div class="noise-overlay"></div>
 
-  <header class="sticky top-0 z-40 bg-[#0D0D0E]/90 backdrop-blur border-b border-white/10 px-6 py-4 flex justify-between items-center">
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-40 bg-[#050608]/90 backdrop-blur border-b border-white/10 px-6 py-4 flex justify-between items-center">
     <a href="./index.html" class="mono text-xs text-zinc-400 hover:text-white flex items-center gap-1.5 transition">
-      ← BACK TO OS DESKTOP
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO OS DESKTOP
     </a>
-    <span class="mono text-xs text-cyan-400">[CASE // 01 - BRANDING & PACKAGING]</span>
+    <div class="flex items-center gap-2">
+      <span class="mono text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold uppercase">
+        CONCEPT PROJECT
+      </span>
+      <span class="mono text-xs text-zinc-500 hidden sm:inline">[CASE // 01]</span>
+    </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 py-12 selectable-text space-y-12">
-    <div class="space-y-4 border-b border-white/10 pb-8">
-      <div class="inline-block mono text-xs px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-        BRAND IDENTITY & PACKAGING DESIGN
-      </div>
-      <h1 class="syne text-4xl md:text-5xl font-extrabold tracking-tight text-white">AURA SPATIAL AUDIO</h1>
-      <p class="text-zinc-400 text-base leading-relaxed">
-        將產品精密結構與元件線路轉化為視覺元素。捨棄市場上千篇一律的純白科技極簡，以清晰的結構拆解與包裝設計向消費者傳遞品牌價值。
-      </p>
+  <main class="max-w-4xl mx-auto px-6 py-12 selectable-text space-y-14">
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 mono">
-        <div class="p-3 bg-zinc-900/60 rounded-lg border border-white/5">
-          <div class="text-[10px] text-zinc-500">預購轉換率 (CR)</div>
-          <div class="text-xl font-bold text-green-400">+34.8%</div>
+    <!-- 00. PROJECT HERO -->
+    <div class="space-y-6 border-b border-white/10 pb-10">
+      <div class="inline-flex items-center gap-2 mono text-xs px-3 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        BRAND IDENTITY & PACKAGING CONCEPT
+      </div>
+      
+      <div class="space-y-2">
+        <h1 class="syne text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase">AURA SPATIAL AUDIO</h1>
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-light">
+          聲學硬體視覺化與概念包裝系統：探索如何將耳機內部精密聲學腔體與電路架構，轉譯為具備高度辨識度的品牌視覺與開箱體驗。
+        </p>
+      </div>
+
+      <!-- Verified Project Metadata -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 mono text-xs">
+        <div class="p-3.5 bg-zinc-900/40 rounded-xl border border-white/10">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">PROJECT TYPE</div>
+          <div class="text-zinc-200 font-bold mt-1">概念研究 (Concept)</div>
         </div>
-        <div class="p-3 bg-zinc-900/60 rounded-lg border border-white/5">
-          <div class="text-[10px] text-zinc-500">平均停留時長</div>
-          <div class="text-xl font-bold text-cyan-400">3m 42s</div>
+        <div class="p-3.5 bg-zinc-900/40 rounded-xl border border-white/10">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">ROLE</div>
+          <div class="text-zinc-200 font-bold mt-1">視覺設計 / 藝術指導</div>
         </div>
-        <div class="p-3 bg-zinc-900/60 rounded-lg border border-white/5">
-          <div class="text-[10px] text-zinc-500">廣告點擊率 (CTR)</div>
-          <div class="text-xl font-bold text-white">4.62%</div>
+        <div class="p-3.5 bg-zinc-900/40 rounded-xl border border-white/10">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">DISCIPLINES</div>
+          <div class="text-zinc-200 font-bold mt-1">品牌 / 包裝 / 3D 視覺</div>
         </div>
-        <div class="p-3 bg-zinc-900/60 rounded-lg border border-white/5">
-          <div class="text-[10px] text-zinc-500">業界殊榮</div>
-          <div class="text-xs font-bold text-zinc-300 mt-1">Awwwards SOTD</div>
+        <div class="p-3.5 bg-zinc-900/40 rounded-xl border border-white/10">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">YEAR</div>
+          <div class="text-cyan-400 font-bold mt-1">2026</div>
         </div>
       </div>
     </div>
 
-    <section class="space-y-6">
-      <h2 class="mono text-xs uppercase tracking-widest text-zinc-500">// THE ASSET DESK / PHYSICAL ARTIFACTS</h2>
-      
-      <div class="rounded-xl bg-zinc-900/40 border border-white/10 overflow-hidden space-y-3 p-4">
-        <img src="./assets/aura-exploded.jpg" alt="AURA Key Visual" class="w-full rounded-lg object-cover">
-        <div class="flex justify-between items-center mono text-xs pt-2">
-          <span class="text-white font-bold">AURA 3D 結構宣傳主視覺</span>
-          <span class="text-cyan-400">[KEY_VISUAL]</span>
+    <!-- 01. CONTEXT & DESIGN CHALLENGE -->
+    <section class="space-y-4">
+      <div class="mono text-xs text-cyan-400 font-bold tracking-widest uppercase">// 01. CONTEXT & CHALLENGE</div>
+      <h2 class="syne text-2xl font-bold text-white">市場同質化下的硬體視覺轉譯</h2>
+      <p class="text-sm text-zinc-300 leading-relaxed font-light">
+        當前高階穿戴音訊產品在品牌行銷上普遍流於封閉式極簡主義，產品本體往往以光滑外殼示人，內部精密動圈單體與聲學腔體的工程價值難以被消費者直觀感知。
+      </p>
+      <p class="text-sm text-zinc-400 leading-relaxed font-light">
+        本概念研究的核心目標，在於跳脫消費級硬體的慣性包裝，建立一套「機能工程美學（Micro-Industrial Aesthetics）」：將結構拆解轉化為主視覺資產，使消費者在接觸品牌的第一秒即可理解產品的內部構造與工藝深度。
+      </p>
+    </section>
+
+    <!-- 02. CREATIVE DIRECTION & SYSTEM -->
+    <section class="space-y-4">
+      <div class="mono text-xs text-cyan-400 font-bold tracking-widest uppercase">// 02. CREATIVE DIRECTION & DESIGN SYSTEM</div>
+      <h2 class="syne text-2xl font-bold text-white">冷冽暗色調與工程排版體系</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-[10px] text-zinc-500 uppercase">COLOR PALETTE</div>
+          <div class="flex items-center gap-2">
+            <span class="w-4 h-4 rounded-full bg-[#050608] border border-white/20"></span>
+            <span class="w-4 h-4 rounded-full bg-[#18181b]"></span>
+            <span class="w-4 h-4 rounded-full bg-[#06b6d4]"></span>
+            <span class="w-4 h-4 rounded-full bg-[#ccff00]"></span>
+          </div>
+          <p class="text-xs text-zinc-400 font-light">深曜石底色搭配電光青與冷灰金屬色，營造精密工程感。</p>
         </div>
-        <p class="text-xs text-zinc-400 font-light leading-relaxed">以 3D 拆解視覺展現精緻內部結構，結合排版標註，將複雜產品資訊轉化為直觀具吸引力的行銷亮點。</p>
+        <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-[10px] text-zinc-500 uppercase">TYPOGRAPHY</div>
+          <div class="text-white font-bold text-sm">Syne + Geist Mono</div>
+          <p class="text-xs text-zinc-400 font-light">幾何現代標題結合等寬工程數據標註，建立理性與美感的張力。</p>
+        </div>
+        <div class="p-4 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-[10px] text-zinc-500 uppercase">VISUAL MOTIF</div>
+          <div class="text-white font-bold text-sm">Exploded Layering</div>
+          <p class="text-xs text-zinc-400 font-light">立體爆炸層次排版，將硬體結構轉化為可溝通的圖層語彙。</p>
+        </div>
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+    <!-- 03. APPLICATION: 3D KEY VISUAL -->
+    <section class="space-y-4">
+      <div class="mono text-xs text-cyan-400 font-bold tracking-widest uppercase">// 03. 3D KEY VISUAL ASSET</div>
+      <h2 class="syne text-2xl font-bold text-white">3D 內部結構宣傳主視覺</h2>
+      <div class="rounded-2xl bg-zinc-900/40 border border-white/10 overflow-hidden p-3 space-y-3">
+        <div class="rounded-xl overflow-hidden border border-white/10 bg-black/60">
+          <img src="./assets/aura-exploded.jpg?v=20260904_final" alt="AURA 3D Exploded View Key Visual" class="w-full object-cover">
+        </div>
+        <div class="p-2 flex flex-col sm:flex-row justify-between sm:items-center gap-2 mono text-xs border-t border-white/10 pt-3">
+          <span class="text-white font-bold">AURA 空間聲學耳機結構拆解概念圖</span>
+          <span class="text-cyan-400">[VISUAL_SIMULATION]</span>
+        </div>
+        <p class="text-xs text-zinc-400 font-light leading-relaxed px-2">
+          透過精密 3D 渲染將耳機結構進行空間展開，清楚展現動圈、聲學微孔與固定阻尼的層次關係。此視覺設定作為宣傳主軸，可用於各類廣告素材與產品導讀頁面。
+        </p>
+      </div>
+    </section>
 
-        <!-- 左卡片：預售檔期廣告核心主視覺 -->
-        <div class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 space-y-3">
-          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 relative bg-black/60">
-            <img src="./assets/aura-exploded.jpg?v=20260904_final" alt="AURA Key Visual" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 left-2 mono text-[10px] px-2 py-0.5 rounded bg-black/80 text-cyan-300 border border-cyan-500/30">
-              CAMPAIGN_KV // KEY VISUAL ASSET
-            </div>
-          </div>
-          <div class="flex justify-between items-center mono text-xs">
-            <span class="text-zinc-200 font-bold">預售檔期廣告核心主視覺</span>
-            <span class="text-cyan-400">[CAMPAIGN_KV]</span>
-          </div>
-          <p class="text-xs text-zinc-400 font-light leading-relaxed">
-            將 3D 結構轉化為廣告宣傳資產，運用於 Google Ads 廣告素材與預購頁面，以直觀的硬體視覺降低溝通門檻，達成 34.8% 預購轉化率。
+    <!-- 04. APPLICATION: PACKAGING CONCEPT -->
+    <section class="space-y-4">
+      <div class="mono text-xs text-cyan-400 font-bold tracking-widest uppercase">// 04. PACKAGING CONCEPT & UNBOXING</div>
+      <h2 class="syne text-2xl font-bold text-white">實體天地蓋包裝概念與開箱視覺</h2>
+      <div class="rounded-2xl bg-zinc-900/40 border border-white/10 overflow-hidden p-3 space-y-3">
+        <div class="rounded-xl overflow-hidden border border-white/10 bg-black/60">
+          <img src="./assets/aura-packaging.jpg?v=20260904_match" alt="AURA Physical Packaging Concept" class="w-full object-cover">
+        </div>
+        <div class="p-2 flex flex-col sm:flex-row justify-between sm:items-center gap-2 mono text-xs border-t border-white/10 pt-3">
+          <span class="text-white font-bold">天地蓋硬盒結構與客製防震內托概念示意</span>
+          <span class="text-cyan-400">[PACKAGING_CONCEPT]</span>
+        </div>
+        <p class="text-xs text-zinc-400 font-light leading-relaxed px-2">
+          包裝概念規劃天地蓋結構，提案採用深炭灰未塗布紙卡質感，搭配高對比青色工程標籤與使用手冊小卡。開箱即見耳機本體與專屬收納模組，強化開箱時的儀式感與專業觸感。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 px-2 pt-2 border-t border-white/10 mono text-[11px] text-zinc-400">
+          <div>提案盒型：天地蓋硬盒概念</div>
+          <div>視覺材質：深灰未塗布紙質模擬</div>
+          <div>標籤工藝：微型工程排版標籤</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. WHAT THIS PROJECT DEMONSTRATES -->
+    <section class="space-y-4 border-t border-white/10 pt-10">
+      <div class="mono text-xs text-cyan-400 font-bold tracking-widest uppercase">// 05. CORE CAPABILITIES DEMONSTRATED</div>
+      <h2 class="syne text-2xl font-bold text-white">本專案展示之核心專業能力</h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        <div class="p-5 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-xs text-cyan-400 font-bold">01. 複雜硬體視覺轉譯能力</div>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed">
+            能深入理解硬體內部結構，將工程師視角的硬體細節轉化為具備商業吸引力與高辨識度的大眾視覺語言。
           </p>
         </div>
-
-        <!-- 右卡片：實體紙盒包裝設計與開箱體驗 -->
-        <div class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 space-y-3 flex flex-col justify-between">
-          <div class="aspect-video rounded-lg overflow-hidden border border-white/10 relative bg-black/60">
-            <img src="./assets/aura-packaging.jpg?v=20260904_match" alt="AURA Physical Packaging" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 left-2 mono text-[10px] px-2 py-0.5 rounded bg-black/80 text-cyan-300 border border-cyan-500/30">
-              PRINT_CRAFT // UNCOATED RIGID BOX
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mono text-xs mb-1.5">
-              <span class="text-zinc-200 font-bold">實體再生紙盒包裝工程</span>
-              <span class="text-cyan-400">[PACKAGING_CRAFT]</span>
-            </div>
-            <p class="text-xs text-zinc-400 font-light leading-relaxed mb-2">
-              規劃天地蓋硬盒結構與客製黑色防震紙托，選用深炭灰未塗布再生厚卡紙保留紙漿纖維觸感，搭配電光青專色與局部光微工業工程標籤，傳遞實體開箱質感。
-            </p>
-            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-white/10 mono text-[10px] text-zinc-400">
-              <div>盒型：天地蓋硬盒</div>
-              <div>紙材：深灰未塗布卡紙</div>
-              <div>工藝：專色 + 局部光標籤</div>
-            </div>
-          </div>
+        <div class="p-5 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-xs text-cyan-400 font-bold">02. 包裝結構與開箱體驗思維</div>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed">
+            從開箱第一視角思考實體紙盒層次、配件配置與標籤系統，確保實體觸摸時具備紮實的品牌質感。
+          </p>
         </div>
-
+        <div class="p-5 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-xs text-cyan-400 font-bold">03. 跨媒介品牌一致性把控</div>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed">
+            嚴格維持 3D 主視覺、印刷包裝以及數位行銷素材之間的色彩、字體與排版規範，消除跨平台視覺斷層。
+          </p>
+        </div>
+        <div class="p-5 rounded-xl bg-zinc-900/40 border border-white/10 space-y-2">
+          <div class="mono text-xs text-cyan-400 font-bold">04. 資訊階層高密度梳理</div>
+          <p class="text-xs text-zinc-300 font-light leading-relaxed">
+            擅長在有限版面內處理密集的技術規格標註，兼顧版面呼吸感與資訊易讀性。
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="space-y-8 border-t border-white/10 pt-8">
-      <div class="space-y-2">
-        <h3 class="syne text-xl font-bold text-white">01. 市場挑戰與限制 (The Challenge)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed font-light">
-          市面上的高階耳機包裝與宣傳大多走向封閉式極簡，消費者很難從外觀看見產品的品質差異。預購期需要一套能讓目標受眾一眼看懂產品特色與設計細節的視覺呈現。
-        </p>
-      </div>
+    <!-- 06. NAVIGATION & NEXT PROJECT -->
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <a href="./index.html" class="mono text-xs text-zinc-400 hover:text-white flex items-center gap-1.5 transition">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> 返回精選作品集 (Selected Work)
+      </a>
+      <a href="./portfolio-ecommerce.html" class="mono text-xs text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition font-bold">
+        下一個專案：OAT & BOTANIC →
+      </a>
+    </div>
 
-      <div class="space-y-2">
-        <h3 class="syne text-xl font-bold text-white">02. 核心設計決策 (Design Decisions)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed font-light">
-          我們將耳機結構直接展開製作宣傳主視覺，透過 Illustrator 規劃精密排版標籤與包裝刀模，讓結構細節成為外部顯眼的視覺亮點，強化消費者的信任感。
-        </p>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="syne text-xl font-bold text-white">03. 落地執行與印刷實務 (Production & Impact)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed font-light">
-          包裝實體選用 450gsm 未塗布灰色厚卡紙盒，搭配 PANTONE 特別色微型標籤。數位端則搭配深色 RWD 響應式預售頁面，以高對比圖文降低理解門檻，促成預售檔期達成 34.8% 訂單轉換率。
-        </p>
-      </div>
-    </section>
   </main>
 
   <script>lucide.createIcons();</script>
