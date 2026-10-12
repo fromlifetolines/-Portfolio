@@ -1,519 +1,568 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5" />
   <title>HOWARD HUANG // Creative Strategist & Visual Design Director</title>
-  <meta name="description" content="Howard Huang 個人作品集 3.0：10+ 年跨足視覺設計、廣告策略與數位產品建構。專注於將策略思考與視覺工藝轉化為驅動商業與品牌價值的體驗。">
-  
-  <!-- Preconnect & Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Howard Huang: Creative Strategist, Visual Design Director and Digital Product Builder. 10+ years designing visual identities, digital products and connected experiences." />
 
-  <!-- V3 Foundational CSS -->
-  <link rel="stylesheet" href="./css/v3-foundation.css?v=3.0.0">
+  <!-- Fonts: Syne, Instrument Serif, Geist, Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP, ScrollTrigger & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Three.js (Interactive 3D Web Object) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Prototype Stylesheet -->
+  <link rel="stylesheet" href="css/prototype-howard-world.css" />
 </head>
-<body>
+<body data-nav-theme="light">
 
-  <!-- Subtle Film Grain Overlay -->
-  <div class="v3-noise-overlay" aria-hidden="true"></div>
+  <!-- Fullscreen Preloader Intro (Reference Behavior) -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-hh-wrap">
+        <svg class="preloader-hh-svg" viewBox="0 0 44 28" fill="none">
+          <path d="M4 2v24M16 2v24M4 14h12M28 2v24M40 2v24M28 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="preloader-brand">HOWARD HUANG</div>
+      <div class="preloader-bar"><div class="preloader-progress" id="preloaderProgress"></div></div>
+    </div>
+  </div>
+
+  <!-- Route Page Transition Curtain -->
+  <div class="route-transition-curtain" id="routeTransitionCurtain" aria-hidden="true">
+    <div class="route-transition-inner">
+      <svg class="route-transition-hh-svg" viewBox="0 0 44 28" fill="none">
+        <path d="M4 2v24M16 2v24M4 14h12M28 2v24M40 2v24M28 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+      <span class="route-transition-text" id="routeTransitionText">LOADING CASE</span>
+    </div>
+  </div>
 
   <!-- ========================================================
-       HEADER & NAVIGATION (SWISS INTERNATIONAL BAR)
+       TOP HEADER / NAV (Reference Reconstructed)
        ======================================================== -->
-  <header class="v3-header" role="banner">
-    <div class="v3-container v3-header-inner">
-      <a href="#howard" class="v3-brand-link" aria-label="Howard Huang Homepage">
-        <span class="v3-brand-name">HOWARD HUANG</span>
-        <span class="v3-brand-tag">// FLTL</span>
+  <header class="nav" id="mainNav">
+    <div class="nav-inner">
+      <!-- Left: Howard Huang Brand Wordmark -->
+      <a href="#hero" class="nav-brand-link" title="Howard Huang Home">
+        <div class="nav-brand">
+          <span class="brand-line-1">HOWARD</span>
+          <span class="brand-line-2">HUANG</span>
+        </div>
       </a>
 
-      <nav class="v3-nav" role="navigation" aria-label="Main Navigation">
-        <a href="#howard" class="v3-nav-link active"><span class="nav-num">01</span>HOWARD</a>
-        <a href="#design-systems" class="v3-nav-link"><span class="nav-num">02</span>DESIGN × SYSTEMS</a>
-        <a href="#howard-system" class="v3-nav-link"><span class="nav-num">03</span>SYSTEM</a>
-        <a href="#selected-work" class="v3-nav-link"><span class="nav-num">04</span>ARCHIVE</a>
-        <a href="#object-001" class="v3-nav-link"><span class="nav-num">05</span>OBJECT 001</a>
-        <a href="#experience" class="v3-nav-link"><span class="nav-num">06</span>EXP</a>
-        <a href="#capabilities" class="v3-nav-link"><span class="nav-num">07</span>CAPABILITIES</a>
-        <a href="#contact" class="v3-nav-link"><span class="nav-num">08</span>CONTACT</a>
-      </nav>
+      <!-- Center: HH Monogram -->
+      <div class="nav-middle">
+        <a href="#hero" class="nav-middle-link" title="Home">
+          <svg class="nav-hh-svg" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 2v24M16 2v24M4 14h12M28 2v24M40 2v24M28 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <span class="sr-only">Howard Huang Monogram</span>
+        </a>
+      </div>
 
-      <div class="v3-header-meta">
-        <div class="v3-live-indicator" id="v3-telemetry-clock">
-          <span class="v3-live-dot"></span>
-          <span>TPE --:--:--</span>
+      <!-- Right: Action Buttons -->
+      <div class="nav-actions">
+        <!-- Language Switcher (EN / 中文) -->
+        <div class="lang-switch-wrap" id="langSwitch" role="group" aria-label="Language Selector">
+          <button type="button" class="btn-lang is-active" data-lang="en" aria-label="Switch to English">EN</button>
+          <span class="lang-divider" aria-hidden="true">/</span>
+          <button type="button" class="btn-lang" data-lang="zh-TW" aria-label="切換至繁體中文">中文</button>
         </div>
+
+        <a href="#work" class="btn-store-pill" id="navWorkBtn">
+          <svg class="btn-store-icon" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.931 5.783l-.759.812c-1.132 1.212-2.89 1.212-4.022 0l-.76-.812C4.313 4.637 2.568 5.29 2.275 6.928l-1.238 7.18c-.227 1.318.652 2.543 1.838 2.543h10.588c1.185 0 2.064-1.225 1.838-2.544l-1.239-7.179c-.28-1.638-2.037-2.29-3.116-1.145h-.014ZM10.839 3.048L9.84 1.849C8.894.717 7.43.717 6.484 1.85l-1 1.199" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10"/>
+          </svg>
+          <span class="btn-store-text" data-i18n="nav.work">WORK</span>
+        </a>
+
+        <button type="button" class="nav-ham" id="navHamBtn" title="Toggle Navigation Menu" aria-label="Toggle Navigation Menu" data-i18n-attr="title:nav.menuToggle;aria-label:nav.menuToggle">
+          <span class="ham-line ham-line-top"></span>
+          <span class="ham-line ham-line-bottom"></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="v3-main" id="main-content">
-
-    <!-- ========================================================
-         01 / HOWARD (EDITORIAL HERO)
-         ======================================================== -->
-    <section id="howard" class="v3-section v3-hero" aria-labelledby="hero-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">01</span>
-          <span>HOWARD // IDENTITY</span>
-        </div>
-
-        <div class="v3-hero-grid">
-          <!-- Text Narrative Column -->
-          <div class="v3-hero-text">
-            <h1 id="hero-title" class="v3-hero-title">
-              <span>HOWARD</span>
-              <span>HUANG</span>
-            </h1>
-
-            <div class="v3-hero-positioning">
-              <span>CREATIVE STRATEGIST</span>
-              <span>VISUAL DESIGN DIRECTOR</span>
-              <span>DIGITAL PRODUCT BUILDER</span>
-            </div>
-
-            <div class="v3-hero-meta-row">
-              <div class="v3-hero-meta-item">
-                <span class="text-signal">LOC</span>
-                <span>TAIPEI / TAIWAN</span>
-              </div>
-              <div class="v3-hero-meta-item">
-                <span class="text-signal">EXP</span>
-                <span>10+ YEARS IN DESIGN & ADVERTISING</span>
-              </div>
-            </div>
-
-            <p class="v3-hero-bio">
-              我跨足視覺設計、廣告策略與數位體驗。廣告背景讓我不僅將設計視為視覺產出，更視為溝通：什麼需要被理解、什麼應該被記住，以及體驗該引導何種行動。透過「From Life To Lines 生活線條（FLTL）」，我將策略思考轉化為清晰俐落的視覺系統與跨媒介體驗。
-            </p>
-          </div>
-
-          <!-- Human-Centered Portrait Column -->
-          <div class="v3-hero-portrait-stage">
-            <div class="v3-hero-portrait-frame">
-              <img src="./assets/howard/howard-portrait.jpg" alt="Howard Huang - Creative Strategist & Visual Design Director" class="v3-hero-portrait-img" loading="eager" fetchpriority="high">
-            </div>
-            <div class="v3-hero-portrait-caption">
-              <span>FIG 01.0 // HOWARD HUANG</span>
-              <span>TAIPEI STUDIO</span>
-            </div>
-          </div>
+  <!-- Fullscreen Nav Overlay Drawer -->
+  <div class="nav-menu-overlay" id="navMenuOverlay">
+    <div class="nav-menu-inner">
+      <div class="nav-menu-col-media">
+        <div class="nav-menu-media-grid">
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-hero.jpg" alt="FLTL NFC Hero" /></div>
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-packaging.jpg" alt="FLTL NFC Packaging" /></div>
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-macro.jpg" alt="FLTL NFC Antenna Circuit" /></div>
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-brand-world.jpg" alt="FLTL Physical-Digital Brand System" /></div>
         </div>
       </div>
-    </section>
-
-    <!-- ========================================================
-         02 / DESIGN × SYSTEMS
-         ======================================================== -->
-    <section id="design-systems" class="v3-section v3-design-systems" aria-labelledby="design-systems-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">02</span>
-          <span>DUAL DISCIPLINE // CORE ARCHITECTURE</span>
-        </div>
-
-        <h2 id="design-systems-title" class="font-display text-paper uppercase" style="font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em;">
-          DESIGN × SYSTEMS
-        </h2>
-
-        <div class="v3-split-grid">
-          <!-- Column 01: DESIGN -->
-          <div class="v3-split-column">
-            <div>
-              <div class="v3-split-header">
-                <h3 class="v3-split-title">DESIGN</h3>
-                <span class="v3-split-tag">[DIMENSION 01]</span>
-              </div>
-              <ul class="v3-split-list">
-                <li><span>Brand Identity</span><span class="item-idx">01</span></li>
-                <li><span>Art Direction</span><span class="item-idx">02</span></li>
-                <li><span>Advertising</span><span class="item-idx">03</span></li>
-                <li><span>UI / UX</span><span class="item-idx">04</span></li>
-                <li><span>Packaging</span><span class="item-idx">05</span></li>
-                <li><span>Campaign</span><span class="item-idx">06</span></li>
-              </ul>
-            </div>
+      <div class="nav-menu-col-links">
+        <nav class="nav-menu-list">
+          <a href="#hero" class="nav-link-item is-active"><span class="nav-link-num">01</span> <span data-i18n="nav.home">HOME</span></a>
+          <a href="#work" class="nav-link-item"><span class="nav-link-num">02</span> <span data-i18n="nav.navWork">WORK</span></a>
+          <a href="./about.html" class="nav-link-item"><span class="nav-link-num">03</span> <span data-i18n="nav.navAbout">ABOUT</span></a>
+          <a href="#helmets" class="nav-link-item"><span class="nav-link-num">04</span> <span data-i18n="nav.navHelmets">HALL OF FAME</span></a>
+        </nav>
+        <div class="nav-menu-footer-links">
+          <span class="nav-tagline" data-i18n="nav.tagline">10+ YEARS CREATIVE DIRECTION & DIGITAL SYSTEMS</span>
+          <div class="nav-socials-row">
+            <a href="https://www.linkedin.com/in/howard-huang-designer/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+            <a href="https://github.com/fromlifetolines/-Portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a>
+            <a href="mailto:Fromlifetolines@gmail.com" data-i18n="nav.contact">CONTACT</a>
           </div>
-
-          <!-- Column 02: SYSTEMS -->
-          <div class="v3-split-column">
-            <div>
-              <div class="v3-split-header">
-                <h3 class="v3-split-title">SYSTEMS</h3>
-                <span class="v3-split-tag">[DIMENSION 02]</span>
-              </div>
-              <ul class="v3-split-list">
-                <li><span>Web Experience</span><span class="item-idx">01</span></li>
-                <li><span>Digital Products</span><span class="item-idx">02</span></li>
-                <li><span>Automation</span><span class="item-idx">03</span></li>
-                <li><span>NFC</span><span class="item-idx">04</span></li>
-                <li><span>Data</span><span class="item-idx">05</span></li>
-                <li><span>GEO / AEO</span><span class="item-idx">06</span></li>
-              </ul>
-            </div>
+          <div class="nav-drawer-lang-wrap">
+            <span class="drawer-lang-label" data-i18n="nav.langLabel">LANGUAGE:</span>
+            <button type="button" class="btn-lang is-active" data-lang="en">EN</button>
+            <span class="lang-divider">/</span>
+            <button type="button" class="btn-lang" data-lang="zh-TW">中文</button>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         03 / HOWARD SYSTEM (INTERACTIVE IDENTITY SYSTEM SCAFFOLD)
-         ======================================================== -->
-    <section id="howard-system" class="v3-section v3-howard-system" aria-labelledby="howard-system-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">03</span>
-          <span>HOWARD SYSTEM // INTERACTIVE IDENTITY</span>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px;">
-          <h2 id="howard-system-title" class="font-display text-paper uppercase" style="font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em;">
-            THE HOWARD SYSTEM
-          </h2>
-          <div class="font-mono text-muted text-xs" id="v3-sys-state-readout">
-            STATE: REAL HOWARD // FRONT VIEW
-          </div>
-        </div>
-
-        <div class="v3-system-stage">
-          <!-- Conceptual Layers & Camera Hooks -->
-          <div class="v3-system-toolbar">
-            <div class="v3-system-layers" role="tablist" aria-label="System Conceptual Layers">
-              <button class="v3-layer-btn active" data-layer="01 STRATEGY" role="tab">01 STRATEGY</button>
-              <button class="v3-layer-btn" data-layer="02 VISUAL DIRECTION" role="tab">02 VISUAL DIRECTION</button>
-              <button class="v3-layer-btn" data-layer="03 EXECUTION" role="tab">03 EXECUTION</button>
-              <button class="v3-layer-btn" data-layer="04 CRAFT" role="tab">04 CRAFT</button>
-              <button class="v3-layer-btn" data-layer="05 SYSTEM ARCHITECTURE" role="tab">05 SYSTEM ARCHITECTURE</button>
-            </div>
-
-            <div class="v3-camera-views" aria-label="Camera Orthographic Viewports">
-              <button class="v3-view-pill active" data-view="FRONT VIEW">FRONT VIEW</button>
-              <button class="v3-view-pill" data-view="45° VIEW">45° VIEW</button>
-              <button class="v3-view-pill" data-view="SIDE PROFILE">SIDE PROFILE</button>
-              <button class="v3-view-pill" data-view="BACK VIEW">BACK VIEW</button>
-              <button class="v3-view-pill" data-view="TOP DOWN VIEW">TOP DOWN</button>
-              <button class="v3-view-pill" data-view="MATERIAL DETAIL">MATERIAL</button>
-            </div>
-          </div>
-
-          <!-- Orthographic Viewport & Telemetry -->
-          <div class="v3-system-viewport">
-            <div class="v3-system-canvas-wrapper" id="howard-system-stage">
-              <img src="./assets/howard/howard-orthographic-views.jpg" alt="Howard System Orthographic Views and Material Specifications" class="v3-system-ortho-img" loading="lazy">
-              
-              <div class="v3-system-telemetry-overlay" aria-hidden="true">
-                <div style="display: flex; justify-content: space-between;">
-                  <span class="v3-telemetry-corner">FIG 02.0 // HOWARD HUANG</span>
-                  <span class="v3-telemetry-corner">ORTHOGRAPHIC & MATERIAL STUDY</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         04 / SELECTED WORK (ARCHIVAL HALL OF FAME)
-         ======================================================== -->
-    <section id="selected-work" class="v3-section v3-selected-work" aria-labelledby="selected-work-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">04</span>
-          <span>SELECTED WORK // ARCHIVE</span>
-        </div>
-
-        <div class="v3-archive-header">
-          <h2 id="selected-work-title" class="v3-archive-title">
-            SELECTED WORK
-          </h2>
-          <div class="v3-archive-meta">
-            HALL OF FAME // 04 VERIFIED OBJECTS
-          </div>
-        </div>
-
-        <div class="v3-archive-list" role="list">
-          
-          <!-- Entry 001: FLTL NFC -->
-          <a href="#object-001" class="v3-archive-entry" role="listitem">
-            <div class="v3-entry-code">FLTL / 001</div>
-            <div class="v3-entry-content">
-              <div class="v3-entry-title">NFC IDENTITY SYSTEM</div>
-              <div class="v3-entry-meta">SELF-INITIATED PRODUCT · 2026</div>
-            </div>
-            <div class="v3-entry-action">FLAGSHIP OBJECT →</div>
-          </a>
-
-          <!-- Entry 002: AURA -->
-          <a href="./portfolio-brand.html" class="v3-archive-entry" role="listitem">
-            <div class="v3-entry-code">AURA / 002</div>
-            <div class="v3-entry-content">
-              <div class="v3-entry-title">SPATIAL AUDIO SYSTEM</div>
-              <div class="v3-entry-meta">CONCEPT PROJECT · 2026</div>
-            </div>
-            <div class="v3-entry-action">VIEW CASE →</div>
-          </a>
-
-          <!-- Entry 003: OAT & BOTANIC -->
-          <a href="./portfolio-ecommerce.html" class="v3-archive-entry" role="listitem">
-            <div class="v3-entry-code">OAT / 003</div>
-            <div class="v3-entry-content">
-              <div class="v3-entry-title">COLD BREW COFFEE</div>
-              <div class="v3-entry-meta">CONCEPT PROJECT · 2026</div>
-            </div>
-            <div class="v3-entry-action">VIEW CASE →</div>
-          </a>
-
-          <!-- Entry 004: NEXUS AI -->
-          <a href="./portfolio-web.html" class="v3-archive-entry" role="listitem">
-            <div class="v3-entry-code">NEXUS / 004</div>
-            <div class="v3-entry-content">
-              <div class="v3-entry-title">MODULAR WORKSPACE</div>
-              <div class="v3-entry-meta">CONCEPT PROJECT · 2026</div>
-            </div>
-            <div class="v3-entry-action">VIEW CASE →</div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         05 / OBJECT 001 — FLTL NFC (FLAGSHIP OBJECT PRESENTATION)
-         ======================================================== -->
-    <section id="object-001" class="v3-section v3-object-flagship" aria-labelledby="object-flagship-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">05</span>
-          <span>OBJECT 001 // FLAGSHIP ARCHIVE</span>
-        </div>
-
-        <div class="v3-flagship-box">
-          <div class="v3-flagship-grid">
-            <!-- Media Stage -->
-            <div class="v3-flagship-media">
-              <img src="./assets/fltl-nfc-card.png" alt="FLTL NFC Smart Business Card Front View" class="v3-flagship-img" loading="lazy">
-            </div>
-
-            <!-- Content Detail -->
-            <div class="v3-flagship-content">
-              <div class="v3-flagship-header-tag">OBJECT 001 // SELF-INITIATED PRODUCT</div>
-              <h2 id="object-flagship-title" class="v3-flagship-title">
-                FLTL<br>
-                NFC BUSINESS CARD
-              </h2>
-
-              <p class="v3-flagship-desc">
-                一張結合實體卡片設計與數位連結體驗的自發產品計畫。透過 NFC 感應，讓傳統名片從單次交換資訊，延伸成更快速、可更新的數位聯絡入口。
-              </p>
-
-              <div class="v3-capability-triad">
-                <div class="v3-triad-col">
-                  <div class="v3-triad-label">PHYSICAL</div>
-                  <div class="v3-triad-val">PVC / PRINT / NFC</div>
-                </div>
-                <div class="v3-triad-col">
-                  <div class="v3-triad-label">DIGITAL</div>
-                  <div class="v3-triad-val">PROFILE / VCARD / OCR</div>
-                </div>
-                <div class="v3-triad-col">
-                  <div class="v3-triad-label">SYSTEM</div>
-                  <div class="v3-triad-val">PROVISIONING / CRM</div>
-                </div>
-              </div>
-
-              <div>
-                <a href="./portfolio-nfc.html" class="v3-btn-signal">
-                  <span>EXPLORE DEDICATED CASE STUDY</span>
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         06 / EXPERIENCE (EDITORIAL CAREER TRAJECTORY)
-         ======================================================== -->
-    <section id="experience" class="v3-section v3-experience" aria-labelledby="experience-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">06</span>
-          <span>EXPERIENCE // DISCIPLINARY TRAJECTORY</span>
-        </div>
-
-        <h2 id="experience-title" class="font-display text-paper uppercase" style="font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em;">
-          EXPERIENCE
-        </h2>
-
-        <div class="v3-timeline">
-          <!-- Disciplinary Track 01 -->
-          <div class="v3-timeline-item">
-            <div class="v3-timeline-year">10+ YEARS</div>
-            <div class="v3-timeline-details">
-              <h3 class="v3-timeline-role">CREATIVE STRATEGY & VISUAL DIRECTION</h3>
-              <div class="v3-timeline-context">DESIGN, ADVERTISING & DIGITAL MARKETING · TAIPEI</div>
-              <p class="v3-timeline-desc">
-                專注於將策略思維、廣告企劃與設計工藝融合。涵蓋品牌識別系統、廣告主視覺、轉換導向著陸頁與產品介面設計，在美感、訊息層級與溝通目的之間建立一致性。
-              </p>
-            </div>
-          </div>
-
-          <!-- Disciplinary Track 02 -->
-          <div class="v3-timeline-item">
-            <div class="v3-timeline-year">STUDIO</div>
-            <div class="v3-timeline-details">
-              <h3 class="v3-timeline-role">FROM LIFE TO LINES (FLTL)</h3>
-              <div class="v3-timeline-context">BRAND SYSTEM & PHYSICAL / DIGITAL PRODUCTS</div>
-              <p class="v3-timeline-desc">
-                以個人生活風格品牌為實踐場域，將策略思考轉化為俐落的視覺系統與跨媒介體驗，延伸至自發性硬體產品開發（如 FLTL NFC 智慧名片）與數位聯絡入口架構。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         07 / CAPABILITIES (CORE MATRICES)
-         ======================================================== -->
-    <section id="capabilities" class="v3-section v3-capabilities" aria-labelledby="capabilities-title">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">07</span>
-          <span>CAPABILITIES // DISCIPLINARY DOMAINS</span>
-        </div>
-
-        <h2 id="capabilities-title" class="font-display text-paper uppercase" style="font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em;">
-          CAPABILITIES
-        </h2>
-
-        <div class="v3-capabilities-grid">
-          <!-- Card 01 -->
-          <div class="v3-cap-card">
-            <div class="v3-cap-num">01 // VISUAL</div>
-            <h3 class="v3-cap-title">BRAND DESIGN</h3>
-            <ul class="v3-cap-items">
-              <li>Brand Identity Systems</li>
-              <li>Graphic & Print Design</li>
-              <li>Campaign Key Visuals</li>
-              <li>Structural Packaging</li>
-            </ul>
-          </div>
-
-          <!-- Card 02 -->
-          <div class="v3-cap-card">
-            <div class="v3-cap-num">02 // DIGITAL</div>
-            <h3 class="v3-cap-title">DIGITAL PRODUCTS</h3>
-            <ul class="v3-cap-items">
-              <li>UX / UI Architecture</li>
-              <li>Responsive Web Systems</li>
-              <li>Landing Page Structure</li>
-              <li>Interactive Prototypes</li>
-            </ul>
-          </div>
-
-          <!-- Card 03 -->
-          <div class="v3-cap-card">
-            <div class="v3-cap-num">03 // STRATEGY</div>
-            <h3 class="v3-cap-title">GROWTH SYSTEMS</h3>
-            <ul class="v3-cap-items">
-              <li>Advertising Creative</li>
-              <li>Content Direction</li>
-              <li>Campaign Planning</li>
-              <li>Conversion Journey</li>
-            </ul>
-          </div>
-
-          <!-- Card 04 -->
-          <div class="v3-cap-card">
-            <div class="v3-cap-num">04 // CODE</div>
-            <h3 class="v3-cap-title">INTERACTIVE WEB</h3>
-            <ul class="v3-cap-items">
-              <li>Creative Web Coding</li>
-              <li>Modern Web APIs</li>
-              <li>WebGL & 3D Prototyping</li>
-              <li>AI-Assisted Workflow</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="v3-tools-footer">
-          <span style="font-weight: 600; color: var(--paper);">SECONDARY TOOLS:</span>
-          <span class="v3-tool-pill">Figma</span>
-          <span class="v3-tool-pill">Photoshop</span>
-          <span class="v3-tool-pill">Illustrator</span>
-          <span class="v3-tool-pill">HTML / Modern CSS</span>
-          <span class="v3-tool-pill">Vanilla JS / ES6</span>
-          <span class="v3-tool-pill">Three.js / GSAP</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         08 / CONTACT (EDITORIAL CLOSING)
-         ======================================================== -->
-    <section id="contact" class="v3-section v3-contact" aria-labelledby="contact-statement">
-      <div class="v3-container">
-        <div class="v3-section-eyebrow">
-          <span class="index-num">08</span>
-          <span>CONTACT // COLLABORATION</span>
-        </div>
-
-        <div id="contact-statement" class="v3-contact-statement">
-          <span>GOOD DESIGN</span>
-          <span>SHOULD MOVE</span>
-          <span class="text-signal">BUSINESS.</span>
-        </div>
-
-        <div class="v3-contact-links">
-          <a href="mailto:fromlifetolines@gmail.com" class="v3-contact-link-item">
-            <span class="v3-contact-link-label">EMAIL DIRECT</span>
-            <span class="v3-contact-link-val">fromlifetolines@gmail.com</span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/howard-huang-designer/" target="_blank" rel="noopener noreferrer" class="v3-contact-link-item">
-            <span class="v3-contact-link-label">LINKEDIN</span>
-            <span class="v3-contact-link-val">howard-huang-designer</span>
-          </a>
-
-          <a href="https://www.fromlifetolines.com" target="_blank" rel="noopener noreferrer" class="v3-contact-link-item">
-            <span class="v3-contact-link-label">BRAND FLTL</span>
-            <span class="v3-contact-link-val">fromlifetolines.com</span>
-          </a>
-
-          <a href="https://www.instagram.com/fromlifetolines/" target="_blank" rel="noopener noreferrer" class="v3-contact-link-item">
-            <span class="v3-contact-link-label">INSTAGRAM</span>
-            <span class="v3-contact-link-val">@fromlifetolines</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========================================================
-       FOOTER
-       ======================================================== -->
-  <footer class="v3-footer" role="contentinfo">
-    <div class="v3-container v3-footer-inner">
-      <div>
-        <span>HOWARD HUANG PORTFOLIO 3.0 // © 2026 FROM LIFE TO LINES. ALL RIGHTS RESERVED.</span>
-      </div>
-      <div style="display: flex; gap: 20px; align-items: center;">
-        <a href="#howard" class="v3-footer-link">BACK TO TOP ↑</a>
-        <span style="color: var(--border-strong);">|</span>
-        <a href="./index-os.html" class="v3-footer-link">EXPLORE OS 2.0 ARCHIVE ↗</a>
       </div>
     </div>
-  </footer>
+  </div>
 
-  <!-- V3 Foundational Runtime Script -->
-  <script src="./js/v3-main.js?v=3.0.0"></script>
+  <!-- Page Wrapper -->
+  <div class="page-w" id="smooth-wrapper">
+
+    <!-- ========================================================
+         SECTION 01: HOME HERO (High-Fashion Architectural Composition)
+         ======================================================== -->
+    <section class="s home-hero" id="hero">
+      <!-- Dynamic Organic Topo Contours Canvas -->
+      <canvas class="hero-contours-canvas" id="heroContoursCanvas" aria-hidden="true"></canvas>
+
+      <!-- Monumental Architectural Watermark (Behind Figure) -->
+      <div class="hero-backdrop-watermark" aria-hidden="true">
+        <span>HOWARD</span>
+        <span>HUANG</span>
+      </div>
+
+      <!-- Top Editorial Statement & Role Hierarchy (Desktop & Mobile) -->
+      <div class="hero-editorial-badge" id="heroEditorialBadge">
+        <div class="hero-badge-tagline">
+          <span class="hero-badge-pulse" aria-hidden="true"></span>
+          <span class="hero-badge-exp" data-i18n="hero.exp">10+ YEARS EXPERIENCE</span>
+        </div>
+        <h1 class="hero-editorial-name">HOWARD HUANG</h1>
+        <div class="hero-badge-roles">
+          <span class="hero-role-item" data-i18n="hero.role1">CREATIVE STRATEGIST</span>
+          <span class="hero-role-sep">·</span>
+          <span class="hero-role-item" data-i18n="hero.role2">VISUAL DESIGN DIRECTOR</span>
+          <span class="hero-role-sep">·</span>
+          <span class="hero-role-item" data-i18n="hero.role3">DIGITAL PRODUCT BUILDER</span>
+        </div>
+      </div>
+
+      <!-- Center Hero Figure: Seated Identity Portrait (Pure Natural Color Baseline) -->
+      <div class="hero-figure-container" id="heroFigureContainer">
+        <div class="hero-scroll-rig" id="heroScrollRig">
+          <div class="hero-pointer-rig" id="heroPointerRig">
+            <img src="assets/howard/howard-hero-cutout.png" alt="Howard Huang — Seated Identity Cutout" class="hero-howard-img" id="heroHowardImg" data-i18n-attr="alt:hero.imgAlt" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom-Left Featured Status Block (Exact Reference Geometry) -->
+      <div class="home-hero-status-block" id="heroStatusBlock">
+        <div class="status-block-svg-frame">
+          <svg width="100%" height="100%" viewBox="0 0 119 244" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M118.5 6v232a5.5 5.5 0 0 1-5.5 5.5H6A5.5 5.5 0 0 1 .5 238V25A5.5 5.5 0 0 1 6 19.5h46.346c4.695 0 9.167-2 12.297-5.498l7.46-8.337A15.5 15.5 0 0 1 83.653.5H113a5.5 5.5 0 0 1 5.5 5.5Z" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="status-block-content">
+          <div class="status-eyebrow" data-i18n="hero.featuredProject">FEATURED PROJECT</div>
+          <a href="portfolio-nfc.html" class="status-project-link" title="FLTL NFC Smart Card">
+            <div class="status-chip-graphic">
+              <!-- NFC Antenna Symbol -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 8a6 6 0 0 1 12 0v8a6 6 0 0 1-12 0V8z" />
+                <path d="M9 10a3 3 0 0 1 6 0v4a3 3 0 0 1-6 0v-4z" />
+              </svg>
+            </div>
+            <div class="status-title-wrap">
+              <span class="status-project-title">FLTL NFC</span>
+              <span class="status-project-sub">SMART CARD</span>
+            </div>
+          </a>
+          <div class="status-divider-line"></div>
+          <div class="status-wreath-row">
+            <div class="status-wreath-icon">
+              <!-- Laurel Wreath Emblem -->
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 8c-2 4-2 10 2 14 3 3 6 4 6 4s3-1 6-4c4-4 4-10 2-14" />
+                <path d="M16 6v20M12 12l4-2 4 2M11 18l5-2 5 2" />
+              </svg>
+            </div>
+            <div class="status-role-text" data-i18n-html="hero.selfInitiated">
+              SELF-INITIATED PRODUCT<br/>2026
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom-Right Scroll Indicator (Refined Architectural Capsule) -->
+      <div class="hero-touch-helper" id="heroScrollHelper">
+        <span class="touch-helper-label" data-i18n="hero.scrollEnter">SCROLL TO ENTER</span>
+        <div class="touch-helper-capsule" aria-hidden="true">
+          <span class="touch-capsule-pip"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 02: MESSAGE FROM HOWARD (Reference Impact Statement)
+         ======================================================== -->
+    <section class="s home-message" id="message">
+      <div class="message-container">
+        <!-- Top Laurel Emblem -->
+        <div class="message-emblem-wrap">
+          <svg class="message-wreath-svg" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M10 6c-4 5-4 14 2 20 4 4 9 6 12 6s8-2 12-6c6-6 6-15 2-20" />
+            <path d="M16 10l8-4 8 4M14 18l10-4 10 4M13 25l11-3 11 3" />
+          </svg>
+          <div class="message-emblem-text" data-i18n="message.emblemText">CREATIVE STRATEGIST &middot; VISUAL DESIGN DIRECTOR</div>
+        </div>
+
+        <!-- Giant Impact Headline with line masks for reveal animation -->
+        <h2 class="message-impact-text" id="msgImpactText">
+          <span class="msg-line"><span class="msg-line-inner" data-i18n-html="message.line1">DESIGNING <span class="c-lime-serif">VISUAL IDENTITIES</span>,</span></span>
+          <span class="msg-line"><span class="msg-line-inner" data-i18n-html="message.line2">DIGITAL PRODUCTS AND</span></span>
+          <span class="msg-line"><span class="msg-line-inner" data-i18n-html="message.line3"><span class="c-lime-serif">CONNECTED EXPERIENCES</span></span></span>
+          <span class="msg-line"><span class="msg-line-inner" data-i18n-html="message.line4">ACROSS BRAND, ADVERTISING</span></span>
+          <span class="msg-line"><span class="msg-line-inner" data-i18n-html="message.line5">AND <span class="c-lime-serif">TECHNOLOGY</span>.</span></span>
+        </h2>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 03: EDITORIAL IMAGE JOURNEY (Reference Horizontal Track)
+         ======================================================== -->
+    <section class="s home-editorial" id="editorial">
+      <div class="editorial-container">
+        <!-- Item 01: Top Left System Hero -->
+        <div class="editorial-item item-fltl" id="itemFltl">
+          <div class="editorial-caption" data-i18n="editorial.captionFltl">FLTL NFC &middot; FLAGSHIP OBJECT</div>
+          <div class="editorial-img-wrap">
+            <img src="assets/fltl-nfc-hero.jpg" alt="FLTL NFC Smart Business Card Hero" data-i18n-attr="alt:editorial.altFltl" />
+          </div>
+        </div>
+
+        <!-- Item 02: Bottom Left Tactile Unboxing -->
+        <div class="editorial-item item-packaging" id="itemFltlPackaging">
+          <div class="editorial-caption" data-i18n="editorial.captionPackaging">TACTILE PACKAGING &middot; 2026</div>
+          <div class="editorial-img-wrap">
+            <img src="assets/fltl-nfc-packaging.jpg" alt="FLTL NFC Tactile Packaging" data-i18n-attr="alt:editorial.altPackaging" />
+          </div>
+        </div>
+
+        <!-- Item 03: Center Quote & Lime Signature -->
+        <div class="editorial-quote-block">
+          <p class="editorial-quote-text" data-i18n-html="editorial.quote">
+            It doesn&rsquo;t matter <span class="quote-serif">where</span> you start, it&rsquo;s <span class="quote-serif">how</span> you craft the systems that endure.
+          </p>
+          <div class="editorial-signature">
+            <svg viewBox="0 0 160 50" fill="none" stroke="var(--color-lime)" stroke-width="2.5" stroke-linecap="round">
+              <path id="editorialSigPath" d="M10 40C25 15 35 10 50 25c15 15 5 22 25 5 15-12 30-18 45-5s20 10 25-10" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Item 04: Right Embedded Antenna Macro -->
+        <div class="editorial-item item-macro" id="itemFltlMacro">
+          <div class="editorial-caption" data-i18n="editorial.captionMacro">EMBEDDED ANTENNA ARCHITECTURE &middot; 2026</div>
+          <div class="editorial-img-wrap">
+            <img src="assets/fltl-nfc-macro.jpg" alt="FLTL NFC Micro Antenna Architecture" data-i18n-attr="alt:editorial.altMacro" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 04: WORK & ABOUT PORTALS (Reference ON TRACK / OFF TRACK)
+         ======================================================== -->
+    <section class="s home-portals" id="portals">
+      <div class="portals-container">
+        <!-- Left Standing Howard Portrait (Reference Left Crop) -->
+        <div class="portal-side-figure figure-left">
+          <img src="assets/howard/howard-suit-front.png" alt="Howard Huang — Standing Front Crop" data-i18n-attr="alt:portals.altHowardFront" />
+        </div>
+
+        <!-- Center 2-Column Portal Navigation -->
+        <div class="portals-center-columns">
+          <!-- Column 1: WORK (Reference ON TRACK) -->
+          <div class="portal-col" id="work">
+            <div class="portal-title-wrap">
+              <span class="portal-title-serif" data-i18n="portals.workEyebrow">FEATURED</span>
+              <span class="portal-title-sans" data-i18n="portals.workTitle">WORK</span>
+              <span class="portal-title-overlay" data-i18n="portals.workOverlay">Work</span>
+            </div>
+            <p class="portal-desc" data-i18n="portals.workDesc">
+              FLTL NFC smart business card system bridging physical touchpoints and instant digital transmission.
+            </p>
+            <a href="#helmets" class="portal-btn-arrow" title="View Featured Work" data-i18n-attr="title:portals.workBtnTitle;aria-label:portals.workBtnTitle">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 4l12 12M16 7v9H7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Column 2: ABOUT (Reference OFF TRACK) -->
+          <div class="portal-col" id="about">
+            <div class="portal-title-wrap">
+              <span class="portal-title-serif" data-i18n="portals.aboutEyebrow">ABOUT</span>
+              <span class="portal-title-sans" data-i18n="portals.aboutTitle">HOWARD</span>
+            </div>
+            <p class="portal-desc" data-i18n="portals.aboutDesc">
+              Creative Strategist, Visual Design Director & Digital Product Builder with 10+ years across design and digital experience.
+            </p>
+            <a href="./about.html" class="portal-btn-arrow" title="About Howard Huang" data-i18n-attr="title:portals.aboutBtnTitle;aria-label:portals.aboutBtnTitle">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 4l12 12M16 7v9H7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side Profile Howard Portrait (Reference Right Crop) -->
+        <div class="portal-side-figure figure-right">
+          <img src="assets/howard/howard-suit-side.png" alt="Howard Huang — Standing Side Profile Crop" data-i18n-attr="alt:portals.altHowardSide" />
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         CINEMATIC SIDEWAYS JOURNEY — ONE NFC PROJECT, FOUR VISUAL CHAPTERS
+         Desktop: vertical scroll drives the viewport horizontally.
+         Mobile/reduced-motion: natural vertical narrative.
+         ======================================================== -->
+    <section class="s motion-rail" id="motion-rail" aria-label="Howard design journey" data-i18n-attr="aria-label:rail.aria">
+      <div class="motion-rail-viewport" id="motionRailViewport">
+        <div class="motion-rail-progress" aria-hidden="true"><span data-i18n="rail.label">SCROLL TO EXPLORE</span><span class="rail-progress-index" id="railProgressIndex">01 / 04</span></div>
+        <div class="motion-rail-track" id="motionRailTrack">
+          <article class="motion-panel motion-panel-identity">
+            <div class="motion-panel-copy"><span class="motion-panel-kicker">01 / HOWARD</span><h2 data-i18n="rail.heading1">THE PERSON BEHIND THE WORK.</h2><p data-i18n="rail.desc1">Visual direction, product thinking and digital craft.</p></div>
+            <img class="rail-howard" src="assets/howard/howard-suit-side.png" alt="Howard Huang — Side-profile portrait" loading="lazy" data-i18n-attr="alt:rail.altHoward" />
+            <span class="motion-panel-ghost">HOWARD</span>
+          </article>
+          <article class="motion-panel motion-panel-design">
+            <div class="motion-panel-copy"><span class="motion-panel-kicker">02 / FLTL NFC</span><h2 data-i18n="rail.heading2">ONE IDEA. TWO WORLDS.</h2><p data-i18n="rail.desc2">A physical card connected to a digital identity.</p></div>
+            <img class="rail-product rail-design-img" src="assets/fltl-nfc-physical-digital.jpg" alt="FLTL physical and digital product experience" loading="lazy" data-i18n-attr="alt:rail.altPhysical" />
+            <span class="motion-panel-ghost" data-i18n="rail.ghostDesign">DESIGN</span>
+          </article>
+          <article class="motion-panel motion-panel-tap">
+            <div class="motion-panel-copy"><span class="motion-panel-kicker" data-i18n="rail.kicker3">03 / CONNECTION</span><h2 data-i18n="rail.heading3">MAKE THE CONNECTION.</h2><p data-i18n="rail.desc3">Bring the card close to a compatible NFC smartphone.</p></div>
+            <img class="rail-product rail-tap-img" src="assets/fltl-nfc-tap.jpg" alt="FLTL NFC interaction near smartphone" loading="lazy" data-i18n-attr="alt:rail.altTap" />
+            <span class="motion-panel-ghost" data-i18n="rail.ghostConnect">CONNECT</span>
+          </article>
+          <article class="motion-panel motion-panel-object">
+            <div class="motion-panel-copy"><span class="motion-panel-kicker" data-i18n="rail.kicker4">04 / FLAGSHIP</span><h2 data-i18n="rail.heading4">DESIGNED TO BE HELD.</h2><p data-i18n="rail.desc4">FLTL NFC Smart Business Card · 2026</p><a class="rail-project-link" href="#helmets" data-i18n="rail.explore">EXPLORE THE OBJECT ↗</a></div>
+            <img class="rail-product rail-object-img" src="assets/fltl-nfc-packaging.jpg" alt="FLTL NFC premium tri-fold package" loading="lazy" data-i18n-attr="alt:rail.altPackage" />
+            <span class="motion-panel-ghost">FLTL.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 05: HELMETS HALL OF FAME → FLTL NFC HERO OBJECT
+         ======================================================== -->
+    <section class="s home-helmets" id="helmets">
+      <div class="helmets-header-container">
+        <div class="helmets-headline-col">
+          <h2 class="helmets-title-main" data-i18n="helmets.titleMain">FLAGSHIP OBJECT</h2>
+          <h2 class="helmets-title-sub" data-i18n="helmets.titleSub">HALL OF FAME</h2>
+        </div>
+        <div class="helmets-desc-col">
+          <p class="helmets-desc-p" data-i18n="helmets.desc">
+            Self-initiated NFC smart business card system engineered with genuine NXP NTAG216 high-frequency chip (888 bytes, 32-bit password protection), standard 85.6 &times; 54 &times; 0.76 mm matte black PVC card body, and NFC-enabled digital profile access on compatible phones.
+          </p>
+        </div>
+      </div>
+
+      <!-- Single Hero Showcase with Exact Reference Chamfered Card Borders -->
+      <div class="helmets-grid-container">
+        <!-- Hero Object: FLTL NFC Smart Business Card -->
+        <div class="helmet-card-item is-hero-single" id="fltlHeroCard">
+          <div class="helmet-card-inner">
+            <div class="helmet-card-svg-frame">
+              <svg width="100%" height="100%" viewBox="0 0 407 411" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 1h390.89a7 7 0 0 1 7 7v356.983a7 7 0 0 1-7 7H263.329a23.999 23.999 0 0 0-18.766 9.038l-16.499 20.694A21.999 21.999 0 0 1 210.862 410H8a7 7 0 0 1-7-7V8a7 7 0 0 1 7-7Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div class="helmet-card-stage-wrap">
+              <div class="helmet-img-stage" id="fltlCardStage">
+                <!-- Interactive 3D WebGL Web Object (Three.js 85.6 × 54 mm physical card) -->
+                <img class="fltl-webgl-fallback" src="assets/NFC_official_front.jpg" alt="FLTL NFC front artwork" loading="lazy" />
+                <canvas id="fltlCardCanvas" class="fltl-card-canvas" aria-label="Interactive 3D FLTL NFC Smart Business Card" data-i18n-attr="aria-label:helmets.canvasAria"></canvas>
+                <span class="nfc-reveal-cue" data-i18n="helmets.revealCue">HOVER TO REVEAL THE OBJECT</span>
+                <!-- Subtle Interactive Controls & Hint -->
+                <div class="fltl-card-controls" id="fltlCardControls">
+                  <button type="button" class="btn-card-flip" id="btnCardFlip" title="Flip Card 180°" aria-label="Flip Card" data-i18n-attr="title:helmets.btnFlipTitle;aria-label:helmets.btnFlipTitle">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" class="flip-icon">
+                      <path d="M4 10a6 6 0 1 1 1.76 4.24M4 10V6M4 10h4" />
+                    </svg>
+                    <span data-i18n="helmets.btnFlip">FLIP 180&deg;</span>
+                  </button>
+                  <span class="fltl-drag-hint" data-i18n="helmets.dragHint">DRAG TO INSPECT 3D OBJECT</span>
+                </div>
+              </div>
+
+              <!-- Metadata in Bottom-Right Chamfered Shelf -->
+              <a href="portfolio-nfc.html" class="helmet-meta-link" title="Open FLTL NFC Case Study" data-i18n-attr="title:helmets.metaTitle">
+                <div class="helmet-meta-row">
+                  <span class="helmet-name">FLTL NFC</span>
+                  <span class="helmet-year">2026</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Callout Buttons -->
+      <div class="helmets-footer-callout">
+        <p class="callout-prompt" data-i18n="helmets.calloutPrompt">Explore complete FLTL NFC engineering case study and live official product specification</p>
+        <div class="helmets-callout-buttons">
+          <a href="portfolio-nfc.html" class="btn-store-pill is-large" id="viewFltlBtn" title="FLTL NFC Case Study">
+            <span class="btn-store-text" data-i18n="helmets.btnCase">VIEW FLTL NFC CASE &rarr;</span>
+          </a>
+          <a href="https://www.fromlifetolines.com/product.html" target="_blank" rel="noopener noreferrer" class="btn-store-pill is-large is-outline" id="officialProductBtn" title="Official FLTL Product Website">
+            <span class="btn-store-text" data-i18n="helmets.btnStore">OFFICIAL PRODUCT SITE &nearr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 06: PRACTICE ARCHIVE & SOCIAL CALLOUT
+         ======================================================== -->
+    <section class="s home-socials" id="socials">
+      <div class="socials-container">
+        <h2 class="socials-title">
+          <span data-i18n="socials.titleMain">WHAT&rsquo;S NEXT</span>
+          <span class="socials-title-serif" data-i18n="socials.titleSerif">ON PRACTICE</span>
+        </h2>
+        <div class="socials-media-row">
+          <div class="social-card"><img src="assets/fltl-nfc-macro.jpg" alt="FLTL NFC Antenna Macro" data-i18n-attr="alt:editorial.altMacro" /></div>
+          <div class="social-card"><img src="assets/fltl-nfc-packaging.jpg" alt="FLTL NFC Tactile Packaging" data-i18n-attr="alt:editorial.altPackaging" /></div>
+          <div class="social-card"><img src="assets/fltl-nfc-tap.jpg" alt="FLTL NFC Mobile Tap Interaction" /></div>
+          <div class="social-card"><img src="assets/fltl-nfc-physical-digital.jpg" alt="FLTL NFC Physical Digital System" /></div>
+        </div>
+        <div class="socials-links-wrap">
+          <span class="socials-intro-text" data-i18n="socials.intro">CONNECT WITH HOWARD HUANG</span>
+          <div class="socials-pill-row">
+            <a href="https://www.linkedin.com/in/howard-huang-designer/" target="_blank" rel="noreferrer" class="social-pill-link">LINKEDIN</a>
+            <a href="https://github.com/fromlifetolines/-Portfolio" target="_blank" rel="noreferrer" class="social-pill-link">GITHUB</a>
+            <a href="mailto:Fromlifetolines@gmail.com" class="social-pill-link" data-i18n="socials.email">EMAIL</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         FINALE — FULL-LENGTH HOWARD PORTRAIT, IDENTITY CLOSURE
+         ======================================================== -->
+    <section class="s howard-finale" id="finale">
+      <div class="finale-sticky" id="finaleStage">
+        <div class="finale-backdrop" aria-hidden="true"><span>HOWARD</span><span>HUANG</span></div>
+        <div class="finale-portrait-rig" id="finalePortraitRig"><img src="assets/howard/howard-suit-front.png" alt="Howard Huang — Full-length professional portrait" loading="lazy" data-i18n-attr="alt:finale.imageAlt" /></div>
+        <div class="finale-content">
+          <span class="finale-eyebrow" data-i18n="finale.eyebrow">THE PERSON BEHIND THE WORK</span>
+          <h2 data-i18n="finale.heading">THE NEXT CHAPTER IS BEING BUILT.</h2>
+          <div class="finale-links"><a href="./about.html" data-i18n="finale.about">ABOUT HOWARD ↗</a><a href="mailto:Fromlifetolines@gmail.com" data-i18n="finale.contact">GET IN TOUCH ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 07: FOOTER (Reference Reconstructed)
+         ======================================================== -->
+    <footer class="s home-footer" id="footer">
+      <!-- Scrolling Identity Marquee -->
+      <div class="footer-marquee-strip">
+        <div class="marquee-track" data-i18n-html="footer.marqueeHtml">
+          <span class="marquee-item">HOWARD HUANG</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">FLTL NFC</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">CREATIVE STRATEGIST</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">VISUAL DESIGN DIRECTOR</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">DIGITAL PRODUCT BUILDER</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">10+ YEARS EXPERIENCE</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">HOWARD HUANG</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">FLTL NFC</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">CREATIVE STRATEGIST</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">VISUAL DESIGN DIRECTOR</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">DIGITAL PRODUCT BUILDER</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">10+ YEARS EXPERIENCE</span>
+        </div>
+      </div>
+
+      <div class="footer-inner-container">
+        <div class="footer-nav-columns">
+          <div class="footer-col">
+            <div class="footer-eyebrow" data-i18n="footer.pages">PAGES</div>
+            <div class="footer-links-list">
+              <a href="#hero" data-i18n="footer.home">Home</a>
+              <a href="#work" data-i18n="footer.work">Work</a>
+              <a href="./about.html" data-i18n="footer.about">About Howard</a>
+              <a href="#helmets" data-i18n="footer.helmets">Hall of Fame</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <div class="footer-eyebrow" data-i18n="footer.featuredCase">FEATURED CASE</div>
+            <div class="footer-links-list">
+              <a href="portfolio-nfc.html" data-i18n="footer.fltlCase">FLTL NFC Smart Business Card (2026)</a>
+              <a href="https://www.fromlifetolines.com/product.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.officialStore">Official FLTL Store &nearr;</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <div class="footer-eyebrow" data-i18n="footer.contactHeader">DIRECT CONTACT</div>
+            <div class="footer-links-list">
+              <a href="mailto:Fromlifetolines@gmail.com">Fromlifetolines@gmail.com</a>
+              <a href="https://www.linkedin.com/in/howard-huang-designer/" target="_blank" rel="noreferrer" data-i18n="footer.linkedin">LinkedIn Profile</a>
+              <a href="https://github.com/fromlifetolines/-Portfolio" target="_blank" rel="noreferrer" data-i18n="footer.github">GitHub Repository</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom-legal">
+          <div class="legal-copy" data-i18n="footer.legalCopy">&copy; 2026 Howard Huang. All rights reserved.</div>
+          <div class="legal-links">
+            <a href="portfolio-nfc.html" data-i18n="footer.designSystem">FLTL Design System</a>
+            <a href="#hero" data-i18n="footer.backToTop">Back to Top &uarr;</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Shared i18n Translation Engine -->
+  <script src="js/prototype-i18n.js"></script>
+  <!-- Extensible, published-work-only portfolio registry -->
+  <script src="js/prototype-projects.js"></script>
+  <!-- Prototype Main Script -->
+  <script src="js/prototype-howard-world.js"></script>
 </body>
 </html>

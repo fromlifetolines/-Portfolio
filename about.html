@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5" />
+  <title>About Howard Huang — Creative Strategist & Visual Design Director</title>
+  <meta name="description" content="Biography and creative practice of Howard Huang: Creative Strategist, Visual Design Director, and Digital Product Builder with 10+ years across design, advertising, and digital experience." />
+
+  <!-- Fonts: Syne, Instrument Serif, Geist, Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP, ScrollTrigger & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Prototype Stylesheet -->
+  <link rel="stylesheet" href="css/prototype-howard-world.css" />
+</head>
+<body data-nav-theme="dark" class="page-about">
+
+  <!-- Fullscreen Preloader Intro -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-hh-wrap">
+        <svg class="preloader-hh-svg" viewBox="0 0 44 28" fill="none">
+          <path d="M4 2v24M16 2v24M4 14h12M28 2v24M40 2v24M28 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="preloader-brand" data-i18n="aboutPage.preloaderBrand">ABOUT HOWARD</div>
+      <div class="preloader-bar"><div class="preloader-progress" id="preloaderProgress"></div></div>
+    </div>
+  </div>
+
+  <!-- Route Page Transition Curtain -->
+  <div class="route-transition-curtain" id="routeTransitionCurtain" aria-hidden="true">
+    <div class="route-transition-inner">
+      <svg class="route-transition-hh-svg" viewBox="0 0 44 28" fill="none">
+        <path d="M4 2v24M16 2v24M4 14h12M28 2v24M40 2v24M28 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+      <span class="route-transition-text" id="routeTransitionText">LOADING</span>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       TOP HEADER / NAV
+       ======================================================== -->
+  <header class="nav" id="mainNav">
+    <div class="nav-inner">
+      <!-- Left: Howard Huang Brand Wordmark -->
+      <a href="index.html" class="nav-brand-link" title="Howard Huang Home">
+        <div class="nav-brand">
+          <span class="brand-line-1">HOWARD</span>
+          <span class="brand-line-2">HUANG</span>
+        </div>
+      </a>
+
+      <!-- Center: HH Monogram -->
+      <div class="nav-middle">
+        <a href="index.html" class="nav-middle-link" title="Home">
+          <svg class="nav-hh-svg" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 2v24M16 2v24M4 14h12M28 2v24M40 2v24M28 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <span class="sr-only">Howard Huang Monogram</span>
+        </a>
+      </div>
+
+      <!-- Right: Action Buttons -->
+      <div class="nav-actions">
+        <!-- Language Switcher (EN / 中文) -->
+        <div class="lang-switch-wrap" id="langSwitch" role="group" aria-label="Language Selector">
+          <button type="button" class="btn-lang is-active" data-lang="en" aria-label="Switch to English">EN</button>
+          <span class="lang-divider" aria-hidden="true">/</span>
+          <button type="button" class="btn-lang" data-lang="zh-TW" aria-label="切換至繁體中文">中文</button>
+        </div>
+
+        <a href="index.html#work" class="btn-store-pill" id="navWorkBtn">
+          <svg class="btn-store-icon" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.931 5.783l-.759.812c-1.132 1.212-2.89 1.212-4.022 0l-.76-.812C4.313 4.637 2.568 5.29 2.275 6.928l-1.238 7.18c-.227 1.318.652 2.543 1.838 2.543h10.588c1.185 0 2.064-1.225 1.838-2.544l-1.239-7.179c-.28-1.638-2.037-2.29-3.116-1.145h-.014ZM10.839 3.048L9.84 1.849C8.894.717 7.43.717 6.484 1.85l-1 1.199" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10"/>
+          </svg>
+          <span class="btn-store-text" data-i18n="nav.work">WORK</span>
+        </a>
+
+        <button type="button" class="nav-ham" id="navHamBtn" title="Toggle Navigation Menu" aria-label="Toggle Navigation Menu" data-i18n-attr="title:nav.menuToggle;aria-label:nav.menuToggle">
+          <span class="ham-line ham-line-top"></span>
+          <span class="ham-line ham-line-bottom"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fullscreen Nav Overlay Drawer -->
+  <div class="nav-menu-overlay" id="navMenuOverlay">
+    <div class="nav-menu-inner">
+      <div class="nav-menu-col-media">
+        <div class="nav-menu-media-grid">
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-hero.jpg" alt="FLTL NFC Hero" /></div>
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-packaging.jpg" alt="FLTL NFC Packaging" /></div>
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-macro.jpg" alt="FLTL NFC Antenna Circuit" /></div>
+          <div class="nav-menu-img-item"><img src="assets/fltl-nfc-brand-world.jpg" alt="FLTL Physical-Digital Brand System" /></div>
+        </div>
+      </div>
+      <div class="nav-menu-col-links">
+        <nav class="nav-menu-list">
+          <a href="index.html" class="nav-link-item"><span class="nav-link-num">01</span> <span data-i18n="nav.home">HOME</span></a>
+          <a href="index.html#work" class="nav-link-item"><span class="nav-link-num">02</span> <span data-i18n="nav.navWork">WORK</span></a>
+          <a href="about.html" class="nav-link-item is-active"><span class="nav-link-num">03</span> <span data-i18n="nav.navAbout">ABOUT</span></a>
+          <a href="index.html#helmets" class="nav-link-item"><span class="nav-link-num">04</span> <span data-i18n="nav.navHelmets">HALL OF FAME</span></a>
+        </nav>
+        <div class="nav-menu-footer-links">
+          <span class="nav-tagline" data-i18n="nav.tagline">10+ YEARS CREATIVE DIRECTION & DIGITAL SYSTEMS</span>
+          <div class="nav-socials-row">
+            <a href="https://www.linkedin.com/in/howard-huang-designer/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+            <a href="https://github.com/fromlifetolines/-Portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a>
+            <a href="mailto:Fromlifetolines@gmail.com" data-i18n="nav.contact">CONTACT</a>
+          </div>
+          <div class="nav-drawer-lang-wrap">
+            <span class="drawer-lang-label" data-i18n="nav.langLabel">LANGUAGE:</span>
+            <button type="button" class="btn-lang is-active" data-lang="en">EN</button>
+            <span class="lang-divider">/</span>
+            <button type="button" class="btn-lang" data-lang="zh-TW">中文</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <div class="page-w" id="smooth-wrapper">
+
+    <!-- ========================================================
+         ABOUT HERO SECTION
+         ======================================================== -->
+    <section class="s about-hero-section">
+      <div class="about-hero-container">
+        <div class="about-hero-meta-eyebrow">
+          <span class="meta-tag" data-i18n="aboutPage.heroEyebrow">PROFILE &middot; BIOGRAPHY</span>
+          <span class="meta-tag c-lime" data-i18n="aboutPage.heroExp">10+ YEARS EXPERIENCE</span>
+        </div>
+
+        <h1 class="about-hero-title">
+          <span class="title-serif" data-i18n="aboutPage.heroTitleSerif">ABOUT</span> <span data-i18n="aboutPage.heroTitleSans">HOWARD</span>
+        </h1>
+        <p class="about-hero-roles" data-i18n="aboutPage.heroRoles">
+          CREATIVE STRATEGIST &middot; VISUAL DESIGN DIRECTOR &middot; DIGITAL PRODUCT BUILDER
+        </p>
+
+        <div class="about-hero-portrait-stage">
+          <div class="about-portrait-frame">
+            <img src="assets/howard/howard-about-h06.png" alt="Howard Huang — Standing Portrait" class="about-portrait-img" data-i18n-attr="alt:aboutPage.heroImgAlt" />
+          </div>
+          <div class="about-hero-badge">
+            <div class="badge-title" data-i18n="aboutPage.badgeYears">TEN+ YEARS</div>
+            <div class="badge-desc" data-i18n="aboutPage.badgeDesc">DESIGN, ADVERTISING &amp; DIGITAL SYSTEMS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 01: WHO I AM
+         ======================================================== -->
+    <section class="s about-content-block" id="who-i-am">
+      <div class="about-block-container">
+        <div class="about-block-header">
+          <span class="about-section-num">01</span>
+          <h2 class="about-section-heading" data-i18n="aboutPage.whoHeader">WHO I AM</h2>
+        </div>
+        <div class="about-block-body">
+          <p class="about-lead-text" data-i18n="aboutPage.whoLead">
+            Howard Huang is a Creative Strategist, Visual Design Director, and Digital Product Builder with more than a decade of cross-disciplinary experience across design, advertising, and digital experience.
+          </p>
+          <div class="about-body-columns">
+            <p data-i18n="aboutPage.whoP1">
+              Operating at the critical intersection where brand narrative meets digital architecture, Howard leads creative systems that transform strategic goals into unmistakable visual identities and responsive products.
+            </p>
+            <p data-i18n="aboutPage.whoP2">
+              With 10+ years directing visual design and digital craft, he works as both a strategic leader and hands-on builder—designing cohesive brand universes, high-conversion interfaces, and tactile physical-digital touchpoints.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 02: MY CREATIVE PRACTICE
+         ======================================================== -->
+    <section class="s about-content-block about-bg-dark" id="creative-practice">
+      <div class="about-block-container">
+        <div class="about-block-header">
+          <span class="about-section-num c-lime">02</span>
+          <h2 class="about-section-heading" data-i18n="aboutPage.practiceHeader">MY CREATIVE PRACTICE</h2>
+        </div>
+        <div class="about-block-body">
+          <blockquote class="about-philosophy-quote" data-i18n-html="aboutPage.practiceQuote">
+            &ldquo;It doesn&rsquo;t matter <span class="quote-serif">where</span> you start, it&rsquo;s <span class="quote-serif">how</span> you craft the systems that endure.&rdquo;
+          </blockquote>
+          <div class="about-body-columns">
+            <p data-i18n="aboutPage.practiceP1">
+              Howard&rsquo;s creative practice is defined by systematic rigour and aesthetic uncompromisingness. Rather than treating design as decorative styling, every project begins with structural thinking: establishing the brand&rsquo;s conceptual core, typography hierarchy, behavioral logic, and tactile materiality.
+            </p>
+            <p data-i18n="aboutPage.practiceP2">
+              From editorial art direction and high-contrast typography to interactive 3D WebGL objects and performance-tuned frontend systems, the practice continuously bridges physical craftsmanship with modern web capabilities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 03: EXPERIENCE & EXPERTISE
+         ======================================================== -->
+    <section class="s about-content-block" id="expertise">
+      <div class="about-block-container">
+        <div class="about-block-header">
+          <span class="about-section-num">03</span>
+          <h2 class="about-section-heading" data-i18n="aboutPage.expHeader">EXPERIENCE &amp; EXPERTISE</h2>
+        </div>
+        <div class="about-block-body">
+          <p class="about-lead-text" data-i18n="aboutPage.expLead">
+            Ten-plus years focused on four core disciplines across the contemporary design landscape:
+          </p>
+          <div class="about-pillars-grid">
+            <div class="pillar-card">
+              <span class="pillar-num">01</span>
+              <h3 class="pillar-title" data-i18n="aboutPage.pillar1Title">CREATIVE STRATEGY &amp; BRAND ARCHITECTURE</h3>
+              <p class="pillar-desc" data-i18n="aboutPage.pillar1Desc">
+                Formulating brand positioning, strategic narratives, visual identity systems, and unified guidelines that provide clarity and competitive distinction.
+              </p>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-num">02</span>
+              <h3 class="pillar-title" data-i18n="aboutPage.pillar2Title">VISUAL DESIGN DIRECTION &amp; ART DIRECTION</h3>
+              <p class="pillar-desc" data-i18n="aboutPage.pillar2Desc">
+                Editorial layouts, bespoke typography, campaign art direction, packaging craft, and cinematic visual pacing that command attention.
+              </p>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-num">03</span>
+              <h3 class="pillar-title" data-i18n="aboutPage.pillar3Title">DIGITAL PRODUCT BUILDING &amp; UI SYSTEMS</h3>
+              <p class="pillar-desc" data-i18n="aboutPage.pillar3Desc">
+                Engineering intuitive interfaces, design systems, responsive component libraries, and ergonomic user journeys built for scalable digital platforms.
+              </p>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-num">04</span>
+              <h3 class="pillar-title" data-i18n="aboutPage.pillar4Title">PHYSICAL-DIGITAL CONNECTED EXPERIENCES</h3>
+              <p class="pillar-desc" data-i18n="aboutPage.pillar4Desc">
+                Bridging physical tangible objects with instant digital cloud endpoints via embedded micro-technologies, NFC integrations, and interactive web objects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 04: FROM LIFE TO LINES
+         ======================================================== -->
+    <section class="s about-content-block about-bg-dark" id="from-life-to-lines">
+      <div class="about-block-container">
+        <div class="about-block-header">
+          <span class="about-section-num c-lime">04</span>
+          <h2 class="about-section-heading" data-i18n="aboutPage.fltlHeader">FROM LIFE TO LINES</h2>
+        </div>
+        <div class="about-block-body">
+          <p class="about-lead-text" data-i18n="aboutPage.fltlLead">
+            &ldquo;From Life to Lines&rdquo; (FLTL) is Howard&rsquo;s self-initiated design philosophy and product platform.
+          </p>
+          <div class="about-body-columns">
+            <p data-i18n="aboutPage.fltlP1">
+              It represents the translation of life&rsquo;s spontaneous interactions into precise, enduring design lines. The philosophy asserts that modern design must not remain trapped behind screens—it should live in the physical hands of people, connecting physical presence with seamless digital identity.
+            </p>
+            <p data-i18n-html="aboutPage.fltlP2">
+              The flagship realization of this platform is the <strong>FLTL NFC Smart Business Card (2026)</strong>: a premium matte-black PVC card engineered with an embedded NTAG216 micro-chip, supporting instantaneous contact sharing across iOS and Android without any application installation.
+            </p>
+          </div>
+
+          <div class="about-fltl-action-row">
+            <a href="portfolio-nfc.html" class="btn-store-pill is-large" title="View FLTL NFC Case Study">
+              <span class="btn-store-text" data-i18n="aboutPage.btnCase">VIEW FLTL NFC CASE &rarr;</span>
+            </a>
+            <a href="https://www.fromlifetolines.com/product.html" target="_blank" rel="noopener noreferrer" class="btn-store-pill is-large is-outline" title="Official FLTL Product Website">
+              <span class="btn-store-text" data-i18n="aboutPage.btnProduct">OFFICIAL PRODUCT SITE &nearr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         DIRECT CONTACT & FOOTER
+         ======================================================== -->
+    <footer class="s home-footer" id="footer">
+      <div class="footer-marquee-strip">
+        <div class="marquee-track" data-i18n="footer.marquee">
+          <span class="marquee-item">HOWARD HUANG</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">CREATIVE STRATEGIST</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">VISUAL DESIGN DIRECTOR</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">DIGITAL PRODUCT BUILDER</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">10+ YEARS EXPERIENCE</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">FROM LIFE TO LINES</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">HOWARD HUANG</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">CREATIVE STRATEGIST</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">VISUAL DESIGN DIRECTOR</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">DIGITAL PRODUCT BUILDER</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">10+ YEARS EXPERIENCE</span>
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-item">FROM LIFE TO LINES</span>
+        </div>
+      </div>
+
+      <div class="footer-inner-container">
+        <div class="footer-nav-columns">
+          <div class="footer-col">
+            <div class="footer-eyebrow" data-i18n="footer.pages">PAGES</div>
+            <div class="footer-links-list">
+              <a href="index.html" data-i18n="footer.home">Home</a>
+              <a href="index.html#work" data-i18n="footer.work">Work</a>
+              <a href="about.html" class="is-current" data-i18n="footer.about">About Howard</a>
+              <a href="index.html#helmets" data-i18n="footer.helmets">Hall of Fame</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <div class="footer-eyebrow" data-i18n="aboutPage.footerFeaturedObject">FEATURED OBJECT</div>
+            <div class="footer-links-list">
+              <a href="portfolio-nfc.html" data-i18n="aboutPage.footerCardName">FLTL NFC Smart Card (2026)</a>
+              <a href="https://www.fromlifetolines.com/product.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.officialStore">Official Store &nearr;</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <div class="footer-eyebrow" data-i18n="footer.contactHeader">DIRECT CONTACT</div>
+            <div class="footer-links-list">
+              <a href="mailto:Fromlifetolines@gmail.com">Fromlifetolines@gmail.com</a>
+              <a href="https://www.linkedin.com/in/howard-huang-designer/" target="_blank" rel="noopener noreferrer" data-i18n="footer.linkedin">LinkedIn Profile</a>
+              <a href="https://github.com/fromlifetolines/-Portfolio" target="_blank" rel="noopener noreferrer" data-i18n="footer.github">GitHub Repository</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom-legal">
+          <div class="legal-copy" data-i18n="footer.legalCopy">&copy; 2026 Howard Huang. All rights reserved.</div>
+          <div class="legal-links">
+            <a href="https://www.fromlifetolines.com/" target="_blank" rel="noopener noreferrer">From Life To Lines</a>
+            <a href="index.html" data-i18n="footer.backToTop">Back to Home &uarr;</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Shared i18n Translation Engine -->
+  <script src="js/prototype-i18n.js"></script>
+  <!-- Main Script -->
+  <script src="js/prototype-howard-world.js"></script>
+</body>
+</html>
