@@ -195,7 +195,8 @@ function initMenuDrawer() {
    ======================================================== */
 function initHeroContoursCanvas() {
   const canvas = document.getElementById('heroContoursCanvas');
-  if (!canvas) return;
+  const heroSec = document.getElementById('hero');
+  if (!canvas || !heroSec) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -204,7 +205,7 @@ function initHeroContoursCanvas() {
   let dpr = 1;
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     width = canvas.clientWidth || window.innerWidth;
     height = canvas.clientHeight || window.innerHeight;
     canvas.width = Math.round(width * dpr);
@@ -220,6 +221,8 @@ function initHeroContoursCanvas() {
   let targetMouseX = width * 0.5;
   let targetMouseY = height * 0.5;
   let time = 0;
+  let isHeroVisible = true;
+  let animId = null;
 
   window.addEventListener('mousemove', (e) => {
     targetMouseX = e.clientX;
@@ -227,10 +230,47 @@ function initHeroContoursCanvas() {
   }, { passive: true });
 
   const numRings = 14;
-  const numPoints = 84;
+  const numPoints = 64;
+
+  function startLoop() {
+    if (!animId && isHeroVisible && !document.hidden) {
+      animId = requestAnimationFrame(renderContours);
+    }
+  }
+
+  function stopLoop() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      isHeroVisible = Boolean(entries[0] && entries[0].isIntersecting);
+      if (isHeroVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
+    }, { rootMargin: '50px' });
+    observer.observe(heroSec);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopLoop();
+    } else if (isHeroVisible) {
+      startLoop();
+    }
+  });
 
   function renderContours() {
-    requestAnimationFrame(renderContours);
+    if (!isHeroVisible || document.hidden) {
+      animId = null;
+      return;
+    }
+    animId = requestAnimationFrame(renderContours);
     time += 0.016;
 
     mouseX += (targetMouseX - mouseX) * 0.06;
@@ -288,7 +328,7 @@ function initHeroContoursCanvas() {
     ctx.restore();
   }
 
-  renderContours();
+  startLoop();
 }
 
 /* ========================================================
@@ -302,29 +342,71 @@ function initHeroMultiDepthPointer() {
   const pointerRig = document.getElementById('heroPointerRig');
   const editorialBadge = document.getElementById('heroEditorialBadge');
   const statusBlock = document.querySelector('.home-hero-status-block .status-block-content');
-  const contourCanvas = document.querySelector('.hero-contours-canvas');
   if (!heroSec || !pointerRig) return;
 
   let targetNormX = 0;
   let targetNormY = 0;
   let currNormX = 0;
   let currNormY = 0;
+  let isHeroVisible = true;
+  let isRunning = false;
+  let animId = null;
+
+  function startParallax() {
+    if (!isRunning && isHeroVisible && !document.hidden) {
+      isRunning = true;
+      animId = requestAnimationFrame(renderParallax);
+    }
+  }
+
+  function stopParallax() {
+    isRunning = false;
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      isHeroVisible = Boolean(entries[0] && entries[0].isIntersecting);
+      if (!isHeroVisible) {
+        stopParallax();
+      } else {
+        startParallax();
+      }
+    }, { rootMargin: '50px' });
+    observer.observe(heroSec);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopParallax();
+    } else if (isHeroVisible) {
+      startParallax();
+    }
+  });
 
   window.addEventListener('mousemove', (e) => {
     const w = window.innerWidth;
     const h = window.innerHeight;
     targetNormX = (e.clientX - w / 2) / (w / 2);
     targetNormY = (e.clientY - h / 2) / (h / 2);
+    if (isHeroVisible && !isRunning) {
+      startParallax();
+    }
   }, { passive: true });
 
   function renderParallax() {
-    currNormX += (targetNormX - currNormX) * 0.08;
-    currNormY += (targetNormY - currNormY) * 0.08;
-
-    // Background Contours drift
-    if (contourCanvas) {
-      contourCanvas.style.transform = `translate(${currNormX * -12}px, ${currNormY * -8}px)`;
+    if (!isHeroVisible || document.hidden) {
+      stopParallax();
+      return;
     }
+
+    const diffX = targetNormX - currNormX;
+    const diffY = targetNormY - currNormY;
+    currNormX += diffX * 0.08;
+    currNormY += diffY * 0.08;
 
     // Howard Figure: Kept completely stable in natural seated pose (NO tilt / NO cursor follow)
     pointerRig.style.transform = 'none';
@@ -339,10 +421,15 @@ function initHeroMultiDepthPointer() {
       statusBlock.style.transform = `translate3d(${currNormX * -8}px, ${currNormY * -5}px, 0)`;
     }
 
-    requestAnimationFrame(renderParallax);
+    // Stop updating if resting (within epsilon)
+    if (Math.abs(diffX) < 0.0005 && Math.abs(diffY) < 0.0005) {
+      stopParallax();
+    } else {
+      animId = requestAnimationFrame(renderParallax);
+    }
   }
 
-  requestAnimationFrame(renderParallax);
+  startParallax();
 }
 
 /* ========================================================
@@ -362,8 +449,8 @@ function initHeroScrollSequence() {
     scrollTrigger: {
       trigger: '#hero',
       start: 'top top',
-      end: () => '+=' + Math.round(window.innerHeight * 1.15),
-      scrub: 0.65,
+      end: () => '+=' + Math.round(window.innerHeight * 0.95),
+      scrub: 0.15,
       pin: true,
       anticipatePin: 1,
       invalidateOnRefresh: true
@@ -376,7 +463,7 @@ function initHeroScrollSequence() {
   if (badge) scene.to(badge, { opacity: 0, y: -45, ease: 'none', duration: 0.35 }, 0);
   if (statusBlock) scene.to(statusBlock, { opacity: 0, y: 52, ease: 'none', duration: 0.36 }, 0.1);
   if (helper) scene.to(helper, { opacity: 0, y: 22, ease: 'none', duration: 0.25 }, 0);
-  if (contours) scene.to(contours, { scale: 1.22, opacity: 0.35, ease: 'none', duration: 1 }, 0);
+  if (contours) scene.to(contours, { opacity: 0.35, ease: 'none', duration: 1 }, 0);
 }
 
 /* ========================================================
