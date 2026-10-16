@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=Noto+Serif+TC:wght@600;900&amp;display=swap');
+      .bg { fill: #F7F5F0; }
+      .plate-border { stroke: #DDD9CF; stroke-width: 1; fill: none; }
+      .section-num { font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 700; fill: #121210; letter-spacing: 0.16em; }
+      .section-title { font-family: 'Geist', sans-serif; font-size: 15px; font-weight: 600; fill: #121210; letter-spacing: 0.08em; }
+      .body-text { font-family: 'Geist', sans-serif; font-size: 10px; font-weight: 400; fill: #6B6862; line-height: 1.5; }
+      .dim-line { stroke: #C23B22; stroke-width: 0.9; stroke-dasharray: 2 3; }
+      .dim-label { font-family: 'Geist', sans-serif; font-size: 9px; font-weight: 600; fill: #C23B22; }
+      .rule { stroke: #DDD9CF; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="900" class="bg" />
+
+  <!-- TOP HEADER -->
+  <g transform="translate(60, 50)">
+    <text x="0" y="0" class="section-num">ISLAND INDEX · BRAND SYSTEM SPECIFICATION V2.0</text>
+    <text x="0" y="26" font-family="'Noto Serif TC', serif" font-weight="900" font-size="28px" fill="#121210">島序 品牌識別主規範體系手冊</text>
+    <text x="0" y="48" class="body-text">FLTL × HOWARD HUANG · CONTEMPORARY TAIWANESE TEA ATLAS · EDITORIAL SYSTEM</text>
+    <line x1="0" y1="65" x2="1080" y2="65" stroke="#121210" stroke-width="2" />
+  </g>
+
+  <!-- MODULE 01: LOGO CLEAR-SPACE & PROPORTIONS -->
+  <g transform="translate(60, 150)">
+    <rect x="0" y="0" width="520" height="320" fill="#FFFFFF" class="plate-border" />
+    <g transform="translate(25, 30)">
+      <text x="0" y="0" class="section-num">01 / CLEAR-SPACE &amp; OPTICAL MARGINS</text>
+      <text x="0" y="18" class="section-title">標誌安全空間與比例基準</text>
+
+      <!-- Inner Lockup with Clear-space Boundary -->
+      <g transform="translate(40, 45)">
+        <!-- Clearance Box (X = 35px) -->
+        <rect x="0" y="0" width="360" height="150" fill="none" stroke="#C23B22" stroke-width="1" stroke-dasharray="3 3" opacity="0.6" />
+        <rect x="35" y="25" width="290" height="100" fill="#F7F5F0" />
+        
+        <!-- Simplified Horizontal Lockup -->
+        <g transform="translate(50, 40)">
+          <!-- Mini Contour Symbol -->
+          <rect x="0" y="0" width="40" height="50" fill="none" stroke="#121210" stroke-width="1.2" />
+          <line x1="20" y1="0" x2="20" y2="50" stroke="#121210" stroke-width="1" />
+          <path d="M 5 15 C 12 10, 15 20, 20 14 C 25 8, 30 18, 35 15" fill="none" stroke="#3A6351" stroke-width="1.5" />
+          <path d="M 5 35 C 12 40, 15 30, 20 35 C 25 40, 30 30, 35 35" fill="none" stroke="#A65A38" stroke-width="1.5" />
+
+          <!-- Wordmark -->
+          <text x="55" y="28" font-family="'Noto Serif TC', serif" font-weight="900" font-size="24px" fill="#121210">島序</text>
+          <text x="56" y="44" font-family="'Instrument Serif', serif" font-style="italic" font-size="14px" fill="#121210">Island Index</text>
+          <text x="122" y="42" font-family="'Geist', sans-serif" font-weight="600" font-size="5.5px" fill="#121210" letter-spacing="0.2em">MOUNTAIN TEA</text>
+        </g>
+
+        <!-- Dimension Labels -->
+        <text x="18" y="78" class="dim-label">X</text>
+        <text x="340" y="78" class="dim-label">X</text>
+        <text x="180" y="16" class="dim-label" text-anchor="middle">X</text>
+        <text x="180" y="142" class="dim-label" text-anchor="middle">X</text>
+      </g>
+
+      <text x="0" y="225" class="body-text">
+        以漢字「島」筆畫高度之 50% 定義為單位安全淨空值 `X`。在任何實體印刷或數位介面應用中，
+        此紅色虛線邊界內嚴禁侵入任何非相關文字、圖形、邊框或切齊載體邊緣。
+      </text>
+    </g>
+  </g>
+
+  <!-- MODULE 02: MINIMUM REPRODUCTION SIZES -->
+  <g transform="translate(620, 150)">
+    <rect x="0" y="0" width="520" height="320" fill="#FFFFFF" class="plate-border" />
+    <g transform="translate(25, 30)">
+      <text x="0" y="0" class="section-num">02 / MINIMUM REPRODUCTION SCALE</text>
+      <text x="0" y="18" class="section-title">最小可複製極限尺寸</text>
+
+      <g transform="translate(20, 45)">
+        <!-- Print Standard -->
+        <g transform="translate(0, 0)">
+          <text x="0" y="15" class="section-num" fill="#121210">PRINT / 實體印刷極限</text>
+          <text x="0" y="35" class="body-text">標準旗艦橫式：寬度 ≥ 35 mm（線寬 ≥ 0.25 pt）</text>
+          <text x="0" y="55" class="body-text">直立雙欄印鑑：高度 ≥ 18 mm（燙金/打凹清晰）</text>
+          <text x="0" y="75" class="body-text">Micro 等高線標：直徑 ≥ 8 mm（金屬蓋印/雷雕）</text>
+        </g>
+
+        <!-- Digital Standard -->
+        <g transform="translate(260, 0)">
+          <text x="0" y="15" class="section-num" fill="#121210">DIGITAL / 數位顯示極限</text>
+          <text x="0" y="35" class="body-text">Desktop 導覽列：高度 ≥ 36 px</text>
+          <text x="0" y="55" class="body-text">Mobile Header：高度 ≥ 28 px</text>
+          <text x="0" y="75" class="body-text">Favicon / App Icon：專用 Micro 16 × 16 px</text>
+        </g>
+      </g>
+
+      <!-- Visual Scale Comparison -->
+      <g transform="translate(20, 160)">
+        <rect x="0" y="0" width="440" height="70" fill="#F7F5F0" />
+        <!-- Large -->
+        <g transform="translate(20, 15)">
+          <rect x="0" y="0" width="70" height="40" fill="#FFFFFF" stroke="#DDD9CF" />
+          <text x="35" y="24" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="11px">島序</text>
+          <text x="35" y="52" text-anchor="middle" class="dim-label">100%</text>
+        </g>
+        <!-- Mid -->
+        <g transform="translate(130, 15)">
+          <rect x="0" y="0" width="45" height="40" fill="#FFFFFF" stroke="#DDD9CF" />
+          <text x="22" y="24" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="8px">島序</text>
+          <text x="22" y="52" text-anchor="middle" class="dim-label">50%</text>
+        </g>
+        <!-- Small -->
+        <g transform="translate(220, 15)">
+          <rect x="0" y="0" width="30" height="40" fill="#FFFFFF" stroke="#DDD9CF" />
+          <text x="15" y="23" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="6px">島序</text>
+          <text x="15" y="52" text-anchor="middle" class="dim-label">25%</text>
+        </g>
+        <!-- Micro Icon -->
+        <g transform="translate(310, 15)">
+          <rect x="0" y="10" width="20" height="20" fill="#121210" rx="4" />
+          <line x1="10" y1="12" x2="10" y2="28" stroke="#FFFFFF" stroke-width="0.8" />
+          <path d="M 4 16 L 10 14 L 16 16" fill="none" stroke="#5D937B" stroke-width="0.8" />
+          <text x="10" y="52" text-anchor="middle" class="dim-label">16px</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- MODULE 03: BRAND COLOR ARCHITECTURE -->
+  <g transform="translate(60, 500)">
+    <rect x="0" y="0" width="1080" height="340" fill="#FFFFFF" class="plate-border" />
+    <g transform="translate(25, 30)">
+      <text x="0" y="0" class="section-num">03 / COLOR ARCHITECTURE &amp; FOUR-SKU TERROIR PALETTE</text>
+      <text x="0" y="18" class="section-title">色彩架構與四大風土色盤</text>
+
+      <!-- Row 1: Brand Base Colors -->
+      <g transform="translate(0, 45)">
+        <text x="0" y="0" class="section-num" fill="#6B6862">PRIMARY BRAND BASES (品牌基底主色)</text>
+        <g transform="translate(0, 15)">
+          <!-- Pachica White -->
+          <g transform="translate(0, 0)">
+            <rect x="0" y="0" width="160" height="60" fill="#F7F5F0" stroke="#DDD9CF" />
+            <text x="10" y="20" class="section-num">宣紙暖白</text>
+            <text x="10" y="36" class="body-text">#F7F5F0 · TAKEO Pachica</text>
+            <text x="10" y="50" class="body-text">C3 M4 Y6 K0</text>
+          </g>
+          <!-- Ink Black -->
+          <g transform="translate(180, 0)">
+            <rect x="0" y="0" width="160" height="60" fill="#121210" />
+            <text x="10" y="20" class="section-num" fill="#FFFFFF">徽州墨黑</text>
+            <text x="10" y="36" class="body-text" fill="#A8A59E">#121210 · PANTONE Black 6</text>
+            <text x="10" y="50" class="body-text" fill="#A8A59E">C70 M65 Y60 K85</text>
+          </g>
+          <!-- Vermilion -->
+          <g transform="translate(360, 0)">
+            <rect x="0" y="0" width="160" height="60" fill="#C23B22" />
+            <text x="10" y="20" class="section-num" fill="#FFFFFF">丹砂朱紅 (極選)</text>
+            <text x="10" y="36" class="body-text" fill="#FFFFFF">#C23B22 · PANTONE 1795 C</text>
+            <text x="10" y="50" class="body-text" fill="#FFFFFF">C10 M90 Y95 K0</text>
+          </g>
+          <!-- Slate Gray -->
+          <g transform="translate(540, 0)">
+            <rect x="0" y="0" width="160" height="60" fill="#7E7C77" />
+            <text x="10" y="20" class="section-num" fill="#FFFFFF">石板暖灰</text>
+            <text x="10" y="36" class="body-text" fill="#FFFFFF">#7E7C77 · WARM GRAY 8 C</text>
+            <text x="10" y="50" class="body-text" fill="#FFFFFF">C45 M40 Y45 K10</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Row 2: 4-SKU Terroir Accents -->
+      <g transform="translate(0, 160)">
+        <text x="0" y="0" class="section-num" fill="#6B6862">FOUR-SKU TERROIR ACCENTS (四大茶品風土專屬色)</text>
+        <g transform="translate(0, 15)">
+          <!-- SEQ 01 -->
+          <g transform="translate(0, 0)">
+            <rect x="0" y="0" width="245" height="70" fill="#3A6351" />
+            <text x="12" y="22" class="section-num" fill="#FFFFFF">SEQ 01 · 1450M · 高山烏龍</text>
+            <text x="12" y="40" class="body-text" fill="#FFFFFF">薄霧青磁 (Mist Celadon)</text>
+            <text x="12" y="56" class="body-text" fill="#E2EAE3">#3A6351 · PANTONE 5555 C</text>
+          </g>
+          <!-- SEQ 02 -->
+          <g transform="translate(260, 0)">
+            <rect x="0" y="0" width="245" height="70" fill="#A65A38" />
+            <text x="12" y="22" class="section-num" fill="#FFFFFF">SEQ 02 · 0450M · 東方美人</text>
+            <text x="12" y="40" class="body-text" fill="#FFFFFF">熟成琥珀 (Amber Terracotta)</text>
+            <text x="12" y="56" class="body-text" fill="#EFE7DE">#A65A38 · PANTONE 7586 C</text>
+          </g>
+          <!-- SEQ 03 -->
+          <g transform="translate(520, 0)">
+            <rect x="0" y="0" width="245" height="70" fill="#8C2D19" />
+            <text x="12" y="22" class="section-num" fill="#FFFFFF">SEQ 03 · 0750M · 紅玉紅茶</text>
+            <text x="12" y="40" class="body-text" fill="#FFFFFF">辰砂紅玉 (Cinnabar Ruby)</text>
+            <text x="12" y="56" class="body-text" fill="#EBE3E0">#8C2D19 · PANTONE 7622 C</text>
+          </g>
+          <!-- SEQ 04 -->
+          <g transform="translate(780, 0)">
+            <rect x="0" y="0" width="245" height="70" fill="#524339" />
+            <text x="12" y="22" class="section-num" fill="#FFFFFF">SEQ 04 · 0800M · 焙火烏龍</text>
+            <text x="12" y="40" class="body-text" fill="#FFFFFF">炭焙灰褐 (Charcoal Umber)</text>
+            <text x="12" y="56" class="body-text" fill="#E6E3DE">#524339 · PANTONE 412 C</text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

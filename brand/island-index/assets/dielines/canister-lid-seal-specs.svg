@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Noto+Serif+TC:wght@600;900&amp;display=swap');
+      .bg { fill: #F7F5F0; }
+      .meta-lbl { font-family: 'Geist', sans-serif; font-size: 8.5px; font-weight: 600; fill: #6B6862; letter-spacing: 0.16em; }
+      .section-title { font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 700; fill: #121210; letter-spacing: 0.08em; }
+      .lid-metal { fill: #E2DFD8; stroke: #8F8C85; stroke-width: 1.5; }
+      .lid-inner-groove { fill: none; stroke: #BEBBB4; stroke-width: 0.8; }
+      .engrave-line { stroke: #54514C; stroke-width: 1.2; fill: none; }
+      .engrave-text { font-family: 'Geist', sans-serif; font-size: 8px; font-weight: 600; fill: #54514C; letter-spacing: 0.18em; }
+      .seal-paper { fill: #FFFFFF; stroke: #DDD9CF; stroke-width: 1; }
+      .perforate-line { stroke: #C23B22; stroke-width: 0.8; stroke-dasharray: 2 3; }
+      .dim-line { stroke: #CC0066; stroke-width: 0.8; stroke-dasharray: 2 2; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="500" class="bg" />
+
+  <!-- HEADER -->
+  <g transform="translate(60, 45)">
+    <text x="0" y="0" class="meta-lbl">CANISTER TOP CLOSURE &amp; SEAL STRIP ARCHITECTURE</text>
+    <text x="0" y="24" class="section-title">鋁罐頂蓋雷射雕刻與防偽撕開膠籤工程規範 (Ø80MM LID &amp; 22MM SEAL STRIP)</text>
+    <line x1="0" y1="40" x2="880" y2="40" stroke="#121210" stroke-width="1.6" />
+  </g>
+
+  <!-- LEFT: Ø80MM CANISTER LID LASER ENGRAVING -->
+  <g transform="translate(100, 120)">
+    <rect x="-30" y="-15" width="360" height="340" fill="#FFFFFF" stroke="#DDD9CF" stroke-width="1" />
+    <g transform="translate(150, 150)">
+      <!-- Outer Rim Ø80mm (scaled radius 110px) -->
+      <circle cx="0" cy="0" r="110" class="lid-metal" />
+      <circle cx="0" cy="0" r="102" class="lid-inner-groove" />
+      <circle cx="0" cy="0" r="92" stroke="#8F8C85" stroke-width="0.5" stroke-dasharray="2 4" fill="none" opacity="0.6" />
+
+      <!-- Center Laser Engraved Elevation Axis -->
+      <!-- Meridian Axis -->
+      <line x1="0" y1="-65" x2="0" y2="65" stroke="#54514C" stroke-width="1.2" />
+      <polygon points="0,-72 -4,-62 4,-62" fill="#54514C" />
+
+      <!-- Elevation Contours -->
+      <path d="M -45 -35 C -20 -45, -5 -25, 0 -38 C 10 -48, 30 -25, 45 -35" class="engrave-line" />
+      <path d="M -50 -10 C -25 0, -10 -20, 0 -8 C 15 2, 35 -18, 50 -8" class="engrave-line" />
+      <path d="M -55 18 C -30 8, -10 28, 0 16 C 15 6, 35 26, 55 18" class="engrave-line" />
+      <path d="M -60 45 C -35 55, -15 35, 0 46 C 20 58, 40 38, 60 48" class="engrave-line" />
+
+      <!-- Engraved Kanji & Latin in circular path -->
+      <text x="0" y="-80" text-anchor="middle" class="engrave-text">ISLAND INDEX · TAIWAN</text>
+      <text x="0" y="86" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="12px" fill="#54514C" letter-spacing="0.2em">島 序</text>
+    </g>
+
+    <!-- Diameter Dimension Callout -->
+    <line x1="40" y1="285" x2="260" y2="285" stroke="#CC0066" stroke-width="0.9" />
+    <text x="150" y="300" text-anchor="middle" font-family="'Geist', sans-serif" font-size="8.5px" font-weight="600" fill="#CC0066">DIAMETER: Ø80 MM</text>
+  </g>
+
+  <!-- RIGHT: 4 TAMPER-EVIDENT SEAL STRIPS (W22MM x H90MM) -->
+  <g transform="translate(480, 105)">
+    <rect x="0" y="0" width="460" height="355" fill="#FFFFFF" stroke="#DDD9CF" stroke-width="1" />
+    <g transform="translate(25, 25)">
+      <text x="0" y="0" class="meta-lbl">TAMPER-EVIDENT CLOSURE SEALS (四款風土專用防偽封籤 W22×H90MM)</text>
+      <text x="0" y="14" font-family="'Geist', sans-serif" font-size="8.5px" fill="#6B6862">微孔易撕線設計 · 頂蓋跨接至罐身 · 破壞即失氣密保固</text>
+
+      <!-- 4 Strips Layout -->
+      <g transform="translate(10, 35)">
+        <!-- Strip 1: 1450M Celadon -->
+        <g transform="translate(0, 0)">
+          <rect x="0" y="0" width="80" height="230" fill="#F7F5F0" stroke="#3A6351" stroke-width="1.2" />
+          <rect x="0" y="0" width="80" height="10" fill="#3A6351" />
+          <text x="40" y="24" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" font-weight="700" fill="#3A6351">SEQ 01 · 1450M</text>
+          
+          <line x1="0" y1="50" x2="80" y2="50" class="perforate-line" />
+          <text x="40" y="60" text-anchor="middle" font-family="'Geist', sans-serif" font-size="5px" fill="#C23B22">TEAR PERFORATION</text>
+
+          <text x="40" y="105" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">島</text>
+          <text x="40" y="145" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">序</text>
+          <rect x="28" y="165" width="24" height="24" rx="2" fill="#3A6351" />
+          <text x="40" y="180" text-anchor="middle" font-family="'Noto Serif TC', serif" font-size="7px" font-weight="900" fill="#FFFFFF">極選</text>
+          <text x="40" y="215" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" fill="#6B6862">高山烏龍</text>
+        </g>
+
+        <!-- Strip 2: 0450M Amber -->
+        <g transform="translate(100, 0)">
+          <rect x="0" y="0" width="80" height="230" fill="#F7F5F0" stroke="#A65A38" stroke-width="1.2" />
+          <rect x="0" y="0" width="80" height="10" fill="#A65A38" />
+          <text x="40" y="24" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" font-weight="700" fill="#A65A38">SEQ 02 · 0450M</text>
+
+          <line x1="0" y1="50" x2="80" y2="50" class="perforate-line" />
+          <text x="40" y="60" text-anchor="middle" font-family="'Geist', sans-serif" font-size="5px" fill="#C23B22">TEAR PERFORATION</text>
+
+          <text x="40" y="105" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">島</text>
+          <text x="40" y="145" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">序</text>
+          <rect x="28" y="165" width="24" height="24" rx="2" fill="#A65A38" />
+          <text x="40" y="180" text-anchor="middle" font-family="'Noto Serif TC', serif" font-size="7px" font-weight="900" fill="#FFFFFF">極選</text>
+          <text x="40" y="215" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" fill="#6B6862">東方美人</text>
+        </g>
+
+        <!-- Strip 3: 0750M Ruby -->
+        <g transform="translate(200, 0)">
+          <rect x="0" y="0" width="80" height="230" fill="#F7F5F0" stroke="#8C2D19" stroke-width="1.2" />
+          <rect x="0" y="0" width="80" height="10" fill="#8C2D19" />
+          <text x="40" y="24" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" font-weight="700" fill="#8C2D19">SEQ 03 · 0750M</text>
+
+          <line x1="0" y1="50" x2="80" y2="50" class="perforate-line" />
+          <text x="40" y="60" text-anchor="middle" font-family="'Geist', sans-serif" font-size="5px" fill="#C23B22">TEAR PERFORATION</text>
+
+          <text x="40" y="105" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">島</text>
+          <text x="40" y="145" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">序</text>
+          <rect x="28" y="165" width="24" height="24" rx="2" fill="#8C2D19" />
+          <text x="40" y="180" text-anchor="middle" font-family="'Noto Serif TC', serif" font-size="7px" font-weight="900" fill="#FFFFFF">極選</text>
+          <text x="40" y="215" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" fill="#6B6862">紅玉紅茶</text>
+        </g>
+
+        <!-- Strip 4: 0800M Umber -->
+        <g transform="translate(300, 0)">
+          <rect x="0" y="0" width="80" height="230" fill="#F7F5F0" stroke="#524339" stroke-width="1.2" />
+          <rect x="0" y="0" width="80" height="10" fill="#524339" />
+          <text x="40" y="24" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" font-weight="700" fill="#524339">SEQ 04 · 0800M</text>
+
+          <line x1="0" y1="50" x2="80" y2="50" class="perforate-line" />
+          <text x="40" y="60" text-anchor="middle" font-family="'Geist', sans-serif" font-size="5px" fill="#C23B22">TEAR PERFORATION</text>
+
+          <text x="40" y="105" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">島</text>
+          <text x="40" y="145" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="20px" fill="#121210">序</text>
+          <rect x="28" y="165" width="24" height="24" rx="2" fill="#524339" />
+          <text x="40" y="180" text-anchor="middle" font-family="'Noto Serif TC', serif" font-size="7px" font-weight="900" fill="#FFFFFF">極選</text>
+          <text x="40" y="215" text-anchor="middle" font-family="'Geist', sans-serif" font-size="6px" fill="#6B6862">焙火烏龍</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

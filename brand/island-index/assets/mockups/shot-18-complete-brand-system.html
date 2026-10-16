@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>SHOT 18 — COMPLETE BRAND SYSTEM</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600;900&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1264px;
+      height: 848px;
+      background: #181816;
+      color: #FAF9F6;
+      font-family: 'Geist', sans-serif;
+      overflow: hidden;
+      position: relative;
+      padding: 44px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Subtle background grid */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    /* Top Brand Summary Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .brand-hero {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .symbol-circle {
+      width: 64px;
+      height: 64px;
+      border: 1.5px solid #C8A97E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-names {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-ch {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      line-height: 1.1;
+    }
+    .brand-en {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 22px;
+      color: #C8A97E;
+      letter-spacing: 0.06em;
+    }
+    .system-title {
+      text-align: right;
+    }
+    .system-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: #C8A97E;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .system-desc {
+      font-size: 12px;
+      color: #A09E96;
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    /* Middle 4-SKU Family Architecture */
+    .sku-architecture {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 18px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .sku-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .sku-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sku-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      padding: 3px 8px;
+      border-radius: 2px;
+      color: #FFFFFF;
+    }
+    .sku-elev {
+      font-family: 'Geist', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: #C8A97E;
+    }
+    .sku-name-ch {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+    }
+    .sku-name-en {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 13px;
+      color: #A09E96;
+      margin-bottom: 16px;
+    }
+    .contour-box {
+      height: 56px;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .sku-details {
+      font-size: 10px;
+      line-height: 1.7;
+      color: #8C887F;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+      margin-top: auto;
+    }
+    .sku-row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .sku-row span:last-child {
+      color: #FAF9F6;
+      font-weight: 500;
+    }
+
+    /* Bottom Design System Standards */
+    .bottom-specs {
+      display: grid;
+      grid-template-columns: 1.4fr 1.6fr 1fr;
+      gap: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .spec-block-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #C8A97E;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .type-spec-list {
+      font-size: 10.5px;
+      line-height: 1.6;
+      color: #A09E96;
+    }
+    .color-swatches {
+      display: flex;
+      gap: 12px;
+    }
+    .swatch {
+      flex: 1;
+      height: 48px;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6px;
+      font-size: 8px;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+    .brand-chops {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+    }
+    .seal-box {
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid #C8A97E;
+      color: #C8A97E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="brand-hero">
+      <div class="symbol-circle">
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="#C8A97E" stroke-width="1.2" stroke-dasharray="2 2" />
+          <path d="M 6 22 C 12 14, 18 26, 24 16 C 30 10, 34 24, 38 20" stroke="#C8A97E" stroke-width="1.6" fill="none" />
+          <circle cx="24" cy="16" r="2.5" fill="#FAF9F6" />
+        </svg>
+      </div>
+      <div class="brand-names">
+        <span class="brand-ch">島序</span>
+        <span class="brand-en">ISLAND INDEX — TAIWANESE TEA ATLAS</span>
+      </div>
+    </div>
+
+    <div class="system-title">
+      <div class="system-badge">MASTER BRAND ARCHITECTURE V2.0</div>
+      <div class="system-desc">
+        以台灣地理山脈高程為序，融合瑞士網格理性系統與日式雜誌編輯美學，建構完整的當代茶風土全系列視覺識別規範。
+      </div>
+    </div>
+  </div>
+
+  <!-- Middle 4-SKU Grid -->
+  <div class="sku-architecture">
+    <!-- SKU 01 -->
+    <div class="sku-card" style="border-top: 3px solid #3A6351;">
+      <div class="sku-card-header">
+        <span class="sku-tag" style="background: #3A6351;">SEQ 01</span>
+        <span class="sku-elev">1,450 M</span>
+      </div>
+      <div class="sku-name-ch">高山烏龍</div>
+      <div class="sku-name-en">High Mountain Oolong</div>
+      
+      <div class="contour-box">
+        <svg width="180" height="40" viewBox="0 0 180 40">
+          <path d="M 10 22 C 40 10, 80 30, 110 14 C 140 5, 160 25, 170 18" stroke="#3A6351" stroke-width="2.2" fill="none" />
+          <circle cx="110" cy="14" r="3" fill="#C8A97E" />
+        </svg>
+      </div>
+
+      <div class="sku-details">
+        <div class="sku-row"><span>風土 Terroir</span><span>阿里山 樟樹湖</span></div>
+        <div class="sku-row"><span>品種 Cultivar</span><span>青心烏龍</span></div>
+        <div class="sku-row"><span>發酵 Oxidation</span><span>15% (清香)</span></div>
+        <div class="sku-row"><span>色票 Palette</span><span>PANTONE 5545 C</span></div>
+      </div>
+    </div>
+
+    <!-- SKU 02 -->
+    <div class="sku-card" style="border-top: 3px solid #A65A38;">
+      <div class="sku-card-header">
+        <span class="sku-tag" style="background: #A65A38;">SEQ 02</span>
+        <span class="sku-elev">0,450 M</span>
+      </div>
+      <div class="sku-name-ch">東方美人</div>
+      <div class="sku-name-en">Oriental Beauty</div>
+      
+      <div class="contour-box">
+        <svg width="180" height="40" viewBox="0 0 180 40">
+          <path d="M 10 28 C 50 35, 90 12, 120 28 C 150 40, 165 15, 170 24" stroke="#A65A38" stroke-width="2.2" fill="none" />
+          <circle cx="120" cy="28" r="3" fill="#C8A97E" />
+        </svg>
+      </div>
+
+      <div class="sku-details">
+        <div class="sku-row"><span>風土 Terroir</span><span>新竹 峨眉</span></div>
+        <div class="sku-row"><span>品種 Cultivar</span><span>青心大冇</span></div>
+        <div class="sku-row"><span>發酵 Oxidation</span><span>70% (重發酵)</span></div>
+        <div class="sku-row"><span>色票 Palette</span><span>PANTONE 7586 C</span></div>
+      </div>
+    </div>
+
+    <!-- SKU 03 -->
+    <div class="sku-card" style="border-top: 3px solid #942923;">
+      <div class="sku-card-header">
+        <span class="sku-tag" style="background: #942923;">SEQ 03</span>
+        <span class="sku-elev">0,750 M</span>
+      </div>
+      <div class="sku-name-ch">紅玉紅茶</div>
+      <div class="sku-name-en">Ruby Black Tea</div>
+      
+      <div class="contour-box">
+        <svg width="180" height="40" viewBox="0 0 180 40">
+          <path d="M 10 16 C 50 38, 90 10, 130 26 C 150 35, 165 15, 170 20" stroke="#942923" stroke-width="2.2" fill="none" />
+          <circle cx="130" cy="26" r="3" fill="#C8A97E" />
+        </svg>
+      </div>
+
+      <div class="sku-details">
+        <div class="sku-row"><span>風土 Terroir</span><span>南投 日月潭</span></div>
+        <div class="sku-row"><span>品種 Cultivar</span><span>台茶18號 紅玉</span></div>
+        <div class="sku-row"><span>發酵 Oxidation</span><span>100% (全發酵)</span></div>
+        <div class="sku-row"><span>色票 Palette</span><span>PANTONE 7622 C</span></div>
+      </div>
+    </div>
+
+    <!-- SKU 04 -->
+    <div class="sku-card" style="border-top: 3px solid #4A3B32;">
+      <div class="sku-card-header">
+        <span class="sku-tag" style="background: #4A3B32;">SEQ 04</span>
+        <span class="sku-elev">0,800 M</span>
+      </div>
+      <div class="sku-name-ch">焙火烏龍</div>
+      <div class="sku-name-en">Roasted Master Oolong</div>
+      
+      <div class="contour-box">
+        <svg width="180" height="40" viewBox="0 0 180 40">
+          <path d="M 10 30 C 40 12, 80 28, 115 10 C 150 30, 165 14, 170 25" stroke="#4A3B32" stroke-width="2.2" fill="none" />
+          <circle cx="115" cy="10" r="3" fill="#C8A97E" />
+        </svg>
+      </div>
+
+      <div class="sku-details">
+        <div class="sku-row"><span>風土 Terroir</span><span>南投 鹿谷凍頂</span></div>
+        <div class="sku-row"><span>品種 Cultivar</span><span>凍頂青心烏龍</span></div>
+        <div class="sku-row"><span>發酵 Oxidation</span><span>35% / 85% 焙火</span></div>
+        <div class="sku-row"><span>色票 Palette</span><span>PANTONE 440 C</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Specs & Typography Hierarchy -->
+  <div class="bottom-specs">
+    <!-- Typography System -->
+    <div>
+      <div class="spec-block-title">01 · TYPOGRAPHIC HIERARCHY</div>
+      <div class="type-spec-list">
+        <div><strong>Noto Serif TC (思源宋體):</strong> 標題・品名主標 (900 Heavy)</div>
+        <div><strong>Instrument Serif:</strong> 品牌西文輔助・副標題 (Italic)</div>
+        <div><strong>Geist Sans:</strong> 產品編碼・海拔等高線數據・網格排版</div>
+      </div>
+    </div>
+
+    <!-- Color Palette -->
+    <div>
+      <div class="spec-block-title">02 · BRAND CHROMATIC ARCHITECTURE</div>
+      <div class="color-swatches">
+        <div class="swatch" style="background: #3A6351;">SEQ 01<br>5545 C</div>
+        <div class="swatch" style="background: #A65A38;">SEQ 02<br>7586 C</div>
+        <div class="swatch" style="background: #942923;">SEQ 03<br>7622 C</div>
+        <div class="swatch" style="background: #4A3B32;">SEQ 04<br>440 C</div>
+        <div class="swatch" style="background: #C8A97E; color: #121210; text-shadow: none;">GOLD<br>FOIL</div>
+      </div>
+    </div>
+
+    <!-- Official Validation -->
+    <div>
+      <div class="spec-block-title">03 · VERIFICATION &amp; RIGHTS</div>
+      <div class="brand-chops">
+        <div class="seal-box">島序</div>
+        <div style="font-size: 8.5px; color: #8C887F; line-height: 1.5;">
+          FLTL STUDIO DESIGN<br>
+          DIRECTION BY HOWARD<br>
+          SELF-INITIATED CONCEPT
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

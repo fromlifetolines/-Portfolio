@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 560" width="340" height="560">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=Noto+Serif+TC:wght@600;900&amp;display=swap');
+      .meta-eyebrow { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 10px; fill: #6B6862; letter-spacing: 0.22em; }
+      .brand-title { font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 38px; fill: #121210; letter-spacing: 0.16em; }
+      .brand-en { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 20px; fill: #121210; letter-spacing: 0.06em; }
+      .product-title { font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 40px; fill: #121210; letter-spacing: 0.08em; }
+      .product-en { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 14px; fill: #4A3B32; letter-spacing: 0.22em; }
+      .meta-lbl { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 9.5px; fill: #6B6862; letter-spacing: 0.14em; }
+      .meta-val { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 12px; fill: #121210; }
+      .pill-bg { fill: #4A3B32; }
+      .pill-text { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 9px; fill: #FFFFFF; letter-spacing: 0.16em; }
+      .rule { stroke: #121210; stroke-width: 1; opacity: 0.25; }
+      .contour { stroke: #4A3B32; stroke-width: 2.8; fill: none; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <g transform="translate(20, 20)">
+    <!-- Top SKU Pill -->
+    <rect x="0" y="0" width="105" height="22" rx="3" class="pill-bg" />
+    <text x="52" y="15" text-anchor="middle" class="pill-text">SEQ 04 · 0800M</text>
+
+    <!-- Brand Wordmark -->
+    <g transform="translate(0, 48)">
+      <text x="0" y="32" class="brand-title">島序</text>
+      <text x="0" y="55" class="brand-en">Island Index</text>
+    </g>
+
+    <!-- Product Title -->
+    <g transform="translate(0, 130)">
+      <text x="0" y="36" class="product-title">焙火烏龍</text>
+      <text x="0" y="60" class="product-en">ROASTED MASTER OOLONG</text>
+      <text x="0" y="78" class="meta-eyebrow">CHARCOAL BAKED · WINTER HARVEST 2026</text>
+    </g>
+
+    <!-- Topographical Contour -->
+    <g transform="translate(0, 235)">
+      <rect x="0" y="0" width="300" height="70" fill="none" stroke="#4A3B32" stroke-width="0.9" stroke-dasharray="3 4" opacity="0.6" />
+      <path d="M 20 50 C 60 22, 105 45, 150 18 C 195 50, 240 25, 280 42" class="contour" />
+      <circle cx="150" cy="18" r="4.5" fill="#121210" />
+      <text x="160" y="62" text-anchor="middle" class="meta-lbl" fill="#4A3B32">DONGDING 0,800M ELEVATION CONTOUR</text>
+    </g>
+
+    <!-- Terroir & Craft Matrix -->
+    <g transform="translate(0, 335)">
+      <line x1="0" y1="0" x2="300" y2="0" class="rule" />
+      <g transform="translate(0, 20)">
+        <text x="0" y="0" class="meta-lbl">TERROIR / 產地</text>
+        <text x="0" y="16" class="meta-val">南投 鹿谷凍頂 (Lugu Dongding)</text>
+
+        <text x="160" y="0" class="meta-lbl">CULTIVAR / 品種</text>
+        <text x="160" y="16" class="meta-val">凍頂青心烏龍 (Qingxin)</text>
+      </g>
+      <g transform="translate(0, 60)">
+        <text x="0" y="0" class="meta-lbl">OXIDATION / 發酵度 35%</text>
+        <text x="160" y="0" class="meta-lbl">ROAST / 焙火度 85% (重焙)</text>
+      </g>
+      <g transform="translate(0, 88)">
+        <text x="0" y="0" class="meta-lbl">SENSORY NOTES / 風味索引</text>
+        <text x="0" y="15" class="meta-lbl" fill="#121210">龍眼木炭香 · 熟果甜香 · 溫潤厚韻</text>
+      </g>
+      <line x1="0" y1="115" x2="300" y2="115" class="rule" />
+    </g>
+
+    <!-- Bottom Origin Footer -->
+    <g transform="translate(0, 480)">
+      <text x="0" y="12" class="meta-eyebrow">NET WT. 75G / 2.65 OZ · TIGHT SPHERE</text>
+      <text x="0" y="26" class="meta-lbl">SLOWLY ROASTED &amp; SEALED · TAIWAN</text>
+      
+      <rect x="245" y="-5" width="55" height="32" fill="none" stroke="#4A3B32" stroke-width="1.2" />
+      <text x="272" y="10" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="9px" fill="#4A3B32">島序驗證</text>
+      <text x="272" y="22" text-anchor="middle" font-family="'Geist', sans-serif" font-weight="700" font-size="7px" fill="#4A3B32">N° 0800</text>
+    </g>
+  </g>
+</svg>

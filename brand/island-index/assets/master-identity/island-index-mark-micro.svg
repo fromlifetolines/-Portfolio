@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <style>
+      .bg { fill: #121210; }
+      .core-axis { stroke: #F7F5F0; stroke-width: 2.8; stroke-linecap: round; }
+      .contour-1 { stroke: #5D937B; stroke-width: 3.6; fill: none; stroke-linecap: round; }
+      .contour-2 { stroke: #D98359; stroke-width: 3.2; fill: none; stroke-linecap: round; }
+      .contour-3 { stroke: #F7F5F0; stroke-width: 2.8; fill: none; stroke-linecap: round; }
+      .apex { fill: #C23B22; }
+    </style>
+  </defs>
+
+  <rect width="120" height="120" rx="20" class="bg" />
+
+  <!-- Micro Elevation Mark -->
+  <g transform="translate(15, 15)">
+    <!-- Apex Arrow / North Pointer -->
+    <polygon points="45,10 39,22 51,22" class="apex" />
+
+    <!-- Central Surveying Meridian Axis -->
+    <line x1="45" y1="22" x2="45" y2="82" class="core-axis" />
+
+    <!-- Tier 1: 1450m Peak Wave -->
+    <path d="M 12 36 C 28 26, 36 44, 45 36 C 54 28, 62 46, 78 36" class="contour-1" />
+
+    <!-- Tier 2: 0800m Ridge Wave -->
+    <path d="M 8 56 C 24 64, 34 48, 45 56 C 56 64, 66 48, 82 56" class="contour-2" />
+
+    <!-- Tier 3: 0450m Base Wave -->
+    <path d="M 4 76 C 22 84, 32 68, 45 76 C 58 84, 68 68, 86 76" class="contour-3" />
+  </g>
+</svg>

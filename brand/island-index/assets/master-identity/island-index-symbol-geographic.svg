@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;display=swap');
+      .bg { fill: #F7F5F0; }
+      .axis-main { stroke: #121210; stroke-width: 2.2; }
+      .axis-sub { stroke: #121210; stroke-width: 0.9; stroke-dasharray: 3 4; opacity: 0.65; }
+      .contour-1450 { stroke: #3A6351; stroke-width: 3.2; fill: none; stroke-linecap: round; }
+      .contour-0800 { stroke: #524339; stroke-width: 2.6; fill: none; stroke-linecap: round; }
+      .contour-0750 { stroke: #8C2D19; stroke-width: 2.4; fill: none; stroke-linecap: round; }
+      .contour-0450 { stroke: #A65A38; stroke-width: 2.2; fill: none; stroke-linecap: round; }
+      .node-core { fill: #121210; }
+      .meta-num { font-family: 'Geist', -apple-system, sans-serif; font-size: 11px; font-weight: 600; fill: #121210; letter-spacing: 0.12em; }
+      .meta-sub { font-family: 'Geist', -apple-system, sans-serif; font-size: 8.5px; font-weight: 500; fill: #6B6862; letter-spacing: 0.16em; }
+    </style>
+  </defs>
+
+  <rect width="500" height="500" class="bg" />
+
+  <!-- GEOGRAPHIC SEQUENCE CORE SYMBOL -->
+  <g transform="translate(100, 70)">
+    <!-- Boundary Enclosure & Calibration Frame -->
+    <rect x="30" y="30" width="240" height="280" fill="none" stroke="#121210" stroke-width="1.8" />
+    <line x1="30" y1="30" x2="270" y2="30" stroke="#121210" stroke-width="3" />
+    
+    <!-- Central Surveying Meridian Axis (垂直測繪子午線) -->
+    <line x1="150" y1="12" x2="150" y2="300" class="axis-sub" />
+    <line x1="150" y1="45" x2="150" y2="295" class="axis-main" />
+    <!-- North Arrow / Top Apex -->
+    <polygon points="150,16 144,30 156,30" fill="#121210" />
+
+    <!-- Contour 1: SEQ 01 阿里山 1450m (Alpine Peak Line) -->
+    <path d="M 50 85 C 85 62, 115 105, 150 78 C 185 50, 215 95, 250 85" class="contour-1450" />
+    <circle cx="150" cy="78" r="4.5" class="node-core" />
+    <text x="282" y="89" class="meta-num">1450M</text>
+    <text x="282" y="99" class="meta-sub">ALISHAN</text>
+
+    <!-- Contour 2: SEQ 04 鹿谷凍頂 800m (Terrace Ridge Line) -->
+    <path d="M 40 145 C 80 160, 115 130, 150 145 C 185 160, 220 128, 260 142" class="contour-0800" />
+    <circle cx="150" cy="145" r="4" class="node-core" />
+    <text x="282" y="148" class="meta-num">0800M</text>
+    <text x="282" y="158" class="meta-sub">DONGDING</text>
+
+    <!-- Contour 3: SEQ 03 日月潭 750m (Lakeside Basin Line) -->
+    <path d="M 45 205 C 85 185, 120 220, 150 205 C 180 190, 215 225, 255 208" class="contour-0750" />
+    <circle cx="150" cy="205" r="4" class="node-core" />
+    <text x="282" y="208" class="meta-num">0750M</text>
+    <text x="282" y="218" class="meta-sub">SUN MOON</text>
+
+    <!-- Contour 4: SEQ 02 峨眉 450m (Foothills Mist Line) -->
+    <path d="M 15 270 C 60 285, 105 245, 150 270 C 195 295, 240 250, 285 268" class="contour-0450" />
+    <circle cx="150" cy="270" r="3.8" class="node-core" />
+    <text x="282" y="268" class="meta-num">0450M</text>
+    <text x="282" y="278" class="meta-sub">EMEI</text>
+
+    <!-- Base Coordinate & Registration -->
+    <text x="150" y="335" text-anchor="middle" class="meta-num">23°31'N · 120°48'E</text>
+    <text x="150" y="350" text-anchor="middle" class="meta-sub">TAIWAN TERROIR ELEVATION AXIS</text>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=Noto+Serif+TC:wght@600;900&amp;display=swap');
+      .bg { fill: #FFFFFF; }
+      .axis-main { stroke: #000000; stroke-width: 2.2; }
+      .axis-sub { stroke: #000000; stroke-width: 0.8; stroke-dasharray: 2 4; opacity: 0.5; }
+      .contour-line { stroke: #000000; fill: none; stroke-linecap: round; }
+      .node-core { fill: #000000; }
+      .sym-num { font-family: 'Geist', sans-serif; font-size: 8.5px; font-weight: 600; fill: #000000; letter-spacing: 0.1em; }
+      
+      .brand-kanji { font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 64px; fill: #000000; letter-spacing: 0.24em; }
+      .brand-latin-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 38px; fill: #000000; letter-spacing: 0.06em; }
+      .brand-latin-caps { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 11px; fill: #000000; letter-spacing: 0.38em; }
+      .meta-eyebrow { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 9.5px; fill: #000000; letter-spacing: 0.28em; opacity: 0.65; }
+      .meta-caption { font-family: 'Geist', sans-serif; font-weight: 400; font-size: 10px; fill: #000000; letter-spacing: 0.18em; opacity: 0.65; }
+      .rule-line { stroke: #000000; stroke-width: 1; opacity: 0.22; }
+      .vermilion-chop { fill: #000000; }
+      .chop-text { font-family: 'Noto Serif TC', serif; font-size: 8.5px; font-weight: 900; fill: #FFFFFF; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="420" class="bg" />
+
+  <g transform="translate(110, 95)">
+    <rect x="25" y="15" width="160" height="200" fill="none" stroke="#000000" stroke-width="1.6" />
+    <line x1="25" y1="15" x2="185" y2="15" stroke="#000000" stroke-width="2.6" />
+    
+    <line x1="105" y1="0" x2="105" y2="215" class="axis-sub" />
+    <line x1="105" y1="25" x2="105" y2="210" class="axis-main" />
+    <polygon points="105,4 100,15 110,15" fill="#000000" />
+
+    <!-- 1450m -->
+    <path d="M 40 55 C 65 38, 85 70, 105 50 C 125 32, 150 65, 170 55" class="contour-line" stroke-width="2.8" />
+    <circle cx="105" cy="50" r="3.5" class="node-core" />
+    <text x="194" y="58" class="sym-num">1450M</text>
+
+    <!-- 0800m -->
+    <path d="M 32 98 C 60 110, 85 88, 105 98 C 128 110, 152 86, 178 96" class="contour-line" stroke-width="2.4" />
+    <circle cx="105" cy="98" r="3.2" class="node-core" />
+    <text x="194" y="101" class="sym-num">0800M</text>
+
+    <!-- 0750m -->
+    <path d="M 35 142 C 62 128, 88 152, 105 142 C 126 130, 150 156, 175 144" class="contour-line" stroke-width="2.2" />
+    <circle cx="105" cy="142" r="3.2" class="node-core" />
+    <text x="194" y="145" class="sym-num">0750M</text>
+
+    <!-- 0450m -->
+    <path d="M 15 188 C 45 198, 75 172, 105 188 C 135 204, 165 174, 195 186" class="contour-line" stroke-width="2.0" />
+    <circle cx="105" cy="188" r="3.0" class="node-core" />
+    <text x="194" y="189" class="sym-num">0450M</text>
+
+    <text x="105" y="235" text-anchor="middle" class="sym-num">23°31'N · 120°48'E</text>
+  </g>
+
+  <g transform="translate(385, 105)">
+    <text x="0" y="20" class="meta-eyebrow">A CONTEMPORARY TAIWANESE TEA ATLAS · EST. 2026</text>
+    <text x="0" y="98" class="brand-kanji">島序</text>
+
+    <rect x="220" y="44" width="28" height="28" rx="2" class="vermilion-chop" />
+    <text x="234" y="62" text-anchor="middle" class="chop-text">極選</text>
+
+    <text x="2" y="148" class="brand-latin-serif">Island Index</text>
+    <text x="236" y="142" class="brand-latin-caps">TAIWANESE MOUNTAIN TEA</text>
+
+    <line x1="2" y1="174" x2="680" y2="174" class="rule-line" />
+
+    <text x="2" y="198" class="meta-caption">AN ARCHIVAL TEA COLLECTION CODIFYING VERTICAL ELEVATION, HARVEST &amp; MICROCLIMATE</text>
+
+    <g transform="translate(2, 222)">
+      <text x="0" y="0" class="meta-eyebrow">SEQ 01 · 1450M ALISHAN</text>
+      <text x="180" y="0" class="meta-eyebrow">SEQ 02 · 0450M EMEI</text>
+      <text x="340" y="0" class="meta-eyebrow">SEQ 03 · 0750M SUN MOON</text>
+      <text x="515" y="0" class="meta-eyebrow">SEQ 04 · 0800M DONGDING</text>
+    </g>
+  </g>
+</svg>
