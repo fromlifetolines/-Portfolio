@@ -36,8 +36,8 @@ window.HOWARD_PROJECTS = Object.freeze([
       en: 'Contemporary Taiwanese tea brand identity featuring four coordinated tea products, editorial packaging and a complete visual system.',
       'zh-TW': '當代台灣茶風土索引品牌識別與四款產地包裝設計，結合日式編輯美學與完整視覺系統。'
     },
-    cover: 'brand/island-index/assets/mockups/shot-05.jpg',
-    interactiveAsset: 'brand/island-index/assets/mockups/shot-05.jpg',
+    cover: 'brand/island-index/assets/mockups/shot-05-v4-1.jpg',
+    interactiveAsset: 'brand/island-index/assets/mockups/shot-05-v4-1.jpg',
     caseStudy: 'brand/island-index/'
   }
 ]);
