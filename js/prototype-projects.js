@@ -21,7 +21,7 @@ window.HOWARD_PROJECTS = Object.freeze([
   {
     id: 'island-index',
     order: 2,
-    published: true,
+    published: false,
     title: '島序 ISLAND INDEX',
     year: '2026',
     category: {
