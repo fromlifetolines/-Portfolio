@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>SHOT 14 — SCALE & PHYSICAL PROPORTION</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600;900&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1264px;
+      height: 848px;
+      background: #F8F6F2;
+      color: #1A1A18;
+      font-family: 'Geist', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* Millimeter grid */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(18, 18, 16, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18, 18, 16, 0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+    .grid-major {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(18, 18, 16, 0.09) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18, 18, 16, 0.09) 1px, transparent 1px);
+      background-size: 100px 100px;
+      pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+      position: absolute;
+      top: 48px;
+      left: 64px;
+      right: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid rgba(26, 26, 24, 0.2);
+      padding-bottom: 16px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .brand-ch {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+    .brand-en {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 20px;
+      color: #6A6760;
+    }
+    .doc-meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: #6A6760;
+      text-transform: uppercase;
+    }
+
+    /* Main Diagram Stage */
+    .stage {
+      position: absolute;
+      top: 130px;
+      left: 64px;
+      right: 64px;
+      bottom: 70px;
+      display: grid;
+      grid-template-columns: 280px 260px 420px 130px;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cad-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(26, 26, 24, 0.12);
+      border-radius: 4px;
+      padding: 24px 20px;
+      height: 580px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #3A6351;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .card-en {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 13px;
+      color: #6A6760;
+      margin-bottom: 24px;
+    }
+
+    /* Drawings */
+    .cad-viewport {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Dimension specs list */
+    .spec-table {
+      margin-top: auto;
+      border-top: 1px solid rgba(26, 26, 24, 0.1);
+      padding-top: 14px;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .spec-k { color: #6A6760; }
+    .spec-v { font-weight: 600; font-family: 'Geist', monospace; }
+
+    /* Footer disclaimer */
+    .footer-bar {
+      position: absolute;
+      bottom: 28px;
+      left: 64px;
+      right: 64px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 500;
+      color: #8C887F;
+      letter-spacing: 0.12em;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="grid-major"></div>
+
+  <div class="header">
+    <div class="brand-group">
+      <span class="brand-ch">島序</span>
+      <span class="brand-en">Island Index</span>
+      <span style="font-size: 12px; color: #8C887F; margin-left: 12px;">DIMENSIONAL SPECIFICATIONS &amp; ERGONOMIC RATIOS</span>
+    </div>
+    <div class="doc-meta">
+      DWG REF: FLTL-II-PKG-014 · 1:1 METRIC PROPORTIONS · CONCEPT ENGINEERING SPECIFICATION
+    </div>
+  </div>
+
+  <div class="stage">
+    <!-- Component 01: Retail Carton -->
+    <div class="cad-card">
+      <div class="card-tag">COMPONENT 01</div>
+      <div class="card-title">單入精裝茶盒</div>
+      <div class="card-en">Retail Individual Outer Carton</div>
+
+      <div class="cad-viewport">
+        <!-- SVG Carton Drawing -->
+        <svg width="220" height="340" viewBox="0 0 220 340">
+          <!-- Dimension Arrows -->
+          <!-- Height: 140mm -->
+          <line x1="20" y1="50" x2="20" y2="270" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="16,58 20,50 24,58" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="16,262 20,270 24,262" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <text x="12" y="165" font-family="'Geist', sans-serif" font-size="10" font-weight="700" fill="#3A6351" text-anchor="middle" transform="rotate(-90 12 165)">140 mm</text>
+
+          <!-- Width: 85mm -->
+          <line x1="45" y1="285" x2="185" y2="285" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="53,281 45,285 53,289" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="177,281 185,285 177,289" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <text x="115" y="302" font-family="'Geist', sans-serif" font-size="10" font-weight="700" fill="#3A6351" text-anchor="middle">85 mm</text>
+
+          <!-- Carton Isometric Outline -->
+          <rect x="45" y="50" width="140" height="220" fill="#FFFFFF" stroke="#121210" stroke-width="1.5" />
+          <!-- Flap score -->
+          <line x1="45" y1="65" x2="185" y2="65" stroke="#121210" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.6" />
+          <!-- Deboss window -->
+          <rect x="65" y="80" width="100" height="150" fill="none" stroke="#3A6351" stroke-width="1" stroke-dasharray="3 3" opacity="0.8" />
+          <text x="115" y="145" font-family="'Noto Serif TC', serif" font-weight="900" font-size="16" fill="#121210" text-anchor="middle">島序</text>
+          <text x="115" y="165" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="11" fill="#6A6760" text-anchor="middle">Island Index</text>
+          <rect x="85" y="180" width="60" height="14" fill="#3A6351" rx="2" />
+          <text x="115" y="190" font-family="'Geist', sans-serif" font-size="7" font-weight="700" fill="#FFFFFF" text-anchor="middle">SEQ 01 · 1450M</text>
+        </svg>
+      </div>
+
+      <div class="spec-table">
+        <div class="spec-row"><span class="spec-k">Dimensions:</span><span class="spec-v">W85 × D85 × H140 mm</span></div>
+        <div class="spec-row"><span class="spec-k">Material:</span><span class="spec-v">350gsm Munken Pure</span></div>
+        <div class="spec-row"><span class="spec-k">Finishes:</span><span class="spec-v">Blind Deboss + Foil</span></div>
+        <div class="spec-row"><span class="spec-k">Capacity:</span><span class="spec-v">75g Loose Leaf</span></div>
+      </div>
+    </div>
+
+    <!-- Component 02: Cylindrical Tin -->
+    <div class="cad-card">
+      <div class="card-tag">COMPONENT 02</div>
+      <div class="card-title">氣密純錫茶罐</div>
+      <div class="card-en">Airtight Brushed Tin Canister</div>
+
+      <div class="cad-viewport">
+        <!-- SVG Canister Drawing -->
+        <svg width="200" height="340" viewBox="0 0 200 340">
+          <!-- Height: 110mm -->
+          <line x1="20" y1="80" x2="20" y2="260" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="16,88 20,80 24,88" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="16,252 20,260 24,252" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <text x="12" y="175" font-family="'Geist', sans-serif" font-size="10" font-weight="700" fill="#3A6351" text-anchor="middle" transform="rotate(-90 12 175)">110 mm</text>
+
+          <!-- Diameter: 80mm -->
+          <line x1="45" y1="280" x2="175" y2="280" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="53,276 45,280 53,284" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="167,276 175,280 167,284" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <text x="110" y="297" font-family="'Geist', sans-serif" font-size="10" font-weight="700" fill="#3A6351" text-anchor="middle">Ø 80 mm</text>
+
+          <!-- Canister Cylinder Body -->
+          <rect x="45" y="80" width="130" height="180" rx="6" fill="#F4F4F2" stroke="#121210" stroke-width="1.5" />
+          <!-- Recessed Lid -->
+          <rect x="45" y="80" width="130" height="32" rx="4" fill="#EAEAE6" stroke="#121210" stroke-width="1.2" />
+          <!-- Lid Seam -->
+          <line x1="45" y1="112" x2="175" y2="112" stroke="#3A6351" stroke-width="1.5" />
+          <!-- Tamper seal -->
+          <rect x="98" y="90" width="24" height="60" rx="2" fill="#3A6351" />
+          <text x="110" y="125" font-family="'Noto Serif TC', serif" font-size="6" font-weight="900" fill="#FFFFFF" text-anchor="middle" transform="rotate(90 110 125)">島序封條</text>
+        </svg>
+      </div>
+
+      <div class="spec-table">
+        <div class="spec-row"><span class="spec-k">Dimensions:</span><span class="spec-v">Ø80 × H110 mm</span></div>
+        <div class="spec-row"><span class="spec-k">Material:</span><span class="spec-v">0.25mm Brushed Tinplate</span></div>
+        <div class="spec-row"><span class="spec-k">Seal System:</span><span class="spec-v">Dual Airtight Inner Plug</span></div>
+        <div class="spec-row"><span class="spec-k">Lid Finish:</span><span class="spec-v">Precision Laser Engraved</span></div>
+      </div>
+    </div>
+
+    <!-- Component 03: Presentation Box -->
+    <div class="cad-card">
+      <div class="card-tag">COMPONENT 03</div>
+      <div class="card-title">四序風土鑑賞禮盒</div>
+      <div class="card-en">Complete 4-SKU Presentation Gift Set</div>
+
+      <div class="cad-viewport">
+        <!-- SVG Gift Box Isometric Drawing -->
+        <svg width="380" height="340" viewBox="0 0 380 340">
+          <!-- Width: 380mm -->
+          <line x1="30" y1="40" x2="350" y2="40" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="38,36 30,40 38,44" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <polyline points="342,36 350,40 342,44" fill="none" stroke="#3A6351" stroke-width="1.2" />
+          <text x="190" y="32" font-family="'Geist', sans-serif" font-size="10" font-weight="700" fill="#3A6351" text-anchor="middle">380 mm (OUTER)</text>
+
+          <!-- Box Outer Form -->
+          <rect x="30" y="55" width="320" height="190" rx="3" fill="#222220" stroke="#121210" stroke-width="1.5" />
+          <rect x="42" y="67" width="296" height="166" rx="2" fill="#181816" />
+          
+          <!-- 4 Canister cutouts inside EVA foam -->
+          <g transform="translate(56, 90)">
+            <!-- SKU 01 -->
+            <rect x="0" y="0" width="56" height="100" rx="4" fill="#2C2C28" stroke="#3A6351" stroke-width="1.2" />
+            <circle cx="28" cy="22" r="14" fill="#3A6351" />
+            <text x="28" y="26" font-family="'Geist', sans-serif" font-size="8" font-weight="700" fill="#FFFFFF" text-anchor="middle">01</text>
+            <text x="28" y="60" font-family="'Noto Serif TC', serif" font-size="9" font-weight="700" fill="#C5C2BA" text-anchor="middle">高山烏龍</text>
+            <text x="28" y="75" font-family="'Geist', sans-serif" font-size="7" fill="#8C887F" text-anchor="middle">1,450m</text>
+
+            <!-- SKU 02 -->
+            <rect x="70" y="0" width="56" height="100" rx="4" fill="#2C2C28" stroke="#A65A38" stroke-width="1.2" />
+            <circle cx="98" cy="22" r="14" fill="#A65A38" />
+            <text x="98" y="26" font-family="'Geist', sans-serif" font-size="8" font-weight="700" fill="#FFFFFF" text-anchor="middle">02</text>
+            <text x="98" y="60" font-family="'Noto Serif TC', serif" font-size="9" font-weight="700" fill="#C5C2BA" text-anchor="middle">東方美人</text>
+            <text x="98" y="75" font-family="'Geist', sans-serif" font-size="7" fill="#8C887F" text-anchor="middle">0,450m</text>
+
+            <!-- SKU 03 -->
+            <rect x="140" y="0" width="56" height="100" rx="4" fill="#2C2C28" stroke="#942923" stroke-width="1.2" />
+            <circle cx="168" cy="22" r="14" fill="#942923" />
+            <text x="168" y="26" font-family="'Geist', sans-serif" font-size="8" font-weight="700" fill="#FFFFFF" text-anchor="middle">03</text>
+            <text x="168" y="60" font-family="'Noto Serif TC', serif" font-size="9" font-weight="700" fill="#C5C2BA" text-anchor="middle">紅玉紅茶</text>
+            <text x="168" y="75" font-family="'Geist', sans-serif" font-size="7" fill="#8C887F" text-anchor="middle">0,750m</text>
+
+            <!-- SKU 04 -->
+            <rect x="210" y="0" width="56" height="100" rx="4" fill="#2C2C28" stroke="#4A3B32" stroke-width="1.2" />
+            <circle cx="238" cy="22" r="14" fill="#4A3B32" />
+            <text x="238" y="26" font-family="'Geist', sans-serif" font-size="8" font-weight="700" fill="#FFFFFF" text-anchor="middle">04</text>
+            <text x="238" y="60" font-family="'Noto Serif TC', serif" font-size="9" font-weight="700" fill="#C5C2BA" text-anchor="middle">焙火烏龍</text>
+            <text x="238" y="75" font-family="'Geist', sans-serif" font-size="7" fill="#8C887F" text-anchor="middle">0,800m</text>
+          </g>
+
+          <!-- Magnetic Lid Flap line -->
+          <line x1="30" y1="260" x2="350" y2="260" stroke="#8C887F" stroke-width="1" stroke-dasharray="3 3" />
+          <text x="190" y="278" font-family="'Geist', sans-serif" font-size="9" fill="#8C887F" text-anchor="middle">CONCEALED NEODYMIUM MAGNETIC CLOSURE SYSTEM</text>
+        </svg>
+      </div>
+
+      <div class="spec-table">
+        <div class="spec-row"><span class="spec-k">Dimensions:</span><span class="spec-v">W380 × D200 × H100 mm (Outer)</span></div>
+        <div class="spec-row"><span class="spec-k">Outer Wrap:</span><span class="spec-v">160gsm Charcoal Fine Linen Paper</span></div>
+        <div class="spec-row"><span class="spec-k">Insert Bed:</span><span class="spec-v">35mm Flocked EVA (Horizontal Laydown)</span></div>
+        <div class="spec-row"><span class="spec-k">Total Net:</span><span class="spec-v">300g (4 × 75g Single Terroirs)</span></div>
+      </div>
+    </div>
+
+    <!-- Ergonomics & Terroir Index Pillar -->
+    <div style="display: flex; flex-direction: column; gap: 16px; height: 580px;">
+      <!-- Color Palette swatches -->
+      <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(26,26,24,0.12); border-radius: 4px; padding: 16px 12px; flex: 1;">
+        <div style="font-size: 9px; font-weight: 700; letter-spacing: 0.15em; color: #6A6760; margin-bottom: 12px;">TERROIR HUES</div>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div>
+            <div style="width: 100%; height: 26px; background: #3A6351; border-radius: 2px;"></div>
+            <div style="font-size: 9px; font-weight: 600; margin-top: 3px;">SEQ 01 · 1450m</div>
+            <div style="font-size: 8px; color: #8C887F;">PANTONE 5545 C (CONCEPT)</div>
+          </div>
+          <div>
+            <div style="width: 100%; height: 26px; background: #A65A38; border-radius: 2px;"></div>
+            <div style="font-size: 9px; font-weight: 600; margin-top: 3px;">SEQ 02 · 0450m</div>
+            <div style="font-size: 8px; color: #8C887F;">PANTONE 7586 C (CONCEPT)</div>
+          </div>
+          <div>
+            <div style="width: 100%; height: 26px; background: #942923; border-radius: 2px;"></div>
+            <div style="font-size: 9px; font-weight: 600; margin-top: 3px;">SEQ 03 · 0750m</div>
+            <div style="font-size: 8px; color: #8C887F;">PANTONE 7622 C (CONCEPT)</div>
+          </div>
+          <div>
+            <div style="width: 100%; height: 26px; background: #4A3B32; border-radius: 2px;"></div>
+            <div style="font-size: 9px; font-weight: 600; margin-top: 3px;">SEQ 04 · 0800m</div>
+            <div style="font-size: 8px; color: #8C887F;">PANTONE 440 C (CONCEPT)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compliance stamp -->
+      <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(26,26,24,0.12); border-radius: 4px; padding: 14px 10px; font-size: 8px; line-height: 1.5; color: #6A6760;">
+        <div style="font-weight: 700; color: #121210; margin-bottom: 4px; letter-spacing: 0.08em;">CONCEPT ENGINEERING SPECIFICATION</div>
+        All dimensions represent concept engineering targets pending physical tooling and supplier sampling. Tolerances ±0.5mm carton / ±0.2mm tinplate. No mass-production feasibility claimed.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <span>ISLAND INDEX ARCHITECTURAL PACKAGING SYSTEM · FLTL × HOWARD</span>
+    <span>DISCLAIMER: CONCEPT ENGINEERING SPECIFICATION · 自主品牌概念提案 · NOT VERIFIED FOR MASS PRODUCTION</span>
+  </div>
+</body>
+</html>
