@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700&amp;family=Noto+Sans+TC:wght@400;500;700;900&amp;display=swap');
+      .bg { fill: #FFFFFF; }
+      .geom-outer-circle { fill: none; stroke: #000000; stroke-width: 1.5; stroke-dasharray: 2 4; }
+      .geom-leaf-center { fill: #000000; }
+      .geom-leaf-left { fill: #000000; fill-opacity: 0.75; }
+      .geom-leaf-right { fill: #000000; fill-opacity: 0.55; }
+      .geom-core-dot { fill: #FFFFFF; stroke: #000000; stroke-width: 2; }
+      .brand-kanji { font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 56px; fill: #000000; letter-spacing: 0.22em; }
+      .brand-en { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 21px; fill: #000000; letter-spacing: 0.32em; }
+      .brand-sub { font-family: 'Geist', sans-serif; font-weight: 400; font-size: 9.5px; fill: #000000; letter-spacing: 0.26em; opacity: 0.75; }
+      .meta-label { font-family: 'Geist', sans-serif; font-weight: 500; font-size: 8.5px; fill: #000000; letter-spacing: 0.16em; opacity: 0.6; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="450" class="bg" />
+
+  <!-- MARK: Contemporary Tea Leaf Geometry (B&W) -->
+  <g transform="translate(140, 115)">
+    <circle cx="110" cy="110" r="96" class="geom-outer-circle" />
+
+    <path d="M 110 32 
+             C 128 65, 134 110, 110 152 
+             C 86 110, 92 65, 110 32 Z" 
+          class="geom-leaf-center" />
+
+    <path d="M 110 148 
+             C 75 142, 42 120, 36 82 
+             C 65 82, 94 108, 110 148 Z" 
+          class="geom-leaf-left" />
+
+    <path d="M 110 148 
+             C 145 142, 178 120, 184 82 
+             C 155 82, 126 108, 110 148 Z" 
+          class="geom-leaf-right" />
+
+    <circle cx="110" cy="110" r="4.5" class="geom-core-dot" />
+
+    <line x1="110" y1="148" x2="110" y2="188" stroke="#000000" stroke-width="3" stroke-linecap="round" />
+    <circle cx="110" cy="192" r="2.5" fill="#000000" />
+
+    <text x="110" y="222" text-anchor="middle" class="meta-label">BOTANICAL GEOMETRY · 120° TRIAD</text>
+  </g>
+
+  <!-- TYPOGRAPHY LOCKUP -->
+  <g transform="translate(430, 140)">
+    <text x="0" y="24" class="meta-label">CONTEMPORARY BOTANICAL TEA ARCHITECTURE</text>
+    <text x="0" y="98" class="brand-kanji">島序</text>
+    <text x="4" y="146" class="brand-en">ISLAND INDEX</text>
+    <text x="4" y="176" class="brand-sub">ARTISANAL TAIWANESE TEA SYSTEM · CRAFT CULTURE</text>
+    <line x1="4" y1="198" x2="480" y2="198" stroke="#000000" stroke-width="1" opacity="0.3" />
+
+    <g transform="translate(4, 218)">
+      <text x="0" y="0" class="meta-label">ORCHID FLORA</text>
+      <text x="120" y="0" class="meta-label">WILD HONEY</text>
+      <text x="240" y="0" class="meta-label">CINNAMON MINT</text>
+      <text x="360" y="0" class="meta-label">SMOKED UMBER</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 600" width="340" height="600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700;900&amp;display=swap');
+      .label-bg { fill: #F6F3EE; stroke: #DDD7CE; stroke-width: 1; }
+      .border-line { stroke: #524339; stroke-width: 0.8; opacity: 0.35; }
+      .brand-title { font-family: 'Noto Sans TC', sans-serif; font-weight: 900; font-size: 26px; fill: #1A1512; letter-spacing: 0.18em; }
+      .brand-en { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 10px; fill: #1A1512; letter-spacing: 0.32em; }
+      .sku-num { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 11px; fill: #524339; letter-spacing: 0.16em; }
+      .product-title { font-family: 'Noto Sans TC', sans-serif; font-weight: 900; font-size: 32px; fill: #1A1512; letter-spacing: 0.14em; }
+      .product-en { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 11.5px; fill: #524339; letter-spacing: 0.22em; }
+      .meta-lbl { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 8px; fill: #7E7066; letter-spacing: 0.14em; }
+      .meta-val { font-family: 'Noto Sans TC', 'Geist', sans-serif; font-weight: 500; font-size: 10px; fill: #1A1512; letter-spacing: 0.06em; }
+      .accent-pill { fill: #524339; }
+      .scale-track { fill: #E5DFD7; }
+      .scale-fill { fill: #524339; }
+    </style>
+  </defs>
+
+  <rect width="340" height="600" class="label-bg" rx="2" />
+  <rect x="18" y="18" width="304" height="564" fill="none" stroke="#524339" stroke-width="0.75" opacity="0.3" />
+
+  <!-- TOP HEADER STRIP -->
+  <g transform="translate(32, 42)">
+    <rect x="0" y="0" width="64" height="18" rx="2" class="accent-pill" />
+    <text x="32" y="12" text-anchor="middle" font-family="'Geist', sans-serif" font-weight="700" font-size="8.5px" fill="#FFFFFF" letter-spacing="0.12em">SEQ 04</text>
+    <text x="74" y="12" class="sku-num">ELEV. 0800M · DONGDING</text>
+  </g>
+
+  <!-- BRAND WORDMARK IDENTIFIER -->
+  <g transform="translate(32, 92)">
+    <text x="0" y="24" class="brand-title">島序</text>
+    <text x="2" y="40" class="brand-en">ISLAND INDEX · TAIWAN</text>
+    <line x1="0" y1="52" x2="276" y2="52" class="border-line" />
+  </g>
+
+  <!-- PRODUCT CORE NAME -->
+  <g transform="translate(32, 185)">
+    <text x="0" y="0" class="product-title">焙火烏龍</text>
+    <text x="2" y="24" class="product-en">TRADITIONAL ROASTED OOLONG</text>
+    <text x="2" y="44" class="meta-lbl">CHARCOAL ROASTED 36H · AUTUMN 2026</text>
+  </g>
+
+  <!-- TERROIR & TAXONOMY DATA GRID -->
+  <g transform="translate(32, 275)">
+    <line x1="0" y1="0" x2="276" y2="0" class="border-line" />
+
+    <g transform="translate(0, 20)">
+      <text x="0" y="0" class="meta-lbl">TERROIR / 產地</text>
+      <text x="0" y="15" class="meta-val">南投 鹿谷 凍頂 (Lugu)</text>
+
+      <text x="145" y="0" class="meta-lbl">CULTIVAR / 品種</text>
+      <text x="145" y="15" class="meta-val">凍頂烏龍 (Dongding)</text>
+    </g>
+
+    <g transform="translate(0, 65)">
+      <text x="0" y="0" class="meta-lbl">ELEVATION / 海拔</text>
+      <text x="0" y="15" class="meta-val">800 米 (0,800m)</text>
+
+      <text x="145" y="0" class="meta-lbl">CRAFT / 焙工</text>
+      <text x="145" y="15" class="meta-val">龍眼木炭焙 36 小時慢焙</text>
+    </g>
+
+    <g transform="translate(0, 110)">
+      <text x="0" y="0" class="meta-lbl">OXIDATION / 發酵度 35%</text>
+      <rect x="0" y="6" width="120" height="4" rx="2" class="scale-track" />
+      <rect x="0" y="6" width="42" height="4" rx="2" class="scale-fill" />
+
+      <text x="150" y="0" class="meta-lbl">ROAST LEVEL / 焙火度 85% (重焙)</text>
+      <rect x="150" y="6" width="120" height="4" rx="2" class="scale-track" />
+      <rect x="150" y="6" width="102" height="4" rx="2" class="scale-fill" />
+    </g>
+
+    <g transform="translate(0, 155)">
+      <text x="0" y="0" class="meta-lbl">SENSORY NOTES / 風味索引</text>
+      <text x="0" y="16" class="meta-val">Roasted Chestnut · Longan Smoke · Dark Malt · 熟果炭香</text>
+    </g>
+    
+    <line x1="0" y1="185" x2="276" y2="185" class="border-line" />
+  </g>
+
+  <!-- BOTTOM SPECIFICATION FOOTER -->
+  <g transform="translate(32, 510)">
+    <text x="0" y="0" class="meta-lbl">NET WT. 75G / 2.65 OZ · TIGHT-ROLLED</text>
+    <text x="0" y="14" class="meta-lbl">ARTISAN PROCESSED &amp; PACKAGED · TAIWAN</text>
+    
+    <rect x="226" y="-12" width="50" height="32" fill="none" stroke="#524339" stroke-width="1" />
+    <text x="251" y="2" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-weight="900" font-size="8px" fill="#524339">島序驗證</text>
+    <text x="251" y="14" text-anchor="middle" font-family="'Geist', sans-serif" font-weight="600" font-size="6px" fill="#524339">N° 0800</text>
+  </g>
+</svg>

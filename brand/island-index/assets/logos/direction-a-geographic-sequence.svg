@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700&amp;family=Noto+Sans+TC:wght@400;700;900&amp;display=swap');
+      .bg { fill: #F7F5F0; }
+      .grid-line { stroke: rgba(26, 46, 38, 0.08); stroke-width: 1; stroke-dasharray: 2 4; }
+      .contour-1 { stroke: #1A2E26; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .contour-2 { stroke: #2E4B3E; stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .contour-3 { stroke: #4F7564; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .contour-4 { stroke: #7B9E8E; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .axis-line { stroke: #1A2E26; stroke-width: 1.5; stroke-dasharray: 4 4; opacity: 0.6; }
+      .elevation-pin { fill: #1A2E26; }
+      .elevation-tag { font-family: 'Geist', sans-serif; font-size: 8px; font-weight: 500; fill: #4F7564; letter-spacing: 0.1em; }
+      .brand-kanji { font-family: 'Noto Sans TC', 'PingFang TC', sans-serif; font-weight: 900; font-size: 58px; fill: #1A2E26; letter-spacing: 0.18em; }
+      .brand-en { font-family: 'Geist', sans-serif; font-weight: 700; font-size: 20px; fill: #1A2E26; letter-spacing: 0.38em; }
+      .brand-sub { font-family: 'Geist', sans-serif; font-weight: 400; font-size: 9.5px; fill: #527A68; letter-spacing: 0.28em; }
+      .meta-label { font-family: 'Geist', sans-serif; font-weight: 500; font-size: 8.5px; fill: #8A9E94; letter-spacing: 0.16em; }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1000" height="450" class="bg" />
+
+  <!-- Subtle Cartographic Grid Matrix -->
+  <g class="grid-layer">
+    <line x1="80" y1="60" x2="920" y2="60" class="grid-line" />
+    <line x1="80" y1="390" x2="920" y2="390" class="grid-line" />
+    <line x1="80" y1="60" x2="80" y2="390" class="grid-line" />
+    <line x1="920" y1="60" x2="920" y2="390" class="grid-line" />
+    <line x1="380" y1="60" x2="380" y2="390" class="grid-line" />
+  </g>
+
+  <!-- MARK: Topographical Contour Monogram -->
+  <g transform="translate(140, 110)">
+    <!-- Central Index Axis Spine -->
+    <line x1="110" y1="10" x2="110" y2="210" class="axis-line" />
+
+    <!-- Contour 4: Base Elevation +450M (Emei / Oriental Beauty) -->
+    <path d="M 20 185 C 45 195, 75 190, 110 185 C 145 180, 180 192, 200 185" class="contour-4" />
+    <circle cx="20" cy="185" r="2.5" class="elevation-pin" />
+    <text x="206" y="188" class="elevation-tag">450M</text>
+
+    <!-- Contour 3: Mid-Mountain +750M (Sun Moon Lake / Ruby) -->
+    <path d="M 35 145 C 60 135, 85 152, 110 145 C 135 138, 165 148, 185 145" class="contour-3" />
+    <circle cx="35" cy="145" r="2.5" class="elevation-pin" />
+    <text x="191" y="148" class="elevation-tag">750M</text>
+
+    <!-- Contour 2: High Ridge +800M (Dongding / Roasted) -->
+    <path d="M 50 105 C 75 115, 90 98, 110 105 C 130 112, 155 100, 170 105" class="contour-2" />
+    <circle cx="50" cy="105" r="2.5" class="elevation-pin" />
+    <text x="176" y="108" class="elevation-tag">800M</text>
+
+    <!-- Contour 1: Peak Ridge +1450M (Alishan / High Mountain) -->
+    <path d="M 70 65 C 88 52, 98 72, 110 65 C 122 58, 138 70, 150 65" class="contour-1" />
+    <circle cx="70" cy="65" r="3" class="elevation-pin" />
+    <circle cx="110" cy="65" r="4" fill="#1A2E26" />
+    <text x="156" y="68" class="elevation-tag">1450M</text>
+
+    <!-- Summit Marker (Geometric Peak) -->
+    <polygon points="110,28 116,40 104,40" fill="#1A2E26" />
+    <circle cx="110" cy="22" r="2" fill="#4F7564" />
+
+    <!-- Mountain Crest Structural Framing forming "島" -->
+    <!-- Top Horizontal Cap -->
+    <line x1="55" y1="42" x2="165" y2="42" stroke="#1A2E26" stroke-width="2.5" stroke-linecap="square" />
+    <!-- Vertical Struts -->
+    <line x1="55" y1="42" x2="55" y2="195" stroke="#1A2E26" stroke-width="2" stroke-linecap="square" />
+    <line x1="165" y1="42" x2="165" y2="195" stroke="#1A2E26" stroke-width="2" stroke-linecap="square" />
+    <!-- Bottom Baseline Anchor -->
+    <line x1="45" y1="202" x2="175" y2="202" stroke="#1A2E26" stroke-width="3.5" stroke-linecap="square" />
+
+    <!-- Sub-coordinate label -->
+    <text x="110" y="224" text-anchor="middle" class="meta-label">23°31'N · 120°48'E</text>
+  </g>
+
+  <!-- TYPOGRAPHY LOCKUP -->
+  <g transform="translate(430, 140)">
+    <!-- Super-category Eyebrow -->
+    <text x="0" y="24" class="meta-label">TERROIR ARCHIVE &amp; TEA TAXONOMY · TAIWAN</text>
+    
+    <!-- Primary Kanji Logotype: 島 序 -->
+    <text x="0" y="98" class="brand-kanji">島序</text>
+
+    <!-- English Brand Wordmark: ISLAND INDEX -->
+    <text x="4" y="146" class="brand-en">ISLAND INDEX</text>
+
+    <!-- Brand Subtitle / Descriptor -->
+    <text x="4" y="176" class="brand-sub">PREMIUM TAIWANESE TEA ATELIER · EST. 2026</text>
+
+    <!-- Systematic Divider -->
+    <line x1="4" y1="198" x2="480" y2="198" stroke="#1A2E26" stroke-width="1" opacity="0.25" />
+
+    <!-- Four Elevation Matrix Indicator -->
+    <g transform="translate(4, 218)">
+      <text x="0" y="0" class="meta-label">SEQ 01 · 1450M</text>
+      <text x="120" y="0" class="meta-label">SEQ 02 · 0450M</text>
+      <text x="240" y="0" class="meta-label">SEQ 03 · 0750M</text>
+      <text x="360" y="0" class="meta-label">SEQ 04 · 0800M</text>
+    </g>
+  </g>
+</svg>

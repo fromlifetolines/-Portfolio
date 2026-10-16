@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;700&amp;family=Noto+Sans+TC:wght@400;500;700;900&amp;display=swap');
+      .bg { fill: #F5F2EB; }
+      .geom-outer-circle { fill: none; stroke: #172B23; stroke-width: 1.5; stroke-dasharray: 2 4; }
+      .geom-leaf-center { fill: #172B23; }
+      .geom-leaf-left { fill: #2B473A; fill-opacity: 0.9; }
+      .geom-leaf-right { fill: #486E5D; fill-opacity: 0.85; }
+      .geom-core-dot { fill: #C48D3F; }
+      .brand-kanji { font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 56px; fill: #172B23; letter-spacing: 0.22em; }
+      .brand-en { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 21px; fill: #172B23; letter-spacing: 0.32em; }
+      .brand-sub { font-family: 'Geist', sans-serif; font-weight: 400; font-size: 9.5px; fill: #617D70; letter-spacing: 0.26em; }
+      .meta-label { font-family: 'Geist', sans-serif; font-weight: 500; font-size: 8.5px; fill: #8C9992; letter-spacing: 0.16em; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="450" class="bg" />
+
+  <!-- MARK: Contemporary Tea Leaf Geometry (一心二葉 幾何構造) -->
+  <g transform="translate(140, 115)">
+    <!-- Outer Golden Ratio Calibration Ring -->
+    <circle cx="110" cy="110" r="96" class="geom-outer-circle" />
+    <circle cx="110" cy="110" r="64" stroke="#172B23" stroke-width="0.8" stroke-dasharray="3 6" fill="none" opacity="0.3" />
+
+    <!-- Center Bud (The Central Shoot / 一心) -->
+    <!-- Formed by intersection of two 120-degree radius arcs -->
+    <path d="M 110 32 
+             C 128 65, 134 110, 110 152 
+             C 86 110, 92 65, 110 32 Z" 
+          class="geom-leaf-center" />
+
+    <!-- Left Lateral Leaf (左側葉) -->
+    <path d="M 110 148 
+             C 75 142, 42 120, 36 82 
+             C 65 82, 94 108, 110 148 Z" 
+          class="geom-leaf-left" />
+
+    <!-- Right Lateral Leaf (右側葉) -->
+    <path d="M 110 148 
+             C 145 142, 178 120, 184 82 
+             C 155 82, 126 108, 110 148 Z" 
+          class="geom-leaf-right" />
+
+    <!-- Pure Optical Center (Seed / Golden Bud Core) -->
+    <circle cx="110" cy="110" r="4.5" class="geom-core-dot" />
+
+    <!-- Base Stem Anchor Line -->
+    <line x1="110" y1="148" x2="110" y2="188" stroke="#172B23" stroke-width="3" stroke-linecap="round" />
+    <circle cx="110" cy="192" r="2.5" fill="#172B23" />
+
+    <!-- Geometric Construction Markers -->
+    <line x1="14" y1="110" x2="206" y2="110" stroke="#172B23" stroke-width="0.75" stroke-dasharray="2 4" opacity="0.25" />
+    <line x1="110" y1="14" x2="110" y2="206" stroke="#172B23" stroke-width="0.75" stroke-dasharray="2 4" opacity="0.25" />
+
+    <text x="110" y="222" text-anchor="middle" class="meta-label">BOTANICAL GEOMETRY · 120° TRIAD</text>
+  </g>
+
+  <!-- TYPOGRAPHY LOCKUP -->
+  <g transform="translate(430, 140)">
+    <!-- Super-category -->
+    <text x="0" y="24" class="meta-label">CONTEMPORARY BOTANICAL TEA ARCHITECTURE</text>
+
+    <!-- Primary Kanji Logotype: 島 序 -->
+    <text x="0" y="98" class="brand-kanji">島序</text>
+
+    <!-- English Brand Wordmark: ISLAND INDEX -->
+    <text x="4" y="146" class="brand-en">ISLAND INDEX</text>
+
+    <!-- Brand Subtitle / Descriptor -->
+    <text x="4" y="176" class="brand-sub">ARTISANAL TAIWANESE TEA SYSTEM · CRAFT CULTURE</text>
+
+    <!-- Systematic Divider -->
+    <line x1="4" y1="198" x2="480" y2="198" stroke="#172B23" stroke-width="1" opacity="0.25" />
+
+    <!-- Sensory Quadrant Labels -->
+    <g transform="translate(4, 218)">
+      <text x="0" y="0" class="meta-label">ORCHID FLORA</text>
+      <text x="120" y="0" class="meta-label">WILD HONEY</text>
+      <text x="240" y="0" class="meta-label">CINNAMON MINT</text>
+      <text x="360" y="0" class="meta-label">SMOKED UMBER</text>
+    </g>
+  </g>
+</svg>

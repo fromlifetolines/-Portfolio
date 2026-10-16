@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>島序 ISLAND INDEX — 品牌識別與包裝系統提案 (Phase 1 Review)</title>
+  <meta name="description" content="島序 ISLAND INDEX: Premium Taiwanese Tea Brand Identity & Packaging Exploration by FLTL × Howard Huang." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;600;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-cream: #F7F5F0;
+      --bg-white: #FFFFFF;
+      --text-charcoal: #121210;
+      --text-muted: #6B6862;
+      --text-dim: #9E9A91;
+      --border-line: #DDD9CF;
+      --border-dark: #121210;
+      --accent-green: #2B473A;
+      --accent-amber: #A65A38;
+      --accent-ruby: #8C2D19;
+      --accent-umber: #524339;
+      --color-lime: #CCFF00;
+      --font-sans: 'Geist', -apple-system, system-ui, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-tc-sans: 'Noto Sans TC', sans-serif;
+      --font-tc-serif: 'Noto Serif TC', serif;
+      --font-display: 'Syne', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-charcoal);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Top Director Header */
+    .top-bar {
+      background: #111110;
+      color: #F7F5F0;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .top-bar-badge {
+      background: var(--color-lime);
+      color: #121210;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .top-bar-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .top-bar-nav {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .top-bar-nav a {
+      color: #AAA69E;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .top-bar-nav a:hover {
+      color: #FFFFFF;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 4rem 2rem 8rem 2rem;
+    }
+
+    /* Hero Overview */
+    .hero-strip {
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title-row {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: flex-end;
+    }
+
+    .hero-heading {
+      font-family: var(--font-tc-serif);
+      font-size: clamp(3rem, 6vw, 5.2rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-heading span.en {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      display: block;
+      margin-top: 0.25rem;
+      color: #383531;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      border-left: 1px solid var(--border-line);
+      padding-left: 1.75rem;
+      line-height: 1.7;
+    }
+
+    /* Section Titles */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.12em;
+    }
+
+    /* Direction Cards Grid */
+    .directions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .direction-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .direction-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      border: 1px solid var(--border-line);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      align-self: flex-start;
+    }
+
+    .card-title {
+      font-family: var(--font-tc-sans);
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-preview {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #F9F8F5;
+      border: 1px solid var(--border-line);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    .card-preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .card-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card-specs {
+      border-top: 1px solid var(--border-line);
+      padding-top: 1.25rem;
+      font-size: 0.76rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    /* Detailed Presentation Plate */
+    .detail-plate {
+      background: var(--bg-white);
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 3rem;
+      margin-bottom: 5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .detail-heading {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .detail-sub {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-hero-box {
+      width: 100%;
+      aspect-ratio: 2.2 / 1;
+      background: #FAF8F5;
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo-hero-box img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    /* B&W vs Color Comparison & Small Size Test */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .sub-box {
+      background: #F9F8F5;
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 1.75rem;
+    }
+
+    .sub-box-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+
+    .scale-tester {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-around;
+      padding: 1.5rem 0;
+      background: #FFFFFF;
+      border: 1px solid var(--border-line);
+      border-radius: 2px;
+    }
+
+    .scale-item {
+      text-align: center;
+    }
+
+    .scale-label {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    /* Color Swatches Grid */
+    .color-swatches {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .swatch-card {
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .swatch-color {
+      height: 70px;
+      width: 100%;
+    }
+
+    .swatch-info {
+      padding: 0.85rem 1rem;
+      font-size: 0.74rem;
+    }
+
+    .swatch-name {
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .swatch-hex {
+      font-family: monospace;
+      color: var(--text-muted);
+    }
+
+    /* 4-SKU Packaging Showcase */
+    .packaging-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .pack-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .pack-visual {
+      width: 100%;
+      aspect-ratio: 1 / 1.75;
+      background: #F7F5F0;
+      border: 1px solid var(--border-line);
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0.75rem;
+    }
+
+    .pack-visual img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .pack-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .pack-name-zh {
+      font-family: var(--font-tc-sans);
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 0.15rem;
+    }
+
+    .pack-name-en {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .pack-meta-list {
+      border-top: 1px solid var(--border-line);
+      padding-top: 0.75rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Production Plan Table */
+    .plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+    }
+
+    .plan-table th, .plan-table td {
+      border: 1px solid var(--border-line);
+      padding: 0.85rem 1.25rem;
+      text-align: left;
+    }
+
+    .plan-table th {
+      background: #F0EDE6;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .plan-table tr:nth-child(even) {
+      background: #FAF8F5;
+    }
+
+    /* Recommendation Callout */
+    .callout-box {
+      background: #111110;
+      color: #F7F5F0;
+      border-radius: 4px;
+      padding: 2.75rem;
+      margin-top: 4rem;
+    }
+
+    .callout-header {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--color-lime);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .callout-title {
+      font-family: var(--font-tc-serif);
+      font-size: 1.85rem;
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .callout-body {
+      font-size: 0.92rem;
+      color: #CFCBC2;
+      line-height: 1.8;
+      max-width: 900px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .directions-grid {
+        grid-template-columns: 1fr;
+      }
+      .packaging-showcase {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-title-row {
+        grid-template-columns: 1fr;
+      }
+      .hero-desc {
+        border-left: none;
+        border-top: 1px solid var(--border-line);
+        padding-left: 0;
+        padding-top: 1.5rem;
+      }
+      .color-swatches {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .sub-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .packaging-showcase {
+        grid-template-columns: 1fr;
+      }
+      .color-swatches {
+        grid-template-columns: 1fr;
+      }
+      .detail-plate {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Director Bar -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <span class="top-bar-badge">PHASE 1 REVIEW</span>
+      <span class="top-bar-title">FLTL × HOWARD HUANG — ISLAND INDEX PROJECT 01</span>
+    </div>
+    <nav class="top-bar-nav">
+      <a href="#overview">OVERVIEW</a>
+      <a href="#direction-a">DIR A</a>
+      <a href="#direction-b">DIR B</a>
+      <a href="#direction-c">DIR C</a>
+      <a href="#packaging">4-SKU SYSTEM</a>
+      <a href="#production-plan">MOCKUP PLAN</a>
+      <a href="#recommendation">DIRECTOR'S NOTE</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Overview Strip -->
+    <section class="hero-strip" id="overview">
+      <div class="hero-meta">
+        <span>PROJECT 01</span>
+        <span>/</span>
+        <span>CONTEMPORARY EASTERN BRANDING</span>
+        <span>/</span>
+        <span>TAIWAN TERROIR ARCHIVE</span>
+      </div>
+      <div class="hero-title-row">
+        <div>
+          <h1 class="hero-heading">
+            島序 <span class="en">ISLAND INDEX</span>
+          </h1>
+        </div>
+        <p class="hero-desc">
+          將台灣群山極端海拔風土、微氣候與百年製茶工藝，轉化為具備客觀座標、精準層序與當代設計張力的高級茶葉品牌檔案體系。瑞士客觀網格與日式極致編輯美學的跨文化實踐。
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 1: THREE VISUAL IDENTITY DIRECTIONS -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">01 · THREE BRAND IDENTITY DIRECTIONS</h2>
+        <span class="section-num">PROPOSALS A / B / C</span>
+      </div>
+
+      <div class="directions-grid">
+        <!-- Card Direction A -->
+        <div class="direction-card">
+          <span class="card-badge">PROPOSAL A</span>
+          <h3 class="card-title">GEOGRAPHIC SEQUENCE</h3>
+          <p class="card-subtitle">地理序度 · 等高線層序抽象</p>
+          <div class="card-preview">
+            <img src="../assets/logos/direction-a-geographic-sequence.svg" alt="Direction A Logo" />
+          </div>
+          <p class="card-desc">
+            以台灣中央山脈等高線與海拔梯度為視覺基底，將 450m 至 1450m 的山頭層序交匯於中央垂直測繪軸，幾何解構出漢字「島」與字母「I」。
+          </p>
+          <div class="card-specs">
+            <div><strong>關鍵字：</strong> 地理測繪、山頭氣、海拔座標、科學風土</div>
+            <div><strong>核心字體：</strong> Geist Grotesk + Noto Sans TC Heavy</div>
+          </div>
+        </div>
+
+        <!-- Card Direction B -->
+        <div class="direction-card">
+          <span class="card-badge">PROPOSAL B</span>
+          <h3 class="card-title">CONTEMPORARY TEA GEOMETRY</h3>
+          <p class="card-subtitle">茶葉形質 · 一心二葉幾何結構</p>
+          <div class="card-preview">
+            <img src="../assets/logos/direction-b-tea-geometry.svg" alt="Direction B Logo" />
+          </div>
+          <p class="card-desc">
+            從製茶標準「一心二葉」出發，以 120° 黃金分割圓弧進行純粹幾何對稱運算。中央心芽挺立、左右側葉柔和環抱，在負空間中構成純淨種子之眼。
+          </p>
+          <div class="card-specs">
+            <div><strong>關鍵字：</strong> 形態極簡、植物幾何、當代日式工藝、純粹平衡</div>
+            <div><strong>核心字體：</strong> Geist Medium + Noto Sans TC Bold</div>
+          </div>
+        </div>
+
+        <!-- Card Direction C -->
+        <div class="direction-card">
+          <span class="card-badge">PROPOSAL C</span>
+          <h3 class="card-title">TYPOGRAPHIC IDENTITY</h3>
+          <p class="card-subtitle">字序銘體 · 當代高對比印鑑</p>
+          <div class="card-preview">
+            <img src="../assets/logos/direction-c-typographic-identity.svg" alt="Direction C Logo" />
+          </div>
+          <p class="card-desc">
+            以純文字為視覺主導，將宋體/明體的鋒利起筆收筆結合長條形雙欄「印鑑」封印。縱向筆劃挺拔如山，搭配朱紅「極選」小印，古典韻味與現代建築感並存。
+          </p>
+          <div class="card-specs">
+            <div><strong>關鍵字：</strong> 雜誌編輯體、古典東方印鑑、人文氣韻、鋒利宋體</div>
+            <div><strong>核心字體：</strong> Instrument Serif + Noto Serif TC Black</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: DEEP DIVE INTO EACH DIRECTION -->
+
+    <!-- PLATE A -->
+    <article class="detail-plate" id="direction-a">
+      <div class="detail-header">
+        <div>
+          <span class="card-badge">PROPOSAL A IN-DEPTH</span>
+          <h3 class="detail-heading">A — GEOGRAPHIC SEQUENCE</h3>
+          <p class="detail-sub">Topographical Stratification &amp; Mountain Coordinate System</p>
+        </div>
+      </div>
+
+      <!-- Hero Vector Embed -->
+      <div class="logo-hero-box">
+        <img src="../assets/logos/direction-a-geographic-sequence.svg" alt="Direction A Master Vector" />
+      </div>
+
+      <!-- B&W vs Small Size -->
+      <div class="sub-grid">
+        <div class="sub-box">
+          <div class="sub-box-title">Black &amp; White Strict Monochrome Validation (純黑白印鑑)</div>
+          <div style="background:#FFFFFF; border:1px solid var(--border-line); border-radius:2px; padding:1.5rem; text-align:center;">
+            <img src="../assets/logos/direction-a-geographic-sequence-bw.svg" alt="Direction A B&W" style="max-width:100%; height:auto;" />
+          </div>
+        </div>
+
+        <div class="sub-box">
+          <div class="sub-box-title">Small-Size Legibility Test (極小尺寸縮放測試 120px / 48px / 24px / 16px)</div>
+          <div class="scale-tester">
+            <div class="scale-item">
+              <img src="../assets/logos/direction-a-geographic-sequence-bw.svg" width="120" height="54" alt="120px" />
+              <div class="scale-label">120px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-a-geographic-sequence-bw.svg" width="60" height="27" alt="60px" />
+              <div class="scale-label">60px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-a-geographic-sequence-bw.svg" width="36" height="16" alt="36px" />
+              <div class="scale-label">36px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-a-geographic-sequence-bw.svg" width="22" height="10" alt="22px" />
+              <div class="scale-label">22px</div>
+            </div>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:1rem;">
+            測繪軸線與等高線層次在 36px 與 22px 依然保持鮮明識別，山頂頂點與基線框架完整穩固。
+          </p>
+        </div>
+      </div>
+
+      <!-- Color Swatches -->
+      <div class="color-swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #1A2E26;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">深冷杉墨綠 (Deep Spruce)</div>
+            <div class="swatch-hex">#1A2E26 · PANTONE 5535 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #4F7564;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">山嵐霧青 (Alpine Mist)</div>
+            <div class="swatch-hex">#4F7564 · PANTONE 5565 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #7B9E8E;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">微光初露 (Morning Dew)</div>
+            <div class="swatch-hex">#7B9E8E · PANTONE 5585 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #F7F5F0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">竹尾原紙暖白 (Raw Cotton)</div>
+            <div class="swatch-hex">#F7F5F0 · TAKEO VENT NOUVEAU</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLATE B -->
+    <article class="detail-plate" id="direction-b">
+      <div class="detail-header">
+        <div>
+          <span class="card-badge">PROPOSAL B IN-DEPTH</span>
+          <h3 class="detail-heading">B — CONTEMPORARY TEA GEOMETRY</h3>
+          <p class="detail-sub">Botanical Morphology &amp; 120° Triad Geometry</p>
+        </div>
+      </div>
+
+      <div class="logo-hero-box">
+        <img src="../assets/logos/direction-b-tea-geometry.svg" alt="Direction B Master Vector" />
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-box">
+          <div class="sub-box-title">Black &amp; White Strict Monochrome Validation (純黑白印鑑)</div>
+          <div style="background:#FFFFFF; border:1px solid var(--border-line); border-radius:2px; padding:1.5rem; text-align:center;">
+            <img src="../assets/logos/direction-b-tea-geometry-bw.svg" alt="Direction B B&W" style="max-width:100%; height:auto;" />
+          </div>
+        </div>
+
+        <div class="sub-box">
+          <div class="sub-box-title">Small-Size Legibility Test (極小尺寸縮放測試 120px / 48px / 24px / 16px)</div>
+          <div class="scale-tester">
+            <div class="scale-item">
+              <img src="../assets/logos/direction-b-tea-geometry-bw.svg" width="120" height="54" alt="120px" />
+              <div class="scale-label">120px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-b-tea-geometry-bw.svg" width="60" height="27" alt="60px" />
+              <div class="scale-label">60px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-b-tea-geometry-bw.svg" width="36" height="16" alt="36px" />
+              <div class="scale-label">36px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-b-tea-geometry-bw.svg" width="22" height="10" alt="22px" />
+              <div class="scale-label">22px</div>
+            </div>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:1rem;">
+            外圓環線與心芽側葉的三向對稱在微縮尺寸下具備高清晰度與品牌符號凝聚力。
+          </p>
+        </div>
+      </div>
+
+      <div class="color-swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #172B23;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">古木蒼綠 (Ancient Pine)</div>
+            <div class="swatch-hex">#172B23 · PANTONE 553 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #2B473A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">深潭葉翠 (Teal Canopy)</div>
+            <div class="swatch-hex">#2B473A · PANTONE 5545 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #C48D3F;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">金萱芽尖 (Golden Shoot)</div>
+            <div class="swatch-hex">#C48D3F · PANTONE 7556 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #F5F2EB;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">日曬茶焙白 (Sun-Dried Parchment)</div>
+            <div class="swatch-hex">#F5F2EB · UNCOATED COTTON</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLATE C -->
+    <article class="detail-plate" id="direction-c">
+      <div class="detail-header">
+        <div>
+          <span class="card-badge">PROPOSAL C IN-DEPTH</span>
+          <h3 class="detail-heading">C — TYPOGRAPHIC IDENTITY</h3>
+          <p class="detail-sub">Editorial Wordmark &amp; Modern Vertical Seal Format</p>
+        </div>
+      </div>
+
+      <div class="logo-hero-box">
+        <img src="../assets/logos/direction-c-typographic-identity.svg" alt="Direction C Master Vector" />
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-box">
+          <div class="sub-box-title">Black &amp; White Strict Monochrome Validation (純黑白印鑑)</div>
+          <div style="background:#FFFFFF; border:1px solid var(--border-line); border-radius:2px; padding:1.5rem; text-align:center;">
+            <img src="../assets/logos/direction-c-typographic-identity-bw.svg" alt="Direction C B&W" style="max-width:100%; height:auto;" />
+          </div>
+        </div>
+
+        <div class="sub-box">
+          <div class="sub-box-title">Small-Size Legibility Test (極小尺寸縮放測試 120px / 48px / 24px / 16px)</div>
+          <div class="scale-tester">
+            <div class="scale-item">
+              <img src="../assets/logos/direction-c-typographic-identity-bw.svg" width="120" height="54" alt="120px" />
+              <div class="scale-label">120px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-c-typographic-identity-bw.svg" width="60" height="27" alt="60px" />
+              <div class="scale-label">60px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-c-typographic-identity-bw.svg" width="36" height="16" alt="36px" />
+              <div class="scale-label">36px</div>
+            </div>
+            <div class="scale-item">
+              <img src="../assets/logos/direction-c-typographic-identity-bw.svg" width="22" height="10" alt="22px" />
+              <div class="scale-label">22px</div>
+            </div>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:1rem;">
+            長方形雙欄印鑑在極端小尺寸下仍能展現明確的方框結構與「極選」防偽感。
+          </p>
+        </div>
+      </div>
+
+      <div class="color-swatches">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #111111;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">徽州油煙墨 (Imperial Ink Black)</div>
+            <div class="swatch-hex">#111111 · PANTONE BLACK 6 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #C23B22;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">丹砂朱紅 (Vermilion Chop)</div>
+            <div class="swatch-hex">#C23B22 · PANTONE 1795 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #7E7C77;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">石板暖灰 (Slate Stone)</div>
+            <div class="swatch-hex">#7E7C77 · PANTONE WARM GRAY 8 C</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #F8F6F0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">生絹宣紙白 (Raw Silk Linen)</div>
+            <div class="swatch-hex">#F8F6F0 · TAKEO PACHICA</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SECTION 3: FOUR-SKU PACKAGING SYSTEM -->
+    <section id="packaging">
+      <div class="section-header">
+        <h2 class="section-title">02 · FOUR-SKU MASTER PACKAGING SYSTEM</h2>
+        <span class="section-num">COHERENT ARCHITECTURAL LABELS</span>
+      </div>
+
+      <div class="packaging-showcase">
+        <!-- SKU 1 -->
+        <div class="pack-card">
+          <div class="pack-visual">
+            <img src="../assets/packaging/sku-01-high-mountain-oolong.svg" alt="SKU 01 Label Artwork" />
+          </div>
+          <div class="pack-badge">SEQ 01 · ELEV. 1450M</div>
+          <h4 class="pack-name-zh">高山烏龍</h4>
+          <p class="pack-name-en">HIGH MOUNTAIN OOLONG</p>
+          <div class="pack-meta-list">
+            <div><strong>產地：</strong> 阿里山 · 樟樹湖</div>
+            <div><strong>品種：</strong> 青心烏龍</div>
+            <div><strong>發酵/焙火：</strong> 15% / 0% (清香)</div>
+            <div><strong>風味：</strong> 幽蘭清露、山頭氣</div>
+          </div>
+        </div>
+
+        <!-- SKU 2 -->
+        <div class="pack-card">
+          <div class="pack-visual">
+            <img src="../assets/packaging/sku-02-oriental-beauty.svg" alt="SKU 02 Label Artwork" />
+          </div>
+          <div class="pack-badge">SEQ 02 · ELEV. 0450M</div>
+          <h4 class="pack-name-zh">東方美人</h4>
+          <p class="pack-name-en">ORIENTAL BEAUTY OOLONG</p>
+          <div class="pack-meta-list">
+            <div><strong>產地：</strong> 新竹 · 峨眉</div>
+            <div><strong>品種：</strong> 青心大冇</div>
+            <div><strong>發酵/焙火：</strong> 70% / 10% (輕焙)</div>
+            <div><strong>風味：</strong> 野花蜜、麝香葡萄</div>
+          </div>
+        </div>
+
+        <!-- SKU 3 -->
+        <div class="pack-card">
+          <div class="pack-visual">
+            <img src="../assets/packaging/sku-03-ruby-black-tea.svg" alt="SKU 03 Label Artwork" />
+          </div>
+          <div class="pack-badge">SEQ 03 · ELEV. 0750M</div>
+          <h4 class="pack-name-zh">紅玉紅茶</h4>
+          <p class="pack-name-en">RUBY BLACK TEA (TTES N°18)</p>
+          <div class="pack-meta-list">
+            <div><strong>產地：</strong> 南投 · 日月潭</div>
+            <div><strong>品種：</strong> 台茶 18 號 (紅玉)</div>
+            <div><strong>發酵/焙火：</strong> 100% / 0% (原香)</div>
+            <div><strong>風味：</strong> 肉桂木香、野薄荷</div>
+          </div>
+        </div>
+
+        <!-- SKU 4 -->
+        <div class="pack-card">
+          <div class="pack-visual">
+            <img src="../assets/packaging/sku-04-roasted-oolong.svg" alt="SKU 04 Label Artwork" />
+          </div>
+          <div class="pack-badge">SEQ 04 · ELEV. 0800M</div>
+          <h4 class="pack-name-zh">焙火烏龍</h4>
+          <p class="pack-name-en">ROASTED OOLONG</p>
+          <div class="pack-meta-list">
+            <div><strong>產地：</strong> 南投 · 鹿谷 凍頂</div>
+            <div><strong>品種：</strong> 凍頂烏龍</div>
+            <div><strong>發酵/焙火：</strong> 35% / 85% (重焙)</div>
+            <div><strong>風味：</strong> 炭火炒栗、熟果甘醇</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FULL MOCKUP PRODUCTION PLAN (14-18 IMAGES) -->
+    <section id="production-plan">
+      <div class="section-header">
+        <h2 class="section-title">03 · MOCKUP PRODUCTION ARCHITECTURE (14–18 SHOTS)</h2>
+        <span class="section-num">PRECISE EXECUTION SPECIFICATION</span>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid var(--border-line); border-radius:4px; padding:2rem;">
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          在品牌 Logo 方向經審核確認後，將依據以下分鏡規格建立高品質、符合物理真實與印刷結構的擬真展示圖。<strong>全數文字均來自已向量驗證之 Master Artwork，無 AI 胡亂拼寫或變形問題</strong>：
+        </p>
+
+        <table class="plan-table">
+          <thead>
+            <tr>
+              <th style="width:10%;">鏡頭編號</th>
+              <th style="width:20%;">鏡頭視角 / 焦距</th>
+              <th style="width:40%;">畫面結構與工藝材質</th>
+              <th style="width:30%;">審查目的與檢驗指標</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SHOT 01</strong></td>
+              <td>50mm · 45° 俯角單盒</td>
+              <td>高山烏龍外盒（霧面特種紙 + 燙霧綠金 + 側邊封口細籤）</td>
+              <td>單品包裝正面視覺張力與海拔標籤識別度</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 02</strong></td>
+              <td>50mm · 45° 俯角單盒</td>
+              <td>東方美人外盒（暖杏色紙張 + 燙琥珀銅金）</td>
+              <td>暖色調風土色盤在自然光下的質感層次</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 03</strong></td>
+              <td>50mm · 45° 俯角單盒</td>
+              <td>紅玉紅茶外盒（赤木紅紙張 + 燙消光深紅）</td>
+              <td>全發酵紅茶之典雅深邃調性檢驗</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 04</strong></td>
+              <td>50mm · 45° 俯角單盒</td>
+              <td>焙火烏龍外盒（炭焙灰褐特種紙 + 炭黑打凹）</td>
+              <td>炭焙工藝之沉穩歷史感與打凹細節</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 05</strong></td>
+              <td>35mm · 正面全家福</td>
+              <td>四款包裝一字排開（依海拔 450m 至 1450m 排列）</td>
+              <td>陳列節奏、色彩漸層過渡與家族系列感</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 06</strong></td>
+              <td>85mm · 微距特寫</td>
+              <td>盒身標籤壓紋、紙張原生纖維紋理與燙金邊緣邊框</td>
+              <td>觸覺特種紙（如竹尾 Pachica）之實體手感傳達</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 07</strong></td>
+              <td>50mm · 俯視開箱儀式</td>
+              <td>硬質天天地盒抽開，露出內部霧面鋁罐與蠟紙襯紙</td>
+              <td>高級茶禮的開箱節奏與雙層氣密保護結構</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 08</strong></td>
+              <td>85mm · 鋁罐頂蓋特寫</td>
+              <td>陽極氧化鋁罐蓋頂雷射雕刻或鋼印壓印品牌標誌</td>
+              <td>金屬材料工藝可行性與高端極簡質感</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 09–12</strong></td>
+              <td>50mm · 茶乾與茶湯</td>
+              <td>四款茶之原葉茶乾（球型/條索）與透明茶湯光影</td>
+              <td>包裝視覺與實際茶葉感官的精準對應</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 13</strong></td>
+              <td>35mm · 旗艦禮盒</td>
+              <td>雙入或四入木製精裝外盒，配以棉麻封條與品牌提袋</td>
+              <td>商業送禮、米其林餐飲與企業高端訂製應用場景</td>
+            </tr>
+            <tr>
+              <td><strong>SHOT 14</strong></td>
+              <td>50mm · 手持比例照</td>
+              <td>真人手持茶罐比例（展示 W85×D85×H140mm 真實尺度）</td>
+              <td>人機工程學尺寸驗證，證明包裝具備量產可行性</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 5: DIRECTOR'S RECOMMENDATION -->
+    <section id="recommendation">
+      <div class="callout-box">
+        <div class="callout-header">DESIGN DIRECTOR EVALUATION &amp; TRADE-OFFS</div>
+        <h3 class="callout-title">設計總監評選建議：推薦優先考慮「方向 A」或「方向 C」</h3>
+        <div class="callout-body">
+          <p style="margin-bottom: 1rem;">
+            <strong>方向 A (GEOGRAPHIC SEQUENCE)</strong> 具備最強烈的<strong>「不可複製性與產地話語權」</strong>。台灣茶最大的核心價值即為極端垂直海拔所造就的「山頭氣」。將 450m–1450m 的等高線地質科學與漢字「島」交織，能立即在國際精品市場與傳統「畫一片茶葉或山脈剪影」的俗套設計拉開維度級差距。
+          </p>
+          <p style="margin-bottom: 1rem;">
+            <strong>方向 C (TYPOGRAPHIC IDENTITY)</strong> 則在<strong>「日式高端編輯與東方書卷氣韻」</strong>上表現最為極致。長條形雙欄印鑑標章在長型茶盒與茶罐封條上具有無可替代的視覺錨定力，極度契合 Howard 作品集一貫沉穩、高對比的建築排版語彙。
+          </p>
+          <p>
+            <strong>方向 B (CONTEMPORARY TEA GEOMETRY)</strong> 幾何感強烈、應用靈活，但若未搭配強大文案，較容易偏向大眾植物保養品或極簡咖啡之調性。
+          </p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.8rem; color: #8F8C85;">
+            *本提案依據發布安全守則，已完整隔離於獨立開發分支 <code>feature/brand-portfolio-expansion-v1</code>，絕不干擾正式 Portfolio 4.0 網站。等待 Howard 與審查團隊選定方向後啟動下一步。
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
