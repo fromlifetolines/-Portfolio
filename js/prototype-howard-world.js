@@ -1074,17 +1074,41 @@ function initProjectArchive() {
     if (!cover || !caseUrl) continue;
     const card = document.createElement('article');
     card.className = 'helmet-project-extra';
-    card.innerHTML = `<a class="helmet-project-extra-link" href="${safeText(caseUrl)}">
-      <span class="helmet-project-extra-number">${safeText(String(project.order || '').padStart(2,'0'))}</span>
-      <div class="helmet-project-extra-stage"><img src="${safeText(cover)}" alt="${safeText(project.title)}" loading="lazy" /></div>
-      <span class="helmet-project-extra-title">${safeText(project.title)} · ${safeText(project.year || '')}</span>
-      <span class="helmet-project-extra-desc"></span>
+    card.id = `project-${safeText(project.id)}`;
+    card.innerHTML = `<a class="helmet-project-extra-link" href="${safeText(caseUrl)}" title="${safeText(project.title)}">
+      <div class="helmet-project-extra-head">
+        <span class="helmet-project-extra-number">${safeText(String(project.order || '').padStart(2,'0'))}</span>
+        <span class="helmet-project-extra-type"></span>
+      </div>
+      <div class="helmet-project-extra-stage">
+        <img src="${safeText(cover)}" alt="${safeText(project.title)}" loading="eager" />
+      </div>
+      <div class="helmet-project-extra-body">
+        <div class="helmet-project-extra-meta">
+          <span class="helmet-project-extra-title">${safeText(project.title)}</span>
+          <span class="helmet-project-extra-year">${safeText(project.year || '')}</span>
+        </div>
+        <div class="helmet-project-extra-cat"></div>
+        <p class="helmet-project-extra-desc"></p>
+        <span class="helmet-project-extra-cta"></span>
+      </div>
     </a>`;
     container.appendChild(card);
     const updateLang = () => {
       const lang = document.documentElement.lang === 'zh-TW' ? 'zh-TW' : 'en';
-      const text = project.description && (project.description[lang] || project.description.en);
-      card.querySelector('.helmet-project-extra-desc').textContent = text || '';
+      const descText = project.description && (project.description[lang] || project.description.en);
+      const catText = project.category && (project.category[lang] || project.category.en);
+      const typeText = project.projectType && (project.projectType[lang] || project.projectType.en);
+      const ctaText = lang === 'zh-TW' ? '瀏覽完整案例研究 →' : 'EXPLORE CASE STUDY →';
+      
+      const descEl = card.querySelector('.helmet-project-extra-desc');
+      if (descEl) descEl.textContent = descText || '';
+      const catEl = card.querySelector('.helmet-project-extra-cat');
+      if (catEl) catEl.textContent = catText || '';
+      const typeEl = card.querySelector('.helmet-project-extra-type');
+      if (typeEl) typeEl.textContent = typeText || '';
+      const ctaEl = card.querySelector('.helmet-project-extra-cta');
+      if (ctaEl) ctaEl.textContent = ctaText;
     };
     window.addEventListener('howard:languagechange', updateLang);
     updateLang();
