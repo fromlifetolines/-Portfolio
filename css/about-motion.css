@@ -1,0 +1,401 @@
+/**
+ * HOWARD PORTFOLIO — ABOUT HOWARD MOTION IDENTITY V1
+ * Scoped Stylesheet for Howard in Motion Showcase
+ * Architecture: Isolated Component Module (Zero Production Mutation)
+ */
+
+/* ========================================================
+   SECTION CONTAINER & LAYOUT
+   ======================================================== */
+.about-motion-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-light, #F4F2EB);
+  color: var(--color-charcoal, #121210);
+  padding: 6.5rem 2rem 7.5rem 2rem;
+  border-bottom: 1px solid #D8D5CD;
+  overflow: hidden;
+}
+
+.motion-section-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* ========================================================
+   EDITORIAL HEADER STRIP
+   ======================================================== */
+.motion-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-bottom: 1px solid #D8D5CD;
+  padding-bottom: 2.25rem;
+}
+
+.motion-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #72706A;
+}
+
+.motion-meta-index {
+  color: #121210;
+  font-weight: 800;
+}
+
+.motion-meta-sep {
+  opacity: 0.45;
+}
+
+.motion-title-row {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  align-items: flex-end;
+  gap: 3rem;
+}
+
+.motion-section-heading {
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  color: #121210;
+  margin: 0 0 0.65rem 0;
+}
+
+.motion-section-subtitle {
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #55534D;
+  margin: 0;
+}
+
+.motion-title-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 1px solid #D8D5CD;
+  padding-left: 1.5rem;
+}
+
+.motion-note-kanji {
+  font-family: 'Noto Sans TC', var(--font-sans, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #8C8A82;
+  text-transform: uppercase;
+}
+
+.motion-note-text {
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #5A5852;
+  margin: 0;
+}
+
+/* ========================================================
+   16:9 CINEMATIC VIDEO CANVAS & PLAYER
+   ======================================================== */
+.motion-stage-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.motion-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #0A0A09;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #D8D5CD;
+  box-shadow: 0 16px 48px rgba(18, 18, 16, 0.08);
+}
+
+.motion-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background-color: #0A0A09;
+}
+
+/* ========================================================
+   ONE PRIMARY PLAYBACK CONTROL
+   ======================================================== */
+.motion-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(18, 18, 16, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease, opacity 0.35s ease;
+  z-index: 5;
+}
+
+.motion-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #121210;
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.motion-play-btn:focus-visible {
+  outline: 3px solid var(--color-lime, #CCFF00);
+  outline-offset: 4px;
+}
+
+.play-icon-svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 3px;
+}
+
+.motion-play-btn.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* ========================================================
+   PLAYBACK STATUS INDICATOR
+   ======================================================== */
+.motion-playback-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(18, 18, 16, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #F4F2EB;
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.motion-playback-status.is-active {
+  opacity: 1;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-lime, #CCFF00);
+  margin-right: 0.35rem;
+  box-shadow: 0 0 8px var(--color-lime, #CCFF00);
+}
+
+/* ========================================================
+   EDITORIAL TWO-COLUMN GRID
+   ======================================================== */
+.motion-caption-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  border-top: 1px solid #D8D5CD;
+  padding-top: 2.5rem;
+}
+
+.motion-caption-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.motion-caption-item:first-child {
+  border-right: 1px solid #D8D5CD;
+  padding-right: 3.5rem;
+}
+
+.motion-cap-label {
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #72706A;
+}
+
+.motion-cap-title {
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #121210;
+  margin: 0;
+}
+
+.motion-cap-desc {
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #55534D;
+  margin: 0;
+}
+
+/* ========================================================
+   RESPONSIVE ADAPTATION: TABLET (768px - 960px)
+   ======================================================== */
+@media (min-width: 768px) and (max-width: 960px) {
+  .motion-title-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .motion-title-note {
+    border-left: none;
+    border-top: 1px solid #D8D5CD;
+    padding-left: 0;
+    padding-top: 1.25rem;
+  }
+  .motion-caption-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .motion-caption-item:first-child {
+    border-right: none;
+    border-bottom: 1px solid #D8D5CD;
+    padding-right: 0;
+    padding-bottom: 2rem;
+  }
+}
+
+/* ========================================================
+   RESPONSIVE ADAPTATION: MOBILE (<= 767px)
+   TASK 01: MOBILE CONTENT READING ORDER
+   1. FEATURE / MOTION IDENTITY STUDY
+   2. HOWARD IN MOTION
+   3. ONE IDENTITY. MANY FORMS.
+   4. Video player
+   5. Editorial description
+   6. ACT 01 / ACT 02 captions
+   ======================================================== */
+@media (max-width: 767px) {
+  .about-motion-section {
+    padding: 3.75rem 1.25rem 4.5rem 1.25rem;
+  }
+
+  .motion-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  /* Unwraps header elements directly into flex container for precise mobile ordering */
+  .motion-header {
+    display: contents;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .motion-title-row {
+    display: contents;
+  }
+
+  /* 1. FEATURE / MOTION IDENTITY STUDY */
+  .motion-meta-badge {
+    order: 1;
+    margin-bottom: -0.25rem;
+  }
+
+  /* 2. HOWARD IN MOTION & 3. ONE IDENTITY. MANY FORMS. */
+  .motion-title-col {
+    order: 2;
+    margin-bottom: 0.15rem;
+  }
+
+  /* 4. 16:9 Video player (Placed above editorial description) */
+  .motion-stage-wrap {
+    order: 3;
+    margin: 0.25rem 0 0.5rem 0;
+  }
+
+  /* 5. Editorial description */
+  .motion-title-note {
+    order: 4;
+    border-left: none;
+    border-top: 1px solid #D8D5CD;
+    padding-left: 0;
+    padding-top: 1.25rem;
+    margin-top: 0;
+  }
+
+  /* 6. ACT 01 / ACT 02 captions */
+  .motion-caption-grid {
+    order: 5;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid #D8D5CD;
+    padding-top: 1.5rem;
+  }
+
+  .motion-caption-item:first-child {
+    border-right: none;
+    border-bottom: 1px solid #D8D5CD;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Single Play Button Mobile Sizing */
+  .motion-play-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .play-icon-svg {
+    width: 22px;
+    height: 22px;
+    margin-left: 2px;
+  }
+}
+
+/* ========================================================
+   ACCESSIBILITY: REDUCED MOTION
+   ======================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .motion-play-btn,
+  .motion-playback-status {
+    transition: none !important;
+    animation: none !important;
+  }
+}

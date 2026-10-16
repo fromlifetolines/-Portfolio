@@ -18,6 +18,9 @@
 
   <!-- Prototype Stylesheet -->
   <link rel="stylesheet" href="css/prototype-howard-world.css" />
+
+  <!-- Scoped Styles for Howard in Motion Showcase -->
+  <link rel="stylesheet" href="css/about-motion.css" />
 </head>
 <body data-nav-theme="dark" class="page-about">
 
@@ -181,6 +184,84 @@
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION: HOWARD IN MOTION (MOTION IDENTITY INTEGRATION)
+         Placement: Immediately after WHO I AM, before CREATIVE PRACTICE
+         Art Direction: Japanese Premium Editorial Layout
+         ======================================================== -->
+    <section class="s about-motion-section" id="howard-in-motion" aria-label="Howard in Motion">
+      <div class="motion-section-container">
+        
+        <!-- Top Editorial Header Strip -->
+        <header class="motion-header">
+          <div class="motion-meta-badge">
+            <span class="motion-meta-index">FEATURE</span>
+            <span class="motion-meta-sep">/</span>
+            <span class="motion-meta-tag" data-i18n="aboutMotion.meta">MOTION IDENTITY STUDY</span>
+          </div>
+
+          <div class="motion-title-row">
+            <div class="motion-title-col">
+              <h2 class="motion-section-heading" data-i18n="aboutMotion.title">HOWARD IN MOTION</h2>
+              <p class="motion-section-subtitle" data-i18n="aboutMotion.subtitle">ONE IDENTITY. MANY FORMS.</p>
+            </div>
+            <div class="motion-title-note">
+              <span class="motion-note-kanji" aria-hidden="true" data-i18n="aboutMotion.kanji">動態視覺識別</span>
+              <p class="motion-note-text" data-i18n="aboutMotion.shortDesc">
+                A continuous cinematic portrait capturing two complementary facets of creative practice: deep reflective inquiry and sharp architectural execution.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <!-- 16:9 Cinematic Video Showcase -->
+        <div class="motion-stage-wrap">
+          <div class="motion-video-frame">
+            <video id="howardMotionVideo"
+                   class="motion-video-player"
+                   preload="none"
+                   playsinline
+                   poster="assets/video/HOWARD_MOTION_POSTER_CLEAN.jpg?v=2"
+                   aria-label="Howard Huang Motion Identity V1 Film">
+              <source src="assets/video/HOWARD_MOTION_IDENTITY_V1.mp4" type="video/mp4" />
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- Single Centered Circular Play Button -->
+            <button type="button" 
+                    class="motion-play-btn" 
+                    id="motionPlayBtn" 
+                    aria-label="Play Howard Motion Identity Film (10 Seconds)"
+                    title="Play Film (10 Seconds)">
+              <svg class="play-icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l11-6.86a1 1 0 0 0 0-1.68l-11-6.86A1 1 0 0 0 8 5.14z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Editorial Two-Column Grid -->
+        <div class="motion-caption-grid">
+          <div class="motion-caption-item">
+            <span class="motion-cap-label" data-i18n="aboutMotion.cap1Label">ACT 01 &middot; 靜 &middot; CONTEMPLATION</span>
+            <h3 class="motion-cap-title" data-i18n="aboutMotion.cap1Title">THE STRATEGIC CONTEMPLATION</h3>
+            <p class="motion-cap-desc" data-i18n="aboutMotion.cap1Desc">
+              Seated portrait in knitwear, exploring deliberate poise, internal calibration, and the synthesis of brand narrative before execution.
+            </p>
+          </div>
+
+          <div class="motion-caption-item">
+            <span class="motion-cap-label" data-i18n="aboutMotion.cap2Label">ACT 02 &middot; 動 &middot; ARCHITECTURE</span>
+            <h3 class="motion-cap-title" data-i18n="aboutMotion.cap2Title">THE ARCHITECTURAL PRESENCE</h3>
+            <p class="motion-cap-desc" data-i18n="aboutMotion.cap2Desc">
+              Tailored suit silhouette, transitioning into direct gaze and structural decisiveness—building enduring systems that command space.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -364,6 +445,8 @@
 
   <!-- Shared i18n Translation Engine -->
   <script src="js/prototype-i18n.js"></script>
+  <!-- Dedicated Motion Identity Video Controller -->
+  <script src="js/about-motion.js"></script>
   <!-- Main Script -->
   <script src="js/prototype-howard-world.js"></script>
 </body>
