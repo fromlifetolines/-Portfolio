@@ -114,16 +114,17 @@
    - 標誌四周保留不得小於核心字高 `X`（即「島」字高度的 50%）的絕對淨空區。
    - 印刷最小複製尺寸：橫式標誌寬度不小於 35mm；徽標獨立使用不小於 10mm；印鑑高度不小於 18mm。
    - 數位最小顯示尺寸：32px（標準標誌），16px（Micro 專用標章）。
-3. **色彩架構 (Master Color Architecture)**：
+3. **色彩架構 (Master Color Architecture — 概念色彩規劃參考 / Conceptual Palette)**：
+   - *註：所列 PANTONE 代號為設計提案之概念色彩規劃參考，未經實體印刷廠分光儀打樣校色前，不宣稱為已完成權威驗證之色票紀錄。*
    - **品牌基底色**：
      - 宣紙暖白 (Washi Paper Cream): `#F7F5F0` · TAKEO Pachica / 觸覺紙底色
-     - 徽州墨黑 (Imperial Ink Black): `#121210` · PANTONE Black 6 C
-     - 丹砂朱紅 (Vermilion Seal): `#C23B22` · PANTONE 1795 C
+     - 徽州墨黑 (Imperial Ink Black): `#121210` · PANTONE Black 6 C (概念參考)
+     - 丹砂朱紅 (Vermilion Seal): `#C23B22` · PANTONE 1795 C (概念參考)
    - **四大 SKU 風土專屬色**：
-     - SEQ 01 高山烏龍：薄霧青磁 (Mist Celadon) `#3A6351` · PANTONE 5555 C
-     - SEQ 02 東方美人：熟成琥珀 (Amber Terracotta) `#A65A38` · PANTONE 7586 C
-     - SEQ 03 紅玉紅茶：辰砂紅玉 (Cinnabar Ruby) `#8C2D19` · PANTONE 7622 C
-     - SEQ 04 焙火烏龍：炭焙灰褐 (Charcoal Umber) `#524339` · PANTONE 412 C
+     - SEQ 01 高山烏龍：薄霧青磁 (Mist Celadon) `#3A6351` · PANTONE 5555 C (概念參考)
+     - SEQ 02 東方美人：熟成琥珀 (Amber Terracotta) `#A65A38` · PANTONE 7586 C (概念參考)
+     - SEQ 03 紅玉紅茶：辰砂紅玉 (Cinnabar Ruby) `#8C2D19` · PANTONE 7622 C (概念參考)
+     - SEQ 04 焙火烏龍：炭焙灰褐 (Charcoal Umber) `#524339` · PANTONE 412 C (概念參考)
 
 ---
 
@@ -161,7 +162,7 @@
 | **SHOT 08** | 85mm / 靜物特寫 | 鋁罐頂蓋特寫（雷射雕刻等高線徽標與防偽封籤撕口細節） | 金屬材料工藝可行性與高端極簡質感 |
 | **SHOT 09** | 50mm / 氛圍對應 | 高山烏龍緊結球型墨綠茶乾與清澈蜜綠茶湯、白瓷茶杯 | 風土茶品與包裝視覺的精準感官呼應 |
 | **SHOT 10** | 50mm / 氛圍對應 | 東方美人白毫五色條索茶乾與澄澈琥珀茶湯、薄胎茶盞 | 著蜒白毫烏龍與琥珀色盤的對照呼應 |
-| **SHOT 11** | 50mm / 氛圍對應 | 紅玉紅茶烏黑緊結茶乾與艷紅寶石茶湯、手工玻璃公道杯 | 大葉種紅茶之色澤與湯體厚度驗證 |
+| **SHOT 11** | 50mm / 氛圍對應 | 紅玉紅茶烏黑緊結茶乾與艷紅寶石茶湯、手工玻璃公道杯 | 大葉種紅茶之色澤與湯體厚度呈顯 |
 | **SHOT 12** | 50mm / 氛圍對應 | 焙火烏龍緊實半球黑褐茶乾與金黃澄澈熟果茶湯 | 炭焙深火轉化之深色調與茶湯對比 |
 | **SHOT 13** | 35mm / 禮盒套裝 | 四入精裝禮盒完整展開，搭配棉麻提袋與品牌封條 | 商業送禮、米其林餐飲與企業高端訂製應用 |
 | **SHOT 14** | 50mm / 尺度標尺 | 工作室人機比例與精確公制標尺（W85×D85×H140mm） | 證明包裝具備真實工程尺寸與人手握持比例 |
