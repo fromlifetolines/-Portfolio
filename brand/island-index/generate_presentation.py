@@ -57,7 +57,7 @@ def generate_contact_sheet():
 
     draw.text((pad + 10, 35), "FLTL × HOWARD — ISLAND INDEX (島序)", font=font_title, fill="#FAF9F5")
     draw.text((pad + 10, 80), "MASTER EXHIBITION VISUAL ASSETS · 18 PHOTOREALISTIC SHOTS AUDIT SHEET", font=font_sub, fill="#D4B066")
-    draw.text((pad + 10, 115), "BRANCH: fix/island-index-mockup-fidelity-v3 · RESOLUTION: 1264 × 848 NATIVE PER SHOT", font=font_meta, fill="#8A8880")
+    draw.text((pad + 10, 115), "RELEASE: V4.1 APPROVED ASSET RESTORATION · FULL 18 SHOTS AUDIT SHEET", font=font_meta, fill="#8A8880")
 
     titles = [
         "SHOT 01 — SEQ 01 高山烏龍 PRODUCT HERO",
@@ -77,7 +77,7 @@ def generate_contact_sheet():
         "SHOT 15 — DIELINE CONCEPT & CARTON STRUCTURE",
         "SHOT 16 — PHYSICAL BRAND TOUCHPOINTS",
         "SHOT 17 — DIGITAL FLAGSHIP COMMERCE UI",
-        "SHOT 18 — RESPONSIVE MOBILE COMMERCE UI",
+        "SHOT 18 — COMPLETE BRAND SYSTEM & PANTONE PALETTE",
     ]
 
     for idx in range(18):
@@ -196,6 +196,7 @@ def generate_crops():
 
 if __name__ == "__main__":
     generate_contact_sheet()
-    generate_comparison_plates()
+    if os.path.exists(BEFORE_DIR):
+        generate_comparison_plates()
     generate_crops()
     print("\n[DONE] All presentation deliverables generated successfully!")
