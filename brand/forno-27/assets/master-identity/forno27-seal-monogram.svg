@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .seal-bg { fill: #8C2D26; }
+      .seal-ring { fill: none; stroke: #F1E7D4; stroke-width: 2.5; }
+      .seal-ring-dotted { fill: none; stroke: #F1E7D4; stroke-width: 1.5; stroke-dasharray: 3,4; }
+      .seal-text { font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.28em; fill: #F1E7D4; }
+      .seal-arch { fill: none; stroke: #F1E7D4; stroke-width: 3; }
+      .seal-hearth { fill: #F1E7D4; }
+      .seal-flame { fill: #8C2D26; }
+    </style>
+    <path id="circleTextTop" d="M 45,160 A 115,115 0 0,1 275,160" />
+    <path id="circleTextBottom" d="M 275,160 A 115,115 0 0,1 45,160" />
+  </defs>
+
+  <!-- Background Circle (Wine Red) -->
+  <circle cx="160" cy="160" r="152" class="seal-bg" />
+  
+  <!-- Outer Concentric Rings -->
+  <circle cx="160" cy="160" r="144" class="seal-ring" />
+  <circle cx="160" cy="160" r="137" class="seal-ring-dotted" />
+  <circle cx="160" cy="160" r="95" class="seal-ring" />
+
+  <!-- Circular Curved Typography -->
+  <text class="seal-text">
+    <textPath href="#circleTextTop" startOffset="50%" text-anchor="middle">
+      FORNO 27 · PIZZERIA &amp; BAKERY
+    </textPath>
+  </text>
+
+  <text class="seal-text">
+    <textPath href="#circleTextBottom" startOffset="50%" text-anchor="middle">
+      ★ PIZZA · PANE · BUONA VITA ★
+    </textPath>
+  </text>
+
+  <!-- Central Kiln Arch Emblem -->
+  <g transform="translate(160, 160) scale(0.65) translate(-70, -85)">
+    <!-- Arch Frame -->
+    <path d="M 20,130 L 20,65 A 50,50 0 0,1 120,65 L 120,130 Z" class="seal-arch" />
+    <!-- Keystone -->
+    <polygon points="65,18 75,18 73,30 67,30" fill="#F1E7D4" />
+    <!-- Solid Inner Hearth -->
+    <path d="M 38,130 L 38,78 A 32,32 0 0,1 102,78 L 102,130 Z" class="seal-hearth" />
+    <!-- Flame Silhouette -->
+    <path d="M 70,88 C 75,98 80,103 80,111 C 80,119 75,123 70,124 C 65,123 60,119 60,111 C 60,105 64,101 67,98 C 67,102 70,105 72,106 C 72,101 70,95 70,88 Z" class="seal-flame" />
+    <!-- Number 27 in Arch Tympanum -->
+    <text x="70" y="58" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="20" font-weight="700" fill="#F1E7D4" letter-spacing="0.04em">27</text>
+    <!-- Base Plinth -->
+    <rect x="10" y="130" width="120" height="6" fill="#F1E7D4" rx="1.5" />
+  </g>
+</svg>
