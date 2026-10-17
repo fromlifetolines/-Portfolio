@@ -5,9 +5,8 @@
       .seal-ring { fill: none; stroke: #F1E7D4; stroke-width: 2.5; }
       .seal-ring-dotted { fill: none; stroke: #F1E7D4; stroke-width: 1.5; stroke-dasharray: 3,4; }
       .seal-text { font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.28em; fill: #F1E7D4; }
-      .seal-arch { fill: none; stroke: #F1E7D4; stroke-width: 3; }
-      .seal-hearth { fill: #F1E7D4; }
-      .seal-flame { fill: #8C2D26; }
+      .seal-brand { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; font-weight: 400; letter-spacing: 0.08em; fill: #F1E7D4; text-anchor: middle; }
+      .seal-arch { fill: #F1E7D4; }
     </style>
     <path id="circleTextTop" d="M 45,160 A 115,115 0 0,1 275,160" />
     <path id="circleTextBottom" d="M 275,160 A 115,115 0 0,1 45,160" />
@@ -34,19 +33,22 @@
     </textPath>
   </text>
 
-  <!-- Central Kiln Arch Emblem -->
-  <g transform="translate(160, 160) scale(0.65) translate(-70, -85)">
-    <!-- Arch Frame -->
-    <path d="M 20,130 L 20,65 A 50,50 0 0,1 120,65 L 120,130 Z" class="seal-arch" />
-    <!-- Keystone -->
-    <polygon points="65,18 75,18 73,30 67,30" fill="#F1E7D4" />
-    <!-- Solid Inner Hearth -->
-    <path d="M 38,130 L 38,78 A 32,32 0 0,1 102,78 L 102,130 Z" class="seal-hearth" />
-    <!-- Flame Silhouette -->
-    <path d="M 70,88 C 75,98 80,103 80,111 C 80,119 75,123 70,124 C 65,123 60,119 60,111 C 60,105 64,101 67,98 C 67,102 70,105 72,106 C 72,101 70,95 70,88 Z" class="seal-flame" />
-    <!-- Number 27 in Arch Tympanum -->
-    <text x="70" y="58" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="20" font-weight="700" fill="#F1E7D4" letter-spacing="0.04em">27</text>
-    <!-- Base Plinth -->
-    <rect x="10" y="130" width="120" height="6" fill="#F1E7D4" rx="1.5" />
+  <!-- Central 9-Brick Radial Arch & FORNO 27 -->
+  <g transform="translate(160, 160)">
+    <!-- Scaled 9-Brick Radial Arch -->
+    <g transform="translate(0, -32) scale(0.62) translate(-100, -85)" class="seal-arch">
+      <!-- Brick 1 --> <path d="M 40.00,100.00 A 60,60 0 0,1 42.32,83.46 L 65.39,90.08 A 36,36 0 0,0 64.00,100.00 Z" />
+      <!-- Brick 2 --> <path d="M 43.80,78.99 A 60,60 0 0,1 51.77,64.31 L 71.06,78.59 A 36,36 0 0,0 66.28,87.39 Z" />
+      <!-- Brick 3 --> <path d="M 54.72,60.64 A 60,60 0 0,1 67.32,49.68 L 80.39,69.81 A 36,36 0 0,0 72.83,76.38 Z" />
+      <!-- Brick 4 --> <path d="M 71.37,47.27 A 60,60 0 0,1 87.01,41.42 L 92.21,64.85 A 36,36 0 0,0 82.82,68.36 Z" />
+      <!-- Brick 5 --> <path d="M 91.65,40.58 A 60,60 0 0,1 108.35,40.58 L 105.01,64.35 A 36,36 0 0,0 94.99,64.35 Z" />
+      <!-- Brick 6 --> <path d="M 112.99,41.42 A 60,60 0 0,1 128.63,47.27 L 117.18,68.36 A 36,36 0 0,0 107.79,64.85 Z" />
+      <!-- Brick 7 --> <path d="M 132.68,49.68 A 60,60 0 0,1 145.28,60.64 L 127.17,76.38 A 36,36 0 0,0 119.61,69.81 Z" />
+      <!-- Brick 8 --> <path d="M 148.23,64.31 A 60,60 0 0,1 156.20,78.99 L 133.72,87.39 A 36,36 0 0,0 128.94,78.59 Z" />
+      <!-- Brick 9 --> <path d="M 157.68,83.46 A 60,60 0 0,1 160.00,100.00 L 136.00,100.00 A 36,36 0 0,0 134.61,90.08 Z" />
+    </g>
+
+    <!-- Center Wordmark -->
+    <text x="0" y="16" class="seal-brand">FORNO 27</text>
   </g>
 </svg>

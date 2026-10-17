@@ -1,45 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 160" width="100%" height="100%">
   <defs>
     <style>
       .cls-wine { fill: #8C2D26; }
-      .cls-terracotta { fill: #C65A47; }
-      .cls-ink { fill: #251C19; }
-      .cls-cream { fill: #F1E7D4; }
-      .text-title { font-family: 'Instrument Serif', Georgia, serif; font-size: 56px; font-weight: 400; letter-spacing: 0.08em; fill: #8C2D26; }
-      .text-num { font-family: 'Instrument Serif', Georgia, serif; font-size: 56px; font-weight: 700; fill: #C65A47; }
-      .text-sub { font-family: 'Geist', -apple-system, sans-serif; font-size: 11.5px; font-weight: 600; letter-spacing: 0.32em; fill: #251C19; }
-      .text-tagline { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 14.5px; letter-spacing: 0.16em; fill: #4A5A3A; }
+      .text-title { font-family: 'Instrument Serif', Georgia, serif; font-size: 58px; font-weight: 400; letter-spacing: 0.10em; fill: #8C2D26; }
+      .text-sub { font-family: 'Geist', -apple-system, sans-serif; font-size: 11.5px; font-weight: 600; letter-spacing: 0.32em; fill: #251C19; text-transform: uppercase; }
+      .text-tagline { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.18em; fill: #C65A47; }
     </style>
   </defs>
 
-  <!-- Horizontal Primary Logo Lockup -->
-  <g transform="translate(40, 20)">
-    <!-- Kiln Arch Mark -->
-    <g transform="translate(0, 0)">
-      <!-- Outer Arch Outline -->
-      <path d="M 12,140 L 12,65 A 58,58 0 0,1 128,65 L 128,140 Z" fill="none" stroke="#8C2D26" stroke-width="4.5" />
-      <!-- Radiating Sun / Oven Brick Notches -->
-      <path d="M 24,140 L 24,72 A 46,46 0 0,1 116,72 L 116,140" fill="none" stroke="#8C2D26" stroke-width="1.5" stroke-dasharray="3,3" />
-      <!-- Keystone -->
-      <polygon points="65,12 75,12 73,26 67,26" fill="#8C2D26" />
-      <!-- Solid Inner Fire Hearth -->
-      <path d="M 38,140 L 38,82 A 32,32 0 0,1 102,82 L 102,140 Z" fill="#8C2D26" />
-      <!-- Flame Negative Silhouette -->
-      <path d="M 70,92 C 75,102 81,108 81,117 C 81,126 75,131 70,132 C 65,131 59,126 59,117 C 59,110 64,105 67,102 C 67,107 70,110 72,111 C 72,106 70,99 70,92 Z" fill="#F1E7D4" />
-      <!-- Number 27 in Arch Tympanum -->
-      <text x="70" y="58" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="22" font-weight="700" fill="#8C2D26" letter-spacing="0.04em">27</text>
-      <!-- Base Horizon Step -->
-      <rect x="4" y="140" width="132" height="6" fill="#8C2D26" rx="1.5" />
-      <rect x="0" y="146" width="140" height="3" fill="#C65A47" rx="1" />
+  <!-- FORNO 27 OFFICIAL PRIMARY HORIZONTAL LOCKUP (LOCKED MASTER) -->
+  <g transform="translate(30, 20)">
+    <!-- 9-Brick Radial Kiln Arch -->
+    <g transform="translate(0, 0) scale(1.1)" class="cls-wine">
+      <!-- Brick 1 --> <path d="M 40.00,100.00 A 60,60 0 0,1 42.32,83.46 L 65.39,90.08 A 36,36 0 0,0 64.00,100.00 Z" />
+      <!-- Brick 2 --> <path d="M 43.80,78.99 A 60,60 0 0,1 51.77,64.31 L 71.06,78.59 A 36,36 0 0,0 66.28,87.39 Z" />
+      <!-- Brick 3 --> <path d="M 54.72,60.64 A 60,60 0 0,1 67.32,49.68 L 80.39,69.81 A 36,36 0 0,0 72.83,76.38 Z" />
+      <!-- Brick 4 --> <path d="M 71.37,47.27 A 60,60 0 0,1 87.01,41.42 L 92.21,64.85 A 36,36 0 0,0 82.82,68.36 Z" />
+      <!-- Brick 5 --> <path d="M 91.65,40.58 A 60,60 0 0,1 108.35,40.58 L 105.01,64.35 A 36,36 0 0,0 94.99,64.35 Z" />
+      <!-- Brick 6 --> <path d="M 112.99,41.42 A 60,60 0 0,1 128.63,47.27 L 117.18,68.36 A 36,36 0 0,0 107.79,64.85 Z" />
+      <!-- Brick 7 --> <path d="M 132.68,49.68 A 60,60 0 0,1 145.28,60.64 L 127.17,76.38 A 36,36 0 0,0 119.61,69.81 Z" />
+      <!-- Brick 8 --> <path d="M 148.23,64.31 A 60,60 0 0,1 156.20,78.99 L 133.72,87.39 A 36,36 0 0,0 128.94,78.59 Z" />
+      <!-- Brick 9 --> <path d="M 157.68,83.46 A 60,60 0 0,1 160.00,100.00 L 136.00,100.00 A 36,36 0 0,0 134.61,90.08 Z" />
     </g>
 
-    <!-- Wordmark & Subtitle -->
-    <g transform="translate(175, 42)">
-      <text x="0" y="24" class="text-title">FORNO <tspan class="text-num">27</tspan></text>
-      <text x="4" y="60" class="text-sub">CONTEMPORARY PIZZERIA &amp; BAKERY</text>
-      <line x1="4" y1="74" x2="430" y2="74" stroke="#251C19" stroke-opacity="0.16" stroke-width="1" />
-      <text x="4" y="96" class="text-tagline">PIZZA · PANE · BUONA VITA</text>
-      <text x="430" y="96" text-anchor="end" font-family="'Geist', sans-serif" font-size="10.5" letter-spacing="0.22em" fill="#6A625C">ROMA · TAIPEI</text>
+    <!-- Wordmark & Details -->
+    <g transform="translate(195, 34)">
+      <text x="0" y="24" class="text-title">FORNO 27</text>
+      <text x="4" y="58" class="text-sub">CONTEMPORARY PIZZERIA &amp; BAKERY</text>
+      <line x1="4" y1="72" x2="480" y2="72" stroke="#251C19" stroke-opacity="0.18" stroke-width="1" />
+      <text x="4" y="94" class="text-tagline">PIZZA · PANE · BUONA VITA</text>
+      <text x="480" y="94" text-anchor="end" font-family="'Geist', sans-serif" font-size="10.5" letter-spacing="0.22em" fill="#6A625C">EST. 2026 · ROMA / TAIPEI</text>
     </g>
   </g>
 </svg>

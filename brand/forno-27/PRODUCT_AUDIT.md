@@ -97,4 +97,42 @@ Each shot was audited under 100% and 200% magnification for:
 
 ---
 
-© 2026 FLTL × HOWARD. ALL RIGHTS RESERVED.
+## 05. V1.1 BRAND IDENTITY AUDIT & LOCK (DIRECTION B)
+
+### Authentic Visual Audit Across 18 Photography Shots
+- **Shot 01 (Hero Box Lid) & Shot 18-Ref:** Identified authentic emblem as the **9-Brick Radial Masonry Kiln Archway (九石放射窯拱)**.
+- **Geometric Vector Master Alignment:**
+  - Standardized all vector lockups in `brand/forno-27/assets/master-identity/` to the exact 9 radial keystone blocks matching the physical box photography.
+  - Unified across:
+    1. Primary Vertical Lockup (`forno27-primary-vertical.svg`)
+    2. Primary Horizontal Lockup (`forno27-primary-horizontal.svg`)
+    3. Standalone Arch Emblem (`forno27-arch-mark.svg`)
+    4. Circular Seal Monogram (`forno27-seal-monogram.svg`)
+    5. Monochrome Version (`forno27-logo-monochrome.svg` in `#251C19`)
+    6. Reversed Version (`forno27-logo-reversed.svg` in `#F1E7D4` on `#251C19`)
+- **Minimum Size Specification:** Standalone Arch: 12 mm / 34 px; Primary Lockup: 24 mm / 68 px.
+
+---
+
+## 06. V1.1 PACKAGING ENGINEERING & GEOMETRIC RIGOR AUDIT
+
+### Takeaway Tote Bag Geometric Correction
+- **Original Claim:** `340 × 330 × 240 mm` claimed to lay two 320 × 320 mm pizza boxes flat.
+- **Root Cause & Correction:** A gusset depth of 240 mm cannot physically hold a 320 mm square box flat. Re-engineered to **`340 mm (W) × 335 mm (Gusset Depth) × 360 mm (H)`**.
+- **Clearance Verification:**
+  - Width: 340 mm vs. 320 mm box (+20 mm insertion tolerance)
+  - Gusset: 335 mm vs. 320 mm box (+15 mm insertion tolerance)
+  - Height: 360 mm vs. 90 mm stack (+270 mm headroom for handles and thermal air cushion)
+
+### Internal vs. External Dimension Delineation
+- **8" Personal Box:** Internal `215 × 215 × 40 mm` (1,850 cm³) / External `220 × 220 × 42 mm`
+- **12" Standard Box:** Internal `314 × 314 × 42 mm` (4,140 cm³) / External `320 × 320 × 45 mm`
+- **16" Party Box:** Internal `410 × 410 × 46 mm` (7,730 cm³) / External `420 × 420 × 50 mm`
+
+### Engineering Honesty
+- All specifications strictly designated as **Concept Specification — Converter Tooling & Physical Proofing Required**.
+- Fabricated compression/ECT ratings, unverified coating certifications, and lab numbers have been excised.
+
+---
+
+© 2026 FLTL × HOWARD. ALL RIGHTS RESERVED. FORNO 27 RELEASE V1.1 CANDIDATE.

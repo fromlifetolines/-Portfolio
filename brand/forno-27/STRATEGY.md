@@ -65,36 +65,58 @@ The visual system is engineered upon a deliberate synthesis:
 
 ---
 
-## 05. 3-TIER PACKAGING & CONCEPT ENGINEERING
+## 05. 3-TIER PACKAGING & CONCEPT ENGINEERING (V1.1 CORRECTION)
 
-### 5.1 Pizza Box Sizing Architecture
+### 5.1 Pizza Box Sizing Architecture (Internal Cavity vs External)
 1. **8" Piccola (Personal / Single Feast):**
-   - Exterior Dimensions: `220 × 220 × 42 mm`
-   - Target Pizza Weight: `~320 g` / Internal Volume: `2,032 cm³`
-   - Caliper: `1.5 mm E-Flute Corrugated`
+   - **Internal Food Cavity (內徑):** `215 × 215 × 40 mm` (Internal Volume: `1,850 cm³`)
+   - **Exterior Dimensions (外徑):** `220 × 220 × 42 mm`
+   - Target Pizza Weight: `~320 g` / Caliper: `1.5 mm E-Flute Corrugated`
 2. **12" Classica (Standard Hero / Sharing for Two):**
-   - Exterior Dimensions: `320 × 320 × 45 mm`
-   - Target Pizza Weight: `~580 g` / Internal Volume: `4,608 cm³`
-   - Caliper: `1.5 mm E-Flute Corrugated`
+   - **Internal Food Cavity (內徑):** `314 × 314 × 42 mm` (Internal Volume: `4,140 cm³`)
+   - **Exterior Dimensions (外徑):** `320 × 320 × 45 mm`
+   - Target Pizza Weight: `~580 g` / Caliper: `1.5 mm E-Flute Corrugated`
 3. **16" Famiglia (Family & Party Feast):**
-   - Exterior Dimensions: `420 × 420 × 50 mm`
-   - Target Pizza Weight: `~950 g` / Internal Volume: `8,820 cm³`
-   - Caliper: `2.8 mm B-Flute Corrugated`
+   - **Internal Food Cavity (內徑):** `410 × 410 × 46 mm` (Internal Volume: `7,730 cm³`)
+   - **Exterior Dimensions (外徑):** `420 × 420 × 50 mm`
+   - Target Pizza Weight: `~950 g` / Caliper: `2.8 mm B-Flute Corrugated`
 
-### 5.2 Thermal & Anti-Sogginess Physics
-- **Steam Relief:** 4× laser-cut triangular ventilation ports situated on the rear hinge line allow high-temperature steam to escape, preventing crust sogginess while maintaining core temperature above 62°C for up to 25 minutes.
-- **Glueless Mechanical Locking:** Snap-lock rollover side walls eliminate chemical adhesives near direct food contact.
-- **Eco-Barrier:** Non-toxic water-based aqueous barrier coating provides KIT 8+ grease resistance without PFAS or fluorochemicals.
+### 5.2 Takeaway Tote Bag Geometric Footprint Correction
+- **Previous Erroneous Spec:** `340 × 330 × 240 mm` (Gusset depth 240 mm physically could not lay two 320 × 320 mm pizza boxes flat).
+- **Corrected V1.1 Specification:** **`340 mm (W) × 335 mm (Gusset Depth) × 360 mm (H)`**
+- **Geometric Mechanics:** 
+  - Bag base area: `340 × 335 mm`, providing `+20 mm` lateral width tolerance and `+15 mm` gusset depth tolerance.
+  - Stacking allowance: Two 12" boxes stacked horizontally occupy `320 × 320 × 90 mm` (2 × 45 mm height).
+  - Headroom: `270 mm` vertical clearance above pizza stack for handles, thermal air layer, and sauce cup satchels.
+
+### 5.3 Engineering Rigor & Concept Disclaimer
+> [!IMPORTANT]
+> **CONCEPT SPECIFICATION NOTICE:**  
+> All structural geometries, folding mechanics, and material caliper notes are concept engineering specifications authored for brand demonstration. In adherence to professional industrial ethics, **NO FABRICATED LAB ECT COMPRESSION VALUES, FOOD CONTACT CERTIFICATES, OR UNVERIFIED COATING RATINGS ARE CLAIMED**. Commercial volume production requires physical converter tooling, CAD plotter sampling, and accredited third-party food contact certification.
 
 ---
 
 ## 06. DIGITAL COMMERCE & RESPONSIVE PROTOTYPE
 
 - **Viewport Flexibility:** Full support for desktop 1400px and mobile 390px iPhone layouts.
-- **Gastronomy Customizer:** Seamless size selection, crust preference (Napoletana thin vs. Sourdough crispy), and artisanal dipping sauce upsells.
-- **Live Cart State:** Real-time arithmetic recalculating subtotals, packaging fees, and pickup estimation windows.
+- **Gastronomy Customizer:** Seamless size selection (8" NT$240 / 12" NT$380 / 16" NT$520), crust preference, and artisanal dipping sauce upsells (+NT$35 / +NT$40).
+- **Live Cart State:** Real-time arithmetic recalculating subtotals, packaging fee (NT$20), and concept price disclosure banner.
 - **Transparency Tag:** Explicitly designated as `CONCEPT PROTOTYPE ONLY · NO REAL PAYMENT INTEGRATION`.
 
 ---
 
-© 2026 FLTL × HOWARD. ALL RIGHTS RESERVED.
+## 07. MASTER BRAND IDENTITY LOCK (DIRECTION B — RADIAL KILN ARCH)
+
+Following high-magnification audit of the 18 approved ChatGPT photography shots (SHOT 01, 02, 08, 16, 18-ref), the authentic emblem is locked as the **9-Brick Radial Masonry Kiln Archway (九石放射窯拱)**.
+- **Arch Geometry:** Semicircular radiating arch composed of 9 tapered wedge keystones.
+- **Master Vector Files:**
+  - `brand/forno-27/assets/master-identity/forno27-arch-mark.svg` (Standalone arch)
+  - `brand/forno-27/assets/master-identity/forno27-primary-vertical.svg` (Primary lockup)
+  - `brand/forno-27/assets/master-identity/forno27-primary-horizontal.svg` (Horizontal lockup)
+  - `brand/forno-27/assets/master-identity/forno27-seal-monogram.svg` (Circular seal)
+  - `brand/forno-27/assets/master-identity/forno27-logo-monochrome.svg` (Deep Charcoal Ink)
+  - `brand/forno-27/assets/master-identity/forno27-logo-reversed.svg` (Paper Cream on Dark Ink)
+
+---
+
+© 2026 FLTL × HOWARD. ALL RIGHTS RESERVED. FORNO 27 RELEASE V1.1.
