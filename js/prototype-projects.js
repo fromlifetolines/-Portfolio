@@ -55,7 +55,7 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '自主品牌概念提案'
     },
     description: {
-      en: 'Contemporary Neapolitan pizzeria and bakery brand identity, featuring 3-tier sustainable packaging engineering, vector dielines, and responsive digital commerce.',
+      en: 'Contemporary Neapolitan pizzeria and bakery brand identity, featuring a three-size concept packaging system, editable vector dielines, and a responsive digital ordering experience.',
       'zh-TW': '當代義式柴燒窯烤披薩與烘焙品牌識別，結合三尺寸可編輯包裝工程、展開刀模圖層系統與自適應線上點餐平台。'
     },
     cover: 'brand/forno-27/assets/mockups/shot-06.jpg',
