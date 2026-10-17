@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <style>
+      .brand-title-b { font-family: 'Instrument Serif', Georgia, serif; font-size: 68px; font-weight: 400; letter-spacing: 0.12em; fill: #251C19; }
+      .brand-accent { fill: #8C2D26; }
+      .brand-sub-b { font-family: 'Geist', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.38em; fill: #8C2D26; text-transform: uppercase; }
+      .brand-geo { fill: none; stroke: #251C19; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Kiln Arch Emblem (Draft B: Modern Geometric Arch) -->
+  <g id="emblem-draft-b" transform="translate(65, 22)">
+    <!-- Monumental Outer Portal -->
+    <path d="M 24,180 L 24,84 A 66,66 0 0,1 156,84 L 156,180" fill="none" stroke="#8C2D26" stroke-width="6" />
+    
+    <!-- Concentric Precision Inner Arch -->
+    <path d="M 46,180 L 46,96 A 44,44 0 0,1 134,96 L 134,180" fill="none" stroke="#251C19" stroke-width="2.5" />
+    
+    <!-- Floating Geometric Hearth Aperture -->
+    <circle cx="90" cy="138" r="24" fill="#C65A47" />
+    
+    <!-- Abstract Kiln Flame Negative Cutout -->
+    <path d="M 90,122 C 94,130 98,136 98,142 C 98,147 94,151 90,152 C 86,151 82,147 82,142 C 82,137 86,132 90,122 Z" fill="#F1E7D4" />
+    
+    <!-- Stylized Modern '27' Apex Plaque -->
+    <rect x="74" y="38" width="32" height="20" rx="3" fill="#8C2D26" />
+    <text x="90" y="52" text-anchor="middle" font-family="'Geist', sans-serif" font-size="11" font-weight="700" fill="#F1E7D4" letter-spacing="0.1em">27</text>
+    
+    <!-- Ground Baseline Horizon -->
+    <line x1="12" y1="180" x2="168" y2="180" stroke="#251C19" stroke-width="3" />
+  </g>
+
+  <!-- Typographic Lockup -->
+  <g transform="translate(265, 78)">
+    <!-- Brand Title -->
+    <text x="0" y="30" class="brand-title-b">FORNO <tspan class="brand-accent">27</tspan></text>
+    
+    <!-- Subtitle & Discipline -->
+    <text x="4" y="74" class="brand-sub-b">PIZZERIA &amp; BAKERY · ARTISANAL CRAFT</text>
+    
+    <!-- Dynamic Editorial Rule -->
+    <line x1="4" y1="92" x2="475" y2="92" stroke="#8C2D26" stroke-width="1.5" stroke-dasharray="2,2" />
+    
+    <!-- Footer Editorial Metadata -->
+    <text x="4" y="118" font-family="'Geist', sans-serif" font-size="11" font-weight="500" letter-spacing="0.22em" fill="#57554F">ROMA · TAIPEI · WOOD-FIRED FERMENTATION</text>
+  </g>
+</svg>

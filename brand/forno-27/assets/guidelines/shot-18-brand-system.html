@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORNO 27 — SHOT 18: Brand Identity & Color Architecture</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600;700;900&display=swap');
+
+    :root {
+      --bg: #F5EFEB;
+      --paper: #FAF8F5;
+      --card-bg: #FFFFFF;
+      --ink: #251C19;
+      --wine: #8C2D26;
+      --terracotta: #C65A47;
+      --olive: #4A5A3A;
+      --cream: #F1E7D4;
+      --line: rgba(37, 28, 25, 0.12);
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-zh: 'Noto Serif TC', serif;
+      --font-sans: 'Geist', sans-serif;
+      --font-mono: 'Geist Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .brand-board {
+      width: 1448px;
+      height: 1086px;
+      box-sizing: border-box;
+      background: var(--paper);
+      border: 1px solid rgba(37, 28, 25, 0.2);
+      box-shadow: 0 24px 60px rgba(37, 28, 25, 0.08);
+      padding: 32px 42px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Outer Framing */
+    .sheet-border {
+      position: absolute;
+      inset: 16px;
+      border: 1.5px solid rgba(37, 28, 25, 0.35);
+      pointer-events: none;
+    }
+
+    /* Header */
+    .board-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      letter-spacing: 0.06em;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .meta-block {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    /* Section Labels */
+    .sec-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--wine);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* Layout Grid */
+    .board-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 32px;
+      flex: 1;
+    }
+
+    /* Left: Logo System & Geometry */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .logo-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .logo-plate {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 160px;
+    }
+    .logo-plate.dark {
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+    .plate-caption {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #6A625C;
+      margin-top: 10px;
+      letter-spacing: 0.1em;
+    }
+    .logo-plate.dark .plate-caption {
+      color: #BDB5AE;
+    }
+
+    /* Clear Space Diagram */
+    .clear-space-card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .cs-diagram {
+      flex: 1;
+      border: 1px dashed rgba(140, 45, 38, 0.4);
+      background: rgba(140, 45, 38, 0.03);
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .cs-rule {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wine);
+      font-weight: 600;
+    }
+
+    /* Right: Color Architecture & Typography */
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 5 Brand Color Swatches */
+    .swatches-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .color-swatch-row {
+      display: flex;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+    .swatch-color {
+      width: 80px;
+      min-height: 54px;
+    }
+    .swatch-details {
+      padding: 8px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .swatch-name {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 12px;
+    }
+    .swatch-hex {
+      color: var(--wine);
+      font-weight: 600;
+    }
+    .swatch-role {
+      font-size: 10px;
+      color: #7A726C;
+    }
+
+    /* Typography Matrix */
+    .type-spec-card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 18px;
+    }
+    .type-sample-en {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .type-sample-zh {
+      font-family: var(--font-zh);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--wine);
+      margin-bottom: 6px;
+    }
+    .type-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #7A726C;
+      line-height: 1.4;
+    }
+
+    /* Disclaimer Box */
+    .color-disclaimer {
+      background: #FFF4F2;
+      border: 1px solid var(--wine);
+      padding: 12px 14px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--wine);
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    .board-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #7A726C;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-board">
+    <div class="sheet-border"></div>
+
+    <!-- Header -->
+    <header class="board-header">
+      <div>
+        <div class="brand-title">FORNO 27</div>
+        <div class="brand-sub">COMPLETE BRAND IDENTITY &amp; COLOR ARCHITECTURE · OFFICIAL GUIDELINE</div>
+      </div>
+      <div class="meta-block">
+        <div>SYSTEM REF: GUIDELINE-F27-V1</div>
+        <div>DISCIPLINE: ITALIAN CRAFT × JAPANESE EDITORIAL</div>
+        <div>STATUS: CANDIDATE PROPOSAL · READY FOR HOWARD APPROVAL</div>
+      </div>
+    </header>
+
+    <!-- Grid Content -->
+    <div class="board-grid">
+      <!-- Left Column: Master Logo Architecture -->
+      <div class="left-col">
+        <div class="sec-label">01. MASTER LOGOMARKS &amp; ARCHITECTURAL SYMBOLS</div>
+
+        <div class="logo-showcase-grid">
+          <!-- Horizontal Primary -->
+          <div class="logo-plate" style="grid-column: span 2;">
+            <img src="../master-identity/forno27-primary-horizontal.svg" alt="Primary Horizontal Logo" style="height: 64px; width: auto;">
+            <div class="plate-caption">PRIMARY HORIZONTAL SIGNATURE LOCKUP · FOR WEB, PACKAGING BANDS &amp; STORE SIGNAGE</div>
+          </div>
+
+          <!-- Vertical Centered -->
+          <div class="logo-plate">
+            <img src="../master-identity/forno27-primary-vertical.svg" alt="Primary Vertical Logo" style="height: 95px; width: auto;">
+            <div class="plate-caption">VERTICAL CENTERED STAMP · PIZZA BOX HERO</div>
+          </div>
+
+          <!-- Circular Seal Monogram -->
+          <div class="logo-plate">
+            <img src="../master-identity/forno27-seal-monogram.svg" alt="Circular Seal Monogram" style="height: 85px; width: auto;">
+            <div class="plate-caption">CIRCULAR SEAL MONOGRAM · SAUCE JARS &amp; WAX EMBOSS</div>
+          </div>
+
+          <!-- Monochrome Ink Version -->
+          <div class="logo-plate">
+            <img src="../master-identity/forno27-logo-monochrome.svg" alt="Monochrome Logo" style="height: 75px; width: auto;">
+            <div class="plate-caption">MONOCHROME INK SIGNATURE · RECEIPTS, STAMPS &amp; LASER CUT</div>
+          </div>
+
+          <!-- Dark Inverted Version -->
+          <div class="logo-plate dark">
+            <img src="../master-identity/forno27-logo-reversed.svg" alt="Reversed Logo" style="height: 75px; width: auto;">
+            <div class="plate-caption">REVERSED VERSION · WARM CREAM ON DEEP CHARCOAL INK</div>
+          </div>
+
+          <!-- Standalone Kiln Arch Mark -->
+          <div class="logo-plate" style="grid-column: span 2;">
+            <div style="display:flex; justify-content:center; align-items:center; gap:36px;">
+              <img src="../master-identity/forno27-arch-mark.svg" alt="Standalone Arch Mark" style="height: 48px; width: auto;">
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--wine); font-weight: 600;">9-BRICK RADIAL KILN ARCHWAY (OFFICIAL LOCKED EMBLEM)</span>
+            </div>
+            <div class="plate-caption">STANDALONE EMBLEM · FAVICON, TOTE PRINTING &amp; FABRIC EMBROIDERY</div>
+          </div>
+        </div>
+
+        <!-- Clear Space & Minimum Sizes -->
+        <div class="sec-label">02. CLEAR SPACE EXCLUSION &amp; MINIMUM REPRODUCTION SIZES</div>
+        <div class="clear-space-card">
+          <div class="cs-diagram">
+            <div class="cs-rule" style="top: 2px;">X = APERTURE HEIGHT</div>
+            <img src="../master-identity/forno27-primary-horizontal.svg" alt="Clear Space Lockup" style="height: 48px; width: auto; opacity: 0.9;">
+            <div class="cs-rule" style="bottom: 2px;">MIN CLEARANCE: 1.0X ON ALL FOUR SIDES</div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: #57554F; line-height: 1.5; width: 220px;">
+            <div><strong>MINIMUM PRINT:</strong> 18 mm width (Offset &amp; Flexo)</div>
+            <div><strong>MINIMUM DIGITAL:</strong> 48 px width (72/144 DPI)</div>
+            <div style="margin-top: 6px; font-size: 10px; color: #7A726C;">Ensures wood-fired kiln keystones and roman numerals remain optically distinct under all print substrates.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Color Architecture & Typography -->
+      <div class="right-col">
+        <div class="sec-label">03. 5-COLOR BRAND TOKEN ARCHITECTURE</div>
+
+        <div class="swatches-stack">
+          <!-- Wine Red -->
+          <div class="color-swatch-row">
+            <div class="swatch-color" style="background: #8C2D26;"></div>
+            <div class="swatch-details">
+              <div class="swatch-name">FORNO WINE / BRICK RED</div>
+              <div class="swatch-hex">HEX #8C2D26 · RGB (140, 45, 38) · CMYK (25, 88, 85, 25)</div>
+              <div class="swatch-role">Primary Brand Anchor · Wood-Fired Kiln Flame · Pizza Box Ink</div>
+            </div>
+          </div>
+
+          <!-- Terracotta -->
+          <div class="color-swatch-row">
+            <div class="swatch-color" style="background: #C65A47;"></div>
+            <div class="swatch-details">
+              <div class="swatch-name">TERRACOTTA ACCENT</div>
+              <div class="swatch-hex">HEX #C65A47 · RGB (198, 90, 71) · CMYK (18, 74, 72, 6)</div>
+              <div class="swatch-role">Secondary Accent · Tuscan Baked Clay Tile · Sauce Jars</div>
+            </div>
+          </div>
+
+          <!-- Olive Green -->
+          <div class="color-swatch-row">
+            <div class="swatch-color" style="background: #4A5A3A;"></div>
+            <div class="swatch-details">
+              <div class="swatch-name">OLIVE GREEN</div>
+              <div class="swatch-hex">HEX #4A5A3A · RGB (74, 90, 58) · CMYK (60, 40, 75, 30)</div>
+              <div class="swatch-role">Natural Herb Sub-line · Extra Virgin Olive Oil · Bakery</div>
+            </div>
+          </div>
+
+          <!-- Paper Cream -->
+          <div class="color-swatch-row">
+            <div class="swatch-color" style="background: #F1E7D4; border-right: 1px solid var(--line);"></div>
+            <div class="swatch-details">
+              <div class="swatch-name">PAPER CREAM</div>
+              <div class="swatch-hex">HEX #F1E7D4 · RGB (241, 231, 212) · CMYK (4, 6, 15, 0)</div>
+              <div class="swatch-role">Substrate Background · Unbleached Artisan Kraft Paper</div>
+            </div>
+          </div>
+
+          <!-- Deep Ink -->
+          <div class="color-swatch-row">
+            <div class="swatch-color" style="background: #251C19;"></div>
+            <div class="swatch-details">
+              <div class="swatch-name">DEEP CHARCOAL INK</div>
+              <div class="swatch-hex">HEX #251C19 · RGB (37, 28, 25) · CMYK (65, 70, 70, 75)</div>
+              <div class="swatch-role">Primary Typographic Ink · Kiln Ash · High Contrast Text</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Disclaimer -->
+        <div class="color-disclaimer">
+          <strong>COLOR FIDELITY NOTICE:</strong> 
+          The 5 HEX tokens are mathematically calibrated for digital display across sRGB/P3 color spaces. 
+          <strong>DO NOT INVENT PANTONE EQUIVALENTS:</strong> Spot color printing must be approved via physical draw-down press proofs on unbleached kraft substrates before volume production.
+        </div>
+
+        <!-- Typography System -->
+        <div class="sec-label">04. TYPOGRAPHIC HIERARCHY &amp; SCRIPT HARMONY</div>
+        <div class="type-spec-card">
+          <div class="type-sample-en">FORNO 27 — Contemporary Gastronomy</div>
+          <div class="type-meta">DISPLAY SERIF: Instrument Serif / Georgia (Italian Classic Heritage)</div>
+          <hr style="border:none; border-top:1px dashed var(--line); margin: 8px 0;">
+          <div class="type-sample-zh">當代義式窯烤 × 慢速酸種烘焙生活美學</div>
+          <div class="type-meta">EDITORIAL SCRIPT: Noto Serif TC / Songti (Japanese Editorial Precision)</div>
+          <hr style="border:none; border-top:1px dashed var(--line); margin: 8px 0;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink);">PIZZA · PANE · BUONA VITA · 220×220×42 MM · E-FLUTE</div>
+          <div class="type-meta">TECHNICAL &amp; UI SANS: Geist &amp; Geist Mono (Swiss Modernist Discipline)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="board-footer">
+      <div>FORNO 27 BRAND IDENTITY SYSTEM · SHOT 18 EDITABLE SPECIFICATION BOARD</div>
+      <div>FLTL × HOWARD CONTEMPORARY VISUAL PORTFOLIO</div>
+      <div>CONCEPT STUDY · AUTHORIZED BY HOWARD HUANG / FLTL</div>
+    </footer>
+  </div>
+
+</body>
+</html>

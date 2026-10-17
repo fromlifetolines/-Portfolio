@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORNO 27 — SHOT 15: Packaging Dielines & Structure</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+    :root {
+      --bg: #F5EFEB;
+      --paper: #FAF8F5;
+      --ink: #251C19;
+      --wine: #8C2D26;
+      --cut-color: #E63946;
+      --crease-color: #0077B6;
+      --bleed-color: #2A9D8F;
+      --safe-color: #E76F51;
+      --mono: 'Geist Mono', monospace;
+      --sans: 'Geist', sans-serif;
+      --serif: 'Instrument Serif', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .dieline-board {
+      width: 1448px;
+      height: 1086px;
+      box-sizing: border-box;
+      background: var(--paper);
+      border: 1px solid rgba(37, 28, 25, 0.2);
+      box-shadow: 0 24px 60px rgba(37, 28, 25, 0.08);
+      padding: 32px 42px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Outer Framing */
+    .sheet-border {
+      position: absolute;
+      inset: 16px;
+      border: 1.5px solid rgba(37, 28, 25, 0.35);
+      pointer-events: none;
+    }
+
+    /* Header */
+    .die-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    .brand-title {
+      font-family: var(--serif);
+      font-size: 38px;
+      letter-spacing: 0.06em;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .brand-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .meta-block {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    /* Controls Bar */
+    .die-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid rgba(37, 28, 25, 0.15);
+      border-radius: 4px;
+      padding: 10px 18px;
+      margin-bottom: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    .layer-toggles {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .legend-indicator {
+      width: 14px;
+      height: 3px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* Main Workspace */
+    .die-workspace {
+      display: grid;
+      grid-template-columns: 3.2fr 1fr;
+      gap: 28px;
+      flex: 1;
+    }
+
+    /* Vector SVG Viewport */
+    .svg-viewport {
+      background: #FFFFFF;
+      border: 1px solid rgba(37, 28, 25, 0.15);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+    }
+    svg.dieline-canvas {
+      width: 100%;
+      height: 100%;
+      max-height: 680px;
+      display: block;
+    }
+
+    /* Sidebar */
+    .die-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .side-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(37, 28, 25, 0.15);
+      border-radius: 4px;
+      padding: 16px;
+    }
+    .side-card h3 {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--wine);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(37, 28, 25, 0.12);
+      padding-bottom: 5px;
+    }
+    .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    .param-table td {
+      padding: 4px 0;
+      vertical-align: top;
+    }
+    .param-table td:first-child {
+      color: #6A625C;
+      width: 48%;
+    }
+    .param-table td:last-child {
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    /* Disclaimer */
+    .disclaimer-box {
+      background: #FFF4F2;
+      border: 1px solid var(--wine);
+      padding: 12px 14px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--wine);
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    .die-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(37, 28, 25, 0.15);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #7A726C;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dieline-board">
+    <div class="sheet-border"></div>
+
+    <!-- Header -->
+    <header class="die-header">
+      <div>
+        <div class="brand-title">FORNO 27</div>
+        <div class="brand-sub">PACKAGING DIELINES &amp; STRUCTURAL ENGINEERING · CLASSICA 12"</div>
+      </div>
+      <div class="meta-block">
+        <div>DRAWING NO: DIE-F27-12-STD</div>
+        <div>SCALE: 1:4 VECTOR REPRODUCTION · METRIC (MM)</div>
+        <div>CALIPER: 1.5 MM E-FLUTE CORRUGATED KRAFT</div>
+      </div>
+    </header>
+
+    <!-- Interactive Layer Controls -->
+    <div class="die-controls">
+      <div class="layer-toggles">
+        <span style="font-weight: 600; color: #57554F; margin-right: 4px;">ACTIVE LAYERS:</span>
+        <label class="toggle-label">
+          <input type="checkbox" id="toggleCut" checked onchange="toggleLayer('layer-cut', this.checked)">
+          <span class="legend-indicator" style="background: var(--cut-color);"></span>
+          CUT LINE (1.0 pt Solid)
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" id="toggleCrease" checked onchange="toggleLayer('layer-crease', this.checked)">
+          <span class="legend-indicator" style="border-top: 2px dashed var(--crease-color);"></span>
+          CREASE / FOLD (0.8 pt Dashed)
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" id="toggleBleed" checked onchange="toggleLayer('layer-bleed', this.checked)">
+          <span class="legend-indicator" style="border-top: 2px dotted var(--bleed-color);"></span>
+          BLEED (+3.0 mm)
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" id="toggleSafe" checked onchange="toggleLayer('layer-safe', this.checked)">
+          <span class="legend-indicator" style="border-top: 2px dashed var(--safe-color);"></span>
+          SAFE AREA (-5.0 mm)
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" id="toggleArt" checked onchange="toggleLayer('layer-art', this.checked)">
+          <span class="legend-indicator" style="background: var(--wine);"></span>
+          GRAPHIC ARTWORK
+        </label>
+      </div>
+
+      <div style="color: #6A625C;">GRAIN DIRECTION: ↕ PARALLEL TO HINGE</div>
+    </div>
+
+    <!-- Workspace -->
+    <div class="die-workspace">
+      <!-- Vector Canvas Area -->
+      <div class="svg-viewport">
+        <svg class="dieline-canvas" viewBox="0 0 1000 860" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="kraftPaper" width="10" height="10" patternUnits="userSpaceOnUse">
+              <rect width="10" height="10" fill="#F4EEE8" />
+            </pattern>
+          </defs>
+
+          <!-- 0. Sheet Outlines & Background Surface -->
+          <rect x="50" y="30" width="900" height="800" fill="#FCFAF7" stroke="#E5DEC9" stroke-width="1" />
+
+          <!-- =================================================================
+               LAYER: BLEED LINE (+3mm Outer Envelope)
+               ================================================================= -->
+          <g id="layer-bleed" stroke="#2A9D8F" stroke-width="1.2" stroke-dasharray="3,3" fill="none">
+            <!-- Outer Bleed Envelope -->
+            <rect x="156" y="56" width="688" height="748" rx="4" />
+          </g>
+
+          <!-- =================================================================
+               LAYER: CUT LINE (Solid Red #E63946, 1.2pt)
+               ================================================================= -->
+          <g id="layer-cut" stroke="#E63946" stroke-width="1.5" fill="none" stroke-linejoin="round">
+            <!-- Dieline Flat Blank Contour (Standard Clamshell Pizza Box 12") -->
+            <!-- 
+                 Center Bottom Base: X: 340 to 660 (Width 320), Y: 430 to 750 (Depth 320)
+                 Rear Wall: Y: 385 to 430 (Height 45)
+                 Top Lid: Y: 65 to 385 (Depth 320)
+                 Front Lid Flap: Y: 20 to 65 (Height 45) + locking tuck tongue: Y: 5 to 20
+                 Left & Right Rollover Walls & Flaps: X: 200 to 340 and 660 to 800
+            -->
+
+            <!-- Main Outer Profile -->
+            <path d="
+              M 340,30 
+              L 470,30 Q 500,10 530,30 L 660,30 
+              L 660,65 L 705,65 Q 705,90 690,110 L 660,110
+              L 660,385 L 705,385 L 705,430 L 795,430 
+              L 795,750 L 750,750 L 750,795 L 660,795
+              L 660,750 L 530,750 Q 500,770 470,750 L 340,750
+              L 340,795 L 250,795 L 250,750 L 205,750
+              L 205,430 L 295,430 L 295,385 L 340,385
+              L 340,110 L 310,110 Q 295,90 295,65 L 340,65
+              Z
+            " fill="#FBF8F3" fill-opacity="0.9" />
+
+            <!-- Ventilation Punchout Holes (4x Triangular Cutouts on Rear Hinges) -->
+            <polygon points="355,395 370,395 355,410" fill="#FFFFFF" stroke="#E63946" stroke-width="1.2" />
+            <polygon points="645,395 630,395 645,410" fill="#FFFFFF" stroke="#E63946" stroke-width="1.2" />
+            <polygon points="355,420 370,420 355,405" fill="#FFFFFF" stroke="#E63946" stroke-width="1.2" />
+            <polygon points="645,420 630,420 645,405" fill="#FFFFFF" stroke="#E63946" stroke-width="1.2" />
+
+            <!-- Front Thumb Notch Semi-circle Cut -->
+            <path d="M 485,30 A 15,15 0 0,0 515,30" stroke="#E63946" stroke-width="1.5" />
+          </g>
+
+          <!-- =================================================================
+               LAYER: CREASE / FOLD LINE (Dashed Cyan #0077B6, 1.0pt)
+               ================================================================= -->
+          <g id="layer-crease" stroke="#0077B6" stroke-width="1.2" stroke-dasharray="5,4" fill="none">
+            <!-- Top Lid Hinge Line -->
+            <line x1="340" y1="385" x2="660" y2="385" />
+            <!-- Rear Wall to Bottom Base Hinge Line -->
+            <line x1="340" y1="430" x2="660" y2="430" />
+            <!-- Top Lid to Front Flap Fold Line -->
+            <line x1="340" y1="65" x2="660" y2="65" />
+            <!-- Base Bottom to Front Wall Fold Line -->
+            <line x1="340" y1="750" x2="660" y2="750" />
+            <!-- Left Side Wall Creases -->
+            <line x1="340" y1="430" x2="340" y2="750" />
+            <line x1="295" y1="430" x2="295" y2="750" />
+            <!-- Right Side Wall Creases -->
+            <line x1="660" y1="430" x2="660" y2="750" />
+            <line x1="705" y1="430" x2="705" y2="750" />
+            <!-- Corner Diagonal Lock Creases -->
+            <line x1="295" y1="430" x2="340" y2="385" />
+            <line x1="705" y1="430" x2="660" y2="385" />
+            <line x1="295" y1="750" x2="340" y2="795" />
+            <line x1="705" y1="750" x2="660" y2="795" />
+          </g>
+
+          <!-- =================================================================
+               LAYER: SAFE MARGIN (-5.0mm Inner Boundary)
+               ================================================================= -->
+          <g id="layer-safe" stroke="#E76F51" stroke-width="1" stroke-dasharray="4,2,1,2" fill="none">
+            <!-- Safe Area for Top Lid Artwork -->
+            <rect x="355" y="80" width="290" height="290" rx="3" />
+            <!-- Safe Area for Bottom Base -->
+            <rect x="355" y="445" width="290" height="290" rx="3" />
+          </g>
+
+          <!-- =================================================================
+               LAYER: GRAPHIC ARTWORK (2-Color Flexo Printing)
+               ================================================================= -->
+          <g id="layer-art">
+            <!-- TOP LID ARTWORK PANEL (Rotated or Face-Up in X:340..660, Y:65..385) -->
+            <g transform="translate(500, 215)">
+              <!-- 9-Brick Radial Arch Emblem -->
+              <g transform="translate(0, -35) scale(0.65) translate(-100, -85)" fill="#8C2D26">
+                <!-- Brick 1 --> <path d="M 40.00,100.00 A 60,60 0 0,1 42.32,83.46 L 65.39,90.08 A 36,36 0 0,0 64.00,100.00 Z" />
+                <!-- Brick 2 --> <path d="M 43.80,78.99 A 60,60 0 0,1 51.77,64.31 L 71.06,78.59 A 36,36 0 0,0 66.28,87.39 Z" />
+                <!-- Brick 3 --> <path d="M 54.72,60.64 A 60,60 0 0,1 67.32,49.68 L 80.39,69.81 A 36,36 0 0,0 72.83,76.38 Z" />
+                <!-- Brick 4 --> <path d="M 71.37,47.27 A 60,60 0 0,1 87.01,41.42 L 92.21,64.85 A 36,36 0 0,0 82.82,68.36 Z" />
+                <!-- Brick 5 --> <path d="M 91.65,40.58 A 60,60 0 0,1 108.35,40.58 L 105.01,64.35 A 36,36 0 0,0 94.99,64.35 Z" />
+                <!-- Brick 6 --> <path d="M 112.99,41.42 A 60,60 0 0,1 128.63,47.27 L 117.18,68.36 A 36,36 0 0,0 107.79,64.85 Z" />
+                <!-- Brick 7 --> <path d="M 132.68,49.68 A 60,60 0 0,1 145.28,60.64 L 127.17,76.38 A 36,36 0 0,0 119.61,69.81 Z" />
+                <!-- Brick 8 --> <path d="M 148.23,64.31 A 60,60 0 0,1 156.20,78.99 L 133.72,87.39 A 36,36 0 0,0 128.94,78.59 Z" />
+                <!-- Brick 9 --> <path d="M 157.68,83.46 A 60,60 0 0,1 160.00,100.00 L 136.00,100.00 A 36,36 0 0,0 134.61,90.08 Z" />
+              </g>
+
+              <!-- Primary Wordmark -->
+              <text x="0" y="32" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="34" letter-spacing="0.1em" fill="#8C2D26">FORNO 27</text>
+              <text x="0" y="52" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="10.5" letter-spacing="0.32em" fill="#8C2D26">PIZZA  ·  PANE  ·  BUONA VITA</text>
+            </g>
+
+            <!-- Front Edge Lock Lip Artwork -->
+            <g transform="translate(500, 48)">
+              <text x="0" y="0" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="6.5" letter-spacing="0.2em" fill="#8C2D26">▲ PUSH TO OPEN · HOT &amp; CRISPY WOOD-FIRED PIZZA ▲</text>
+            </g>
+
+            <!-- Rear Hinge Wall Specs -->
+            <g transform="translate(500, 408)">
+              <text x="0" y="0" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="6" letter-spacing="0.16em" fill="#57554F">STEAM VENTILATION · 100% UNBLEACHED RECYCLABLE KRAFT · FLTL × HOWARD</text>
+            </g>
+
+            <!-- Left / Right Side Flaps (Repeated Motifs) -->
+            <g transform="translate(250, 590) rotate(-90)">
+              <text x="0" y="0" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="11" letter-spacing="0.14em" fill="#8C2D26">FORNO 27 · ARTISANAL WOOD-FIRED</text>
+            </g>
+            <g transform="translate(750, 590) rotate(90)">
+              <text x="0" y="0" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="11" letter-spacing="0.14em" fill="#8C2D26">NATURAL SOURDOUGH FERMENTATION</text>
+            </g>
+
+            <!-- Bottom Plate Certification Icons & Barcode Simulation -->
+            <g transform="translate(500, 715)">
+              <rect x="-35" y="-10" width="70" height="14" fill="none" stroke="#251C19" stroke-width="0.5" />
+              <text x="0" y="0" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="6" letter-spacing="0.1em" fill="#251C19">CONCEPT BATCH 026</text>
+              <!-- Recycling / Food Safety Marks -->
+              <circle cx="-50" cy="-3" r="6" fill="none" stroke="#251C19" stroke-width="0.8" />
+              <text x="-50" y="0" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="5" fill="#251C19">PAP</text>
+              <circle cx="50" cy="-3" r="6" fill="none" stroke="#251C19" stroke-width="0.8" />
+              <text x="50" y="0" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="5" fill="#251C19">BIO</text>
+            </g>
+          </g>
+
+          <!-- =================================================================
+               LAYER: DIMENSION LINES & CALLOUTS (CAD Blue #1D4ED8)
+               ================================================================= -->
+          <g id="layer-dims" stroke="#1D4ED8" stroke-width="0.9" fill="#1D4ED8" font-family="'Geist Mono', monospace" font-size="8">
+            <!-- Width of Main Box: 320 mm -->
+            <line x1="340" y1="815" x2="660" y2="815" />
+            <line x1="340" y1="800" x2="340" y2="825" />
+            <line x1="660" y1="800" x2="660" y2="825" />
+            <text x="500" y="828" text-anchor="middle">320.0 mm (MAIN BASE WIDTH)</text>
+
+            <!-- Depth of Main Base: 320 mm -->
+            <line x1="815" y1="430" x2="815" y2="750" />
+            <line x1="800" y1="430" x2="825" y2="430" />
+            <line x1="800" y1="750" x2="825" y2="750" />
+            <text x="830" y="595" text-anchor="start">320.0 mm (BASE DEPTH)</text>
+
+            <!-- Wall Height: 45 mm -->
+            <line x1="815" y1="385" x2="815" y2="430" />
+            <line x1="800" y1="385" x2="825" y2="385" />
+            <text x="830" y="412" text-anchor="start">45.0 mm (WALL HT)</text>
+
+            <!-- Top Lid Depth: 320 mm -->
+            <line x1="815" y1="65" x2="815" y2="385" />
+            <line x1="800" y1="65" x2="825" y2="65" />
+            <text x="830" y="230" text-anchor="start">320.0 mm (TOP LID)</text>
+
+            <!-- Front Lip: 45 mm -->
+            <line x1="815" y1="20" x2="815" y2="65" />
+            <line x1="800" y1="20" x2="825" y2="20" />
+            <text x="830" y="46" text-anchor="start">45.0 mm (FRONT LIP)</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Right Specification Panel -->
+      <div class="die-sidebar">
+        <!-- Structural Info -->
+        <div class="side-card">
+          <h3>CONCEPT DIE-CUT PARAMETERS</h3>
+          <table class="param-table">
+            <tr><td>Target Model:</td><td>Classica 12" Pizza Box</td></tr>
+            <tr><td>External Overall:</td><td>320 × 320 × 45 mm</td></tr>
+            <tr><td>Internal Cavity:</td><td>314 × 314 × 42 mm</td></tr>
+            <tr><td>Usable Volume:</td><td>4,140 cm³ (~560–620g)</td></tr>
+            <tr><td>Flat Blank Dims:</td><td>680 × 740 mm</td></tr>
+            <tr><td>Board Caliper:</td><td>1.5 mm E-Flute Corrugated</td></tr>
+            <tr><td>Corner Locking:</td><td>Glueless Snap-Fold</td></tr>
+            <tr><td>Ventilation:</td><td>4× Corner Apex Ports</td></tr>
+            <tr><td>Thumb Notch:</td><td>R15 mm Ergonomic Cut</td></tr>
+          </table>
+        </div>
+
+        <!-- Flexo Print Info -->
+        <div class="side-card">
+          <h3>FLEXO PRINT SPECIFICATIONS (TARGET)</h3>
+          <table class="param-table">
+            <tr><td>Print Process:</td><td>Inline Flexography Target</td></tr>
+            <tr><td>Spot Color 1:</td><td>Forno Wine (#8C2D26)</td></tr>
+            <tr><td>Spot Color 2:</td><td>Deep Charcoal Ink (#251C19)</td></tr>
+            <tr><td>Substrate:</td><td>Unbleached Kraft / Aqueous Barrier</td></tr>
+            <tr><td>Bleed Envelope:</td><td>+3.0 mm Outer</td></tr>
+            <tr><td>Safe Margin:</td><td>-5.0 mm Inner</td></tr>
+          </table>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer-box">
+          <strong>CONCEPT DIELINE SPECIFICATION:</strong>
+          This vector drawing represents a functional concept die layout geometrically aligned with SHOT 14. 
+          <strong>SUPPLIER PROOFING REQUIRED:</strong> Exact rule-die fabrication (knife thickness, crease matrix, shrinkage factor) must be calculated based on the specific converter's tooling.
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="die-footer">
+      <div>FORNO 27 PACKAGING LAB · DRAWING REF: SHOT-15-DIELINE-V2</div>
+      <div>COLOR LAYERS: CUT (SOLID) / CREASE (DASHED) / BLEED (DOTTED) / SAFE (DASH-DOT)</div>
+      <div>FLTL × HOWARD CONTEMPORARY BRAND PORTFOLIO</div>
+    </footer>
+  </div>
+
+  <script>
+    function toggleLayer(layerId, isVisible) {
+      const el = document.getElementById(layerId);
+      if (el) {
+        el.style.display = isVisible ? 'inline' : 'none';
+      }
+    }
+  </script>
+</body>
+</html>

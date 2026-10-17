@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono-ink { fill: #251C19; }
+      .text-brand-mono { font-family: 'Instrument Serif', Georgia, serif; font-size: 82px; font-weight: 400; letter-spacing: 0.12em; fill: #251C19; text-anchor: middle; }
+      .text-sub-mono { font-family: 'Instrument Serif', Georgia, serif; font-size: 20px; font-weight: 400; letter-spacing: 0.38em; fill: #251C19; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- FORNO 27 OFFICIAL MONOCHROME VERSION (DEEP INK #251C19) -->
+  <g transform="translate(300, 30)">
+    <!-- 9-Brick Radial Arch -->
+    <g transform="translate(-100, 0)" class="mono-ink">
+      <!-- Brick 1 --> <path d="M 40.00,100.00 A 60,60 0 0,1 42.32,83.46 L 65.39,90.08 A 36,36 0 0,0 64.00,100.00 Z" />
+      <!-- Brick 2 --> <path d="M 43.80,78.99 A 60,60 0 0,1 51.77,64.31 L 71.06,78.59 A 36,36 0 0,0 66.28,87.39 Z" />
+      <!-- Brick 3 --> <path d="M 54.72,60.64 A 60,60 0 0,1 67.32,49.68 L 80.39,69.81 A 36,36 0 0,0 72.83,76.38 Z" />
+      <!-- Brick 4 --> <path d="M 71.37,47.27 A 60,60 0 0,1 87.01,41.42 L 92.21,64.85 A 36,36 0 0,0 82.82,68.36 Z" />
+      <!-- Brick 5 --> <path d="M 91.65,40.58 A 60,60 0 0,1 108.35,40.58 L 105.01,64.35 A 36,36 0 0,0 94.99,64.35 Z" />
+      <!-- Brick 6 --> <path d="M 112.99,41.42 A 60,60 0 0,1 128.63,47.27 L 117.18,68.36 A 36,36 0 0,0 107.79,64.85 Z" />
+      <!-- Brick 7 --> <path d="M 132.68,49.68 A 60,60 0 0,1 145.28,60.64 L 127.17,76.38 A 36,36 0 0,0 119.61,69.81 Z" />
+      <!-- Brick 8 --> <path d="M 148.23,64.31 A 60,60 0 0,1 156.20,78.99 L 133.72,87.39 A 36,36 0 0,0 128.94,78.59 Z" />
+      <!-- Brick 9 --> <path d="M 157.68,83.46 A 60,60 0 0,1 160.00,100.00 L 136.00,100.00 A 36,36 0 0,0 134.61,90.08 Z" />
+    </g>
+
+    <!-- FORNO 27 Wordmark -->
+    <text x="0" y="195" class="text-brand-mono">FORNO 27</text>
+
+    <!-- Tagline: PIZZA · PANE · BUONA VITA -->
+    <text x="0" y="240" class="text-sub-mono">PIZZA  ·  PANE  ·  BUONA VITA</text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <style>
+      .brand-title { font-family: 'Instrument Serif', 'Georgia', 'Didot', serif; font-size: 64px; font-weight: 400; letter-spacing: 0.08em; fill: #8C2D26; }
+      .brand-sub { font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.32em; fill: #251C19; text-transform: uppercase; }
+      .brand-tagline { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 16px; letter-spacing: 0.18em; fill: #C65A47; }
+      .arch-line { fill: none; stroke: #8C2D26; stroke-width: 4; stroke-miterlimit: 10; }
+      .arch-fill { fill: #8C2D26; }
+      .cream-fill { fill: #F1E7D4; }
+      .ink-fill { fill: #251C19; }
+    </style>
+  </defs>
+
+  <!-- Kiln Arch Emblem (Draft A: Classical Masonry Arch) -->
+  <g id="emblem-draft-a" transform="translate(60, 20)">
+    <!-- Outer Arch Frame -->
+    <path class="arch-line" d="M 20,180 L 20,90 A 70,70 0 0,1 160,90 L 160,180 Z" stroke-width="5" />
+    <!-- Secondary Inner Arch -->
+    <path class="arch-line" d="M 34,180 L 34,95 A 56,56 0 0,1 146,95 L 146,180" stroke-width="2" stroke-dasharray="4,4" />
+    
+    <!-- Kiln Keystone at Apex -->
+    <polygon points="82,14 98,14 94,32 86,32" fill="#8C2D26" />
+    
+    <!-- Arch Masonry Radiating Grooves -->
+    <line x1="90" y1="20" x2="90" y2="34" stroke="#8C2D26" stroke-width="2" />
+    <line x1="55" y1="36" x2="63" y2="48" stroke="#8C2D26" stroke-width="2" />
+    <line x1="125" y1="36" x2="117" y2="48" stroke="#8C2D26" stroke-width="2" />
+    <line x1="28" y1="75" x2="42" y2="80" stroke="#8C2D26" stroke-width="2" />
+    <line x1="152" y1="75" x2="138" y2="80" stroke="#8C2D26" stroke-width="2" />
+
+    <!-- Hearth Opening (Solid Arch) -->
+    <path d="M 48,180 L 48,110 A 42,42 0 0,1 132,110 L 132,180 Z" fill="#8C2D26" />
+    
+    <!-- Flame / Fire Core Inside Hearth -->
+    <path d="M 90,122 C 96,134 104,142 104,152 C 104,162 97,168 90,170 C 83,168 76,162 76,152 C 76,144 82,138 86,134 C 86,140 89,144 92,145 C 93,138 90,130 90,122 Z" fill="#F1E7D4" />
+
+    <!-- Number "27" in Arch Pediment -->
+    <text x="90" y="80" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="28" font-weight="700" fill="#8C2D26" letter-spacing="0.05em">27</text>
+    
+    <!-- Base Plinth -->
+    <rect x="10" y="180" width="160" height="8" fill="#8C2D26" rx="2" />
+    <rect x="4" y="188" width="172" height="4" fill="#C65A47" rx="1" />
+  </g>
+
+  <!-- Typographic Lockup -->
+  <g transform="translate(270, 75)">
+    <!-- Brand Name -->
+    <text x="0" y="32" class="brand-title">FORNO 27</text>
+    
+    <!-- Category Definition -->
+    <text x="4" y="78" class="brand-sub">CONTEMPORARY PIZZERIA &amp; BAKERY</text>
+    
+    <!-- Dividing Hairline -->
+    <line x1="4" y1="96" x2="460" y2="96" stroke="#251C19" stroke-opacity="0.18" stroke-width="1" />
+    
+    <!-- Tagline & Origin -->
+    <text x="4" y="122" class="brand-tagline">PIZZA · PANE · BUONA VITA</text>
+    <text x="456" y="122" text-anchor="end" font-family="'Geist', sans-serif" font-size="11" letter-spacing="0.2em" fill="#6A625C">EST. 2026 · ROMA / TAIPEI</text>
+  </g>
+</svg>

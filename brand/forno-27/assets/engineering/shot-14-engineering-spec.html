@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORNO 27 — SHOT 14: Concept Engineering Specification</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600;700&display=swap');
+
+    :root {
+      --bg: #F5EFEB;
+      --card-bg: #FFFFFF;
+      --ink: #251C19;
+      --wine: #8C2D26;
+      --terracotta: #C65A47;
+      --olive: #4A5A3A;
+      --cream: #F1E7D4;
+      --line: rgba(37, 28, 25, 0.15);
+      --cad-blue: #1D4ED8;
+      --cad-grid: rgba(29, 78, 216, 0.06);
+      --mono: 'Geist Mono', monospace;
+      --sans: 'Geist', sans-serif;
+      --serif: 'Instrument Serif', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .spec-sheet {
+      width: 1448px;
+      height: 1086px;
+      box-sizing: border-box;
+      background: #FAF8F5;
+      border: 1px solid rgba(37, 28, 25, 0.2);
+      box-shadow: 0 24px 60px rgba(37, 28, 25, 0.08);
+      padding: 32px 42px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-image: 
+        linear-gradient(var(--cad-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cad-grid) 1px, transparent 1px);
+      background-size: 20px 20px;
+      overflow: hidden;
+    }
+
+    /* Technical Border Framing */
+    .sheet-border {
+      position: absolute;
+      inset: 16px;
+      border: 1.5px solid rgba(37, 28, 25, 0.35);
+      pointer-events: none;
+    }
+    .sheet-corner {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--wine);
+    }
+    .c-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+    .c-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+    .c-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+    .c-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+    /* Header */
+    .spec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .arch-logo {
+      width: 44px;
+      height: 52px;
+    }
+    .brand-title {
+      font-family: var(--serif);
+      font-size: 38px;
+      letter-spacing: 0.06em;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .brand-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .meta-block {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    .doc-num {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--wine);
+      letter-spacing: 0.1em;
+    }
+    .doc-status {
+      display: inline-block;
+      background: var(--wine);
+      color: #FFF;
+      padding: 2px 8px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+
+    /* Main Grid */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 32px;
+      flex: 1;
+    }
+
+    /* CAD View Area */
+    .cad-viewport {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--wine);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* Orthographic Views Container */
+    .ortho-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+    .ortho-box {
+      border: 1px dashed rgba(37, 28, 25, 0.2);
+      padding: 16px 12px;
+      background: #FCFAF8;
+      border-radius: 4px;
+      text-align: center;
+      position: relative;
+    }
+    .box-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--wine);
+      margin-bottom: 8px;
+    }
+
+    /* SVG CAD Drawings */
+    svg.cad-draw {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 3 Box Dimensions Comparison Table */
+    .dim-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 11px;
+      margin-top: 12px;
+    }
+    .dim-table th {
+      background: #F2ECE4;
+      text-align: left;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+    .dim-table td {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      color: #4A4440;
+    }
+    .dim-table tr.highlight {
+      background: rgba(140, 45, 38, 0.05);
+      font-weight: 600;
+    }
+
+    /* Ancillary Products: Sauces & Tote Bag */
+    .ancillary-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .ancillary-card {
+      border: 1px solid var(--line);
+      background: #FCFAF8;
+      padding: 14px;
+      border-radius: 4px;
+    }
+
+    /* Right Engineering Sidebar */
+    .spec-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .tech-card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 4px;
+    }
+    .tech-card h3 {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--wine);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+    }
+    .tech-list {
+      list-style: none;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: #3E3834;
+    }
+    .tech-list li {
+      position: relative;
+      padding-left: 14px;
+      line-height: 1.45;
+    }
+    .tech-list li::before {
+      content: '■';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 7px;
+      color: var(--wine);
+    }
+
+    /* Disclaimer Callout */
+    .disclaimer-banner {
+      background: #FFF4F2;
+      border: 1.5px solid var(--wine);
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--wine);
+      line-height: 1.5;
+    }
+    .disclaimer-title {
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Footer Stamp */
+    .spec-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #7A726C;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="spec-sheet">
+    <div class="sheet-border"></div>
+    <div class="sheet-corner c-tl"></div>
+    <div class="sheet-corner c-tr"></div>
+    <div class="sheet-corner c-bl"></div>
+    <div class="sheet-corner c-br"></div>
+
+    <!-- Header -->
+    <header class="spec-header">
+      <div class="brand-group">
+        <svg class="arch-logo" viewBox="0 0 140 160">
+          <path d="M 10,150 L 10,65 A 60,60 0 0,1 130,65 L 130,150 Z" fill="none" stroke="#8C2D26" stroke-width="6" />
+          <path d="M 36,150 L 36,80 A 34,34 0 0,1 104,80 L 104,150 Z" fill="#8C2D26" />
+          <path d="M 70,95 C 75,105 80,110 80,118 C 80,126 75,130 70,131 C 65,130 60,126 60,118 C 60,112 65,108 67,105 C 67,109 70,112 72,113 C 72,108 70,102 70,95 Z" fill="#F1E7D4" />
+          <text x="70" y="56" text-anchor="middle" font-family="var(--serif)" font-size="24" font-weight="700" fill="#8C2D26">27</text>
+        </svg>
+        <div>
+          <div class="brand-title">FORNO 27</div>
+          <div class="brand-sub">CONCEPT ENGINEERING SPECIFICATION · PACKAGING ARCHITECTURE</div>
+        </div>
+      </div>
+      <div class="meta-block">
+        <div class="doc-num">SPEC-ENG-2026-F27</div>
+        <div>REVISION: REV-03 (AUTONOMOUS VERIFIED)</div>
+        <div>SCALE: 1:5 CAD PROJECTION / METRIC (MM)</div>
+        <div class="doc-status">CONCEPT SPECIFICATION — NOT FOR MASS PRODUCTION</div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="spec-grid">
+      <!-- Left Column: CAD Elevations & Projections -->
+      <div class="cad-viewport">
+        <div class="section-label">01. ORTHOGRAPHIC PROJECTIONS — 3-TIER PIZZA BOX SYSTEM</div>
+
+        <div class="ortho-container">
+          <!-- Small Box (Piccola 8") -->
+          <div class="ortho-box">
+            <div class="box-title">8" PICCOLA (PERSONAL)</div>
+            <svg class="cad-draw" viewBox="0 0 200 160">
+              <!-- Top View Box -->
+              <rect x="35" y="15" width="130" height="130" fill="#F4EEE8" stroke="#8C2D26" stroke-width="2" />
+              <!-- Vent Holes -->
+              <polygon points="45,25 55,25 45,35" fill="#8C2D26" />
+              <polygon points="155,25 145,25 155,35" fill="#8C2D26" />
+              <!-- Dimension Lines -->
+              <line x1="35" y1="8" x2="165" y2="8" stroke="#1D4ED8" stroke-width="1.2" />
+              <polyline points="38,6 35,8 38,10" fill="none" stroke="#1D4ED8" stroke-width="1" />
+              <polyline points="162,6 165,8 162,10" fill="none" stroke="#1D4ED8" stroke-width="1" />
+              <text x="100" y="6" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="#1D4ED8">220 mm</text>
+              <!-- Center Logo Stamp -->
+              <circle cx="100" cy="80" r="16" fill="none" stroke="#8C2D26" stroke-width="1" stroke-dasharray="2,2" />
+              <text x="100" y="83" text-anchor="middle" font-family="var(--serif)" font-size="10" fill="#8C2D26">F27</text>
+              <text x="100" y="154" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="#6A625C">220 × 220 × 42 mm</text>
+            </svg>
+          </div>
+
+          <!-- Standard Box (Classica 12") -->
+          <div class="ortho-box" style="border-color: var(--wine); background: #FFFBF9;">
+            <div class="box-title" style="color: var(--wine); font-weight: 700;">★ 12" CLASSICA (STANDARD HERO)</div>
+            <svg class="cad-draw" viewBox="0 0 200 160">
+              <!-- Top View Box -->
+              <rect x="25" y="12" width="150" height="136" fill="#F1E7D4" stroke="#8C2D26" stroke-width="2.5" />
+              <!-- Ventilation Ports -->
+              <polygon points="37,22 49,22 37,34" fill="#8C2D26" />
+              <polygon points="163,22 151,22 163,34" fill="#8C2D26" />
+              <polygon points="37,136 49,136 37,124" fill="#8C2D26" />
+              <polygon points="163,136 151,136 163,124" fill="#8C2D26" />
+              <!-- Dimension Lines -->
+              <line x1="25" y1="6" x2="175" y2="6" stroke="#1D4ED8" stroke-width="1.2" />
+              <polyline points="28,4 25,6 28,8" fill="none" stroke="#1D4ED8" stroke-width="1" />
+              <polyline points="172,4 175,6 172,8" fill="none" stroke="#1D4ED8" stroke-width="1" />
+              <text x="100" y="5" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="#1D4ED8">320 mm</text>
+              <!-- Center Logo Arch -->
+              <path d="M 88,95 L 88,72 A 12,12 0 0,1 112,72 L 112,95 Z" fill="#8C2D26" />
+              <text x="100" y="70" text-anchor="middle" font-family="var(--mono)" font-size="8" fill="#8C2D26" font-weight="700">27</text>
+              <text x="100" y="105" text-anchor="middle" font-family="var(--serif)" font-size="11" fill="#8C2D26">FORNO 27</text>
+              <text x="100" y="156" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="#8C2D26" font-weight="600">320 × 320 × 45 mm</text>
+            </svg>
+          </div>
+
+          <!-- Family Box (Famiglia 16") -->
+          <div class="ortho-box">
+            <div class="box-title">16" FAMIGLIA (FAMILY)</div>
+            <svg class="cad-draw" viewBox="0 0 200 160">
+              <!-- Top View Box -->
+              <rect x="18" y="10" width="164" height="140" fill="#F4EEE8" stroke="#8C2D26" stroke-width="2" />
+              <!-- Vent Holes -->
+              <polygon points="30,20 44,20 30,34" fill="#8C2D26" />
+              <polygon points="170,20 156,20 170,34" fill="#8C2D26" />
+              <polygon points="30,138 44,138 30,124" fill="#8C2D26" />
+              <polygon points="170,138 156,138 170,124" fill="#8C2D26" />
+              <!-- Dimension Lines -->
+              <line x1="18" y1="5" x2="182" y2="5" stroke="#1D4ED8" stroke-width="1.2" />
+              <text x="100" y="4" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="#1D4ED8">420 mm</text>
+              <!-- Center Logo Stamp -->
+              <circle cx="100" cy="80" r="22" fill="none" stroke="#8C2D26" stroke-width="1" stroke-dasharray="2,2" />
+              <text x="100" y="83" text-anchor="middle" font-family="var(--serif)" font-size="12" fill="#8C2D26">FORNO 27</text>
+              <text x="100" y="156" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="#6A625C">420 × 420 × 50 mm</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Dimension Comparison Matrix -->
+        <table class="dim-table">
+          <thead>
+            <tr>
+              <th>SKU TIER</th>
+              <th>NOMINAL PIZZA SIZE</th>
+              <th>INTERNAL CAVITY (L × W × H)</th>
+              <th>EXTERNAL DIMS (L × W × H)</th>
+              <th>USABLE VOLUME</th>
+              <th>TARGET FOOD WT</th>
+              <th>CALIPER / FLUTE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>F27-BOX-08</td>
+              <td>8" Piccola (Personal)</td>
+              <td>215 × 215 × 40 mm</td>
+              <td>220 × 220 × 42 mm</td>
+              <td>1,850 cm³</td>
+              <td>~300–340 g</td>
+              <td>1.5 mm E-Flute / Kraft</td>
+            </tr>
+            <tr class="highlight">
+              <td>F27-BOX-12</td>
+              <td>12" Classica (Standard Hero)</td>
+              <td>314 × 314 × 42 mm</td>
+              <td>320 × 320 × 45 mm</td>
+              <td>4,140 cm³</td>
+              <td>~560–620 g</td>
+              <td>1.5 mm E-Flute / Kraft</td>
+            </tr>
+            <tr>
+              <td>F27-BOX-16</td>
+              <td>16" Famiglia (Share Feast)</td>
+              <td>410 × 410 × 46 mm</td>
+              <td>420 × 420 × 50 mm</td>
+              <td>7,730 cm³</td>
+              <td>~900–1,050 g</td>
+              <td>2.8 mm B-Flute / Kraft</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Ancillary Engineering Specs: Sauce Containers & Paper Bag -->
+        <div class="section-label" style="margin-top: 10px;">02. ANCILLARY SPECIFICATIONS — SAUCE LINE &amp; TAKEAWAY BAG</div>
+        
+        <div class="ancillary-row">
+          <div class="ancillary-card">
+            <div class="box-title">ARTISANAL SAUCE PACKAGING (2 SIZES)</div>
+            <div style="font-family: var(--mono); font-size: 11px; color: #4A4440; line-height: 1.6;">
+              <div><strong>• 60 ml Single Dip Tub:</strong> Ø 68 mm × H 35 mm · Recyclable PP with peelable seal foil.</div>
+              <div><strong>• 150 ml Glass Pantry Jar:</strong> Ø 80 mm × H 55 mm · Amber glass jar with lug metal lid and paper tamper band.</div>
+              <div style="margin-top: 4px; color: var(--wine);">Applied to: Chili Hot Honey, Truffle Garlic Crema, Artisanal Pesto.</div>
+            </div>
+          </div>
+
+          <div class="ancillary-card">
+            <div class="box-title">FLAT-BOTTOM TAKEAWAY PIZZA TOTE (GEOMETRICALLY ALIGNED)</div>
+            <div style="font-family: var(--mono); font-size: 11px; color: #4A4440; line-height: 1.6;">
+              <div><strong>• Base Footprint:</strong> 340 mm (Face Width) × 335 mm (Bottom Gusset Depth).</div>
+              <div><strong>• Body Height:</strong> 360 mm (H) + 120 mm Handle Drop.</div>
+              <div><strong>• Stacking Capacity:</strong> Fits up to 2 stacked 12" Classica boxes (320 × 320 × 45 mm, stacked height 90 mm) resting 100% flat with 15 mm lateral clearance.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Engineering Rules, Physics & Disclaimer -->
+      <div class="spec-sidebar">
+        <!-- Structural Physics -->
+        <div class="tech-card">
+          <h3>STRUCTURAL &amp; THERMAL DESIGN INTENT</h3>
+          <ul class="tech-list">
+            <li><strong>Thermal Heat Retention Target:</strong> Micro-flute corrugated dead-air pocket designed to buffer heat dissipation during estimated 20–25 min transit.</li>
+            <li><strong>Moisture Relief Ventilation:</strong> 4× triangular laser-cut vents at rear hinges release moisture vapor while minimizing heat loss.</li>
+            <li><strong>Adhesive-Free Glueless Fold:</strong> Precision mechanical corner tabs lock rigidly without chemical adhesive near hot food steam.</li>
+            <li><strong>Water-Based Barrier Target:</strong> Proposed inner food-grade aqueous barrier coating to resist oil and moisture penetration without fluorochemicals.</li>
+            <li><strong>Stackability Target:</strong> Structural design intended for 2-box bag delivery and up to 4-box staging without corner collapse.</li>
+          </ul>
+        </div>
+
+        <!-- Material Bill of Materials -->
+        <div class="tech-card">
+          <h3>CONCEPT BILL OF MATERIALS (BOM)</h3>
+          <ul class="tech-list">
+            <li><strong>Exterior Liner:</strong> Virgin unbleached kraft paperboard (Paper Cream tone).</li>
+            <li><strong>Fluting Medium:</strong> Recycled corrugated core fluting (Wave E: 1.5mm / Wave B: 2.8mm).</li>
+            <li><strong>Interior Liner:</strong> Food-grade grease-resistant kraft with aqueous barrier.</li>
+            <li><strong>Flexo Printing Ink:</strong> Water-based non-toxic soy ink (2 Spot Colors: Forno Wine #8C2D26 &amp; Deep Ink #251C19).</li>
+          </ul>
+        </div>
+
+        <!-- Mandatory Disclaimer Banner -->
+        <div class="disclaimer-banner">
+          <div class="disclaimer-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            CONCEPT SPECIFICATION · SUPPLIER PROOFING REQUIRED
+          </div>
+          <div>
+            All dimensions, tolerances (±1.5mm), and structural specifications shown herein are proprietary conceptual proposals for FLTL × HOWARD brand portfolio showcase.
+            <strong>NOT CERTIFIED FOR MASS PRODUCTION:</strong> Final die tooling, barrier certifications, and press draw-downs must be verified and produced by licensed commercial packaging converters.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="spec-footer">
+      <div>FLTL × HOWARD ARCHITECTURAL PACKAGING LAB · FORNO 27 BRAND ECOSYSTEM</div>
+      <div>SHEET 01 OF 02 · CAD SPECIFICATION · NOT A FINAL FACTORY DIE DRAWING</div>
+      <div>© 2026 FLTL DESIGN STUDIO. ALL RIGHTS RESERVED.</div>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORNO 27 — SHOT 17: Digital Ordering UI Prototype</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600;700&display=swap');
+
+    :root {
+      --bg: #F5EFEB;
+      --surface: #FFFFFF;
+      --card-bg: #FCFAF8;
+      --ink: #251C19;
+      --wine: #8C2D26;
+      --terracotta: #C65A47;
+      --olive: #4A5A3A;
+      --cream: #F1E7D4;
+      --cream-light: #FBF8F3;
+      --line: rgba(37, 28, 25, 0.12);
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-zh: 'Noto Serif TC', serif;
+      --font-sans: 'Geist', sans-serif;
+      --font-mono: 'Geist Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.5;
+    }
+
+    /* Top Mode Bar */
+    .top-controls {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      padding: 12px 24px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .view-toggles {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+    .btn-toggle.active {
+      background: var(--wine);
+      color: #FFFFFF;
+      border-color: var(--wine);
+    }
+
+    /* Main Container with Desktop and Mobile Toggle */
+    .app-viewport {
+      width: 100%;
+      max-width: 1400px;
+      transition: max-width 0.3s ease;
+      background: #FAF8F5;
+      border: 1px solid rgba(37, 28, 25, 0.15);
+      box-shadow: 0 20px 50px rgba(37, 28, 25, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 820px;
+      position: relative;
+    }
+    .app-viewport.mobile-mode {
+      max-width: 390px;
+      border-radius: 40px;
+      border: 10px solid #201A18;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+
+    /* Header */
+    .app-header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--line);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .app-viewport.mobile-mode .app-header {
+      padding: 14px 16px;
+    }
+    .brand-mark-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .app-logo {
+      width: 32px;
+      height: 38px;
+    }
+    .app-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .app-sub {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    /* Fulfilment Toggle */
+    .fulfilment-pill {
+      display: flex;
+      background: #F1E7D4;
+      border-radius: 20px;
+      padding: 3px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .f-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 12px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+    .f-btn.active {
+      background: var(--wine);
+      color: #FFFFFF;
+    }
+
+    /* Cart Button */
+    .cart-trigger-btn {
+      background: var(--wine);
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .cart-trigger-btn:hover {
+      background: #74231E;
+    }
+    .cart-badge {
+      background: #FFFFFF;
+      color: var(--wine);
+      border-radius: 10px;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Category Nav Bar */
+    .category-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 28px;
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .app-viewport.mobile-mode .category-bar {
+      padding: 10px 16px;
+      gap: 16px;
+    }
+    .cat-item {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: #6A625C;
+      cursor: pointer;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .cat-item.active {
+      color: var(--wine);
+      border-bottom-color: var(--wine);
+    }
+
+    /* Notice Banner */
+    .demo-notice {
+      background: rgba(140, 45, 38, 0.08);
+      border-bottom: 1px solid rgba(140, 45, 38, 0.15);
+      padding: 8px 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wine);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Main Menu Grid */
+    .menu-content {
+      padding: 24px 28px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .app-viewport.mobile-mode .menu-content {
+      padding: 16px;
+    }
+    .section-title-wrap {
+      margin-bottom: 16px;
+    }
+    .sec-en {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      letter-spacing: 0.05em;
+      color: var(--wine);
+    }
+    .sec-zh {
+      font-family: var(--font-zh);
+      font-size: 13px;
+      color: #6A625C;
+      margin-left: 8px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .app-viewport.mobile-mode .products-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 28, 25, 0.06);
+    }
+    .prod-img-wrap {
+      width: 100%;
+      height: 170px;
+      background: #EFE8DC;
+      position: relative;
+      overflow: hidden;
+    }
+    .prod-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .prod-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: var(--wine);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.1em;
+    }
+    .prod-info {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .prod-name-en {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .prod-name-zh {
+      font-family: var(--font-zh);
+      font-size: 13px;
+      font-weight: 600;
+      color: #57554F;
+      margin-top: 2px;
+    }
+    .prod-desc {
+      font-size: 12px;
+      color: #7A726C;
+      margin-top: 6px;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .prod-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+    .prod-price {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--wine);
+    }
+    .btn-customize {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-customize:hover {
+      background: var(--wine);
+      color: #FFFFFF;
+      border-color: var(--wine);
+    }
+
+    /* Modal Customizer */
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(37, 28, 25, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-window {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      border-radius: 8px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    }
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FCFAF8;
+    }
+    .modal-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .opt-group-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--wine);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .radio-pill-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .opt-pill {
+      border: 1px solid var(--line);
+      background: #FCFAF8;
+      padding: 10px 8px;
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .opt-pill.active {
+      border-color: var(--wine);
+      background: rgba(140, 45, 38, 0.06);
+    }
+    .pill-label {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .pill-price {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wine);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .check-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #FCFAF8;
+      cursor: pointer;
+    }
+    .modal-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--line);
+      background: #FCFAF8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-total {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--wine);
+    }
+    .btn-add-cart {
+      background: var(--wine);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    /* Cart Drawer */
+    .cart-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 380px;
+      background: #FFFFFF;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    .app-viewport.mobile-mode .cart-drawer {
+      width: 100%;
+    }
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+    .cart-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FCFAF8;
+    }
+    .cart-items-wrap {
+      flex: 1;
+      padding: 16px 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-item-card {
+      border: 1px solid var(--line);
+      padding: 12px;
+      border-radius: 4px;
+      background: #FCFAF8;
+    }
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+    .cart-item-opts {
+      font-size: 11px;
+      color: #7A726C;
+      margin-top: 4px;
+    }
+    .cart-item-qty {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .qty-btn {
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--line);
+      background: #FFFFFF;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .cart-summary {
+      padding: 16px 20px;
+      background: #FCFAF8;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+    }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .summary-line.total {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--wine);
+      border-top: 1px dashed var(--line);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+    .btn-checkout-demo {
+      width: 100%;
+      background: var(--wine);
+      color: #FFFFFF;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Controller Bar -->
+  <div class="top-controls">
+    <div>
+      <strong>FORNO 27</strong> · DIGITAL COMMERCE &amp; TAKEAWAY PROTOTYPE
+      <span style="color: var(--wine); margin-left: 8px;">[SHOT 17 TECHNICAL REBUILD]</span>
+    </div>
+
+    <div class="view-toggles">
+      <span>DEVICE VIEWPORT:</span>
+      <button class="btn-toggle active" id="btnDesk" onclick="setViewMode('desktop')">DESKTOP (1400px)</button>
+      <button class="btn-toggle" id="btnMob" onclick="setViewMode('mobile')">MOBILE (390px iPhone)</button>
+    </div>
+  </div>
+
+  <!-- App Prototype Viewport -->
+  <div class="app-viewport" id="appViewport">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-mark-group">
+        <svg class="app-logo" viewBox="0 0 200 120" style="width: 36px; height: 26px;">
+          <g fill="#8C2D26">
+            <!-- Brick 1 --> <path d="M 40.00,100.00 A 60,60 0 0,1 42.32,83.46 L 65.39,90.08 A 36,36 0 0,0 64.00,100.00 Z" />
+            <!-- Brick 2 --> <path d="M 43.80,78.99 A 60,60 0 0,1 51.77,64.31 L 71.06,78.59 A 36,36 0 0,0 66.28,87.39 Z" />
+            <!-- Brick 3 --> <path d="M 54.72,60.64 A 60,60 0 0,1 67.32,49.68 L 80.39,69.81 A 36,36 0 0,0 72.83,76.38 Z" />
+            <!-- Brick 4 --> <path d="M 71.37,47.27 A 60,60 0 0,1 87.01,41.42 L 92.21,64.85 A 36,36 0 0,0 82.82,68.36 Z" />
+            <!-- Brick 5 --> <path d="M 91.65,40.58 A 60,60 0 0,1 108.35,40.58 L 105.01,64.35 A 36,36 0 0,0 94.99,64.35 Z" />
+            <!-- Brick 6 --> <path d="M 112.99,41.42 A 60,60 0 0,1 128.63,47.27 L 117.18,68.36 A 36,36 0 0,0 107.79,64.85 Z" />
+            <!-- Brick 7 --> <path d="M 132.68,49.68 A 60,60 0 0,1 145.28,60.64 L 127.17,76.38 A 36,36 0 0,0 119.61,69.81 Z" />
+            <!-- Brick 8 --> <path d="M 148.23,64.31 A 60,60 0 0,1 156.20,78.99 L 133.72,87.39 A 36,36 0 0,0 128.94,78.59 Z" />
+            <!-- Brick 9 --> <path d="M 157.68,83.46 A 60,60 0 0,1 160.00,100.00 L 136.00,100.00 A 36,36 0 0,0 134.61,90.08 Z" />
+          </g>
+        </svg>
+        <div>
+          <div class="app-title">FORNO 27</div>
+          <div class="app-sub">PIZZERIA &amp; BAKERY</div>
+        </div>
+      </div>
+
+      <!-- Fulfilment Toggle -->
+      <div class="fulfilment-pill">
+        <button class="f-btn active" id="btnTakeaway" onclick="setFulfilment('takeaway')">TAKEAWAY (25 MIN)</button>
+        <button class="f-btn" id="btnDineIn" onclick="setFulfilment('dinein')">DINE-IN TABLE</button>
+      </div>
+
+      <!-- Cart Trigger -->
+      <button class="cart-trigger-btn" onclick="toggleCart(true)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span>ORDINE</span>
+        <span class="cart-badge" id="cartCount">2</span>
+      </button>
+    </header>
+
+    <!-- Category Bar -->
+    <nav class="category-bar">
+      <div class="cat-item active">PIZZA AL FORNO (窯烤披薩)</div>
+      <div class="cat-item">PANE &amp; FOCACCIA (烘焙酸種)</div>
+      <div class="cat-item">SALSE ARTIGIANALI (義式沾醬)</div>
+      <div class="cat-item">BEVANDE (在地氣泡與精釀)</div>
+    </nav>
+
+    <!-- Notice -->
+    <div class="demo-notice">
+      <span>● CONCEPT PRICE STUDY — NO PAYMENT / CARD DATA REQUIRED</span>
+      <span>FREE BOTTEGA PICKUP AT 27 VIA FORNO</span>
+    </div>
+
+    <!-- Menu Content Area -->
+    <main class="menu-content">
+      <div class="section-title-wrap">
+        <span class="sec-en">Signature Wood-Fired Pizzas</span>
+        <span class="sec-zh">招牌柴燒披薩系列 (天然酸種 48 小時慢速發酵)</span>
+      </div>
+
+      <div class="products-grid">
+        <!-- Item 1: Margherita -->
+        <div class="product-card" onclick="openCustomizer('margherita')">
+          <div class="prod-img-wrap">
+            <img src="../mockups/shot-09.jpg" alt="Margherita Classica">
+            <span class="prod-tag">ORIGINALE</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-name-en">Margherita Classica</div>
+            <div class="prod-name-zh">經典瑪格麗特披薩</div>
+            <div class="prod-desc">San Marzano DOP 聖馬札諾蕃茄、新鮮水牛莫札瑞拉、初榨橄欖油、甜羅勒葉。</div>
+            <div class="prod-footer">
+              <span class="prod-price">NT$ 380 <small style="font-size:10px; color:#8C2D26;">(12")</small></span>
+              <button class="btn-customize">CUSTOMIZE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Diavola Piccante -->
+        <div class="product-card" onclick="openCustomizer('diavola')">
+          <div class="prod-img-wrap">
+            <img src="../mockups/shot-03.jpg" alt="Diavola Piccante">
+            <span class="prod-tag">CHEF PICK</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-name-en">Diavola con Miele Piccante</div>
+            <div class="prod-name-zh">辣味薩拉米佐工藝辣蜂蜜</div>
+            <div class="prod-desc">義大利辣香腸、卡拉布里亞辣椒醬、窯烤莫札瑞拉，出爐淋上自家熬製花椒辣蜜。</div>
+            <div class="prod-footer">
+              <span class="prod-price">NT$ 420 <small style="font-size:10px; color:#8C2D26;">(12")</small></span>
+              <button class="btn-customize">CUSTOMIZE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Tartufo e Funghi -->
+        <div class="product-card" onclick="openCustomizer('tartufo')">
+          <div class="prod-img-wrap">
+            <img src="../mockups/shot-01.jpg" alt="Tartufo e Funghi">
+            <span class="prod-tag">SEASONAL</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-name-en">Tartufo Bianco &amp; Funghi</div>
+            <div class="prod-name-zh">白松露野蕈起司披薩</div>
+            <div class="prod-desc">皮埃蒙特白松露醬、自生野菇、芳堤娜起司、黑胡椒、松露大蒜白醬。</div>
+            <div class="prod-footer">
+              <span class="prod-price">NT$ 460 <small style="font-size:10px; color:#8C2D26;">(12")</small></span>
+              <button class="btn-customize">CUSTOMIZE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Bakery Bread Extension -->
+        <div class="product-card" onclick="openCustomizer('focaccia')">
+          <div class="prod-img-wrap">
+            <img src="../mockups/shot-12.jpg" alt="Artisan Focaccia">
+            <span class="prod-tag">BAKERY</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-name-en">Focaccia Artigianale al Rosmarino</div>
+            <div class="prod-name-zh">迷迭香鹽之花手作佛卡夏</div>
+            <div class="prod-desc">嚴選義大利石磨小麥粉、特級初榨橄欖油、海鹽之花、現採迷迭香。</div>
+            <div class="prod-footer">
+              <span class="prod-price">NT$ 180</span>
+              <button class="btn-customize">CUSTOMIZE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Customizer Modal -->
+    <div class="modal-overlay" id="customizerModal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div>
+            <div id="modalProdTitle" style="font-family: var(--font-serif); font-size: 20px; color: var(--wine);">Margherita Classica</div>
+            <div id="modalProdSub" style="font-size: 11px; color: #6A625C;">經典瑪格麗特披薩 · 尺寸與客製調味</div>
+          </div>
+          <button style="border:none; background:none; font-size: 20px; cursor:pointer;" onclick="closeCustomizer()">×</button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Size Selector -->
+          <div>
+            <div class="opt-group-title">1. SELECT PIZZA DIAMETER (尺寸盒型)</div>
+            <div class="radio-pill-group">
+              <div class="opt-pill" onclick="selectSize(this, 240, '8 Inch Piccola')">
+                <div class="pill-label">8" Piccola</div>
+                <div class="pill-price">NT$ 240</div>
+              </div>
+              <div class="opt-pill active" onclick="selectSize(this, 380, '12 Inch Classica')">
+                <div class="pill-label">12" Classica</div>
+                <div class="pill-price">NT$ 380</div>
+              </div>
+              <div class="opt-pill" onclick="selectSize(this, 520, '16 Inch Famiglia')">
+                <div class="pill-label">16" Famiglia</div>
+                <div class="pill-price">NT$ 520</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crust Style -->
+          <div>
+            <div class="opt-group-title">2. CRUST STYLE (餅皮烤法)</div>
+            <div style="display:flex; gap:10px;">
+              <label class="check-row" style="flex:1;">
+                <input type="radio" name="crust" checked> <span style="font-size:12px; margin-left:6px;">正統拿坡里軟香薄底</span>
+              </label>
+              <label class="check-row" style="flex:1;">
+                <input type="radio" name="crust"> <span style="font-size:12px; margin-left:6px;">48H 酸種極脆厚邊</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Add-on Sauces (SHOT 04/05 Sauce Line) -->
+          <div>
+            <div class="opt-group-title">3. PAIR WITH ARTISANAL SAUCE DIP (加購工藝沾醬)</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <label class="check-row">
+                <div>
+                  <input type="checkbox" id="chkSauceHoney" onchange="calcModalPrice()"> 
+                  <span style="font-size:12px; margin-left:6px;">Chili Hot Honey (辣香工藝花蜜 60ml)</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size:11px; color:var(--wine);">+ NT$ 35</span>
+              </label>
+
+              <label class="check-row">
+                <div>
+                  <input type="checkbox" id="chkSauceTruffle" onchange="calcModalPrice()"> 
+                  <span style="font-size:12px; margin-left:6px;">Truffle Garlic Crema (黑松露大蒜沾醬 60ml)</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size:11px; color:var(--wine);">+ NT$ 40</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div>
+            <span style="font-size:11px; color:#7A726C;">ESTIMATED PRICE:</span>
+            <div class="modal-total" id="modalFinalPrice">NT$ 380</div>
+          </div>
+          <button class="btn-add-cart" onclick="confirmAddToCart()">AGGIUNGI AL CARRELLO (加入清單)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <div>
+          <div style="font-family: var(--font-serif); font-size: 20px; color: var(--wine);">Il Tuo Ordine</div>
+          <div style="font-size: 11px; color: #6A625C;">外帶訂餐明細 (概念原型)</div>
+        </div>
+        <button style="border:none; background:none; font-size: 20px; cursor:pointer;" onclick="toggleCart(false)">×</button>
+      </div>
+
+      <div class="cart-items-wrap" id="cartItemsContainer">
+        <!-- Item 1 -->
+        <div class="cart-item-card">
+          <div class="cart-item-top">
+            <span>Margherita Classica (12")</span>
+            <span style="color:var(--wine);">NT$ 380</span>
+          </div>
+          <div class="cart-item-opts">正統薄底 · 含熱氣防潮外帶盒</div>
+          <div class="cart-item-qty">
+            <span style="color:#7A726C;">QTY:</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="updateItemQty(0, -1)">-</button>
+              <span>1</span>
+              <button class="qty-btn" onclick="updateItemQty(0, 1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="cart-item-card">
+          <div class="cart-item-top">
+            <span>Chili Hot Honey Dip (60ml)</span>
+            <span style="color:var(--wine);">NT$ 35</span>
+          </div>
+          <div class="cart-item-opts">特製辣蜜沾醬 · 環保 PP 封膜杯</div>
+          <div class="cart-item-qty">
+            <span style="color:#7A726C;">QTY:</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="updateItemQty(1, -1)">-</button>
+              <span>1</span>
+              <button class="qty-btn" onclick="updateItemQty(1, 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-line">
+          <span>ITEMS SUBTOTAL (餐點小計):</span>
+          <span id="cartSubtotal">NT$ 415</span>
+        </div>
+        <div class="summary-line">
+          <span>ECO KRAFT PACKAGING (包裝袋工本費):</span>
+          <span>NT$ 20</span>
+        </div>
+        <div class="summary-line total">
+          <span>TOTAL (概念預估總計):</span>
+          <span id="cartTotal">NT$ 435</span>
+        </div>
+
+        <button class="btn-checkout-demo" onclick="alert('【FORNO 27 數位體驗展示】\n本介面為作品集互動原型（SHOT 17），未串接真實金流扣款。\n\n感謝體驗 FLTL × HOWARD 設計概念！')">
+          INVIA ORDINE (送出概念訂單)
+        </button>
+        <div style="font-size:10px; color:#8C2D26; text-align:center; margin-top:8px;">
+          DEMO MODE · NO REAL CARD CHARGES
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let basePrice = 380;
+    let selectedSizeName = '12 Inch Classica';
+    let currentProdName = 'Margherita Classica';
+
+    let cart = [
+      { name: 'Margherita Classica (12")', price: 380, qty: 1, desc: '正統薄底 · 含熱氣防潮外帶盒' },
+      { name: 'Chili Hot Honey Dip (60ml)', price: 35, qty: 1, desc: '特製辣蜜沾醬 · 環保 PP 封膜杯' }
+    ];
+
+    function setViewMode(mode) {
+      const vp = document.getElementById('appViewport');
+      const btnDesk = document.getElementById('btnDesk');
+      const btnMob = document.getElementById('btnMob');
+      if (mode === 'mobile') {
+        vp.classList.add('mobile-mode');
+        btnMob.classList.add('active');
+        btnDesk.classList.remove('active');
+      } else {
+        vp.classList.remove('mobile-mode');
+        btnDesk.classList.add('active');
+        btnMob.classList.remove('active');
+      }
+    }
+
+    function setFulfilment(type) {
+      document.getElementById('btnTakeaway').classList.toggle('active', type === 'takeaway');
+      document.getElementById('btnDineIn').classList.toggle('active', type === 'dinein');
+    }
+
+    function toggleCart(isOpen) {
+      document.getElementById('cartDrawer').classList.toggle('open', isOpen);
+    }
+
+    function openCustomizer(prodKey) {
+      const titles = {
+        margherita: 'Margherita Classica (經典瑪格麗特)',
+        diavola: 'Diavola con Miele Piccante (辣味薩拉米)',
+        tartufo: 'Tartufo Bianco & Funghi (白松露野蕈)',
+        focaccia: 'Focaccia Artigianale (迷迭香佛卡夏)'
+      };
+      currentProdName = titles[prodKey] || 'Margherita Classica';
+      document.getElementById('modalProdTitle').textContent = currentProdName;
+      document.getElementById('customizerModal').classList.add('active');
+      calcModalPrice();
+    }
+
+    function closeCustomizer() {
+      document.getElementById('customizerModal').classList.remove('active');
+    }
+
+    function selectSize(pillEl, price, sizeName) {
+      document.querySelectorAll('.opt-pill').forEach(p => p.classList.remove('active'));
+      pillEl.classList.add('active');
+      basePrice = price;
+      selectedSizeName = sizeName;
+      calcModalPrice();
+    }
+
+    function calcModalPrice() {
+      let total = basePrice;
+      if (document.getElementById('chkSauceHoney').checked) total += 35;
+      if (document.getElementById('chkSauceTruffle').checked) total += 40;
+      document.getElementById('modalFinalPrice').textContent = 'NT$ ' + total;
+      return total;
+    }
+
+    function confirmAddToCart() {
+      const finalPrice = calcModalPrice();
+      let addons = [];
+      if (document.getElementById('chkSauceHoney').checked) addons.push('Hot Honey');
+      if (document.getElementById('chkSauceTruffle').checked) addons.push('Truffle Crema');
+
+      cart.push({
+        name: currentProdName + ' (' + selectedSizeName + ')',
+        price: finalPrice,
+        qty: 1,
+        desc: addons.length ? '加購沾醬: ' + addons.join(', ') : '標準配方'
+      });
+
+      renderCart();
+      closeCustomizer();
+      toggleCart(true);
+    }
+
+    function updateItemQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      container.innerHTML = '';
+
+      let subtotal = 0;
+      let count = 0;
+
+      cart.forEach((item, idx) => {
+        subtotal += item.price * item.qty;
+        count += item.qty;
+
+        const el = document.createElement('div');
+        el.className = 'cart-item-card';
+        el.innerHTML = `
+          <div class="cart-item-top">
+            <span>${item.name}</span>
+            <span style="color:var(--wine);">NT$ ${item.price * item.qty}</span>
+          </div>
+          <div class="cart-item-opts">${item.desc}</div>
+          <div class="cart-item-qty">
+            <span style="color:#7A726C;">QTY:</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="updateItemQty(${idx}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="updateItemQty(${idx}, 1)">+</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('cartSubtotal').textContent = 'NT$ ' + subtotal;
+      document.getElementById('cartTotal').textContent = 'NT$ ' + (subtotal > 0 ? (subtotal + 20) : 0);
+    }
+  </script>
+</body>
+</html>

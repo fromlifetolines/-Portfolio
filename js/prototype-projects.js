@@ -39,5 +39,28 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/island-index/assets/mockups/shot-05-v4-1.jpg',
     interactiveAsset: 'brand/island-index/assets/mockups/shot-05-v4-1.jpg',
     caseStudy: 'brand/island-index/'
+  },
+  {
+    id: 'forno-27',
+    order: 3,
+    published: true,
+    title: 'FORNO 27',
+    year: '2026',
+    category: {
+      en: 'Brand Identity / Packaging Engineering / Digital UI',
+      'zh-TW': '品牌識別 / 包裝工程結構 / 數位點餐'
+    },
+    projectType: {
+      en: 'Self-Initiated Brand Concept',
+      'zh-TW': '自主品牌概念提案'
+    },
+    description: {
+      en: 'Contemporary Neapolitan pizzeria and bakery brand identity, featuring a three-size concept packaging system, editable vector dielines, and a responsive digital ordering experience.',
+      'zh-TW': '當代義式柴燒窯烤披薩與烘焙品牌識別，結合三尺寸可編輯包裝工程、展開刀模圖層系統與自適應線上點餐平台。'
+    },
+    cover: 'brand/forno-27/assets/mockups/shot-06.jpg',
+    interactiveAsset: 'brand/forno-27/assets/mockups/shot-06.jpg',
+    caseStudy: 'brand/forno-27/'
   }
 ]);
+
