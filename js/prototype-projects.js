@@ -61,6 +61,28 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/forno-27/assets/mockups/shot-06-v5.jpg',
     interactiveAsset: 'brand/forno-27/assets/mockups/shot-06-v5.jpg',
     caseStudy: 'brand/forno-27/'
+  },
+  {
+    id: 'split-09',
+    order: 4,
+    published: true,
+    title: 'SPLIT/09',
+    year: '2026',
+    category: {
+      en: 'Integrated Advertising Campaign / Visual System',
+      'zh-TW': '整合廣告企劃 / 運動視覺識別'
+    },
+    projectType: {
+      en: 'Independent Concept Project',
+      'zh-TW': '自主概念企劃'
+    },
+    description: {
+      en: 'Independent urban night running campaign identity across three distance tiers, outdoor touchpoints, editorial guide and digital UI experiences.',
+      'zh-TW': '以城市夜間路跑文化為背景的整合廣告概念企劃，涵蓋三種挑戰級別識別、戶外燈箱看板、賽事實體刊物與自適應數位報名體驗。'
+    },
+    cover: 'brand/split-09/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/split-09/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/split-09/'
   }
 ]);
 
