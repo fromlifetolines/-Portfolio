@@ -93,7 +93,7 @@
         workEyebrow: 'FEATURED',
         workTitle: 'WORK',
         workOverlay: 'Work',
-        workDesc: 'Selected projects in brand identity, product design, advertising campaigns, and digital experiences. Explore each case study.',
+        workDesc: 'Want to see how the work came together? Explore the case studies.',
         workBtnTitle: 'View Featured Work',
         aboutEyebrow: 'ABOUT',
         aboutTitle: 'HOWARD',
@@ -104,8 +104,8 @@
       },
       helmets: {
         titleMain: 'SELECTED WORK',
-        titleSub: 'DESIGN PRACTICE',
-        desc: 'A selection of design projects by Howard Huang and FLTL, spanning brand identity, visual communication, product design, advertising campaigns, and digital experiences. Each case study presents its own concept and design applications. New projects will be added as they are completed.',
+        titleSub: 'CASE STUDIES',
+        desc: "Here's a selection of my recent work: a product I've built, plus independent concepts in branding, packaging, campaigns, and digital interfaces. Open any project for a closer look.",
         canvasAria: 'Interactive 3D FLTL NFC Smart Business Card',
         btnFlip: 'FLIP 180°',
         btnFlipTitle: 'Flip Card 180°',
@@ -117,10 +117,14 @@
         btnStore: 'OFFICIAL PRODUCT SITE ↗'
       },
       socials: {
-        titleMain: 'WHAT’S NEXT',
-        titleSerif: 'ON PRACTICE',
-        intro: 'CONNECT WITH HOWARD HUANG',
-        email: 'EMAIL'
+        titleMain: 'HAVE A PROJECT?',
+        titleSerif: "LET'S TALK.",
+        intro: 'Have something in mind? Send me an email.',
+        email: 'EMAIL',
+        altWork01: 'FLTL NFC smart card detail',
+        altWork02: 'Island Index tea packaging design',
+        altWork03: 'FORNO 27 identity and packaging',
+        altWork04: 'SPLIT/09 urban night run campaign visual'
       },
       footer: {
         marqueeHtml: '<span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">CREATIVE STRATEGIST</span><span class="marquee-dot">•</span><span class="marquee-item">VISUAL DESIGN DIRECTOR</span><span class="marquee-dot">•</span><span class="marquee-item">DIGITAL PRODUCT BUILDER</span><span class="marquee-dot">•</span><span class="marquee-item">10+ YEARS EXPERIENCE</span><span class="marquee-dot">•</span><span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">CREATIVE STRATEGIST</span><span class="marquee-dot">•</span><span class="marquee-item">VISUAL DESIGN DIRECTOR</span><span class="marquee-dot">•</span><span class="marquee-item">DIGITAL PRODUCT BUILDER</span><span class="marquee-dot">•</span><span class="marquee-item">10+ YEARS EXPERIENCE</span><span class="marquee-dot">•</span>',
@@ -192,7 +196,7 @@
         home: '首頁',
         navWork: '專案作品',
         navAbout: '關於 HOWARD',
-        navHelmets: '精選作品',
+        navHelmets: '作品選集',
         tagline: '10+ 年創意指導、品牌策略與數位體驗架構',
         contact: '聯絡洽談',
         langLabel: '語言：'
@@ -257,7 +261,7 @@
         workEyebrow: '精選',
         workTitle: '作品',
         workOverlay: '作品',
-        workDesc: '收錄品牌識別、產品設計、整合廣告及數位體驗等精選專案，點選作品查看完整案例。',
+        workDesc: '想知道作品怎麼做出來的？這裡有完整案例。',
         workBtnTitle: '瀏覽精選專案',
         aboutEyebrow: '關於',
         aboutTitle: 'HOWARD',
@@ -267,9 +271,9 @@
         altHowardSide: 'Howard Huang — 側面形象肖像'
       },
       helmets: {
-        titleMain: '精選作品',
-        titleSub: '設計實踐',
-        desc: '收錄 Howard Huang 與 FLTL 的精選設計專案，涵蓋品牌識別、視覺傳達、產品設計、整合廣告及數位體驗。每件作品皆呈現獨立的創意概念與設計應用，更多專案將陸續加入。',
+        titleMain: '作品選集',
+        titleSub: '設計紀錄',
+        desc: '這裡放的是我最近完成的作品。有自己開發的產品，也有品牌識別、包裝、廣告與數位介面的企劃。點開專案，可以直接看設計細節。',
         canvasAria: '可互動 3D FLTL NFC 智慧名片實體模型',
         btnFlip: '翻轉 180°',
         btnFlipTitle: '翻轉卡片 180 度',
@@ -281,10 +285,14 @@
         btnStore: '官方產品官網 ↗'
       },
       socials: {
-        titleMain: '前瞻實踐',
-        titleSerif: '設計歷程',
-        intro: '與 HOWARD HUANG 建立聯繫',
-        email: '電子郵件'
+        titleMain: '看完作品',
+        titleSerif: '聊聊合作',
+        intro: '有想合作的題目？直接來信。',
+        email: '電子郵件',
+        altWork01: 'FLTL NFC 智慧名片細節',
+        altWork02: '島序台灣茶包裝設計',
+        altWork03: 'FORNO 27 品牌與包裝設計',
+        altWork04: 'SPLIT/09 城市夜跑廣告主視覺'
       },
       footer: {
         marqueeHtml: '<span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">創意策略</span><span class="marquee-dot">•</span><span class="marquee-item">視覺設計</span><span class="marquee-dot">•</span><span class="marquee-item">數位產品</span><span class="marquee-dot">•</span><span class="marquee-item">10 年以上經驗</span><span class="marquee-dot">•</span><span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">創意策略</span><span class="marquee-dot">•</span><span class="marquee-item">視覺設計</span><span class="marquee-dot">•</span><span class="marquee-item">數位產品</span><span class="marquee-dot">•</span><span class="marquee-item">10 年以上經驗</span><span class="marquee-dot">•</span>',
