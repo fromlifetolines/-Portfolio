@@ -28,7 +28,7 @@
         home: 'HOME',
         navWork: 'WORK',
         navAbout: 'ABOUT',
-        navHelmets: 'HALL OF FAME',
+        navHelmets: 'SELECTED WORK',
         tagline: '10+ YEARS CREATIVE DIRECTION & DIGITAL SYSTEMS',
         contact: 'CONTACT',
         langLabel: 'LANGUAGE:'
@@ -93,7 +93,7 @@
         workEyebrow: 'FEATURED',
         workTitle: 'WORK',
         workOverlay: 'Work',
-        workDesc: 'FLTL NFC smart business card system bridging physical touchpoints and instant digital transmission.',
+        workDesc: 'Selected projects in brand identity, product design, advertising campaigns, and digital experiences. Explore each case study.',
         workBtnTitle: 'View Featured Work',
         aboutEyebrow: 'ABOUT',
         aboutTitle: 'HOWARD',
@@ -103,9 +103,9 @@
         altHowardSide: 'Howard Huang — Standing Side Profile Crop'
       },
       helmets: {
-        titleMain: 'FLAGSHIP OBJECT',
-        titleSub: 'HALL OF FAME',
-        desc: 'Self-initiated NFC smart business card system engineered with genuine NXP NTAG216 high-frequency chip (888 bytes, 32-bit password protection), standard 85.6 × 54 × 0.76 mm matte black PVC card body, and NFC-enabled digital profile access on compatible phones.',
+        titleMain: 'SELECTED WORK',
+        titleSub: 'DESIGN PRACTICE',
+        desc: 'A selection of design projects by Howard Huang and FLTL, spanning brand identity, visual communication, product design, advertising campaigns, and digital experiences. Each case study presents its own concept and design applications. New projects will be added as they are completed.',
         canvasAria: 'Interactive 3D FLTL NFC Smart Business Card',
         btnFlip: 'FLIP 180°',
         btnFlipTitle: 'Flip Card 180°',
@@ -192,7 +192,7 @@
         home: '首頁',
         navWork: '專案作品',
         navAbout: '關於 HOWARD',
-        navHelmets: '旗艦殿堂',
+        navHelmets: '精選作品',
         tagline: '10+ 年創意指導、品牌策略與數位體驗架構',
         contact: '聯絡洽談',
         langLabel: '語言：'
@@ -257,7 +257,7 @@
         workEyebrow: '精選',
         workTitle: '作品',
         workOverlay: '作品',
-        workDesc: 'FLTL NFC 旗艦智慧名片系統，無縫鏈結實體社交觸點與即時數位傳輸。',
+        workDesc: '收錄品牌識別、產品設計、整合廣告及數位體驗等精選專案，點選作品查看完整案例。',
         workBtnTitle: '瀏覽精選專案',
         aboutEyebrow: '關於',
         aboutTitle: 'HOWARD',
@@ -267,9 +267,9 @@
         altHowardSide: 'Howard Huang — 側面形象肖像'
       },
       helmets: {
-        titleMain: '旗艦實體作品',
-        titleSub: '殿堂核心',
-        desc: '自主研發之 NFC 智慧名片系統，搭載原廠 NXP NTAG216 高頻晶片（888 位元組儲存空間、支援 32-bit 密碼保護），採用標準 85.6 × 54 × 0.76 mm 純黑消光 PVC 霧面卡體，實現一觸即達的極速數位傳輸。',
+        titleMain: '精選作品',
+        titleSub: '設計實踐',
+        desc: '收錄 Howard Huang 與 FLTL 的精選設計專案，涵蓋品牌識別、視覺傳達、產品設計、整合廣告及數位體驗。每件作品皆呈現獨立的創意概念與設計應用，更多專案將陸續加入。',
         canvasAria: '可互動 3D FLTL NFC 智慧名片實體模型',
         btnFlip: '翻轉 180°',
         btnFlipTitle: '翻轉卡片 180 度',
