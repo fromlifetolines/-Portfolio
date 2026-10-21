@@ -1,0 +1,232 @@
+{
+  "project": "NORTHLINE TRADE",
+  "concept_only": true,
+  "master_count": 16,
+  "web_count": 16,
+  "assets": [
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_01_INDUSTRIAL_PROCUREMENT.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 984784,
+      "sha256": "0acd7917d2ea6b9b4d3b1651f6e4eefe824d08f95525f6d8adc769f88b8355fd"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_02_BUYER_CONTEXT.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 137622,
+      "sha256": "376c782d6b5c87d4cc6fc0c5426654e0a3d1e7baa5258d0734deddd63c735187"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_03_BRAND_IDENTITY.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 81079,
+      "sha256": "495f918bce8e042ebf31c353a77156831650570b3d5b98b1e2c4f8bb06ddba25"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_04_INFORMATION_ARCHITECTURE.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 102800,
+      "sha256": "45437b181198116b97aa1dcb686b96e7a1e93a33d3f4538d3791694a13e28997"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_05_PART_NUMBER_SEARCH.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 147663,
+      "sha256": "bdfeb7248f1e54adfda334847e0352f5548ce28d7ac05f8b965a508b5cb58170"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_06_PRODUCT_CATALOG.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 657400,
+      "sha256": "83f7ab9c49516958546ff1c7a28f34ce28544f40ba2af1e3066867dff023fd94"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_07_PRODUCT_DETAIL.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 702798,
+      "sha256": "4d187c79ab68b384ae61fe6e5716d72d248db9a061c06ad6b54bb1112b67cdf6"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_08_SPEC_COMPARISON.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 111568,
+      "sha256": "4db1128865be6d0b2edd1db662c0a03f63e705bd8e442c4da492a303a7c43db6"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_09_MOQ_TIERED_PRICING.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 122711,
+      "sha256": "786e8aa9dec121effe1085bc46daf68d165fbeab34dcd1092351af3283b60913"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_10_RFQ_BUILDER.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 111250,
+      "sha256": "056fa1fab8eaeff04705beb2ac03a726d91e5a6578aaba5a97a8466d833bba95"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_11_APPROVAL_WORKFLOW.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 134326,
+      "sha256": "120ac375d4fe5479f6ea2fd69cf24e65392cbc8ad5864ef1fc215614be7cb378"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_12_QUOTATION_REVIEW.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 101630,
+      "sha256": "cc64721e5763cb2e88689d30852687652b1bc4346a8ddc212a07428277fc45d9"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_13_PROCUREMENT_STATUS.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 93675,
+      "sha256": "bd03b68d0947328ecb684c7521073fc1a9cba1e48197a656982df01b89bb9771"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_14_MOBILE_QUICK_PROCUREMENT.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 135133,
+      "sha256": "de74a48d0fecb058bb3c3d80dbf9e9aafb8fba2eeff3980ab4be1033a4602818"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_15_UI_COMPONENTS_ACCESSIBILITY.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 105525,
+      "sha256": "58c7d81045aa2797c933d4f0ebb1b7186c16556d03b3450a8f3444312193ed64"
+    },
+    {
+      "relative_path": "01_MASTER_PNG/SHOT_16_FINAL_SHOWCASE.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 499790,
+      "sha256": "93b56ad5d3651a4103b3bdb8443044cff20957c182501432c2e4d22b2b42b4ca"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-01.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 421570,
+      "sha256": "d8a10240f0d172bbdfb7df973e0de019095eeab14b858119649010e276273a8d"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-02.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 242597,
+      "sha256": "6c072f93fe112848caf3aec0e626942cc2b516909b6810ebb2f2923502142d97"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-03.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 164311,
+      "sha256": "ea6f2a7ca9431f2289d6b1f27926ba5ebfa82123d5e123c7bf37996d431dde03"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-04.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 185610,
+      "sha256": "2cd39db6a6f126dc81dc20c00fa77af4dd3b3238a4cdab6a80abb5c91acbd83c"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-05.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 223847,
+      "sha256": "cbf6dab659f798e6d736174c4ace4f7615f795f78520c5d571ff81924a666ac6"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-06.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 436822,
+      "sha256": "cc203d9591c499446cc5b7049f88f1efcbe1e46f2b8ed00cdf06a969f7c51a1a"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-07.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 385926,
+      "sha256": "3a09503625b584fd9c5d0f1af8b7c7016654b9b0f8a50e4b1415d4198e86b9d6"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-08.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 251914,
+      "sha256": "41134f2c72d6f27352718ffb624e912849032d0164e7cf57cf4a029db98f1290"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-09.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 212022,
+      "sha256": "411acc5342edcc7df9c039f52d3a9e703c90056048646ebb0f761da2fa16a213"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-10.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 189702,
+      "sha256": "8b8951d019b3dddf2bb68adb9cf9ac96915f77a74a036ac78a6067b0cdfaf534"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-11.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 193882,
+      "sha256": "438ead0138b2708b19f87c97cb7efb94ab192e3b30c5e65a4be825cf19aa022c"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-12.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 180338,
+      "sha256": "e305e9632027e5cfdd3912bf03bc4f41947e6fc248fff2106ea890ceb7d31c9f"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-13.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 160308,
+      "sha256": "b0a30cb917a3c489c2fb24197fc495c7093e777791f22079b74a38ff316c9765"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-14.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 281314,
+      "sha256": "abc64217cc026b5550928443e50bb7d7bfee8679d79d893025b7ab03c38e397b"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-15.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 207546,
+      "sha256": "b785bcd4340e9fcf014415b0faddb6afcbe0024f37d8a00eae2d19e4c8b7c8db"
+    },
+    {
+      "relative_path": "02_WEB_JPG/shot-16.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 364244,
+      "sha256": "35b432db6a9c15ced910ad4e493dd83e59bc6a5d65d3f73d0d7880f23ca8095a"
+    }
+  ]
+}
