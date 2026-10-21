@@ -1209,9 +1209,10 @@ window.protoGoToSection = function(sectionId) {
 };
 
 /* ========================================================
-   13. SCALABLE PUBLISHED-WORKS SWIPE GALLERY (V2)
-   Scalable swipe gallery for #socials with subtle edge arrows,
-   breathing micro-interaction, mouse drag & touch swipe.
+   13. SCALABLE PUBLISHED-WORKS INFINITE SWIPE GALLERY (V3)
+   True seamless infinite loop gallery for #socials with
+   subtle edge arrows, breathing micro-interaction,
+   mouse drag, touch swipe, and scalable multi-set buffering.
    ======================================================== */
 function initSocialWorksCarousel() {
   const track = document.getElementById('socialsTrack');
@@ -1228,50 +1229,301 @@ function initSocialWorksCarousel() {
     .filter(p => p && p.published === true && p.id && p.title && (p.cover || p.socialCover) && p.caseStudy)
     .sort((a, b) => (b.order || 0) - (a.order || 0));
 
-  if (!published.length) return;
+  const N = published.length;
+  if (!N) return;
 
   track.dataset.carouselInit = 'true';
 
   const safeLocal = value => typeof value === 'string' && !/^(?:[a-z]+:|\/\/)/i.test(value) && !value.includes('..') && /^[a-zA-Z0-9_.\/-]+$/.test(value) ? value : null;
 
-  // Clear fallback cards and dynamically build cards from published registry
+  function getVisibleCount() {
+    const w = window.innerWidth;
+    if (w > 1100) return 4;
+    if (w > 600) return 2;
+    return 1;
+  }
+
+  // Infinite buffer setup: use 5 sets for N <= 6, 3 sets for N > 6
+  const numSets = N <= 6 ? 5 : 3;
+  const baseOffset = Math.floor(numSets / 2) * N;
+  const centerSet = Math.floor(numSets / 2);
+
+  let logicalIndex = 0;
+  let trackIndex = baseOffset + logicalIndex;
+  let isTransitioning = false;
+
+  // Clear fallback cards and dynamically build cards with infinite clone sets
   track.innerHTML = '';
-  published.forEach((project, idx) => {
-    const coverPath = safeLocal(project.socialCover || project.cover);
-    const caseUrl = safeLocal(project.caseStudy);
-    if (!coverPath || !caseUrl) return;
+  for (let s = 0; s < numSets; s++) {
+    published.forEach((project, idx) => {
+      const coverPath = safeLocal(project.socialCover || project.cover);
+      const caseUrl = safeLocal(project.caseStudy);
+      if (!coverPath || !caseUrl) return;
 
-    const card = document.createElement('a');
-    card.className = 'social-card';
-    card.id = `social-card-${project.id}`;
-    card.href = caseUrl;
-    card.setAttribute('data-project-id', project.id);
-    card.setAttribute('data-order', String(project.order || idx + 1));
-    card.setAttribute('title', project.title);
-    card.setAttribute('aria-label', project.title);
+      const card = document.createElement('a');
+      card.className = 'social-card';
+      card.href = caseUrl;
+      card.setAttribute('data-project-id', project.id);
+      card.setAttribute('data-order', String(project.order || idx + 1));
+      card.setAttribute('title', project.title);
 
-    const img = document.createElement('img');
-    img.src = coverPath;
-    img.loading = 'lazy';
-    img.alt = project.title;
+      if (s === centerSet) {
+        card.id = `social-card-${project.id}`;
+      } else {
+        card.classList.add('is-clone');
+      }
 
-    card.appendChild(img);
-    track.appendChild(card);
+      const img = document.createElement('img');
+      img.src = coverPath;
+      img.loading = 'lazy';
+      img.alt = project.title;
 
-    card.addEventListener('focus', () => {
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      card.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'nearest', inline: 'nearest' });
+      card.appendChild(img);
+      track.appendChild(card);
     });
-  });
+  }
 
-  // Multilingual synchronization
-  const updateCardsI18n = () => {
+  const allCards = Array.from(track.querySelectorAll('.social-card'));
+
+  function updateAriaAndTabIndices() {
+    const V = getVisibleCount();
+    const visibleStart = trackIndex;
+    const visibleEnd = trackIndex + V - 1;
+
     const lang = (window.howardI18n && window.howardI18n.getCurrentLanguage()) || document.documentElement.lang || 'en';
     const isZh = lang === 'zh-TW';
     const i18nSocials = (window.howardI18n && window.howardI18n.translations && window.howardI18n.translations[lang] && window.howardI18n.translations[lang].socials) || {};
 
-    const cards = track.querySelectorAll('.social-card');
-    cards.forEach(card => {
+    allCards.forEach((card, idx) => {
+      const isVisible = idx >= visibleStart && idx <= visibleEnd;
+      if (isVisible) {
+        card.tabIndex = 0;
+        card.removeAttribute('aria-hidden');
+        const pId = card.getAttribute('data-project-id');
+        const proj = published.find(p => p.id === pId);
+        if (proj) {
+          const orderNum = proj.order || 1;
+          const orderKey = `altWork${String(orderNum).padStart(2, '0')}`;
+          const alt = i18nSocials[orderKey] || (isZh ? `${proj.title} 作品案例` : `${proj.title} case study`);
+          card.setAttribute('aria-label', `${proj.title} — ${alt}`);
+        }
+      } else {
+        card.tabIndex = -1;
+        card.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  function getStep() {
+    const firstCard = track.querySelector('.social-card');
+    if (!firstCard) return track.clientWidth / getVisibleCount();
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap) || 24;
+    return firstCard.offsetWidth + gap;
+  }
+
+  function updatePosition(animate = true) {
+    const step = getStep();
+    const targetX = -(trackIndex * step);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!animate || prefersReduced) {
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${targetX}px)`;
+      track.offsetHeight; // reflow
+      updateCounter();
+      updateAriaAndTabIndices();
+    } else {
+      isTransitioning = true;
+      track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+      track.style.transform = `translateX(${targetX}px)`;
+      updateCounter();
+      updateAriaAndTabIndices();
+    }
+  }
+
+  function normalizeIndex() {
+    const minBound = baseOffset;
+    const maxBound = baseOffset + N;
+
+    let normalized = trackIndex;
+    while (normalized >= maxBound) {
+      normalized -= N;
+    }
+    while (normalized < minBound) {
+      normalized += N;
+    }
+
+    if (normalized !== trackIndex) {
+      const activeIdx = allCards.indexOf(document.activeElement);
+      const activeOffset = (activeIdx >= 0 && activeIdx >= trackIndex && activeIdx < trackIndex + getVisibleCount())
+        ? activeIdx - trackIndex
+        : -1;
+
+      trackIndex = normalized;
+      const step = getStep();
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${-(trackIndex * step)}px)`;
+      track.offsetHeight; // force reflow
+
+      if (activeOffset >= 0) {
+        const targetCard = allCards[trackIndex + activeOffset];
+        if (targetCard) targetCard.focus({ preventScroll: true });
+      }
+    }
+
+    logicalIndex = (trackIndex - baseOffset) % N;
+    if (logicalIndex < 0) logicalIndex += N;
+    updateCounter();
+    updateAriaAndTabIndices();
+  }
+
+  track.addEventListener('transitionend', (e) => {
+    if (e.target !== track) return;
+    isTransitioning = false;
+    normalizeIndex();
+  });
+
+  let lastActionTime = 0;
+  function throttleAction(fn) {
+    const now = Date.now();
+    if (now - lastActionTime < 160) return;
+    lastActionTime = now;
+    fn();
+  }
+
+  function goNext() {
+    logicalIndex = (logicalIndex + 1) % N;
+    trackIndex++;
+    updatePosition(true);
+  }
+
+  function goPrev() {
+    logicalIndex = (logicalIndex - 1 + N) % N;
+    trackIndex--;
+    updatePosition(true);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => throttleAction(goPrev));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => throttleAction(goNext));
+  }
+
+  // Pointer drag & Touch interaction
+  let isPointerDown = false;
+  let startX = 0;
+  let dragStartTranslateX = 0;
+  let hasDragged = false;
+
+  function getCurrentTranslateX() {
+    const style = window.getComputedStyle(track);
+    const matrix = new DOMMatrixReadOnly(style.transform);
+    return matrix.m41;
+  }
+
+  track.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    isPointerDown = true;
+    hasDragged = false;
+    startX = e.pageX;
+
+    dragStartTranslateX = getCurrentTranslateX();
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${dragStartTranslateX}px)`;
+    track.classList.add('is-dragging');
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isPointerDown) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 6) {
+      hasDragged = true;
+    }
+    track.style.transform = `translateX(${dragStartTranslateX + dx}px)`;
+    e.preventDefault();
+  }, { passive: false });
+
+  function endPointerDrag(e) {
+    if (!isPointerDown) return;
+    isPointerDown = false;
+    track.classList.remove('is-dragging');
+
+    const totalDx = (e.pageX || 0) - startX;
+    const step = getStep();
+    const threshold = Math.min(50, step * 0.2);
+
+    if (Math.abs(totalDx) > threshold) {
+      if (totalDx < 0) {
+        const count = Math.max(1, Math.round(Math.abs(totalDx) / step));
+        logicalIndex = (logicalIndex + count) % N;
+        trackIndex += count;
+      } else {
+        const count = Math.max(1, Math.round(Math.abs(totalDx) / step));
+        logicalIndex = (logicalIndex - count + N * 10) % N;
+        trackIndex -= count;
+      }
+    }
+    updatePosition(true);
+
+    if (hasDragged) {
+      setTimeout(() => { hasDragged = false; }, 160);
+    }
+  }
+
+  window.addEventListener('pointerup', endPointerDrag);
+  window.addEventListener('pointercancel', endPointerDrag);
+
+  // Suppress card clicks on drag
+  track.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }, true);
+
+  // Keyboard navigation
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      throttleAction(goNext);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      throttleAction(goPrev);
+    } else if (e.key === ' ' || e.key === 'Spacebar') {
+      const card = e.target.closest('.social-card');
+      if (card && card.href) {
+        e.preventDefault();
+        card.click();
+      }
+    }
+  });
+
+  function updateCounter() {
+    if (!counterEl) return;
+    const lang = (window.howardI18n && window.howardI18n.getCurrentLanguage()) || document.documentElement.lang || 'en';
+    const isZh = lang === 'zh-TW';
+
+    const startNum = logicalIndex + 1;
+    const counterText = isZh
+      ? `第 ${startNum} 件／共 ${N} 件`
+      : `${String(startNum).padStart(2, '0')} / ${String(N).padStart(2, '0')} WORKS`;
+
+    counterEl.textContent = counterText;
+    const currentProj = published[logicalIndex];
+    if (currentProj) {
+      counterEl.setAttribute('aria-label', `${counterText}: ${currentProj.title}`);
+    }
+  }
+
+  function updateCardsI18n() {
+    const lang = (window.howardI18n && window.howardI18n.getCurrentLanguage()) || document.documentElement.lang || 'en';
+    const isZh = lang === 'zh-TW';
+    const i18nSocials = (window.howardI18n && window.howardI18n.translations && window.howardI18n.translations[lang] && window.howardI18n.translations[lang].socials) || {};
+
+    allCards.forEach(card => {
       const pId = card.getAttribute('data-project-id');
       const proj = published.find(p => p.id === pId);
       if (!proj) return;
@@ -1281,216 +1533,40 @@ function initSocialWorksCarousel() {
       const img = card.querySelector('img');
       if (img) img.alt = alt;
       card.setAttribute('title', proj.title);
-      card.setAttribute('aria-label', `${proj.title} — ${alt}`);
     });
 
-    updateControls();
-  };
-
-  // Scroll step helper
-  const getScrollStep = () => {
-    const firstCard = track.querySelector('.social-card');
-    if (!firstCard) return track.clientWidth * 0.8;
-    const style = window.getComputedStyle(track);
-    const gap = parseFloat(style.columnGap || style.gap) || 24;
-    return firstCard.offsetWidth + gap;
-  };
-
-  // Drag interaction with click suppression
-  let isPointerDown = false;
-  let startX = 0;
-  let startScrollLeft = 0;
-  let hasDragged = false;
-
-  track.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0) return;
-    isPointerDown = true;
-    hasDragged = false;
-    startX = e.pageX;
-    startScrollLeft = track.scrollLeft;
-  });
-
-  window.addEventListener('pointermove', (e) => {
-    if (!isPointerDown) return;
-    const dx = e.pageX - startX;
-    if (Math.abs(dx) > 6) {
-      hasDragged = true;
-      track.classList.add('is-dragging');
-      track.scrollLeft = startScrollLeft - dx;
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  const endPointerDrag = () => {
-    if (!isPointerDown) return;
-    isPointerDown = false;
-    track.classList.remove('is-dragging');
-    if (hasDragged) {
-      setTimeout(() => {
-        hasDragged = false;
-      }, 150);
-    }
-  };
-  window.addEventListener('pointerup', endPointerDrag);
-  window.addEventListener('pointercancel', endPointerDrag);
-
-  // Touch drag tracking for mobile
-  let touchStartX = 0;
-  let touchDragged = false;
-
-  track.addEventListener('touchstart', (e) => {
-    if (e.touches.length > 0) {
-      touchStartX = e.touches[0].clientX;
-      touchDragged = false;
-    }
-  }, { passive: true });
-
-  track.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-      const dx = Math.abs(e.touches[0].clientX - touchStartX);
-      if (dx > 8) {
-        touchDragged = true;
-      }
-    }
-  }, { passive: true });
-
-  track.addEventListener('touchend', () => {
-    if (touchDragged) {
-      hasDragged = true;
-      setTimeout(() => {
-        hasDragged = false;
-        touchDragged = false;
-      }, 150);
-    }
-  }, { passive: true });
-
-  // Suppress clicks on cards if dragging occurred
-  track.addEventListener('click', (e) => {
-    if (hasDragged) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-    }
-  }, true);
-
-  // Button navigation
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      const step = getScrollStep();
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      track.scrollBy({ left: -step, behavior: prefersReduced ? 'auto' : 'smooth' });
-    });
+    updateAriaAndTabIndices();
+    updateCounter();
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      const step = getScrollStep();
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      track.scrollBy({ left: step, behavior: prefersReduced ? 'auto' : 'smooth' });
-    });
-  }
-
-  // Boundary state & progress counter
-  let lastCounterText = '';
-
-  const updateControls = () => {
-    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-    const scrollLeft = track.scrollLeft;
-
-    if (maxScroll <= 4) {
+  function updateControlsState() {
+    const V = getVisibleCount();
+    if (N <= V) {
       if (prevBtn) prevBtn.style.display = 'none';
       if (nextBtn) nextBtn.style.display = 'none';
       if (controlsEl) controlsEl.style.display = 'none';
-      return;
     } else {
-      if (prevBtn) prevBtn.style.display = '';
-      if (nextBtn) nextBtn.style.display = '';
-      if (controlsEl) controlsEl.style.display = '';
-    }
-
-    const isAtStart = scrollLeft <= 4;
-    const isAtEnd = scrollLeft >= maxScroll - 4;
-
-    if (prevBtn) {
-      prevBtn.disabled = isAtStart;
-      if (isAtStart) {
-        prevBtn.setAttribute('aria-disabled', 'true');
-        prevBtn.classList.add('is-hidden');
-      } else {
+      if (prevBtn) {
+        prevBtn.style.display = '';
+        prevBtn.disabled = false;
         prevBtn.removeAttribute('aria-disabled');
         prevBtn.classList.remove('is-hidden');
       }
-    }
-
-    if (nextBtn) {
-      nextBtn.disabled = isAtEnd;
-      if (isAtEnd) {
-        nextBtn.setAttribute('aria-disabled', 'true');
-        nextBtn.classList.add('is-hidden');
-        nextBtn.classList.remove('is-breathing');
-      } else {
+      if (nextBtn) {
+        nextBtn.style.display = '';
+        nextBtn.disabled = false;
         nextBtn.removeAttribute('aria-disabled');
         nextBtn.classList.remove('is-hidden');
         nextBtn.classList.add('is-breathing');
       }
+      if (controlsEl) controlsEl.style.display = '';
     }
+    updatePosition(false);
+  }
 
-    // Visible range calculation
-    const cards = track.querySelectorAll('.social-card');
-    const total = cards.length;
-    if (!total || !counterEl) return;
-
-    const trackRect = track.getBoundingClientRect();
-    let firstVisible = -1;
-    let lastVisible = -1;
-
-    cards.forEach((card, idx) => {
-      const rect = card.getBoundingClientRect();
-      const isVisible = rect.right > trackRect.left + 10 && rect.left < trackRect.right - 10;
-      if (isVisible) {
-        if (firstVisible === -1) firstVisible = idx;
-        lastVisible = idx;
-      }
-    });
-
-    if (firstVisible === -1) firstVisible = 0;
-    if (lastVisible === -1) lastVisible = Math.min(3, total - 1);
-
-    const startNum = firstVisible + 1;
-    const endNum = lastVisible + 1;
-
-    const lang = (window.howardI18n && window.howardI18n.getCurrentLanguage()) || document.documentElement.lang || 'en';
-    const isZh = lang === 'zh-TW';
-
-    let counterText = '';
-    if (isZh) {
-      counterText = startNum === endNum
-        ? `第 ${startNum} 件／共 ${total} 件`
-        : `第 ${startNum}–${endNum} 件／共 ${total} 件`;
-    } else {
-      const sStr = String(startNum).padStart(2, '0');
-      const eStr = String(endNum).padStart(2, '0');
-      const tStr = String(total).padStart(2, '0');
-      counterText = startNum === endNum
-        ? `${sStr} / ${tStr} WORKS`
-        : `${sStr}–${eStr} / ${tStr} WORKS`;
-    }
-
-    if (counterText !== lastCounterText) {
-      counterEl.textContent = counterText;
-      lastCounterText = counterText;
-    }
-  };
-
-  let scrollRaf = null;
-  track.addEventListener('scroll', () => {
-    if (scrollRaf) cancelAnimationFrame(scrollRaf);
-    scrollRaf = requestAnimationFrame(updateControls);
-  }, { passive: true });
-
-  window.addEventListener('resize', updateControls);
+  window.addEventListener('resize', updateControlsState);
   window.addEventListener('howard:languagechange', updateCardsI18n);
 
+  updateControlsState();
   updateCardsI18n();
-  updateControls();
 }

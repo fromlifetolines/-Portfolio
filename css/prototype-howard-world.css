@@ -1330,7 +1330,7 @@ body[data-nav-theme="dark"] .ham-line {
   color: var(--color-lime-off);
 }
 
-/* Scalable Works Swipe Gallery (V2) */
+/* Scalable Works Infinite Swipe Gallery (V3) */
 .socials-gallery-wrap {
   width: 100%;
   display: flex;
@@ -1342,22 +1342,25 @@ body[data-nav-theme="dark"] .ham-line {
   width: 100%;
 }
 
+.socials-track-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+
 .socials-media-row {
   display: flex;
   flex-wrap: nowrap;
   gap: 1.5rem;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   padding: 0.5rem 0;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  touch-action: pan-y;
 }
 
 .socials-media-row::-webkit-scrollbar {
@@ -1366,13 +1369,13 @@ body[data-nav-theme="dark"] .ham-line {
 
 .socials-media-row.is-dragging {
   cursor: grabbing;
-  scroll-behavior: auto;
-  scroll-snap-type: none;
+  transition: none !important;
 }
 
 /* Card sizing on desktop (≥1101px): 4 cards visible */
 .social-card {
   flex: 0 0 calc((100% - 4.5rem) / 4);
+  flex-shrink: 0;
   aspect-ratio: 16/10;
   border-radius: 8px;
   overflow: hidden;
@@ -1380,7 +1383,6 @@ body[data-nav-theme="dark"] .ham-line {
   display: block;
   text-decoration: none;
   position: relative;
-  scroll-snap-align: start;
   background-color: #141A16;
   transition: border-color var(--duration-fast);
 }
@@ -1583,7 +1585,7 @@ body[data-nav-theme="dark"] .ham-line {
     transition: none !important;
   }
   .socials-media-row {
-    scroll-behavior: auto !important;
+    transition: none !important;
   }
   .social-card img {
     transition: none !important;

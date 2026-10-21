@@ -454,16 +454,19 @@
         </h2>
         <div class="socials-gallery-wrap">
           <div class="socials-track-container">
-            <button type="button" class="socials-nav-btn socials-nav-prev is-hidden" id="socialsPrevBtn" aria-label="View newer work" data-i18n-attr="aria-label:socials.viewNewer" disabled>
+            <button type="button" class="socials-nav-btn socials-nav-prev" id="socialsPrevBtn" aria-label="View newer work" data-i18n-attr="aria-label:socials.viewNewer">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
-            <div class="socials-media-row" id="socialsTrack" tabindex="0" role="region" aria-label="Published works showcase gallery" data-i18n-attr="aria-label:socials.galleryAria">
-              <a href="brand/atlas-ops/" class="social-card" id="social-card-atlas-ops" title="ATLAS OPS" aria-label="ATLAS OPS"><img src="brand/atlas-ops/assets/mockups/shot-01.jpg" alt="ATLAS OPS outdoor equipment identity and gear" loading="lazy" data-i18n-attr="alt:socials.altWork05" /></a>
-              <a href="brand/split-09/" class="social-card" id="social-card-split-09" title="SPLIT/09" aria-label="SPLIT/09"><img src="brand/split-09/assets/mockups/shot-01.jpg" alt="SPLIT/09 urban night run campaign visual" loading="lazy" data-i18n-attr="alt:socials.altWork04" /></a>
-              <a href="brand/forno-27/" class="social-card" id="social-card-forno-27" title="FORNO 27" aria-label="FORNO 27"><img src="brand/forno-27/assets/mockups/shot-06-v5.jpg" alt="FORNO 27 identity and packaging" loading="lazy" data-i18n-attr="alt:socials.altWork03" /></a>
-              <a href="brand/island-index/" class="social-card" id="social-card-island-index" title="島序 ISLAND INDEX" aria-label="島序 ISLAND INDEX"><img src="brand/island-index/assets/mockups/shot-05-v4-1.jpg" alt="Island Index tea packaging design" loading="lazy" data-i18n-attr="alt:socials.altWork02" /></a>
+            <div class="socials-track-viewport" id="socialsViewport">
+              <div class="socials-media-row" id="socialsTrack" tabindex="0" role="region" aria-label="Published works showcase gallery" data-i18n-attr="aria-label:socials.galleryAria">
+                <a href="brand/atlas-ops/" class="social-card" id="social-card-atlas-ops" title="ATLAS OPS" aria-label="ATLAS OPS"><img src="brand/atlas-ops/assets/mockups/shot-01.jpg" alt="ATLAS OPS outdoor equipment identity and gear" loading="lazy" data-i18n-attr="alt:socials.altWork05" /></a>
+                <a href="brand/split-09/" class="social-card" id="social-card-split-09" title="SPLIT/09" aria-label="SPLIT/09"><img src="brand/split-09/assets/mockups/shot-01.jpg" alt="SPLIT/09 urban night run campaign visual" loading="lazy" data-i18n-attr="alt:socials.altWork04" /></a>
+                <a href="brand/forno-27/" class="social-card" id="social-card-forno-27" title="FORNO 27" aria-label="FORNO 27"><img src="brand/forno-27/assets/mockups/shot-06-v5.jpg" alt="FORNO 27 identity and packaging" loading="lazy" data-i18n-attr="alt:socials.altWork03" /></a>
+                <a href="brand/island-index/" class="social-card" id="social-card-island-index" title="島序 ISLAND INDEX" aria-label="島序 ISLAND INDEX"><img src="brand/island-index/assets/mockups/shot-05-v4-1.jpg" alt="Island Index tea packaging design" loading="lazy" data-i18n-attr="alt:socials.altWork02" /></a>
+                <a href="portfolio-nfc.html" class="social-card" id="social-card-fltl-nfc" title="FLTL NFC" aria-label="FLTL NFC"><img src="assets/fltl-nfc-macro.jpg" alt="FLTL NFC smart card detail" loading="lazy" data-i18n-attr="alt:socials.altWork01" /></a>
+              </div>
             </div>
             <button type="button" class="socials-nav-btn socials-nav-next is-breathing" id="socialsNextBtn" aria-label="View earlier work" data-i18n-attr="aria-label:socials.viewEarlier">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -472,7 +475,7 @@
             </button>
           </div>
           <div class="socials-gallery-controls" id="socialsControls">
-            <div class="socials-gallery-counter" id="socialsCounter" aria-live="polite">01–04 / 05 WORKS</div>
+            <div class="socials-gallery-counter" id="socialsCounter" aria-live="polite">01 / 05 WORKS</div>
             <a href="#work" class="socials-view-all-link" id="socialsViewAllLink" data-i18n="socials.viewAll">VIEW ALL WORK &rarr;</a>
           </div>
         </div>
