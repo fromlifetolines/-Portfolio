@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortalsHoverState();
   initFLTL3DCard();
   initProjectArchive();
+  initSocialWorksCarousel();
   initMagneticButtons();
   initRouteTransition();
 });
@@ -1206,3 +1207,290 @@ window.protoGoToSection = function(sectionId) {
     }
   }
 };
+
+/* ========================================================
+   13. SCALABLE PUBLISHED-WORKS SWIPE GALLERY (V2)
+   Scalable swipe gallery for #socials with subtle edge arrows,
+   breathing micro-interaction, mouse drag & touch swipe.
+   ======================================================== */
+function initSocialWorksCarousel() {
+  const track = document.getElementById('socialsTrack');
+  const prevBtn = document.getElementById('socialsPrevBtn');
+  const nextBtn = document.getElementById('socialsNextBtn');
+  const counterEl = document.getElementById('socialsCounter');
+  const controlsEl = document.getElementById('socialsControls');
+  if (!track || track.dataset.carouselInit === 'true') return;
+
+  const items = window.HOWARD_PROJECTS;
+  if (!Array.isArray(items)) return;
+
+  const published = items
+    .filter(p => p && p.published === true && p.id && p.title && (p.cover || p.socialCover) && p.caseStudy)
+    .sort((a, b) => (b.order || 0) - (a.order || 0));
+
+  if (!published.length) return;
+
+  track.dataset.carouselInit = 'true';
+
+  const safeLocal = value => typeof value === 'string' && !/^(?:[a-z]+:|\/\/)/i.test(value) && !value.includes('..') && /^[a-zA-Z0-9_.\/-]+$/.test(value) ? value : null;
+
+  // Clear fallback cards and dynamically build cards from published registry
+  track.innerHTML = '';
+  published.forEach((project, idx) => {
+    const coverPath = safeLocal(project.socialCover || project.cover);
+    const caseUrl = safeLocal(project.caseStudy);
+    if (!coverPath || !caseUrl) return;
+
+    const card = document.createElement('a');
+    card.className = 'social-card';
+    card.id = `social-card-${project.id}`;
+    card.href = caseUrl;
+    card.setAttribute('data-project-id', project.id);
+    card.setAttribute('data-order', String(project.order || idx + 1));
+    card.setAttribute('title', project.title);
+    card.setAttribute('aria-label', project.title);
+
+    const img = document.createElement('img');
+    img.src = coverPath;
+    img.loading = 'lazy';
+    img.alt = project.title;
+
+    card.appendChild(img);
+    track.appendChild(card);
+
+    card.addEventListener('focus', () => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'nearest', inline: 'nearest' });
+    });
+  });
+
+  // Multilingual synchronization
+  const updateCardsI18n = () => {
+    const lang = (window.howardI18n && window.howardI18n.getCurrentLanguage()) || document.documentElement.lang || 'en';
+    const isZh = lang === 'zh-TW';
+    const i18nSocials = (window.howardI18n && window.howardI18n.translations && window.howardI18n.translations[lang] && window.howardI18n.translations[lang].socials) || {};
+
+    const cards = track.querySelectorAll('.social-card');
+    cards.forEach(card => {
+      const pId = card.getAttribute('data-project-id');
+      const proj = published.find(p => p.id === pId);
+      if (!proj) return;
+      const orderNum = proj.order || 1;
+      const orderKey = `altWork${String(orderNum).padStart(2, '0')}`;
+      const alt = i18nSocials[orderKey] || (isZh ? `${proj.title} 作品案例` : `${proj.title} case study`);
+      const img = card.querySelector('img');
+      if (img) img.alt = alt;
+      card.setAttribute('title', proj.title);
+      card.setAttribute('aria-label', `${proj.title} — ${alt}`);
+    });
+
+    updateControls();
+  };
+
+  // Scroll step helper
+  const getScrollStep = () => {
+    const firstCard = track.querySelector('.social-card');
+    if (!firstCard) return track.clientWidth * 0.8;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap) || 24;
+    return firstCard.offsetWidth + gap;
+  };
+
+  // Drag interaction with click suppression
+  let isPointerDown = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let hasDragged = false;
+
+  track.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    isPointerDown = true;
+    hasDragged = false;
+    startX = e.pageX;
+    startScrollLeft = track.scrollLeft;
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isPointerDown) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 6) {
+      hasDragged = true;
+      track.classList.add('is-dragging');
+      track.scrollLeft = startScrollLeft - dx;
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  const endPointerDrag = () => {
+    if (!isPointerDown) return;
+    isPointerDown = false;
+    track.classList.remove('is-dragging');
+    if (hasDragged) {
+      setTimeout(() => {
+        hasDragged = false;
+      }, 150);
+    }
+  };
+  window.addEventListener('pointerup', endPointerDrag);
+  window.addEventListener('pointercancel', endPointerDrag);
+
+  // Touch drag tracking for mobile
+  let touchStartX = 0;
+  let touchDragged = false;
+
+  track.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      touchStartX = e.touches[0].clientX;
+      touchDragged = false;
+    }
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      if (dx > 8) {
+        touchDragged = true;
+      }
+    }
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    if (touchDragged) {
+      hasDragged = true;
+      setTimeout(() => {
+        hasDragged = false;
+        touchDragged = false;
+      }, 150);
+    }
+  }, { passive: true });
+
+  // Suppress clicks on cards if dragging occurred
+  track.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }, true);
+
+  // Button navigation
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const step = getScrollStep();
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({ left: -step, behavior: prefersReduced ? 'auto' : 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const step = getScrollStep();
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({ left: step, behavior: prefersReduced ? 'auto' : 'smooth' });
+    });
+  }
+
+  // Boundary state & progress counter
+  let lastCounterText = '';
+
+  const updateControls = () => {
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    const scrollLeft = track.scrollLeft;
+
+    if (maxScroll <= 4) {
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+      if (controlsEl) controlsEl.style.display = 'none';
+      return;
+    } else {
+      if (prevBtn) prevBtn.style.display = '';
+      if (nextBtn) nextBtn.style.display = '';
+      if (controlsEl) controlsEl.style.display = '';
+    }
+
+    const isAtStart = scrollLeft <= 4;
+    const isAtEnd = scrollLeft >= maxScroll - 4;
+
+    if (prevBtn) {
+      prevBtn.disabled = isAtStart;
+      if (isAtStart) {
+        prevBtn.setAttribute('aria-disabled', 'true');
+        prevBtn.classList.add('is-hidden');
+      } else {
+        prevBtn.removeAttribute('aria-disabled');
+        prevBtn.classList.remove('is-hidden');
+      }
+    }
+
+    if (nextBtn) {
+      nextBtn.disabled = isAtEnd;
+      if (isAtEnd) {
+        nextBtn.setAttribute('aria-disabled', 'true');
+        nextBtn.classList.add('is-hidden');
+        nextBtn.classList.remove('is-breathing');
+      } else {
+        nextBtn.removeAttribute('aria-disabled');
+        nextBtn.classList.remove('is-hidden');
+        nextBtn.classList.add('is-breathing');
+      }
+    }
+
+    // Visible range calculation
+    const cards = track.querySelectorAll('.social-card');
+    const total = cards.length;
+    if (!total || !counterEl) return;
+
+    const trackRect = track.getBoundingClientRect();
+    let firstVisible = -1;
+    let lastVisible = -1;
+
+    cards.forEach((card, idx) => {
+      const rect = card.getBoundingClientRect();
+      const isVisible = rect.right > trackRect.left + 10 && rect.left < trackRect.right - 10;
+      if (isVisible) {
+        if (firstVisible === -1) firstVisible = idx;
+        lastVisible = idx;
+      }
+    });
+
+    if (firstVisible === -1) firstVisible = 0;
+    if (lastVisible === -1) lastVisible = Math.min(3, total - 1);
+
+    const startNum = firstVisible + 1;
+    const endNum = lastVisible + 1;
+
+    const lang = (window.howardI18n && window.howardI18n.getCurrentLanguage()) || document.documentElement.lang || 'en';
+    const isZh = lang === 'zh-TW';
+
+    let counterText = '';
+    if (isZh) {
+      counterText = startNum === endNum
+        ? `第 ${startNum} 件／共 ${total} 件`
+        : `第 ${startNum}–${endNum} 件／共 ${total} 件`;
+    } else {
+      const sStr = String(startNum).padStart(2, '0');
+      const eStr = String(endNum).padStart(2, '0');
+      const tStr = String(total).padStart(2, '0');
+      counterText = startNum === endNum
+        ? `${sStr} / ${tStr} WORKS`
+        : `${sStr}–${eStr} / ${tStr} WORKS`;
+    }
+
+    if (counterText !== lastCounterText) {
+      counterEl.textContent = counterText;
+      lastCounterText = counterText;
+    }
+  };
+
+  let scrollRaf = null;
+  track.addEventListener('scroll', () => {
+    if (scrollRaf) cancelAnimationFrame(scrollRaf);
+    scrollRaf = requestAnimationFrame(updateControls);
+  }, { passive: true });
+
+  window.addEventListener('resize', updateControls);
+  window.addEventListener('howard:languagechange', updateCardsI18n);
+
+  updateCardsI18n();
+  updateControls();
+}

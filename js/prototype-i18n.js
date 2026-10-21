@@ -124,7 +124,12 @@
         altWork01: 'FLTL NFC smart card detail',
         altWork02: 'Island Index tea packaging design',
         altWork03: 'FORNO 27 identity and packaging',
-        altWork04: 'SPLIT/09 urban night run campaign visual'
+        altWork04: 'SPLIT/09 urban night run campaign visual',
+        altWork05: 'ATLAS OPS outdoor equipment identity and gear',
+        viewEarlier: 'View earlier work',
+        viewNewer: 'View newer work',
+        viewAll: 'VIEW ALL WORK →',
+        galleryAria: 'Published works showcase gallery'
       },
       footer: {
         marqueeHtml: '<span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">CREATIVE STRATEGIST</span><span class="marquee-dot">•</span><span class="marquee-item">VISUAL DESIGN DIRECTOR</span><span class="marquee-dot">•</span><span class="marquee-item">DIGITAL PRODUCT BUILDER</span><span class="marquee-dot">•</span><span class="marquee-item">10+ YEARS EXPERIENCE</span><span class="marquee-dot">•</span><span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">CREATIVE STRATEGIST</span><span class="marquee-dot">•</span><span class="marquee-item">VISUAL DESIGN DIRECTOR</span><span class="marquee-dot">•</span><span class="marquee-item">DIGITAL PRODUCT BUILDER</span><span class="marquee-dot">•</span><span class="marquee-item">10+ YEARS EXPERIENCE</span><span class="marquee-dot">•</span>',
@@ -292,7 +297,12 @@
         altWork01: 'FLTL NFC 智慧名片細節',
         altWork02: '島序台灣茶包裝設計',
         altWork03: 'FORNO 27 品牌與包裝設計',
-        altWork04: 'SPLIT/09 城市夜跑廣告主視覺'
+        altWork04: 'SPLIT/09 城市夜跑廣告主視覺',
+        altWork05: 'ATLAS OPS 戶外裝備品牌與機能設計',
+        viewEarlier: '查看較早作品',
+        viewNewer: '查看較新作品',
+        viewAll: '瀏覽全部作品 →',
+        galleryAria: '已發布作品展示區'
       },
       footer: {
         marqueeHtml: '<span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">創意策略</span><span class="marquee-dot">•</span><span class="marquee-item">視覺設計</span><span class="marquee-dot">•</span><span class="marquee-item">數位產品</span><span class="marquee-dot">•</span><span class="marquee-item">10 年以上經驗</span><span class="marquee-dot">•</span><span class="marquee-item">HOWARD HUANG</span><span class="marquee-dot">•</span><span class="marquee-item">FLTL NFC</span><span class="marquee-dot">•</span><span class="marquee-item">創意策略</span><span class="marquee-dot">•</span><span class="marquee-item">視覺設計</span><span class="marquee-dot">•</span><span class="marquee-item">數位產品</span><span class="marquee-dot">•</span><span class="marquee-item">10 年以上經驗</span><span class="marquee-dot">•</span>',
