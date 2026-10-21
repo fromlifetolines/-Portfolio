@@ -106,6 +106,28 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/atlas-ops/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/atlas-ops/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/atlas-ops/'
+  },
+  {
+    id: 'northline-trade',
+    order: 6,
+    published: true,
+    title: 'NORTHLINE TRADE',
+    year: '2026',
+    category: {
+      en: 'B2B Industrial Procurement / Digital Experience / UI UX',
+      'zh-TW': '工業零組件貿易／B2B 採購平台／UI/UX 設計'
+    },
+    projectType: {
+      en: 'Independent Concept Project',
+      'zh-TW': '自主概念設計提案'
+    },
+    description: {
+      en: 'A conceptual industrial sourcing and procurement experience featuring part-number search, technical comparison, tiered pricing, RFQ and approval workflows.',
+      'zh-TW': '為虛構工業貿易企業設計的 B2B 採購平台概念，展示料號搜尋、技術規格比較、階梯報價、詢價單與內部簽核體驗。'
+    },
+    cover: 'brand/northline-trade/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/northline-trade/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/northline-trade/'
   }
 ]);
 
