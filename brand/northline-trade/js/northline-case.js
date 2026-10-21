@@ -2,7 +2,7 @@
  * FLTL × HOWARD — PORTFOLIO 06: NORTHLINE TRADE INTERACTIVE ENGINE V1.0
  * Fully functional client-side B2B demonstration engine:
  *  - Persistent Bilingual Switcher (ZH / EN)
- *  - 2560 × 1440 Master Lightbox with Keyboard Navigation
+ *  - 1672 × 941 Master Lightbox with Keyboard Navigation
  *  - Part Number Autocomplete & Spec Search Engine
  *  - Multi-facet Product Catalog Filter
  *  - 3-Way Technical Spec Comparator
@@ -279,7 +279,7 @@
   }
 
   /**
-   * 3. Lightbox Engine (2560 × 1440 Master RAW)
+   * 3. Lightbox Engine (1672 × 941 Master RAW)
    */
   function initLightbox() {
     const images = document.querySelectorAll('.plate-media-wrap img');
@@ -304,7 +304,7 @@
     mediaWraps.forEach((wrap, idx) => {
       wrap.setAttribute('tabindex', '0');
       wrap.setAttribute('role', 'button');
-      wrap.setAttribute('aria-label', `檢視 ${galleryItems[idx]?.number || ''} ${galleryItems[idx]?.title || ''} (2560 × 1440 RAW 原圖)`);
+      wrap.setAttribute('aria-label', `檢視 ${galleryItems[idx]?.number || ''} ${galleryItems[idx]?.title || ''} (1672 × 941 RAW 原圖)`);
 
       wrap.addEventListener('click', () => openLightbox(idx));
       wrap.addEventListener('keydown', (e) => {
