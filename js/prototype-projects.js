@@ -14,6 +14,7 @@ window.HOWARD_PROJECTS = Object.freeze([
     category: { en: 'SELF-INITIATED PRODUCT', 'zh-TW': '自主開發產品' },
     projectType: { en: 'Flagship Smart Card', 'zh-TW': '旗艦智慧卡系統' },
     description: { en: 'FLTL NFC Smart Business Card system bridging physical touchpoints and instant digital transmission.', 'zh-TW': 'FLTL NFC 智慧名片系統，結合頂級消光黑卡體與微型高頻晶片，無縫串聯實體觸點與雲端數位身份。' },
+    socialCover: 'assets/fltl-nfc-macro.jpg',
     cover: 'assets/NFC_official_front.jpg',
     interactiveAsset: 'assets/NFC_official_front.jpg',
     caseStudy: 'portfolio-nfc.html'
