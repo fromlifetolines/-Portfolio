@@ -1,0 +1,276 @@
+{
+  "package_name": "ATLAS_OPS_PHASE_A2_REVIEW_SLIM_20261021",
+  "project": "FLTL x HOWARD | PORTFOLIO 05 - ATLAS OPS",
+  "phase": "Phase A.2 One-Pass Visual, Copy & Interaction Polish Verification",
+  "timestamp": "2026-10-21T09:17:00+08:00",
+  "git_branch": "feature/atlas-ops-outdoor-portfolio-v1",
+  "git_baseline": "fc673a29f20cd8c5b556a5ac89e48de5abc64fb5",
+  "status": "HOLD (Waiting for SHOT 13 & 14 formal replacement assets)",
+  "files": [
+    {
+      "relative_path": "01_HERO_OPTIMIZATION/desktop_1440_hero_after_en.jpg",
+      "file_name": "desktop_1440_hero_after_en.jpg",
+      "size_bytes": 673175,
+      "sha256": "3e3e67fec57bb498e0631b544245c57f117c4a7b7d451238073679851fe40892"
+    },
+    {
+      "relative_path": "01_HERO_OPTIMIZATION/desktop_1440_hero_after_zh.jpg",
+      "file_name": "desktop_1440_hero_after_zh.jpg",
+      "size_bytes": 673668,
+      "sha256": "eaab35f029359958730de7b579eee6cb91535c08ca1cfb116856e31befe2d1ca"
+    },
+    {
+      "relative_path": "01_HERO_OPTIMIZATION/desktop_1440_hero_before_zh.jpg",
+      "file_name": "desktop_1440_hero_before_zh.jpg",
+      "size_bytes": 232622,
+      "sha256": "a7d122539c60e24fb91ecb2ddd21b4f7744cb43b5c4e4d1f7cb0d965b9c3f108"
+    },
+    {
+      "relative_path": "01_HERO_OPTIMIZATION/mobile_390_hero_after_en.jpg",
+      "file_name": "mobile_390_hero_after_en.jpg",
+      "size_bytes": 208663,
+      "sha256": "9b9a51a33452d463195732c82d4bd304ca27bc7e681f9f8337602e432846ce12"
+    },
+    {
+      "relative_path": "01_HERO_OPTIMIZATION/mobile_390_hero_after_zh.jpg",
+      "file_name": "mobile_390_hero_after_zh.jpg",
+      "size_bytes": 210189,
+      "sha256": "062bc1bdc7cc3994e711817ab24fadf7c24340bdc83f58c490a7c0ce87251ebd"
+    },
+    {
+      "relative_path": "01_HERO_OPTIMIZATION/mobile_390_hero_before_zh.jpg",
+      "file_name": "mobile_390_hero_before_zh.jpg",
+      "size_bytes": 73290,
+      "sha256": "606235fa2e43fe3acbf7d863820605a84394044cd42f711a592acac2212d2ab6"
+    },
+    {
+      "relative_path": "02_SHOT08_FIXES/desktop_1440_shot08_tabs.jpg",
+      "file_name": "desktop_1440_shot08_tabs.jpg",
+      "size_bytes": 681758,
+      "sha256": "19d12c3acfc824a1ec233c01b2dd92813a6e4e7527847fc0977090d99d7a3911"
+    },
+    {
+      "relative_path": "02_SHOT08_FIXES/mobile_375_shot08_tab1.jpg",
+      "file_name": "mobile_375_shot08_tab1.jpg",
+      "size_bytes": 201242,
+      "sha256": "9779fd534c71c741815fc87aa7f6e04648c644261d46322148b02d5d76acdf13"
+    },
+    {
+      "relative_path": "02_SHOT08_FIXES/mobile_390_shot08_after_tab1.jpg",
+      "file_name": "mobile_390_shot08_after_tab1.jpg",
+      "size_bytes": 231651,
+      "sha256": "5efd8e3b5aeb745f617cc1c2ef7a3b30a8fba4a966d2b4db406e05c8dea67fbb"
+    },
+    {
+      "relative_path": "02_SHOT08_FIXES/mobile_390_shot08_after_tab2.jpg",
+      "file_name": "mobile_390_shot08_after_tab2.jpg",
+      "size_bytes": 223568,
+      "sha256": "f200a936ae57fcacebfcbf3ca45932d65b4a0165cb187f6f8846f0b27e9b8284"
+    },
+    {
+      "relative_path": "02_SHOT08_FIXES/mobile_390_shot08_after_tab3.jpg",
+      "file_name": "mobile_390_shot08_after_tab3.jpg",
+      "size_bytes": 212693,
+      "sha256": "eaaee3d817fefab527dec9e6a0f554af626ce7280a3047af40750b856b7c858c"
+    },
+    {
+      "relative_path": "02_SHOT08_FIXES/mobile_390_shot08_before.jpg",
+      "file_name": "mobile_390_shot08_before.jpg",
+      "size_bytes": 71425,
+      "sha256": "43476357afae38e75927d0b91e1e411d1c75c3db7ad3290891f8386d9f89b3d4"
+    },
+    {
+      "relative_path": "03_ZOOM_HINT_FIXES/desktop_1440_lightbox_active.jpg",
+      "file_name": "desktop_1440_lightbox_active.jpg",
+      "size_bytes": 572762,
+      "sha256": "6cbf05146f94e9b9393af5b453e5af1101046f0b24813cc209d0204b35666678"
+    },
+    {
+      "relative_path": "03_ZOOM_HINT_FIXES/desktop_1440_zoom_badge.jpg",
+      "file_name": "desktop_1440_zoom_badge.jpg",
+      "size_bytes": 538127,
+      "sha256": "904fe60bdd872d17e8481e4d1d274d16d3d56ea11f51779d61c0a735e981aa97"
+    },
+    {
+      "relative_path": "03_ZOOM_HINT_FIXES/mobile_390_zoom_hint_after.jpg",
+      "file_name": "mobile_390_zoom_hint_after.jpg",
+      "size_bytes": 253067,
+      "sha256": "1ced925e6959627fd90eb8aa99f92366ab59d4232c239cb97010691f84ae43ae"
+    },
+    {
+      "relative_path": "03_ZOOM_HINT_FIXES/mobile_390_zoom_hint_before.jpg",
+      "file_name": "mobile_390_zoom_hint_before.jpg",
+      "size_bytes": 71425,
+      "sha256": "43476357afae38e75927d0b91e1e411d1c75c3db7ad3290891f8386d9f89b3d4"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_1024_zh.jpg",
+      "file_name": "viewport_1024_zh.jpg",
+      "size_bytes": 505462,
+      "sha256": "c911630a666d47c9458e9d4ab10a5f336364cf1620c010794bf16b6bec8d2637"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_1440_en.jpg",
+      "file_name": "viewport_1440_en.jpg",
+      "size_bytes": 674587,
+      "sha256": "e09ddc5c7d5eaae22d24b7cfc8e2d77975c931c4c683a37cb1236ae8714ae80f"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_1440_zh.jpg",
+      "file_name": "viewport_1440_zh.jpg",
+      "size_bytes": 673668,
+      "sha256": "eaab35f029359958730de7b579eee6cb91535c08ca1cfb116856e31befe2d1ca"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_1920_zh.jpg",
+      "file_name": "viewport_1920_zh.jpg",
+      "size_bytes": 790903,
+      "sha256": "1be3c0882ec07c41a5fb1ac30e93e362545b1fe047861aabb01b4a4838bde2c1"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_375_zh.jpg",
+      "file_name": "viewport_375_zh.jpg",
+      "size_bytes": 199374,
+      "sha256": "abfc69a6b85094b3e974719419bd41e9eabfef14be652f5b7d32ce4aedff7972"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_390_en.jpg",
+      "file_name": "viewport_390_en.jpg",
+      "size_bytes": 208432,
+      "sha256": "bdb915b0fb1f19a8c0a26c5e0b3d6f7443dba1f4ff09737a7a7a693cab46c2aa"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_390_zh.jpg",
+      "file_name": "viewport_390_zh.jpg",
+      "size_bytes": 210152,
+      "sha256": "9c160ab6219a420eba1b1e115dcdcfe9e32d6d25cb7a42473f92cfdd6a52443d"
+    },
+    {
+      "relative_path": "04_VIEWPORT_RESPONSIVENESS/viewport_768_zh.jpg",
+      "file_name": "viewport_768_zh.jpg",
+      "size_bytes": 430481,
+      "sha256": "2dd038d95015a51b1523026bfbc887bb3f40bc0c001581ba04f1c5e91764f9dc"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/16_SHOT_OVERVIEW_CONTACT_SHEET.jpg",
+      "file_name": "16_SHOT_OVERVIEW_CONTACT_SHEET.jpg",
+      "size_bytes": 787134,
+      "sha256": "d6a7d8524657531127108defe24c20d1aa3591a1ee700a93919a8d9771142706"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_01.jpg",
+      "file_name": "shot_01.jpg",
+      "size_bytes": 674298,
+      "sha256": "2c965cda644ce2930e9597b69754429d00d5aeb87dc692ad1998315afb3676df"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_02.jpg",
+      "file_name": "shot_02.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_03.jpg",
+      "file_name": "shot_03.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_04.jpg",
+      "file_name": "shot_04.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_05.jpg",
+      "file_name": "shot_05.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_06.jpg",
+      "file_name": "shot_06.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_07.jpg",
+      "file_name": "shot_07.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_08.jpg",
+      "file_name": "shot_08.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_09.jpg",
+      "file_name": "shot_09.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_10.jpg",
+      "file_name": "shot_10.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_11.jpg",
+      "file_name": "shot_11.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_12.jpg",
+      "file_name": "shot_12.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_13.jpg",
+      "file_name": "shot_13.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_14.jpg",
+      "file_name": "shot_14.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_15.jpg",
+      "file_name": "shot_15.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "05_SHOT_REVIEW_16/shot_16.jpg",
+      "file_name": "shot_16.jpg",
+      "size_bytes": 679897,
+      "sha256": "1a9c8084e2331653e211df2fa5f009dc0145969c510aeba355d2fb7a1c8537e5"
+    },
+    {
+      "relative_path": "06_REPORT/ART_DIRECTION_A2_AUDIT_REPORT.md",
+      "file_name": "ART_DIRECTION_A2_AUDIT_REPORT.md",
+      "size_bytes": 18553,
+      "sha256": "7354581fcd9acc795a14c62f03290b2d1651918fdf13fe44d86d2682d1f72453"
+    },
+    {
+      "relative_path": "06_REPORT/test_metrics.json",
+      "file_name": "test_metrics.json",
+      "size_bytes": 1923,
+      "sha256": "9694c6c545e26e30925dffedf606cb82ab83692dfaf034df73e028d2297b2c1d"
+    },
+    {
+      "relative_path": "06_REPORT/FILE_MANIFEST.json",
+      "file_name": "FILE_MANIFEST.json",
+      "size_bytes": 0,
+      "sha256": "SELF_REFERENTIAL_MANIFEST"
+    }
+  ],
+  "total_files": 44
+}

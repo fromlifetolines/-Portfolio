@@ -1,0 +1,209 @@
+{
+  "project": "FLTL × HOWARD Portfolio 05 — ATLAS OPS",
+  "phase": "Phase A.3 Image Patch & Release Gate Verification Package",
+  "timestamp": "2026-10-21T09:48:50+08:00",
+  "total_files": 40,
+  "total_bytes": 21015829,
+  "files": [
+    {
+      "path": "05_SHOT08_VERIFICATION/desktop_1440_shot08.jpg",
+      "bytes": 641996,
+      "sha256": "345949670c11c83400ffcb137a5bfcd1f43c278e298fdcd7c4682ca356d5e40b"
+    },
+    {
+      "path": "05_SHOT08_VERIFICATION/mobile_375_shot08_32L.jpg",
+      "bytes": 197665,
+      "sha256": "6ff97a401c4b10ee117c4c98dd2bc38941d39728a208e5fdde1afa44cc056328"
+    },
+    {
+      "path": "05_SHOT08_VERIFICATION/mobile_390_shot08_all_tabs.jpg",
+      "bytes": 237184,
+      "sha256": "ab9d6a97196413acaa5a7e99840e757db84f8290f57429c6d79761a96d765016"
+    },
+    {
+      "path": "04_VIEWPORT_RESPONSIVENESS/viewport_1024_zh.jpg",
+      "bytes": 505462,
+      "sha256": "c911630a666d47c9458e9d4ab10a5f336364cf1620c010794bf16b6bec8d2637"
+    },
+    {
+      "path": "04_VIEWPORT_RESPONSIVENESS/viewport_1440_zh.jpg",
+      "bytes": 673668,
+      "sha256": "eaab35f029359958730de7b579eee6cb91535c08ca1cfb116856e31befe2d1ca"
+    },
+    {
+      "path": "04_VIEWPORT_RESPONSIVENESS/viewport_1920_zh.jpg",
+      "bytes": 790903,
+      "sha256": "1be3c0882ec07c41a5fb1ac30e93e362545b1fe047861aabb01b4a4838bde2c1"
+    },
+    {
+      "path": "04_VIEWPORT_RESPONSIVENESS/viewport_375_zh.jpg",
+      "bytes": 199444,
+      "sha256": "4e8f643ddb2d70b9485a0f574e7d7d3f1c7d65ae242ee52d6d6defa0fcd6dd8c"
+    },
+    {
+      "path": "04_VIEWPORT_RESPONSIVENESS/viewport_390_zh.jpg",
+      "bytes": 210152,
+      "sha256": "9c160ab6219a420eba1b1e115dcdcfe9e32d6d25cb7a42473f92cfdd6a52443d"
+    },
+    {
+      "path": "04_VIEWPORT_RESPONSIVENESS/viewport_768_zh.jpg",
+      "bytes": 430526,
+      "sha256": "1f9e7ef146efd108290c8ac143fdec4ba3cce31771ee2067ede60f18157f9471"
+    },
+    {
+      "path": "01_SHOT13_VERIFICATION/SHOT_13_CORRECTED_TEXT_6X.png",
+      "bytes": 85777,
+      "sha256": "b980200e391b5e5ff4e4984057326af438ea60af937aa1c7753a1d6d6e83b119"
+    },
+    {
+      "path": "01_SHOT13_VERIFICATION/desktop_1440_shot13_card.jpg",
+      "bytes": 834814,
+      "sha256": "6a1c423da278d9c0e699a4fd3c3f1c5737bc5bd99ed975e06cb25bdae27c6ee0"
+    },
+    {
+      "path": "01_SHOT13_VERIFICATION/desktop_1440_shot13_lightbox_png.jpg",
+      "bytes": 820171,
+      "sha256": "d5d88d788c6ee63891bde54c1892c27fa6bc93bfb7b628e83620380e1dd82659"
+    },
+    {
+      "path": "01_SHOT13_VERIFICATION/mobile_390_shot13_card.jpg",
+      "bytes": 236135,
+      "sha256": "be3a5b73642a096c4638667687a32c636612fac20907fa93c32f87f606f54d80"
+    },
+    {
+      "path": "01_SHOT13_VERIFICATION/mobile_390_shot13_lightbox_png.jpg",
+      "bytes": 130219,
+      "sha256": "262bcc22021aff1d19b3ec27ce01bebe514680514337e73af55a8551c6a5a01f"
+    },
+    {
+      "path": "01_SHOT13_VERIFICATION/shot13_corrected_text_1to1_crop.png",
+      "bytes": 48659,
+      "sha256": "4dbfda283b4d19959f1a30653edf63452b88f597f5f54980b7a7138689b28a96"
+    },
+    {
+      "path": "02_SHOT14_VERIFICATION/SHOT_14_HEADLINE_COPY_3X.png",
+      "bytes": 125191,
+      "sha256": "5b94650686a5e1d503bdaaaf8bfa4c25bd278d8bdc11a4a0bf7677a9a07e828b"
+    },
+    {
+      "path": "02_SHOT14_VERIFICATION/desktop_1440_shot14_card.jpg",
+      "bytes": 603845,
+      "sha256": "8d5dffccd20cb429bcc9491a8cb741e4904757da913c46cbdf485a47d5e274c2"
+    },
+    {
+      "path": "02_SHOT14_VERIFICATION/desktop_1440_shot14_lightbox_png.jpg",
+      "bytes": 769222,
+      "sha256": "711eb385f7210b9cf5126801b0bff2c07924c002ab943004133969816236ce67"
+    },
+    {
+      "path": "02_SHOT14_VERIFICATION/mobile_390_shot14_card.jpg",
+      "bytes": 240703,
+      "sha256": "413472f2a9dd36b7b19fa13eabdfcd2fa757f1989ff195db6043a05566e76f7c"
+    },
+    {
+      "path": "02_SHOT14_VERIFICATION/mobile_390_shot14_lightbox_png.jpg",
+      "bytes": 127008,
+      "sha256": "1a24251abbdc04f0440a8fb595b35f2ace3359b732db13f2769ee3a6d932ae2d"
+    },
+    {
+      "path": "02_SHOT14_VERIFICATION/shot14_corrected_claims_1to1_crop.png",
+      "bytes": 190725,
+      "sha256": "974f1c9ea23dd50e8260e52b31adbb88ce2ad9580cee815ac51cab2d44dfb909"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/16_SHOT_MASTER_CONTACT_SHEET_FINAL.jpg",
+      "bytes": 793139,
+      "sha256": "1dde656c5aea57b83d0ffd0a6f91dc9f12e9008bf56175b51a7d134513224ee7"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_01.jpg",
+      "bytes": 670271,
+      "sha256": "17540933fa685751dfc3776eb5c4be0f0a77bba0fc4aacae4d9f3167b3a5f528"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_02.jpg",
+      "bytes": 579271,
+      "sha256": "87ead9f52ff15fd060a303f1873a78ee93bf5326e03ba4e45f0e760fe61cff54"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_03.jpg",
+      "bytes": 547713,
+      "sha256": "e52299a6dab067a0237fc7833b48f405c488f72bb50659a032859f56e15d96cd"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_04.jpg",
+      "bytes": 532117,
+      "sha256": "ff2cafc6511e124b5a400630e2392ad2f234c10a51e56e769c43dea4b12180b8"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_05.jpg",
+      "bytes": 740226,
+      "sha256": "a078106cac3c3b5d741dd3c158dce81b12ea8f97b2927b73c09a55d8e9c8cac1"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_06.jpg",
+      "bytes": 797590,
+      "sha256": "10f329709609539e1f1f8f395d0f50bb41b5f05cbec9130f53174c5804cda500"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_07.jpg",
+      "bytes": 847328,
+      "sha256": "d35bd998f60f78c791c04081fb0e3604df6bb520e426b49a8d30a1fd8c05ca1d"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_08.jpg",
+      "bytes": 715263,
+      "sha256": "50ef2ff3fbeb41e02a51b6c111f333d720a966f79655a720c4619c5fcd239adb"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_09.jpg",
+      "bytes": 881316,
+      "sha256": "d9bfcbd390b741cba4a022c025ccb3e548f07898fa1e4b118898525caf25b658"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_10.jpg",
+      "bytes": 852444,
+      "sha256": "ab8e5098915db72805b667913ef932aee99289d181e13b2cc16606d55418aaa7"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_11.jpg",
+      "bytes": 791542,
+      "sha256": "2da249891a9dcdb7e80ce26a0eb8910d9650520a1de2c61e927d0918e7901fd7"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_12.jpg",
+      "bytes": 830399,
+      "sha256": "c2332fa512429c4af74c007ca8b38d9ecd31c9b6c0cf59a5b0ba1e0c2015316c"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_13.jpg",
+      "bytes": 834814,
+      "sha256": "6a1c423da278d9c0e699a4fd3c3f1c5737bc5bd99ed975e06cb25bdae27c6ee0"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_14.jpg",
+      "bytes": 798671,
+      "sha256": "b0c3c04ea983aabfe7c5645dc0adb2acfd782426bf2a9f65438590be75962cca"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_15.jpg",
+      "bytes": 791213,
+      "sha256": "a0c225fa13391d91a7aaa629242e30a2654d1553356623814810dc7a3edffdf4"
+    },
+    {
+      "path": "03_FULL_16_SHOT_VERIFICATION/shot_16.jpg",
+      "bytes": 898579,
+      "sha256": "006a4a67a8573b0ef23e19949e4d5cc7340874ff5e7065d476707f400b976a8f"
+    },
+    {
+      "path": "06_REPORT/ATLAS_OPS_PHASE_A3_FINAL_AUDIT_REPORT.md",
+      "bytes": 12951,
+      "sha256": "eb98d5f54e8040e793cf29acad5fd23095640a7f970e1eec5dc1a341ee8fca8a"
+    },
+    {
+      "path": "06_REPORT/test_metrics_a3.json",
+      "bytes": 1513,
+      "sha256": "8698ea4e3c8c7381c8769cdbe74b0778066834628bde3191ae52d1a7d797c053"
+    }
+  ]
+}

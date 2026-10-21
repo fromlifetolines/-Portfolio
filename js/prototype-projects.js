@@ -83,6 +83,28 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/split-09/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/split-09/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/split-09/'
+  },
+  {
+    id: 'atlas-ops',
+    order: 5,
+    published: true,
+    title: 'ATLAS OPS',
+    year: '2026',
+    category: {
+      en: 'Outdoor Equipment / Brand Identity / Product Concept',
+      'zh-TW': '戶外機能裝備／品牌識別／產品概念設計'
+    },
+    projectType: {
+      en: 'Self-Initiated Brand Concept',
+      'zh-TW': '自主品牌概念提案'
+    },
+    description: {
+      en: 'An independent outdoor equipment brand concept featuring identity, expedition gear, packaging, campaign visuals and digital product interfaces.',
+      'zh-TW': '以山岳環境與機能裝備為題的自主品牌提案，呈現標誌識別、裝備概念、包裝設計、形象廣告與數位商品介面。'
+    },
+    cover: 'brand/atlas-ops/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/atlas-ops/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/atlas-ops/'
   }
 ]);
 
