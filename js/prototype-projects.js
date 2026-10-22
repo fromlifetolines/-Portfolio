@@ -128,6 +128,28 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/northline-trade/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/northline-trade/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/northline-trade/'
+  },
+  {
+    id: 'forme-lab',
+    order: 7,
+    published: true,
+    title: 'FORME LAB',
+    year: '2026',
+    category: {
+      en: 'Skincare Brand Identity / Packaging Concept / Digital Experience',
+      'zh-TW': '保養品牌識別／包裝概念／數位體驗'
+    },
+    projectType: {
+      en: 'Self-Initiated Brand Concept',
+      'zh-TW': '自主品牌概念提案'
+    },
+    description: {
+      en: 'An independent premium daily skincare concept spanning a three-product ritual, packaging studies, editorial imagery and an interactive routine builder.',
+      'zh-TW': '高級日常保養自主品牌概念，整合三款產品識別、包裝結構探索、編輯式商品攝影與可操作的保養步驟設計體驗。'
+    },
+    cover: 'brand/forme-lab/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/forme-lab/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/forme-lab/'
   }
 ]);
 
