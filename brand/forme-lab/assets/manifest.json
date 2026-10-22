@@ -41,12 +41,12 @@
     },
     {
       "path": "01_MASTER_PNG/SHOT_02_BRAND_PHILOSOPHY.png",
-      "bytes": 1905857,
+      "bytes": 1868363,
       "size": [
         2560,
         1440
       ],
-      "sha256": "70d989b8b42309ae793d341c48000b45818746ba7f659a00e193629a7b5a1c2d"
+      "sha256": "c312a52331bee1e0b9321bba10daf91fbd787a7ab7387b49a27b08477aa344dc"
     },
     {
       "path": "01_MASTER_PNG/SHOT_03_VISUAL_IDENTITY.png",
@@ -77,12 +77,12 @@
     },
     {
       "path": "01_MASTER_PNG/SHOT_06_DAILY_ESSENCE.png",
-      "bytes": 1840904,
+      "bytes": 1805110,
       "size": [
         2560,
         1440
       ],
-      "sha256": "3a9bfc6d58a116dd6391cf0bf63d47f72ad489cbdee4ba11cec6effe887efe50"
+      "sha256": "49df8db6fb77d45eafc4e9b1d5c5f33028d2d00d6adde5976c85a8a47a8790be"
     },
     {
       "path": "01_MASTER_PNG/SHOT_07_BARRIER_SERUM.png",
@@ -122,12 +122,12 @@
     },
     {
       "path": "01_MASTER_PNG/SHOT_11_EDITORIAL_BOOKLET.png",
-      "bytes": 1547193,
+      "bytes": 1519239,
       "size": [
         2560,
         1440
       ],
-      "sha256": "cbaa96279efbbb47d329f581e20b76a3895af4edecfb4f7af4393619b77fce10"
+      "sha256": "93763066f94a7d52270c00851c4593c6aa438657782c3e14302013968aa5ab77"
     },
     {
       "path": "01_MASTER_PNG/SHOT_12_CAMPAIGN_EDITORIAL.png",
@@ -185,12 +185,12 @@
     },
     {
       "path": "02_WEB_JPG/shot-02.jpg",
-      "bytes": 446175,
+      "bytes": 435936,
       "size": [
         2560,
         1440
       ],
-      "sha256": "5b2c5a84504a0582b3800c48eb6564171d305c3c403a09ea913a5df213f06c33"
+      "sha256": "eded3b27d45d4f5a9abb70118e805a2442a84d4f1c5d8ecd486289dc3e55d640"
     },
     {
       "path": "02_WEB_JPG/shot-03.jpg",
@@ -221,12 +221,12 @@
     },
     {
       "path": "02_WEB_JPG/shot-06.jpg",
-      "bytes": 419128,
+      "bytes": 409322,
       "size": [
         2560,
         1440
       ],
-      "sha256": "d47152f9bd951c99ab66983e32f85552f0bb3dbd3063e0877b36d1f681c24691"
+      "sha256": "504d8b7f36a140941956637769a9205c3823207f8bd054ef532609097c1db682"
     },
     {
       "path": "02_WEB_JPG/shot-07.jpg",
@@ -266,12 +266,12 @@
     },
     {
       "path": "02_WEB_JPG/shot-11.jpg",
-      "bytes": 386462,
+      "bytes": 378119,
       "size": [
         2560,
         1440
       ],
-      "sha256": "5803cc65287ef0df4a3a863b9549c807ed975badc0cef71900178502598ea20b"
+      "sha256": "48b67cb06749ef2e88963c9497db0705f75aec1efb2159f43be4e933f80cc8b1"
     },
     {
       "path": "02_WEB_JPG/shot-12.jpg",
