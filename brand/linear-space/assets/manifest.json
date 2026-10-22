@@ -1,0 +1,204 @@
+{
+  "project": "LINEAR SPACE / FRAME-01",
+  "version": "PHASE_A1_EIGHT_SHOT_ART_DIRECTION_PATCH",
+  "date": "2026-10-22",
+  "architecture": "Concept study; not built/commissioned/engineer-verified",
+  "area_total_m2": 180,
+  "area_breakdown_m2": {
+    "Entrance": 24,
+    "Gallery": 64,
+    "Lounge": 38,
+    "Consultation": 24,
+    "Back_of_house": 30
+  },
+  "materials": [
+    "limestone",
+    "smoked oak",
+    "matte black metal",
+    "frosted glass"
+  ],
+  "canvas": {
+    "width": 2560,
+    "height": 1440
+  },
+  "rendering_truth": "Final output canvases 2560x1440; source photo for SHOT01 is native 1672x941 and is resampled, others may also include resized generated imagery. No claim of native 4K photography. SHOT 11 human circulation silhouettes are conceptual movement visualizations, not physical visitor photography at a completed project.",
+  "asset_count": 32,
+  "files": [
+    {
+      "shot": 1,
+      "master_png": "SHOT_01_ARCHITECTURAL_HERO.png",
+      "web_jpg": "shot-01.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 5183664,
+      "jpg_bytes": 1398998,
+      "png_sha256": "46ba3018f288239be39a82207962fdec57f734757d7baaa272b05db137bad90e",
+      "jpg_sha256": "d7da34fd1fc1cfc1963d0d51a47dc7669a70672a5cba2bd59b56f0a7b86f1ca1",
+      "source": "independent generated single image / 1672x941 source resized for layout"
+    },
+    {
+      "shot": 2,
+      "master_png": "SHOT_02_BRAND_CONCEPT.png",
+      "web_jpg": "shot-02.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2873741,
+      "jpg_bytes": 552268,
+      "png_sha256": "571dbb8886a931a3d46113e9e076a62884cf9341bf345793a826abc901330b0e",
+      "jpg_sha256": "e937e3b579930e04e8dd722b17ff10a6819d16308efaeada3296e6b99ecc64dc",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 3,
+      "master_png": "SHOT_03_SPACE_PLANNING.png",
+      "web_jpg": "shot-03.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2309244,
+      "jpg_bytes": 600672,
+      "png_sha256": "2e68cdda54f8667879407afd86857a217f8acc9312e35363e27ef33999bc12b7",
+      "jpg_sha256": "e5f9e61a883530882e5da9c70edf02d0843fb5e924c4b5088516b30fcacf4932",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    },
+    {
+      "shot": 4,
+      "master_png": "SHOT_04_EXTERIOR.png",
+      "web_jpg": "shot-04.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4805516,
+      "jpg_bytes": 963929,
+      "png_sha256": "9c8d4f57348d1cb1177b6242c27cf14da31b6a6772d047c608ac3981dce49857",
+      "jpg_sha256": "44db6fb0d555e3c5c91a01c469209277cbe7f9662c17194552e3a30fa2f76d66",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 5,
+      "master_png": "SHOT_05_INTERIOR_OVERVIEW.png",
+      "web_jpg": "shot-05.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4546980,
+      "jpg_bytes": 901217,
+      "png_sha256": "458217047d75d66b049acc62f2ed7c6a6d8380b98a88db1b889a286354123a6b",
+      "jpg_sha256": "dea0b8b5d4dce0c64b22b491296f604ab7b1a40e91ff76dcefd58e2bdf9c5b79",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 6,
+      "master_png": "SHOT_06_MATERIAL_PALETTE.png",
+      "web_jpg": "shot-06.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 3290541,
+      "jpg_bytes": 758154,
+      "png_sha256": "250b6416e3c3fe0ea0f953ce2838205cb4a064b157118bb1636186aaec2b893f",
+      "jpg_sha256": "2a4138c51cdfd931a443437906443c1aff6e27ef059d7e60b7c784004634885e",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    },
+    {
+      "shot": 7,
+      "master_png": "SHOT_07_LIGHTING_DESIGN.png",
+      "web_jpg": "shot-07.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 3713700,
+      "jpg_bytes": 870802,
+      "png_sha256": "17f552e7558455360f2c3eb5e77619c868c1ce7890a77e1bfa9e2d0197bd40c4",
+      "jpg_sha256": "4b27fa256fed8a24728ce09b02d1505f76ed82a7cb4d2fbf4118741f99e14563",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    },
+    {
+      "shot": 8,
+      "master_png": "SHOT_08_RETAIL_DISPLAY.png",
+      "web_jpg": "shot-08.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2394163,
+      "jpg_bytes": 662336,
+      "png_sha256": "7cea8c6a9c314d0cf07b812b0ca88aa8f210ccf7daa1505fcd70b853b388cf1b",
+      "jpg_sha256": "bd54f2199d76018e04610a3262c27d0e9751191d34c579c2a5169b0412bbc936",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    },
+    {
+      "shot": 9,
+      "master_png": "SHOT_09_WAYFINDING_SYSTEM.png",
+      "web_jpg": "shot-09.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2396349,
+      "jpg_bytes": 405852,
+      "png_sha256": "122a25afb4482f4938c89d5073dd70f2fe39c5aedb28faae588329185d84e5b8",
+      "jpg_sha256": "05cfcb173040f1389688e02dd83957d06d9f202bbecda995ccfea57405fe9ac9",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 10,
+      "master_png": "SHOT_10_FURNITURE_DETAIL.png",
+      "web_jpg": "shot-10.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2603483,
+      "jpg_bytes": 635548,
+      "png_sha256": "f5684b19ce7f0aa718a2d211f918316a2073aae66f33eaa2bb0ea949cbc60f8b",
+      "jpg_sha256": "1a61ab8bca3375285ca0aeb4285238fbc2f94ca8bb87c2be65b566a307b80bfd",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    },
+    {
+      "shot": 11,
+      "master_png": "SHOT_11_HUMAN_EXPERIENCE.png",
+      "web_jpg": "shot-11.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 3761292,
+      "jpg_bytes": 853137,
+      "png_sha256": "26334412f670301288e7b059859da22ee2000e88c2fb666e8f4611ff21adc0ea",
+      "jpg_sha256": "e3c023d1f51ef9359c4c950973c668a7b64493627e0d7ae0fbfce32c9c184976",
+      "source": "independent conceptual movement visualization (not live visitor photography); 2560x1440 editorial typography"
+    },
+    {
+      "shot": 12,
+      "master_png": "SHOT_12_DETAIL_CRAFT.png",
+      "web_jpg": "shot-12.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2209279,
+      "jpg_bytes": 554268,
+      "png_sha256": "5ce258727161a47d32ca489f803f437f8a6ff2f5a6faafd935e9a7b270e5a5bb",
+      "jpg_sha256": "cec2b8779bf4ec3add02773a420f85ac89a73af28dc2b33c44b11bc1c6469427",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    },
+    {
+      "shot": 13,
+      "master_png": "SHOT_13_DIGITAL_EXPERIENCE.png",
+      "web_jpg": "shot-13.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 1469118,
+      "jpg_bytes": 394381,
+      "png_sha256": "483e1c7b8088807c188d986532585a468670e8e231eff1332ee0fe830e422de9",
+      "jpg_sha256": "71b11b9a16317a8a10579fce8fa6284cf95a5dd48f9eb15d2631fb7bf4337873",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 14,
+      "master_png": "SHOT_14_MOBILE_EXPERIENCE.png",
+      "web_jpg": "shot-14.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 1526983,
+      "jpg_bytes": 423609,
+      "png_sha256": "0e32dac27174df442348b86f0e6ec4e8ad8e1066e0295ae6e19188f2f066fc05",
+      "jpg_sha256": "977b6060be12c49d5c616f3a8709a2384dfd6923380e79c708d36aaf2ad46564",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 15,
+      "master_png": "SHOT_15_DESIGN_PROCESS.png",
+      "web_jpg": "shot-15.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 2022120,
+      "jpg_bytes": 544388,
+      "png_sha256": "223d6735d9e58b9f9715714b33e6af58383d0e981807a2d1fef2648a8e96ad1d",
+      "jpg_sha256": "9c407049bde3bcfcede939611c9354db97ea36de71b26f7cf350d0f6ee3e4a84",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout"
+    },
+    {
+      "shot": 16,
+      "master_png": "SHOT_16_FINAL_SHOWCASE.png",
+      "web_jpg": "shot-16.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4847401,
+      "jpg_bytes": 1078064,
+      "png_sha256": "d411767e87e54a65ec4255ca471aa661f491afdd8c400142e78b055e807da7e1",
+      "jpg_sha256": "0da46a132b0868d33ab3a511c07ab7c9160d90ef2890511c36759bb0c93a07e6",
+      "source": "independent source imagery with 2560x1440 editorial typography and layout (Phase A.1 patch)"
+    }
+  ]
+}
