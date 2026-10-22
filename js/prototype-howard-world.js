@@ -135,7 +135,10 @@ function animateHeroEntrance() {
    ======================================================== */
 function initNavTheme() {
   const body = document.body;
-  const darkSections = document.querySelectorAll('#message, #editorial, #helmets, #socials, #footer');
+  const isAboutPage = body.classList.contains('page-about');
+  const darkSections = isAboutPage
+    ? document.querySelectorAll('.about-hero-section, .about-content-block, #footer')
+    : document.querySelectorAll('#message, #editorial, #helmets, #socials, #footer');
 
   function updateTheme() {
     let isDark = false;

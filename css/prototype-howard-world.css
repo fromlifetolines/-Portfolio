@@ -110,6 +110,10 @@ body[data-nav-theme="dark"] .nav {
   color: var(--color-white);
 }
 
+body.page-about:not([data-nav-theme="light"]) .nav {
+  color: var(--color-white);
+}
+
 /* Left Brand Mark */
 .nav-brand {
   display: flex;
