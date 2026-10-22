@@ -1,0 +1,322 @@
+{
+  "project": "FORME LAB",
+  "version": "visual-master-v1",
+  "date": "2026-10-22",
+  "status": "ART DIRECTION REVIEW / NOT DEPLOYED",
+  "concept": "Fictional independent design case",
+  "products": [
+    {
+      "sku": "FL-ESS-120",
+      "name": "Daily Essence",
+      "amount": "120 mL"
+    },
+    {
+      "sku": "FL-SER-030",
+      "name": "Barrier Serum",
+      "amount": "30 mL"
+    },
+    {
+      "sku": "FL-CRM-050",
+      "name": "Comfort Cream",
+      "amount": "50 g"
+    }
+  ],
+  "original_photos": {
+    "collection": "a_clean_minimalist_high_end_skincare_product_sti.png",
+    "ritual": "a_serene_high_end_skincare_product_scene_in_soft.png",
+    "serum": "a_high_end_product_still_life_scene_with_minimal.png",
+    "cream": "a_clean_minimalist_high_end_product_still_life_s.png",
+    "bathroom": "wide_cinematic_photoreal_interior_product_still.png",
+    "blankpack": "a_high_end_minimalist_still_life_studio_photograph.png"
+  },
+  "files": [
+    {
+      "path": "01_MASTER_PNG/SHOT_01_BRAND_HERO.png",
+      "bytes": 1806787,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "cbc0fbb1ca2b73a4e73e915633f63561d42765240c849d6a56414b1be6b25b28"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_02_BRAND_PHILOSOPHY.png",
+      "bytes": 1905857,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "70d989b8b42309ae793d341c48000b45818746ba7f659a00e193629a7b5a1c2d"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_03_VISUAL_IDENTITY.png",
+      "bytes": 1584331,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "969f311e37959f09bdffcd21f2a8858fa048324231d91b63888d649b64eaa83a"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_04_COLOR_AND_MATERIAL.png",
+      "bytes": 915050,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "ca741a351caf36e931bce508d0d60291a46acfc7ab0b6a82f186189911d6d89d"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_05_PRODUCT_COLLECTION.png",
+      "bytes": 1902314,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "665dd2fbebe0b692fe0d749c301686cf5439459e875994c6e66e3fc401cf29dd"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_06_DAILY_ESSENCE.png",
+      "bytes": 1840904,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "3a9bfc6d58a116dd6391cf0bf63d47f72ad489cbdee4ba11cec6effe887efe50"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_07_BARRIER_SERUM.png",
+      "bytes": 1820860,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "687ac8108eab58a60a48914cf5bd97893aad5dc6eba0846ed4c13bdac1fa91e5"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_08_COMFORT_CREAM.png",
+      "bytes": 2000031,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "5b93c4dabaa7e72c107ced3e7cc9dc65239dc23834a81e50e98e802153de573a"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_09_PACKAGING_SYSTEM.png",
+      "bytes": 2002765,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "c2119da3d79ca5e48780b284482bd40401a1a4a3992377d07e78aaf674b1d2ca"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_10_LABEL_INFORMATION.png",
+      "bytes": 122056,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "2cda3c467fa45f779f95f6fe6ea5de3c5edf7b944e03ce0a05553bc08ed73520"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_11_EDITORIAL_BOOKLET.png",
+      "bytes": 1547193,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "cbaa96279efbbb47d329f581e20b76a3895af4edecfb4f7af4393619b77fce10"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_12_CAMPAIGN_EDITORIAL.png",
+      "bytes": 2275351,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "470ca157d1e9ccc21bbeff8661aae3832413bddb9160bfd2763774067cc1d380"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_13_WEBSITE_DESKTOP.png",
+      "bytes": 743793,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "fa65a55b6469e6a5c347688e967cb52d1e2d0f1e369d76c62c72cfe635b30039"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_14_MOBILE_EXPERIENCE.png",
+      "bytes": 397707,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "7800af4994a48f078a547d0abbf31bec4925d1ec694bd7c5ba4c22cdb78a1e5b"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_15_ROUTINE_BUILDER_UX.png",
+      "bytes": 144568,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "152dbc4425d3d5d9ab985644c3fd3fe1e2b388055227705523738b0c766b4d44"
+    },
+    {
+      "path": "01_MASTER_PNG/SHOT_16_FINAL_BRAND_SYSTEM.png",
+      "bytes": 2028195,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "b465238f9a237a285623aa01e10d80b19aba909dc6bad76a6ddd4a17b665c9c5"
+    },
+    {
+      "path": "02_WEB_JPG/shot-01.jpg",
+      "bytes": 402785,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "70cded33ced0d47cfe67acb8718b9fe497f5d1dd0eaa1f591e1ddecc21b5af00"
+    },
+    {
+      "path": "02_WEB_JPG/shot-02.jpg",
+      "bytes": 446175,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "5b2c5a84504a0582b3800c48eb6564171d305c3c403a09ea913a5df213f06c33"
+    },
+    {
+      "path": "02_WEB_JPG/shot-03.jpg",
+      "bytes": 383934,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "b9667bc2a39e92924dab7ea5c5a9d2dac9f81c7177fd690ba051d8a04e82d16f"
+    },
+    {
+      "path": "02_WEB_JPG/shot-04.jpg",
+      "bytes": 332576,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "9df5d83d0a6ec946b54912eb7fed3c22edb703dc6ede6ee2c02d0c02b01968cc"
+    },
+    {
+      "path": "02_WEB_JPG/shot-05.jpg",
+      "bytes": 413985,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "afa82026cbc8109ff262158f9ace014844cce09d6e051fe271b9379e6687d34d"
+    },
+    {
+      "path": "02_WEB_JPG/shot-06.jpg",
+      "bytes": 419128,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "d47152f9bd951c99ab66983e32f85552f0bb3dbd3063e0877b36d1f681c24691"
+    },
+    {
+      "path": "02_WEB_JPG/shot-07.jpg",
+      "bytes": 401699,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "31928c3bb5476581948a8c61bf4f3d7b462d3bd93c944a9df9415dac69df287b"
+    },
+    {
+      "path": "02_WEB_JPG/shot-08.jpg",
+      "bytes": 430754,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "d1b11bd362f34a3b297dbaac3d38a4763787a026030d38a0584cf2c34f1c9418"
+    },
+    {
+      "path": "02_WEB_JPG/shot-09.jpg",
+      "bytes": 466226,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "f25e5643e4fc584a6ef0176ba6c2c141de1f6afcc03b129395508bf7c3248664"
+    },
+    {
+      "path": "02_WEB_JPG/shot-10.jpg",
+      "bytes": 250104,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "a5bae9fd9ba8aaa705b4f7dafc4ea02f5b74fb09a5fdcda1cef9adc15b89601c"
+    },
+    {
+      "path": "02_WEB_JPG/shot-11.jpg",
+      "bytes": 386462,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "5803cc65287ef0df4a3a863b9549c807ed975badc0cef71900178502598ea20b"
+    },
+    {
+      "path": "02_WEB_JPG/shot-12.jpg",
+      "bytes": 486456,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "845e3723db422a2eb8784c2f67f38ff8e50c2c04cce4ed5c0ac9318f49cddd9e"
+    },
+    {
+      "path": "02_WEB_JPG/shot-13.jpg",
+      "bytes": 351747,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "eb2ef3efe987f43f6fb09b2f30f5a2da901c1d51ece08025a0c4dee88241eb37"
+    },
+    {
+      "path": "02_WEB_JPG/shot-14.jpg",
+      "bytes": 268678,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e432e4f99bf9d2481886ce56896793ca09ae69e1c1337f659cec33881756c77f"
+    },
+    {
+      "path": "02_WEB_JPG/shot-15.jpg",
+      "bytes": 235396,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "27130df2d5cd0482c8a05ac574349de48375ba39ad39a522107c93cd47d633e6"
+    },
+    {
+      "path": "02_WEB_JPG/shot-16.jpg",
+      "bytes": 451119,
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "c875f47419fb2674ed35965c1350f1d3de88556268f821899637a25887b6b4a5"
+    }
+  ]
+}
