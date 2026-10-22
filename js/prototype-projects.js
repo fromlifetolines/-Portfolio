@@ -150,6 +150,28 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/forme-lab/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/forme-lab/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/forme-lab/'
+  },
+  {
+    id: 'linear-space',
+    order: 8,
+    published: true,
+    title: 'LINEAR SPACE',
+    year: '2026',
+    category: {
+      en: 'Architectural Concept / Interior Experience / Environmental Identity',
+      'zh-TW': '建築空間概念／商業室內體驗／環境識別'
+    },
+    projectType: {
+      en: 'Self-Initiated Architectural Concept',
+      'zh-TW': '自主建築與空間概念研究'
+    },
+    description: {
+      en: 'FRAME/01 is an independent 180 m² urban gallery and design salon concept, integrating spatial planning, materials, wayfinding and an interactive spatial tour.',
+      'zh-TW': 'FRAME/01 為 180 m² 城市藝廊與設計沙龍自主概念研究，整合空間配置、材質策略、導視系統及可操作空間導覽。'
+    },
+    cover: 'brand/linear-space/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/linear-space/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/linear-space/'
   }
 ]);
 
