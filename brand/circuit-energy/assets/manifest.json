@@ -1,0 +1,335 @@
+{
+  "project": "CIRCUIT ENERGY / PORTFOLIO 09",
+  "version": "PHASE_A2_PHOTOGRAPHIC_VISUAL_LOCK_V3",
+  "date": "2026-10-25",
+  "status": "LOCAL_QA_VERIFIED",
+  "nature": "Self-initiated renewable energy brand, spatial concept, and digital UX study. All facilities, systems, metrics, and dashboards are fictional illustrative designs; not actual installations, audited generation, or certified carbon reductions.",
+  "canvas": {
+    "width": 2560,
+    "height": 1440
+  },
+  "rendering_truth": "Final presentation canvases are 2560x1440. Original AI-generated single-shot source images are 1672x941 and were Lanczos-resampled to 2560x1440 without layout modification or collage cropping. Not native 4K photography. All 300 DPI metadata reflects print container settings, not native optical sensor pixels.",
+  "asset_count": 32,
+  "shots": [
+    {
+      "shot": 1,
+      "title": "Hero / Sunset Energy Campus",
+      "master_png": "SHOT_01_HERO.png",
+      "web_jpg": "shot-01.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4929507,
+      "jpg_bytes": 1298468,
+      "png_sha256": "977f9578a371eb8fcca0519124a802373e54629c80dceeb3feb4b2e2eefd6ded",
+      "jpg_sha256": "e58c37170efa509e7f5b9b635f65c99ad7e3a048bf7de96dc879c5ddb311cbb9",
+      "native_original_source": {
+        "filename": "SHOT_01_HERO.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2577620,
+        "sha256": "dba562fcea5fb60fdb033dd0a10973411d38fed6327a58038bb971d88c4f1b2a"
+      }
+    },
+    {
+      "shot": 2,
+      "title": "Brand Concept / Nature & Circularity",
+      "master_png": "SHOT_02_BRAND_CONCEPT.png",
+      "web_jpg": "shot-02.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 5490888,
+      "jpg_bytes": 1578555,
+      "png_sha256": "97cb59dcede920cfd4dc9f1462a4359034fbc865e230c050603846e9789925be",
+      "jpg_sha256": "8c5d60126ee146d2f7a6298af6b8a9d77ac4a60fa64b161984bd79a9ed875d38",
+      "native_original_source": {
+        "filename": "SHOT_02_BRAND_CONCEPT.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2896370,
+        "sha256": "a78c6c8238a7e2a3a7fca1a07611bd128e403bf3a44d9987c7244aedb516693b"
+      }
+    },
+    {
+      "shot": 3,
+      "title": "System Overview / Integrated Renewable Campus",
+      "master_png": "SHOT_03_SYSTEM_OVERVIEW.png",
+      "web_jpg": "shot-03.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4663685,
+      "jpg_bytes": 1164926,
+      "png_sha256": "380459ae0e9e545a251f0bd40308f418604d3449695ffb8df199fd80ea2cf058",
+      "jpg_sha256": "01bc4b0d54fb12d4352a33467c8210dd57ad748b112e48b6c93ae8247f0632c3",
+      "native_original_source": {
+        "filename": "SHOT_03_SYSTEM_OVERVIEW.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2621799,
+        "sha256": "efca5e9f95f8c66d8a6ff11f6e8850c618c4a6b56bf03f753f26c2adff1e042b"
+      }
+    },
+    {
+      "shot": 4,
+      "title": "Site & Infrastructure / Architectural Arrival",
+      "master_png": "SHOT_04_SITE_AND_INFRASTRUCTURE.png",
+      "web_jpg": "shot-04.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4805578,
+      "jpg_bytes": 1264766,
+      "png_sha256": "86a477b3ee83cf17a16f7dfb2711b861537d49ea067385d4617996fb16ea6240",
+      "jpg_sha256": "5c7686572e7e84937cbc2f2366adfc3223607fbf17d70bc90c64402aa6fe914d",
+      "native_original_source": {
+        "filename": "SHOT_04_SITE_AND_INFRASTRUCTURE.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2529343,
+        "sha256": "025a0eee3f74edb82a418a167fc4ab18abfa1bae0d855ebd950dbae0af6d1df8"
+      }
+    },
+    {
+      "shot": 5,
+      "title": "Experience Center / Immersive Exhibition",
+      "master_png": "SHOT_05_EXPERIENCE_CENTER.png",
+      "web_jpg": "shot-05.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4453074,
+      "jpg_bytes": 1065724,
+      "png_sha256": "755adbcd330576b18eb56d90d69879f24ab16afda68811748aecdef0dc9a6b91",
+      "jpg_sha256": "4db8f6e710018ee6b787007bd241abdee01aa568e8df1b2daf1b55bba9596632",
+      "native_original_source": {
+        "filename": "SHOT_05_EXPERIENCE_CENTER.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2332355,
+        "sha256": "12c0b14479af60c3855e21b15893fbba6864a5f73245cf322891576961900399"
+      }
+    },
+    {
+      "shot": 6,
+      "title": "Visual Identity / Brand Materials",
+      "master_png": "SHOT_06_VISUAL_IDENTITY.png",
+      "web_jpg": "shot-06.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 5809641,
+      "jpg_bytes": 1246784,
+      "png_sha256": "b8926804dfd495d30ec921fd0c41af292c79c8a3b5dbb42b3124b51c8699cd6f",
+      "jpg_sha256": "939e65b49506880a150d2fc22551331d01c0c31677deb92f2b5fc513d19c854a",
+      "native_original_source": {
+        "filename": "SHOT_06_VISUAL_IDENTITY.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 3197223,
+        "sha256": "1b667a32a9c9889e27b359f0ed1394217fd6915e0dd998b6e11b2d427fca3c9d"
+      }
+    },
+    {
+      "shot": 7,
+      "title": "Data & Monitoring / Dashboard Concept",
+      "master_png": "SHOT_07_DATA_AND_MONITORING.png",
+      "web_jpg": "shot-07.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 3907330,
+      "jpg_bytes": 992498,
+      "png_sha256": "c35ab1ec37c4b66372c9fe847538e74712832f13c5d6a6996bf5fbd3a7e36b0d",
+      "jpg_sha256": "5b456897c207bb62354d6111a89d4fe7f5cf373e6d471a186823f8841ef29cf3",
+      "native_original_source": {
+        "filename": "SHOT_07_DATA_AND_MONITORING.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2118066,
+        "sha256": "196d328198470342b1d5dd4af2875033960947ced027fce639429a34918e707f"
+      }
+    },
+    {
+      "shot": 8,
+      "title": "Energy Solutions / Battery Storage",
+      "master_png": "SHOT_08_ENERGY_SOLUTIONS.png",
+      "web_jpg": "shot-08.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4542248,
+      "jpg_bytes": 1118772,
+      "png_sha256": "84cf78257b923cfc2441680e35293cd368edb6e2448bd958bb3940b537f6d66b",
+      "jpg_sha256": "24bd8bf495c6ae36bf16976788b4828fabeaf2570ebafc3d4c2af3d4b9d220d7",
+      "native_original_source": {
+        "filename": "SHOT_08_ENERGY_SOLUTIONS.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2388952,
+        "sha256": "bf966094462be0e81e614d38492c660458e98681e1d6845724a6f8ee793f514a"
+      }
+    },
+    {
+      "shot": 9,
+      "title": "Application Scenarios / Four Industries",
+      "master_png": "SHOT_09_APPLICATION_SCENARIOS.png",
+      "web_jpg": "shot-09.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4495982,
+      "jpg_bytes": 1223140,
+      "png_sha256": "418e754b4487d87652064a374e97ac67387ec7bfd164cc82fe3206037ddd7ed0",
+      "jpg_sha256": "5684d6dc348ebddaf736ef9e7c81adbb9d2287f1bbd42554ed6a3bb93f99593a",
+      "native_original_source": {
+        "filename": "SHOT_09_APPLICATION_SCENARIOS.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2407994,
+        "sha256": "ac28ccd35797134d9f260b9c33168d0da44218edbc087d5c350ec4942bdda78d"
+      }
+    },
+    {
+      "shot": 10,
+      "title": "Product Detail / Solar Panel Exploded View",
+      "master_png": "SHOT_10_PRODUCT_DETAIL.png",
+      "web_jpg": "shot-10.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4292882,
+      "jpg_bytes": 808889,
+      "png_sha256": "5627640b62608ea6c40c2ce501a0200bab206ad8d0620e54d24ab732e97cbcc0",
+      "jpg_sha256": "9bd4365c81c312b1f0612c4cb12490e4243bccc67d8ebd2325eea26ac5028a99",
+      "native_original_source": {
+        "filename": "SHOT_10_PRODUCT_DETAIL.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2283649,
+        "sha256": "a49d5f2bd73e8585f22fd9187ca1fa45f525cbb5e105079107d85005ea69caf7"
+      }
+    },
+    {
+      "shot": 11,
+      "title": "Human & Community / Renewable Energy Education",
+      "master_png": "SHOT_11_HUMAN_AND_COMMUNITY.png",
+      "web_jpg": "shot-11.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4610222,
+      "jpg_bytes": 1164419,
+      "png_sha256": "0f3e0c2fec276bb9d857b9e4079fa9a041f1b46a75b41e7ab3c67abf7307ca28",
+      "jpg_sha256": "beb22fb23c0aacbca40d4f96073121fa85865f8a29785214665e48b05ade17c9",
+      "native_original_source": {
+        "filename": "SHOT_11_HUMAN_AND_COMMUNITY.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2426680,
+        "sha256": "ef86e6bf5ffd7eb61c45dd2b56bbb321588e96ca4c19d1a2c53210ab25651bf8"
+      }
+    },
+    {
+      "shot": 12,
+      "title": "Sustainability Impact / Illustrative Metrics",
+      "master_png": "SHOT_12_SUSTAINABILITY_IMPACT.png",
+      "web_jpg": "shot-12.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4639725,
+      "jpg_bytes": 1126843,
+      "png_sha256": "3cd89d1e36e5997667af7dccec7fbacdea0d7f6a6afbae66da70d8d7c34672fd",
+      "jpg_sha256": "a0fc8c08ba4f8eedfb10b624cff76255381ee597e6858702c53cb65feb9e3715",
+      "native_original_source": {
+        "filename": "SHOT_12_SUSTAINABILITY_IMPACT.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2444137,
+        "sha256": "10991c549f960590e08e7d085dd2e9568aa3e27b67fd774bdc8a5719787896b6"
+      }
+    },
+    {
+      "shot": 13,
+      "title": "Digital Experience / Responsive Brand Site",
+      "master_png": "SHOT_13_DIGITAL_EXPERIENCE.png",
+      "web_jpg": "shot-13.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 3993692,
+      "jpg_bytes": 956041,
+      "png_sha256": "c9a25a1afaa5527a3f41bf8194313513ee7d1baee268efae521281d6f8bf8fef",
+      "jpg_sha256": "f8d91c803bf521e8267c78f3be730211ccb826c105927f292af2c07b8352f168",
+      "native_original_source": {
+        "filename": "SHOT_13_DIGITAL_EXPERIENCE.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2139912,
+        "sha256": "66b650181ba8e09580f1f63073913e75dccf37f9b20fa991e6f37631ea0e113a"
+      }
+    },
+    {
+      "shot": 14,
+      "title": "Mobile Experience / Energy Monitoring App",
+      "master_png": "SHOT_14_MOBILE_EXPERIENCE.png",
+      "web_jpg": "shot-14.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 3714013,
+      "jpg_bytes": 808408,
+      "png_sha256": "8dd5f1244e6cd49217ec85568f2928d7e68037da5d7bde23bef57cde1685956b",
+      "jpg_sha256": "5162237d91e1e30b6d153441898f350481f92ef01495ff10eff560b635817715",
+      "native_original_source": {
+        "filename": "SHOT_14_MOBILE_EXPERIENCE.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 1989874,
+        "sha256": "026f0fac9f338d11d19b1292f2b2526fabb9743b65b9e3953f68f770e9ce6cac"
+      }
+    },
+    {
+      "shot": 15,
+      "title": "Project Process / Research to Impact",
+      "master_png": "SHOT_15_PROJECT_PROCESS.png",
+      "web_jpg": "shot-15.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4161710,
+      "jpg_bytes": 908965,
+      "png_sha256": "87549040f9c7ab293bbb30a29f40bf41490a8cc5b0e14a39c4a943e8b6243c9e",
+      "jpg_sha256": "bf80e113b1b40e826066687a86e1bf41ad640d13319863822db5941033a4fcda",
+      "native_original_source": {
+        "filename": "SHOT_15_PROJECT_PROCESS.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2290706,
+        "sha256": "a1a18c4f7314e154ff86ac6d9e7a904d7e6e3c532d96e1d1a21eb8c2dad5fdb3"
+      }
+    },
+    {
+      "shot": 16,
+      "title": "Finale / Cleaner Planet Brighter Tomorrow",
+      "master_png": "SHOT_16_FINALE.png",
+      "web_jpg": "shot-16.jpg",
+      "canvas": "2560x1440",
+      "png_bytes": 4902941,
+      "jpg_bytes": 1307118,
+      "png_sha256": "cea72a196082e8e55fd7beb8430ca0ec7a1fdd1ecb79bb3ce2f798b969bf4019",
+      "jpg_sha256": "22528434c90a251f73b26027e6faef0d23bc03d6db29a55b784b201febee5a85",
+      "native_original_source": {
+        "filename": "SHOT_16_FINALE.png",
+        "resolution": [
+          1672,
+          941
+        ],
+        "bytes": 2577664,
+        "sha256": "422395d864b4e3fa50938aa66805d0b0ff86cebdff9030ab371d45a4be101ace"
+      }
+    }
+  ]
+}

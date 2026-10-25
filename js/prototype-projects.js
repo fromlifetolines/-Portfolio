@@ -172,6 +172,27 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/linear-space/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/linear-space/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/linear-space/'
+  },
+  {
+    id: 'circuit-energy',
+    order: 9,
+    published: true,
+    title: 'CIRCUIT ENERGY',
+    year: '2026',
+    category: {
+      en: 'Renewable Energy / Brand Identity / Data Experience',
+      'zh-TW': '再生能源／品牌識別／能源資訊設計'
+    },
+    projectType: {
+      en: 'Independent Energy Brand Concept',
+      'zh-TW': '自主能源品牌概念提案'
+    },
+    description: {
+      en: 'A self-initiated renewable-energy identity and digital-experience concept spanning solar, wind, storage and an explicitly simulated energy-flow interface.',
+      'zh-TW': '自主再生能源品牌與數位體驗概念，整合太陽能、風能、儲能及明確標示為示意數據的能源流向互動。'
+    },
+    cover: 'brand/circuit-energy/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/circuit-energy/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/circuit-energy/'
   }
 ]);
-
