@@ -46,11 +46,11 @@
       },
       message: {
         emblemText: 'CREATIVE STRATEGIST · VISUAL DESIGN DIRECTOR',
-        line1: 'DESIGNING <span class="c-lime-serif">VISUAL IDENTITIES</span>,',
-        line2: 'DIGITAL PRODUCTS AND',
-        line3: '<span class="c-lime-serif">CONNECTED EXPERIENCES</span>',
-        line4: 'ACROSS BRAND, ADVERTISING',
-        line5: 'AND <span class="c-lime-serif">TECHNOLOGY</span>.'
+        line1: '<span class="msg-phrase">DESIGNING</span> <span class="msg-phrase"><span class="c-lime-serif">VISUAL IDENTITIES</span>,</span>',
+        line2: '<span class="msg-phrase">DIGITAL PRODUCTS</span> <span class="msg-phrase">AND</span>',
+        line3: '<span class="msg-phrase"><span class="c-lime-serif">CONNECTED</span></span> <span class="msg-phrase"><span class="c-lime-serif">EXPERIENCES</span></span>',
+        line4: '<span class="msg-phrase">ACROSS BRAND,</span> <span class="msg-phrase">ADVERTISING</span>',
+        line5: '<span class="msg-phrase">AND</span> <span class="msg-phrase"><span class="c-lime-serif">TECHNOLOGY</span>.</span>'
       },
       editorial: {
         captionFltl: 'FLTL NFC · FLAGSHIP OBJECT',
@@ -138,7 +138,7 @@
         home: 'Home',
         work: 'Work',
         about: 'About Howard',
-        helmets: 'Hall of Fame',
+        helmets: 'SELECTED WORK',
         featuredCase: 'FEATURED CASE',
         fltlCase: 'FLTL NFC Smart Business Card (2026)',
         islandCase: '島序 ISLAND INDEX — Tea Atlas (2026)',
@@ -219,11 +219,11 @@
       },
       message: {
         emblemText: '創意策略總監 · 視覺設計指導',
-        line1: '打造獨特<span class="c-lime-serif">品牌視覺識別</span>，',
-        line2: '建構全方位數位產品與',
-        line3: '<span class="c-lime-serif">虛實整合連結體驗</span>，',
-        line4: '貫通品牌策略、廣告傳播',
-        line5: '與尖端<span class="c-lime-serif">數位科技</span>。'
+        line1: '<span class="msg-phrase">打造獨特</span><span class="msg-phrase"><span class="c-lime-serif">品牌視覺識別</span>，</span>',
+        line2: '<span class="msg-phrase">建構全方位</span><span class="msg-phrase">數位產品與</span>',
+        line3: '<span class="msg-phrase"><span class="c-lime-serif">虛實整合</span></span><span class="msg-phrase"><span class="c-lime-serif">連結體驗</span>，</span>',
+        line4: '<span class="msg-phrase">貫通品牌策略、</span><span class="msg-phrase">廣告傳播</span>',
+        line5: '<span class="msg-phrase">與尖端</span><span class="msg-phrase"><span class="c-lime-serif">數位科技</span>。</span>'
       },
       editorial: {
         captionFltl: 'FLTL NFC · 旗艦實體作品',
@@ -311,7 +311,7 @@
         home: '首頁',
         work: '作品',
         about: '關於 Howard',
-        helmets: '旗艦殿堂',
+        helmets: '作品選集',
         featuredCase: '精選代表作',
         fltlCase: 'FLTL NFC 智慧名片 (2026)',
         islandCase: '島序 ISLAND INDEX 台灣茶風土索引 (2026)',
