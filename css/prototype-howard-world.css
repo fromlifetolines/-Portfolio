@@ -1805,11 +1805,28 @@ body[data-nav-theme="dark"] .ham-line {
 
   /* Message Section on Mobile */
   .s.home-message {
-    padding: 6rem 1.5rem;
+    padding: 5.5rem 1.25rem;
   }
 
   .message-impact-text {
-    font-size: 2.2rem;
+    font-size: clamp(1.4rem, 6.2vw, 2.15rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  html[lang="zh-TW"] .message-impact-text {
+    font-size: clamp(1.45rem, 6.4vw, 2.15rem);
+    line-height: 1.28;
+    letter-spacing: 0.02em;
+  }
+
+  .msg-line {
+    line-height: 1.25;
+    margin-bottom: 0.15em;
+  }
+
+  .msg-line-inner {
+    display: block;
   }
 
   /* Editorial Journey on Mobile */
@@ -2008,6 +2025,11 @@ body[data-nav-theme="dark"] .ham-line {
 
 .msg-line-inner.is-revealed {
   transform: translateY(0%);
+}
+
+.msg-phrase {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 /* Portals Focus/Dim Effects */
@@ -2696,5 +2718,17 @@ html[lang="zh-TW"] .editorial-quote-text {
     grid-template-columns: 1fr;
     max-width: 520px;
     gap: 40px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .s.home-message {
+    padding: 4.5rem 1rem;
+  }
+  .message-impact-text {
+    font-size: 1.35rem;
+  }
+  html[lang="zh-TW"] .message-impact-text {
+    font-size: 1.4rem;
   }
 }
