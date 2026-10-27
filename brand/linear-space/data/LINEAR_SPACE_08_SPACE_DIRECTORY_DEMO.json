@@ -1,0 +1,207 @@
+{
+  "project": "LINEAR SPACE FRAME/01",
+  "dataset": "FICTIONAL DEMO — NOT A REAL BUILDING OR ACCESSIBILITY CERTIFICATION",
+  "version": "V4-20261026",
+  "visitor_centre_area_1f_sqm": 180,
+  "floors": [
+    {
+      "id": "1F",
+      "label_zh": "展示與共享接待中心",
+      "label_en": "Visitor & Shared Space Centre",
+      "is_rendered_in_existing_images": true,
+      "has_verified_area": false,
+      "spaces": [
+        {
+          "id": "LS-1F-ENT",
+          "zone": "ENTRANCE",
+          "label_zh": "入口迎賓",
+          "label_en": "Main Entrance",
+          "area_sqm": 24,
+          "category": "reception",
+          "visitor_access": "public",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION"
+          ],
+          "amenities_demo": [
+            "接待檯",
+            "導引看板"
+          ]
+        },
+        {
+          "id": "LS-1F-GAL",
+          "zone": "GALLERY",
+          "label_zh": "展示藝廊",
+          "label_en": "Gallery",
+          "area_sqm": 64,
+          "category": "reception",
+          "visitor_access": "public",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "GALLERY"
+          ],
+          "amenities_demo": [
+            "品牌展示",
+            "導覽介紹"
+          ]
+        },
+        {
+          "id": "LS-1F-LOU",
+          "zone": "LOUNGE",
+          "label_zh": "交流沙龍",
+          "label_en": "Shared Lounge",
+          "area_sqm": 38,
+          "category": "cowork",
+          "visitor_access": "public",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "LOUNGE"
+          ],
+          "amenities_demo": [
+            "座席示意",
+            "閱讀區"
+          ]
+        },
+        {
+          "id": "LS-1F-CON",
+          "zone": "CONSULTATION",
+          "label_zh": "諮詢室",
+          "label_en": "Consultation Room",
+          "area_sqm": 24,
+          "category": "meeting",
+          "visitor_access": "appointment",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "CONSULTATION"
+          ],
+          "amenities_demo": [
+            "小型會談",
+            "樣品諮詢"
+          ]
+        },
+        {
+          "id": "LS-1F-BOH",
+          "zone": "BACK_OF_HOUSE",
+          "label_zh": "後勤工作區",
+          "label_en": "Back-of-house",
+          "area_sqm": 30,
+          "category": "staff",
+          "visitor_access": "staff-only",
+          "route_nodes": [],
+          "amenities_demo": [
+            "員工操作區",
+            "儲藏區"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2F",
+      "label_zh": "工作與會議（示意）",
+      "label_en": "Work & Meeting (Concept)",
+      "is_rendered_in_existing_images": false,
+      "has_verified_area": false,
+      "spaces": [
+        {
+          "id": "LS-2F-M01",
+          "label_zh": "團隊會議室",
+          "label_en": "Team Meeting Room",
+          "area_sqm": null,
+          "category": "meeting",
+          "visitor_access": "appointment",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "ELEVATOR_LOBBY",
+            "FLOOR_2",
+            "M01"
+          ],
+          "amenities_demo": [
+            "會議桌示意",
+            "簡報顯示器示意"
+          ]
+        },
+        {
+          "id": "LS-2F-HUB",
+          "label_zh": "共同工作區",
+          "label_en": "Shared Work Hub",
+          "area_sqm": null,
+          "category": "cowork",
+          "visitor_access": "appointment",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "ELEVATOR_LOBBY",
+            "FLOOR_2",
+            "HUB"
+          ],
+          "amenities_demo": [
+            "共享桌位示意",
+            "公共電源示意"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3F",
+      "label_zh": "獨立工作室（示意）",
+      "label_en": "Private Studios (Concept)",
+      "is_rendered_in_existing_images": false,
+      "has_verified_area": false,
+      "spaces": [
+        {
+          "id": "LS-3F-S01",
+          "label_zh": "獨立工作室",
+          "label_en": "Private Studio",
+          "area_sqm": null,
+          "category": "private",
+          "visitor_access": "appointment",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "ELEVATOR_LOBBY",
+            "FLOOR_3",
+            "S01"
+          ],
+          "amenities_demo": [
+            "獨立座位示意",
+            "團隊儲物示意"
+          ]
+        },
+        {
+          "id": "LS-3F-COM",
+          "label_zh": "共享交流區",
+          "label_en": "Community Lounge",
+          "area_sqm": null,
+          "category": "cowork",
+          "visitor_access": "appointment",
+          "route_nodes": [
+            "MAIN_ENTRANCE",
+            "RECEPTION",
+            "ELEVATOR_LOBBY",
+            "FLOOR_3",
+            "COM"
+          ],
+          "amenities_demo": [
+            "休憩座椅示意"
+          ]
+        }
+      ]
+    }
+  ],
+  "leasing_terms": {
+    "currency": null,
+    "actual_availability": null,
+    "real_reservations": false,
+    "payments": false,
+    "inquiry_type": "client-side concept summary only"
+  },
+  "notes": [
+    "1F has the five original zones with 180 m² total; 2F and 3F are added informational concepts with no area claims",
+    "Staff-only areas must not show public wayfinding route",
+    "These route nodes are fictional and do not assert code-compliant accessible infrastructure"
+  ]
+}
