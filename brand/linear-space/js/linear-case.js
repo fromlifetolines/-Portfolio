@@ -381,7 +381,7 @@
             route_nodes: ["MAIN_ENTRANCE", "RECEPTION", "ELEVATOR_LOBBY", "FLOOR_2", "M01"],
             amenities_demo_zh: ["8人會議長桌示意", "視訊簡報螢幕示意", "隔音吸音壁面模組"],
             amenities_demo_en: ["8-person table mockup", "Video conferencing display", "Acoustic wall modules"],
-            shotThumb: null,
+            shotThumb: "./assets/workplace-concepts/ls-2f-m01.jpg",
             desc_zh: "2F 概念會議空間，專供租戶與訪客預約使用。需經 1F 梯廳搭乘電梯抵達。",
             desc_en: "Conceptual meeting facility on 2F for tenant collaboration, accessible via elevator."
           },
@@ -397,7 +397,7 @@
             route_nodes: ["MAIN_ENTRANCE", "RECEPTION", "ELEVATOR_LOBBY", "FLOOR_2", "HUB"],
             amenities_demo_zh: ["共享熱桌工位示意", "整合式公共電源示意", "開放式交流討論吧檯"],
             amenities_demo_en: ["Shared hot-desk stations", "Integrated power points", "Open collaboration bar"],
-            shotThumb: null,
+            shotThumb: "./assets/workplace-concepts/ls-2f-hub.jpg",
             desc_zh: "2F 開放式共同工作區概念，提供靈活工位配置與跨領域團隊協作體驗。",
             desc_en: "Open coworking floor concept offering agile seating and collaborative touchpoints."
           }
@@ -422,7 +422,7 @@
             route_nodes: ["MAIN_ENTRANCE", "RECEPTION", "ELEVATOR_LOBBY", "FLOOR_3", "S01"],
             amenities_demo_zh: ["專屬門禁磁卡門鎖", "固定團隊工作站示意", "獨立置物衣櫃示意"],
             amenities_demo_en: ["Keycard access entry", "Dedicated team stations", "Private secure lockers"],
-            shotThumb: null,
+            shotThumb: "./assets/workplace-concepts/ls-3f-s01.jpg",
             desc_zh: "3F 專用辦公套裝方案，為中小型創意或專業團隊提供獨立私密之實體工作環境。",
             desc_en: "Dedicated office suite providing acoustic privacy and secure access for specialist teams."
           },
@@ -438,7 +438,7 @@
             route_nodes: ["MAIN_ENTRANCE", "RECEPTION", "ELEVATOR_LOBBY", "FLOOR_3", "COM"],
             amenities_demo_zh: ["咖啡輕食備餐台示意", "高採光景觀坐席示意", "非正式會客沙發示意"],
             amenities_demo_en: ["Beverage pantry counter", "High-daylight window seats", "Informal guest sofas"],
-            shotThumb: null,
+            shotThumb: "./assets/workplace-concepts/ls-3f-com.jpg",
             desc_zh: "3F 租戶專屬共享交流場域，營造放鬆交談與非正式交流之舒適社交節點。",
             desc_en: "Tenant-exclusive breakout space designed for informal conversations and daylight breaks."
           }
