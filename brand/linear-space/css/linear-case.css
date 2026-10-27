@@ -447,10 +447,17 @@ main {
   font-weight: 600;
 }
 
+.ls-area-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
 .ls-area-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
   background: var(--ls-bg-surface);
   border: 1px solid var(--ls-stone-border);
   border-radius: 6px;
@@ -482,6 +489,22 @@ main {
 .ls-area-table .num {
   text-align: right;
   font-family: var(--ls-font-mono);
+}
+
+@media (max-width: 480px) {
+  .ls-area-table th,
+  .ls-area-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .ls-area-table th,
+  .ls-area-table td {
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
 }
 
 /* ==========================================================================
