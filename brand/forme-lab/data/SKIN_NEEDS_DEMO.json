@@ -1,0 +1,155 @@
+{
+  "project": "FORME LAB 07 / V4 SKIN NEEDS GUIDE",
+  "mode": "DEMO_ONLY_NOT_MEDICAL_ADVICE",
+  "requires_consent": false,
+  "data_collection": "No names, email, photos, medical history, or localStorage; in-memory only",
+  "products": [
+    {
+      "id": "ess",
+      "name_en": "Daily Essence",
+      "name_zh": "日常精華水",
+      "size": "120 mL",
+      "shot": 6,
+      "category": "Hydration step concept",
+      "claims": "No clinical claims"
+    },
+    {
+      "id": "ser",
+      "name_en": "Barrier Serum",
+      "name_zh": "保養精華液",
+      "size": "30 mL",
+      "shot": 7,
+      "category": "Lightweight serum step concept",
+      "claims": "No repair claim without evidence"
+    },
+    {
+      "id": "crm",
+      "name_en": "Comfort Cream",
+      "name_zh": "日常保養霜",
+      "size": "50 g",
+      "shot": 8,
+      "category": "Moisturizer texture concept",
+      "claims": "No treatment or barrier restoration claims"
+    }
+  ],
+  "questions": [
+    {
+      "id": "need",
+      "title_zh": "目前選擇保養品時最在意什麼？",
+      "title_en": "What matters most in your daily routine?",
+      "required": true,
+      "options": [
+        {
+          "id": "dry",
+          "zh": "希望加強日常保濕感",
+          "en": "A more moisturizing-feel routine"
+        },
+        {
+          "id": "simple",
+          "zh": "想讓步驟更精簡",
+          "en": "A simpler routine"
+        },
+        {
+          "id": "texture",
+          "zh": "偏好輕盈的使用觸感",
+          "en": "A lighter texture"
+        },
+        {
+          "id": "comfort",
+          "zh": "注重日常保養的舒適感",
+          "en": "Everyday skin comfort"
+        }
+      ]
+    },
+    {
+      "id": "steps",
+      "title_zh": "希望日常使用幾個步驟？",
+      "title_en": "How many steps fit your day?",
+      "required": true,
+      "options": [
+        {
+          "id": "minimal",
+          "zh": "精簡：2 步",
+          "en": "Minimal: 2 steps"
+        },
+        {
+          "id": "layered",
+          "zh": "完整：3 步",
+          "en": "Layered: 3 steps"
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "title_zh": "你偏好哪個使用時段？",
+      "title_en": "When do you usually apply skincare?",
+      "required": true,
+      "options": [
+        {
+          "id": "am",
+          "zh": "早上",
+          "en": "Morning"
+        },
+        {
+          "id": "pm",
+          "zh": "晚上",
+          "en": "Evening"
+        },
+        {
+          "id": "both",
+          "zh": "早晚都想使用",
+          "en": "Both"
+        }
+      ]
+    }
+  ],
+  "recommendation_logic": [
+    {
+      "when": {
+        "steps": "minimal",
+        "need": "texture"
+      },
+      "ordered_products": [
+        "ess",
+        "ser"
+      ],
+      "reason_zh": "以兩道較輕盈的概念步驟示範日常使用順序。",
+      "reason_en": "A two-step concept sequence focused on lighter textures."
+    },
+    {
+      "when": {
+        "steps": "minimal",
+        "need": "*"
+      },
+      "ordered_products": [
+        "ess",
+        "crm"
+      ],
+      "reason_zh": "以精華水搭配乳霜示範精簡日常保養程序。",
+      "reason_en": "A concise essence-and-cream concept routine."
+    },
+    {
+      "when": {
+        "steps": "layered",
+        "need": "*"
+      },
+      "ordered_products": [
+        "ess",
+        "ser",
+        "crm"
+      ],
+      "reason_zh": "示範精華水、精華液、乳霜的三步驟產品閱讀順序。",
+      "reason_en": "An editorial three-step essence, serum and cream sequence."
+    }
+  ],
+  "mandatory_disclosure_zh": "自主概念保養導引，僅展示產品資訊與介面互動，非醫療診斷，也不保證適用性或功效。如有皮膚不適，請諮詢專業醫事人員。",
+  "mandatory_disclosure_en": "Self-initiated product information UX concept only. Not a diagnosis or a guarantee of suitability or efficacy. Seek professional medical advice for skin concerns.",
+  "acceptance": [
+    "Q1–Q3 required before showing result",
+    "Back/edit/reset preserved state",
+    "language switch preserves selection",
+    "results link to real existing product cards",
+    "No medical claims",
+    "keyboard and aria-live updates"
+  ]
+}

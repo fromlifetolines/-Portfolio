@@ -5,7 +5,226 @@
 <section class="fl-intro" aria-labelledby="fl-story-heading"><div><p class="fl-kicker">PROJECT BRIEF / 獨立概念提案</p><h2 id="fl-story-heading" class="fl-zh">好的日常，<br>值得被好好設計。</h2><h2 class="fl-en" hidden>Designed for<br>everyday rituals.</h2></div><div><p class="fl-zh">以三款日常保養產品為核心，透過清楚的資訊編排與材質設計，讓消費者理解每件產品，也讓品牌有一致的說話方式。</p><p class="fl-en" hidden>Three everyday skincare concepts shape a consistent visual system that helps people understand each product and its role in their routine.</p><dl class="fl-meta"><div><dt>INDUSTRY</dt><dd>SKINCARE / BEAUTY</dd></div><div><dt>DISCIPLINES</dt><dd>BRAND · PACKAGING · UI/UX</dd></div><div><dt>STATUS</dt><dd>INDEPENDENT CONCEPT</dd></div></dl></div></section>
 <section id="fl-collection" class="fl-product-section"><div class="fl-sectionhead"><p class="fl-kicker">01 / PRODUCT COLLECTION</p><h2><span class="fl-zh">三款產品，一套日常節奏。</span><span class="fl-en" hidden>Three products. One daily ritual.</span></h2></div><div class="fl-product-app"><div class="fl-product-visual"><img id="fl-product-image" src="assets/mockups/shot-06.jpg?v=fl07-visual-v2-20261022" alt="Daily Essence 使用情境"></div><div class="fl-product-info"><p class="fl-overline">FORME LAB / COLLECTION</p><h3 id="fl-product-name">Daily Essence</h3><p id="fl-product-zh">日常精華水</p><p class="fl-volume" id="fl-product-volume">120 mL</p><p class="fl-product-copy fl-zh" id="fl-product-description">按壓式霧面瓶身，以清楚的產品資訊協助理解日常使用方式。</p><p class="fl-product-copy fl-en" id="fl-product-description-en" hidden>The frosted pump bottle and clearly structured content present an accessible daily skincare ritual.</p><div class="fl-product-options" role="group" aria-label="選擇展示產品"><button type="button" class="active" data-product="ess">01 ESSENCE</button><button type="button" data-product="ser">02 SERUM</button><button type="button" data-product="crm">03 CREAM</button></div><p class="fl-note fl-zh">* 本系列為包裝與品牌概念，無實體販售或功效驗證。</p><p class="fl-note fl-en" hidden>* Conceptual product and packaging only; no commercial sale or tested efficacy.</p></div></div></section>
 <section class="fl-plates"><div class="fl-sectionhead"><p class="fl-kicker">02 / DESIGN SYSTEM & CASE STUDY</p><h2><span class="fl-zh">品牌如何在不同接觸點，保持一致。</span><span class="fl-en" hidden>A consistent identity across every touchpoint.</span></h2></div><div id="fl-plate-list"></div></section>
-<section id="fl-routine" class="fl-routine"><div class="fl-sectionhead"><p class="fl-kicker">03 / INTERACTIVE CONCEPT</p><h2><span class="fl-zh">安排適合自己的日常保養步驟。</span><span class="fl-en" hidden>Create a routine of your own.</span></h2><p class="fl-zh">選取產品、調整順序，再預覽你的日常保養表。這是沒有資料收集的純前端示範。</p><p class="fl-en" hidden>Select products, reorder the sequence and preview your routine. This is an in-memory demonstration with no data collection.</p></div><div class="fl-builder"><div class="fl-builder-pick"><h3>01 <span class="fl-zh">選擇產品</span><span class="fl-en" hidden>Select products</span></h3><div id="fl-product-checks"></div><h3>02 <span class="fl-zh">使用時間</span><span class="fl-en" hidden>Time of day</span></h3><fieldset class="fl-choice"><legend class="fl-visually-hidden">使用時間</legend><label><input type="radio" name="fl-when" value="am" checked> <span class="fl-zh">早晨</span><span class="fl-en" hidden>Morning</span></label><label><input type="radio" name="fl-when" value="pm"> <span class="fl-zh">晚間</span><span class="fl-en" hidden>Evening</span></label></fieldset></div><div class="fl-builder-order"><h3>03 <span class="fl-zh">調整使用順序</span><span class="fl-en" hidden>Change the order</span></h3><ol id="fl-routine-order"></ol><h3>04 <span class="fl-zh">產生摘要</span><span class="fl-en" hidden>Preview summary</span></h3><button class="fl-action" id="fl-build-summary" type="button"><span class="fl-zh">預覽我的保養步驟</span><span class="fl-en" hidden>Preview my routine</span> ↗</button><output id="fl-routine-output" role="status" aria-live="polite"><span class="fl-zh">選擇產品後按下預覽。</span><span class="fl-en" hidden>Select products and generate your preview.</span></output></div></div><p class="fl-note">DEMO ONLY / NO PAYMENTS / NO MEDICAL DIAGNOSIS / NO PERSONAL DATA COLLECTION</p></section>
+<section id="fl-needs-guide" class="fl-needs-guide" aria-labelledby="fl-guide-title">
+  <div class="fl-sectionhead">
+    <p class="fl-kicker">03 / SKIN NEEDS CONSULTATION</p>
+    <h2 id="fl-guide-title">
+      <span class="fl-zh">探索適合日常節奏的保養組合。</span>
+      <span class="fl-en" hidden>Discover a routine tailored to your day.</span>
+    </h2>
+    <p class="fl-zh">回答 3 個日常偏好問題，由系統提供純前端產品適配建議與使用順序說明（非醫療診斷，不收集任何個人資料）。</p>
+    <p class="fl-en" hidden>Answer 3 quick preferences for a curated, non-medical concept sequence. In-memory demo with zero personal data collection.</p>
+  </div>
+
+  <div class="fl-guide-container">
+    <div class="fl-guide-steps-indicator" aria-label="問答進度 / Consultation Progress">
+      <div class="fl-step-dot active" data-step="1">
+        <span class="fl-step-num">01</span>
+        <span class="fl-step-label"><span class="fl-zh">保養關切</span><span class="fl-en" hidden>Care Focus</span></span>
+      </div>
+      <div class="fl-step-line"></div>
+      <div class="fl-step-dot" data-step="2">
+        <span class="fl-step-num">02</span>
+        <span class="fl-step-label"><span class="fl-zh">步驟偏好</span><span class="fl-en" hidden>Steps</span></span>
+      </div>
+      <div class="fl-step-line"></div>
+      <div class="fl-step-dot" data-step="3">
+        <span class="fl-step-num">03</span>
+        <span class="fl-step-label"><span class="fl-zh">使用時段</span><span class="fl-en" hidden>Timing</span></span>
+      </div>
+      <div class="fl-step-line"></div>
+      <div class="fl-step-dot" data-step="4">
+        <span class="fl-step-num">04</span>
+        <span class="fl-step-label"><span class="fl-zh">適配成果</span><span class="fl-en" hidden>Result</span></span>
+      </div>
+    </div>
+
+    <!-- Question 1: Need -->
+    <div class="fl-guide-card fl-guide-q" id="fl-guide-q1" role="region" aria-labelledby="fl-q1-title">
+      <h3 id="fl-q1-title" class="fl-q-title">
+        <span class="fl-zh">Q1 / 目前選擇保養品時最在意什麼？</span>
+        <span class="fl-en" hidden>Q1 / What matters most in your daily routine?</span>
+        <span class="fl-required-badge">*</span>
+      </h3>
+      <p class="fl-q-desc fl-zh">請選擇一項符合目前保養偏好的日常需求：</p>
+      <p class="fl-q-desc fl-en" hidden>Select the primary expectation for your daily skincare:</p>
+
+      <div class="fl-guide-options" role="radiogroup" aria-labelledby="fl-q1-title">
+        <button type="button" class="fl-option-btn" data-need="dry" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">加強日常保濕感</strong><strong class="fl-en" hidden>Moisturizing-feel</strong>
+            <small class="fl-zh">注重水分浸潤與長效保濕體驗</small><small class="fl-en" hidden>Focus on long-lasting hydration & comfort</small>
+          </span>
+        </button>
+        <button type="button" class="fl-option-btn" data-need="simple" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">讓步驟更精簡</strong><strong class="fl-en" hidden>Simpler Routine</strong>
+            <small class="fl-zh">簡化程序，減少晨間或睡前繁複塗抹</small><small class="fl-en" hidden>Streamline routine without excessive layering</small>
+          </span>
+        </button>
+        <button type="button" class="fl-option-btn" data-need="texture" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">偏好輕盈觸感</strong><strong class="fl-en" hidden>Lighter Texture</strong>
+            <small class="fl-zh">喜愛水感清爽、迅速吸收的輕質配方</small><small class="fl-en" hidden>Fast-absorbing, non-greasy lightweight feel</small>
+          </span>
+        </button>
+        <button type="button" class="fl-option-btn" data-need="comfort" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">日常保養舒適感</strong><strong class="fl-en" hidden>Everyday Comfort</strong>
+            <small class="fl-zh">注重溫和親膚與安定穩定的肌膚觸感</small><small class="fl-en" hidden>Gentle, balancing, and skin-friendly sensation</small>
+          </span>
+        </button>
+      </div>
+
+      <div class="fl-guide-error" id="fl-error-q1" role="alert" hidden>
+        <span class="fl-zh">⚠ 請先選取一項偏好再繼續。</span>
+        <span class="fl-en" hidden>⚠ Please select an option to continue.</span>
+      </div>
+
+      <div class="fl-guide-nav">
+        <a href="#fl-routine" class="fl-skip-link">
+          <span class="fl-zh">略過導引直接安排步驟 →</span><span class="fl-en" hidden>Skip to Routine Builder →</span>
+        </a>
+        <button type="button" class="fl-btn-next" id="fl-btn-next-1">
+          <span class="fl-zh">下一步：選擇步驟數</span><span class="fl-en" hidden>Next: Step Count</span> →
+        </button>
+      </div>
+    </div>
+
+    <!-- Question 2: Steps -->
+    <div class="fl-guide-card fl-guide-q" id="fl-guide-q2" role="region" aria-labelledby="fl-q2-title" hidden>
+      <h3 id="fl-q2-title" class="fl-q-title">
+        <span class="fl-zh">Q2 / 希望日常使用幾個步驟？</span>
+        <span class="fl-en" hidden>Q2 / How many steps fit your day?</span>
+        <span class="fl-required-badge">*</span>
+      </h3>
+      <p class="fl-q-desc fl-zh">選擇適合你日常步調的程序長度：</p>
+      <p class="fl-q-desc fl-en" hidden>Choose the sequence length that fits your lifestyle:</p>
+
+      <div class="fl-guide-options" role="radiogroup" aria-labelledby="fl-q2-title">
+        <button type="button" class="fl-option-btn" data-steps="minimal" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">精簡：2 步（Minimal）</strong><strong class="fl-en" hidden>Minimal: 2 Steps</strong>
+            <small class="fl-zh">基礎潤澤＋鎖水，高效完成晨夕護理</small><small class="fl-en" hidden>Essential prep and hydration in two clean steps</small>
+          </span>
+        </button>
+        <button type="button" class="fl-option-btn" data-steps="layered" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">完整：3 步（Layered）</strong><strong class="fl-en" hidden>Layered: 3 Steps</strong>
+            <small class="fl-zh">精華水＋精華液＋乳霜，享受層疊潤養</small><small class="fl-en" hidden>Complete ritual: essence, serum, and cream</small>
+          </span>
+        </button>
+      </div>
+
+      <div class="fl-guide-error" id="fl-error-q2" role="alert" hidden>
+        <span class="fl-zh">⚠ 請選擇程序步驟長度。</span>
+        <span class="fl-en" hidden>⚠ Please choose a step count.</span>
+      </div>
+
+      <div class="fl-guide-nav">
+        <button type="button" class="fl-btn-prev" id="fl-btn-prev-2">
+          ← <span class="fl-zh">上一步</span><span class="fl-en" hidden>Back</span>
+        </button>
+        <button type="button" class="fl-btn-next" id="fl-btn-next-2">
+          <span class="fl-zh">下一步：使用時段</span><span class="fl-en" hidden>Next: Timing</span> →
+        </button>
+      </div>
+    </div>
+
+    <!-- Question 3: Timing -->
+    <div class="fl-guide-card fl-guide-q" id="fl-guide-q3" role="region" aria-labelledby="fl-q3-title" hidden>
+      <h3 id="fl-q3-title" class="fl-q-title">
+        <span class="fl-zh">Q3 / 你偏好哪個使用時段？</span>
+        <span class="fl-en" hidden>Q3 / When do you usually apply skincare?</span>
+        <span class="fl-required-badge">*</span>
+      </h3>
+      <p class="fl-q-desc fl-zh">選擇主要的日常保養時間點：</p>
+      <p class="fl-q-desc fl-en" hidden>Select your preferred application interval:</p>
+
+      <div class="fl-guide-options" role="radiogroup" aria-labelledby="fl-q3-title">
+        <button type="button" class="fl-option-btn" data-time="am" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">早上（Morning）</strong><strong class="fl-en" hidden>Morning (AM)</strong>
+            <small class="fl-zh">開啟一天的清爽晨間保養</small><small class="fl-en" hidden>Refreshing morning preparation</small>
+          </span>
+        </button>
+        <button type="button" class="fl-option-btn" data-time="pm" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">晚上（Evening）</strong><strong class="fl-en" hidden>Evening (PM)</strong>
+            <small class="fl-zh">睡前舒緩放鬆的修護儀式</small><small class="fl-en" hidden>Calming night-time restoration routine</small>
+          </span>
+        </button>
+        <button type="button" class="fl-option-btn" data-time="both" role="radio" aria-checked="false">
+          <span class="fl-opt-check" aria-hidden="true"></span>
+          <span class="fl-opt-text">
+            <strong class="fl-zh">早晚都想使用（Both）</strong><strong class="fl-en" hidden>Both (AM & PM)</strong>
+            <small class="fl-zh">維持早晚一致的日常護理節奏</small><small class="fl-en" hidden>Consistent routine for both day and night</small>
+          </span>
+        </button>
+      </div>
+
+      <div class="fl-guide-error" id="fl-error-q3" role="alert" hidden>
+        <span class="fl-zh">⚠ 請選擇使用時段。</span>
+        <span class="fl-en" hidden>⚠ Please select a time of day.</span>
+      </div>
+
+      <div class="fl-guide-nav">
+        <button type="button" class="fl-btn-prev" id="fl-btn-prev-3">
+          ← <span class="fl-zh">上一步</span><span class="fl-en" hidden>Back</span>
+        </button>
+        <button type="button" class="fl-btn-next fl-btn-submit" id="fl-btn-submit">
+          <span class="fl-zh">查看適配結果</span><span class="fl-en" hidden>View Results</span> ✦
+        </button>
+      </div>
+    </div>
+
+    <!-- Result View -->
+    <div class="fl-guide-card fl-guide-result" id="fl-guide-result" role="region" aria-labelledby="fl-result-title" hidden>
+      <div class="fl-result-header">
+        <span class="fl-result-badge">CURATED CONCEPT SEQUENCE</span>
+        <h3 id="fl-result-title" class="fl-result-title">
+          <span class="fl-zh">為你量身整理的示範保養組合</span>
+          <span class="fl-en" hidden>Your Recommended Skincare Routine</span>
+        </h3>
+        <div class="fl-summary-chips" id="fl-summary-chips"></div>
+      </div>
+
+      <div class="fl-result-rationale">
+        <div class="fl-rationale-icon" aria-hidden="true">✦</div>
+        <div class="fl-rationale-text" id="fl-rationale-text"></div>
+      </div>
+
+      <div class="fl-result-products" id="fl-result-products"></div>
+
+      <div class="fl-guide-disclosure" role="note">
+        <p class="fl-zh">＊ 自主概念保養導引，僅展示產品資訊與介面互動，非醫療診斷，也不保證適用性或功效。如有皮膚不適，請諮詢專業醫事人員。</p>
+        <p class="fl-en" hidden>* Self-initiated product information UX concept only. Not a diagnosis or a guarantee of suitability or efficacy. Seek professional medical advice for skin concerns.</p>
+      </div>
+
+      <div class="fl-result-actions">
+        <button type="button" class="fl-btn-secondary" id="fl-btn-edit-answers">
+          ✎ <span class="fl-zh">修改問答選項</span><span class="fl-en" hidden>Edit Answers</span>
+        </button>
+        <button type="button" class="fl-btn-secondary" id="fl-btn-reset-guide">
+          ↺ <span class="fl-zh">清空重新填寫</span><span class="fl-en" hidden>Reset All</span>
+        </button>
+        <a href="#fl-collection" class="fl-btn-primary" id="fl-btn-view-collection">
+          <span class="fl-zh">在系列總覽中查看完整規格</span><span class="fl-en" hidden>Explore Full Collection</span> ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fl-routine" class="fl-routine"><div class="fl-sectionhead"><p class="fl-kicker">04 / ROUTINE BUILDER</p><h2><span class="fl-zh">安排適合自己的日常保養步驟。</span><span class="fl-en" hidden>Create a routine of your own.</span></h2><p class="fl-zh">選取產品、調整順序，再預覽你的日常保養表。這是沒有資料收集的純前端示範。</p><p class="fl-en" hidden>Select products, reorder the sequence and preview your routine. This is an in-memory demonstration with no data collection.</p></div><div class="fl-builder"><div class="fl-builder-pick"><h3>01 <span class="fl-zh">選擇產品</span><span class="fl-en" hidden>Select products</span></h3><div id="fl-product-checks"></div><h3>02 <span class="fl-zh">使用時間</span><span class="fl-en" hidden>Time of day</span></h3><fieldset class="fl-choice"><legend class="fl-visually-hidden">使用時間</legend><label><input type="radio" name="fl-when" value="am" checked> <span class="fl-zh">早晨</span><span class="fl-en" hidden>Morning</span></label><label><input type="radio" name="fl-when" value="pm"> <span class="fl-zh">晚間</span><span class="fl-en" hidden>Evening</span></label></fieldset></div><div class="fl-builder-order"><h3>03 <span class="fl-zh">調整使用順序</span><span class="fl-en" hidden>Change the order</span></h3><ol id="fl-routine-order"></ol><h3>04 <span class="fl-zh">產生摘要</span><span class="fl-en" hidden>Preview summary</span></h3><button class="fl-action" id="fl-build-summary" type="button"><span class="fl-zh">預覽我的保養步驟</span><span class="fl-en" hidden>Preview my routine</span> ↗</button><output id="fl-routine-output" role="status" aria-live="polite"><span class="fl-zh">選擇產品後按下預覽。</span><span class="fl-en" hidden>Select products and generate your preview.</span></output></div></div><p class="fl-note">DEMO ONLY / NO PAYMENTS / NO MEDICAL DIAGNOSIS / NO PERSONAL DATA COLLECTION</p></section>
 <section class="fl-outro"><div><p class="fl-kicker">FORME LAB / INDEPENDENT CASE STUDY</p><h2 class="fl-zh">讓品牌，<br>回到日常。</h2><h2 class="fl-en" hidden>Design for<br>the everyday.</h2></div><div><p class="fl-zh">本案為虛構自主概念企劃，所有商品、包裝及介面僅作設計展示。沒有實際配方、認證、量產或營運數據。</p><p class="fl-en" hidden>All products and interfaces are conceptual. There are no verified formulas, certifications, production or business performance claims.</p><a href="../../index.html#works" class="fl-textlink"><span class="fl-zh">返回作品列表</span><span class="fl-en" hidden>Back to selected work</span> ↗</a></div></section>
 </main><footer class="fl-footer"><span>© 2026 FLTL × HOWARD — DESIGN CONCEPT</span><a href="#fl-top">BACK TO TOP ↑</a></footer>
 <div id="fl-lightbox" class="fl-lightbox" role="dialog" aria-modal="true" aria-label="作品原圖檢視" hidden><button id="fl-lightbox-close" type="button" class="fl-lightbox-close" aria-label="關閉燈箱">×</button><button id="fl-lightbox-prev" class="fl-lightbox-nav" type="button" aria-label="上一張">←</button><figure><img id="fl-lightbox-image" alt=""><figcaption id="fl-lightbox-caption"></figcaption></figure><button id="fl-lightbox-next" class="fl-lightbox-nav" type="button" aria-label="下一張">→</button></div>
