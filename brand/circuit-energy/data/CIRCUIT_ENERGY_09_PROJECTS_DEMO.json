@@ -1,0 +1,99 @@
+{
+  "project": "CIRCUIT ENERGY",
+  "dataset": "FICTIONAL CONCEPT PORTFOLIO — NO REAL ASSET PERFORMANCE OR FINANCIAL RESULTS",
+  "version": "V4-20261026",
+  "projects": [
+    {
+      "id": "CE-DEMO-S01",
+      "name_zh": "東嶺光電示範方案",
+      "name_en": "East Ridge Solar Concept",
+      "type": "solar",
+      "capacity": {
+        "value": 12,
+        "unit": "MWp",
+        "meaning_zh": "太陽光電峰值裝置功率",
+        "meaning_en": "Solar PV peak DC power"
+      },
+      "site": "DEMO SITE A",
+      "phase": "concept-only",
+      "financial_return": null,
+      "verified_generation_mwh": null
+    },
+    {
+      "id": "CE-DEMO-W01",
+      "name_zh": "北境風場示範方案",
+      "name_en": "North Pass Wind Concept",
+      "type": "wind",
+      "capacity": {
+        "value": 8,
+        "unit": "MW",
+        "meaning_zh": "風力額定功率",
+        "meaning_en": "Wind rated power"
+      },
+      "site": "DEMO SITE B",
+      "phase": "concept-only",
+      "financial_return": null,
+      "verified_generation_mwh": null
+    },
+    {
+      "id": "CE-DEMO-B01",
+      "name_zh": "港灣儲能示範方案",
+      "name_en": "Harbor Storage Concept",
+      "type": "storage",
+      "capacity": {
+        "value": 20,
+        "unit": "MWh",
+        "meaning_zh": "電池儲能容量",
+        "meaning_en": "Battery energy capacity"
+      },
+      "site": "DEMO SITE C",
+      "phase": "concept-only",
+      "financial_return": null,
+      "verified_generation_mwh": null
+    }
+  ],
+  "flow_scenarios": [
+    {
+      "id": "A",
+      "name": "Daytime Solar Peak",
+      "supply_mwh": {
+        "solar": 8.4,
+        "wind": 4.8
+      },
+      "allocation_mwh": {
+        "grid_export": 3.4,
+        "storage_charge": 2.6,
+        "on_site_load": 7.2
+      }
+    },
+    {
+      "id": "B",
+      "name": "Dusk-to-Night Cumulative Interval",
+      "supply_mwh": {
+        "solar": 4.2,
+        "wind": 9.6
+      },
+      "allocation_mwh": {
+        "grid_export": 4.1,
+        "storage_charge": 3.1,
+        "on_site_load": 6.6
+      }
+    }
+  ],
+  "report": {
+    "title_zh": "2026 永續能源策略與示範專案報告｜自主概念樣本",
+    "title_en": "2026 Renewable Strategy & Concept Portfolio Report",
+    "year": 2026,
+    "is_audited": false,
+    "is_an_actual_annual_report": false,
+    "revenue": null,
+    "roi": null,
+    "verified_carbon_impact": null
+  },
+  "guardrails": [
+    "Do not add MWp, MW and MWh into a total",
+    "No fictional climate impact can be represented as audited",
+    "Do not present existing SHOT 07/14 328.5 MW imagery as live telemetry",
+    "Dusk-to-night solar 4.2 MWh is a cumulative dusk component, not midnight power output"
+  ]
+}
