@@ -28,16 +28,16 @@
     </div>
   </header>
 
-  <!-- Asset Gate Notice -->
+  <!-- Concept Study Banner -->
   <div class="fs-asset-gate-banner" role="status">
     <div class="banner-inner">
       <div>
-        <span class="fs-gate-badge">LOCAL UX PREVIEW</span>
-        <span class="fs-zh">【素材審核門檻】16 張獨立攝影完稿交付前，本案保留於本機互動驗證（LOCAL ONLY / ARTWORK HOLD）。</span>
-        <span class="fs-en" hidden>[Asset Gate Notice] 16 photographic assets pending final delivery. Functional e-commerce prototype running in local preview mode.</span>
+        <span class="fs-gate-badge">CONCEPT STUDY</span>
+        <span class="fs-zh">【自主概念提案】本案為多品牌戶外電商概念研究，展示之商品形態、門市與數據為設計示意，非真實商業交易。</span>
+        <span class="fs-en" hidden>[Independent Concept Study] Multi-brand outdoor commerce UI/UX case study. Product visuals, storefronts and data are design demonstrations.</span>
       </div>
       <a href="#fs-artwork" style="text-decoration: underline; font-weight: 600;">
-        <span class="fs-zh">查看 16 張分鏡規格 →</span><span class="fs-en" hidden>View 16 Shot Specs →</span>
+        <span class="fs-zh">瀏覽 16 幕設計圖板 →</span><span class="fs-en" hidden>View 16 Design Plates →</span>
       </a>
     </div>
   </div>
@@ -68,7 +68,7 @@
           </div>
           <div class="fs-meta-item">
             <strong>STATUS</strong>
-            <span>LOCAL FUNCTIONAL PROTOTYPE (ARTWORK HOLD)</span>
+            <span>CONCEPT PROTOTYPE / PRODUCTION RELEASE</span>
           </div>
           <div class="fs-meta-item">
             <strong>SHIPPING RULE</strong>
@@ -210,13 +210,13 @@
     <section id="fs-artwork" class="fs-section" style="background: #E5DFD3;">
       <div class="fs-section-inner">
         <div class="fs-section-header">
-          <p class="fs-kicker">04 / VISUAL ARTWORK STORYBOARDS</p>
+          <p class="fs-kicker">04 / COMPLETE VISUAL NARRATIVE</p>
           <h2>
-            <span class="fs-zh">16 張獨立圖版規劃規格</span>
-            <span class="fs-en" hidden>16 Shot Storyboards</span>
+            <span class="fs-zh">16 幕戶外選品電商視覺圖板</span>
+            <span class="fs-en" hidden>16 Official Design Plates</span>
           </h2>
-          <p class="fs-zh">依正式工單定義之 16 張獨立圖版規劃。攝影素材交付前，嚴格執行資產鎖定，不以假圖冒充。</p>
-          <p class="fs-en" hidden>Specifications for 16 photographic plates. Strict asset gating enforced until master studio assets are delivered.</p>
+          <p class="fs-zh">完整收錄 16 張戶外選品電商視覺與介面設計圖板。嚴格遵循 16:9 比例與 contain 顯示策略，點擊任意圖板即可呼叫 2560 × 1440 原寸無損燈箱檢視。</p>
+          <p class="fs-en" hidden>Full presentation of all 16 design plates. Rendered in strict 16:9 contain ratio; click any card to inspect full 2560 × 1440 master resolution.</p>
         </div>
 
         <div class="fs-shot-grid" id="fs-shot-grid"></div>
@@ -386,6 +386,25 @@
     <a href="#fs-top">BACK TO TOP ↑</a>
   </footer>
 
-  <script src="./js/field-case.js?v=fs10-v4-20261102" defer></script>
+  <!-- ==========================================================================
+       FULLSCREEN ACCESSIBLE LIGHTBOX (Master PNG 2560x1440)
+       ========================================================================== -->
+  <div id="fs-lightbox" class="fs-lightbox" role="dialog" aria-modal="true" aria-label="全螢幕原圖檢視 / Fullscreen Master Canvas Viewer" hidden>
+    <button id="fs-lb-close" type="button" class="fs-lightbox-close" aria-label="關閉燈箱 / Close lightbox">×</button>
+    <button id="fs-lb-prev" type="button" class="fs-lightbox-nav fs-lightbox-prev" aria-label="上一張 / Previous image">←</button>
+
+    <div class="fs-lightbox-stage">
+      <figure>
+        <div class="fs-lightbox-img-wrap">
+          <img id="fs-lb-img" src="" alt="" width="2560" height="1440">
+        </div>
+        <figcaption id="fs-lb-caption" class="fs-lightbox-caption"></figcaption>
+      </figure>
+    </div>
+
+    <button id="fs-lb-next" type="button" class="fs-lightbox-nav fs-lightbox-next" aria-label="下一張 / Next image">→</button>
+  </div>
+
+  <script src="./js/field-case.js?v=fs10-v5-20261103" defer></script>
 </body>
 </html>

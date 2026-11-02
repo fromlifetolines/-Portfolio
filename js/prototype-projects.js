@@ -194,5 +194,27 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/circuit-energy/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/circuit-energy/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/circuit-energy/'
+  },
+  {
+    id: 'field-supply',
+    order: 10,
+    published: true,
+    title: 'FIELD SUPPLY',
+    year: '2026',
+    category: {
+      en: 'Outdoor Commerce / Multi-Brand Retail / Design System',
+      'zh-TW': '戶外選品電商／多品牌零售／設計系統'
+    },
+    projectType: {
+      en: 'Self-Initiated Outdoor Retail Concept',
+      'zh-TW': '自主選品電商概念提案'
+    },
+    description: {
+      en: 'An independent multi-brand outdoor gear retail concept with standardized spec comparison, transparent shipping logic, and guest checkout.',
+      'zh-TW': '自主多品牌戶外選品電商概念研究，整合跨品牌標準化規格比較、滿額免運透明試算與三步驟訪客結帳流程。'
+    },
+    cover: 'brand/field-supply/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/field-supply/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/field-supply/'
   }
 ]);

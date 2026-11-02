@@ -127,22 +127,166 @@
   ];
 
   const shots16 = [
-    { num: '01', title: 'MULTI-BRAND RETAIL HERO', desc: '戶外用品零售全景：帳篷、背包、外套、頭燈多品類商品組合。' },
-    { num: '02', title: 'BRAND / RETAIL POSITION', desc: 'FIELD SUPPLY 通路識別與多品牌經銷合作定位展示。' },
-    { num: '03', title: 'SHOPPER JOURNEY', desc: '搜尋、篩選、比對、結帳及售後完整電商使用者旅程圖。' },
-    { num: '04', title: 'CATEGORY COLLECTION', desc: 'Tents / Packs / Apparel / Lighting / Camp Kitchen 五大分類展示。' },
-    { num: '05', title: 'DISCOVERY SEARCH', desc: '桌機與手機即時搜尋、多維度篩選標籤及零結果狀態。' },
-    { num: '06', title: 'THREE TENTS COMPARE', desc: '三款不同品牌 2P 帳篷（101/102/103）重量、價格與規格並排對照。' },
-    { num: '07', title: 'TENT PRODUCT DETAIL', desc: 'FS-TNT-101 規格、運送免運提醒、庫存與加入購物車真實 UI。' },
-    { num: '08', title: 'SHELL SIZE VARIANTS', desc: 'FS-JKT-301 尺寸 S/M/L/XL、色彩切換與未選尺寸錯誤提示。' },
-    { num: '09', title: 'CROSS-BRAND BUNDLE', desc: '帳篷與露營配件多品牌搭配選購組合。' },
-    { num: '10', title: 'CART / SHIPPING CLARITY', desc: '滿 NT$3,000 免運 / 未達 NT$100 運費計算等式與購物清單。' },
-    { num: '11', title: 'GUEST CHECKOUT', desc: '訪客結帳 3 步驟：收件資料、訂單確認與防呆驗證。' },
-    { num: '12', title: 'DEMO ORDER CONFIRM', desc: '純前端示範訂單編號、明細與免責聲明收尾。' },
-    { num: '13', title: 'DELIVERY / RETURNS', desc: '模擬訂單配送進度追蹤與 7 天鑑賞期售後退換說明。' },
-    { num: '14', title: 'RESPONSIVE MOBILE COMMERCE', desc: '390px 手機版分類濾鏡 Drawer、購物車與結帳排版。' },
-    { num: '15', title: 'COMPONENTS + ACCESSIBILITY', desc: '聚焦框、錯誤提示、空狀態與無障礙讀屏標籤設計系統。' },
-    { num: '16', title: 'ECOMMERCE ECOSYSTEM FINALE', desc: '全品類戶外選品電商介面與品牌視覺成果總結。' }
+    {
+      num: '01',
+      slug: 'HERO_STOREFRONT',
+      title: 'MULTI-BRAND RETAIL HERO',
+      titleZh: '多品牌戶外選品概念門市全景',
+      desc: '戶外用品零售全景：帳篷、背包、外套、頭燈多品類商品組合與門市動線。',
+      descEn: 'Curated multi-brand outdoor retail environment integrating tents, packs, apparel, and hardware.',
+      jpg: 'shot-01.jpg',
+      png: 'shot-01.png'
+    },
+    {
+      num: '02',
+      slug: 'BRAND_POSITIONING',
+      title: 'BRAND / RETAIL POSITION',
+      titleZh: '通路識別與多品牌經銷合作定位',
+      desc: 'FIELD SUPPLY 通路識別與多品牌經銷合作定位展示。',
+      descEn: 'FIELD SUPPLY retail positioning, multi-brand curation strategy, and identity architecture.',
+      jpg: 'shot-02.jpg',
+      png: 'shot-02.png'
+    },
+    {
+      num: '03',
+      slug: 'SHOPPER_JOURNEY',
+      title: 'SHOPPER JOURNEY',
+      titleZh: '電商核心使用者決策旅程',
+      desc: '搜尋、篩選、比對、結帳及售後完整電商使用者旅程圖。',
+      descEn: 'End-to-end shopper journey from multi-brand discovery and spec comparison to guest checkout.',
+      jpg: 'shot-03.jpg',
+      png: 'shot-03.png'
+    },
+    {
+      num: '04',
+      slug: 'CATEGORY_CURATION',
+      title: 'CATEGORY COLLECTION',
+      titleZh: '五大專業品類選品矩陣',
+      desc: 'Tents / Packs / Apparel / Lighting / Camp Kitchen 五大分類展示。',
+      descEn: 'Structured curation across five outdoor departments: Tents, Packs, Apparel, Lighting, and Camp Kitchen.',
+      jpg: 'shot-04.jpg',
+      png: 'shot-04.png'
+    },
+    {
+      num: '05',
+      slug: 'PRODUCT_MATRIX',
+      title: 'PRODUCT SPEC MATRIX',
+      titleZh: '八件示範商品向量圖譜與規格字典',
+      desc: '依鎖定之 8 SKU 資料呈現完整規格、材質、定價與可辨識商品形態圖譜。',
+      descEn: 'Demonstration catalog featuring eight locked SKUs with verified dimensions, weights, and pricing.',
+      jpg: 'shot-05.jpg',
+      png: 'shot-05.png'
+    },
+    {
+      num: '06',
+      slug: 'TENTS_COMPARISON',
+      title: 'THREE TENTS COMPARE',
+      titleZh: '三款雙人帳篷規格同級比較',
+      desc: '三款不同品牌 2P 帳篷（101/102/103）重量、價格與規格並排對照。',
+      descEn: 'Side-by-side comparison matrix for three 2-person tents highlighting weight, packed volume, and price.',
+      jpg: 'shot-06.jpg',
+      png: 'shot-06.png'
+    },
+    {
+      num: '07',
+      slug: 'PRODUCT_DETAIL',
+      title: 'TENT PRODUCT DETAIL',
+      titleZh: 'FS-TNT-101 商品詳情與免運提示',
+      desc: 'FS-TNT-101 規格、運送免運提醒、庫存與加入購物車真實 UI。',
+      descEn: 'Product detail page for FS-TNT-101 with real-time stock status and NT$3,000 free shipping qualification.',
+      jpg: 'shot-07.jpg',
+      png: 'shot-07.png'
+    },
+    {
+      num: '08',
+      slug: 'SIZE_SELECTOR',
+      title: 'SHELL SIZE VARIANTS',
+      titleZh: 'FS-JKT-301 機能風雨衣尺寸選擇與防呆',
+      desc: 'FS-JKT-301 尺寸 S/M/L/XL、色彩切換與未選尺寸錯誤提示。',
+      descEn: 'Interactive size selector for FS-JKT-301 with required size validation and error messaging.',
+      jpg: 'shot-08.jpg',
+      png: 'shot-08.png'
+    },
+    {
+      num: '09',
+      slug: 'CROSS_BUNDLE',
+      title: 'CROSS-BRAND BUNDLE',
+      titleZh: '跨品類露營裝備選品組合',
+      desc: '帳篷與露營配件多品牌搭配選購組合。',
+      descEn: 'Cross-category equipment bundle pairing tents, packs, and campsite hardware.',
+      jpg: 'shot-09.jpg',
+      png: 'shot-09.png'
+    },
+    {
+      num: '10',
+      slug: 'CART_SHIPPING',
+      title: 'CART / SHIPPING CLARITY',
+      titleZh: '購物車清單與 NT$3,000 門檻運費計算',
+      desc: '滿 NT$3,000 免運 / 未達 NT$100 運費計算等式與購物清單。',
+      descEn: 'Transparent order calculation demonstrating NT$3,000 free-shipping threshold and NT$100 flat rate.',
+      jpg: 'shot-10.jpg',
+      png: 'shot-10.png'
+    },
+    {
+      num: '11',
+      slug: 'GUEST_CHECKOUT',
+      title: 'GUEST CHECKOUT',
+      titleZh: '三步驟訪客結帳流程',
+      desc: '訪客結帳 3 步驟：收件資料、訂單確認與防呆驗證。',
+      descEn: 'Frictionless 3-step guest checkout architecture requiring no mandatory account creation.',
+      jpg: 'shot-11.jpg',
+      png: 'shot-11.png'
+    },
+    {
+      num: '12',
+      slug: 'DEMO_CONFIRMATION',
+      title: 'DEMO ORDER CONFIRM',
+      titleZh: '示範訂單成立與購物車清空',
+      desc: '純前端示範訂單編號、明細與免責聲明收尾。',
+      descEn: 'Frontend demonstration order confirmation with simulated order ID and cart flush.',
+      jpg: 'shot-12.jpg',
+      png: 'shot-12.png'
+    },
+    {
+      num: '13',
+      slug: 'AFTER_SALES',
+      title: 'DELIVERY / RETURNS',
+      titleZh: '模擬物流進度追蹤與售後說明',
+      desc: '模擬訂單配送進度追蹤與 7 天鑑賞期售後退換說明。',
+      descEn: 'Order tracking timeline and 7-day demo after-sales return and exchange policies.',
+      jpg: 'shot-13.jpg',
+      png: 'shot-13.png'
+    },
+    {
+      num: '14',
+      slug: 'MOBILE_EXPERIENCE',
+      title: 'RESPONSIVE MOBILE COMMERCE',
+      titleZh: '行動端體驗與抽屜式篩選',
+      desc: '390px 手機版分類濾鏡 Drawer、購物車與結帳排版。',
+      descEn: 'Mobile-first 390px viewport layouts for category drawers, comparison matrix, and bottom-sheet cart.',
+      jpg: 'shot-14.jpg',
+      png: 'shot-14.png'
+    },
+    {
+      num: '15',
+      slug: 'DESIGN_SYSTEM',
+      title: 'COMPONENTS + ACCESSIBILITY',
+      titleZh: '設計系統元件與無障礙讀屏標記',
+      desc: '聚焦框、錯誤提示、空狀態與無障礙讀屏標籤設計系統。',
+      descEn: 'Design system tokens, focus states, validation states, and WCAG accessibility semantics.',
+      jpg: 'shot-15.jpg',
+      png: 'shot-15.png'
+    },
+    {
+      num: '16',
+      slug: 'FINALE',
+      title: 'ECOMMERCE ECOSYSTEM FINALE',
+      titleZh: '戶外選品電商全景體驗總結',
+      desc: '全品類戶外選品電商介面與品牌視覺成果總結。',
+      descEn: 'Comprehensive overview of the FIELD SUPPLY multi-brand outdoor digital retail experience.',
+      jpg: 'shot-16.jpg',
+      png: 'shot-16.png'
+    }
   ];
 
   // State
@@ -154,8 +298,21 @@
   let cart = []; // { sku, qty, size, color }
   let lastOrderId = 'FS-2026-8842';
 
+  // Lightbox State & Elements
+  let activeLightboxIndex = 0;
+  let currentLoadToken = 0;
+  const preloadedMasterMap = new Map();
+  let lastFocusedElement = null;
+
   const q = (s) => document.querySelector(s);
   const all = (s) => [...document.querySelectorAll(s)];
+
+  const lightbox = q('#fs-lightbox');
+  const lbImg = q('#fs-lb-img');
+  const lbCaption = q('#fs-lb-caption');
+  const lbCloseBtn = q('#fs-lb-close');
+  const lbPrevBtn = q('#fs-lb-prev');
+  const lbNextBtn = q('#fs-lb-next');
 
   // =========================================================================
   // 2. LANGUAGE TOGGLE
@@ -169,6 +326,10 @@
     renderCatalog();
     renderCompareMatrix();
     renderCart();
+    renderShotStoryboards();
+    if (lightbox && !lightbox.hidden) {
+      updateLightboxCaption();
+    }
   }
 
   all('[data-lang]').forEach(btn => {
@@ -1005,24 +1166,224 @@
   });
 
   // =========================================================================
-  // 8. 16 SHOTS ARTWORK STORYBOARDS
+  // 8. 16 SHOTS ARTWORK STORYBOARDS & LIGHTBOX
   // =========================================================================
   function renderShotStoryboards() {
     const grid = q('#fs-shot-grid');
     if (!grid) return;
     grid.replaceChildren();
 
-    shots16.forEach(s => {
-      const card = document.createElement('div');
+    shots16.forEach((s, idx) => {
+      const card = document.createElement('article');
       card.className = 'fs-shot-card';
+      card.setAttribute('data-shot-index', idx);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `檢視 SHOT ${s.num}: ${lang === 'en' ? s.title : s.titleZh}`);
+
       card.innerHTML = `
-        <div class="fs-shot-num">SHOT ${s.num} / 16</div>
-        <div class="fs-shot-title">${s.title}</div>
-        <div class="fs-shot-desc">${s.desc}</div>
-        <span class="fs-shot-status-badge">STORYBOARD SPEC / PENDING ASSET</span>
+        <div class="fs-shot-media-wrap">
+          <img class="fs-shot-thumb"
+               src="assets/mockups/${s.jpg}"
+               alt="SHOT ${s.num}: ${s.title}"
+               loading="${idx === 0 ? 'eager' : 'lazy'}"
+               width="1920"
+               height="1080">
+          <div class="fs-shot-badge-overlay">
+            <span class="fs-shot-tag">SHOT ${s.num}</span>
+            <span class="fs-shot-zoom-hint" aria-hidden="true">⤢ 2560×1440</span>
+          </div>
+        </div>
+        <div class="fs-shot-meta">
+          <div class="fs-shot-num">SHOT ${s.num} / 16</div>
+          <h3 class="fs-shot-title fs-zh">${s.titleZh}</h3>
+          <h3 class="fs-shot-title fs-en" hidden>${s.title}</h3>
+          <p class="fs-shot-desc fs-zh">${s.desc}</p>
+          <p class="fs-shot-desc fs-en" hidden>${s.descEn}</p>
+        </div>
       `;
+
+      card.addEventListener('click', () => openLightbox(idx));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(idx);
+        }
+      });
+
       grid.append(card);
     });
+
+    all('#fs-shot-grid .fs-zh').forEach(n => n.hidden = lang === 'en');
+    all('#fs-shot-grid .fs-en').forEach(n => n.hidden = lang !== 'en');
+  }
+
+  function updateLightboxCaption(isMasterLoaded) {
+    if (!lbCaption) return;
+    const shot = shots16[activeLightboxIndex];
+    if (!shot) return;
+    const isEn = lang === 'en';
+
+    if (typeof isMasterLoaded === 'undefined') {
+      const masterSrc = `assets/shots/${shot.png}`;
+      isMasterLoaded = preloadedMasterMap.has(masterSrc);
+    }
+
+    const resLabel = isMasterLoaded
+      ? 'MASTER PNG 2560 × 1440 CANVAS'
+      : (isEn ? '2560 × 1440 CANVAS (UPGRADING...)' : '2560 × 1440 畫布 (載入原寸高解析中...)');
+
+    lbCaption.innerHTML = `
+      <div class="fs-lb-header">
+        <span class="fs-lb-tag">SHOT ${shot.num} / 16 · ${shot.slug}</span>
+        <span class="fs-lb-res">${resLabel}</span>
+      </div>
+      <div class="fs-lb-title">${isEn ? shot.title : shot.titleZh}</div>
+      <div class="fs-lb-desc">${isEn ? shot.descEn : shot.desc}</div>
+    `;
+  }
+
+  function renderLightboxImage() {
+    if (!lightbox || !lbImg) return;
+    const shot = shots16[activeLightboxIndex];
+    if (!shot) return;
+
+    const token = ++currentLoadToken;
+    const masterSrc = `assets/shots/${shot.png}`;
+    const previewSrc = `assets/mockups/${shot.jpg}`;
+
+    if (preloadedMasterMap.has(masterSrc)) {
+      lbImg.src = masterSrc;
+      lbImg.alt = `SHOT ${shot.num}: ${shot.title}`;
+      lbImg.classList.remove('is-upgrading');
+      updateLightboxCaption(true);
+    } else {
+      lbImg.src = previewSrc;
+      lbImg.alt = `SHOT ${shot.num}: ${shot.title}`;
+      lbImg.classList.add('is-upgrading');
+      updateLightboxCaption(false);
+
+      const master = new Image();
+      master.src = masterSrc;
+      master.onload = () => {
+        preloadedMasterMap.set(masterSrc, true);
+        if (token === currentLoadToken) {
+          lbImg.src = masterSrc;
+          lbImg.classList.remove('is-upgrading');
+          updateLightboxCaption(true);
+        }
+      };
+    }
+
+    preloadAdjacentShots(activeLightboxIndex);
+  }
+
+  function preloadAdjacentShots(index) {
+    const nextIdx = (index + 1) % shots16.length;
+    const prevIdx = (index + shots16.length - 1) % shots16.length;
+
+    const nextJpg = new Image();
+    nextJpg.src = `assets/mockups/${shots16[nextIdx].jpg}`;
+
+    const prevJpg = new Image();
+    prevJpg.src = `assets/mockups/${shots16[prevIdx].jpg}`;
+
+    const nextPngSrc = `assets/shots/${shots16[nextIdx].png}`;
+    if (!preloadedMasterMap.has(nextPngSrc)) {
+      const nextPng = new Image();
+      nextPng.src = nextPngSrc;
+      nextPng.onload = () => preloadedMasterMap.set(nextPngSrc, true);
+    }
+  }
+
+  function openLightbox(index) {
+    if (!lightbox || !lbImg) return;
+    lastFocusedElement = document.activeElement;
+    activeLightboxIndex = (index + shots16.length) % shots16.length;
+
+    lightbox.hidden = false;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    renderLightboxImage();
+
+    if (lbCloseBtn) lbCloseBtn.focus();
+  }
+
+  function prevLightbox() {
+    activeLightboxIndex = (activeLightboxIndex - 1 + shots16.length) % shots16.length;
+    renderLightboxImage();
+  }
+
+  function nextLightbox() {
+    activeLightboxIndex = (activeLightboxIndex + 1) % shots16.length;
+    renderLightboxImage();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.hidden = true;
+    if (lbImg) {
+      lbImg.src = '';
+      lbImg.classList.remove('is-upgrading');
+    }
+    document.body.style.overflow = '';
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function initLightboxListeners() {
+    if (!lightbox) return;
+
+    if (lbCloseBtn) lbCloseBtn.addEventListener('click', closeLightbox);
+    if (lbPrevBtn) lbPrevBtn.addEventListener('click', prevLightbox);
+    if (lbNextBtn) lbNextBtn.addEventListener('click', nextLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('fs-lightbox-stage')) {
+        closeLightbox();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevLightbox();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextLightbox();
+      }
+    });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+          if (deltaX < 0) {
+            nextLightbox();
+          } else {
+            prevLightbox();
+          }
+        }
+      }
+    }, { passive: true });
   }
 
   // Initial Boot
@@ -1030,6 +1391,7 @@
   renderCompareMatrix();
   renderCart();
   renderShotStoryboards();
+  initLightboxListeners();
   setLang('zh-TW');
 
 })();
