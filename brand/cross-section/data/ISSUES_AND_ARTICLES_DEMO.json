@@ -1,0 +1,180 @@
+{
+  "project": "CROSS SECTION 11",
+  "nature": "Self-initiated fictional architectural culture publisher",
+  "issues": [
+    {
+      "id": "CS-ISS-001",
+      "edition": "01",
+      "year": 2026,
+      "slug": "reading-space",
+      "title_zh": "空間的閱讀方式",
+      "title_en": "Reading Space",
+      "deck_zh": "形式退後，讓行為與尺度浮現。",
+      "deck_en": "A journal issue on how space is read through behavior and scale.",
+      "article_ids": [
+        "CS-ART-001",
+        "CS-ART-002",
+        "CS-ART-003"
+      ]
+    },
+    {
+      "id": "CS-ISS-002",
+      "edition": "02",
+      "year": 2026,
+      "slug": "matter-time",
+      "title_zh": "材料與時間",
+      "title_en": "Matter & Time",
+      "deck_zh": "看見表面、使用與時間留下的痕跡。",
+      "deck_en": "Surfaces, use, and the marks left by time.",
+      "article_ids": [
+        "CS-ART-004",
+        "CS-ART-005",
+        "CS-ART-006"
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "CS-ART-001",
+      "issue_id": "CS-ISS-001",
+      "slug": "article-001",
+      "category_zh": "建築觀點",
+      "category_en": "Architecture Essay",
+      "title_zh": "門檻之間",
+      "title_en": "Between Thresholds",
+      "excerpt_zh": "一棟建築不只由牆、窗與樓層定義。",
+      "excerpt_en": "Architecture is not defined only by walls, windows and floors.",
+      "author_zh": "CROSS SECTION 編輯部（虛構）",
+      "author_en": "CROSS SECTION Editorial (Fictional)",
+      "body_zh": [
+        "一棟建築不只由牆、窗與樓層定義。真正改變人在空間裡感受的，往往是走進門的那幾秒。入口的高度、轉角的光線、腳步是否需要放慢，都會改寫訪客對公共與私密的理解。門檻因此不是單純的構造線，而是使用者與空間建立關係的起點。",
+        "在本期的概念研究中，我們將門檻視為一組連續的提示。材質的切換可以告訴人們正在進入新的區域；視線的收放則決定是否願意繼續探索。清楚的導覽不必依賴大量標示，但也不能要求訪客憑直覺猜路。好的空間會讓資訊可被看見，同時留下停留與觀察的餘裕。"
+      ],
+      "body_en": [
+        "Architecture is not defined only by walls, windows and floors. The first few seconds after entry can change how a place is understood. A change in height, a turn toward light, or a pause before the reception area can quietly explain the relationship between public and private space.",
+        "In this fictional editorial study, we treat thresholds as a sequence of clues. Shifts in materials signal transitions. Openings and sightlines affect whether visitors feel invited to continue. Wayfinding does not require visual noise, yet it must never force people to guess where they belong."
+      ],
+      "illustrative": true,
+      "reading_minutes_demo": 3
+    },
+    {
+      "id": "CS-ART-002",
+      "issue_id": "CS-ISS-001",
+      "slug": "article-002",
+      "category_zh": "城市觀察",
+      "category_en": "Urban Observation",
+      "title_zh": "城市邊界的日常尺度",
+      "title_en": "The Everyday Edge",
+      "excerpt_zh": "街道的品質無法只靠鳥瞰圖判斷。",
+      "excerpt_en": "The quality of a street cannot be read from an aerial image alone.",
+      "author_zh": "CROSS SECTION 編輯部（虛構）",
+      "author_en": "CROSS SECTION Editorial (Fictional)",
+      "body_zh": [
+        "街道的品質無法只靠鳥瞰圖判斷。街角的騎樓深度、雨天能否短暫避雨、等待朋友時是否有可停留的位置，這些看似微小的條件，才是日常生活與建築直接接觸的地方。",
+        "我們把「邊界」當成觀察方法：記錄店面退縮、階梯與樹蔭如何影響行人的速度，也比較透明立面與封閉牆面帶來的視線差異。這不是城市調查成果，而是為出版設計建立的一套示範閱讀框架。讀者可透過照片、文字與註解，重新辨認每天經過卻沒有細看的街道。"
+      ],
+      "body_en": [
+        "The quality of a street cannot be read from an aerial image alone. Shelter from rain, a place to pause, or the depth of a small arcade can shape the daily relationship between buildings and pedestrians.",
+        "This fictional editorial framework studies edges rather than landmarks. It asks readers to compare setbacks, shade and transparency, then notice how these conditions affect movement and attention. The purpose is to practice careful looking, not to claim a completed urban field study."
+      ],
+      "illustrative": true,
+      "reading_minutes_demo": 3
+    },
+    {
+      "id": "CS-ART-003",
+      "issue_id": "CS-ISS-001",
+      "slug": "article-003",
+      "category_zh": "空間訪談",
+      "category_en": "Spatial Dialogue",
+      "title_zh": "留白是否也是一種導覽",
+      "title_en": "Can Silence Guide?",
+      "excerpt_zh": "展覽與公共空間常把資訊越放越多，彷彿每一面牆都必須解釋自己的功能。",
+      "excerpt_en": "Exhibition spaces often accumulate information until every wall becomes an instruction.",
+      "author_zh": "CROSS SECTION 編輯部（虛構）",
+      "author_en": "CROSS SECTION Editorial (Fictional)",
+      "body_zh": [
+        "展覽與公共空間常把資訊越放越多，彷彿每一面牆都必須解釋自己的功能。然而，人需要的不一定是更多文字。適當的留白，能讓最重要的方向訊息被辨識，也能提供停下來理解內容的節奏。",
+        "編輯團隊以概念對話形式提出幾個問題：什麼資訊應該常駐？哪些內容適合放在點擊後才展開？手機導覽和現場標示應如何互補？答案不是移除說明，而是重新安排閱讀順序。導覽系統若能讓第一次使用的人安心移動，就已經完成最基本的工作。"
+      ],
+      "body_en": [
+        "Exhibition spaces often accumulate information until every wall becomes an instruction. Yet readers and visitors do not always need more text. Deliberate empty space can reveal what matters, and it can make room for a slower moment of attention.",
+        "This fictional editorial dialogue asks which messages should remain visible, which can appear on demand, and how a mobile guide should complement physical signage. Clarity is about sequence, not simply about the volume of information."
+      ],
+      "illustrative": true,
+      "reading_minutes_demo": 3
+    },
+    {
+      "id": "CS-ART-004",
+      "issue_id": "CS-ISS-002",
+      "slug": "article-004",
+      "category_zh": "材料研究",
+      "category_en": "Material Study",
+      "title_zh": "表面不是最後一道工序",
+      "title_en": "The Surface Is Not an Ending",
+      "excerpt_zh": "材料常在完工照片裡被定格為一種顏色或紋理，但使用者真正接觸的是更複雜的經驗。",
+      "excerpt_en": "A material is often frozen as a color or texture in completion photographs, while everyday experience is much less stable.",
+      "author_zh": "CROSS SECTION 編輯部（虛構）",
+      "author_en": "CROSS SECTION Editorial (Fictional)",
+      "body_zh": [
+        "材料常在完工照片裡被定格為一種顏色或紋理，但使用者真正接觸的是更複雜的經驗。扶手的溫度、地面在濕氣裡的反光、不同光源下的顆粒變化，都會使同一種材料顯現不同表情。",
+        "本篇以紙張、石材、金屬與木質材料作為視覺研究對象。所有紋理與場景皆為概念示意，並非經過實驗室測試的性能結果。出版設計將特寫影像、材料註記與大幅留白排列在同一個網格，讓讀者不只看到表面，也看見材料與使用情境的關係。"
+      ],
+      "body_en": [
+        "A material is often frozen as a color or texture in completion photographs, while everyday experience is much less stable. The warmth of a handrail, reflections after rain, and changes under artificial light give the same surface many different readings.",
+        "This fictional visual essay examines paper, stone, metal and timber through editorial compositions. The images and descriptions are conceptual, not laboratory-tested performance claims. Close-up photographs and careful annotations give materials room to be read as part of lived environments."
+      ],
+      "illustrative": true,
+      "reading_minutes_demo": 3
+    },
+    {
+      "id": "CS-ART-005",
+      "issue_id": "CS-ISS-002",
+      "slug": "article-005",
+      "category_zh": "編輯實驗",
+      "category_en": "Editorial Experiment",
+      "title_zh": "印刷網格與螢幕呼吸",
+      "title_en": "Grids That Breathe",
+      "excerpt_zh": "紙本雜誌的跨頁，容許讀者用視線在兩個頁面之間移動；手機卻要求內容在窄長的畫面裡依序出現。",
+      "excerpt_en": "A print spread allows the eye to move across two facing pages.",
+      "author_zh": "CROSS SECTION 編輯部（虛構）",
+      "author_en": "CROSS SECTION Editorial (Fictional)",
+      "body_zh": [
+        "紙本雜誌的跨頁，容許讀者用視線在兩個頁面之間移動；手機卻要求內容在窄長的畫面裡依序出現。若把印刷版面直接縮小，字會失去比例，註解也容易擠在圖片旁邊。",
+        "我們因此替 CROSS SECTION 建立兩套互相對應的編輯規則。紙本保留強烈的欄線、圖版與大標題；數位閱讀則讓內文維持舒適行長，圖註與延伸資料可以獨立展開。這不是要讓兩種媒介長得一樣，而是確保同一篇文章在不同載體裡仍有自己的閱讀節奏。"
+      ],
+      "body_en": [
+        "A print spread allows the eye to move across two facing pages. A phone asks the same material to unfold in a narrow sequence. Simply shrinking a print layout makes type fragile and captions difficult to place.",
+        "CROSS SECTION therefore uses complementary editorial systems. Print relies on strong grids, image plates and large headings; digital reading keeps comfortable line lengths and gives captions their own space. The two experiences share an identity without becoming identical."
+      ],
+      "illustrative": true,
+      "reading_minutes_demo": 3
+    },
+    {
+      "id": "CS-ART-006",
+      "issue_id": "CS-ISS-002",
+      "slug": "article-006",
+      "category_zh": "文化札記",
+      "category_en": "Cultural Note",
+      "title_zh": "保存使用痕跡的理由",
+      "title_en": "Why Traces Matter",
+      "excerpt_zh": "時間會在空間裡留下使用痕跡：桌面變得光滑的邊角、經常被觸摸的把手、被重新貼上的指示紙條。",
+      "excerpt_en": "Time leaves visible traces in spaces: a polished edge of a shared table, a handle touched thousands of times, or a label carefully replaced.",
+      "author_zh": "CROSS SECTION 編輯部（虛構）",
+      "author_en": "CROSS SECTION Editorial (Fictional)",
+      "body_zh": [
+        "時間會在空間裡留下使用痕跡：桌面變得光滑的邊角、經常被觸摸的把手、被重新貼上的指示紙條。這些細節不一定符合剛完工時的照片，卻說明了人與場所如何長期相處。",
+        "文化出版可以替這些細節留下位置。與其把每一段歷史寫成宏大的敘事，不如先把物件、材料與使用者的日常關係記錄清楚。CROSS SECTION 的第二期以此收尾，提醒讀者：建築的價值除了設計完成那一刻，也存在於被使用、被修繕與被重新理解的過程。"
+      ],
+      "body_en": [
+        "Time leaves visible traces in spaces: a polished edge of a shared table, a handle touched thousands of times, or a label carefully replaced. These details rarely appear in pristine completion photographs, yet they reveal how people and places continue to interact.",
+        "Cultural publishing can hold space for these modest records. Rather than turning every detail into a grand narrative, it can document the relationship between objects, surfaces and everyday use. This fictional issue closes with the idea that a building continues to acquire meaning after its original design is finished."
+      ],
+      "illustrative": true,
+      "reading_minutes_demo": 3
+    }
+  ],
+  "bookmarks": "localStorage optional for article IDs only; never store personal data",
+  "no_real_subscription": true,
+  "no_real_author_quotes": true,
+  "data_status": "proposed original demo content, not originally specified by user"
+}
