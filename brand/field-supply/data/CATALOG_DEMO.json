@@ -1,0 +1,141 @@
+{
+  "project": "FIELD SUPPLY",
+  "number": 10,
+  "nature": "Self-Initiated / Fictional multi-brand outdoor retail ecommerce, DEMO ONLY",
+  "currency": "TWD",
+  "price_includes_tax": "unspecified_demo",
+  "shipping": {
+    "domestic_flat": 100,
+    "free_shipping_subtotal_min": 3000
+  },
+  "products": [
+    {
+      "sku": "FS-TNT-101",
+      "brand": "HOLLOW RIDGE",
+      "name": "RIDGE 2P TENT",
+      "category": "Tents",
+      "price": 6980,
+      "capacity": "2P",
+      "packed_weight_kg": 2.15,
+      "season": "3-season",
+      "color": "olive"
+    },
+    {
+      "sku": "FS-TNT-102",
+      "brand": "SOLTRAIL",
+      "name": "LITE 2P TENT",
+      "category": "Tents",
+      "price": 8480,
+      "capacity": "2P",
+      "packed_weight_kg": 1.65,
+      "season": "3-season",
+      "color": "sand"
+    },
+    {
+      "sku": "FS-TNT-103",
+      "brand": "PINE ARC",
+      "name": "BASE 2P TENT",
+      "category": "Tents",
+      "price": 5980,
+      "capacity": "2P",
+      "packed_weight_kg": 2.75,
+      "season": "3-season",
+      "color": "forest"
+    },
+    {
+      "sku": "FS-BAG-201",
+      "brand": "WAYMARK",
+      "name": "TRAIL 32 BACKPACK",
+      "category": "Packs",
+      "price": 4280,
+      "capacity_l": 32,
+      "color": "slate"
+    },
+    {
+      "sku": "FS-BAG-202",
+      "brand": "MOSSWAY",
+      "name": "DAY 25 BACKPACK",
+      "category": "Packs",
+      "price": 3780,
+      "capacity_l": 25,
+      "color": "khaki"
+    },
+    {
+      "sku": "FS-JKT-301",
+      "brand": "LORNE",
+      "name": "WEATHER SHELL",
+      "category": "Apparel",
+      "price": 5280,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "olive",
+        "graphite"
+      ]
+    },
+    {
+      "sku": "FS-LGT-401",
+      "brand": "HALO POINT",
+      "name": "TRAIL HEADLAMP",
+      "category": "Lighting",
+      "price": 1480,
+      "color": "graphite"
+    },
+    {
+      "sku": "FS-COO-501",
+      "brand": "LEAF CAMP",
+      "name": "COMPACT STOVE",
+      "category": "Camp Kitchen",
+      "price": 2280,
+      "color": "silver"
+    }
+  ],
+  "demo_tests": [
+    {
+      "basket": [
+        {
+          "sku": "FS-TNT-101",
+          "qty": 1
+        }
+      ],
+      "subtotal": 6980,
+      "shipping": 0,
+      "total": 6980
+    },
+    {
+      "basket": [
+        {
+          "sku": "FS-LGT-401",
+          "qty": 1
+        }
+      ],
+      "subtotal": 1480,
+      "shipping": 100,
+      "total": 1580
+    },
+    {
+      "basket": [
+        {
+          "sku": "FS-TNT-101",
+          "qty": 1
+        },
+        {
+          "sku": "FS-LGT-401",
+          "qty": 1
+        }
+      ],
+      "subtotal": 8460,
+      "shipping": 0,
+      "total": 8460
+    }
+  ],
+  "real_payments": false,
+  "real_order_creation": false,
+  "real_customer_data": false,
+  "real_brand_partnerships": false,
+  "approval_status": "proposal_only_not_user_approved"
+}
