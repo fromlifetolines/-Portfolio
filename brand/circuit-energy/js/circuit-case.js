@@ -608,37 +608,31 @@
   }
 
   // ==========================================================================
-  // 5. Accessible Fullscreen Lightbox (Master PNG 2560x1440)
+  // 5. Accessible Fullscreen Lightbox (Master PNG 2560x1440 with Progressive Swap)
   // ==========================================================================
-  function openLightbox(index) {
-    if (!lightbox || !lbImg) return;
-    lastFocusedElement = document.activeElement;
-    activeLightboxIndex = (index + SHOTS.length) % SHOTS.length;
+  let currentLoadToken = 0;
+  const preloadedMasterMap = new Map();
 
-    const shot = SHOTS[activeLightboxIndex];
-    lbImg.src = `assets/shots/${shot.png}?v=ce09-photo-v3-20261025`;
-    lbImg.alt = `SHOT ${String(shot.num).padStart(2, '0')}: ${shot.zh} / ${shot.en}`;
-
-    updateLightboxCaption();
-
-    lightbox.hidden = false;
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-
-    // Focus close button
-    if (lbCloseBtn) lbCloseBtn.focus();
-  }
-
-  function updateLightboxCaption() {
+  function updateLightboxCaption(isMasterLoaded) {
     if (!lbCaption) return;
     const shot = SHOTS[activeLightboxIndex];
+    if (!shot) return;
     const isEn = currentLang === 'en';
     const numStr = String(shot.num).padStart(2, '0');
+
+    if (typeof isMasterLoaded === 'undefined') {
+      const masterSrc = `assets/shots/${shot.png}?v=ce09-photo-v3-20261025`;
+      isMasterLoaded = preloadedMasterMap.has(masterSrc);
+    }
+
+    const resLabel = isMasterLoaded
+      ? 'MASTER PNG 2560 × 1440 CANVAS'
+      : (isEn ? '2560 × 1440 CANVAS (UPGRADING...)' : '2560 × 1440 畫布 (載入原寸高解析中...)');
 
     lbCaption.innerHTML = `
       <div class="ce-lb-header">
         <span class="ce-lb-tag">SHOT ${numStr} / 16</span>
-        <span class="ce-lb-res">MASTER PNG 2560 × 1440 CANVAS</span>
+        <span class="ce-lb-res">${resLabel}</span>
       </div>
       <h4 class="ce-lb-title">${isEn ? shot.en : shot.zh}</h4>
       <p class="ce-lb-sub">${isEn ? shot.subEn : shot.subZh}</p>
@@ -646,24 +640,105 @@
     `;
   }
 
+  function renderLightboxImage() {
+    if (!lightbox || !lbImg) return;
+    const shot = SHOTS[activeLightboxIndex];
+    if (!shot) return;
+
+    const token = ++currentLoadToken;
+    const numStr = String(shot.num).padStart(2, '0');
+    const masterSrc = `assets/shots/${shot.png}?v=ce09-photo-v3-20261025`;
+    const previewSrc = `assets/mockups/${shot.jpg}?v=ce09-photo-v3-20261025`;
+
+    // 1. If Master PNG is already cached/preloaded, display it immediately
+    if (preloadedMasterMap.has(masterSrc)) {
+      lbImg.src = masterSrc;
+      lbImg.alt = `SHOT ${numStr}: ${shot.zh} / ${shot.en}`;
+      lbImg.classList.remove('is-upgrading');
+      updateLightboxCaption(true);
+    } else {
+      // 2. Instant swap to lightweight Web JPG preview (0ms latency visual feedback!)
+      lbImg.src = previewSrc;
+      lbImg.alt = `SHOT ${numStr}: ${shot.zh} / ${shot.en}`;
+      lbImg.classList.add('is-upgrading');
+      updateLightboxCaption(false);
+
+      // 3. Asynchronously load the 2560x1440 Master PNG in background
+      const master = new Image();
+      master.src = masterSrc;
+      master.onload = () => {
+        preloadedMasterMap.set(masterSrc, true);
+        // Only swap if user has not navigated away to another shot
+        if (token === currentLoadToken) {
+          lbImg.src = masterSrc;
+          lbImg.classList.remove('is-upgrading');
+          updateLightboxCaption(true);
+        }
+      };
+    }
+
+    // 4. Preload adjacent Web JPGs and Master PNGs
+    preloadAdjacentShots(activeLightboxIndex);
+  }
+
+  function preloadAdjacentShots(index) {
+    const nextIdx = (index + 1) % SHOTS.length;
+    const prevIdx = (index + SHOTS.length - 1) % SHOTS.length;
+
+    // Fast Web JPG previews
+    const nextJpg = new Image();
+    nextJpg.src = `assets/mockups/${SHOTS[nextIdx].jpg}?v=ce09-photo-v3-20261025`;
+
+    const prevJpg = new Image();
+    prevJpg.src = `assets/mockups/${SHOTS[prevIdx].jpg}?v=ce09-photo-v3-20261025`;
+
+    // Next Master PNG (stream in background)
+    const nextPngSrc = `assets/shots/${SHOTS[nextIdx].png}?v=ce09-photo-v3-20261025`;
+    if (!preloadedMasterMap.has(nextPngSrc)) {
+      const nextPng = new Image();
+      nextPng.src = nextPngSrc;
+      nextPng.onload = () => preloadedMasterMap.set(nextPngSrc, true);
+    }
+  }
+
+  function openLightbox(index) {
+    if (!lightbox || !lbImg) return;
+    lastFocusedElement = document.activeElement;
+    activeLightboxIndex = (index + SHOTS.length) % SHOTS.length;
+
+    lightbox.hidden = false;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    renderLightboxImage();
+
+    // Focus close button on initial open only
+    if (lbCloseBtn) lbCloseBtn.focus();
+  }
+
+  function prevLightbox() {
+    activeLightboxIndex = (activeLightboxIndex - 1 + SHOTS.length) % SHOTS.length;
+    renderLightboxImage();
+  }
+
+  function nextLightbox() {
+    activeLightboxIndex = (activeLightboxIndex + 1) % SHOTS.length;
+    renderLightboxImage();
+  }
+
   function closeLightbox() {
     if (!lightbox) return;
     lightbox.classList.remove('is-open');
     lightbox.hidden = true;
-    if (lbImg) lbImg.src = '';
+    if (lbImg) {
+      lbImg.src = '';
+      lbImg.classList.remove('is-upgrading');
+    }
     document.body.style.overflow = '';
 
     if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
       lastFocusedElement.focus();
     }
-  }
-
-  function prevLightbox() {
-    openLightbox(activeLightboxIndex - 1);
-  }
-
-  function nextLightbox() {
-    openLightbox(activeLightboxIndex + 1);
   }
 
   function initLightboxListeners() {
@@ -694,6 +769,30 @@
         nextLightbox();
       }
     });
+
+    // Touch swipe navigation for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+          if (deltaX < 0) {
+            nextLightbox();
+          } else {
+            prevLightbox();
+          }
+        }
+      }
+    }, { passive: true });
   }
 
   // ==========================================================================
