@@ -153,22 +153,166 @@
   ];
 
   const shots16 = [
-    { num: '01', title: 'EDITORIAL PUBLISHER HERO', desc: '單一高級黑白建築刊物／桌面實體雜誌攝影，展示出版品牌地位。' },
-    { num: '02', title: 'MASTHEAD & LOGOTYPE', desc: 'CROSS SECTION 字標、網格系統、紙張與印刷標準。' },
-    { num: '03', title: 'ISSUE 01 COVER', desc: '《空間的閱讀方式 / Reading Space》第一期獨立封面完稿。' },
-    { num: '04', title: 'ISSUE 02 COVER', desc: '《材料與時間 / Matter & Time》第二期獨立封面完稿。' },
-    { num: '05', title: 'COVER FAMILY DISPLAY', desc: '兩期刊物實體疊放、書脊與裝幀質感。' },
-    { num: '06', title: 'ARCHITECTURAL EDITORIAL PHOTO', desc: '真實感空間細節攝影與圖說層級展示。' },
-    { num: '07', title: 'LONGFORM PRINT SPREAD', desc: '專題跨頁之真實編輯排版與瑞士網格排版。' },
-    { num: '08', title: 'MATERIALS PHOTO ESSAY', desc: '石材、木材、金屬與紙張材質微距影像專題。' },
-    { num: '09', title: 'DIGITAL ISSUE INDEX', desc: '線上期數檢索、目錄與摘要切換真實 UI。' },
-    { num: '10', title: 'TOPIC & ARTICLE DISCOVERY', desc: '主題標籤與六篇文章即時搜尋與空狀態介面。' },
-    { num: '11', title: 'ARTICLE READER DESKTOP', desc: '長文閱讀介面、章節進度、圖註與字級縮放。' },
-    { num: '12', title: 'ARTICLE BOOKMARKS', desc: '文章收藏管理、即時計數與無收藏狀態。' },
-    { num: '13', title: 'MOBILE READER', desc: '390px 手機長篇閱讀舒適行長與目錄導航。' },
-    { num: '14', title: 'BILINGUAL EDITION UX', desc: '繁體中文與英文對應排版與字體密度展示。' },
-    { num: '15', title: 'EDITORIAL DESIGN SYSTEM', desc: '字體網格、頁碼索引、鍵盤焦點與印刷 CSS。' },
-    { num: '16', title: 'ISSUE COLLECTION FINALE', desc: '兩期刊物全景與數位閱讀系統總成。' }
+    {
+      num: '01',
+      slug: 'EDITORIAL_HERO',
+      title: 'EDITORIAL PUBLISHER HERO',
+      titleZh: '建築文化出版實體雜誌全景',
+      desc: '單一高級黑白建築刊物／桌面實體雜誌攝影，展示出版品牌地位。',
+      descEn: 'Monochrome architectural journal hero showcase establishing editorial prestige and physical publishing craft.',
+      jpg: 'shot-01.jpg',
+      png: 'shot-01.png'
+    },
+    {
+      num: '02',
+      slug: 'MASTHEAD_SYSTEM',
+      title: 'MASTHEAD & LOGOTYPE',
+      titleZh: '刊頭字標、網格系統與印刷規格',
+      desc: 'CROSS SECTION 字標、網格系統、紙張與印刷標準。',
+      descEn: 'CROSS SECTION masthead architecture, baseline grid system, paper selection, and prepress standards.',
+      jpg: 'shot-02.jpg',
+      png: 'shot-02.png'
+    },
+    {
+      num: '03',
+      slug: 'ISSUE_01_COVER',
+      title: 'ISSUE 01 COVER',
+      titleZh: 'Issue 01《空間的閱讀方式》獨立封面',
+      desc: '《空間的閱讀方式 / Reading Space》第一期獨立 A4 封面完稿與 16:9 展示圖。',
+      descEn: 'Issue 01 "Reading Space" independent A4 portrait cover artwork and 16:9 editorial presentation.',
+      jpg: 'shot-03.jpg',
+      png: 'shot-03.png'
+    },
+    {
+      num: '04',
+      slug: 'ISSUE_02_COVER',
+      title: 'ISSUE 02 COVER',
+      titleZh: 'Issue 02《材料與時間》獨立封面',
+      desc: '《材料與時間 / Matter & Time》第二期獨立 A4 封面完稿與 16:9 展示圖。',
+      descEn: 'Issue 02 "Matter & Time" independent A4 portrait cover artwork and 16:9 editorial presentation.',
+      jpg: 'shot-04.jpg',
+      png: 'shot-04.png'
+    },
+    {
+      num: '05',
+      slug: 'COVER_FAMILY',
+      title: 'COVER FAMILY DISPLAY',
+      titleZh: '雙期系列封面實體疊放與書脊質感',
+      desc: '兩期刊物實體疊放、書脊與裝幀質感。',
+      descEn: 'Dual-issue editorial stack highlighting spine typography, paper weight, and binding craftsmanship.',
+      jpg: 'shot-05.jpg',
+      png: 'shot-05.png'
+    },
+    {
+      num: '06',
+      slug: 'EDITORIAL_PHOTOGRAPHY',
+      title: 'ARCHITECTURAL EDITORIAL PHOTO',
+      titleZh: '空間細節攝影與圖說層級展示',
+      desc: '真實感空間細節攝影與圖說層級展示。',
+      descEn: 'High-contrast spatial detail photography integrated with structured caption hierarchies.',
+      jpg: 'shot-06.jpg',
+      png: 'shot-06.png'
+    },
+    {
+      num: '07',
+      slug: 'PRINT_SPREAD',
+      title: 'LONGFORM PRINT SPREAD',
+      titleZh: '專題長文跨頁排版與瑞士網格',
+      desc: '專題跨頁之真實編輯排版與瑞士網格排版。',
+      descEn: 'Longform editorial spread utilizing asymmetric Swiss grid alignment and bilingual typographic balance.',
+      jpg: 'shot-07.jpg',
+      png: 'shot-07.png'
+    },
+    {
+      num: '08',
+      slug: 'MATERIALS_ESSAY',
+      title: 'MATERIALS PHOTO ESSAY',
+      titleZh: '材質微距攝影專題：石、木、金屬與紙',
+      desc: '石材、木材、金屬與紙張材質微距影像專題。',
+      descEn: 'Material texture photographic essay exploring tactile stone, timber, metal, and uncoated paper.',
+      jpg: 'shot-08.jpg',
+      png: 'shot-08.png'
+    },
+    {
+      num: '09',
+      slug: 'DIGITAL_INDEX',
+      title: 'DIGITAL ISSUE INDEX',
+      titleZh: '線上期刊目錄與期數檢索介面',
+      desc: '線上期數檢索、目錄與摘要切換真實 UI。',
+      descEn: 'Digital journal index facilitating issue selection, table of contents navigation, and executive abstracts.',
+      jpg: 'shot-09.jpg',
+      png: 'shot-09.png'
+    },
+    {
+      num: '10',
+      slug: 'TOPIC_DISCOVERY',
+      title: 'TOPIC & ARTICLE DISCOVERY',
+      titleZh: '文章檢索、主題標籤與即時篩選',
+      desc: '主題標籤與六篇文章即時搜尋與空狀態介面。',
+      descEn: 'Article discovery interface with tag filtering, real-time keyword search, and graceful empty states.',
+      jpg: 'shot-10.jpg',
+      png: 'shot-10.png'
+    },
+    {
+      num: '11',
+      slug: 'DESKTOP_READER',
+      title: 'ARTICLE READER DESKTOP',
+      titleZh: '桌面端長文沉浸閱讀介面',
+      desc: '長文閱讀介面、章節進度、圖註與字級縮放。',
+      descEn: 'Focused desktop reading experience with progress indicator, dynamic font sizing, and footnote overlays.',
+      jpg: 'shot-11.jpg',
+      png: 'shot-11.png'
+    },
+    {
+      num: '12',
+      slug: 'BOOKMARKS_SYSTEM',
+      title: 'ARTICLE BOOKMARKS',
+      titleZh: '專文收藏抽屜與本機儲存管理',
+      desc: '文章收藏管理、即時計數與無收藏狀態。',
+      descEn: 'Slide-over bookmarks drawer managing saved articles with instant badge counters and local persistence.',
+      jpg: 'shot-12.jpg',
+      png: 'shot-12.png'
+    },
+    {
+      num: '13',
+      slug: 'MOBILE_READER',
+      title: 'MOBILE READER',
+      titleZh: '行動端 390px 舒適排版與導覽',
+      desc: '390px 手機長篇閱讀舒適行長與目錄導航。',
+      descEn: 'Mobile-first 390px responsive reader optimizing typographic measure and chapter navigation.',
+      jpg: 'shot-13.jpg',
+      png: 'shot-13.png'
+    },
+    {
+      num: '14',
+      slug: 'BILINGUAL_UX',
+      title: 'BILINGUAL EDITION UX',
+      titleZh: '雙語對照排版與多語系切換',
+      desc: '繁體中文與英文對應排版與字體密度展示。',
+      descEn: 'Bilingual typography matrix harmonizing Traditional Chinese serif weights with Latin grotesque metrics.',
+      jpg: 'shot-14.jpg',
+      png: 'shot-14.png'
+    },
+    {
+      num: '15',
+      slug: 'DESIGN_SYSTEM',
+      title: 'EDITORIAL DESIGN SYSTEM',
+      titleZh: '出版設計系統、無障礙與列印樣式',
+      desc: '字體網格、頁碼索引、鍵盤焦點與印刷 CSS。',
+      descEn: 'Editorial token architecture, focus rings, WCAG accessibility semantics, and print stylesheet rules.',
+      jpg: 'shot-15.jpg',
+      png: 'shot-15.png'
+    },
+    {
+      num: '16',
+      slug: 'FINALE',
+      title: 'ISSUE COLLECTION FINALE',
+      titleZh: '建築文化出版與數位閱讀系統總成',
+      desc: '兩期刊物全景與數位閱讀系統總成。',
+      descEn: 'Complete retrospective of the CROSS SECTION physical publication and digital reading platform.',
+      jpg: 'shot-16.jpg',
+      png: 'shot-16.png'
+    }
   ];
 
   // State
@@ -179,14 +323,27 @@
   let activeArticleId = 'CS-ART-001';
   let bookmarks = []; // Array of article IDs
 
+  // Lightbox State & Elements
+  let activeLightboxIndex = 0;
+  let currentLoadToken = 0;
+  const preloadedMasterMap = new Map();
+  let lastFocusedElement = null;
+
+  const q = (s) => document.querySelector(s);
+  const all = (s) => [...document.querySelectorAll(s)];
+
+  const lightbox = q('#cs-lightbox');
+  const lbImg = q('#cs-lb-img');
+  const lbCaption = q('#cs-lb-caption');
+  const lbCloseBtn = q('#cs-lb-close');
+  const lbPrevBtn = q('#cs-lb-prev');
+  const lbNextBtn = q('#cs-lb-next');
+
   // Load bookmarks from localStorage if available
   try {
     const saved = localStorage.getItem('cs_bookmarks');
     if (saved) bookmarks = JSON.parse(saved);
   } catch (e) {}
-
-  const q = (s) => document.querySelector(s);
-  const all = (s) => [...document.querySelectorAll(s)];
 
   // =========================================================================
   // 2. LANGUAGE TOGGLE
@@ -201,6 +358,11 @@
     renderIssueOverview();
     renderArticlesGrid();
     renderBookmarks();
+    renderShotStoryboards();
+
+    if (lightbox && !lightbox.hidden) {
+      updateLightboxCaption();
+    }
 
     // If reader is open, update its content
     if (!q('#cs-reader-modal')?.hidden) {
@@ -634,24 +796,224 @@
   });
 
   // =========================================================================
-  // 7. 16 SHOTS STORYBOARD EXHIBITION (#cs-artwork)
+  // 7. 16 SHOTS STORYBOARD EXHIBITION & LIGHTBOX (#cs-artwork)
   // =========================================================================
   function renderShotStoryboards() {
     const grid = q('#cs-shot-grid');
     if (!grid) return;
     grid.replaceChildren();
 
-    shots16.forEach(s => {
-      const card = document.createElement('div');
+    shots16.forEach((s, idx) => {
+      const card = document.createElement('article');
       card.className = 'cs-shot-card';
+      card.setAttribute('data-shot-index', idx);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `檢視 PLATE ${s.num}: ${lang === 'en' ? s.title : s.titleZh}`);
+
       card.innerHTML = `
-        <div class="cs-shot-num">PLATE ${s.num} / 16</div>
-        <div class="cs-shot-title">${s.title}</div>
-        <div class="cs-shot-desc">${s.desc}</div>
-        <span class="cs-shot-badge">STORYBOARD SPEC / PENDING ASSET</span>
+        <div class="cs-shot-media-wrap">
+          <img class="cs-shot-thumb"
+               src="assets/mockups/${s.jpg}"
+               alt="PLATE ${s.num}: ${s.title}"
+               loading="${idx === 0 ? 'eager' : 'lazy'}"
+               width="1920"
+               height="1080">
+          <div class="cs-shot-badge-overlay">
+            <span class="cs-shot-tag">PLATE ${s.num}</span>
+            <span class="cs-shot-zoom-hint" aria-hidden="true">⤢ 2560×1440</span>
+          </div>
+        </div>
+        <div class="cs-shot-meta">
+          <div class="cs-shot-num">PLATE ${s.num} / 16</div>
+          <h3 class="cs-shot-title cs-zh">${s.titleZh}</h3>
+          <h3 class="cs-shot-title cs-en" hidden>${s.title}</h3>
+          <p class="cs-shot-desc cs-zh">${s.desc}</p>
+          <p class="cs-shot-desc cs-en" hidden>${s.descEn}</p>
+        </div>
       `;
+
+      card.addEventListener('click', () => openLightbox(idx));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(idx);
+        }
+      });
+
       grid.append(card);
     });
+
+    all('#cs-shot-grid .cs-zh').forEach(n => n.hidden = lang === 'en');
+    all('#cs-shot-grid .cs-en').forEach(n => n.hidden = lang !== 'en');
+  }
+
+  function updateLightboxCaption(isMasterLoaded) {
+    if (!lbCaption) return;
+    const shot = shots16[activeLightboxIndex];
+    if (!shot) return;
+    const isEn = lang === 'en';
+
+    if (typeof isMasterLoaded === 'undefined') {
+      const masterSrc = `assets/shots/${shot.png}`;
+      isMasterLoaded = preloadedMasterMap.has(masterSrc);
+    }
+
+    const resLabel = isMasterLoaded
+      ? 'MASTER PNG 2560 × 1440 CANVAS'
+      : (isEn ? '2560 × 1440 CANVAS (UPGRADING...)' : '2560 × 1440 畫布 (載入原寸高解析中...)');
+
+    lbCaption.innerHTML = `
+      <div class="cs-lb-header">
+        <span class="cs-lb-tag">PLATE ${shot.num} / 16 · ${shot.slug}</span>
+        <span class="cs-lb-res">${resLabel}</span>
+      </div>
+      <div class="cs-lb-title">${isEn ? shot.title : shot.titleZh}</div>
+      <div class="cs-lb-desc">${isEn ? shot.descEn : shot.desc}</div>
+    `;
+  }
+
+  function renderLightboxImage() {
+    if (!lightbox || !lbImg) return;
+    const shot = shots16[activeLightboxIndex];
+    if (!shot) return;
+
+    const token = ++currentLoadToken;
+    const masterSrc = `assets/shots/${shot.png}`;
+    const previewSrc = `assets/mockups/${shot.jpg}`;
+
+    if (preloadedMasterMap.has(masterSrc)) {
+      lbImg.src = masterSrc;
+      lbImg.alt = `PLATE ${shot.num}: ${shot.title}`;
+      lbImg.classList.remove('is-upgrading');
+      updateLightboxCaption(true);
+    } else {
+      lbImg.src = previewSrc;
+      lbImg.alt = `PLATE ${shot.num}: ${shot.title}`;
+      lbImg.classList.add('is-upgrading');
+      updateLightboxCaption(false);
+
+      const master = new Image();
+      master.src = masterSrc;
+      master.onload = () => {
+        preloadedMasterMap.set(masterSrc, true);
+        if (token === currentLoadToken) {
+          lbImg.src = masterSrc;
+          lbImg.classList.remove('is-upgrading');
+          updateLightboxCaption(true);
+        }
+      };
+    }
+
+    preloadAdjacentShots(activeLightboxIndex);
+  }
+
+  function preloadAdjacentShots(index) {
+    const nextIdx = (index + 1) % shots16.length;
+    const prevIdx = (index + shots16.length - 1) % shots16.length;
+
+    const nextJpg = new Image();
+    nextJpg.src = `assets/mockups/${shots16[nextIdx].jpg}`;
+
+    const prevJpg = new Image();
+    prevJpg.src = `assets/mockups/${shots16[prevIdx].jpg}`;
+
+    const nextPngSrc = `assets/shots/${shots16[nextIdx].png}`;
+    if (!preloadedMasterMap.has(nextPngSrc)) {
+      const nextPng = new Image();
+      nextPng.src = nextPngSrc;
+      nextPng.onload = () => preloadedMasterMap.set(nextPngSrc, true);
+    }
+  }
+
+  function openLightbox(index) {
+    if (!lightbox || !lbImg) return;
+    lastFocusedElement = document.activeElement;
+    activeLightboxIndex = (index + shots16.length) % shots16.length;
+
+    lightbox.hidden = false;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    renderLightboxImage();
+
+    if (lbCloseBtn) lbCloseBtn.focus();
+  }
+
+  function prevLightbox() {
+    activeLightboxIndex = (activeLightboxIndex - 1 + shots16.length) % shots16.length;
+    renderLightboxImage();
+  }
+
+  function nextLightbox() {
+    activeLightboxIndex = (activeLightboxIndex + 1) % shots16.length;
+    renderLightboxImage();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.hidden = true;
+    if (lbImg) {
+      lbImg.src = '';
+      lbImg.classList.remove('is-upgrading');
+    }
+    document.body.style.overflow = '';
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function initLightboxListeners() {
+    if (!lightbox) return;
+
+    if (lbCloseBtn) lbCloseBtn.addEventListener('click', closeLightbox);
+    if (lbPrevBtn) lbPrevBtn.addEventListener('click', prevLightbox);
+    if (lbNextBtn) lbNextBtn.addEventListener('click', nextLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('cs-lightbox-stage')) {
+        closeLightbox();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevLightbox();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextLightbox();
+      }
+    });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+          if (deltaX < 0) {
+            nextLightbox();
+          } else {
+            prevLightbox();
+          }
+        }
+      }
+    }, { passive: true });
   }
 
   // Initial Boot
@@ -659,6 +1021,7 @@
   renderArticlesGrid();
   renderBookmarks();
   renderShotStoryboards();
+  initLightboxListeners();
   setLang('zh-TW');
 
 })();

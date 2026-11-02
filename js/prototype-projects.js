@@ -216,5 +216,27 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/field-supply/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/field-supply/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/field-supply/'
+  },
+  {
+    id: 'cross-section',
+    order: 11,
+    published: true,
+    title: 'CROSS SECTION',
+    year: '2026',
+    category: {
+      en: 'Architectural Culture / Editorial Design / Digital Publishing',
+      'zh-TW': '建築文化／編輯出版／數位期刊'
+    },
+    projectType: {
+      en: 'Self-Initiated Editorial & Print Concept',
+      'zh-TW': '自主編輯出版概念研究'
+    },
+    description: {
+      en: 'An independent architectural culture publisher concept with dual-issue print master covers, responsive longform reader, and bilingual reading UX.',
+      'zh-TW': '自主建築文化出版機構與數位期刊概念研究，整合雙期獨立印刷完稿封面、長篇沉浸式閱讀介面與中英雙語對照排版。'
+    },
+    cover: 'brand/cross-section/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/cross-section/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/cross-section/'
   }
 ]);

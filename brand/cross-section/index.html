@@ -33,16 +33,16 @@
     </div>
   </header>
 
-  <!-- Asset Gate Notice -->
+  <!-- Concept Notice Banner -->
   <div class="cs-gate-banner" role="status">
     <div class="cs-gate-banner-inner">
       <div>
-        <span class="cs-gate-tag">LOCAL UX PREVIEW</span>
-        <span class="cs-zh">【素材審核門檻】16 張獨立印刷完稿與攝影交付前，本案保留於本機互動驗證（LOCAL ONLY / ARTWORK HOLD）。</span>
-        <span class="cs-en" hidden>[Asset Gate Notice] 16 editorial photography assets pending delivery. Reading prototype running in local preview mode.</span>
+        <span class="cs-gate-tag">CONCEPT STUDY</span>
+        <span class="cs-zh">【自主概念提案】本案為建築文化出版機構與數位期刊概念研究，展示之封面與印刷裝訂為設計提案，非實體發行刊物。</span>
+        <span class="cs-en" hidden>[Independent Concept Study] Architectural culture publisher & digital journal case study. Print covers and bindings are editorial proposals.</span>
       </div>
       <a href="#cs-artwork" style="text-decoration: underline; font-weight: 600;">
-        <span class="cs-zh">查看 16 張分鏡規劃 →</span><span class="cs-en" hidden>View 16 Plate Specs →</span>
+        <span class="cs-zh">瀏覽 16 幕設計圖板 →</span><span class="cs-en" hidden>View 16 Design Plates →</span>
       </a>
     </div>
   </div>
@@ -77,7 +77,7 @@
           </div>
           <div class="cs-meta-item">
             <strong>STATUS</strong>
-            <span>LOCAL FUNCTIONAL PROTOTYPE (ARTWORK HOLD)</span>
+            <span>CONCEPT PROTOTYPE / PRODUCTION RELEASE</span>
           </div>
         </div>
       </div>
@@ -165,13 +165,13 @@
     <section id="cs-artwork" class="cs-section">
       <div class="cs-section-inner">
         <div class="cs-section-header">
-          <p class="cs-kicker">03 / PRINT & EDITORIAL PLATES</p>
+          <p class="cs-kicker">03 / COMPLETE VISUAL NARRATIVE</p>
           <h2>
-            <span class="cs-zh">16 張出版設計圖版規格</span>
-            <span class="cs-en" hidden>16 Editorial Plate Specs</span>
+            <span class="cs-zh">16 幕建築文化出版設計圖板</span>
+            <span class="cs-en" hidden>16 Official Design Plates</span>
           </h2>
-          <p class="cs-zh">依工單定義之 16 張黑白建築刊物完稿分鏡。攝影素材交付前，嚴格執行資產鎖定，不以假圖冒充。</p>
-          <p class="cs-en" hidden>Specifications for 16 architectural print plates. Strict asset gating enforced until master studio assets are delivered.</p>
+          <p class="cs-zh">完整收錄 16 張建築文化出版視覺、獨立直式封面與數位閱讀介面圖板。嚴格遵循 16:9 比例與 contain 顯示策略，點擊任意圖板即可呼叫 2560 × 1440 原寸無損燈箱檢視。</p>
+          <p class="cs-en" hidden>Full presentation of all 16 design plates. Rendered in strict 16:9 contain ratio; click any card to inspect full 2560 × 1440 master resolution.</p>
         </div>
 
         <div class="cs-shot-grid" id="cs-shot-grid"></div>
@@ -248,6 +248,25 @@
     <a href="#cs-top">BACK TO TOP ↑</a>
   </footer>
 
-  <script src="./js/cross-case.js?v=cs11-v4-20261102" defer></script>
+  <!-- ==========================================================================
+       FULLSCREEN ACCESSIBLE LIGHTBOX (Master PNG 2560x1440)
+       ========================================================================== -->
+  <div id="cs-lightbox" class="cs-lightbox" role="dialog" aria-modal="true" aria-label="全螢幕原圖檢視 / Fullscreen Master Canvas Viewer" hidden>
+    <button id="cs-lb-close" type="button" class="cs-lightbox-close" aria-label="關閉燈箱 / Close lightbox">×</button>
+    <button id="cs-lb-prev" type="button" class="cs-lightbox-nav cs-lightbox-prev" aria-label="上一張 / Previous image">←</button>
+
+    <div class="cs-lightbox-stage">
+      <figure>
+        <div class="cs-lightbox-img-wrap">
+          <img id="cs-lb-img" src="" alt="" width="2560" height="1440">
+        </div>
+        <figcaption id="cs-lb-caption" class="cs-lightbox-caption"></figcaption>
+      </figure>
+    </div>
+
+    <button id="cs-lb-next" type="button" class="cs-lightbox-nav cs-lightbox-next" aria-label="下一張 / Next image">→</button>
+  </div>
+
+  <script src="./js/cross-case.js?v=cs11-v5-20261103" defer></script>
 </body>
 </html>
