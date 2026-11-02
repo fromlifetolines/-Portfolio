@@ -445,6 +445,7 @@
     renderSystemDetail();
     renderEnergyFlow();
     updateLightboxCaption();
+    renderProjectExplorer();
   }
 
   // ==========================================================================
@@ -696,12 +697,627 @@
   }
 
   // ==========================================================================
+  // 5.5. B2B Project Explorer & Investor Information Interactive Logic
+  // ==========================================================================
+  const DEMO_PROJECTS = [
+    {
+      id: "CE-DEMO-S01",
+      name_zh: "東嶺光電示範方案",
+      name_en: "East Ridge Solar Concept",
+      type: "solar",
+      capacity: {
+        value: 12,
+        unit: "MWp",
+        meaning_zh: "太陽光電峰值裝置功率",
+        meaning_en: "Solar PV peak DC power"
+      },
+      site: "DEMO SITE A",
+      site_zh: "DEMO SITE A (東嶺山丘坡地)",
+      site_en: "DEMO SITE A (East Ridge Terraces)",
+      phase: "concept-only",
+      financial_return: null,
+      verified_generation_mwh: null,
+      image: "assets/mockups/shot-05.jpg",
+      desc_zh: "東嶺山丘階梯式光電示範基地，探討高坡度地形防衝刷支架工法與雙面發電模組之漫射增益效益。",
+      desc_en: "Hillside terraced solar PV concept demonstrating anti-erosion mounting structures and bifacial ground reflectance yield.",
+      role_zh: "日間綠電主力基底、廠區自用消納與餘電外送",
+      role_en: "Daytime solar generation base, on-site consumption and grid export",
+      risk_zh: "季節性陰雨日照變異度、地形遮蔭損失率（概念模型無實測氣象站數據）",
+      risk_en: "Microclimatic cloud cover variation and terrain shading loss (no physical weather station data)"
+    },
+    {
+      id: "CE-DEMO-W01",
+      name_zh: "北境風場示範方案",
+      name_en: "North Pass Wind Concept",
+      type: "wind",
+      capacity: {
+        value: 8,
+        unit: "MW",
+        meaning_zh: "風力額定功率",
+        meaning_en: "Wind rated power"
+      },
+      site: "DEMO SITE B",
+      site_zh: "DEMO SITE B (北境沿海岬角)",
+      site_en: "DEMO SITE B (North Pass Coastal Headland)",
+      phase: "concept-only",
+      financial_return: null,
+      verified_generation_mwh: null,
+      image: "assets/mockups/shot-06.jpg",
+      desc_zh: "沿海岬角低風阻風力發電示範場，評估常年沿海季風條件下低噪風機葉片設計與動態偏航控制響應。",
+      desc_en: "Coastal headland wind turbine array evaluating low-noise blade aerodynamics and dynamic yaw response under persistent monsoon winds.",
+      role_zh: "沿海高風速時段持續基載發電、與儲能系統互補削峰",
+      role_en: "Continuous wind baseload during high-wind intervals, complementary peak shaving with storage",
+      risk_zh: "岬角地形突發下衝氣流與沿海亂流強度，極端颱風過境時之安全停機裕度（非實測應力報告）",
+      risk_en: "Coastal turbulence intensity and safety cut-out margin under extreme typhoon winds (unaudited)"
+    },
+    {
+      id: "CE-DEMO-B01",
+      name_zh: "港灣儲能示範方案",
+      name_en: "Harbor Storage Concept",
+      type: "storage",
+      capacity: {
+        value: 20,
+        unit: "MWh",
+        meaning_zh: "電池儲能容量",
+        meaning_en: "Battery energy capacity"
+      },
+      site: "DEMO SITE C",
+      site_zh: "DEMO SITE C (港灣重工業區)",
+      site_en: "DEMO SITE C (Harbor Industrial Zone)",
+      phase: "concept-only",
+      financial_return: null,
+      verified_generation_mwh: null,
+      image: "assets/mockups/shot-07.jpg",
+      desc_zh: "港埠工業區貨櫃化磷酸鐵鋰電池儲能示範系統，模擬高濕高鹽霧環境下之主動液冷溫控與電網快速頻率響應（FFR）。",
+      desc_en: "Containerized LFP battery energy storage system at an industrial harbor, demonstrating active liquid cooling under high-salinity air.",
+      role_zh: "削峰填谷、黑啟動支援、毫秒級微電網頻率調節與夜間用電備載",
+      role_en: "Peak shifting, black start support, sub-second frequency regulation, and nighttime backup",
+      risk_zh: "長週期充放電容量衰減率、高充放倍率循環下電池老化速率（無實驗室加速老化數據）",
+      risk_en: "Long-cycle cell degradation rate and thermal runaway containment thresholds under intensive cycling"
+    }
+  ];
+
+  let explorerSearchQuery = '';
+  let explorerSelectedType = 'all';
+  let explorerSelectedSite = 'all';
+  let explorerActiveDetailId = null;
+  let explorerCompareIds = [];
+  let jsonSourceState = 'unloaded'; // 'loaded', 'fallback'
+
+  async function loadCheckedInProjectsJson() {
+    try {
+      const response = await fetch('./data/CIRCUIT_ENERGY_09_PROJECTS_DEMO.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (data && Array.isArray(data.projects)) {
+        data.projects.forEach(jp => {
+          const item = DEMO_PROJECTS.find(p => p.id === jp.id);
+          if (item) {
+            item.name_zh = jp.name_zh;
+            item.name_en = jp.name_en;
+            item.type = jp.type;
+            item.capacity = jp.capacity;
+            item.site = jp.site;
+            item.phase = jp.phase;
+            item.financial_return = jp.financial_return;
+            item.verified_generation_mwh = jp.verified_generation_mwh;
+          }
+        });
+        jsonSourceState = 'loaded';
+      }
+    } catch (err) {
+      jsonSourceState = 'fallback';
+    }
+    renderProjectExplorer();
+  }
+
+  function getFilteredProjects() {
+    const q = explorerSearchQuery.trim().toLowerCase();
+    return DEMO_PROJECTS.filter(p => {
+      if (explorerSelectedType !== 'all' && p.type !== explorerSelectedType) {
+        return false;
+      }
+      if (explorerSelectedSite !== 'all' && p.site !== explorerSelectedSite) {
+        return false;
+      }
+      if (q) {
+        const matchId = p.id.toLowerCase().includes(q);
+        const matchNameZh = p.name_zh.toLowerCase().includes(q);
+        const matchNameEn = p.name_en.toLowerCase().includes(q);
+        const matchSite = p.site.toLowerCase().includes(q);
+        const matchType = p.type.toLowerCase().includes(q);
+        const matchCap = `${p.capacity.value} ${p.capacity.unit}`.toLowerCase().includes(q);
+        if (!matchId && !matchNameZh && !matchNameEn && !matchSite && !matchType && !matchCap) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  function initProjectExplorer() {
+    const searchInput = document.getElementById('ce-explorer-search');
+    const searchClear = document.getElementById('ce-search-clear');
+    const typePills = document.querySelectorAll('.ce-filter-pill');
+    const siteSelect = document.getElementById('ce-site-select');
+    const resetBtn = document.getElementById('ce-explorer-reset-btn');
+    const clearCompareBtn = document.getElementById('ce-compare-clear-btn');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        explorerSearchQuery = e.target.value;
+        if (searchClear) searchClear.hidden = !explorerSearchQuery;
+        renderProjectExplorer();
+      });
+    }
+
+    if (searchClear && searchInput) {
+      searchClear.addEventListener('click', () => {
+        explorerSearchQuery = '';
+        searchInput.value = '';
+        searchClear.hidden = true;
+        searchInput.focus();
+        renderProjectExplorer();
+      });
+    }
+
+    typePills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        typePills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        explorerSelectedType = pill.getAttribute('data-type') || 'all';
+        renderProjectExplorer();
+      });
+    });
+
+    if (siteSelect) {
+      siteSelect.addEventListener('change', (e) => {
+        explorerSelectedSite = e.target.value;
+        renderProjectExplorer();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        explorerSearchQuery = '';
+        if (searchInput) {
+          searchInput.value = '';
+          if (searchClear) searchClear.hidden = true;
+        }
+        explorerSelectedType = 'all';
+        typePills.forEach(p => {
+          p.classList.toggle('active', p.getAttribute('data-type') === 'all');
+        });
+        explorerSelectedSite = 'all';
+        if (siteSelect) siteSelect.value = 'all';
+        renderProjectExplorer();
+      });
+    }
+
+    if (clearCompareBtn) {
+      clearCompareBtn.addEventListener('click', () => {
+        explorerCompareIds = [];
+        renderProjectExplorer();
+      });
+    }
+
+    // Keydown for Escape closing detail drawer
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const drawer = document.getElementById('ce-detail-drawer');
+        if (drawer && !drawer.hidden) {
+          drawer.hidden = true;
+          explorerActiveDetailId = null;
+          renderProjectExplorer();
+        }
+      }
+    });
+
+    loadCheckedInProjectsJson();
+    renderProjectExplorer();
+  }
+
+  function renderProjectExplorer() {
+    const isEn = currentLang === 'en';
+    const grid = document.getElementById('ce-explorer-grid');
+    const emptyState = document.getElementById('ce-explorer-empty');
+    const countEl = document.getElementById('ce-explorer-count');
+    const drawer = document.getElementById('ce-detail-drawer');
+    const searchInput = document.getElementById('ce-explorer-search');
+    const siteSelect = document.getElementById('ce-site-select');
+    const statusBarNote = document.querySelector('.ce-statusbar-note');
+
+    if (!grid) return;
+
+    if (statusBarNote) {
+      if (jsonSourceState === 'loaded') {
+        statusBarNote.innerHTML = isEn
+          ? '<span style="color:var(--ce-lime);">● Checked-in JSON verified (CIRCUIT_ENERGY_09_PROJECTS_DEMO.json)</span> ｜ All assets fictional concept models; MWp/MW/MWh are distinct physical units'
+          : '<span style="color:var(--ce-lime);">● 已載入正式示範資料集（CIRCUIT_ENERGY_09_PROJECTS_DEMO.json）</span> ｜ 均屬示範模型，MWp/MW/MWh 屬不同物理維度';
+      } else if (jsonSourceState === 'fallback') {
+        statusBarNote.innerHTML = isEn
+          ? '<span style="color:var(--ce-signal-warm);">⚠ Local schema fallback active (fetch unavailable)</span> ｜ All assets fictional concept models; MWp/MW/MWh are distinct physical units'
+          : '<span style="color:var(--ce-signal-warm);">⚠ 本機架構備用中（無法讀取外部 JSON）</span> ｜ 均屬示範模型，MWp/MW/MWh 屬不同物理維度';
+      }
+    }
+
+    // Update search placeholder according to language
+    if (searchInput) {
+      searchInput.placeholder = isEn
+        ? searchInput.getAttribute('data-placeholder-en')
+        : searchInput.getAttribute('data-placeholder-zh');
+    }
+
+    // Update site dropdown option labels
+    if (siteSelect) {
+      const opts = siteSelect.options;
+      if (opts.length > 0) {
+        opts[0].textContent = isEn ? 'All Sites' : '所有場址 / All Sites';
+        if (opts[1]) opts[1].textContent = isEn ? 'DEMO SITE A (East Ridge)' : 'DEMO SITE A (東嶺)';
+        if (opts[2]) opts[2].textContent = isEn ? 'DEMO SITE B (North Pass)' : 'DEMO SITE B (北境)';
+        if (opts[3]) opts[3].textContent = isEn ? 'DEMO SITE C (Harbor)' : 'DEMO SITE C (港灣)';
+      }
+    }
+
+    const filtered = getFilteredProjects();
+
+    // Update Count
+    if (countEl) {
+      countEl.textContent = isEn
+        ? `Showing ${filtered.length} of ${DEMO_PROJECTS.length} concept projects`
+        : `顯示 ${filtered.length} / ${DEMO_PROJECTS.length} 筆示範專案`;
+    }
+
+    // Empty state toggle
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      if (emptyState) emptyState.hidden = false;
+      if (drawer) drawer.hidden = true;
+    } else {
+      if (emptyState) emptyState.hidden = true;
+      grid.innerHTML = '';
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = `ce-proj-card ${explorerActiveDetailId === p.id ? 'is-selected' : ''} ${explorerCompareIds.includes(p.id) ? 'in-compare' : ''}`;
+        card.setAttribute('data-project-id', p.id);
+
+        const typeLabelZh = { solar: '太陽光伏', wind: '風力發電', storage: '儲能系統' }[p.type] || p.type;
+        const typeLabelEn = { solar: 'Solar PV', wind: 'Wind Power', storage: 'Energy Storage' }[p.type] || p.type;
+        const isCompared = explorerCompareIds.includes(p.id);
+
+        // Safe DOM building
+        const head = document.createElement('div');
+        head.className = 'ce-card-head';
+
+        const badge = document.createElement('span');
+        badge.className = `ce-type-badge ${p.type}`;
+        badge.textContent = isEn ? typeLabelEn : typeLabelZh;
+
+        const code = document.createElement('span');
+        code.className = 'ce-card-code';
+        code.textContent = p.id;
+
+        head.appendChild(badge);
+        head.appendChild(code);
+
+        const capWrap = document.createElement('div');
+        capWrap.className = `ce-card-capacity-wrap ${p.type}`;
+
+        const capNum = document.createElement('span');
+        capNum.className = 'ce-card-capacity-num';
+        capNum.textContent = String(p.capacity.value);
+
+        const capUnit = document.createElement('span');
+        capUnit.className = 'ce-card-capacity-unit';
+        capUnit.textContent = p.capacity.unit;
+
+        const capMeaning = document.createElement('div');
+        capMeaning.className = 'ce-card-capacity-meaning';
+        capMeaning.textContent = isEn ? p.capacity.meaning_en : p.capacity.meaning_zh;
+
+        capWrap.appendChild(capNum);
+        capWrap.appendChild(capUnit);
+        capWrap.appendChild(capMeaning);
+
+        const title = document.createElement('h3');
+        title.className = 'ce-card-title';
+        title.textContent = isEn ? p.name_en : p.name_zh;
+
+        const site = document.createElement('div');
+        site.className = 'ce-card-site';
+        site.textContent = isEn ? p.site_en : p.site_zh;
+
+        const actions = document.createElement('div');
+        actions.className = 'ce-card-actions';
+
+        const selectBtn = document.createElement('button');
+        selectBtn.type = 'button';
+        selectBtn.className = 'ce-btn-card-select';
+        selectBtn.textContent = isEn ? 'View Specs' : '檢視規格詳情';
+        selectBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          explorerActiveDetailId = (explorerActiveDetailId === p.id) ? null : p.id;
+          renderProjectExplorer();
+          if (explorerActiveDetailId) {
+            const d = document.getElementById('ce-detail-drawer');
+            if (d) d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
+
+        const compareBtn = document.createElement('button');
+        compareBtn.type = 'button';
+        compareBtn.className = `ce-btn-card-compare ${isCompared ? 'in-compare' : ''}`;
+        compareBtn.textContent = isCompared
+          ? (isEn ? '✓ Compared' : '✓ 已加入比較')
+          : (isEn ? '+ Add to Compare' : '+ 加入比較');
+        compareBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (explorerCompareIds.includes(p.id)) {
+            explorerCompareIds = explorerCompareIds.filter(id => id !== p.id);
+          } else {
+            if (explorerCompareIds.length < 2) {
+              explorerCompareIds.push(p.id);
+            } else {
+              explorerCompareIds = [explorerCompareIds[1], p.id];
+            }
+          }
+          renderProjectExplorer();
+        });
+
+        actions.appendChild(selectBtn);
+        actions.appendChild(compareBtn);
+
+        card.appendChild(head);
+        card.appendChild(capWrap);
+        card.appendChild(title);
+        card.appendChild(site);
+        card.appendChild(actions);
+
+        // Click card anywhere toggles detail
+        card.addEventListener('click', () => {
+          explorerActiveDetailId = (explorerActiveDetailId === p.id) ? null : p.id;
+          renderProjectExplorer();
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Render Detail Drawer
+    if (drawer) {
+      if (!explorerActiveDetailId) {
+        drawer.hidden = true;
+        drawer.innerHTML = '';
+      } else {
+        const p = DEMO_PROJECTS.find(item => item.id === explorerActiveDetailId);
+        if (!p) {
+          drawer.hidden = true;
+          drawer.innerHTML = '';
+        } else {
+          drawer.hidden = false;
+          drawer.innerHTML = '';
+
+          const head = document.createElement('div');
+          head.className = 'ce-detail-header';
+
+          const titleWrap = document.createElement('div');
+          titleWrap.className = 'ce-detail-title-wrap';
+
+          const titleH3 = document.createElement('h3');
+          titleH3.textContent = `[${p.id}] ${isEn ? p.name_en : p.name_zh}`;
+
+          const metaSub = document.createElement('p');
+          metaSub.className = 'ce-card-code';
+          metaSub.textContent = `${isEn ? p.site_en : p.site_zh} ｜ Phase: Concept-only`;
+
+          titleWrap.appendChild(titleH3);
+          titleWrap.appendChild(metaSub);
+
+          const closeBtn = document.createElement('button');
+          closeBtn.type = 'button';
+          closeBtn.className = 'ce-detail-close';
+          closeBtn.setAttribute('aria-label', isEn ? 'Close Details' : '關閉詳情');
+          closeBtn.textContent = '×';
+          closeBtn.addEventListener('click', () => {
+            explorerActiveDetailId = null;
+            drawer.hidden = true;
+            renderProjectExplorer();
+          });
+
+          head.appendChild(titleWrap);
+          head.appendChild(closeBtn);
+
+          const body = document.createElement('div');
+          body.className = 'ce-detail-body';
+
+          const imgBox = document.createElement('div');
+          imgBox.className = 'ce-detail-img-box';
+          const img = document.createElement('img');
+          img.src = `${p.image}?v=ce09-photo-v3-20261025`;
+          img.alt = isEn ? p.name_en : p.name_zh;
+          img.width = 2560;
+          img.height = 1440;
+          img.loading = 'lazy';
+          imgBox.appendChild(img);
+
+          const contentBox = document.createElement('div');
+
+          const capBanner = document.createElement('div');
+          capBanner.className = `ce-card-capacity-wrap ${p.type}`;
+          capBanner.innerHTML = `
+            <span class="ce-card-capacity-num">${p.capacity.value}</span>
+            <span class="ce-card-capacity-unit">${p.capacity.unit}</span>
+            <div class="ce-card-capacity-meaning">${isEn ? p.capacity.meaning_en : p.capacity.meaning_zh}</div>
+          `;
+
+          const descP = document.createElement('p');
+          descP.style.fontSize = '0.9rem';
+          descP.style.color = 'var(--ce-text-dim)';
+          descP.style.lineHeight = '1.6';
+          descP.style.marginBottom = '16px';
+          descP.textContent = isEn ? p.desc_en : p.desc_zh;
+
+          const specsGrid = document.createElement('div');
+          specsGrid.className = 'ce-detail-specs-grid';
+
+          const specItems = [
+            { label: isEn ? 'Primary Role' : '系統調度定位', val: isEn ? p.role_en : p.role_zh },
+            { label: isEn ? 'Lifecycle Phase' : '生命週期階段', val: isEn ? 'Concept-only Model' : '示範概念模型（非實體營運）' },
+            { label: isEn ? 'Verified Generation' : '經外部審計發電量', val: 'N/A (Concept Model)', isNa: true },
+            { label: isEn ? 'Financial Return' : '商業財務報酬', val: 'N/A (No ROI Guarantee)', isNa: true }
+          ];
+
+          specItems.forEach(s => {
+            const cell = document.createElement('div');
+            cell.className = 'ce-detail-spec-cell';
+            cell.innerHTML = `
+              <div class="ce-spec-label">${s.label}</div>
+              <div class="ce-spec-value ${s.isNa ? 'cr-na-tag' : ''}">${s.val}</div>
+            `;
+            specsGrid.appendChild(cell);
+          });
+
+          const reportLink = document.createElement('a');
+          reportLink.href = `./reports/2026-concept-report.html#project-${p.id.toLowerCase()}`;
+          reportLink.className = 'ce-detail-report-link';
+          reportLink.textContent = isEn
+            ? `Read Full Chapter in 2026 Annual Report (${p.id}) →`
+            : `在 2026 概念年報中閱讀完整專案章節（${p.id}）→`;
+
+          contentBox.appendChild(capBanner);
+          contentBox.appendChild(descP);
+          contentBox.appendChild(specsGrid);
+          contentBox.appendChild(reportLink);
+
+          body.appendChild(imgBox);
+          body.appendChild(contentBox);
+
+          drawer.appendChild(head);
+          drawer.appendChild(body);
+        }
+      }
+    }
+
+    // Render Comparison Table
+    renderComparisonTable();
+  }
+
+  function renderComparisonTable() {
+    const isEn = currentLang === 'en';
+    const wrap = document.getElementById('ce-compare-table-wrap');
+    const clearBtn = document.getElementById('ce-compare-clear-btn');
+    if (!wrap) return;
+
+    if (clearBtn) {
+      clearBtn.disabled = explorerCompareIds.length === 0;
+    }
+
+    if (explorerCompareIds.length === 0) {
+      wrap.innerHTML = `
+        <div style="padding: 24px; text-align: center; color: var(--ce-text-muted); font-size: 0.88rem;">
+          ${isEn ? 'Please select up to 2 projects from above by clicking "+ Add to Compare".' : '請自上方專案卡片點擊「+ 加入比較」選取最多 2 個方案進行對照。'}
+        </div>
+      `;
+      return;
+    }
+
+    if (explorerCompareIds.length === 1) {
+      const p1 = DEMO_PROJECTS.find(p => p.id === explorerCompareIds[0]);
+      wrap.innerHTML = `
+        <div style="padding: 20px; background: rgba(0,0,0,0.2); border-radius: 4px; color: var(--ce-text-dim); font-size: 0.88rem;">
+          ${isEn ? `Plan 1 selected: <strong>[${p1.id}] ${p1.name_en}</strong> (${p1.capacity.value} ${p1.capacity.unit}). Please select a second project to generate comparison.` : `已選取第 1 個方案：<strong>【${p1.id}】${p1.name_zh}</strong>（${p1.capacity.value} ${p1.capacity.unit}）。請再點擊另一個方案以展開對照。`}
+        </div>
+      `;
+      return;
+    }
+
+    // Exactly 2 projects selected
+    const p1 = DEMO_PROJECTS.find(p => p.id === explorerCompareIds[0]);
+    const p2 = DEMO_PROJECTS.find(p => p.id === explorerCompareIds[1]);
+    if (!p1 || !p2) return;
+
+    const isCrossCategory = p1.capacity.unit !== p2.capacity.unit;
+
+    let warningHtml = '';
+    if (isCrossCategory) {
+      warningHtml = `
+        <div class="ce-unit-warning" role="alert">
+          <strong>⚠ ${isEn ? 'Units Incompatible for Summation Warning' : '跨技術向量單位不可直接相加警示'}：</strong><br>
+          ${isEn
+            ? `This comparison evaluates distinct energy vectors: [${p1.id}] operates with <strong>${p1.capacity.value} ${p1.capacity.unit}</strong> (${p1.capacity.meaning_en}) while [${p2.id}] operates with <strong>${p2.capacity.value} ${p2.capacity.unit}</strong> (${p2.capacity.meaning_en}). These represent fundamentally distinct physical dimensions and must never be summed into an aggregate figure.`
+            : `本對照涉及不同之技術向量：【${p1.id}】規格為 <strong>${p1.capacity.value} ${p1.capacity.unit}</strong>（${p1.capacity.meaning_zh}），【${p2.id}】規格為 <strong>${p2.capacity.value} ${p2.capacity.unit}</strong>（${p2.capacity.meaning_zh}）。兩者屬相異物理維度，絕對不可混同或相加為單一「總量數值」。`}
+        </div>
+      `;
+    } else {
+      warningHtml = `
+        <div class="ce-statusbar-note" style="margin-bottom:14px; color:var(--ce-lime);">
+          * ${isEn ? 'Both projects are standalone concept demonstrations.' : '兩方案均屬獨立示範方案，不可直接累計'}
+        </div>
+      `;
+    }
+
+    const tableHtml = `
+      ${warningHtml}
+      <table class="ce-compare-table">
+        <thead>
+          <tr>
+            <th>${isEn ? 'Specification Parameter' : '評估比較項目'}</th>
+            <th>[${p1.id}] ${isEn ? p1.name_en : p1.name_zh}</th>
+            <th>[${p2.id}] ${isEn ? p2.name_en : p2.name_zh}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>${isEn ? 'Technology Vector' : '技術類型'}</th>
+            <td><span class="ce-type-badge ${p1.type}">${p1.type.toUpperCase()}</span></td>
+            <td><span class="ce-type-badge ${p2.type}">${p2.type.toUpperCase()}</span></td>
+          </tr>
+          <tr>
+            <th>${isEn ? 'Capacity & Unit' : '設備容量與物理單位'}</th>
+            <td><strong style="color:var(--ce-lime); font-size:1.1rem;">${p1.capacity.value} ${p1.capacity.unit}</strong><br><small style="color:var(--ce-text-dim);">${isEn ? p1.capacity.meaning_en : p1.capacity.meaning_zh}</small></td>
+            <td><strong style="color:var(--ce-lime); font-size:1.1rem;">${p2.capacity.value} ${p2.capacity.unit}</strong><br><small style="color:var(--ce-text-dim);">${isEn ? p2.capacity.meaning_en : p2.capacity.meaning_zh}</small></td>
+          </tr>
+          <tr>
+            <th>${isEn ? 'Concept Site' : '示範場址條件'}</th>
+            <td>${isEn ? p1.site_en : p1.site_zh}</td>
+            <td>${isEn ? p2.site_en : p2.site_zh}</td>
+          </tr>
+          <tr>
+            <th>${isEn ? 'Primary Dispatch Role' : '系統調度定位'}</th>
+            <td>${isEn ? p1.role_en : p1.role_zh}</td>
+            <td>${isEn ? p2.role_en : p2.role_zh}</td>
+          </tr>
+          <tr>
+            <th>${isEn ? 'Illustrative Uncertainty' : '主要評估風險與不確定性'}</th>
+            <td><small style="color:var(--ce-text-dim);">${isEn ? p1.risk_en : p1.risk_zh}</small></td>
+            <td><small style="color:var(--ce-text-dim);">${isEn ? p2.risk_en : p2.risk_zh}</small></td>
+          </tr>
+          <tr>
+            <th>${isEn ? 'Verified Generation' : '經外部審計發電數據'}</th>
+            <td><span class="cr-na-tag">N/A (Concept Model)</span></td>
+            <td><span class="cr-na-tag">N/A (Concept Model)</span></td>
+          </tr>
+          <tr>
+            <th>${isEn ? 'Financial Return Guarantee' : '財務收益保證'}</th>
+            <td><span class="cr-na-tag">N/A (No ROI Guarantee)</span></td>
+            <td><span class="cr-na-tag">N/A (No ROI Guarantee)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+
+    wrap.innerHTML = tableHtml;
+  }
+
+  // ==========================================================================
   // 6. Initialization
   // ==========================================================================
   function init() {
     renderPlatesGrid();
     initSystemSelector();
     initEnergyFlow();
+    initProjectExplorer();
     initLightboxListeners();
 
     // Language buttons

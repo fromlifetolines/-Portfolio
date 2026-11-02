@@ -286,13 +286,193 @@
     </section>
 
     <!-- ==========================================================================
-         03 / COMPLETE 16 OFFICIAL SHOTS GALLERY
+         03 / B2B PROJECT EXPLORER & EVALUATION
+         ========================================================================== -->
+    <section class="ce-section" id="ce-project-explorer">
+      <div class="ce-container">
+
+        <div class="ce-sectionhead">
+          <p class="ce-kicker">03 / B2B PROJECT EXPLORER & EVALUATION</p>
+          <h2 class="ce-zh">再生能源示範專案檢索與配置評估。</h2>
+          <h2 class="ce-en" hidden>Renewable Energy Project Explorer & Evaluation.</h2>
+          <p class="ce-sectionhead-desc ce-zh">為企業技術採購與能源轉型決策者設計之專案檢索系統。支援光電、風能與儲能多維度即時搜尋、規格比較與邊界風險檢視（載入官方示範資料集）。</p>
+          <p class="ce-sectionhead-desc ce-en" hidden>Interactive procurement search engineered for B2B renewable energy decision-makers. Filter by technology vector, inspect specifications with rigorous physical units, and evaluate two projects side-by-side.</p>
+        </div>
+
+        <div class="ce-explorer-app" id="ce-explorer-app">
+
+          <!-- Search & Filter Controls Toolbar -->
+          <div class="ce-explorer-toolbar">
+            <div class="ce-search-wrap">
+              <span class="ce-search-icon" aria-hidden="true">⌕</span>
+              <input type="text" id="ce-explorer-search" class="ce-search-input"
+                     placeholder="搜尋專案代號（如 CE-DEMO-S01）、技術類型或場址關鍵字..."
+                     data-placeholder-zh="搜尋專案代號（如 CE-DEMO-S01）、技術類型或場址關鍵字..."
+                     data-placeholder-en="Search by project code (e.g. CE-DEMO-S01), type, or site..."
+                     aria-label="搜尋專案關鍵字">
+              <button type="button" id="ce-search-clear" class="ce-search-clear" aria-label="清除搜尋字詞" hidden>×</button>
+            </div>
+
+            <div class="ce-filter-pills" role="group" aria-label="技術類型篩選">
+              <button type="button" class="ce-filter-pill active" data-type="all">
+                <span class="ce-zh">全部類型</span><span class="ce-en" hidden>All Vectors</span>
+              </button>
+              <button type="button" class="ce-filter-pill" data-type="solar">
+                <span class="ce-zh">太陽光伏</span><span class="ce-en" hidden>Solar PV</span>
+              </button>
+              <button type="button" class="ce-filter-pill" data-type="wind">
+                <span class="ce-zh">風力發電</span><span class="ce-en" hidden>Wind Power</span>
+              </button>
+              <button type="button" class="ce-filter-pill" data-type="storage">
+                <span class="ce-zh">儲能系統</span><span class="ce-en" hidden>Energy Storage</span>
+              </button>
+            </div>
+
+            <div class="ce-site-filter-wrap">
+              <label for="ce-site-select" class="ce-visually-hidden">選擇示範場址</label>
+              <select id="ce-site-select" class="ce-site-select">
+                <option value="all">所有場址 / All Sites</option>
+                <option value="DEMO SITE A">DEMO SITE A (東嶺)</option>
+                <option value="DEMO SITE B">DEMO SITE B (北境)</option>
+                <option value="DEMO SITE C">DEMO SITE C (港灣)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Status Bar & Result Counter -->
+          <div class="ce-explorer-statusbar">
+            <div id="ce-explorer-count" class="ce-explorer-count">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="ce-statusbar-note">
+              <span class="ce-zh">* 所有專案均屬示範模型（Concept-only），MWp/MW/MWh 屬不同物理維度</span>
+              <span class="ce-en" hidden>* All assets are fictional concept models; MWp/MW/MWh are distinct physical units</span>
+            </div>
+          </div>
+
+          <!-- Project Cards Grid -->
+          <div class="ce-explorer-grid" id="ce-explorer-grid">
+            <!-- Dynamically populated with 3 project cards -->
+          </div>
+
+          <!-- Empty State (Hidden by default) -->
+          <div class="ce-explorer-empty" id="ce-explorer-empty" hidden>
+            <div class="ce-empty-icon">⌕</div>
+            <h4 class="ce-empty-title ce-zh">查無符合條件之示範能源專案</h4>
+            <h4 class="ce-empty-title ce-en" hidden>No Matching Energy Concept Projects Found</h4>
+            <p class="ce-empty-desc ce-zh">請嘗試調整搜尋關鍵字，或點擊下方按鈕重設所有篩選條件。</p>
+            <p class="ce-empty-desc ce-en" hidden>Please try adjusting your search keyword or reset all filters to view all projects.</p>
+            <button type="button" class="ce-btn-reset" id="ce-explorer-reset-btn">
+              <span class="ce-zh">清除篩選條件 / 重設檢索</span>
+              <span class="ce-en" hidden>Reset All Filters</span>
+            </button>
+          </div>
+
+          <!-- Project Detail Drawer / Panel -->
+          <div class="ce-detail-drawer" id="ce-detail-drawer" hidden>
+            <!-- Dynamically populated when a card is selected -->
+          </div>
+
+          <!-- Two-Project Comparison Tray -->
+          <div class="ce-compare-tray" id="ce-compare-tray">
+            <div class="ce-compare-tray-header">
+              <div class="ce-compare-tray-title">
+                <span class="ce-zh">兩案對照評估矩陣（最多選取 2 筆）</span>
+                <span class="ce-en" hidden>Two-Project Comparison Matrix (Max 2 Selections)</span>
+              </div>
+              <button type="button" class="ce-compare-clear-btn" id="ce-compare-clear-btn" disabled>
+                <span class="ce-zh">清空比較方案</span><span class="ce-en" hidden>Clear Comparison</span>
+              </button>
+            </div>
+
+            <!-- Comparison Table Container -->
+            <div class="ce-compare-table-wrap" id="ce-compare-table-wrap">
+              <!-- Dynamically populated comparison table & unit warning -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         04 / INVESTOR INFORMATION & METHODOLOGY HUB
+         ========================================================================== -->
+    <section class="ce-section" id="ce-investor-hub">
+      <div class="ce-container">
+
+        <div class="ce-sectionhead">
+          <p class="ce-kicker">04 / INVESTOR & ENTERPRISE INFORMATION HUB</p>
+          <h2 class="ce-zh">投資人資訊、專案總表與方法論中樞。</h2>
+          <h2 class="ce-en" hidden>Investor Information & Governance Hub.</h2>
+          <p class="ce-sectionhead-desc ce-zh">為擬真企業決策者與潛在投資夥伴建立清晰之資料導覽入口。本中心提供真正可線上閱讀之概念年報、專案規格總表與邊界風險說明，無虛設空白連結。</p>
+          <p class="ce-sectionhead-desc ce-en" hidden>A structured information architecture providing direct, readable access to our 2026 concept report, portfolio dossiers, and methodology boundaries. Zero dead links or mock PDF buttons.</p>
+        </div>
+
+        <div class="ce-hub-grid">
+
+          <!-- Card 1: 2026 Design Concept Report -->
+          <div class="ce-hub-card">
+            <div class="ce-hub-badge">DIGITAL REPORT</div>
+            <h3 class="ce-hub-card-title ce-zh">2026 永續策略與示範專案報告</h3>
+            <h3 class="ce-hub-card-title ce-en" hidden>2026 Renewable Strategy & Concept Report</h3>
+            <p class="ce-hub-card-desc ce-zh">
+              完整長篇企業編輯報告，收錄企業願景、三大示範專案工程規格、微電網能量守恆平衡證明與重大風險揭露。支援響應式閱讀與瀏覽器列印。
+            </p>
+            <p class="ce-hub-card-desc ce-en" hidden>
+              A complete editorial digital report covering enterprise positioning, three concept asset profiles, mathematical energy balancing proofs, and governance boundaries.
+            </p>
+            <a href="./reports/2026-concept-report.html" class="ce-hub-action-btn">
+              <span class="ce-zh">閱讀完整線上年報 →</span><span class="ce-en" hidden>Open Full Digital Report →</span>
+            </a>
+          </div>
+
+          <!-- Card 2: Illustrative Portfolio Dossier -->
+          <div class="ce-hub-card">
+            <div class="ce-hub-badge">PORTFOLIO DOSSIER</div>
+            <h3 class="ce-hub-card-title ce-zh">示範專案規格與場址條件總表</h3>
+            <h3 class="ce-hub-card-title ce-en" hidden>Illustrative Portfolio Specifications</h3>
+            <p class="ce-hub-card-desc ce-zh">
+              跳轉至年報專案章節，深入檢視東嶺光電（12 MWp）、北境風場（8 MW）與港灣儲能（20 MWh）之技術定位、調度角色與未列計數據（N/A）。
+            </p>
+            <p class="ce-hub-card-desc ce-en" hidden>
+              Direct deep-link to the annual report dossier detailing Solar (12 MWp), Wind (8 MW), and Storage (20 MWh) engineering profiles and explicit omissions.
+            </p>
+            <a href="./reports/2026-concept-report.html#dossier" class="ce-hub-action-btn">
+              <span class="ce-zh">檢視專案規格總表 →</span><span class="ce-en" hidden>View Portfolio Dossier →</span>
+            </a>
+          </div>
+
+          <!-- Card 3: Methodology & Data Boundaries -->
+          <div class="ce-hub-card">
+            <div class="ce-hub-badge">METHODOLOGY & RISK</div>
+            <h3 class="ce-hub-card-title ce-zh">調度方法論、單位標準與邊界說明</h3>
+            <h3 class="ce-hub-card-title ce-en" hidden>Methodology & Governance Boundaries</h3>
+            <p class="ce-hub-card-desc ce-zh">
+              查閱 MWp/MW/MWh 單位標準辭典、情境 A/B 供需等式數學平衡（13.2 MWh / 13.8 MWh）、傍晚跨時段累積定義，以及未經外部審計之資料聲明。
+            </p>
+            <p class="ce-hub-card-desc ce-en" hidden>
+              Review unit taxonomies, Scenario A & B mathematical balancing equations, dusk cumulative solar definitions, and unaudited metric boundaries.
+            </p>
+            <a href="./reports/2026-concept-report.html#methodology" class="ce-hub-action-btn">
+              <span class="ce-zh">閱讀方法論與風險揭露 →</span><span class="ce-en" hidden>Read Governance & Boundaries →</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         05 / COMPLETE 16 OFFICIAL SHOTS GALLERY
          ========================================================================== -->
     <section class="ce-section" id="ce-gallery">
       <div class="ce-container">
 
         <div class="ce-sectionhead">
-          <p class="ce-kicker">03 / COMPLETE VISUAL NARRATIVE</p>
+          <p class="ce-kicker">05 / COMPLETE VISUAL NARRATIVE</p>
           <h2 class="ce-zh">16 幕全視角綠能園區設計圖板。</h2>
           <h2 class="ce-en" hidden>16 Official Photographic Design Plates.</h2>
           <p class="ce-sectionhead-desc ce-zh">完整收錄核准之 16 張正式攝影視覺圖板。嚴格遵循 16:9 比例與 contain 顯示策略，點擊任意圖板即可呼叫 2560 × 1440 原寸無損燈箱檢視。</p>
@@ -307,7 +487,7 @@
     </section>
 
     <!-- ==========================================================================
-         04 / PROJECT GOVERNANCE & FACTUAL DISCLOSURES
+         06 / PROJECT GOVERNANCE & FACTUAL DISCLOSURES
          ========================================================================== -->
     <section class="ce-section" id="ce-governance">
       <div class="ce-container">

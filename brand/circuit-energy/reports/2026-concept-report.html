@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0E11">
+  <meta name="description" content="CIRCUIT ENERGY — 2026 Renewable Strategy & Concept Portfolio Report. Fictional B2B clean energy systems integration and microgrid dispatch concept. FLTL × Howard Huang.">
+  <title>2026 Renewable Strategy & Concept Portfolio Report — CIRCUIT ENERGY | FLTL × HOWARD</title>
+
+  <style>
+    :root {
+      --ce-bg: #0A0E11;
+      --ce-bg-surface: #12181F;
+      --ce-bg-card: #182029;
+      --ce-bg-elevated: #1F2936;
+      --ce-text: #F1F5F3;
+      --ce-text-light: #FFFFFF;
+      --ce-text-dim: #94A3B8;
+      --ce-text-muted: #64748B;
+      --ce-lime: #9FE870;
+      --ce-lime-dim: rgba(159, 232, 112, 0.12);
+      --ce-lime-border: rgba(159, 232, 112, 0.35);
+      --ce-border: rgba(255, 255, 255, 0.08);
+      --ce-border-light: rgba(255, 255, 255, 0.16);
+      --ce-solar: #F59E0B;
+      --ce-solar-dim: rgba(245, 158, 11, 0.15);
+      --ce-wind: #06B6D4;
+      --ce-wind-dim: rgba(6, 182, 212, 0.15);
+      --ce-storage: #10B981;
+      --ce-storage-dim: rgba(16, 185, 129, 0.15);
+      --ce-danger: #EF4444;
+      --ce-danger-dim: rgba(239, 68, 68, 0.15);
+      --ce-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --ce-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --ce-container: 1200px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--ce-bg);
+      color: var(--ce-text);
+      font-family: var(--ce-font-sans);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--ce-bg);
+      color: var(--ce-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--ce-lime);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    a:hover {
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    /* Top Sticky Header */
+    .cr-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 14, 17, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--ce-border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cr-brand-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cr-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--ce-bg-elevated);
+      border: 1px solid var(--ce-border-light);
+      border-radius: 4px;
+      color: var(--ce-text-light);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .cr-back-btn:hover {
+      background: rgba(159, 232, 112, 0.15);
+      border-color: var(--ce-lime);
+      text-decoration: none;
+    }
+
+    .cr-doc-title {
+      font-family: var(--ce-font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--ce-text-dim);
+      text-transform: uppercase;
+    }
+    .cr-doc-title strong {
+      color: var(--ce-lime);
+      font-weight: 600;
+    }
+
+    .cr-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cr-print-btn, .cr-lang-btn {
+      background: transparent;
+      border: 1px solid var(--ce-border-light);
+      color: var(--ce-text-light);
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--ce-font-sans);
+      transition: all 0.2s;
+    }
+    .cr-print-btn:hover, .cr-lang-btn:hover {
+      border-color: var(--ce-lime);
+      color: var(--ce-lime);
+    }
+    .cr-lang-btn.active {
+      background: var(--ce-lime);
+      color: #0A0E11;
+      font-weight: 600;
+      border-color: var(--ce-lime);
+    }
+
+    /* In-Page Quick Navigation Bar */
+    .cr-subnav {
+      background: var(--ce-bg-surface);
+      border-bottom: 1px solid var(--ce-border);
+      padding: 10px 24px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .cr-subnav-inner {
+      max-width: var(--ce-container);
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+    }
+    .cr-subnav-link {
+      color: var(--ce-text-dim);
+      font-size: 0.82rem;
+      text-decoration: none;
+      font-family: var(--ce-font-mono);
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .cr-subnav-link:hover, .cr-subnav-link:focus-visible {
+      color: var(--ce-lime);
+      border-color: var(--ce-lime);
+      text-decoration: none;
+    }
+
+    /* Container */
+    .cr-container {
+      max-width: var(--ce-container);
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+      width: 100%;
+    }
+
+    /* Section layout */
+    .cr-section {
+      margin-bottom: 72px;
+      scroll-margin-top: 100px;
+    }
+
+    .cr-section-header {
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--ce-border);
+    }
+    .cr-section-kicker {
+      font-family: var(--ce-font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--ce-lime);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .cr-section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--ce-text-light);
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cr-section-desc {
+      color: var(--ce-text-dim);
+      font-size: 0.98rem;
+      max-width: 840px;
+      line-height: 1.7;
+    }
+
+    /* Hero / Cover */
+    .cr-cover {
+      background: linear-gradient(180deg, var(--ce-bg-surface) 0%, var(--ce-bg-card) 100%);
+      border: 1px solid var(--ce-border);
+      border-radius: 8px;
+      padding: 48px;
+      margin-bottom: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-cover::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(159, 232, 112, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--ce-lime-dim);
+      border: 1px solid var(--ce-lime-border);
+      color: var(--ce-lime);
+      border-radius: 4px;
+      font-family: var(--ce-font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .cr-cover-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--ce-text-light);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .cr-cover-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--ce-border);
+    }
+    .cr-cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cr-meta-label {
+      font-family: var(--ce-font-mono);
+      font-size: 0.75rem;
+      color: var(--ce-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cr-meta-val {
+      font-size: 0.95rem;
+      color: var(--ce-text-light);
+      font-weight: 500;
+    }
+
+    /* Warning / Alert Callout */
+    .cr-alert-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-left: 4px solid var(--ce-danger);
+      border-radius: 4px;
+      padding: 18px 24px;
+      margin: 24px 0;
+    }
+    .cr-alert-title {
+      font-family: var(--ce-font-mono);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #FCA5A5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .cr-alert-text {
+      font-size: 0.9rem;
+      color: var(--ce-text);
+      line-height: 1.6;
+    }
+
+    .cr-info-box {
+      background: var(--ce-bg-surface);
+      border: 1px solid var(--ce-lime-border);
+      border-left: 4px solid var(--ce-lime);
+      border-radius: 4px;
+      padding: 18px 24px;
+      margin: 24px 0;
+    }
+    .cr-info-title {
+      font-family: var(--ce-font-mono);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ce-lime);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .cr-info-text {
+      font-size: 0.9rem;
+      color: var(--ce-text-dim);
+      line-height: 1.6;
+    }
+
+    /* Responsive Data Tables */
+    .cr-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--ce-border);
+      border-radius: 6px;
+      background: var(--ce-bg-surface);
+      margin: 24px 0;
+    }
+    table.cr-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    table.cr-table th, table.cr-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--ce-border);
+      vertical-align: top;
+    }
+    table.cr-table th {
+      background: var(--ce-bg-elevated);
+      font-family: var(--ce-font-mono);
+      font-size: 0.78rem;
+      color: var(--ce-text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    table.cr-table tr:last-child td {
+      border-bottom: none;
+    }
+    table.cr-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .cr-unit-pill {
+      font-family: var(--ce-font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .cr-unit-pill.solar {
+      background: var(--ce-solar-dim);
+      color: var(--ce-solar);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+    .cr-unit-pill.wind {
+      background: var(--ce-wind-dim);
+      color: var(--ce-wind);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+    }
+    .cr-unit-pill.storage {
+      background: var(--ce-storage-dim);
+      color: var(--ce-storage);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .cr-na-tag {
+      font-family: var(--ce-font-mono);
+      font-size: 0.78rem;
+      color: var(--ce-text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Project Cards (Detailed Dossier) */
+    .cr-proj-article {
+      background: var(--ce-bg-surface);
+      border: 1px solid var(--ce-border);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 32px;
+      scroll-margin-top: 110px;
+    }
+    .cr-proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .cr-proj-headline h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ce-text-light);
+      margin-bottom: 4px;
+    }
+    .cr-proj-meta-tag {
+      font-family: var(--ce-font-mono);
+      font-size: 0.8rem;
+      color: var(--ce-text-dim);
+    }
+    .cr-proj-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 20px;
+    }
+    @media (max-width: 860px) {
+      .cr-proj-layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cr-proj-img-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--ce-bg-card);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--ce-border);
+    }
+    .cr-proj-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cr-proj-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cr-spec-block {
+      background: var(--ce-bg-card);
+      border: 1px solid var(--ce-border);
+      border-radius: 4px;
+      padding: 12px 16px;
+    }
+    .cr-spec-label {
+      font-family: var(--ce-font-mono);
+      font-size: 0.72rem;
+      color: var(--ce-text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .cr-spec-value {
+      font-size: 0.95rem;
+      color: var(--ce-text-light);
+      font-weight: 500;
+    }
+
+    /* Math Simulation Cards */
+    .cr-math-card {
+      background: var(--ce-bg-surface);
+      border: 1px solid var(--ce-border);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .cr-math-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ce-border);
+    }
+    .cr-equation-banner {
+      background: var(--ce-bg-card);
+      border: 1px solid var(--ce-border-light);
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-family: var(--ce-font-mono);
+      font-size: 1.05rem;
+      color: var(--ce-lime);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cr-balance-badge {
+      font-size: 0.75rem;
+      background: rgba(159, 232, 112, 0.2);
+      border: 1px solid var(--ce-lime);
+      color: var(--ce-lime);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    .cr-footer {
+      border-top: 1px solid var(--ce-border);
+      padding: 40px 24px;
+      background: var(--ce-bg-surface);
+      margin-top: auto;
+    }
+    .cr-footer-inner {
+      max-width: var(--ce-container);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--ce-text-muted);
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+      }
+      .cr-header, .cr-subnav, .cr-print-btn, .cr-lang-btn, .cr-back-btn {
+        display: none !important;
+      }
+      .cr-container {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .cr-cover, .cr-proj-article, .cr-math-card, .cr-table-wrapper {
+        background: #ffffff !important;
+        border: 1px solid #d1d5db !important;
+        color: #111827 !important;
+        page-break-inside: avoid;
+      }
+      .cr-cover-title, .cr-section-title, .cr-proj-headline h3 {
+        color: #111827 !important;
+      }
+      .cr-equation-banner {
+        background: #f3f4f6 !important;
+        color: #111827 !important;
+        border-color: #9ca3af !important;
+      }
+      a {
+        color: #111827 !important;
+        text-decoration: underline !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="cr-header">
+    <div class="cr-brand-nav">
+      <a href="../index.html#ce-project-explorer" class="cr-back-btn" title="返回專案檢索">
+        ← <span class="cr-zh">返回案例首頁</span><span class="cr-en" hidden>Back to Case Study</span>
+      </a>
+      <div class="cr-doc-title">
+        CIRCUIT ENERGY / <strong>2026 CONCEPT ANNUAL REPORT</strong>
+      </div>
+    </div>
+    <div class="cr-header-actions">
+      <div class="cr-lang-toggle" role="group" aria-label="語言切換">
+        <button type="button" class="cr-lang-btn active" id="btn-lang-zh" onclick="setReportLang('zh')">中</button>
+        <button type="button" class="cr-lang-btn" id="btn-lang-en" onclick="setReportLang('en')">EN</button>
+      </div>
+      <button type="button" class="cr-print-btn" onclick="window.print()">
+        🖨 <span class="cr-zh">列印網頁報告</span><span class="cr-en" hidden>Print Web Report</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- In-Page Anchor Navigation -->
+  <nav class="cr-subnav" aria-label="報告章節導覽">
+    <div class="cr-subnav-inner">
+      <a href="#cover" class="cr-subnav-link"><span class="cr-zh">01 封面與定位</span><span class="cr-en" hidden>01 Overview</span></a>
+      <a href="#solutions" class="cr-subnav-link"><span class="cr-zh">02 系統與單位辭典</span><span class="cr-en" hidden>02 Solutions & Units</span></a>
+      <a href="#dossier" class="cr-subnav-link"><span class="cr-zh">03 專案規格總表</span><span class="cr-en" hidden>03 Portfolio Dossier</span></a>
+      <a href="#methodology" class="cr-subnav-link"><span class="cr-zh">04 調度方法論</span><span class="cr-en" hidden>04 Dispatch Methodology</span></a>
+      <a href="#governance" class="cr-subnav-link"><span class="cr-zh">05 治理與邊界</span><span class="cr-en" hidden>05 Governance & Risks</span></a>
+    </div>
+  </nav>
+
+  <main class="cr-container">
+
+    <!-- Section 1: Cover & Executive Brief -->
+    <section class="cr-section" id="cover">
+      <div class="cr-cover">
+        <div class="cr-badge">
+          ● <span class="cr-zh">2026 年度概念設計報告樣本（無真實商業審計）</span>
+          <span class="cr-en" hidden>2026 DESIGN CONCEPT ANNUAL REPORT (UNAUDITED SAMPLE)</span>
+        </div>
+
+        <h1 class="cr-cover-title">
+          <span class="cr-zh">2026 永續能源策略與示範專案報告</span>
+          <span class="cr-en" hidden>2026 Renewable Strategy & Concept Portfolio Report</span>
+        </h1>
+
+        <p class="cr-section-desc">
+          <span class="cr-zh">
+            本報告為 FLTL × HOWARD HUANG 自主概念專案成果，示範再生能源系統整合企業如何向大型企業客戶與潛在投資夥伴進行透明化專案溝通。內容涵蓋光電、風力與儲能三大示範系統架構、微電網供需調度數學模型，以及明確的技術單位標準與風險邊界揭露。
+          </span>
+          <span class="cr-en" hidden>
+            This document represents a self-initiated enterprise design concept by FLTL × HOWARD HUANG, illustrating how a renewable energy systems integrator communicates technical dossiers and transparent balancing models to enterprise customers and hypothetical investment partners.
+          </span>
+        </p>
+
+        <div class="cr-cover-meta-grid">
+          <div class="cr-cover-meta-item">
+            <span class="cr-meta-label">Enterprise Entity</span>
+            <span class="cr-meta-val">CIRCUIT ENERGY System Integration Co.</span>
+          </div>
+          <div class="cr-cover-meta-item">
+            <span class="cr-meta-label">Reporting Period</span>
+            <span class="cr-meta-val">2026 Fiscal Cycle (Concept Model)</span>
+          </div>
+          <div class="cr-cover-meta-item">
+            <span class="cr-meta-label">Portfolio Footprint</span>
+            <span class="cr-meta-val">3 Concept Sites (Site A, B, C)</span>
+          </div>
+          <div class="cr-cover-meta-item">
+            <span class="cr-meta-label">Audit / Legal Status</span>
+            <span class="cr-meta-val cr-na-tag">Unaudited Concept / Non-SEC Filer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Energy Solutions & Unit Glossary -->
+    <section class="cr-section" id="solutions">
+      <div class="cr-section-header">
+        <p class="cr-section-kicker">02 / CORE SOLUTIONS & UNIT TAXONOMY</p>
+        <h2 class="cr-section-title">
+          <span class="cr-zh">三類能源系統架構與標準單位辭典</span>
+          <span class="cr-en" hidden>Energy Vector Definitions & Unit Taxonomy</span>
+        </h2>
+        <p class="cr-section-desc">
+          <span class="cr-zh">
+            在多能互補微電網體系中，不同能源向量具有不同的物理量度標準。為杜絕業界常見之「假數據堆疊」與單位混淆，本報告嚴格區分峰值功率、額定功率與儲能能量。
+          </span>
+          <span class="cr-en" hidden>
+            In multi-energy microgrid architectures, different generation and storage assets operate on distinct physical dimensions. To maintain absolute technical integrity, peak DC capacity, rated active power, and storage energy are strictly differentiated.
+          </span>
+        </p>
+      </div>
+
+      <!-- Unit Warning Callout -->
+      <div class="cr-alert-box">
+        <div class="cr-alert-title">
+          <span>⚠</span>
+          <span class="cr-zh">跨單位不可加總原則（STRICT NON-SUMMABILITY PRINCIPLE）</span>
+          <span class="cr-en" hidden>STRICT NON-SUMMABILITY PRINCIPLE</span>
+        </div>
+        <p class="cr-alert-text">
+          <span class="cr-zh">
+            <strong>MWp（百萬峰瓦）、MW（百萬瓦）與 MWh（百萬瓦時）屬於相異之物理維度，絕對禁止直接相加為單一「總量數值」。</strong>
+            例如本案之 12 MWp 光伏、8 MW 風力與 20 MWh 儲能，係屬三座獨立場址之示範配置，不可相加宣稱為「40 MW 綠能園區」。
+          </span>
+          <span class="cr-en" hidden>
+            <strong>MWp (DC peak power), MW (rated active power), and MWh (stored energy) are distinct physical dimensions and must never be mathematically summed into a combined aggregate figure.</strong>
+            Our portfolio of 12 MWp solar, 8 MW wind, and 20 MWh storage represents three discrete concept assets, not a "40 MW cumulative facility."
+          </span>
+        </p>
+      </div>
+
+      <!-- Unit Glossary Table -->
+      <div class="cr-table-wrapper">
+        <table class="cr-table">
+          <thead>
+            <tr>
+              <th><span class="cr-zh">能源向量</span><span class="cr-en" hidden>Vector</span></th>
+              <th><span class="cr-zh">標準單位</span><span class="cr-en" hidden>Unit</span></th>
+              <th><span class="cr-zh">物理意義</span><span class="cr-en" hidden>Physical Dimension</span></th>
+              <th><span class="cr-zh">技術定義與評估標準</span><span class="cr-en" hidden>Technical Benchmark</span></th>
+              <th><span class="cr-zh">示範專案數值</span><span class="cr-en" hidden>Concept Scale</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong><span class="cr-zh">太陽能光電</span><span class="cr-en" hidden>Solar PV</span></strong></td>
+              <td><span class="cr-unit-pill solar">MWp</span></td>
+              <td><span class="cr-zh">直流峰值功率（Peak DC Power）</span><span class="cr-en" hidden>Peak DC Power</span></td>
+              <td>
+                <span class="cr-zh">標準測試條件（STC：1000 W/m² 照度、25°C 電池溫度、AM 1.5 光譜）下之最大直流輸出功率。</span>
+                <span class="cr-en" hidden>Maximum DC output under Standard Test Conditions (1000 W/m², 25°C cell temp, AM 1.5).</span>
+              </td>
+              <td><strong style="color:var(--ce-solar);">12 MWp</strong></td>
+            </tr>
+            <tr>
+              <td><strong><span class="cr-zh">陸域風力發電</span><span class="cr-en" hidden>Wind Power</span></strong></td>
+              <td><span class="cr-unit-pill wind">MW</span></td>
+              <td><span class="cr-zh">額定交流有效功率（Rated Active Power）</span><span class="cr-en" hidden>Rated Active Power</span></td>
+              <td>
+                <span class="cr-zh">風力發電機組於額定切入風速工況下，所能持續輸出並併網之交流發電機發電功率。</span>
+                <span class="cr-en" hidden>Continuous AC output delivered to the grid at rated wind speed envelope.</span>
+              </td>
+              <td><strong style="color:var(--ce-wind);">8 MW</strong></td>
+            </tr>
+            <tr>
+              <td><strong><span class="cr-zh">電池儲能系統</span><span class="cr-en" hidden>Energy Storage</span></strong></td>
+              <td><span class="cr-unit-pill storage">MWh</span></td>
+              <td><span class="cr-zh">能量儲存容量（Energy Capacity）</span><span class="cr-en" hidden>Energy Capacity</span></td>
+              <td>
+                <span class="cr-zh">在標準 1C 或 0.5C 充放電倍率下，電池模組完全釋放至截止電壓所提供之電能總量。</span>
+                <span class="cr-en" hidden>Total energy released from fully charged state to cutoff threshold under rated C-rate.</span>
+              </td>
+              <td><strong style="color:var(--ce-storage);">20 MWh</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: Illustrative Portfolio Dossier -->
+    <section class="cr-section" id="dossier">
+      <div class="cr-section-header">
+        <p class="cr-section-kicker">03 / ILLUSTRATIVE PORTFOLIO DOSSIER</p>
+        <h2 class="cr-section-title">
+          <span class="cr-zh">示範專案組合規格總表</span>
+          <span class="cr-en" hidden>Concept Portfolio Specifications</span>
+        </h2>
+        <p class="cr-section-desc">
+          <span class="cr-zh">
+            以下收錄 CIRCUIT ENERGY 規劃之三筆獨立示範專案詳細工程規格。每一專案均設定特定之地理環境與微電網任務，並嚴格標示資料邊界。
+          </span>
+          <span class="cr-en" hidden>
+            Detailed technical profiles of the three standalone concept assets. Each project serves specific grid stabilization and load-serving roles under distinct geographic environments.
+          </span>
+        </p>
+      </div>
+
+      <!-- Project 1: CE-DEMO-S01 -->
+      <article class="cr-proj-article" id="project-ce-demo-s01">
+        <div class="cr-proj-header">
+          <div class="cr-proj-headline">
+            <span class="cr-unit-pill solar">SOLAR PV · 12 MWp</span>
+            <h3 style="margin-top:8px;">[CE-DEMO-S01] <span class="cr-zh">東嶺光電示範方案</span><span class="cr-en" hidden>East Ridge Solar Concept</span></h3>
+            <span class="cr-proj-meta-tag">DEMO SITE A (Fictional Terraced Hillside) · Lifecycle: Concept-only</span>
+          </div>
+          <div>
+            <a href="../index.html#ce-project-explorer" class="cr-back-btn">
+              ← <span class="cr-zh">在專案檢索中對照</span><span class="cr-en" hidden>Compare in Explorer</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cr-proj-layout-grid">
+          <div class="cr-proj-img-box">
+            <img src="../assets/mockups/shot-05.jpg" alt="East Ridge Solar Concept" width="2560" height="1440" loading="lazy">
+          </div>
+          <div>
+            <p class="cr-section-desc" style="margin-bottom:16px;">
+              <span class="cr-zh">
+                東嶺示範基地坐落於高日照丘陵坡地，採用階梯式耐衝刷鋼構支架，搭載 650W+ 雙面高效單晶矽光伏模組。設計重點在於驗證高坡度地貌之接地防雷工程、逆變器分散配置，以及地面漫射光帶來的額外雙面發電增益。
+              </span>
+              <span class="cr-en" hidden>
+                Designed for terraced hillside conditions, featuring anti-erosion mounting structures and 650W+ bifacial monocrystalline modules to evaluate terrain-following aerodynamics and ground albedo gain.
+              </span>
+            </p>
+            <div class="cr-proj-specs-grid">
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Capacity Specification</div>
+                <div class="cr-spec-value" style="color:var(--ce-solar);">12 MWp (STC Peak DC)</div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Primary Dispatch Role</div>
+                <div class="cr-spec-value"><span class="cr-zh">日間綠電主力基底</span><span class="cr-en" hidden>Daytime Solar Base</span></div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Audited Generation</div>
+                <div class="cr-spec-value"><span class="cr-na-tag">N/A (Concept Model)</span></div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Commercial Return</div>
+                <div class="cr-spec-value"><span class="cr-na-tag">N/A (No ROI Guarantee)</span></div>
+              </div>
+            </div>
+            <div class="cr-info-box" style="margin-top:16px; padding:12px 16px;">
+              <div class="cr-info-title" style="font-size:0.8rem;">ENGINEERING UNCERTAINTY</div>
+              <div class="cr-info-text" style="font-size:0.82rem;">
+                <span class="cr-zh">高坡度山陵微氣候雲遮效應、雨季泥沙淤積對下部支架基礎之長期沖刷風險（無實測監測數據）。</span>
+                <span class="cr-en" hidden>Microclimatic cloud cover variation and stormwater runoff erosion along steep slopes.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: CE-DEMO-W01 -->
+      <article class="cr-proj-article" id="project-ce-demo-w01">
+        <div class="cr-proj-header">
+          <div class="cr-proj-headline">
+            <span class="cr-unit-pill wind">WIND POWER · 8 MW</span>
+            <h3 style="margin-top:8px;">[CE-DEMO-W01] <span class="cr-zh">北境風場示範方案</span><span class="cr-en" hidden>North Pass Wind Concept</span></h3>
+            <span class="cr-proj-meta-tag">DEMO SITE B (Fictional Coastal Headland) · Lifecycle: Concept-only</span>
+          </div>
+          <div>
+            <a href="../index.html#ce-project-explorer" class="cr-back-btn">
+              ← <span class="cr-zh">在專案檢索中對照</span><span class="cr-en" hidden>Compare in Explorer</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cr-proj-layout-grid">
+          <div class="cr-proj-img-box">
+            <img src="../assets/mockups/shot-06.jpg" alt="North Pass Wind Concept" width="2560" height="1440" loading="lazy">
+          </div>
+          <div>
+            <p class="cr-section-desc" style="margin-bottom:16px;">
+              <span class="cr-zh">
+                北境風場規劃於常年強季風之沿海岬角，配置兩組 4.0 MW 低噪大型陸域風電機組。重點在於驗證高鹽霧抗腐蝕表面塗裝、動態雷達變槳防颱系統，以及與儲能系統無縫對接之平滑功率輸出機制。
+              </span>
+              <span class="cr-en" hidden>
+                Positioned on a high-wind coastal headland, utilizing two 4.0 MW turbines engineered with anti-corrosion marine coatings, active pitch control, and smooth ramp-rate coupling with storage.
+              </span>
+            </p>
+            <div class="cr-proj-specs-grid">
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Capacity Specification</div>
+                <div class="cr-spec-value" style="color:var(--ce-wind);">8 MW (Rated Active AC)</div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Primary Dispatch Role</div>
+                <div class="cr-spec-value"><span class="cr-zh">夜間與季風持續基載</span><span class="cr-en" hidden>Persistent Wind Baseload</span></div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Audited Generation</div>
+                <div class="cr-spec-value"><span class="cr-na-tag">N/A (Concept Model)</span></div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Commercial Return</div>
+                <div class="cr-spec-value"><span class="cr-na-tag">N/A (No ROI Guarantee)</span></div>
+              </div>
+            </div>
+            <div class="cr-info-box" style="margin-top:16px; padding:12px 16px;">
+              <div class="cr-info-title" style="font-size:0.8rem;">ENGINEERING UNCERTAINTY</div>
+              <div class="cr-info-text" style="font-size:0.82rem;">
+                <span class="cr-zh">岬角地形突發下衝氣流與沿海亂流強度，極端颱風過境時之安全停機風速裕度（非經風洞應力實測）。</span>
+                <span class="cr-en" hidden>Downburst windshear and turbulence intensity under extreme coastal typhoons.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3: CE-DEMO-B01 -->
+      <article class="cr-proj-article" id="project-ce-demo-b01">
+        <div class="cr-proj-header">
+          <div class="cr-proj-headline">
+            <span class="cr-unit-pill storage">ENERGY STORAGE · 20 MWh</span>
+            <h3 style="margin-top:8px;">[CE-DEMO-B01] <span class="cr-zh">港灣儲能示範方案</span><span class="cr-en" hidden>Harbor Storage Concept</span></h3>
+            <span class="cr-proj-meta-tag">DEMO SITE C (Fictional Industrial Port) · Lifecycle: Concept-only</span>
+          </div>
+          <div>
+            <a href="../index.html#ce-project-explorer" class="cr-back-btn">
+              ← <span class="cr-zh">在專案檢索中對照</span><span class="cr-en" hidden>Compare in Explorer</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cr-proj-layout-grid">
+          <div class="cr-proj-img-box">
+            <img src="../assets/mockups/shot-07.jpg" alt="Harbor Storage Concept" width="2560" height="1440" loading="lazy">
+          </div>
+          <div>
+            <p class="cr-section-desc" style="margin-bottom:16px;">
+              <span class="cr-zh">
+                港灣示範儲能電站由四組標準化 5 MWh 貨櫃式磷酸鐵鋰（LFP）儲能單元構成，總容量 20 MWh。搭載雙向液冷熱管理系統與多階消防隔離隔間，專職執行微電網調頻、黑啟動備援及跨時段削峰填谷。
+              </span>
+              <span class="cr-en" hidden>
+                Comprising four 5 MWh containerized LFP battery modules totaling 20 MWh, equipped with active liquid thermal cooling and multi-stage fire containment for frequency regulation and peak shaving.
+              </span>
+            </p>
+            <div class="cr-proj-specs-grid">
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Capacity Specification</div>
+                <div class="cr-spec-value" style="color:var(--ce-storage);">20 MWh (Storage Energy)</div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Primary Dispatch Role</div>
+                <div class="cr-spec-value"><span class="cr-zh">調頻響應與跨時段調度</span><span class="cr-en" hidden>FFR & Peak Shifting</span></div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Audited Generation</div>
+                <div class="cr-spec-value"><span class="cr-na-tag">N/A (Energy Buffer)</span></div>
+              </div>
+              <div class="cr-spec-block">
+                <div class="cr-spec-label">Commercial Return</div>
+                <div class="cr-spec-value"><span class="cr-na-tag">N/A (No ROI Guarantee)</span></div>
+              </div>
+            </div>
+            <div class="cr-info-box" style="margin-top:16px; padding:12px 16px;">
+              <div class="cr-info-title" style="font-size:0.8rem;">ENGINEERING UNCERTAINTY</div>
+              <div class="cr-info-text" style="font-size:0.82rem;">
+                <span class="cr-zh">高鹽分潮濕空氣對貨櫃氣密性影響、高充放倍率循環下電池老化衰減速率（無商業量產驗證報告）。</span>
+                <span class="cr-en" hidden>Battery cell degradation rate under intensive cycling and corrosive salt-spray environment.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Comparative Summary Table -->
+      <div class="cr-table-wrapper">
+        <table class="cr-table">
+          <thead>
+            <tr>
+              <th><span class="cr-zh">專案識別碼</span><span class="cr-en" hidden>Project ID</span></th>
+              <th><span class="cr-zh">技術類型</span><span class="cr-en" hidden>Technology</span></th>
+              <th><span class="cr-zh">示範規格（含單位）</span><span class="cr-en" hidden>Capacity & Unit</span></th>
+              <th><span class="cr-zh">概念場址</span><span class="cr-en" hidden>Concept Site</span></th>
+              <th><span class="cr-zh">調度定位</span><span class="cr-en" hidden>Primary Role</span></th>
+              <th><span class="cr-zh">商業實測狀態</span><span class="cr-en" hidden>Audit Status</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>CE-DEMO-S01</code></td>
+              <td>Solar PV</td>
+              <td><span class="cr-unit-pill solar">12 MWp</span></td>
+              <td>DEMO SITE A</td>
+              <td><span class="cr-zh">日間綠電基底</span><span class="cr-en" hidden>Daytime Solar Base</span></td>
+              <td><span class="cr-na-tag">N/A (Concept)</span></td>
+            </tr>
+            <tr>
+              <td><code>CE-DEMO-W01</code></td>
+              <td>Wind Turbine</td>
+              <td><span class="cr-unit-pill wind">8 MW</span></td>
+              <td>DEMO SITE B</td>
+              <td><span class="cr-zh">夜間/季風基載</span><span class="cr-en" hidden>Wind Baseload</span></td>
+              <td><span class="cr-na-tag">N/A (Concept)</span></td>
+            </tr>
+            <tr>
+              <td><code>CE-DEMO-B01</code></td>
+              <td>LFP Storage</td>
+              <td><span class="cr-unit-pill storage">20 MWh</span></td>
+              <td>DEMO SITE C</td>
+              <td><span class="cr-zh">削峰填谷/調頻</span><span class="cr-en" hidden>FFR / Peak Shifting</span></td>
+              <td><span class="cr-na-tag">N/A (Concept)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 4: Dispatch Methodology & Mathematical Balance -->
+    <section class="cr-section" id="methodology">
+      <div class="cr-section-header">
+        <p class="cr-section-kicker">04 / DISPATCH METHODOLOGY & MATHEMATICAL EQUILIBRIUM</p>
+        <h2 class="cr-section-title">
+          <span class="cr-zh">微電網動態調度方法論與供需數學平衡</span>
+          <span class="cr-en" hidden>Microgrid Dispatch Methodology & Math Balance</span>
+        </h2>
+        <p class="cr-section-desc">
+          <span class="cr-zh">
+            CIRCUIT ENERGY 示範架構採用嚴格之「能量輸入等於能量輸出」數學封閉模型。在任何排程情境下，發電供給總能量必完全等同於電網外送、儲能存蓄與在地負載之總合。
+          </span>
+          <span class="cr-en" hidden>
+            Our microgrid architecture enforces an exact conservation-of-energy rule. Total generation supply must precisely equal the sum of grid export, storage charge, and localized demand.
+          </span>
+        </p>
+      </div>
+
+      <!-- Scenario A Card -->
+      <div class="cr-math-card">
+        <div class="cr-math-header">
+          <div>
+            <span class="cr-unit-pill solar">SCENARIO A · DAYTIME SOLAR PEAK</span>
+            <h3 style="margin-top:6px;"><span class="cr-zh">情境 A：正午光伏尖峰時段</span><span class="cr-en" hidden>Scenario A: Daytime Solar Peak</span></h3>
+          </div>
+          <span class="cr-balance-badge">✓ 100% MATHEMATICAL BALANCE</span>
+        </div>
+
+        <div class="cr-equation-banner">
+          <div>
+            <span class="cr-zh">供給（8.4 + 4.8）＝ 13.2 MWh ｜ 分配（3.4 + 2.6 + 7.2）＝ 13.2 MWh</span>
+            <span class="cr-en" hidden>Supply (8.4 + 4.8) = 13.2 MWh | Demand (3.4 + 2.6 + 7.2) = 13.2 MWh</span>
+          </div>
+          <span class="cr-balance-badge">Δ = 0.0 MWh</span>
+        </div>
+
+        <div class="cr-proj-layout-grid" style="margin-top:0;">
+          <div class="cr-spec-block">
+            <div class="cr-spec-label"><span class="cr-zh">發電供給端（13.2 MWh）</span><span class="cr-en" hidden>Generation Supply (13.2 MWh)</span></div>
+            <ul style="list-style:none; padding:4px 0; font-size:0.9rem;">
+              <li style="margin-bottom:4px;">☀️ 光伏發電（Solar PV）：<strong style="color:var(--ce-solar);">8.4 MWh</strong> (63.6%)</li>
+              <li>💨 風能發電（Wind Power）：<strong style="color:var(--ce-wind);">4.8 MWh</strong> (36.4%)</li>
+            </ul>
+          </div>
+          <div class="cr-spec-block">
+            <div class="cr-spec-label"><span class="cr-zh">負載與分配端（13.2 MWh）</span><span class="cr-en" hidden>Demand Allocation (13.2 MWh)</span></div>
+            <ul style="list-style:none; padding:4px 0; font-size:0.9rem;">
+              <li style="margin-bottom:4px;">⚡ 電網外送（Grid Export）：<strong>3.4 MWh</strong> (25.8%)</li>
+              <li style="margin-bottom:4px;">🔋 儲能存蓄（Storage Charge）：<strong>2.6 MWh</strong> (19.7%)</li>
+              <li>🏭 園區負載（On-site Load）：<strong>7.2 MWh</strong> (54.5%)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scenario B Card -->
+      <div class="cr-math-card">
+        <div class="cr-math-header">
+          <div>
+            <span class="cr-unit-pill wind">SCENARIO B · DUSK-TO-NIGHT CUMULATIVE INTERVAL</span>
+            <h3 style="margin-top:6px;"><span class="cr-zh">情境 B：傍晚至夜間跨時段累積示範</span><span class="cr-en" hidden>Scenario B: Dusk-to-Night Cumulative Interval</span></h3>
+          </div>
+          <span class="cr-balance-badge">✓ 100% MATHEMATICAL BALANCE</span>
+        </div>
+
+        <div class="cr-equation-banner">
+          <div>
+            <span class="cr-zh">供給（4.2 + 9.6）＝ 13.8 MWh ｜ 分配（4.1 + 3.1 + 6.6）＝ 13.8 MWh</span>
+            <span class="cr-en" hidden>Supply (4.2 + 9.6) = 13.8 MWh | Demand (4.1 + 3.1 + 6.6) = 13.8 MWh</span>
+          </div>
+          <span class="cr-balance-badge">Δ = 0.0 MWh</span>
+        </div>
+
+        <div class="cr-proj-layout-grid" style="margin-top:0;">
+          <div class="cr-spec-block">
+            <div class="cr-spec-label"><span class="cr-zh">發電供給端（13.8 MWh）</span><span class="cr-en" hidden>Generation Supply (13.8 MWh)</span></div>
+            <ul style="list-style:none; padding:4px 0; font-size:0.9rem;">
+              <li style="margin-bottom:4px;">☀️ 光伏餘裕（Solar Dusk Cumulative）：<strong style="color:var(--ce-solar);">4.2 MWh</strong> (30.4%)</li>
+              <li>💨 沿海強風（Wind Coastal）：<strong style="color:var(--ce-wind);">9.6 MWh</strong> (69.6%)</li>
+            </ul>
+          </div>
+          <div class="cr-spec-block">
+            <div class="cr-spec-label"><span class="cr-zh">負載與分配端（13.8 MWh）</span><span class="cr-en" hidden>Demand Allocation (13.8 MWh)</span></div>
+            <ul style="list-style:none; padding:4px 0; font-size:0.9rem;">
+              <li style="margin-bottom:4px;">⚡ 電網外送（Grid Export）：<strong>4.1 MWh</strong> (29.7%)</li>
+              <li style="margin-bottom:4px;">🔋 儲能存蓄（Storage Charge）：<strong>3.1 MWh</strong> (22.5%)</li>
+              <li>🏭 園區負載（On-site Load）：<strong>6.6 MWh</strong> (47.8%)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cr-info-box" style="margin-top:20px;">
+          <div class="cr-info-title">
+            <span>ℹ</span>
+            <span class="cr-zh">特別澄清：情境 B 之光伏 4.2 MWh 為傍晚跨時段累積量，非午夜即時發電</span>
+            <span class="cr-en" hidden>Clarification: 4.2 MWh Solar in Scenario B represents cumulative dusk transition energy, not instantaneous midnight output</span>
+          </div>
+          <p class="cr-info-text">
+            <span class="cr-zh">
+              在工程實務中，太陽光電於完全日落後輸出功率為零。情境 B 所列之 4.2 MWh，係指「自午後 16:30 至黃昏 18:45 日落過渡區間」所收集並計入本時段調度之累積能量（Cumulative Energy），而非宣稱深夜時段光伏仍有功率發電。
+            </span>
+            <span class="cr-en" hidden>
+              In real-world solar photovoltaics, generation drops to zero after dark. The 4.2 MWh recorded in Scenario B represents the integrated cumulative energy collected during the late-afternoon dusk transitional window (16:30–18:45), not instantaneous midnight power output.
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Risk Factors, Assumptions & Governance Boundaries -->
+    <section class="cr-section" id="governance">
+      <div class="cr-section-header">
+        <p class="cr-section-kicker">05 / DATA INTEGRITY & GOVERNANCE BOUNDARIES</p>
+        <h2 class="cr-section-title">
+          <span class="cr-zh">資訊治理、風險邊界與重要免責聲明</span>
+          <span class="cr-en" hidden>Data Integrity, Risks & Disclaimers</span>
+        </h2>
+        <p class="cr-section-desc">
+          <span class="cr-zh">
+            為維護設計作品集之最高誠信原則，本章節明確標註所有展示數據之來源屬性與未列計範疇。
+          </span>
+          <span class="cr-en" hidden>
+            To maintain absolute transparency, all illustrative parameters, UI numbers, and omissions are explicitly documented herein.
+          </span>
+        </p>
+      </div>
+
+      <div class="cr-table-wrapper">
+        <table class="cr-table">
+          <thead>
+            <tr>
+              <th><span class="cr-zh">報告揭露項目</span><span class="cr-en" hidden>Report Metric</span></th>
+              <th><span class="cr-zh">審計狀態</span><span class="cr-en" hidden>Audit Status</span></th>
+              <th><span class="cr-zh">治理邊界與事實聲明</span><span class="cr-en" hidden>Governance Truth & Disclosure</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong><span class="cr-zh">企業財務營收 (Revenue)</span><span class="cr-en" hidden>Corporate Revenue</span></strong></td>
+              <td><span class="cr-na-tag">N/A (未有營業收入)</span></td>
+              <td>
+                <span class="cr-zh">CIRCUIT ENERGY 為虛構概念品牌，無實際簽署之購售電合約（PPA）或電費營收。</span>
+                <span class="cr-en" hidden>Fictional concept entity; no actual Power Purchase Agreements or revenue.</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><span class="cr-zh">投資報酬率 (ROI / IRR)</span><span class="cr-en" hidden>Investment Return</span></strong></td>
+              <td><span class="cr-na-tag">N/A (不提供報酬保證)</span></td>
+              <td>
+                <span class="cr-zh">本案不進行任何公開募資、證券發行或承諾投資內部報酬率。</span>
+                <span class="cr-en" hidden>No public securities solicitation or contractual investment guarantees.</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><span class="cr-zh">經認證減碳量 (Carbon Offsets)</span><span class="cr-en" hidden>Verified Carbon Offsets</span></strong></td>
+              <td><span class="cr-na-tag">N/A (無外部碳權憑證)</span></td>
+              <td>
+                <span class="cr-zh">未委託第三方機構進行 ISO 14064 溫室氣體確證或發行自願減量碳權。</span>
+                <span class="cr-en" hidden>Not verified under ISO 14064 standards; no certified offset credits issued.</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><span class="cr-zh">SHOT 07/14 之 328.5 MW 標記</span><span class="cr-en" hidden>328.5 MW UI Telemetry</span></strong></td>
+              <td><span class="cr-na-tag">UI Mockup Only</span></td>
+              <td>
+                <span class="cr-zh">視覺圖板中之 328.5 MW 及儀表板讀數係屬概念戰情介面示範，非實際連線感測數據。</span>
+                <span class="cr-en" hidden>The 328.5 MW metric on design plates represents concept UI styling, not live utility telemetry.</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><span class="cr-zh">SHOT 12 之 125K t / 320 GWh 標記</span><span class="cr-en" hidden>Shot 12 Environmental Metrics</span></strong></td>
+              <td><span class="cr-na-tag">Illustrative Narrative</span></td>
+              <td>
+                <span class="cr-zh">85K 家戶用電及 125K 噸碳排等排版數值，為概念展館設計之敘事性視覺元素，非本案實績。</span>
+                <span class="cr-en" hidden>Narrative graphic numbers created for visitor center exhibition layouts, not audited results.</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cr-alert-box" style="border-left-color:var(--ce-lime); background:var(--ce-bg-surface); border-color:var(--ce-border);">
+        <div class="cr-alert-title" style="color:var(--ce-lime);">
+          <span>✓</span>
+          <span class="cr-zh">設計作品集誠實聲明（PORTFOLIO INTEGRITY SIGN-OFF）</span>
+          <span class="cr-en" hidden>PORTFOLIO INTEGRITY SIGN-OFF</span>
+        </div>
+        <p class="cr-alert-text" style="color:var(--ce-text-dim);">
+          <span class="cr-zh">
+            本案例之核心目的，在於呈現 FLTL × HOWARD HUANG 對於再生能源 B2B 系統整合、資訊層級梳理、複雜微電網平衡運算及企業年度報告視覺編輯之全面專業交付能力。我們堅持以嚴格的資料邊界取代誇大虛構，以誠信之設計邏輯贏得專業決策者之信任。
+          </span>
+          <span class="cr-en" hidden>
+            The purpose of this study is to demonstrate FLTL × HOWARD HUANG's capability in B2B systems integration UX, complex energy balancing equations, and corporate editorial design craft. We replace inflated claims with rigorous methodology.
+          </span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="cr-footer">
+    <div class="cr-footer-inner">
+      <div>
+        <strong>CIRCUIT ENERGY</strong> — Portfolio 09 / 16 Concept Case Study
+      </div>
+      <div>
+        FLTL × Howard Huang · All Rights Reserved
+      </div>
+      <div>
+        <a href="../index.html#ce-project-explorer">← <span class="cr-zh">返回案例專案檢索</span><span class="cr-en" hidden>Back to Project Explorer</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setReportLang(lang) {
+      const isEn = lang === 'en';
+      document.documentElement.lang = isEn ? 'en' : 'zh-Hant';
+
+      const zhBtn = document.getElementById('btn-lang-zh');
+      const enBtn = document.getElementById('btn-lang-en');
+      if (zhBtn && enBtn) {
+        zhBtn.classList.toggle('active', !isEn);
+        enBtn.classList.toggle('active', isEn);
+      }
+
+      document.querySelectorAll('.cr-zh').forEach(el => el.hidden = isEn);
+      document.querySelectorAll('.cr-en').forEach(el => el.hidden = !isEn);
+    }
+  </script>
+</body>
+</html>
