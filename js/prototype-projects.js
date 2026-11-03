@@ -238,5 +238,27 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/cross-section/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/cross-section/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/cross-section/'
+  },
+  {
+    id: 'civic-access',
+    order: 12,
+    published: true,
+    title: 'CIVIC ACCESS',
+    year: '2026',
+    category: {
+      en: 'Public Service Design / Accessible UX / Service Blueprint',
+      'zh-TW': '公共服務設計／無障礙介面／服務藍圖'
+    },
+    projectType: {
+      en: 'Public Service & Application System',
+      'zh-TW': '公共服務與數位申辦系統設計'
+    },
+    description: {
+      en: 'A public service application system and design framework, featuring service discovery, applicant triage, dynamic document checklists, progressive forms, and accessible design.',
+      'zh-TW': '地方公共服務數位申辦系統設計，整合服務探索、身分分流引導、動態文件清單、分步表單填寫與無障礙操作體驗。'
+    },
+    cover: 'brand/civic-access/assets/mockups/shot-01.jpg',
+    interactiveAsset: 'brand/civic-access/assets/mockups/shot-01.jpg',
+    caseStudy: 'brand/civic-access/'
   }
 ]);
