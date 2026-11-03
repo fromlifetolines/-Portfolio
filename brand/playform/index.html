@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLAYFORM｜兒童教育品牌、原創繪本與 3D 互動學習設計｜HOWARD HUANG</title>
+  <meta name="description" content="PLAYFORM 將原創繪本、實體造橋教具與數位互動整合為一套兒童 STEAM 探索體驗。角色的故事引出真實的建構任務，孩子在閱讀後動手實驗，也能把觀察帶回親子對話與教室活動。">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="PLAYFORM — Children's Brand, Picture Book & Interactive 3D Learning">
+  <meta property="og:description" content="An integrated STEAM education experience combining original picture-book storytelling, physical bridge-building toys, and 3D WebGL digital interaction.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="css/playform-case.css">
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">跳至主要內容 / Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <a href="../../index.html" class="back-link" aria-label="返回作品集首頁">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span data-i18n-zh="作品集首頁" data-i18n-en="Portfolio">作品集首頁</span>
+        </a>
+        <div class="brand-title">
+          <span>PLAYFORM</span>
+          <span class="brand-badge" data-i18n-zh="形狀冒險社" data-i18n-en="Shape City">形狀冒險社</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <span class="chip" data-i18n-zh="CASE 13 · 兒童教育設計" data-i18n-en="CASE 13 · STEAM Education">CASE 13 · 兒童教育設計</span>
+        <button id="langToggle" class="lang-btn" aria-label="切換為英文介面">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav" aria-label="專案展示導覽">
+    <div class="nav-track">
+      <button class="nav-tab active" data-tab="storybook" aria-pressed="true" data-i18n-zh="01 互動繪本" data-i18n-en="01 Storybook">01 互動繪本</button>
+      <button class="nav-tab" data-tab="threed" aria-pressed="false" data-i18n-zh="02 3D 建造" data-i18n-en="02 3D Lab">02 3D 建造</button>
+      <button class="nav-tab" data-tab="learning" aria-pressed="false" data-i18n-zh="03 兒童任務" data-i18n-en="03 Child Challenge">03 兒童任務</button>
+      <button class="nav-tab" data-tab="parents" aria-pressed="false" data-i18n-zh="04 家長端" data-i18n-en="04 Parents">04 家長端</button>
+      <button class="nav-tab" data-tab="teachers" aria-pressed="false" data-i18n-zh="05 教師端" data-i18n-en="05 Teachers">05 教師端</button>
+      <button class="nav-tab" data-tab="specs" aria-pressed="false" data-i18n-zh="06 16 張分鏡規格" data-i18n-en="06 16-Shot Specs">06 16 張分鏡規格</button>
+    </div>
+  </nav>
+
+  <!-- Status Banner -->
+  <aside class="status-banner" aria-label="作品狀態說明">
+    <div class="status-banner-inner">
+      <div>
+        <strong data-i18n-zh="狀態：" data-i18n-en="Status:">狀態：</strong>
+        <span data-i18n-zh="本機整合完成 · 3D 模型與繪本功能已可實測 · 16 張商業完稿繪製中" data-i18n-en="Local Staging Ready · 3D & Storybook Functional · 16 Master Plates in Production">本機整合完成 · 3D 模型與繪本功能已可實測 · 16 張商業完稿繪製中</span>
+      </div>
+      <span class="status-badge">HOLD / ZERO DEPLOY</span>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="heroTitle">
+      <div class="hero-card">
+        <div class="eyebrow" data-i18n-zh="STORY × BUILD × PLAY" data-i18n-en="STORY × BUILD × PLAY">STORY × BUILD × PLAY</div>
+        <h1 id="heroTitle" class="hero-title">PLAYFORM.</h1>
+        <div class="hero-tagline" data-i18n-zh="讓想像，有形狀。" data-i18n-en="Make ideas take shape.">讓想像，有形狀。</div>
+        <p class="hero-description" data-i18n-zh="PLAYFORM 將原創繪本、實體造橋教具與數位互動整合為一套兒童 STEAM 探索體驗。角色的故事引出真實的建構任務，孩子在閱讀後動手實驗，也能把觀察帶回親子對話與教室活動。" data-i18n-en="PLAYFORM brings original storytelling, physical bridge-building toys, and interactive digital learning into one cohesive STEAM experience. Each chapter invites children to experiment with the same ideas they encounter in the story, extending their discoveries into family conversations and classroom activities.">
+          PLAYFORM 將原創繪本、實體造橋教具與數位互動整合為一套兒童 STEAM 探索體驗。角色的故事引出真實的建構任務，孩子在閱讀後動手實驗，也能把觀察帶回親子對話與教室活動。
+        </p>
+        <div class="hero-chips">
+          <span class="chip">BRIDGE LAB 01</span>
+          <span class="chip" data-i18n-zh="適齡 5–8 歲" data-i18n-en="AGE 5–8">適齡 5–8 歲</span>
+          <span class="chip" data-i18n-zh="原創精裝繪本" data-i18n-en="PICTURE BOOK">原創精裝繪本</span>
+          <span class="chip" data-i18n-zh="3D 結構探索" data-i18n-en="3D LEARNING">3D 結構探索</span>
+          <span class="chip" data-i18n-zh="家長與教師端" data-i18n-en="PARENT & TEACHER UX">家長與教師端</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <svg viewBox="0 0 680 450" xmlns="http://www.w3.org/2000/svg" aria-label="PLAYFORM 形狀世界：三位原創角色與一座積木橋" role="img">
+          <defs>
+            <linearGradient id="heroBg" x2="0" y2="1">
+              <stop stop-color="#FCEAB3"/>
+              <stop offset="1" stop-color="#F2CE68"/>
+            </linearGradient>
+          </defs>
+          <rect width="680" height="450" fill="url(#heroBg)"/>
+          <circle cx="560" cy="77" r="92" fill="#FFF5C8" opacity="0.88"/>
+          <!-- River & Landscape -->
+          <path d="M0 315 Q175 250 345 305 Q503 365 680 270 L680 450 H0Z" fill="#C7DFD6"/>
+          <path d="M0 366 Q160 321 350 355 Q525 382 680 330 V450H0Z" fill="#78B1C4"/>
+          <!-- Bridge Arch & Supports -->
+          <path d="M93 292 L93 201 A157 157 0 0 1 407 201 L407 292 H349 L349 205 A99 99 0 0 0 151 205 L151 292 Z" fill="#1A3F81"/>
+          <path d="M84 192 H416 V218 H84 Z" fill="#FDF9ED"/>
+          <path d="M82 174 H416 V197 H82 Z" fill="#EF8C8C"/>
+          <!-- LULO (Yellow Arch) -->
+          <g transform="translate(460 160)">
+            <path d="M12 147 V72 A75 75 0 0 1 162 72 V147 H116 V75 A30 30 0 0 0 56 75 V147 Z" fill="#F7D75B" stroke="#1A3F81" stroke-width="3"/>
+            <circle cx="75" cy="62" r="7" fill="#1A3F81"/>
+            <circle cx="113" cy="62" r="7" fill="#1A3F81"/>
+            <path d="M87 83 Q95 95 107 83" stroke="#1A3F81" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- BEM (Navy Square) -->
+          <g transform="translate(177 202)">
+            <rect x="0" y="0" width="98" height="104" rx="15" fill="#1A3F81"/>
+            <circle cx="29" cy="42" r="8" fill="#FFFFFF"/>
+            <circle cx="67" cy="42" r="8" fill="#FFFFFF"/>
+            <path d="M29 70 Q48 86 67 70" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- PIP (Coral Wedge) -->
+          <g transform="translate(325 267)">
+            <path d="M0 80 L49 0 L98 80 Z" fill="#EF8C8C"/>
+            <circle cx="41" cy="47" r="5" fill="#1A3F81"/>
+            <circle cx="64" cy="47" r="5" fill="#1A3F81"/>
+          </g>
+          <text x="34" y="420" fill="#1A3F81" font-size="12" font-weight="800" letter-spacing="4">THE SHAPE CITY / BRIDGE LAB 01</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Character Showcase Grid -->
+    <section class="characters-grid" aria-label="原創角色介紹">
+      <div class="character-card">
+        <div class="char-badge-shape">
+          <svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="路洛標誌">
+            <path d="M12 56 V30 A20 20 0 0 1 52 30 V56 H38 V32 A6 6 0 0 0 26 32 V56 Z" fill="#F7D75B" stroke="#1A3F81" stroke-width="2"/>
+            <circle cx="27" cy="27" r="3" fill="#1A3F81"/>
+            <circle cx="37" cy="27" r="3" fill="#1A3F81"/>
+          </svg>
+        </div>
+        <h3 class="char-name">LULO 路洛</h3>
+        <div class="char-sub" data-i18n-zh="黃色拱／開口環 · 好奇探索" data-i18n-en="Sunny Yellow Arch · Curious">黃色拱／開口環 · 好奇探索</div>
+        <p class="char-desc" data-i18n-zh="充滿好奇心，總是提出「如果……？」的設想，引導孩子發現橋樑問題。" data-i18n-en="Full of curiosity, always asking 'What if...?' to spark children's creative inquiry.">
+          充滿好奇心，總是提出「如果……？」的設想，引導孩子發現橋樑問題。
+        </p>
+      </div>
+
+      <div class="character-card">
+        <div class="char-badge-shape">
+          <svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="比姆標誌">
+            <rect x="8" y="12" width="48" height="48" rx="8" fill="#1A3F81"/>
+            <circle cx="24" cy="32" r="4" fill="#FFFFFF"/>
+            <circle cx="40" cy="32" r="4" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <h3 class="char-name">BEM 比姆</h3>
+        <div class="char-sub" data-i18n-zh="深藍方形／量尺 · 觀察支點" data-i18n-en="Learning Navy Square · Observant">深藍方形／量尺 · 觀察支點</div>
+        <p class="char-desc" data-i18n-zh="仔細觀察，習慣先測量距離、尋找支點，示範如何以理性觀察解決問題。" data-i18n-en="Careful observer, measuring spans and finding pivots to model systematic reasoning.">
+          仔細觀察，習慣先測量距離、尋找支點，示範如何以理性觀察解決問題。
+        </p>
+      </div>
+
+      <div class="character-card">
+        <div class="char-badge-shape">
+          <svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="琵普標誌">
+            <path d="M8 56 L32 12 L56 56 Z" fill="#EF8C8C"/>
+            <circle cx="28" cy="40" r="3" fill="#1A3F81"/>
+            <circle cx="36" cy="40" r="3" fill="#1A3F81"/>
+          </svg>
+        </div>
+        <h3 class="char-name">PIP 琵普</h3>
+        <div class="char-sub" data-i18n-zh="珊瑚三角楔形 · 勇於試驗" data-i18n-en="Story Coral Wedge · Resilient">珊瑚三角楔形 · 勇於試驗</div>
+        <p class="char-desc" data-i18n-zh="敏捷靈巧，勇於在失敗時說出「再試一次！」，鼓勵面對挫折與錯誤復原。" data-i18n-en="Agile and resilient, champion of 'Let's try again!' to foster constructive error recovery.">
+          敏捷靈巧，勇於在失敗時說出「再試一次！」，鼓勵面對挫折與錯誤復原。
+        </p>
+      </div>
+    </section>
+
+    <!-- 01. Storybook Section -->
+    <section class="tab-content active" id="tab-storybook" aria-labelledby="headingStorybook">
+      <div class="section-header">
+        <h2 id="headingStorybook" class="section-title" data-i18n-zh="01 / 讓故事成為動手的理由" data-i18n-en="01 / Story-Driven Building">01 / 讓故事成為動手的理由</h2>
+        <div class="section-meta" data-i18n-zh="原創精裝繪本《形狀城的第七座橋》· 共 16 個跨頁" data-i18n-en="The Seventh Bridge of Shape City · Complete 16 Spreads">原創精裝繪本《形狀城的第七座橋》· 共 16 個跨頁</div>
+      </div>
+
+      <div class="storybook-grid">
+        <div class="book-stage">
+          <div class="book-spread" role="region" aria-label="繪本雙頁檢視器">
+            <!-- Left Page -->
+            <div class="spread-page left-page">
+              <div class="page-header">
+                <span id="spreadHeader">SPREAD 01 / 16 · PAGE 01-02</span>
+                <span>PLAYFORM BRIDGE LAB</span>
+              </div>
+              <div class="spread-artwork-box" id="spreadArtwork">
+                <!-- Injected by JS -->
+              </div>
+              <div class="page-footer">
+                <span id="spreadFocus">焦點：拉遠全景；河的兩端出現空白</span>
+              </div>
+            </div>
+
+            <!-- Right Page -->
+            <div class="spread-page right-page">
+              <div class="page-header">
+                <span>THE SEVENTH BRIDGE</span>
+                <span data-i18n-zh="共讀篇章" data-i18n-en="CHAPTER 01">共讀篇章</span>
+              </div>
+              <div>
+                <p class="page-text" id="storyText">
+                  形狀城的雨，滴答滴答，下了一整夜。早晨，河面亮晶晶的。可是，小橋不見了。
+                </p>
+              </div>
+              <div class="page-footer">
+                <span id="spreadActivity">活動：觀察河流和兩岸</span>
+                <span>FLTL KIDS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="book-controls">
+            <div class="btn-group">
+              <button id="storyPrev" class="btn btn-secondary" disabled aria-label="上一跨頁" data-i18n-zh="← 上一頁" data-i18n-en="← Previous">← 上一頁</button>
+              <button id="storyNext" class="btn" aria-label="下一跨頁" data-i18n-zh="下一頁 →" data-i18n-en="Next →">下一頁 →</button>
+            </div>
+
+            <div class="btn-group">
+              <button id="audioBtn" class="audio-btn" aria-label="繪本朗讀示範">
+                <span aria-hidden="true">🔈</span>
+                <span data-i18n-zh="朗讀示範（錄製中）" data-i18n-en="Audiobook Demo (In Prod)">朗讀示範（錄製中）</span>
+              </button>
+            </div>
+          </div>
+          <div id="audioFeedback" class="story-feedback" hidden role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Side Card: Interactive Action -->
+        <aside class="side-card" aria-label="故事閱讀與任務導航">
+          <div>
+            <div class="spread-selector-group">
+              <label for="spreadSelect" data-i18n-zh="快速跳至跨頁" data-i18n-en="Jump to Spread">快速跳至跨頁</label>
+              <select id="spreadSelect" class="spread-select" aria-label="選擇故事跨頁">
+                <!-- Injected by JS -->
+              </select>
+            </div>
+
+            <h3 class="side-card-title" data-i18n-zh="故事行動與思考" data-i18n-en="Story Action & Reflection">故事行動與思考</h3>
+            <p class="side-card-desc" data-i18n-zh="每當故事中的角色遇到挑戰，孩子都能透過畫面選擇互動，幫助路洛、比姆與琵普推進建造進度。" data-i18n-en="Whenever characters face a challenge, children interact directly to help Lulo, Bem, and Pip build the bridge.">
+              每當故事中的角色遇到挑戰，孩子都能透過畫面選擇互動，幫助路洛、比姆與琵普推進建造進度。
+            </p>
+
+            <div id="spreadInteractionBox" class="interaction-box" hidden>
+              <div id="interactiveTitle" class="interaction-box-title">情節互動</div>
+              <div id="interactiveChoices" class="story-options">
+                <!-- Injected by JS -->
+              </div>
+              <div id="interactiveFeedback" class="story-feedback" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="gentle-feedback-box">
+            <strong data-i18n-zh="設計亮點：" data-i18n-en="Design Note:">設計亮點：</strong>
+            <span data-i18n-zh="32 頁完整故事腳本，不設倒數計時與挫敗扣分，鼓勵從試誤中建立自信。" data-i18n-en="Complete 32-page narrative without stress countdowns or score punishment, fostering resilience.">32 頁完整故事腳本，不設倒數計時與挫敗扣分，鼓勵從試誤中建立自信。</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 02. 3D WebGL Bridge Lab -->
+    <section class="tab-content" id="tab-threed" hidden aria-labelledby="headingThreed">
+      <div class="section-header">
+        <h2 id="headingThreed" class="section-title" data-i18n-zh="02 / 看得到結構的 3D 建造實驗室" data-i18n-en="02 / 3D Realtime Bridge Lab">02 / 看得到結構的 3D 建造實驗室</h2>
+        <div class="section-meta" data-i18n-zh="Three.js / WebGL · 真實 GLB 模型載入 · 360° 旋轉與拆解" data-i18n-en="Three.js / WebGL · GLB Loader · 360° Orbit & Exploded Views">Three.js / WebGL · 真實 GLB 模型載入 · 360° 旋轉與拆解</div>
+      </div>
+
+      <div class="viewer-layout">
+        <!-- 3D Canvas Stage -->
+        <div class="viewer-canvas-card">
+          <div class="viewer-watermark">PLAYFORM BRIDGE LAB 01 · 3D WEBGL</div>
+          <div class="webgl-container" id="webglContainer">
+            <!-- Three.js Canvas injected here -->
+          </div>
+          <div class="viewer-hint">
+            <span data-i18n-zh="滑鼠拖曳／觸控旋轉 · 滾輪縮放 · 支援純鍵盤操作" data-i18n-en="Drag/Touch to Rotate · Scroll to Zoom · Keyboard Accessible">滑鼠拖曳／觸控旋轉 · 滾輪縮放 · 支援純鍵盤操作</span>
+            <span data-i18n-zh="模型精度：造型原型（未涉量產工差）" data-i18n-en="Model: Concept Prototype (Non-manufacturing)">模型精度：造型原型（未涉量產工差）</span>
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <aside class="viewer-controls-card" aria-label="3D 模型操作面板">
+          <div>
+            <div class="model-selector-group">
+              <label data-i18n-zh="選擇 3D 模型" data-i18n-en="Select 3D Model">選擇 3D 模型</label>
+              <div class="model-buttons">
+                <button class="model-btn active" data-model="assembled" data-i18n-zh="組裝橋樑" data-i18n-en="Assembled Bridge">組裝橋樑</button>
+                <button class="model-btn" data-model="exploded" data-i18n-zh="拆解橋樑" data-i18n-en="Exploded Bridge">拆解橋樑</button>
+                <button class="model-btn" data-model="characters" data-i18n-zh="角色三人組" data-i18n-en="Character Trio">角色三人組</button>
+                <button class="model-btn" data-model="kit" data-i18n-zh="包裝概念盒" data-i18n-en="Packaging Kit">包裝概念盒</button>
+              </div>
+            </div>
+
+            <div class="state-toggle-group">
+              <label data-i18n-zh="橋樑結構狀態切換" data-i18n-en="Bridge Structure State">橋樑結構狀態切換</label>
+              <div class="toggle-buttons">
+                <button id="btnAssemble" class="btn btn-secondary active" data-i18n-zh="組裝狀態" data-i18n-en="Assembled">組裝狀態</button>
+                <button id="btnExplode" class="btn btn-secondary" data-i18n-zh="拆解狀態" data-i18n-en="Exploded">拆解狀態</button>
+              </div>
+            </div>
+
+            <div class="keyboard-controls-group">
+              <label data-i18n-zh="純鍵盤無障礙旋轉" data-i18n-en="Keyboard Accessible Controls">純鍵盤無障礙旋轉</label>
+              <div class="k-pad">
+                <div></div>
+                <button id="kTiltUp" class="k-btn" aria-label="視角往上">▲</button>
+                <div></div>
+                <button id="kRotateLeft" class="k-btn" aria-label="向左旋轉">◀</button>
+                <button id="kReset" class="k-btn" aria-label="重設視角" data-i18n-zh="重設" data-i18n-en="Reset">重設</button>
+                <button id="kRotateRight" class="k-btn" aria-label="向右旋轉">▶</button>
+                <button id="kZoomIn" class="k-btn" aria-label="拉近放大">＋</button>
+                <button id="kTiltDown" class="k-btn" aria-label="視角往下">▼</button>
+                <button id="kZoomOut" class="k-btn" aria-label="推遠縮小">－</button>
+              </div>
+            </div>
+
+            <div class="part-inspector">
+              <h4 id="inspectorTitle">PLAYFORM 橋樑：組裝完成狀態</h4>
+              <p id="inspectorDesc">橋拱、立柱、基座與四塊橋面平板完整結合，展示重力分散與支點承托結構。</p>
+            </div>
+          </div>
+
+          <div class="gentle-feedback-box" style="margin-top: 16px;">
+            <strong data-i18n-zh="三維工程說明：" data-i18n-en="3D Engineering Note:">三維工程說明：</strong>
+            <span data-i18n-zh="4 個真實 GLB 模型均由本交付包 Python 腳本匯出，支援 WebGL 著色與離線 Canvas 雙模容錯。" data-i18n-en="All 4 GLB models are generated from reproducible Python source, with WebGL and Canvas dual fallback.">4 個真實 GLB 模型均由本交付包 Python 腳本匯出，支援 WebGL 著色與離線 Canvas 雙模容錯。</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 03. Child Cognitive Learning Section -->
+    <section class="tab-content" id="tab-learning" hidden aria-labelledby="headingLearning">
+      <div class="section-header">
+        <h2 id="headingLearning" class="section-title" data-i18n-zh="03 / 孩子參與的三段探索任務" data-i18n-en="03 / Child Cognitive Learning Challenges">03 / 孩子參與的三段探索任務</h2>
+        <div class="section-meta" data-i18n-zh="適齡認知設計 · 大觸控熱區 · 無倒數恐嚇 · 鼓勵試誤" data-i18n-en="Age-Appropriate UX · Large Touch Targets · No Score Deduction">適齡認知設計 · 大觸控熱區 · 無倒數恐嚇 · 鼓勵試誤</div>
+      </div>
+
+      <div class="learning-grid">
+        <div class="challenge-card">
+          <div class="mission-stepper">
+            <button class="mission-step-btn active" data-i18n-zh="任務 01：形狀支撐" data-i18n-en="Mission 01: Shapes">任務 01：形狀支撐</button>
+            <button class="mission-step-btn" data-i18n-zh="任務 02：橋墩對齊" data-i18n-en="Mission 02: Alignment">任務 02：橋墩對齊</button>
+            <button class="mission-step-btn" data-i18n-zh="任務 03：承重測試" data-i18n-en="Mission 03: Load Test">任務 03：承重測試</button>
+          </div>
+
+          <h3 id="missionTitle" class="hero-tagline">任務 01：找出能形成支撐的形狀</h3>
+          <p id="missionInstruction" class="hero-description">點選一個積木形狀，看看哪個形狀在受到力量時不容易變形，最適合當作穩定結構的起點？</p>
+
+          <div class="shape-choices-container" id="missionChoices">
+            <!-- Buttons injected by JS -->
+          </div>
+
+          <div class="gentle-feedback-box" id="missionFeedback" role="status" aria-live="polite">
+            點選上方選項，觀察形狀的支撐特點。
+          </div>
+        </div>
+
+        <aside class="dash-card">
+          <div class="eyebrow" data-i18n-zh="CHILD-FIRST UX RULES" data-i18n-en="CHILD-FIRST UX RULES">CHILD-FIRST UX RULES</div>
+          <h3 class="side-card-title" data-i18n-zh="以成長思維設計的互動原則" data-i18n-en="Growth Mindset Interaction Rules">以成長思維設計的互動原則</h3>
+          <ul class="prompt-list">
+            <li data-i18n-zh="不使用答錯扣分或 Game Over 畫面，讓試誤成為學習過程。" data-i18n-en="No penalty deductions or game-over screens; mistakes are learning data.">不使用答錯扣分或 Game Over 畫面，讓試誤成為學習過程。</li>
+            <li data-i18n-zh="按鈕熱區至少 96×96px，適應幼童手部肌肉控制與手指觸控。" data-i18n-en="Touch targets >= 96x96px to accommodate toddler fine-motor control.">按鈕熱區至少 96×96px，適應幼童手部肌肉控制與手指觸控。</li>
+            <li data-i18n-zh="具象化文字與動態回饋，解釋「為什麼會這樣」，而非單純給紅綠燈號。" data-i18n-en="Explains 'why it happened' rather than just displaying pass/fail symbols.">具象化文字與動態回饋，解釋「為什麼會這樣」，而非單純給紅綠燈號。</li>
+          </ul>
+
+          <div class="privacy-notice">
+            <strong data-i18n-zh="兒童隱私保護：" data-i18n-en="Children's Privacy Protection:">兒童隱私保護：</strong>
+            <span data-i18n-zh="所有學習狀態均儲存於本機記憶體，不使用第三方追蹤 Cookie，不收集真實學童個資。" data-i18n-en="All task state resides in local memory; no third-party trackers or child PII collected.">所有學習狀態均儲存於本機記憶體，不使用第三方追蹤 Cookie，不收集真實學童個資。</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 04. Parent Observation Dashboard -->
+    <section class="tab-content" id="tab-parents" hidden aria-labelledby="headingParents">
+      <div class="section-header">
+        <h2 id="headingParents" class="section-title" data-i18n-zh="04 / 家長端：有意義的學習對話" data-i18n-en="04 / Parent Observation Dashboard">04 / 家長端：有意義的學習對話</h2>
+        <div class="section-meta" data-i18n-zh="雜誌式排版 · 質性陪伴指引 · 無焦慮排行榜" data-i18n-en="Editorial Layout · Guided Dialogue · No Anxiety Rankings">雜誌式排版 · 質性陪伴指引 · 無焦慮排行榜</div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dash-card">
+          <div class="eyebrow" data-i18n-zh="SESSION INSIGHTS" data-i18n-en="SESSION INSIGHTS">SESSION INSIGHTS</div>
+          <h3 class="side-card-title" data-i18n-zh="今天，我們一起造了一座橋。" data-i18n-en="Today, we built a bridge together.">今天，我們一起造了一座橋。</h3>
+          <p class="hero-description" data-i18n-zh="孩子在故事中完成了形狀探索與橋拱搭建，主動觀察了三角形與圓形在受力時的差異，並在傾斜後嘗試調整支點。" data-i18n-en="The child explored structural shapes, observed differences between triangles and rolling circles, and adjusted support positions after an initial tilt.">
+            孩子在故事中完成了形狀探索與橋拱搭建，主動觀察了三角形與圓形在受力時的差異，並在傾斜後嘗試調整支點。
+          </p>
+
+          <div class="metric-row">
+            <span class="metric-label" data-i18n-zh="探索形狀種類" data-i18n-en="Shapes Explored">探索形狀種類</span>
+            <span class="metric-value" data-i18n-zh="3 種" data-i18n-en="3 Types">3 種</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label" data-i18n-zh="嘗試修正次數" data-i18n-en="Re-alignment Attempts">嘗試修正次數</span>
+            <span class="metric-value" data-i18n-zh="2 次" data-i18n-en="2 Attempts">2 次</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label" data-i18n-zh="引導學習模式" data-i18n-en="Learning Style">引導學習模式</span>
+            <span class="metric-value" data-i18n-zh="觀察與實作" data-i18n-en="Hands-on Observation">觀察與實作</span>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <button id="parentResetBtn" class="btn btn-secondary" data-i18n-zh="清除本次示範紀錄" data-i18n-en="Reset Demo Session">清除本次示範紀錄</button>
+            <span id="parentNotice" style="margin-left: 12px; font-size: 12px; color: var(--blue);" role="status"></span>
+          </div>
+        </div>
+
+        <div class="dash-card card-accent">
+          <div class="eyebrow" style="color: var(--blue);" data-i18n-zh="HOME CONVERSATION & PLAY" data-i18n-en="HOME CONVERSATION & PLAY">HOME CONVERSATION & PLAY</div>
+          <h3 class="side-card-title" data-i18n-zh="把故事帶離螢幕：親子引導提問" data-i18n-en="Off-Screen Family Dialogue Prompts">把故事帶離螢幕：親子引導提問</h3>
+          <p data-i18n-zh="不需要具備工程背景，透過開放式問題激發孩子的好奇心：" data-i18n-en="No engineering background needed—spark curiosity with open-ended prompts:">
+            不需要具備工程背景，透過開放式問題激發孩子的好奇心：
+          </p>
+          <ul class="prompt-list" id="parentPrompts">
+            <!-- Injected by JS -->
+          </ul>
+
+          <div class="interaction-box" style="background: rgba(255,255,255,0.7); margin-top: 20px;">
+            <strong data-i18n-zh="實體積木延伸遊戲：" data-i18n-en="Physical Block Extension:">實體積木延伸遊戲：</strong>
+            <p style="margin: 6px 0 0; font-size: 13px;" data-i18n-zh="拿出一套家用積木或紙盒，和孩子一起用紙板搭一座跨越兩張椅子的簡易小橋，測試能放幾本書。" data-i18n-en="Use cardboard and wooden blocks between two chairs to build a simple span, counting how many small books it holds.">
+              拿出一套家用積木或紙盒，和孩子一起用紙板搭一座跨越兩張椅子的簡易小橋，測試能放幾本書。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Teacher Lesson Planner Dashboard -->
+    <section class="tab-content" id="tab-teachers" hidden aria-labelledby="headingTeachers">
+      <div class="section-header">
+        <h2 id="headingTeachers" class="section-title" data-i18n-zh="05 / 教師端：一堂 28 分鐘的完整 STEAM 課程" data-i18n-en="05 / Teacher Lesson Planner Dashboard">05 / 教師端：一堂 28 分鐘的完整 STEAM 課程</h2>
+        <div class="section-meta" data-i18n-zh="課堂鷹架 · 分組實作指引 · 質性評量規準" data-i18n-en="Lesson Scaffolding · Hands-on Grouping · Qualitative Rubric">課堂鷹架 · 分組實作指引 · 質性評量規準</div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dash-card">
+          <div class="eyebrow" data-i18n-zh="LESSON SCAFFOLD" data-i18n-en="LESSON SCAFFOLD">LESSON SCAFFOLD</div>
+          <h3 class="side-card-title" data-i18n-zh="BRIDGE LAB 01 · 結構與平衡基礎" data-i18n-en="BRIDGE LAB 01 · Foundations of Balance">BRIDGE LAB 01 · 結構與平衡基礎</h3>
+          <p class="hero-description" data-i18n-zh="單堂 28 分鐘模組化課程規劃，以繪本情節引發動機，接著進行實體教具建構與 3D 觀察，最後以反思圓圈分享收尾。" data-i18n-en="A modular 28-minute lesson plan beginning with storybook inquiry, progressing to physical block building, and concluding with a reflection circle.">
+            單堂 28 分鐘模組化課程規劃，以繪本情節引發動機，接著進行實體教具建構與 3D 觀察，最後以反思圓圈分享收尾。
+          </p>
+
+          <table class="schedule-table" aria-label="課程活動時間表">
+            <thead>
+              <tr>
+                <th scope="col" data-i18n-zh="時段" data-i18n-en="Time">時段</th>
+                <th scope="col" data-i18n-zh="課程階段" data-i18n-en="Phase">課程階段</th>
+                <th scope="col" data-i18n-zh="教學引導目標" data-i18n-en="Learning Goal">教學引導目標</th>
+              </tr>
+            </thead>
+            <tbody id="teacherScheduleBody">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dash-card">
+          <div class="eyebrow" data-i18n-zh="QUALITATIVE RUBRICS" data-i18n-en="QUALITATIVE RUBRICS">QUALITATIVE RUBRICS</div>
+          <h3 class="side-card-title" data-i18n-zh="課堂質性觀察規準" data-i18n-en="Qualitative Classroom Rubric">課堂質性觀察規準</h3>
+          <p data-i18n-zh="教師端介面強調質性觀察紀錄，取代標準化測驗分數：" data-i18n-en="Focuses on behavioral evidence rather than standardized testing scores:">
+            教師端介面強調質性觀察紀錄，取代標準化測驗分數：
+          </p>
+
+          <div id="teacherRubricsList">
+            <!-- Injected by JS -->
+          </div>
+
+          <div class="privacy-notice">
+            <strong data-i18n-zh="校園資料安全：" data-i18n-en="Campus Data Privacy:">校園資料安全：</strong>
+            <span data-i18n-zh="本介面為單機概念原型，未串接任何外部學生名冊或學校雲端資料庫，示範班級名單全為匿名資料。" data-i18n-en="Standalone prototype with no student databases or external sync; demonstration classes are completely anonymized.">本介面為單機概念原型，未串接任何外部學生名冊或學校雲端資料庫，示範班級名單全為匿名資料。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. 16-Shot Art Direction Blueprint Gallery -->
+    <section class="tab-content" id="tab-specs" hidden aria-labelledby="headingSpecs">
+      <div class="section-header">
+        <h2 id="headingSpecs" class="section-title" data-i18n-zh="06 / 16 張正式作品的逐張藝術指導規格" data-i18n-en="06 / 16-Shot Art Direction Specifications">06 / 16 張正式作品的逐張藝術指導規格</h2>
+        <div class="section-meta" data-i18n-zh="Master PNG 2560×1440 · 逐張不重複 · 規格定案待繪" data-i18n-en="Master PNG 2560×1440 · Distinct Compositions · Artwork in Production">Master PNG 2560×1440 · 逐張不重複 · 規格定案待繪</div>
+      </div>
+
+      <div class="gentle-feedback-box" style="margin-bottom: 24px;">
+        <strong data-i18n-zh="誠實事實邊界：" data-i18n-en="Honest Fact Boundary:">誠實事實邊界：</strong>
+        <span data-i18n-zh="本案目前已交付完整創意規格、32 頁腳本、向量母稿、4 個 GLB 3D 模型與可操作 HTML 原型；16 張正式 2560×1440 商業攝影完稿與繪本逐頁精修插畫目前列為製作清單，不得拿暫存預覽冒充已完工商業攝影。" data-i18n-en="Creative master, 32-page script, vector identity, 4 GLBs, and working prototype delivered. The 16 commercial 2560×1440 master plates are specified below and pending final artwork production.">
+          本案目前已交付完整創意規格、32 頁腳本、向量母稿、4 個 GLB 3D 模型與可操作 HTML 原型；16 張正式 2560×1440 商業攝影完稿與繪本逐頁精修插畫目前列為製作清單，不得拿暫存預覽冒充已完工商業攝影。
+        </span>
+      </div>
+
+      <div class="gallery-grid" id="specsGrid">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- Scope Note Section -->
+    <section class="scope-note-section" aria-labelledby="headingScopeNote">
+      <h3 id="headingScopeNote" class="eyebrow" data-i18n-zh="SCOPE NOTE · 必要事實註記" data-i18n-en="SCOPE NOTE · DESIGN REALITY BOUNDARY">SCOPE NOTE · 必要事實註記</h3>
+      <p data-i18n-zh="本頁展示品牌識別、原創繪本、教具與數位互動之設計提案及示範原型。實體教具未量產，材料安全（如 EN71/CNS）與教學成效尚未經外部獨立驗證；家長及教師介面使用示範資料，並未蒐集真實學童個資。" data-i18n-en="This case presents design concepts and working prototypes for educational branding, picture books, learning kits, and interactive UX. Physical toys have not been manufactured or safety-certified, learning outcomes have not been independently validated, and all child-related records shown in the interface are demonstrative.">
+        本頁展示品牌識別、原創繪本、教具與數位互動之設計提案及示範原型。實體教具未量產，材料安全（如 EN71/CNS）與教學成效尚未經外部獨立驗證；家長及教師介面使用示範資料，並未蒐集真實學童個資。
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span>FLTL × HOWARD HUANG / CASE 13 PLAYFORM</span>
+      </div>
+      <div>
+        <span class="footer-demo-tag">LOCAL STAGING ONLY · ZERO DEPLOY</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/GLTFLoader.js"></script>
+  <script src="js/vendor/OrbitControls.js"></script>
+  <script src="js/playform-case.js"></script>
+</body>
+</html>
