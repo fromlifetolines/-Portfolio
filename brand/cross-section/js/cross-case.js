@@ -375,15 +375,34 @@
   });
 
   // Font size toggle
+  function setFontSize(size) {
+    const validSizes = ['sm', 'md', 'lg'];
+    const currentSize = validSizes.includes(size) ? size : 'md';
+    all('[data-font]').forEach(btn => {
+      const isCur = btn.dataset.font === currentSize;
+      btn.classList.toggle('active', isCur);
+      btn.setAttribute('aria-pressed', String(isCur));
+    });
+    document.body.classList.remove('font-sm', 'font-lg');
+    if (currentSize === 'sm') document.body.classList.add('font-sm');
+    if (currentSize === 'lg') document.body.classList.add('font-lg');
+    try {
+      localStorage.setItem('cs_font_size', currentSize);
+    } catch (e) {}
+  }
+
   all('[data-font]').forEach(btn => {
     btn.addEventListener('click', () => {
-      all('[data-font]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.body.classList.remove('font-sm', 'font-lg');
-      if (btn.dataset.font === 'sm') document.body.classList.add('font-sm');
-      if (btn.dataset.font === 'lg') document.body.classList.add('font-lg');
+      setFontSize(btn.dataset.font);
     });
   });
+
+  // Restore font size from storage
+  let savedFontSize = 'md';
+  try {
+    savedFontSize = localStorage.getItem('cs_font_size') || 'md';
+  } catch (e) {}
+  setFontSize(savedFontSize);
 
   // =========================================================================
   // 3. ISSUE ARCHIVE & TOC (#cs-issues)
@@ -613,7 +632,11 @@
     if (catEl) catEl.textContent = lang === 'en' ? a.categoryEn : a.categoryZh;
     if (titleEl) titleEl.textContent = lang === 'en' ? a.titleEn : a.titleZh;
     if (deckEl) deckEl.textContent = lang === 'en' ? a.deckEn : a.deckZh;
-    if (authorEl) authorEl.textContent = lang === 'en' ? a.authorEn : a.authorZh;
+    if (authorEl) {
+      authorEl.textContent = lang === 'en'
+        ? 'CROSS SECTION Editorial (Editorial concept)'
+        : 'CROSS SECTION 編輯部（編輯企劃署名）';
+    }
     if (issueEl) issueEl.textContent = `${a.issueId} (2026)`;
 
     if (bkmBtn) {

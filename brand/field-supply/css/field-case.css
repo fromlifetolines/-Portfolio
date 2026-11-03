@@ -1241,6 +1241,34 @@ button, input, select, textarea {
   line-height: 1.5;
 }
 
+/* Accessible Collapsible Project Notes */
+.fs-project-notes {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: left;
+  background: rgba(17, 17, 17, 0.04);
+  border: 1px solid var(--fs-border);
+  border-radius: 4px;
+  padding: 16px 20px;
+}
+
+.fs-project-notes summary {
+  font-family: var(--fs-font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--fs-ink);
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.fs-project-notes p {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--fs-granite);
+}
+
 /* Footer & Outro */
 .fs-footer {
   padding: 40px clamp(16px, 4vw, 40px);
