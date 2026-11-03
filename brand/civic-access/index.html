@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0059C9">
+  <meta name="description" content="CIVIC ACCESS，公共服務數位申辦系統設計。整合服務探索、申請身分判斷、動態文件清單、分步表單與無障礙操作體驗。">
+  <title>CIVIC ACCESS｜Public Service Experience & Application System｜FLTL × HOWARD</title>
+  <link rel="stylesheet" href="./css/civic-case.css?v=20261103-v6">
+</head>
+<body data-font-size="md">
+  <div id="caLiveAnnouncer" class="ca-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <a class="ca-skip" href="#ca-main">跳至主要內容 / Skip to main content</a>
+
+  <!-- Top Navigation Header -->
+  <header class="ca-header" role="banner">
+    <div class="ca-header-left">
+      <a class="ca-home-link" href="../../index.html" aria-label="返回作品列表 / Back to Portfolio">
+        ← <span>HOWARD HUANG</span>
+      </a>
+      <a class="ca-brand-lockup" href="#ca-top" aria-label="CIVIC ACCESS 頁首">
+        <svg class="ca-brand-mark" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+          <path fill="#0059C9" d="M5 31C5 17 16 6 30 6H31V30C31 42 22 50 9 50H5Z"/>
+          <path fill="#1978E9" d="M33 6H59V19C59 33 48 44 34 44H33Z"/>
+          <path fill="#0049AD" d="M6 52C6 39 16 32 28 32H31V57H6Z"/>
+          <path fill="#5BA1F4" d="M33 46C33 35 43 29 56 29H59V57H33Z"/>
+        </svg>
+        <span>CIVIC ACCESS</span>
+      </a>
+    </div>
+
+    <div class="ca-header-right">
+      <span class="ca-case-counter" aria-label="作品序號">PORTFOLIO 12 / 15</span>
+
+      <div class="ca-font-controls" role="group" aria-label="字級縮放 / Font Size Controls">
+        <button type="button" class="ca-font-btn" data-font="sm" aria-label="縮小字體" aria-pressed="false">A-</button>
+        <button type="button" class="ca-font-btn is-active" data-font="md" aria-label="預設字體" aria-pressed="true">A</button>
+        <button type="button" class="ca-font-btn" data-font="lg" aria-label="放大字體" aria-pressed="false">A+</button>
+      </div>
+
+      <div class="ca-lang-controls" role="group" aria-label="選擇語言 / Language Selector">
+        <button type="button" class="ca-lang-btn is-active" id="caLangZhBtn" data-lang="zh-TW" aria-pressed="true">中</button>
+        <button type="button" class="ca-lang-btn" id="caLangEnBtn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <a class="ca-demo-jump-btn" href="#ca-interactive-demo">
+        <span class="ca-zh">操作示範原型 ↓</span>
+        <span class="ca-en" hidden>Interactive Demo ↓</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="ca-main">
+    <!-- Hero / Masthead Section -->
+    <section id="ca-top" class="ca-hero" aria-labelledby="ca-hero-title">
+      <div class="ca-hero-inner">
+        <p class="ca-kicker">PORTFOLIO 12 / PUBLIC SERVICE DESIGN & ACCESSIBLE UX</p>
+        <h1 id="ca-hero-title" class="ca-hero-title">
+          <span class="ca-zh">讓公共服務，<br>更容易被理解與完成。</span>
+          <span class="ca-en" hidden>Make every next step clear.</span>
+        </h1>
+        <p class="ca-hero-lead ca-zh">
+          CIVIC ACCESS 以地方公共服務窗口的常見申辦情境為設計命題，重新規劃服務探索、申請身分判斷、文件準備、表單填寫與進度查詢的體驗。視覺系統延伸至紙本服務指引與現場導視，讓不同需求的使用者都能理解資訊，知道下一步該怎麼做。
+        </p>
+        <p class="ca-hero-lead ca-en" hidden>
+          CIVIC ACCESS rethinks the experience of discovering public services, identifying application scenarios, preparing documents, completing forms and understanding application status. A unified visual language extends into printed guidance and on-site wayfinding, making complex service information easier to navigate across digital and physical touchpoints.
+        </p>
+
+        <div class="ca-meta-grid">
+          <div class="ca-meta-col">
+            <span class="ca-meta-label">DISCIPLINE</span>
+            <span class="ca-meta-val">SERVICE DESIGN · DIGITAL PORTAL · ACCESSIBLE UI/UX</span>
+          </div>
+          <div class="ca-meta-col">
+            <span class="ca-meta-label">DESIGN SCOPE / 設計範疇</span>
+            <span class="ca-meta-val ca-zh">服務設計／品牌識別／數位平台 UI/UX／無障礙設計／紙本與空間導視</span>
+            <span class="ca-meta-val ca-en" hidden>Service Design / Visual Identity / Digital Service UI/UX / Accessibility / Print & Wayfinding</span>
+          </div>
+          <div class="ca-meta-col">
+            <span class="ca-meta-label">CORE PALETTE / 核心色彩</span>
+            <span class="ca-meta-val ca-swatch-group">
+              <span class="ca-swatch" style="background:#0059C9;" title="Civic Blue #0059C9"></span>
+              <span class="ca-swatch" style="background:#101820;" title="Deep Ink #101820"></span>
+              <span class="ca-swatch" style="background:#FFAE3D;" title="Focus Amber #FFAE3D"></span>
+              <span class="ca-swatch" style="background:#F5F8FC;" title="Neutral Canvas #F5F8FC"></span>
+              <span class="ca-swatch" style="background:#157D53;" title="Success Green #157D53"></span>
+              <span class="ca-swatch" style="background:#C73339;" title="Error Red #C73339"></span>
+            </span>
+          </div>
+          <div class="ca-meta-col">
+            <span class="ca-meta-label">NATURE OF WORK</span>
+            <span class="ca-meta-val ca-zh">服務設計情境原型（非官方入口／示範無行政效力）</span>
+            <span class="ca-meta-val ca-en" hidden>Design study prototype (Demonstrative / No real civic authority)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Prototype Application Section -->
+    <section id="ca-interactive-demo" class="ca-app-section" aria-labelledby="ca-demo-heading">
+      <div class="ca-app-container">
+        <div class="ca-app-shell">
+          <!-- Prototype App Header -->
+          <div class="ca-app-header">
+            <div class="ca-app-title-group">
+              <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                <path fill="#FFFFFF" d="M5 31C5 17 16 6 30 6H31V30C31 42 22 50 9 50H5Z"/>
+                <path fill="#5BA1F4" d="M33 6H59V19C59 33 48 44 34 44H33Z"/>
+                <path fill="#B8D7FC" d="M6 52C6 39 16 32 28 32H31V57H6Z"/>
+                <path fill="#FFFFFF" d="M33 46C33 35 43 29 56 29H59V57H33Z"/>
+              </svg>
+              <h2 id="ca-demo-heading" class="ca-app-h2">
+                <span class="ca-zh">CIVIC ACCESS 申辦與服務探索原型</span>
+                <span class="ca-en" hidden>CIVIC ACCESS Interactive Application System</span>
+              </h2>
+              <span class="ca-app-badge">INTERACTIVE PROTOTYPE</span>
+            </div>
+
+            <div class="ca-app-actions-top">
+              <button type="button" class="ca-btn-reset-demo" id="caResetDemoBtn" aria-label="重新測試原型 / Reset Demo">
+                ↻ <span class="ca-zh">重新測試</span><span class="ca-en" hidden>Reset Demo</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Single Contextual Disclosure Banner -->
+          <div class="ca-disclosure-box" role="note">
+            <span class="ca-disclosure-icon" aria-hidden="true">ℹ</span>
+            <div class="ca-disclosure-text">
+              <strong class="ca-zh">非政府官方申辦入口。</strong>
+              <span class="ca-zh">本頁為前端互動體驗與無障礙驗證原型，示範資格、文件規則與案件編號不具行政效力，亦不收集真實個人資訊。</span>
+              <strong class="ca-en" hidden>Demonstration prototype only.</strong>
+              <span class="ca-en" hidden> This interactive prototype demonstrates public service design and accessibility. Sample eligibility, document checklists, and confirmation codes carry no legal civic authority. No real personal data is collected.</span>
+            </div>
+          </div>
+
+          <!-- Prototype Body Grid: Sidebar Navigation + Active Workspace -->
+          <div class="ca-app-body">
+            <!-- Sidebar Navigation -->
+            <aside class="ca-app-sidebar" aria-label="申辦進度與狀態">
+              <div class="ca-sidebar-block">
+                <h3>
+                  <span class="ca-zh">申辦流程階段</span>
+                  <span class="ca-en" hidden>Stages</span>
+                </h3>
+                <nav class="ca-step-nav" aria-label="步驟列表">
+                  <ul class="ca-step-list">
+                    <li>
+                      <button type="button" class="ca-step-nav-btn is-active" data-step="1" aria-current="step">
+                        <span class="ca-step-bubble">1</span>
+                        <span class="ca-zh">確認服務情境</span>
+                        <span class="ca-en" hidden>Scenario & Triage</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" class="ca-step-nav-btn" data-step="2">
+                        <span class="ca-step-bubble">2</span>
+                        <span class="ca-zh">填寫資料與附件</span>
+                        <span class="ca-en" hidden>Details & Upload</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" class="ca-step-nav-btn" data-step="3">
+                        <span class="ca-step-bubble">3</span>
+                        <span class="ca-zh">送出前核對</span>
+                        <span class="ca-en" hidden>Review & Confirm</span>
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Live Session Status -->
+              <div class="ca-sidebar-block">
+                <h3>
+                  <span class="ca-zh">目前選取狀態</span>
+                  <span class="ca-en" hidden>Selected State</span>
+                </h3>
+                <div class="ca-status-card" id="caStatusLiveRegion" role="region" aria-label="目前選取狀態" aria-live="polite">
+                  <div class="ca-status-row">
+                    <span><span class="ca-zh">服務項目</span><span class="ca-en" hidden>Service</span></span>
+                    <span class="ca-status-val" id="caSidebarStatusService">生活補助諮詢</span>
+                  </div>
+                  <div class="ca-status-row">
+                    <span><span class="ca-zh">申辦身分</span><span class="ca-en" hidden>Role</span></span>
+                    <span class="ca-status-val" id="caSidebarStatusRole">本人辦理</span>
+                  </div>
+                  <div class="ca-status-row">
+                    <span><span class="ca-zh">文件已備</span><span class="ca-en" hidden>Ready</span></span>
+                    <span class="ca-status-val" id="caSidebarStatusDocs">1/2</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ca-sidebar-block">
+                <h3>
+                  <span class="ca-zh">無障礙實測規範</span>
+                  <span class="ca-en" hidden>A11y Features</span>
+                </h3>
+                <p style="font-size: 0.82rem; color: var(--ca-muted); line-height: 1.5; margin: 0;">
+                  <span class="ca-zh">支援純鍵盤導航 (Tab/Enter/Space)、可視焦點框 (#FFAE3D)、觸控標的 ≥ 44px、ARIA 狀態廣播、錯誤復原焦點定位。</span>
+                  <span class="ca-en" hidden>Full keyboard operability, visible focus indicator (#FFAE3D), min 44px touch targets, ARIA live regions, error recovery focus management.</span>
+                </p>
+              </div>
+            </aside>
+
+            <!-- Workspace Main Panel -->
+            <div class="ca-app-workspace" id="caAppWorkspace">
+              <!-- STEP 1: SERVICE DISCOVERY & APPLICANT SCENARIO -->
+              <section class="ca-flow-step is-visible" id="caStep1" aria-labelledby="caStep1Title">
+                <div class="ca-step-header">
+                  <p class="ca-step-kicker">STEP 01 / 03 · SCENARIO & ELIGIBILITY TRIAGE</p>
+                  <h3 id="caStep1Title" class="ca-step-title">
+                    <span class="ca-zh">01 / 探索服務與確認申辦身分</span>
+                    <span class="ca-en" hidden>01 / Discover Service & Select Scenario</span>
+                  </h3>
+                  <p class="ca-step-desc">
+                    <span class="ca-zh">以「任務為中心」先確認辦理人身分與預計管道，系統將即時產生相對應的示範文件準備清單，避免填表至中途才發現資料不足。</span>
+                    <span class="ca-en" hidden>Selecting whether you are applying for yourself or acting as a representative dynamically updates required sample documents before form filling.</span>
+                  </p>
+                </div>
+
+                <!-- Feature 1: Service Search & Directory (CA-01, CA-02) -->
+                <div class="ca-search-panel" role="search" aria-label="公共服務目錄搜尋">
+                  <label for="caSearchInput" class="ca-form-label">
+                    <span class="ca-zh">搜尋示範公共服務（例如輸入「補助」、「長照」或「身障」）</span>
+                    <span class="ca-en" hidden>Search Services (e.g. "subsidy", "care", "accessibility")</span>
+                  </label>
+                  <div class="ca-search-bar">
+                    <div class="ca-search-input-wrap">
+                      <input type="text" id="caSearchInput" class="ca-search-input" placeholder="搜尋服務名稱或關鍵字..." data-placeholder-zh="搜尋服務名稱或關鍵字..." data-placeholder-en="Search service name or keyword..." aria-label="搜尋服務名稱或關鍵字" autocomplete="off">
+                      <button type="button" class="ca-search-clear-btn" id="caSearchClearBtn" aria-label="清除搜尋字詞" title="清除搜尋字詞">✕</button>
+                    </div>
+                  </div>
+
+                  <!-- Category filter chips -->
+                  <div class="ca-category-chips" role="group" aria-label="服務類別篩選">
+                    <button type="button" class="ca-chip-btn is-active" data-category="all">
+                      <span class="ca-zh">全部服務</span><span class="ca-en" hidden>All</span>
+                    </button>
+                    <button type="button" class="ca-chip-btn" data-category="社會福利與補助">
+                      <span class="ca-zh">社會福利與補助</span><span class="ca-en" hidden>Welfare</span>
+                    </button>
+                    <button type="button" class="ca-chip-btn" data-category="身心障礙服務">
+                      <span class="ca-zh">身心障礙服務</span><span class="ca-en" hidden>Disability</span>
+                    </button>
+                    <button type="button" class="ca-chip-btn" data-category="長期照顧">
+                      <span class="ca-zh">長期照顧</span><span class="ca-en" hidden>Long-Term Care</span>
+                    </button>
+                    <button type="button" class="ca-chip-btn" data-category="居家與照顧支持">
+                      <span class="ca-zh">居家與照顧支持</span><span class="ca-en" hidden>Caregiver</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Service Grid -->
+                <div class="ca-service-grid" id="caServiceGrid" role="region" aria-label="服務項目列表">
+                  <!-- Dynamically rendered via JS -->
+                </div>
+
+                <!-- Empty Search State (CA-02) -->
+                <div class="ca-empty-state" id="caSearchEmptyState" style="display:none;" role="status" aria-live="polite">
+                  <div class="ca-empty-icon" aria-hidden="true">🔍</div>
+                  <h4 class="ca-empty-title">
+                    <span class="ca-zh">查無符合關鍵字的示範服務</span>
+                    <span class="ca-en" hidden>No matching demo services found</span>
+                  </h4>
+                  <p class="ca-empty-desc">
+                    <span class="ca-zh">請嘗試調整搜尋關鍵詞，或點擊下方按鈕返回檢視全部服務列表。</span>
+                    <span class="ca-en" hidden>Try modifying your search term or reset to view all available services.</span>
+                  </p>
+                  <button type="button" class="ca-btn-secondary" id="caSearchResetFilterBtn">
+                    <span class="ca-zh">清除搜尋並顯示全部服務</span>
+                    <span class="ca-en" hidden>Clear search and show all</span>
+                  </button>
+                </div>
+
+                <!-- Feature 2: Applicant Scenario Triage (CA-03, CA-04) -->
+                <fieldset class="ca-fieldset">
+                  <legend class="ca-legend">
+                    <span class="ca-zh">1. 誰要辦理這項服務？（必選）</span>
+                    <span class="ca-en" hidden>1. Who is submitting this application? (Required)</span>
+                  </legend>
+                  <div class="ca-radio-grid">
+                    <label class="ca-radio-label is-checked">
+                      <input type="radio" name="caRole" class="ca-radio-input" value="本人" checked>
+                      <div class="ca-radio-content">
+                        <strong>
+                          <span class="ca-zh">本人辦理</span>
+                          <span class="ca-en" hidden>Self (Applicant)</span>
+                        </strong>
+                        <span>
+                          <span class="ca-zh">申請人自行準備資料並填寫，需備 2 項基本證件。</span>
+                          <span class="ca-en" hidden>Applicant prepares personal documents (2 items).</span>
+                        </span>
+                      </div>
+                    </label>
+
+                    <label class="ca-radio-label">
+                      <input type="radio" name="caRole" class="ca-radio-input" value="代辦人">
+                      <div class="ca-radio-content">
+                        <strong>
+                          <span class="ca-zh">協助他人代辦</span>
+                          <span class="ca-en" hidden>Representative (Agent)</span>
+                        </strong>
+                        <span>
+                          <span class="ca-zh">家屬、受任人或居服代辦，動態增列代辦委託書（共 3 項）。</span>
+                          <span class="ca-en" hidden>Family or agent applying on behalf; adds proxy proof (3 items).</span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ca-fieldset">
+                  <legend class="ca-legend">
+                    <span class="ca-zh">2. 預計使用的辦理管道？（必選）</span>
+                    <span class="ca-en" hidden>2. Preferred Application Channel (Required)</span>
+                  </legend>
+                  <div class="ca-radio-grid">
+                    <label class="ca-radio-label is-checked">
+                      <input type="radio" name="caChannel" class="ca-radio-input" value="線上申辦模擬" checked>
+                      <div class="ca-radio-content">
+                        <strong>
+                          <span class="ca-zh">線上申辦模擬</span>
+                          <span class="ca-en" hidden>Online Portal (Simulation)</span>
+                        </strong>
+                        <span>
+                          <span class="ca-zh">直接在瀏覽器模擬上傳附件與欄位檢查。</span>
+                          <span class="ca-en" hidden>Simulate digital upload and field validation directly.</span>
+                        </span>
+                      </div>
+                    </label>
+
+                    <label class="ca-radio-label">
+                      <input type="radio" name="caChannel" class="ca-radio-input" value="服務中心臨櫃預約">
+                      <div class="ca-radio-content">
+                        <strong>
+                          <span class="ca-zh">服務中心臨櫃預約</span>
+                          <span class="ca-en" hidden>Service Center On-Site</span>
+                        </strong>
+                        <span>
+                          <span class="ca-zh">產生預約核對清單，供前往據點臨櫃專人協助。</span>
+                          <span class="ca-en" hidden>Generate printed checklist for in-person appointment.</span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <!-- Dynamic Document Checklist (CA-03, CA-04) -->
+                <div class="ca-checklist-panel">
+                  <div class="ca-checklist-header">
+                    <h4 class="ca-checklist-title">
+                      <span class="ca-zh">📋 動態示範文件準備清單</span>
+                      <span class="ca-en" hidden>📋 Dynamic Readiness Checklist</span>
+                    </h4>
+                    <span class="ca-checklist-counter" id="caChecklistCounter">1/2 已準備</span>
+                  </div>
+                  <div class="ca-check-items" id="caChecklistContainer">
+                    <!-- Rendered via JS -->
+                  </div>
+                </div>
+
+                <!-- Alert for Step 1 Validation (CA-05) -->
+                <div class="ca-alert-error" id="caStep1Alert" role="alert" aria-live="assertive" tabindex="-1"></div>
+
+                <div class="ca-form-nav">
+                  <span></span>
+                  <button type="button" class="ca-btn-primary" id="caStep1NextBtn">
+                    <span class="ca-zh">下一步：填寫資料與附件 →</span>
+                    <span class="ca-en" hidden>Next: Details & Attachments →</span>
+                  </button>
+                </div>
+              </section>
+
+              <!-- STEP 2: FORM & ATTACHMENT UPLOAD -->
+              <section class="ca-flow-step" id="caStep2" aria-labelledby="caStep2Title">
+                <div class="ca-step-header">
+                  <p class="ca-step-kicker">STEP 02 / 03 · APPLICANT FORM & ATTACHMENTS</p>
+                  <h3 id="caStep2Title" class="ca-step-title">
+                    <span class="ca-zh">02 / 填寫示範申請資料與附件上傳</span>
+                    <span class="ca-en" hidden>02 / Fill Details & Attach Verification</span>
+                  </h3>
+                  <p class="ca-step-desc">
+                    <span class="ca-zh">表單具備即時格式驗證與清楚的錯誤修復指引。請勿輸入真實身分證字號或機敏個資，示範檔案僅存於瀏覽器記憶體。</span>
+                    <span class="ca-en" hidden>Forms feature field validation with explicit recovery instructions. Do not input real sensitive identification.</span>
+                  </p>
+                </div>
+
+                <!-- Alert for Step 2 Validation (CA-07, CA-11) -->
+                <div class="ca-alert-error" id="caStep2Alert" role="alert" aria-live="assertive" tabindex="-1"></div>
+
+                <!-- Field 1: Name -->
+                <div class="ca-form-group" id="caFormNameGroup">
+                  <label for="caFormName" class="ca-form-label">
+                    <span class="ca-zh">測試稱呼</span><span class="ca-en" hidden>Demo Name</span>
+                    <span class="ca-req" aria-label="必填">*</span>
+                  </label>
+                  <p class="ca-form-hint">
+                    <span class="ca-zh">用於介面展示之稱呼（例如：測試使用者 A，至少 2 個字元，請勿輸入真實姓名）。</span>
+                    <span class="ca-en" hidden>Display name for demo purposes (e.g. Test User A).</span>
+                  </p>
+                  <input type="text" id="caFormName" class="ca-input-text" value="測試使用者 A" autocomplete="off" required>
+                  <div class="ca-field-error" role="alert"></div>
+                  <div class="ca-field-success">✓ <span class="ca-zh">稱呼格式正確</span><span class="ca-en" hidden>Name valid</span></div>
+                </div>
+
+                <!-- Field 2: Contact with Format Validation (CA-07, CA-08) -->
+                <div class="ca-form-group" id="caFormContactGroup">
+                  <label for="caFormContact" class="ca-form-label">
+                    <span class="ca-zh">示範聯絡方式</span><span class="ca-en" hidden>Demo Contact</span>
+                    <span class="ca-req" aria-label="必填">*</span>
+                  </label>
+                  <p class="ca-form-hint">
+                    <span class="ca-zh">請輸入手機號碼（例如：0912-345-678）或電子郵件（例如：demo@example.com）。</span>
+                    <span class="ca-en" hidden>Enter a valid format: 0912-345-678 or demo@example.com.</span>
+                  </p>
+                  <input type="text" id="caFormContact" class="ca-input-text" value="0912-345-678" autocomplete="off" required>
+                  <div class="ca-field-error" role="alert"></div>
+                  <div class="ca-field-success">✓ <span class="ca-zh">聯絡格式驗證通過</span><span class="ca-en" hidden>Contact format verified</span></div>
+                </div>
+
+                <!-- Field 3: Consultation Topic -->
+                <div class="ca-form-group">
+                  <label for="caFormTopic" class="ca-form-label">
+                    <span class="ca-zh">申辦諮詢類別</span><span class="ca-en" hidden>Consultation Topic</span>
+                    <span class="ca-req" aria-label="必填">*</span>
+                  </label>
+                  <select id="caFormTopic" class="ca-select">
+                    <option value="生活資源資訊">生活資源資訊 / Living Assistance Info</option>
+                    <option value="輔具評估與無障礙諮詢">輔具評估與無障礙諮詢 / Assistive Evaluation</option>
+                    <option value="居家長照喘息服務">居家長照喘息服務 / Respite Care Services</option>
+                    <option value="綜合業務證明諮詢">綜合業務證明諮詢 / General Inquiries</option>
+                  </select>
+                </div>
+
+                <!-- Field 4: Simulated Attachment Upload (CA-09, CA-10) -->
+                <div class="ca-form-group">
+                  <label class="ca-form-label">
+                    <span class="ca-zh">示範附件檔案上傳</span><span class="ca-en" hidden>Sample File Attachments</span>
+                    <span class="ca-req" aria-label="必填">*</span>
+                  </label>
+                  <p class="ca-form-hint">
+                    <span class="ca-zh">支援格式：PDF / JPG / PNG；單檔上限 10 MB。以下為純前端介面測試，檔案不上傳伺服器。</span>
+                    <span class="ca-en" hidden>Supported formats: PDF, JPG, PNG; max size 10 MB. Local client-side simulation only.</span>
+                  </p>
+
+                  <div class="ca-upload-dropzone" id="caFileDropzone" tabindex="0" role="button" aria-label="點擊或拖曳選取示範附件檔案">
+                    <input type="file" id="caFileInputHidden" class="ca-file-input-hidden" accept=".pdf,.jpg,.jpeg,.png">
+                    <div class="ca-upload-icon" aria-hidden="true">📁</div>
+                    <div class="ca-upload-text">
+                      <strong>
+                        <span class="ca-zh">點擊此處選取檔案，或拖曳檔案至此</span>
+                        <span class="ca-en" hidden>Click to select or drag files here</span>
+                      </strong>
+                      <span>
+                        <span class="ca-zh">僅供介面體驗測試，請勿選取真實機敏個資檔案。</span>
+                        <span class="ca-en" hidden>For test verification only; do not attach real documents.</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Quick Simulator Buttons for Testing QA-09, QA-10 -->
+                  <div class="ca-upload-sim-buttons" aria-label="快速測試按鈕">
+                    <button type="button" class="ca-sim-btn" id="caSimValidPdfBtn" title="測試加入正常 PDF 檔案">
+                      ＋ <span class="ca-zh">加入合規身分證 (PDF, 1.4 MB)</span><span class="ca-en" hidden>Add Valid PDF (1.4 MB)</span>
+                    </button>
+                    <button type="button" class="ca-sim-btn" id="caSimLargePdfBtn" title="測試超出 10MB 上限錯誤 (CA-10)">
+                      ⚠️ <span class="ca-zh">測試超大檔 (PDF, 14.5 MB / 15,204,352 位元組)</span><span class="ca-en" hidden>Test Oversized (14.5 MB / 15,204,352 bytes)</span>
+                    </button>
+                    <button type="button" class="ca-sim-btn" id="caSimInvalidZipBtn" title="測試格式不支援錯誤 (CA-09)">
+                      ✕ <span class="ca-zh">測試不合規格式 (.ZIP)</span><span class="ca-en" hidden>Test Unsupported (.ZIP)</span>
+                    </button>
+                  </div>
+
+                  <!-- Uploaded Files List -->
+                  <div class="ca-attached-files-list" id="caAttachedFilesList" role="list" aria-label="已選取檔案列表">
+                    <!-- Rendered via JS -->
+                  </div>
+                </div>
+
+                <div class="ca-form-nav">
+                  <button type="button" class="ca-btn-secondary" id="caStep2BackBtn">
+                    <span class="ca-zh">← 返回步驟 1 修改情境</span>
+                    <span class="ca-en" hidden>← Back to Step 1</span>
+                  </button>
+                  <button type="button" class="ca-btn-primary" id="caStep2NextBtn">
+                    <span class="ca-zh">下一步：送出前檢查 →</span>
+                    <span class="ca-en" hidden>Next: Review & Confirm →</span>
+                  </button>
+                </div>
+              </section>
+
+              <!-- STEP 3: PRE-SUBMISSION REVIEW -->
+              <section class="ca-flow-step" id="caStep3" aria-labelledby="caStep3Title">
+                <div class="ca-step-header">
+                  <p class="ca-step-kicker">STEP 03 / 03 · PRE-SUBMISSION REVIEW</p>
+                  <h3 id="caStep3Title" class="ca-step-title">
+                    <span class="ca-zh">03 / 申請資料確認與送出檢查</span>
+                    <span class="ca-en" hidden>03 / Review & Confirmation</span>
+                  </h3>
+                  <p class="ca-step-desc">
+                    <span class="ca-zh">送出前請再次核對各項資訊。送出後將產生專屬 DEMO 前綴示範編號，不會建立真實行政案件。</span>
+                    <span class="ca-en" hidden>Please confirm all details before simulated submission. A DEMO reference number will be generated without civic legal effect.</span>
+                  </p>
+                </div>
+
+                <div class="ca-review-card">
+                  <dl>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">申辦服務</span><span class="ca-en" hidden>Service</span></dt>
+                      <dd id="caReviewService">社區資源生活補助示範諮詢</dd>
+                    </div>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">辦理身分</span><span class="ca-en" hidden>Scenario</span></dt>
+                      <dd id="caReviewRole">本人辦理</dd>
+                    </div>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">辦理管道</span><span class="ca-en" hidden>Channel</span></dt>
+                      <dd id="caReviewChannel">線上申辦模擬</dd>
+                    </div>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">測試稱呼</span><span class="ca-en" hidden>Demo Name</span></dt>
+                      <dd id="caReviewName">測試使用者 A</dd>
+                    </div>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">聯絡方式</span><span class="ca-en" hidden>Contact</span></dt>
+                      <dd id="caReviewContact">0912-345-678</dd>
+                    </div>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">文件核取</span><span class="ca-en" hidden>Checklist</span></dt>
+                      <dd id="caReviewDocs">2 / 2 項已準備</dd>
+                    </div>
+                    <div class="ca-review-row">
+                      <dt><span class="ca-zh">示範附件</span><span class="ca-en" hidden>Files</span></dt>
+                      <dd id="caReviewFiles">1 個檔案</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <!-- Alert for Step 3 Validation -->
+                <div class="ca-alert-error" id="caStep3Alert" role="alert" aria-live="assertive" tabindex="-1"></div>
+
+                <div class="ca-form-nav">
+                  <button type="button" class="ca-btn-secondary" id="caStep3BackBtn">
+                    <span class="ca-zh">← 返回步驟 2 修改資料</span>
+                    <span class="ca-en" hidden>← Back to Step 2</span>
+                  </button>
+                  <button type="button" class="ca-btn-primary" id="caStep3SubmitBtn">
+                    <span class="ca-zh">確認建立示範申請 ✓</span>
+                    <span class="ca-en" hidden>Create Demo Application ✓</span>
+                  </button>
+                </div>
+              </section>
+
+              <!-- STEP 4: SUBMITTED STATE & DEMO TRACKING (CA-12) -->
+              <section class="ca-flow-step" id="caStep4" aria-labelledby="caSubmittedHeading">
+                <div class="ca-submission-success">
+                  <div class="ca-success-badge-large">
+                    <span>✓</span>
+                    <span class="ca-zh">示範申請建立完成</span>
+                    <span class="ca-en" hidden>Demo Application Created</span>
+                  </div>
+
+                  <h3 id="caSubmittedHeading" class="ca-step-title" style="margin-bottom: 12px;">
+                    <span class="ca-zh">模擬進度已啟動</span>
+                    <span class="ca-en" hidden>Demonstration Tracking Active</span>
+                  </h3>
+
+                  <p style="color: var(--ca-muted); max-width: 650px; margin: 0 auto 20px;">
+                    <span class="ca-zh">展示編號僅供作品集流程追蹤測試，未送至任何外部或公部門系統。</span>
+                    <span class="ca-en" hidden>Reference ID is generated solely for design portfolio inspection; no real data has been sent.</span>
+                  </p>
+
+                  <div class="ca-demo-ref-number" id="caSubmittedRefNum">DEMO-CA-2026-001</div>
+
+                  <!-- Simulated Tracking Status Timeline -->
+                  <div class="ca-tracking-timeline" role="region" aria-label="示範申請處理進度時間軸">
+                    <div class="ca-timeline-node is-done">
+                      <h4 class="ca-timeline-title">
+                        <span class="ca-zh">01 / 示範申請資料已接收</span>
+                        <span class="ca-en" hidden>01 / Demo Application Received</span>
+                      </h4>
+                      <p class="ca-timeline-desc">
+                        <span class="ca-zh">系統已建立展示編號與非機敏測試快照。</span>
+                        <span class="ca-en" hidden>Snapshot and test reference recorded.</span>
+                      </p>
+                    </div>
+                    <div class="ca-timeline-node is-current">
+                      <h4 class="ca-timeline-title">
+                        <span class="ca-zh">02 / 文件規格模擬檢核中</span>
+                        <span class="ca-en" hidden>02 / Document Readiness Verification</span>
+                      </h4>
+                      <p class="ca-timeline-desc">
+                        <span class="ca-zh">目前進度：附件解析完成，待確認無缺漏項目。</span>
+                        <span class="ca-en" hidden>In progress: attachment format check completed.</span>
+                      </p>
+                    </div>
+                    <div class="ca-timeline-node">
+                      <h4 class="ca-timeline-title">
+                        <span class="ca-zh">03 / 服務管道銜接與通知</span>
+                        <span class="ca-en" hidden>03 / Service Coordination & Notice</span>
+                      </h4>
+                      <p class="ca-timeline-desc">
+                        <span class="ca-zh">模擬完成後發送進度通知或專人臨櫃輔導。</span>
+                        <span class="ca-en" hidden>Simulated notification on scheduled appointment.</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 36px;">
+                    <button type="button" class="ca-btn-secondary" id="caSubmittedResetBtn">
+                      ↻ <span class="ca-zh">重新測試完整流程</span><span class="ca-en" hidden>Reset & Test Again</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16-Shot Gallery Section (#ca-gallery) -->
+    <section id="ca-gallery" class="ca-gallery-section" aria-labelledby="ca-gallery-h2">
+      <div class="ca-gallery-container">
+        <div class="ca-gallery-header">
+          <p class="ca-kicker">02 / CASE PLATES & VISUAL MASTERS</p>
+          <h2 id="ca-gallery-h2" class="ca-gallery-h2">
+            <span class="ca-zh">16 張完整設計圖版與分鏡</span>
+            <span class="ca-en" hidden>16 Deliverable Design Plates</span>
+          </h2>
+          <p class="ca-gallery-lead ca-zh">
+            點擊任一張作品圖版可開啟 2560×1440 高解析度檢視燈箱，支援鍵盤 ← / → 翻頁與 ESC 鍵關閉。
+          </p>
+          <p class="ca-gallery-lead ca-en" hidden>
+            Click any plate to open the full 2560×1440 master lightbox. Supports keyboard navigation (← / →) and ESC to close.
+          </p>
+        </div>
+
+        <div class="ca-gallery-grid">
+          <!-- SHOT 01 -->
+          <article class="ca-card-shot" data-shot="01">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 01 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-01.jpg" alt="SHOT 01 公共服務整合體驗" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 01</span>
+              <span class="ca-card-source-tag">生成圖版｜重取樣</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">01 / 公共服務整合體驗</span>
+                  <span class="ca-en" hidden>01 / Integrated Civic Experience</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">展示品牌識別、數位入口與公共服務接觸點的整體設計方向。</p>
+                <p class="ca-card-desc ca-en" hidden>A unified service identity across digital and physical touchpoints.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 01">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 02 -->
+          <article class="ca-card-shot" data-shot="02">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 02 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-02.jpg" alt="SHOT 02 品牌識別規範" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 02</span>
+              <span class="ca-card-source-tag">生成圖版｜重取樣</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">02 / 品牌識別規範</span>
+                  <span class="ca-en" hidden>02 / Brand Identity System</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">以藍色幾何識別、字體階層與服務圖示建立可延伸的品牌系統。</p>
+                <p class="ca-card-desc ca-en" hidden>A flexible identity system with geometric symbolism and clear typography.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 02">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 03 -->
+          <article class="ca-card-shot" data-shot="03">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 03 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-03.jpg" alt="SHOT 03 公共空間與導視" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 03</span>
+              <span class="ca-card-source-tag">生成圖版｜重取樣</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">03 / 公共空間與導視</span>
+                  <span class="ca-en" hidden>03 / Service Center & Wayfinding</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">以服務中心情境說明櫃檯、導視及輔助服務的視覺應用。</p>
+                <p class="ca-card-desc ca-en" hidden>Environmental applications for guidance and assisted access.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 03">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 04 -->
+          <article class="ca-card-shot" data-shot="04">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 04 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-04.jpg" alt="SHOT 04 紙本申辦指南" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 04</span>
+              <span class="ca-card-source-tag">生成圖版｜重取樣</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">04 / 紙本申辦指南</span>
+                  <span class="ca-en" hidden>04 / Printed Service Guidance</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">以手冊、文件清單與表單排版呈現實體資訊設計。</p>
+                <p class="ca-card-desc ca-en" hidden>Printed materials that clarify procedures and requirements.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 04">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 05 -->
+          <article class="ca-card-shot" data-shot="05">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 05 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-05.jpg" alt="SHOT 05 自助申辦機台" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 05</span>
+              <span class="ca-card-source-tag">裁切合成＋原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">05 / 自助申辦機台</span>
+                  <span class="ca-en" hidden>05 / Self-Service Kiosk</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">示範現場服務機台的入口分類、協助方式與操作目的。</p>
+                <p class="ca-card-desc ca-en" hidden>An illustrative kiosk environment for on-site service discovery.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 05">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 06 -->
+          <article class="ca-card-shot" data-shot="06">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 06 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-06.jpg" alt="SHOT 06 使用者情境分析" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 06</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">06 / 使用者情境分析</span>
+                  <span class="ca-en" hidden>06 / Citizen Scenarios</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">以長者、家庭照顧者及輔助科技使用者的假設需求規劃服務。</p>
+                <p class="ca-card-desc ca-en" hidden>Scenario-based design considerations across different access needs.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 06">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 07 -->
+          <article class="ca-card-shot" data-shot="07">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 07 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-07.jpg" alt="SHOT 07 桌機服務入口" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 07</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">07 / 桌機服務入口</span>
+                  <span class="ca-en" hidden>07 / Desktop Service Directory</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">用可編輯 HTML/CSS 呈現搜尋、分類與申辦指南資訊架構。</p>
+                <p class="ca-card-desc ca-en" hidden>Browser-rendered desktop interface for service search and discovery.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 07">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 08 -->
+          <article class="ca-card-shot" data-shot="08">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 08 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-08.jpg" alt="SHOT 08 行動端服務旅程" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 08</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">08 / 行動端服務旅程</span>
+                  <span class="ca-en" hidden>08 / Mobile-First Journey</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">將服務探索、指南與身分選擇分成三種清楚的手機操作狀態。</p>
+                <p class="ca-card-desc ca-en" hidden>Three distinct mobile states, designed around one task at a time.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 08">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 09 -->
+          <article class="ca-card-shot" data-shot="09">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 09 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-09.jpg" alt="SHOT 09 服務藍圖" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 09</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">09 / 服務藍圖</span>
+                  <span class="ca-en" hidden>09 / Service Blueprint</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">對照民眾、平台及服務人員三個角色的五階段協作流程。</p>
+                <p class="ca-card-desc ca-en" hidden>A multi-actor blueprint linking citizen, platform and staff workflows.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 09">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 10 -->
+          <article class="ca-card-shot" data-shot="10">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 10 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-10.jpg" alt="SHOT 10 申請身分分流" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 10</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">10 / 申請身分分流</span>
+                  <span class="ca-en" hidden>10 / Applicant & Representative Paths</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">以不同辦理身分切換示範規則與文件清單。</p>
+                <p class="ca-card-desc ca-en" hidden>Conditional guidance based on sample applicant scenarios.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 10">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 11 -->
+          <article class="ca-card-shot" data-shot="11">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 11 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-11.jpg" alt="SHOT 11 動態文件清單" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 11</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">11 / 動態文件清單</span>
+                  <span class="ca-en" hidden>11 / Dynamic Document Checklist</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">呈現本人與代辦在已準備、待準備及缺件狀態的差異。</p>
+                <p class="ca-card-desc ca-en" hidden>Readiness states across applicant and representative scenarios.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 11">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 12 -->
+          <article class="ca-card-shot" data-shot="12">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 12 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-12.jpg" alt="SHOT 12 分步表單" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 12</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">12 / 分步表單</span>
+                  <span class="ca-en" hidden>12 / Progressive Application Form</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">展示欄位群組、必填提示、返回修改及操作說明。</p>
+                <p class="ca-card-desc ca-en" hidden>Structured form stages with guidance and recoverable navigation.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 12">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 13 -->
+          <article class="ca-card-shot" data-shot="13">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 13 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-13.jpg" alt="SHOT 13 錯誤提示與修復" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 13</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">13 / 錯誤提示與修復</span>
+                  <span class="ca-en" hidden>13 / Error & Recovery States</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">同一欄位呈現需要修改與修正完成兩種不同狀態。</p>
+                <p class="ca-card-desc ca-en" hidden>Paired validation and corrected states with explicit guidance.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 13">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 14 -->
+          <article class="ca-card-shot" data-shot="14">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 14 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-14.jpg" alt="SHOT 14 附件上傳與核對" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 14</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">14 / 附件上傳與核對</span>
+                  <span class="ca-en" hidden>14 / Upload & Pre-Submission Review</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">呈現選檔、格式檢查、缺件與返回補件。</p>
+                <p class="ca-card-desc ca-en" hidden>Distinct file selection, validation and review states.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 14">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 15 -->
+          <article class="ca-card-shot" data-shot="15">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 15 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-15.jpg" alt="SHOT 15 示範案件進度" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 15</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">15 / 示範案件進度</span>
+                  <span class="ca-en" hidden>15 / Demonstration Case Tracking</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">用示範編號與進度時間軸說明確認與狀態追蹤。</p>
+                <p class="ca-card-desc ca-en" hidden>Illustrative confirmation and tracking with an explicitly demo-only ID.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 15">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- SHOT 16 -->
+          <article class="ca-card-shot" data-shot="16">
+            <button type="button" class="ca-card-img-btn" aria-label="檢視 SHOT 16 高解析度圖版">
+              <img class="ca-card-img" src="assets/mockups/shot-16.jpg" alt="SHOT 16 無障礙驗收規範" loading="lazy">
+              <span class="ca-card-badge-num">SHOT 16</span>
+              <span class="ca-card-source-tag">Chromium 原生排版</span>
+            </button>
+            <div class="ca-card-content">
+              <div>
+                <h3 class="ca-card-title">
+                  <span class="ca-zh">16 / 無障礙驗收規範</span>
+                  <span class="ca-en" hidden>16 / Accessibility Verification Plan</span>
+                </h3>
+                <p class="ca-card-desc ca-zh">列出對比、鍵盤焦點、語意及狀態提示的實測要求。</p>
+                <p class="ca-card-desc ca-en" hidden>Testing requirements for contrast, keyboard focus, semantics and status updates.</p>
+              </div>
+              <div class="ca-card-action-bar">
+                <button type="button" class="ca-btn-lightbox-open" aria-label="放大檢視 SHOT 16">
+                  🔍 <span class="ca-zh">放大檢視 (2560×1440)</span><span class="ca-en" hidden>View Master</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Narrative Sections (Brief, Response, Evidence, Value) -->
+    <section id="ca-narrative" class="ca-narrative-section">
+      <div class="ca-narrative-container">
+        <!-- PROJECT BRIEF -->
+        <article class="ca-narrative-block">
+          <p class="ca-narrative-kicker">03 / PROJECT BRIEF</p>
+          <h2 class="ca-narrative-h2">
+            <span class="ca-zh">專案命題與設計挑戰</span>
+            <span class="ca-en" hidden>Project Brief & Challenges</span>
+          </h2>
+          <p class="ca-narrative-p ca-zh">
+            公共服務常同時提供線上申辦與臨櫃協助，但服務分類、申請條件與文件準備方式容易分散在不同頁面。初次申請者必須自行判斷符合哪一類服務；需要代辦或輔助操作的使用者，也可能在過程中遇到額外阻礙。
+          </p>
+          <p class="ca-narrative-p ca-zh">
+            本案採用以使用者任務為中心的服務設計方法，整合數位入口、表單流程與現場服務接觸點，建立可重複使用的設計規範與原型架構。
+          </p>
+          <p class="ca-narrative-p ca-en" hidden>
+            Public-facing services often involve multiple channels, application requirements and document lists. First-time applicants must determine which service fits their needs, while caregivers or people using assistive technology may encounter additional friction along the way.
+          </p>
+          <p class="ca-narrative-p ca-en" hidden>
+            This design study develops a user-centered framework for service discovery, guided applications and assisted access. Its purpose is to demonstrate service design and interface planning, not to represent an active government service.
+          </p>
+        </article>
+
+        <!-- DESIGN RESPONSE -->
+        <article class="ca-narrative-block">
+          <p class="ca-narrative-kicker">04 / DESIGN RESPONSE</p>
+          <h2 class="ca-narrative-h2">
+            <span class="ca-zh">五大設計回應策略</span>
+            <span class="ca-en" hidden>Five Design Response Pillars</span>
+          </h2>
+          <div class="ca-response-list">
+            <div class="ca-response-item">
+              <strong class="ca-zh">01 服務資訊架構：</strong>
+              <span class="ca-zh">將常見需求整理成易理解的分類，以搜尋、申辦指南及協助入口，減少使用者在不同頁面尋找資訊的負擔。</span>
+              <strong class="ca-en" hidden>01 Service Architecture: </strong>
+              <span class="ca-en" hidden>Clear categories, search and contextual guidance help people locate relevant services without cognitive friction.</span>
+            </div>
+            <div class="ca-response-item">
+              <strong class="ca-zh">02 情境式資格引導：</strong>
+              <span class="ca-zh">先確認本人辦理或協助代辦，再呈現相對應的示範文件清單，避免填寫到一半才發現資料不足。資格規則僅供流程設計展示，不代表真實法規認定。</span>
+              <strong class="ca-en" hidden>02 Scenario-based Guidance: </strong>
+              <span class="ca-en" hidden>Applicant and representative paths reveal different sample document requirements before form completion.</span>
+            </div>
+            <div class="ca-response-item">
+              <strong class="ca-zh">03 可修復的表單體驗：</strong>
+              <span class="ca-zh">表單依任務分段，保留返回修改的能力，並於欄位附近明確說明錯誤原因與修正方法。</span>
+              <strong class="ca-en" hidden>03 Recoverable Forms: </strong>
+              <span class="ca-en" hidden>Progressive steps and precise validation messages make errors easier to locate and correct without data loss.</span>
+            </div>
+            <div class="ca-response-item">
+              <strong class="ca-zh">04 跨接觸點識別：</strong>
+              <span class="ca-zh">以 Civic Blue 與高可讀性的文字階層，統一數位服務、紙本手冊、自助申辦機及服務中心導視的視覺語言。</span>
+              <strong class="ca-en" hidden>04 Cross-channel Identity: </strong>
+              <span class="ca-en" hidden>A consistent visual language connects the digital portal, printed guidance, service kiosk and environmental signage.</span>
+            </div>
+            <div class="ca-response-item">
+              <strong class="ca-zh">05 無障礙設計規範：</strong>
+              <span class="ca-zh">針對字級、對比、鍵盤焦點、互動目標與狀態通知建立原型驗收項目。符合性須經實際瀏覽器及輔助科技測試確認，不能以圖版作為認證證據。</span>
+              <strong class="ca-en" hidden>05 Accessible Design Specifications: </strong>
+              <span class="ca-en" hidden>Typography, contrast, focus visibility, keyboard operation and status communication are defined as implementation and testing requirements.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- DESIGN EVIDENCE & VALUE -->
+        <article class="ca-narrative-block">
+          <p class="ca-narrative-kicker">05 / DESIGN EVIDENCE & VALUE</p>
+          <h2 class="ca-narrative-h2">
+            <span class="ca-zh">設計成果與商業價值</span>
+            <span class="ca-en" hidden>Design Evidence & Commercial Value</span>
+          </h2>
+          <p class="ca-narrative-p ca-zh">
+            本次視覺交付涵蓋品牌識別、公共服務中心應用、紙本申辦手冊、服務藍圖、桌機及行動介面、身分與文件分支、表單驗證、錯誤修復、附件狀態、示範案件追蹤及無障礙驗收規範。這件作品展示如何把多角色參與的行政服務，整理成可理解的資訊架構與可維護的介面系統，也說明品牌設計如何延伸到現場服務與紙本溝通。
+          </p>
+          <p class="ca-narrative-p ca-zh">
+            <strong>不宣稱實測完成率、節省時間百分比、使用者滿意度或真實公部門導入成果。</strong> 後續若進入實際開發與測試，可衡量任務完成率、第一次送出錯誤率、缺件比例、錯誤修復時間，以及使用輔助科技完成任務的情況。
+          </p>
+          <p class="ca-narrative-p ca-en" hidden>
+            The case includes visual identity, environmental applications, printed materials, service blueprints, desktop and mobile interfaces, conditional document checklists, form validation states, upload flows, status tracking and an accessibility validation plan. Interactive behavior is implemented and verified directly in the client browser.
+          </p>
+          <p class="ca-narrative-p ca-en" hidden>
+            This work demonstrates a practical approach to service design for public-facing organizations, social-service providers, healthcare administration and complex enterprise workflows. No real client engagement, measured business outcome or official government endorsement is claimed.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Lightbox (2560x1440 High-Res Viewer) -->
+  <div class="ca-lightbox" id="caLightbox" role="dialog" aria-modal="true" aria-label="圖版燈箱檢視" aria-hidden="true">
+    <div class="ca-lightbox-dialog" role="document">
+      <div class="ca-lightbox-topbar">
+        <div class="ca-lightbox-title-wrap">
+          <span class="ca-lightbox-num" id="caLightboxNum">SHOT 01 / 16</span>
+          <h3 class="ca-lightbox-title" id="caLightboxTitle">公共服務整合體驗</h3>
+        </div>
+        <button type="button" class="ca-lightbox-close-btn" id="caLightboxCloseBtn" aria-label="關閉燈箱 (ESC)">✕</button>
+      </div>
+
+      <div class="ca-lightbox-body">
+        <button type="button" class="ca-lightbox-nav-btn ca-lightbox-prev" id="caLightboxPrevBtn" aria-label="上一張 (方向鍵左)">‹</button>
+        <img class="ca-lightbox-img" id="caLightboxImg" src="assets/shots/shot-01.png" alt="高解析度設計圖版">
+        <button type="button" class="ca-lightbox-nav-btn ca-lightbox-next" id="caLightboxNextBtn" aria-label="下一張 (方向鍵右)">›</button>
+      </div>
+
+      <div class="ca-lightbox-footer">
+        <span id="caLightboxCaption">展示品牌識別、數位入口與公共服務接觸點的整體設計方向。</span>
+        <span class="ca-meta-label" id="caLightboxSource">Source: 2560×1440</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="ca-footer" role="contentinfo">
+    <div class="ca-footer-container">
+      <div class="ca-footer-disclaimer">
+        <p class="ca-zh" style="margin: 0 0 6px;">
+          <strong>CIVIC ACCESS 為公共服務體驗設計案例，非政府官方申辦入口。</strong> 示範資格、文件與案件狀態不具行政效力；互動原型不收集真實個人資料。
+        </p>
+        <p class="ca-en" hidden style="margin: 0 0 6px;">
+          <strong>CIVIC ACCESS is a service-design portfolio project, not an official government application portal.</strong> Eligibility rules, document requirements and case statuses are illustrative. The prototype does not collect real personal information.
+        </p>
+        <p style="margin: 0; font-size: 0.8rem; color: #536477;">
+          FLTL × HOWARD HUANG · CASE 12 / 15
+        </p>
+      </div>
+      <div class="ca-footer-links">
+        <button type="button" class="ca-btn-reset-demo" id="caResetFooterBtn" style="color: #A0B0C4; border-color: #2B3847;">
+          ↻ <span class="ca-zh">重設原型狀態</span><span class="ca-en" hidden>Reset State</span>
+        </button>
+        <a href="../../index.html">← <span class="ca-zh">返回作品首頁</span><span class="ca-en" hidden>Portfolio Home</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/civic-case.js?v=20261103-v6"></script>
+</body>
+</html>
+
