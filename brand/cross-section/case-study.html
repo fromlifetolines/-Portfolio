@@ -18,9 +18,9 @@
     <div class="cs-headright">
       <span class="cs-number">PORTFOLIO 11 / 15</span>
       <div class="cs-font-controls" role="group" aria-label="字級縮放">
-        <button type="button" data-font="sm" aria-label="縮小字體">A-</button>
-        <button type="button" data-font="md" class="active" aria-label="預設字體">A</button>
-        <button type="button" data-font="lg" aria-label="放大字體">A+</button>
+        <button type="button" data-font="sm" aria-label="縮小字體" aria-pressed="false">A-</button>
+        <button type="button" data-font="md" class="active" aria-label="預設字體" aria-pressed="true">A</button>
+        <button type="button" data-font="lg" aria-label="放大字體" aria-pressed="false">A+</button>
       </div>
       <div class="cs-languages" role="group" aria-label="選擇語言">
         <button type="button" data-lang="zh-TW" aria-pressed="true">中</button>
@@ -33,20 +33,6 @@
     </div>
   </header>
 
-  <!-- Concept Notice Banner -->
-  <div class="cs-gate-banner" role="status">
-    <div class="cs-gate-banner-inner">
-      <div>
-        <span class="cs-gate-tag">CONCEPT STUDY</span>
-        <span class="cs-zh">【自主概念提案】本案為建築文化出版機構與數位期刊概念研究，展示之封面與印刷裝訂為設計提案，非實體發行刊物。</span>
-        <span class="cs-en" hidden>[Independent Concept Study] Architectural culture publisher & digital journal case study. Print covers and bindings are editorial proposals.</span>
-      </div>
-      <a href="#cs-artwork" style="text-decoration: underline; font-weight: 600;">
-        <span class="cs-zh">瀏覽 16 幕設計圖板 →</span><span class="cs-en" hidden>View 16 Design Plates →</span>
-      </a>
-    </div>
-  </div>
-
   <main id="cs-main">
     <!-- Hero / Masthead Section -->
     <section id="cs-top" class="cs-hero">
@@ -57,10 +43,10 @@
           <span class="cs-en" hidden>Reading Space,<br>and the Marks of Time.</span>
         </h1>
         <p class="cs-lead cs-zh">
-          CROSS SECTION 是為建築文化出版機構量身打造的實體出版與數位閱讀平台概念。專注於長篇空間論述、材料紋理研究與編輯排版實驗；以清楚的章節檢索與沉浸閱讀體驗，讓建築在完工照片之外，被細緻地理解與記錄。
+          CROSS SECTION 是以建築文化為題的出版識別與數位閱讀設計。完成雙期刊物封面、六篇中英專文編輯排版、出版應用視覺，以及具備搜尋、收藏與字級調整的閱讀原型。
         </p>
         <p class="cs-lead cs-en" hidden>
-          CROSS SECTION is an independent concept for an architectural culture publisher. Exploring physical editorial design and responsive digital longform reading across spatial theory, materiality, and cultural observations.
+          CROSS SECTION is an architectural culture publishing identity and digital reading design project, including two issue covers, six bilingual editorial layouts, publication applications and a functional reading prototype with search, bookmarks and adjustable text size.
         </p>
         <div class="cs-meta-grid">
           <div class="cs-meta-item">
@@ -76,8 +62,9 @@
             <span>2 ISSUES · 6 ORIGINAL ESSAYS (FICTIONAL EDITORIAL)</span>
           </div>
           <div class="cs-meta-item">
-            <strong>STATUS</strong>
-            <span>CONCEPT PROTOTYPE / PRODUCTION RELEASE</span>
+            <strong>PROJECT TYPE</strong>
+            <span class="cs-zh">專案類型｜獨立設計提案；刊物為出版視覺提案，未實體發行。</span>
+            <span class="cs-en" hidden>Independent design project · Publication visuals are proposals, not physically released issues.</span>
           </div>
         </div>
       </div>
@@ -114,7 +101,7 @@
           <div class="cs-issue-box-header">
             <span id="cs-issue-badge" style="font-family:var(--cs-font-mono); font-size:0.78rem; font-weight:700; color:var(--cs-red);">EDITION 01 / 2026</span>
             <h3 id="cs-issue-title" style="font-family:var(--cs-font-serif); font-size:clamp(1.5rem, 3.5vw, 2.2rem); margin:6px 0 10px;">空間的閱讀方式</h3>
-            <p id="cs-issue-deck" style="color:var(--cs-gray); font-size:1.05rem; margin:0; line-height:1.5;">形式退後，讓行為與尺度浮現。</p>
+            <p id="cs-issue-deck" class="cs-issue-deck">形式退後，讓行為與尺度浮現。</p>
           </div>
           <div id="cs-issue-articles-toc"></div>
         </div>
@@ -178,19 +165,23 @@
       </div>
     </section>
 
-    <!-- Governance Section (#cs-governance) -->
-    <section id="cs-governance" class="cs-section" style="background: #E8E4DA;">
+    <!-- Project Notes Section (#cs-governance) -->
+    <section id="cs-governance" class="cs-section" style="background: #E8E4DA; padding: 48px 0;">
       <div class="cs-section-inner" style="max-width: 800px; text-align: center; margin: 0 auto;">
-        <p class="cs-kicker">PROJECT GOVERNANCE & COMPLIANCE</p>
-        <h2 style="font-family: var(--cs-font-serif); font-size: 2rem; margin-bottom: 16px;">
-          <span class="cs-zh">自主概念出版專案聲明</span>
-          <span class="cs-en" hidden>Independent Concept Disclaimer</span>
-        </h2>
-        <p style="color: #444440; font-size: 0.95rem; line-height: 1.7;">
-          CROSS SECTION 為 HOWARD HUANG 個人作品集第 11 件自主概念專案（Self-Initiated Concept Case Study）。所有刊物名稱、專題文章、作者與圖說皆為原創示範文本；不涉及真實期刊發行、採訪授權、訂閱收費或第三方背書。
-        </p>
+        <details class="cs-project-notes">
+          <summary>
+            <span class="cs-zh">設計註記（Project Notes）</span>
+            <span class="cs-en" hidden>Project Notes</span>
+          </summary>
+          <p class="cs-zh">
+            CROSS SECTION 為 HOWARD HUANG 個人作品集第 11 件獨立設計提案（Independent Design Project）。所有刊物名稱、專題文章、作者與圖說皆為原創示範文本；展示出版視覺提案與數位閱讀體驗，非實體發行刊物，不涉及真實期刊發行、採訪授權、訂閱收費或第三方背書。
+          </p>
+          <p class="cs-en" hidden>
+            CROSS SECTION is an independent design project in Howard Huang's portfolio. All publication titles, essays, and visual plates are original design demonstration content. Physical issue visuals are design proposals rather than mass-market distributed publications.
+          </p>
+        </details>
         <div style="margin-top: 24px;">
-          <a href="../../index.html#works" class="cs-btn-sm cs-btn-dark" style="display: inline-block; padding: 12px 24px;">
+          <a href="../../index.html#selected-work" class="cs-btn-sm cs-btn-dark" style="display: inline-block; padding: 12px 24px;">
             <span class="cs-zh">返回作品集總覽</span><span class="cs-en" hidden>Back to Portfolio Works</span> ↗
           </a>
         </div>
@@ -209,7 +200,7 @@
       <div class="cs-reader-deck" id="cs-reader-deck">一棟建築不只由牆、窗與樓層定義。</div>
 
       <div class="cs-reader-meta">
-        <div><strong style="color:var(--cs-ink);">AUTHOR:</strong> <span id="cs-reader-author">CROSS SECTION 編輯部（虛構）</span></div>
+        <div><strong style="color:var(--cs-ink);">AUTHOR:</strong> <span id="cs-reader-author">CROSS SECTION 編輯部（編輯企劃署名）</span></div>
         <div><strong style="color:var(--cs-ink);">ISSUE:</strong> <span id="cs-reader-issue">CS-ISS-001 (2026)</span></div>
         <div><strong style="color:var(--cs-ink);">READING TIME:</strong> <span>~3 min demo</span></div>
       </div>

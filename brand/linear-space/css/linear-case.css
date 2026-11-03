@@ -1949,6 +1949,37 @@ main {
   margin-top: 24px;
 }
 
+.ls-project-notes {
+  border: 1px solid var(--ls-stone-border);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  margin-top: 24px;
+  padding: 0;
+}
+
+.ls-project-notes > summary {
+  padding: 16px 20px;
+  font-family: var(--ls-font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ls-stone-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ls-project-notes > summary:hover {
+  color: var(--ls-stone-light);
+}
+
+.ls-project-notes[open] > summary {
+  border-bottom: 1px solid var(--ls-stone-border);
+}
+
+.ls-project-notes .ls-disclosure-grid {
+  padding: 24px 20px;
+}
+
 .ls-disclosure-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
