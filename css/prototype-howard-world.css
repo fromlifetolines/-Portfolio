@@ -255,6 +255,22 @@ body[data-nav-theme="dark"] .btn-lang.is-active {
   height: 16px;
 }
 
+/* WORK / 作品：專屬 2×2 作品牆圖示，不影響共用膠囊按鈕 */
+#navWorkBtn .btn-store-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+@media (max-width: 600px) {
+  #navWorkBtn .btn-store-icon {
+    width: 16px;
+    height: 16px;
+    flex-basis: 16px;
+  }
+}
+
 /* White Pill Hamburger Button */
 .nav-ham {
   display: flex;
