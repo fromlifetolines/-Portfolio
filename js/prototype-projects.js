@@ -30,8 +30,8 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '品牌識別 / 視覺包裝 / 產品系統'
     },
     projectType: {
-      en: 'Self-Initiated Brand Concept',
-      'zh-TW': '自主品牌概念提案'
+      en: 'Tea Brand Identity & Packaging',
+      'zh-TW': '精品茶品牌識別與包裝設計'
     },
     description: {
       en: 'Contemporary Taiwanese tea brand identity featuring four coordinated tea products, editorial packaging and a complete visual system.',
@@ -52,11 +52,11 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '品牌識別 / 包裝工程結構 / 數位點餐'
     },
     projectType: {
-      en: 'Self-Initiated Brand Concept',
-      'zh-TW': '自主品牌概念提案'
+      en: 'Hospitality Identity & Packaging',
+      'zh-TW': '餐飲品牌識別與包裝系統'
     },
     description: {
-      en: 'Contemporary Neapolitan pizzeria and bakery brand identity, featuring a three-size concept packaging system, editable vector dielines, and a responsive digital ordering experience.',
+      en: 'Contemporary Neapolitan pizzeria and bakery brand identity, featuring a three-size structural packaging system, editable vector dielines, and a responsive digital ordering experience.',
       'zh-TW': '當代義式柴燒窯烤披薩與烘焙品牌識別，結合三尺寸可編輯包裝工程、展開刀模圖層系統與自適應線上點餐平台。'
     },
     cover: 'brand/forno-27/assets/mockups/shot-06-v5.jpg',
@@ -74,12 +74,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '整合廣告企劃 / 運動視覺識別'
     },
     projectType: {
-      en: 'Independent Concept Project',
-      'zh-TW': '自主概念企劃'
+      en: 'Night Run Campaign & Art Direction',
+      'zh-TW': '城市夜跑活動與廣告視覺'
     },
     description: {
-      en: 'Independent urban night running campaign identity across three distance tiers, outdoor touchpoints, editorial guide and digital UI experiences.',
-      'zh-TW': '以城市夜間路跑文化為背景的整合廣告概念企劃，涵蓋三種挑戰級別識別、戶外燈箱看板、賽事實體刊物與自適應數位報名體驗。'
+      en: 'Urban night running campaign identity across three distance tiers, outdoor touchpoints, editorial guide and digital UI experiences.',
+      'zh-TW': '以城市夜間路跑文化為核心的整合廣告與動態識別企劃，涵蓋三種挑戰級別識別、戶外燈箱看板、賽事實體刊物與自適應數位報名體驗。'
     },
     cover: 'brand/split-09/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/split-09/assets/mockups/shot-01.jpg',
@@ -96,12 +96,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '戶外機能裝備／品牌識別／產品概念設計'
     },
     projectType: {
-      en: 'Self-Initiated Brand Concept',
-      'zh-TW': '自主品牌概念提案'
+      en: 'Outdoor Gear Identity & Product Graphics',
+      'zh-TW': '戶外裝備品牌與產品視覺'
     },
     description: {
-      en: 'An independent outdoor equipment brand concept featuring identity, expedition gear, packaging, campaign visuals and digital product interfaces.',
-      'zh-TW': '以山岳環境與機能裝備為題的自主品牌提案，呈現標誌識別、裝備概念、包裝設計、形象廣告與數位商品介面。'
+      en: 'Modular outdoor equipment brand visual architecture, featuring gear identity, structural packaging, campaign visuals and digital product interfaces.',
+      'zh-TW': '以山岳環境與機能裝備為題的品牌視覺系統，呈現標誌識別、裝備塗裝、包裝設計、形象廣告與數位商品介面。'
     },
     cover: 'brand/atlas-ops/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/atlas-ops/assets/mockups/shot-01.jpg',
@@ -118,12 +118,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '工業零組件貿易／B2B 採購平台／UI/UX 設計'
     },
     projectType: {
-      en: 'Independent Concept Project',
-      'zh-TW': '自主概念設計提案'
+      en: 'B2B Procurement Platform & UX',
+      'zh-TW': 'B2B 採購平台與介面設計'
     },
     description: {
-      en: 'A conceptual industrial sourcing and procurement experience featuring part-number search, technical comparison, tiered pricing, RFQ and approval workflows.',
-      'zh-TW': '為虛構工業貿易企業設計的 B2B 採購平台概念，展示料號搜尋、技術規格比較、階梯報價、詢價單與內部簽核體驗。'
+      en: 'An industrial sourcing and procurement platform interface featuring part-number search, technical comparison, tiered pricing, RFQ and approval workflows.',
+      'zh-TW': '工業零組件貿易 B2B 採購平台介面設計，展示料號搜尋、技術規格比較、階梯報價、詢價單與內部簽核體驗。'
     },
     cover: 'brand/northline-trade/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/northline-trade/assets/mockups/shot-01.jpg',
@@ -140,12 +140,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '保養品牌識別／包裝概念／數位體驗'
     },
     projectType: {
-      en: 'Self-Initiated Brand Concept',
-      'zh-TW': '自主品牌概念提案'
+      en: 'Skincare Identity & Packaging',
+      'zh-TW': '保養品牌識別與產品包裝'
     },
     description: {
-      en: 'An independent premium daily skincare concept spanning a three-product ritual, packaging studies, editorial imagery and an interactive routine builder.',
-      'zh-TW': '高級日常保養自主品牌概念，整合三款產品識別、包裝結構探索、編輯式商品攝影與可操作的保養步驟設計體驗。'
+      en: 'A premium daily skincare brand identity and packaging system, spanning a three-product ritual, structural packaging, editorial imagery and an interactive routine builder.',
+      'zh-TW': '高級日常保養品牌識別與產品包裝系統，整合三款核心產品視覺、包裝結構、編輯式商品攝影與互動式保養步驟體驗。'
     },
     cover: 'brand/forme-lab/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/forme-lab/assets/mockups/shot-01.jpg',
@@ -162,12 +162,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '建築空間概念／商業室內體驗／環境識別'
     },
     projectType: {
-      en: 'Self-Initiated Architectural Concept',
-      'zh-TW': '自主建築與空間概念研究'
+      en: 'Commercial Spatial Design & Wayfinding',
+      'zh-TW': '商業空間規劃與導視設計'
     },
     description: {
-      en: 'FRAME/01 is an independent 180 m² urban gallery and design salon concept, integrating spatial planning, materials, wayfinding and an interactive spatial tour.',
-      'zh-TW': 'FRAME/01 為 180 m² 城市藝廊與設計沙龍自主概念研究，整合空間配置、材質策略、導視系統及可操作空間導覽。'
+      en: 'FRAME/01 commercial spatial planning and wayfinding system, integrating a 180 m² flagship visitor center across five functional zones, material strategy, and an interactive spatial tour.',
+      'zh-TW': 'FRAME/01 商業空間規劃與導視系統設計，整合 180 m² 旗艦展示中心五大機能分區、材質策略、動線導視及空間導覽。'
     },
     cover: 'brand/linear-space/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/linear-space/assets/mockups/shot-01.jpg',
@@ -184,12 +184,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '再生能源／品牌識別／能源資訊設計'
     },
     projectType: {
-      en: 'Independent Energy Brand Concept',
-      'zh-TW': '自主能源品牌概念提案'
+      en: 'Clean Energy Identity & Investor Information',
+      'zh-TW': '綠能品牌與投資資訊設計'
     },
     description: {
-      en: 'A self-initiated renewable-energy identity and digital-experience concept spanning solar, wind, storage and an explicitly simulated energy-flow interface.',
-      'zh-TW': '自主再生能源品牌與數位體驗概念，整合太陽能、風能、儲能及明確標示為示意數據的能源流向互動。'
+      en: 'A clean energy campus brand identity and digital telemetry experience, integrating solar, wind, storage visual systems and an interactive energy balancing simulator.',
+      'zh-TW': '多能互補清潔能源品牌識別與數位戰情體驗，整合太陽能、風能、儲能電網協同視覺與示範情境能源調度介面。'
     },
     cover: 'brand/circuit-energy/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/circuit-energy/assets/mockups/shot-01.jpg',
@@ -206,12 +206,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '戶外選品電商／多品牌零售／設計系統'
     },
     projectType: {
-      en: 'Self-Initiated Outdoor Retail Concept',
-      'zh-TW': '自主選品電商概念提案'
+      en: 'Multi-brand Retail & E-commerce Experience',
+      'zh-TW': '多品牌零售與電商體驗設計'
     },
     description: {
-      en: 'An independent multi-brand outdoor gear retail concept with standardized spec comparison, transparent shipping logic, and guest checkout.',
-      'zh-TW': '自主多品牌戶外選品電商概念研究，整合跨品牌標準化規格比較、滿額免運透明試算與三步驟訪客結帳流程。'
+      en: 'A multi-brand outdoor retail experience, featuring visual identity, merchandise catalog across eight sample products, spec comparison, shipping estimation, and a three-stage guest checkout.',
+      'zh-TW': '多品牌戶外選品電商體驗設計，規劃品牌識別、商品陳列視覺、八件示範選品、規格比較、運費試算與三步驟訪客結帳流程。'
     },
     cover: 'brand/field-supply/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/field-supply/assets/mockups/shot-01.jpg',
@@ -228,12 +228,12 @@ window.HOWARD_PROJECTS = Object.freeze([
       'zh-TW': '建築文化／編輯出版／數位期刊'
     },
     projectType: {
-      en: 'Self-Initiated Editorial & Print Concept',
-      'zh-TW': '自主編輯出版概念研究'
+      en: 'Editorial Publishing & Digital Reading',
+      'zh-TW': '建築出版與數位閱讀設計'
     },
     description: {
-      en: 'An independent architectural culture publisher concept with dual-issue print master covers, responsive longform reader, and bilingual reading UX.',
-      'zh-TW': '自主建築文化出版機構與數位期刊概念研究，整合雙期獨立印刷完稿封面、長篇沉浸式閱讀介面與中英雙語對照排版。'
+      en: 'An architectural culture publishing identity and digital reading experience, featuring dual-issue covers, six bilingual editorial layouts, 16 case plates, and an interactive reading interface.',
+      'zh-TW': '建築文化出版識別與數位閱讀體驗設計，建立雙期封面設計、六篇中英雙語專文排版、16 張案例圖版與可操作閱讀介面。'
     },
     cover: 'brand/cross-section/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/cross-section/assets/mockups/shot-01.jpg',
