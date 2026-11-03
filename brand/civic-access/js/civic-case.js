@@ -84,8 +84,13 @@
     el.reviewContact = document.getElementById('caReviewContact');
     el.reviewDocs = document.getElementById('caReviewDocs');
     el.reviewFiles = document.getElementById('caReviewFiles');
+    el.step3Alert = document.getElementById('caStep3Alert');
     el.step3BackBtn = document.getElementById('caStep3BackBtn');
     el.step3SubmitBtn = document.getElementById('caStep3SubmitBtn');
+
+    // Live announcer for screen readers (WCAG 2.2 SC 4.1.3)
+    el.liveAnnouncer = document.getElementById('caLiveAnnouncer');
+    el.statusLiveRegion = document.getElementById('caStatusLiveRegion');
 
     // Submitted state
     el.submittedRefNum = document.getElementById('caSubmittedRefNum');
@@ -328,19 +333,21 @@
       return;
     }
 
-    // Check Size (CA-10)
+    // Check Size (CA-10: 10 MB = 10,485,760 bytes binary MiB)
     if (fileObj.size > MAX_SIZE) {
+      const sizeMB = (fileObj.size / (1024 * 1024)).toFixed(1);
+      const bytesStr = fileObj.size.toLocaleString();
       showErrorAlert(
         el.step2Alert,
         state.lang === 'zh-TW'
-          ? `檔案大小 (${(fileObj.size / (1024 * 1024)).toFixed(1)} MB) 超過 10 MB 上限，請重新選取。`
-          : `File size exceeds 10 MB limit, please select a smaller file.`
+          ? `檔案大小（${sizeMB} MB / ${bytesStr} 位元組）超過 10 MB（10,485,760 位元組）上限，請重新選取。`
+          : `File size (${sizeMB} MB / ${bytesStr} bytes) exceeds the 10 MB (10,485,760 bytes) limit. Please select a smaller file.`
       );
       state.attachedFiles.push({
         name: fileName,
         size: fileObj.size,
         valid: false,
-        errorReason: state.lang === 'zh-TW' ? '檔案過大 (>10MB)' : 'File too large (>10MB)'
+        errorReason: state.lang === 'zh-TW' ? `檔案過大 (${sizeMB} MB > 10 MB)` : `File too large (${sizeMB} MB > 10 MB)`
       });
       renderAttachedFiles();
       return;
@@ -473,12 +480,23 @@
     return isValid;
   }
 
+  function announceMessage(msg) {
+    if (el.liveAnnouncer) {
+      el.liveAnnouncer.textContent = '';
+      setTimeout(() => {
+        if (el.liveAnnouncer) el.liveAnnouncer.textContent = msg;
+      }, 50);
+    }
+  }
+
   function showErrorAlert(alertEl, msg) {
     if (!alertEl) return;
     alertEl.textContent = msg;
     alertEl.classList.add('is-visible');
     alertEl.setAttribute('role', 'alert');
+    alertEl.setAttribute('aria-live', 'assertive');
     alertEl.focus();
+    announceMessage(msg);
   }
 
   function hideErrorAlert(alertEl) {
@@ -668,6 +686,13 @@
     // Toggle elements with .ca-zh and .ca-en
     document.querySelectorAll('.ca-zh').forEach(n => { n.hidden = (lang !== 'zh-TW'); });
     document.querySelectorAll('.ca-en').forEach(n => { n.hidden = (lang === 'zh-TW'); });
+
+    // Update input placeholders
+    document.querySelectorAll('[data-placeholder-zh][data-placeholder-en]').forEach(input => {
+      input.placeholder = lang === 'zh-TW' ? input.getAttribute('data-placeholder-zh') : input.getAttribute('data-placeholder-en');
+    });
+
+    announceMessage(lang === 'zh-TW' ? '已切換為繁體中文介面' : 'Language switched to English');
 
     // Update dynamic sub-components
     renderServices();
@@ -882,17 +907,17 @@
     // Test Simulator Buttons (CA-09, CA-10)
     if (el.simValidPdfBtn) {
       el.simValidPdfBtn.addEventListener('click', () => {
-        handleFileSelection({ name: 'demo_applicant_id_copy.pdf', size: 1400000 });
+        handleFileSelection({ name: 'demo_applicant_id_copy.pdf', size: 1468006 }); // 1.4 MB (1,468,006 bytes)
       });
     }
     if (el.simLargePdfBtn) {
       el.simLargePdfBtn.addEventListener('click', () => {
-        handleFileSelection({ name: 'demo_huge_scan_file.pdf', size: 14500000 }); // 14.5MB
+        handleFileSelection({ name: 'demo_huge_scan_file.pdf', size: 15204352 }); // 14.5 MB binary MiB (15,204,352 bytes)
       });
     }
     if (el.simInvalidZipBtn) {
       el.simInvalidZipBtn.addEventListener('click', () => {
-        handleFileSelection({ name: 'demo_unsupported_archive.zip', size: 520000 }); // .zip
+        handleFileSelection({ name: 'demo_unsupported_archive.zip', size: 524288 }); // 512 KB (.zip)
       });
     }
 
@@ -905,6 +930,22 @@
       el.lightbox.addEventListener('click', (e) => {
         if (e.target === el.lightbox) closeLightbox();
       });
+      // Trap Tab focus inside modal (WCAG SC 2.1.2)
+      el.lightbox.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          const focusables = Array.from(el.lightbox.querySelectorAll('button:not([disabled])'));
+          if (focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
     }
 
     window.addEventListener('keydown', (e) => {
@@ -914,11 +955,14 @@
       else if (e.key === 'ArrowLeft') prevLightbox();
     });
 
-    // Gallery Card Click opens Lightbox
+    // Gallery Card Click opens Lightbox with precise focus restoration
     document.querySelectorAll('.ca-card-shot').forEach((card, idx) => {
-      const open = () => openLightbox(idx);
       const imgBtn = card.querySelector('.ca-card-img-btn');
       const textBtn = card.querySelector('.ca-btn-lightbox-open');
+      const open = (e) => {
+        lastActiveElement = e.currentTarget || imgBtn || textBtn || document.activeElement;
+        openLightbox(idx);
+      };
       if (imgBtn) imgBtn.addEventListener('click', open);
       if (textBtn) textBtn.addEventListener('click', open);
     });
@@ -943,3 +987,4 @@
     init();
   }
 })();
+

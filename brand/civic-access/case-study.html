@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/civic-case.css?v=20261103-v2-local">
 </head>
 <body data-font-size="md">
+  <div id="caLiveAnnouncer" class="ca-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
   <a class="ca-skip" href="#ca-main">跳至主要內容 / Skip to main content</a>
 
   <!-- Top Navigation Header -->
@@ -38,8 +39,8 @@
       </div>
 
       <div class="ca-lang-controls" role="group" aria-label="選擇語言 / Language Selector">
-        <button type="button" class="ca-lang-btn is-active" data-lang="zh-TW" aria-pressed="true">中</button>
-        <button type="button" class="ca-lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="ca-lang-btn is-active" id="caLangZhBtn" data-lang="zh-TW" aria-pressed="true">中</button>
+        <button type="button" class="ca-lang-btn" id="caLangEnBtn" data-lang="en" aria-pressed="false">EN</button>
       </div>
 
       <a class="ca-demo-jump-btn" href="#ca-interactive-demo">
@@ -175,7 +176,7 @@
                   <span class="ca-zh">目前選取狀態</span>
                   <span class="ca-en" hidden>Selected State</span>
                 </h3>
-                <div class="ca-status-card" aria-live="polite">
+                <div class="ca-status-card" id="caStatusLiveRegion" role="region" aria-label="目前選取狀態" aria-live="polite">
                   <div class="ca-status-row">
                     <span><span class="ca-zh">服務項目</span><span class="ca-en" hidden>Service</span></span>
                     <span class="ca-status-val" id="caSidebarStatusService">生活補助諮詢</span>
@@ -227,7 +228,7 @@
                   </label>
                   <div class="ca-search-bar">
                     <div class="ca-search-input-wrap">
-                      <input type="text" id="caSearchInput" class="ca-search-input" placeholder="搜尋服務名稱或關鍵字..." aria-label="搜尋服務名稱或關鍵字" autocomplete="off">
+                      <input type="text" id="caSearchInput" class="ca-search-input" placeholder="搜尋服務名稱或關鍵字..." data-placeholder-zh="搜尋服務名稱或關鍵字..." data-placeholder-en="Search service name or keyword..." aria-label="搜尋服務名稱或關鍵字" autocomplete="off">
                       <button type="button" class="ca-search-clear-btn" id="caSearchClearBtn" aria-label="清除搜尋字詞" title="清除搜尋字詞">✕</button>
                     </div>
                   </div>
@@ -362,7 +363,7 @@
                 </div>
 
                 <!-- Alert for Step 1 Validation (CA-05) -->
-                <div class="ca-alert-error" id="caStep1Alert" tabindex="-1"></div>
+                <div class="ca-alert-error" id="caStep1Alert" role="alert" aria-live="assertive" tabindex="-1"></div>
 
                 <div class="ca-form-nav">
                   <span></span>
@@ -388,7 +389,7 @@
                 </div>
 
                 <!-- Alert for Step 2 Validation (CA-07, CA-11) -->
-                <div class="ca-alert-error" id="caStep2Alert" tabindex="-1"></div>
+                <div class="ca-alert-error" id="caStep2Alert" role="alert" aria-live="assertive" tabindex="-1"></div>
 
                 <!-- Field 1: Name -->
                 <div class="ca-form-group" id="caFormNameGroup">
@@ -463,10 +464,10 @@
                   <!-- Quick Simulator Buttons for Testing QA-09, QA-10 -->
                   <div class="ca-upload-sim-buttons" aria-label="快速測試按鈕">
                     <button type="button" class="ca-sim-btn" id="caSimValidPdfBtn" title="測試加入正常 PDF 檔案">
-                      ＋ <span class="ca-zh">加入合規身分證 (PDF, 1.4 MB)</span><span class="ca-en" hidden>Add Valid PDF (1.4MB)</span>
+                      ＋ <span class="ca-zh">加入合規身分證 (PDF, 1.4 MB)</span><span class="ca-en" hidden>Add Valid PDF (1.4 MB)</span>
                     </button>
                     <button type="button" class="ca-sim-btn" id="caSimLargePdfBtn" title="測試超出 10MB 上限錯誤 (CA-10)">
-                      ⚠️ <span class="ca-zh">測試超大檔 (PDF, 14.5 MB)</span><span class="ca-en" hidden>Test Oversized (14.5MB)</span>
+                      ⚠️ <span class="ca-zh">測試超大檔 (PDF, 14.5 MB / 15,204,352 位元組)</span><span class="ca-en" hidden>Test Oversized (14.5 MB / 15,204,352 bytes)</span>
                     </button>
                     <button type="button" class="ca-sim-btn" id="caSimInvalidZipBtn" title="測試格式不支援錯誤 (CA-09)">
                       ✕ <span class="ca-zh">測試不合規格式 (.ZIP)</span><span class="ca-en" hidden>Test Unsupported (.ZIP)</span>
@@ -537,6 +538,9 @@
                     </div>
                   </dl>
                 </div>
+
+                <!-- Alert for Step 3 Validation -->
+                <div class="ca-alert-error" id="caStep3Alert" role="alert" aria-live="assertive" tabindex="-1"></div>
 
                 <div class="ca-form-nav">
                   <button type="button" class="ca-btn-secondary" id="caStep3BackBtn">
