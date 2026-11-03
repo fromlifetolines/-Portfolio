@@ -1,0 +1,274 @@
+{
+  "case": {
+    "id": "12",
+    "slug": "civic-access",
+    "nameZh": "CIVIC ACCESS｜公共服務數位申辦系統設計",
+    "nameEn": "CIVIC ACCESS｜Public Service Experience & Application System",
+    "themeZh": "讓公共服務，更容易被理解與完成。",
+    "themeEn": "Make every next step clear.",
+    "scopeZh": "服務設計／品牌識別／數位平台 UI/UX／無障礙設計／紙本與空間導視",
+    "scopeEn": "Service Design / Visual Identity / Digital Service UI/UX / Accessibility / Print & Wayfinding",
+    "disclaimerZh": "CIVIC ACCESS 為公共服務體驗設計案例，非政府官方申辦入口。示範資格、文件與案件狀態不具行政效力；互動原型不收集真實個人資料。",
+    "disclaimerEn": "CIVIC ACCESS is a service-design portfolio project, not an official government application portal. Eligibility rules, document requirements and case statuses are illustrative. The prototype must not collect real personal information."
+  },
+  "shots": [
+    {
+      "id": "01",
+      "titleZh": "公共服務整合體驗",
+      "titleEn": "Integrated Civic Experience",
+      "captionZh": "展示品牌識別、數位入口與公共服務接觸點的整體設計方向。",
+      "captionEn": "A unified service identity across digital and physical touchpoints.",
+      "jpg": "assets/mockups/shot-01.jpg",
+      "png": "assets/shots/shot-01.png",
+      "source": "imagegen 1672x941 -> upscale"
+    },
+    {
+      "id": "02",
+      "titleZh": "品牌識別規範",
+      "titleEn": "Brand Identity System",
+      "captionZh": "以藍色幾何識別、字體階層與服務圖示建立可延伸的品牌系統。",
+      "captionEn": "A flexible identity system with geometric symbolism and clear typography.",
+      "jpg": "assets/mockups/shot-02.jpg",
+      "png": "assets/shots/shot-02.png",
+      "source": "imagegen 1672x941 -> upscale"
+    },
+    {
+      "id": "03",
+      "titleZh": "公共空間與導視",
+      "titleEn": "Service Center & Wayfinding",
+      "captionZh": "以服務中心情境說明櫃檯、導視及輔助服務的視覺應用。",
+      "captionEn": "Environmental applications for guidance and assisted access.",
+      "jpg": "assets/mockups/shot-03.jpg",
+      "png": "assets/shots/shot-03.png",
+      "source": "imagegen 1672x941 -> upscale"
+    },
+    {
+      "id": "04",
+      "titleZh": "紙本申辦指南",
+      "titleEn": "Printed Service Guidance",
+      "captionZh": "以手冊、文件清單與表單排版呈現實體資訊設計。",
+      "captionEn": "Printed materials that clarify procedures and requirements.",
+      "jpg": "assets/mockups/shot-04.jpg",
+      "png": "assets/shots/shot-04.png",
+      "source": "imagegen 1672x941 -> upscale"
+    },
+    {
+      "id": "05",
+      "titleZh": "自助申辦機台",
+      "titleEn": "Self-Service Kiosk",
+      "captionZh": "示範現場服務機台的入口分類、協助方式與操作目的。",
+      "captionEn": "An illustrative kiosk environment for on-site service discovery.",
+      "jpg": "assets/mockups/shot-05.jpg",
+      "png": "assets/shots/shot-05.png",
+      "source": "imagegen photograph crop + browser-native layout"
+    },
+    {
+      "id": "06",
+      "titleZh": "使用者情境分析",
+      "titleEn": "Citizen Scenarios",
+      "captionZh": "以長者、家庭照顧者及輔助科技使用者的假設需求規劃服務。",
+      "captionEn": "Scenario-based design considerations across different access needs.",
+      "jpg": "assets/mockups/shot-06.jpg",
+      "png": "assets/shots/shot-06.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "07",
+      "titleZh": "桌機服務入口",
+      "titleEn": "Desktop Service Directory",
+      "captionZh": "用可編輯 HTML/CSS 呈現搜尋、分類與申辦指南資訊架構。",
+      "captionEn": "Browser-rendered desktop interface for service search and discovery.",
+      "jpg": "assets/mockups/shot-07.jpg",
+      "png": "assets/shots/shot-07.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "08",
+      "titleZh": "行動端服務旅程",
+      "titleEn": "Mobile-First Journey",
+      "captionZh": "將服務探索、指南與身分選擇分成三種清楚的手機操作狀態。",
+      "captionEn": "Three distinct mobile states, designed around one task at a time.",
+      "jpg": "assets/mockups/shot-08.jpg",
+      "png": "assets/shots/shot-08.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "09",
+      "titleZh": "服務藍圖",
+      "titleEn": "Service Blueprint",
+      "captionZh": "對照民眾、平台及服務人員三個角色的五階段協作流程。",
+      "captionEn": "A multi-actor blueprint linking citizen, platform and staff workflows.",
+      "jpg": "assets/mockups/shot-09.jpg",
+      "png": "assets/shots/shot-09.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "10",
+      "titleZh": "申請身分分流",
+      "titleEn": "Applicant & Representative Paths",
+      "captionZh": "以不同辦理身分切換示範規則與文件清單。",
+      "captionEn": "Conditional guidance based on sample applicant scenarios.",
+      "jpg": "assets/mockups/shot-10.jpg",
+      "png": "assets/shots/shot-10.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "11",
+      "titleZh": "動態文件清單",
+      "titleEn": "Dynamic Document Checklist",
+      "captionZh": "呈現本人與代辦在已準備、待準備及缺件狀態的差異。",
+      "captionEn": "Readiness states across applicant and representative scenarios.",
+      "jpg": "assets/mockups/shot-11.jpg",
+      "png": "assets/shots/shot-11.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "12",
+      "titleZh": "分步表單",
+      "titleEn": "Progressive Application Form",
+      "captionZh": "展示欄位群組、必填提示、返回修改及操作說明。",
+      "captionEn": "Structured form stages with guidance and recoverable navigation.",
+      "jpg": "assets/mockups/shot-12.jpg",
+      "png": "assets/shots/shot-12.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "13",
+      "titleZh": "錯誤提示與修復",
+      "titleEn": "Error & Recovery States",
+      "captionZh": "同一欄位呈現需要修改與修正完成兩種不同狀態。",
+      "captionEn": "Paired validation and corrected states with explicit guidance.",
+      "jpg": "assets/mockups/shot-13.jpg",
+      "png": "assets/shots/shot-13.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "14",
+      "titleZh": "附件上傳與核對",
+      "titleEn": "Upload & Pre-Submission Review",
+      "captionZh": "呈現選檔、格式檢查、缺件與返回補件。",
+      "captionEn": "Distinct file selection, validation and review states.",
+      "jpg": "assets/mockups/shot-14.jpg",
+      "png": "assets/shots/shot-14.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "15",
+      "titleZh": "示範案件進度",
+      "titleEn": "Demonstration Case Tracking",
+      "captionZh": "用示範編號與進度時間軸說明確認與狀態追蹤。",
+      "captionEn": "Illustrative confirmation and tracking with an explicitly demo-only ID.",
+      "jpg": "assets/mockups/shot-15.jpg",
+      "png": "assets/shots/shot-15.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    },
+    {
+      "id": "16",
+      "titleZh": "無障礙驗收規範",
+      "titleEn": "Accessibility Verification Plan",
+      "captionZh": "列出對比、鍵盤焦點、語意及狀態提示的實測要求。",
+      "captionEn": "Testing requirements for contrast, keyboard focus, semantics and status updates.",
+      "jpg": "assets/mockups/shot-16.jpg",
+      "png": "assets/shots/shot-16.png",
+      "source": "native Chromium HTML/CSS 2560x1440"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-sub-01",
+      "categoryZh": "社會福利與補助",
+      "categoryEn": "Social Welfare & Subsidies",
+      "titleZh": "社區資源生活補助示範諮詢",
+      "titleEn": "Community Living Resource Subsidy (Demo)",
+      "descZh": "提供基礎生活補助申請指引、資格前置試算說明與文件準備清單。",
+      "descEn": "Guided application for basic community assistance, scenario evaluation, and document readiness checklist.",
+      "tags": ["補助", "生活", "福利", "津貼", "subsidy", "welfare"]
+    },
+    {
+      "id": "srv-dis-02",
+      "categoryZh": "身心障礙服務",
+      "categoryEn": "Disability & Inclusion Services",
+      "titleZh": "輔助器具與無障礙生活支持",
+      "titleEn": "Assistive Devices & Accessibility Support",
+      "descZh": "評估生活輔助器具補助項目，提供居家無障礙改善指引與身分證明備妥指引。",
+      "descEn": "Evaluation of assistive devices and home barrier-free modification subsidies with document guides.",
+      "tags": ["輔具", "無障礙", "身障", "補助", "assistive", "accessibility"]
+    },
+    {
+      "id": "srv-ltc-03",
+      "categoryZh": "長期照顧",
+      "categoryEn": "Long-Term Care Support",
+      "titleZh": "居家照顧與日間喘息服務諮詢",
+      "titleEn": "Home Care & Respite Service Consultation",
+      "descZh": "協助家庭照顧者規劃居服員到府服務、社區關懷據點及日照中心銜接。",
+      "descEn": "Assisting family caregivers in arranging home care visits, community centers, and day-care coordination.",
+      "tags": ["長照", "照顧", "喘息", "日間", "care", "respite"]
+    },
+    {
+      "id": "srv-care-04",
+      "categoryZh": "居家與照顧支持",
+      "categoryEn": "Family & Caregiver Support",
+      "titleZh": "高齡友善餐飲與健康促進服務",
+      "titleEn": "Senior Friendly Meals & Health Promotion",
+      "descZh": "結合鄰里送餐服務、長者共餐據點與定期健康講座之申辦預約。",
+      "descEn": "Coordination of neighborhood meal deliveries, senior meal centers, and community health events.",
+      "tags": ["餐飲", "長者", "送餐", "健康", "meals", "senior"]
+    },
+    {
+      "id": "srv-faq-05",
+      "categoryZh": "常見申辦諮詢",
+      "categoryEn": "General Inquiries & Guidance",
+      "titleZh": "跨局處綜合申辦證明文件諮詢",
+      "titleEn": "Multi-Agency Document Consultation",
+      "descZh": "釐清不同戶籍、親屬委任及代辦人之必要法定證明文件格式與印鑑要求。",
+      "descEn": "Clarifying document formats, representative power-of-attorney, and identification across offices.",
+      "tags": ["諮詢", "文件", "代辦", "戶籍", "consultation", "documents"]
+    }
+  ],
+  "documentRules": {
+    "applicant": [
+      {
+        "id": "doc-id",
+        "titleZh": "申請人身分證明文件",
+        "titleEn": "Applicant Identification",
+        "descZh": "國民身分證正面／反面影本或居留證等有效證件。",
+        "descEn": "National ID card or resident certificate copy.",
+        "required": true
+      },
+      {
+        "id": "doc-app",
+        "titleZh": "申請需求說明書",
+        "titleEn": "Application Needs Statement",
+        "descZh": "生活補助或資源需求項目簡述，可使用線上範本填寫。",
+        "descEn": "Brief summary of assistance needed, fillable via online template.",
+        "required": true
+      }
+    ],
+    "representative": [
+      {
+        "id": "doc-id",
+        "titleZh": "申請人身分證明文件",
+        "titleEn": "Applicant Identification",
+        "descZh": "國民身分證正面／反面影本或居留證等有效證件。",
+        "descEn": "National ID card or resident certificate copy.",
+        "required": true
+      },
+      {
+        "id": "doc-app",
+        "titleZh": "申請需求說明書",
+        "titleEn": "Application Needs Statement",
+        "descZh": "生活補助或資源需求項目簡述，可使用線上範本填寫。",
+        "descEn": "Brief summary of assistance needed, fillable via online template.",
+        "required": true
+      },
+      {
+        "id": "doc-proxy",
+        "titleZh": "代辦委託書與受任人身分證件",
+        "titleEn": "Power of Attorney & Agent Identification",
+        "descZh": "委任代辦授權簽署書及受任人本人有效身分證明文件。",
+        "descEn": "Signed power-of-attorney form and agent's valid ID proof.",
+        "required": true
+      }
+    ]
+  }
+}
