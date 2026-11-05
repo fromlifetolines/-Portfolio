@@ -16,7 +16,7 @@
   // Global Application State
   const state = {
     lang: 'zh',
-    currentTab: 'storybook',
+    currentTab: 'gallery',
     currentSpread: 0,
     currentModel: 'assembled',
     currentMission: 0,
@@ -24,7 +24,9 @@
     audioNoticeTimeout: null,
     webglReady: false,
     threeApp: null,
-    canvasFallback: null
+    canvasFallback: null,
+    currentLightboxIndex: 0,
+    lastFocusedElement: null
   };
 
   // DOM Cache helper
@@ -49,6 +51,7 @@
     setupChildLearning();
     setupParentTeacher();
     setupSpecificationsGallery();
+    setupLightbox();
     renderAll();
   }
 
@@ -72,6 +75,7 @@
     renderChildMission();
     renderParentTeacher();
     renderSpecifications();
+    renderLightboxContent();
   }
 
   function renderI18nText() {
@@ -86,6 +90,9 @@
         }
       }
     });
+
+    $$('.zh-text').forEach(el => { el.hidden = !isZh; });
+    $$('.en-text').forEach(el => { el.hidden = isZh; });
   }
 
   /* ----------------------------------------------------
@@ -231,18 +238,22 @@
     const artworkBox = $('spreadArtwork');
     if (!artworkBox) return;
 
-    if (spread.spread_no === '01') {
-      artworkBox.innerHTML = `
-        <img src="assets/storybook/SPREAD_01_AFTER_THE_RAIN.svg" alt="形狀城早晨河面雨後景觀，兩岸留白" style="width:100%; max-height:220px; object-fit:contain; border-radius:8px;">
-      `;
-    } else if (spread.spread_no === '08') {
-      artworkBox.innerHTML = `
-        <img src="assets/storybook/SPREAD_08_PLACE_THE_ARCH.svg" alt="比姆把黃色橋拱放上去，像微笑跨過水面" style="width:100%; max-height:220px; object-fit:contain; border-radius:8px;">
-      `;
-    } else {
-      // Dynamic SVG illustration matching the spread theme
-      artworkBox.innerHTML = generateSpreadSvg(spread);
-    }
+    const num = spread.spread_no;
+    const proofSrc = spread.proof_path || `assets/storybook_proofs/spread-${num}.png`;
+    const title = spread.title_zh || `跨頁 ${num}`;
+
+    artworkBox.innerHTML = `
+      <div class="proof-figure" style="position:relative; width:100%; border-radius:8px; overflow:hidden; background:#FFF5E3; border:1px solid #D6C29E;">
+        <img src="${proofSrc}" 
+             alt="跨頁 ${num} 2:1 場景分鏡稿（${title}）" 
+             style="width:100%; aspect-ratio:2/1; object-fit:contain; display:block;" 
+             loading="lazy" 
+             onerror="this.onerror=null; this.parentElement.innerHTML = generateSpreadSvg(state.demoData.storybook.spreads.find(s => s.spread_no === '${num}'));">
+        <div style="position:absolute; bottom:6px; right:8px; font-size:10px; font-weight:700; color:#5D3C39; background:rgba(255,249,245,0.9); padding:2px 6px; border-radius:4px; border:1px solid #D6C29E;">
+          2:1 分鏡稿 · 出版完稿待繪
+        </div>
+      </div>
+    `;
   }
 
   function generateSpreadSvg(spread) {
@@ -657,6 +668,7 @@
         if (key === 'exploded') path = 'assets/3d/PLAYFORM_BRIDGE_EXPLODED.glb';
         else if (key === 'characters') path = 'assets/3d/PLAYFORM_CHARACTER_TRIO.glb';
         else if (key === 'kit') path = 'assets/3d/PLAYFORM_KIT_PACKAGING_CONCEPT.glb';
+        else if (key === 'qbaby') path = 'assets/3d/PLAYFORM_STAR_QBABY_CHARACTER_MAQUETTE_V3.glb';
 
         if (state.threeApp && state.threeApp.loadGlb) {
           state.threeApp.loadGlb(path, key);
@@ -699,6 +711,7 @@
     if (key === 'exploded') path = 'assets/3d/PLAYFORM_BRIDGE_EXPLODED.glb';
     else if (key === 'characters') path = 'assets/3d/PLAYFORM_CHARACTER_TRIO.glb';
     else if (key === 'kit') path = 'assets/3d/PLAYFORM_KIT_PACKAGING_CONCEPT.glb';
+    else if (key === 'qbaby') path = 'assets/3d/PLAYFORM_STAR_QBABY_CHARACTER_MAQUETTE_V3.glb';
 
     if (state.threeApp && state.threeApp.loadGlb) {
       state.threeApp.loadGlb(path, key);
@@ -756,10 +769,15 @@
         ? '零件沿 Z 軸分解，清楚呈現橋面平板、黃色拱圈、深藍立柱與基座的相對卡接位置。'
         : 'Components exploded along vertical Z-axis, revealing deck planks, arch ring, pillars, and foundations.';
     } else if (key === 'characters') {
-      titleEl.textContent = isZh ? '原創角色三人組：LULO, BEM, PIP' : 'Character Trio: Lulo, Bem, Pip';
+      titleEl.textContent = isZh ? '幾何角色三人組：LULO, BEM, PIP' : 'Geometric Trio: Lulo, Bem, Pip';
       descEl.textContent = isZh
-        ? '路洛（黃色開口拱）、比姆（深藍方型量尺）、琵普（珊瑚三角錐）三維幾何原型。'
-        : 'Lulo (yellow arch loop), Bem (navy square ruler), and Pip (coral wedge cone) 3D geometric archetypes.';
+        ? '路洛（黃色拱圈）、比姆（深藍方型量尺）、琵普（珊瑚三角錐）三維幾何構件原型。'
+        : 'Lulo (yellow arch loop), Bem (navy square ruler), and Pip (coral wedge cone) 3D geometric components.';
+    } else if (key === 'qbaby') {
+      titleEl.textContent = isZh ? '主角 LULO：Q 版造型母型（未 Rig）' : 'Hero LULO: Chibi Character Maquette (Unrigged)';
+      descEl.textContent = isZh
+        ? '由家庭成員特徵轉化之原創童書主角 3D 幾何概念母型，粉色針織蝴蝶結與蕾絲翻領造型，目前為靜態 Concept Mesh（尚未骨架綁定 Rigging）。'
+        : 'Stylized 3D concept mesh of picture-book hero Lulo (pink bow headband, lace collar). Currently static concept mesh pending skeletal rigging.';
     } else if (key === 'kit') {
       titleEl.textContent = isZh ? 'BRIDGE LAB 01：教具包裝概念' : 'BRIDGE LAB 01: Packaging Concept';
       descEl.textContent = isZh
@@ -920,19 +938,129 @@
     state.demoData.sixteen_shots_specification.forEach(shot => {
       const card = document.createElement('div');
       card.className = 'shot-spec-card';
+      const title = isZh ? (shot.theme_zh || shot.title_zh) : (shot.theme_en || shot.title_en);
+      const evidence = isZh ? shot.evidence_zh : shot.evidence_en;
+      const composition = isZh ? (shot.composition_zh || shot.prohibition_zh) : (shot.composition_en || shot.evidence_en);
       card.innerHTML = `
         <div>
           <span class="shot-number">SHOT ${shot.shot}</span>
-          <h3 class="shot-title">${isZh ? shot.theme_zh : shot.theme_en}</h3>
-          <div class="shot-evidence">${isZh ? shot.evidence_zh : shot.evidence_en}</div>
-          <p class="shot-composition">${isZh ? shot.composition_zh : shot.composition_en}</p>
+          <h3 class="shot-title">${title}</h3>
+          <div class="shot-evidence">${evidence}</div>
+          <p class="shot-composition"><strong>${isZh ? '禁止事項：' : 'Prohibition: '}</strong>${composition}</p>
         </div>
         <div>
-          <span class="shot-badge">${shot.status}</span>
+          <span class="shot-badge">${shot.status || 'Concept Plate · Static Design Visual'}</span>
         </div>
       `;
       grid.appendChild(card);
     });
+  }
+
+  /* ----------------------------------------------------
+   * 08. 16-Shot Deliverable Gallery & Lightbox
+   * ---------------------------------------------------- */
+  function setupLightbox() {
+    const lightbox = $('playformLightbox');
+    if (!lightbox) return;
+
+    const overlay = $('lightboxOverlay');
+    const closeBtn = $('lightboxCloseBtn');
+    const prevBtn = $('lightboxPrevBtn');
+    const nextBtn = $('lightboxNextBtn');
+
+    // Trigger buttons from gallery cards
+    $$('.shot-img-btn, .btn-lightbox-trigger').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const index = parseInt(btn.dataset.shotIndex || '0', 10);
+        openLightbox(index, btn);
+      });
+    });
+
+    if (overlay) overlay.addEventListener('click', closeLightbox);
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        navigateLightbox(-1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        navigateLightbox(1);
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox || lightbox.hidden) return;
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox(-1);
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox(1);
+      }
+    });
+  }
+
+  function openLightbox(index, triggerEl) {
+    const lightbox = $('playformLightbox');
+    if (!lightbox) return;
+
+    state.lastFocusedElement = triggerEl || document.activeElement;
+    state.currentLightboxIndex = index;
+    renderLightboxContent();
+
+    lightbox.hidden = false;
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    const closeBtn = $('lightboxCloseBtn');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    const lightbox = $('playformLightbox');
+    if (!lightbox || lightbox.hidden) return;
+
+    lightbox.hidden = true;
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    if (state.lastFocusedElement && typeof state.lastFocusedElement.focus === 'function') {
+      state.lastFocusedElement.focus();
+    }
+  }
+
+  function navigateLightbox(dir) {
+    const shots = (state.demoData && state.demoData.sixteen_case_shots) || [];
+    if (!shots.length) return;
+    state.currentLightboxIndex = (state.currentLightboxIndex + dir + shots.length) % shots.length;
+    renderLightboxContent();
+  }
+
+  function renderLightboxContent() {
+    const shots = (state.demoData && state.demoData.sixteen_case_shots) || [];
+    if (!shots.length) return;
+    const shot = shots[state.currentLightboxIndex];
+    if (!shot) return;
+
+    const numEl = $('lightboxNum');
+    const titleEl = $('lightboxTitle');
+    const imgEl = $('lightboxImg');
+    const captionEl = $('lightboxCaption');
+    const isZh = state.lang === 'zh';
+
+    if (numEl) numEl.textContent = `SHOT ${shot.id} / 16`;
+    if (titleEl) titleEl.textContent = isZh ? `${shot.id} / ${shot.title}` : `${shot.id} / ${shot.title_en}`;
+    if (imgEl) {
+      imgEl.src = shot.src;
+      imgEl.alt = shot.alt;
+    }
+    if (captionEl) {
+      captionEl.innerHTML = `<strong>${isZh ? '展示目的：' : 'Purpose: '}</strong>${isZh ? shot.purpose : shot.purpose_en}`;
+    }
   }
 
 })();
