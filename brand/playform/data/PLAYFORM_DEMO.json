@@ -1,0 +1,1111 @@
+{
+  "project": {
+    "id": "playform",
+    "case_number": "13",
+    "title": "PLAYFORM",
+    "brand_name_zh": "形狀冒險社",
+    "brand_name_en": "PLAYFORM",
+    "tagline_zh": "讓想像，有形狀。",
+    "tagline_en": "Make ideas take shape.",
+    "subheading_zh": "兒童教育品牌、原創繪本與 3D 互動學習設計",
+    "subheading_en": "Children's Brand, Picture Book & Interactive 3D Learning",
+    "status": "CONCEPT DESIGN / PRODUCTION RELEASE",
+    "mode": "PUBLIC PORTFOLIO / DEMO DATA ONLY",
+    "design_lock_status": "DESIGN SPECS LOCKED · ARTWORK PENDING HUMAN QA",
+    "hero_copy_zh": "PLAYFORM 將原創繪本、實體造橋教具與數位互動整合為一套兒童 STEAM 探索體驗。角色的故事引出真實的建構任務，孩子在閱讀後動手實驗，也能把觀察帶回親子對話與教室活動。",
+    "hero_copy_en": "PLAYFORM brings original storytelling, physical bridge-building toys, and interactive digital learning into one cohesive STEAM experience. Each chapter invites children to experiment with the same ideas they encounter in the story, extending their discoveries into family conversations and classroom activities.",
+    "design_scope_zh": "兒童教育品牌識別／原創角色與繪本／教具包裝／3D 產品視覺／互動學習 UI/UX／家長與教師端",
+    "design_scope_en": "Children's Brand Identity / Character & Picture-Book Design / Educational Kit & Packaging / 3D Product Visualization / Interactive Learning UX / Parent & Teacher Experiences",
+    "challenge_zh": "孩子的學習接觸點往往分散在不同媒介。閱讀結束後，故事中的想像未必能延續至實體操作；動手活動完成後，家長與教師也不一定知道如何引導下一次討論。PLAYFORM 以一致的角色語言與循序任務，規劃紙本、教具與數位內容之間的銜接方式。",
+    "challenge_en": "Storybooks, building kits, and digital activities can feel like unrelated products. PLAYFORM explores how one consistent character universe and a clear learning journey can connect reading, hands-on construction, and guided reflection across home and classroom environments.",
+    "response_zh": "以《形狀城的第七座橋》為主線，主角路洛（LULO）、比姆（BEM）與琵普（PIP）共同面對橋樑消失的問題。孩子閱讀角色如何測量、嘗試與修正，再使用 BRIDGE LAB 教具搭建自己的橋。網站提供可旋轉的 3D 橋樑與故事式操作任務；家長端記錄活動過程，教師端提供課程規劃與觀察欄位的示範介面。",
+    "response_en": "In *The Seventh Bridge of Shape City*, Lulo, Bem, and Pip work together after a bridge disappears. Children observe their attempts, then build and test their own structures using the BRIDGE LAB kit. A rotatable 3D model and narrative-led digital tasks extend the experience, with complementary parent reflections and teacher lesson-planning prototypes.",
+    "evidence_zh": "完整品牌標誌與色彩系統、三位原創角色的角色設計、32 頁（16 跨頁 2:1）繪本腳本與分鏡規劃、教具與包裝 3D 模型、四種可互動的數位閱讀／建構／任務情境，以及家長和教師端的操作原型。設計以高辨識的造型語言串接五種接觸點。",
+    "evidence_en": "The design system spans identity assets, three original characters, a 32-page (16 2:1 spreads) picture-book script and storyboard, 3D learning-kit models, interactive reading and construction scenarios, and functional parent and teacher UX demonstrations.",
+    "commercial_value_zh": "PLAYFORM 展示如何為兒童教育品牌建立可持續擴充的內容與產品架構：同一組角色、造型及視覺規則，可以發展新的繪本篇章、教育盒、數位任務與教學活動，而不需要每次重設品牌語言。",
+    "commercial_value_en": "PLAYFORM demonstrates an extensible educational product ecosystem. A consistent character world and design language can support new stories, learning kits, digital activities, and classroom experiences without rebuilding the brand around each release.",
+    "scope_note_zh": "本頁展示品牌、繪本、教具與數位互動之設計提案及示範原型。實體教具未量產，材料安全與教學成效尚未驗證；家長及教師介面使用示範資料，並未蒐集真實學童個資。主角為家庭生活意象啟發之設計化原創 IP，不公開任何未成年人真實個資。",
+    "scope_note_en": "This case presents design concepts and working prototypes. Physical toys have not been manufactured or safety-certified, learning outcomes have not been independently validated, and all child-related records shown in the interface are demonstrative. Mascot inspiration is derived from family life; public assets feature stylized character art without disclosing personal child information."
+  },
+  "color_palette": [
+    {
+      "name": "Cream White 奶油白",
+      "hex": "#FFF9F5",
+      "role_zh": "繪本紙色、畫面背景、留白基底",
+      "role_en": "Paper Base, Scene Whitespace, Packaging Surface"
+    },
+    {
+      "name": "Dusty Coral 豆沙粉",
+      "hex": "#D77A85",
+      "role_zh": "主角 LULO 吊帶服、溫暖主視覺",
+      "role_en": "Lulo Overalls, Warm Core Brand Visual"
+    },
+    {
+      "name": "Soft Pink 嫩粉",
+      "hex": "#EFA4A1",
+      "role_zh": "蝴蝶結頭帶、PIP 兔子夥伴點綴",
+      "role_en": "Bow Headband, Pip Bunny Accents"
+    },
+    {
+      "name": "Honey Yellow 蜜黃",
+      "hex": "#F7D77A",
+      "role_zh": "橋拱積木、亮面強調、好奇活力",
+      "role_en": "Bridge Arch Blocks, Visual Highlights, Energy"
+    },
+    {
+      "name": "Lake Blue 湖藍",
+      "hex": "#B7D9E8",
+      "role_zh": "河流、水面地景、清爽自然色",
+      "role_en": "River Water, Landscape, Crisp Natural Accent"
+    },
+    {
+      "name": "Sage Green 鼠尾草綠",
+      "hex": "#B4C8AD",
+      "role_zh": "草地、兩岸自然帶、次要環境",
+      "role_en": "Meadow, Riverbank Flora, Secondary Environment"
+    },
+    {
+      "name": "Deep Cocoa 深可可",
+      "hex": "#5D3C39",
+      "role_zh": "BEM 小熊、高對比文字排版",
+      "role_en": "Bem Bear Companion, High-Contrast Typography"
+    }
+  ],
+  "characters": [
+    {
+      "id": "lulo",
+      "name_zh": "路洛",
+      "name_en": "LULO",
+      "archetype_zh": "家庭意象啟發之原創 Q 版童書主角",
+      "archetype_en": "Stylized Child Hero (Family-Inspired)",
+      "traits_zh": "粉色針織蝴蝶結、圓圓臉頰、蕾絲刺繡翻領、豆沙粉吊帶服。充滿好奇心，總是提出「如果……？」的設想。",
+      "traits_en": "Soft pink bow headband, round cheeks, lace collar, dusty coral overalls dress. Curious leader asking 'What if...?'",
+      "proportions": "2.5 - 3 頭身",
+      "color": "#D77A85",
+      "rig_status": "Concept Mesh Ready / Rigging Pending"
+    },
+    {
+      "id": "bem",
+      "name_zh": "比姆",
+      "name_en": "BEM",
+      "archetype_zh": "深可可小熊夥伴",
+      "archetype_en": "Deep Cocoa Bear Companion",
+      "traits_zh": "沉穩、觀察細膩，隨身攜帶小量尺，習慣先測量跨距、尋找穩固支點。",
+      "traits_en": "Thoughtful observer, carrying a pocket ruler, measuring spans and finding pivots.",
+      "proportions": "2.2 頭身",
+      "color": "#5D3C39",
+      "rig_status": "Concept Mesh Ready / Rigging Pending"
+    },
+    {
+      "id": "pip",
+      "name_zh": "琵普",
+      "name_en": "PIP",
+      "archetype_zh": "珊瑚粉小兔夥伴",
+      "archetype_en": "Coral Bunny Companion",
+      "traits_zh": "敏捷靈巧、行動力強，敢於在失敗時大聲說「我們再試一次！」，鼓勵錯誤復原。",
+      "traits_en": "Agile and resilient, champion of 'Let's try again!' to encourage constructive error recovery.",
+      "proportions": "2.5 頭身",
+      "color": "#EFA4A1",
+      "rig_status": "Concept Mesh Ready / Rigging Pending"
+    }
+  ],
+  "bom_product_system": {
+    "product_name_zh": "BRIDGE LAB 01 · 形狀造橋研究盒",
+    "product_name_en": "BRIDGE LAB 01 · Shape City Bridge Kit",
+    "packaging_structure": "抽屜式厚紙盒＋環保紙漿模塑雙層內托 (Molded Paper Pulp Tray)",
+    "assembly_principles": [
+      {
+        "step": "1. Anchor (定位)",
+        "desc_zh": "兩岸底座固定與對齊基線",
+        "desc_en": "Riverbank footings anchor and baseline alignment"
+      },
+      {
+        "step": "2. Join (連接)",
+        "desc_zh": "橋墩立柱與拱形件模組卡榫嵌合",
+        "desc_en": "Pillars and arch modules snap-fit interlocking"
+      },
+      {
+        "step": "3. Secure (固定)",
+        "desc_zh": "橋面板塊平鋪與頂蓋鎖合，受力分散",
+        "desc_en": "Deck planks lay flat with locking caps for load distribution"
+      }
+    ],
+    "components": [
+      {
+        "part_id": "ARCH-01",
+        "name_zh": "橋拱單元片",
+        "name_en": "Bridge Arch Pieces",
+        "qty": "4 組 (4, 3, 2, 1 分段)",
+        "material": "霧面 ABS (無毒環保提案)"
+      },
+      {
+        "part_id": "COL-01",
+        "name_zh": "支撐立柱",
+        "name_en": "Columns",
+        "qty": "4 根",
+        "material": "深藍色加固 ABS"
+      },
+      {
+        "part_id": "BASE-01",
+        "name_zh": "陸地基座板",
+        "name_en": "Base Plates",
+        "qty": "4 塊",
+        "material": "象牙白平整板"
+      },
+      {
+        "part_id": "WATER-01",
+        "name_zh": "水面底座板",
+        "name_en": "Water Base Plates",
+        "qty": "2 塊",
+        "material": "湖藍半透明板"
+      },
+      {
+        "part_id": "DECK-01",
+        "name_zh": "橋面走道平板",
+        "name_en": "Deck Planks",
+        "qty": "4 塊",
+        "material": "蜜黃／珊瑚粉條紋板"
+      },
+      {
+        "part_id": "CAP-01",
+        "name_zh": "立柱頂蓋與鎖件",
+        "name_en": "Column Caps & Joiners",
+        "qty": "8 個",
+        "material": "深色鎖件"
+      },
+      {
+        "part_id": "CARD-01",
+        "name_zh": "雙面引導任務卡",
+        "name_en": "Activity Cards",
+        "qty": "6 張",
+        "material": "厚磅棉卡 350gsm"
+      },
+      {
+        "part_id": "BOOK-01",
+        "name_zh": "精裝原創繪本",
+        "name_en": "Hardcover Picture Book",
+        "qty": "1 冊 (240×240mm)",
+        "material": "精裝布紋燙印"
+      }
+    ]
+  },
+  "storybook": {
+    "title_zh": "形狀城的第七座橋",
+    "title_en": "The Seventh Bridge of Shape City",
+    "format_zh": "精裝 240×240 mm 正方形開本／展開 480×240 mm (2:1)／32 頁（16 個雙跨頁）",
+    "format_en": "Hardcover 240×240 mm Square / 480×240 mm (2:1 Spreads) / 32 Pages (16 Spreads)",
+    "spreads": [
+      {
+        "index": 1,
+        "spread_no": "01",
+        "page_range": "01-02",
+        "title_zh": "雨後的空白",
+        "zh": "形狀城的雨，滴答滴答，下了一整夜。早晨，河面亮晶晶的。可是，小橋不見了。",
+        "en": "Rain tapped on Shape City all night. By morning, the river was bright, but the little bridge was gone.",
+        "focus_zh": "城市、河岸大景；拉遠全景，河的兩端出現空白",
+        "focus_en": "Wide city landscape; river cuts through with an empty bridge gap",
+        "proof_path": "assets/storybook_proofs/spread-01.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 2,
+        "spread_no": "02",
+        "page_range": "03-04",
+        "title_zh": "岸邊困惑",
+        "zh": "路洛站在岸邊，往前看，又往後看。「沒有橋，要怎麼過去呢？」",
+        "en": "Lulo looked across the river, then back at the road. “How will we get across?”",
+        "focus_zh": "主角半身特寫、河的留白，路洛露出好奇與困惑",
+        "focus_en": "Lulo close-up looking across the river with puzzled curiosity",
+        "proof_path": "assets/storybook_proofs/spread-02.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 3,
+        "spread_no": "03",
+        "page_range": "05-06",
+        "title_zh": "測量距離",
+        "zh": "「我們先量量看。」比姆拿出小量尺，一步、兩步、三步。",
+        "en": "“Let's measure first,” said Bem. Step, step, step went the little ruler.",
+        "focus_zh": "熊夥伴比姆主導，沿著河岸拉出尺標測量距離",
+        "focus_en": "Bem the bear measures distance along the bank with a visible ruler",
+        "proof_path": "assets/storybook_proofs/spread-03.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 4,
+        "spread_no": "04",
+        "page_range": "07-08",
+        "title_zh": "會滾的圓形",
+        "zh": "琵普滾來一個圓圓的積木。「這個可以嗎？」它一路滾向草地。",
+        "en": "Pip brought a round block. “What about this?” It rolled away into the grass.",
+        "focus_zh": "兔夥伴琵普主導，圓形積木滾動產生生動速度線與幽默動勢",
+        "focus_en": "Pip the bunny rolls a circular block that rolls into the grass with humor",
+        "proof_path": "assets/storybook_proofs/spread-04.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 5,
+        "spread_no": "05",
+        "page_range": "09-10",
+        "title_zh": "找個底座",
+        "zh": "比姆擺好一塊方方的積木。路洛問：「如果站在它上面呢？」",
+        "en": "Bem placed a square block on the ground. “Could this hold something up?” Lulo asked.",
+        "focus_zh": "低角度仰視、重力穩定感，正方形作為平整底座",
+        "focus_en": "Low-angle perspective; square block established as a solid base",
+        "proof_path": "assets/storybook_proofs/spread-05.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 6,
+        "spread_no": "06",
+        "page_range": "11-12",
+        "title_zh": "三角形的角",
+        "zh": "琵普拿起一個三角形。「角角可以連在一起。」三個朋友靠近看。",
+        "en": "Pip lifted a triangle. “These corners can meet.” The friends leaned closer.",
+        "focus_zh": "特寫三角形接點，展示幾何頂角互鎖不變形的結構原理",
+        "focus_en": "Close-up on triangle apexes interlocking to resist deformation",
+        "proof_path": "assets/storybook_proofs/spread-06.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published",
+        "interactive_step": true
+      },
+      {
+        "index": 7,
+        "spread_no": "07",
+        "page_range": "13-14",
+        "title_zh": "搭起橋墩",
+        "zh": "「先在兩邊，蓋起橋墩！」路洛和琵普把積木一塊塊排好。",
+        "en": "“Let's start with supports on both sides!” Lulo and Pip stacked their blocks.",
+        "focus_zh": "俯視排列與對齊，兩岸基座堆疊成對稱橋墩",
+        "focus_en": "Overhead view showing symmetrical pier alignment on both shores",
+        "proof_path": "assets/storybook_proofs/spread-07.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published",
+        "interactive_step": true
+      },
+      {
+        "index": 8,
+        "spread_no": "08",
+        "page_range": "15-16",
+        "title_zh": "微笑的橋拱",
+        "zh": "比姆把橋拱慢慢放上去。它像一道微笑，跨過了水面。",
+        "en": "Bem gently placed the arch. It looked like a smile above the water.",
+        "focus_zh": "英雄式大景，黃色拱圈如一道溫暖微笑跨過河水",
+        "focus_en": "Heroic wide view; the yellow arch spans the water gracefully",
+        "proof_path": "assets/storybook_proofs/spread-08.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published",
+        "interactive_step": true
+      },
+      {
+        "index": 9,
+        "spread_no": "09",
+        "page_range": "17-18",
+        "title_zh": "左邊翹起來了",
+        "zh": "橋面放好了。可是，左邊翹了起來。「等一下，還不能走！」",
+        "en": "The deck was in place. But one side tipped up. “Wait! We're not ready yet.”",
+        "focus_zh": "結構偏斜提示，角色停下腳步冷靜觀察，而非恐慌",
+        "focus_en": "Deck tilted on one side; characters pause thoughtfully",
+        "proof_path": "assets/storybook_proofs/spread-09.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 10,
+        "spread_no": "10",
+        "page_range": "19-20",
+        "title_zh": "再看一次",
+        "zh": "他們退後一點，看了又看。「原來橋墩沒有對齊。」",
+        "en": "They stepped back for another look. “The supports aren't lined up.”",
+        "focus_zh": "退後遠景、分析手勢，找到橋墩支點未對齊的核心原因",
+        "focus_en": "Distant perspective; analyzing support alignment gap",
+        "proof_path": "assets/storybook_proofs/spread-10.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published",
+        "interactive_step": true
+      },
+      {
+        "index": 11,
+        "spread_no": "11",
+        "page_range": "21-22",
+        "title_zh": "一起修正",
+        "zh": "路洛扶住橋拱，比姆調整距離，琵普把積木推回正中間。",
+        "en": "Lulo held the arch. Bem adjusted the gap. Pip nudged the blocks into place.",
+        "focus_zh": "三夥伴各自操作：一人扶拱、一人測距、一人推正積木",
+        "focus_en": "Three friends working synchronously with unique strengths",
+        "proof_path": "assets/storybook_proofs/spread-11.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 12,
+        "spread_no": "12",
+        "page_range": "23-24",
+        "title_zh": "慢慢測試",
+        "zh": "他們先放上一塊小積木。橋沒有晃。再放第二塊，橋還是穩穩的。",
+        "en": "They tried one little block. The bridge stayed steady. Then a second—still steady.",
+        "focus_zh": "分步漸進載重測試，橋面保持水平平衡，結構穩固",
+        "focus_en": "Step-by-step incremental load test; deck stays steady",
+        "proof_path": "assets/storybook_proofs/spread-12.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published",
+        "interactive_step": true
+      },
+      {
+        "index": 13,
+        "spread_no": "13",
+        "page_range": "25-26",
+        "title_zh": "再確認一次",
+        "zh": "「我們成功了嗎？」琵普問。比姆笑著說：「我們還可以再檢查一次。」",
+        "en": "“Did we do it?” asked Pip. Bem smiled. “Let's check one more time.”",
+        "focus_zh": "不急於歡呼，靜下來再次檢視的科學思考情緒節點",
+        "focus_en": "Thoughtful reflective moment before declaring success",
+        "proof_path": "assets/storybook_proofs/spread-13.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 14,
+        "spread_no": "14",
+        "page_range": "27-28",
+        "title_zh": "再試一次",
+        "zh": "三個朋友走到橋邊。路洛說：「原來，重新試一次，也是一種辦法。」",
+        "en": "The friends stood by the bridge. “Trying again is part of figuring it out,” said Lulo.",
+        "focus_zh": "黃昏暖色橋畔剪影，散發自信與成長思維力量",
+        "focus_en": "Dusk silhouette of the bridge; creative confidence and growth mindset",
+        "proof_path": "assets/storybook_proofs/spread-14.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 15,
+        "spread_no": "15",
+        "page_range": "29-30",
+        "title_zh": "兩岸相連",
+        "zh": "小橋把兩岸連在一起。路過的人揮揮手，說了聲：「謝謝！」",
+        "en": "The bridge joined both riverbanks. A traveler waved and called, “Thank you!”",
+        "focus_zh": "小橋發揮社會連結價值，旅人過橋，呼應開場空白",
+        "focus_en": "Bridge fulfills its community purpose connecting travelers",
+        "proof_path": "assets/storybook_proofs/spread-15.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      },
+      {
+        "index": 16,
+        "spread_no": "16",
+        "page_range": "31-32",
+        "title_zh": "下一個想像",
+        "zh": "第二天，形狀城飄來一朵奇怪的雲。「下一次，我們要蓋什麼？」",
+        "en": "The next morning, a curious cloud drifted over Shape City. “What shall we build next?”",
+        "focus_zh": "天邊飄來奇異雲朵，開放式提問引導孩子回到積木自由創作",
+        "focus_en": "A curious cloud drifts by, opening inquiry for physical play",
+        "proof_path": "assets/storybook_proofs/spread-16.png",
+        "status": "Storyboard Proof 2:1 / Print Artwork Not Published"
+      }
+    ]
+  },
+  "sixteen_case_shots_locked": [
+    {
+      "shot": "01",
+      "title_zh": "PLAYFORM 品牌整合主視覺",
+      "title_en": "PLAYFORM Integrated Brand Visual",
+      "evidence_zh": "完整閉合外盒、精裝書、建構橋、任務卡 45° 俯視大景",
+      "evidence_en": "Closed packaging box, hardcover book, built bridge, activity cards from 45°",
+      "prohibition_zh": "不切主體、不重用其他大圖",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "02",
+      "title_zh": "品牌識別系統",
+      "title_en": "Brand Identity System",
+      "evidence_zh": "PLAYFORM 向量標誌、比例網格、留白、安全空間、字級、色票",
+      "evidence_en": "Vector logo structure, grid, clearance, typography, color tokens",
+      "prohibition_zh": "禁止生成器假 LOGO 字",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "03",
+      "title_zh": "主角 IP 定稿",
+      "title_en": "Hero Character IP Final",
+      "evidence_zh": "LULO 路洛正側背同尺度；BEM 小熊與 PIP 兔子；表情與姿態庫",
+      "evidence_en": "Lulo front/side/back scale; Bem & Pip companions; expressions & poses",
+      "prohibition_zh": "人物每張不同臉，禁止公開真實照片",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "04",
+      "title_zh": "繪本裝幀與書體",
+      "title_en": "Picture Book Binding & Object",
+      "evidence_zh": "封面、背封、等厚書脊、布紋與紙材局部、方形真實比例",
+      "evidence_en": "Front/back cover, spine, cloth texture, paper tactile macro, square 240mm",
+      "prohibition_zh": "禁止左右頁不等大、假字",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "05",
+      "title_zh": "繪本代表跨頁 A",
+      "title_en": "Key Spread A: River Gap",
+      "evidence_zh": "雨後橋消失；一張完整 2:1 原創插畫在 16:9 展示板內完整呈現",
+      "evidence_en": "Post-rain empty gap; full 2:1 illustration shown without crop",
+      "prohibition_zh": "禁止左右岸被截斷",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "06",
+      "title_zh": "繪本代表跨頁 B",
+      "title_en": "Key Spread B: Building Together",
+      "evidence_zh": "三個夥伴合力搭橋、嘗試與修正，與 05 取景明顯不同",
+      "evidence_en": "Collaborative bridge building, trying and adjusting",
+      "prohibition_zh": "禁止換表情就稱新場景",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "07",
+      "title_zh": "互動繪本",
+      "title_en": "Interactive Picture Book",
+      "evidence_zh": "手持平板正確比例、操作前後狀態、無障礙操作與文字",
+      "evidence_en": "Handheld tablet in context, before/after states, accessible text",
+      "prohibition_zh": "禁止靜態概念冒稱可操作軟體",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "08",
+      "title_zh": "教具開箱",
+      "title_en": "Learning Kit Unboxing",
+      "evidence_zh": "外盒、內托、所有零件分類、任務卡、說明冊之完整俯拍",
+      "evidence_en": "Outer box, inner tray, component BOM, cards, manual overhead",
+      "prohibition_zh": "禁止 Q 版公仔塞入零件格、零件與 BOM 不符",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "09",
+      "title_zh": "教具 3D 結構",
+      "title_en": "Kit 3D Structural Breakdown",
+      "evidence_zh": "真 GLB 組合與爆炸狀態、零件對位、連接機構",
+      "evidence_en": "Real GLB assembled and exploded states, joinery logic",
+      "prohibition_zh": "禁止只有渲染圖卻聲稱可量產",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "10",
+      "title_zh": "3D 建造介面",
+      "title_en": "3D Bridge Lab Interface",
+      "evidence_zh": "模型 360° 操作、組裝／拆解、復位及部件說明",
+      "evidence_en": "Realtime 360° orbit, assemble/explode, part inspector",
+      "prohibition_zh": "禁止用同一張圖重複 SHOT 09",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "11",
+      "title_zh": "兒童形狀任務",
+      "title_en": "Child Shape Challenge",
+      "evidence_zh": "大觸控標的、一題一操作、錯誤引導與正向回饋",
+      "evidence_en": "Large touch targets, single question action, growth feedback",
+      "prohibition_zh": "禁止虛構遊戲成效分數",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "12",
+      "title_zh": "測試與修正狀態",
+      "title_en": "Testing & Error Recovery",
+      "evidence_zh": "橋墩偏移與矯正後可視化對比，真結構狀態不同",
+      "evidence_en": "Structural tilt vs corrected equilibrium dual-state visual",
+      "prohibition_zh": "禁止單純換按鈕色",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "13",
+      "title_zh": "親子使用場景",
+      "title_en": "Family Hands-On Play",
+      "evidence_zh": "照護者與孩子手部實際搭建橋，材料比例可檢查",
+      "evidence_en": "Hands-on play close-up with caregiver and child",
+      "prohibition_zh": "禁止未授權真實使用者案例",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "14",
+      "title_zh": "家長端學習回饋",
+      "title_en": "Parent Observation Dashboard",
+      "evidence_zh": "質性活動紀錄、親子提問、延伸活動，實際 RWD",
+      "evidence_en": "Qualitative reflection, dialogue prompts, home play extension",
+      "prohibition_zh": "禁止無來源成長百分比",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "15",
+      "title_zh": "教師端課程管理",
+      "title_en": "Teacher Lesson Planner",
+      "evidence_zh": "28 分鐘教案、材料表、活動分組、質性觀察欄位",
+      "evidence_en": "28-minute lesson flow, material list, qualitative rubrics",
+      "prohibition_zh": "禁止虛構學校、學生個資",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "16",
+      "title_zh": "教室品牌應用",
+      "title_en": "Classroom Ecosystem Context",
+      "evidence_zh": "教室全景、海報／教具收納／場域導入，與主視覺不同機位",
+      "evidence_en": "Classroom wide view, poster display, modular kit storage",
+      "prohibition_zh": "禁止假合作學校 LOGO",
+      "status": "Concept Plate · Static Design Visual"
+    }
+  ],
+  "learning_missions": [
+    {
+      "id": "mission-01",
+      "title_zh": "任務 01：找出能形成支撐的形狀",
+      "title_en": "Mission 01: Find Shapes That Support",
+      "instruction_zh": "點選一個積木形狀，看看哪個形狀在受到力量時不容易變形，最適合當作穩定結構的起點？",
+      "instruction_en": "Tap a shape to see which one holds its angle and provides the most stable foundation for a bridge.",
+      "choices": [
+        {
+          "id": "circle",
+          "label_zh": "圓形",
+          "label_en": "Circle",
+          "feedback_zh": "圓形在地上會咕嚕咕嚕滾動。它很適合用來做車輪，但當底座時需要額外的支架來固定。",
+          "feedback_en": "Circles roll freely! Great for wheels, but tricky for stationary bridge pillars without extra braces.",
+          "is_correct": false
+        },
+        {
+          "id": "square",
+          "label_zh": "正方形",
+          "label_en": "Square",
+          "feedback_zh": "正方形有平整的面，放在地面很穩固。但受到側面的推力時，四個角可能會稍微傾斜。",
+          "feedback_en": "Squares have flat surfaces for a steady base, but side forces can push their corners out of square.",
+          "is_correct": false
+        },
+        {
+          "id": "triangle",
+          "label_zh": "三角形",
+          "label_en": "Triangle",
+          "feedback_zh": "太棒了！三角形的三個頂角互相鎖定，受力時最不容易改變形狀，是真實橋樑桁架中最常見的幾何！",
+          "feedback_en": "Spot on! The three corners of a triangle lock together, resisting deformation—the secret behind real trusses!",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "id": "mission-02",
+      "title_zh": "任務 02：對齊兩岸的橋墩",
+      "title_en": "Mission 02: Align the Piers",
+      "instruction_zh": "橋拱需要兩側均勻的承托。請選擇讓橋拱兩端同時受力的位置。",
+      "instruction_en": "The arch needs equal support on both banks. Choose the position where forces balance evenly.",
+      "choices": [
+        {
+          "id": "pier-left",
+          "label_zh": "只放左岸橋墩",
+          "label_en": "Left Pier Only",
+          "feedback_zh": "如果只有一邊有支撐，橋拱放上去會因為失去重心而滑落。",
+          "feedback_en": "With only one side supported, the arch slides down into the river.",
+          "is_correct": false
+        },
+        {
+          "id": "pier-both",
+          "label_zh": "兩岸同時放置橋墩",
+          "label_en": "Both Shores Aligned",
+          "feedback_zh": "非常棒！兩岸橋墩距離對齊後，橋拱就能像一道微笑穩穩跨過河流！",
+          "feedback_en": "Excellent! When both piers align, the arch spans gracefully across the river like a smile.",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "id": "mission-03",
+      "title_zh": "任務 03：漸進放置測試積木",
+      "title_en": "Mission 03: Incremental Load Test",
+      "instruction_zh": "放上一塊測試積木，觀察橋樑的平衡狀態。",
+      "instruction_en": "Place test blocks onto the deck to verify steady equilibrium.",
+      "choices": [
+        {
+          "id": "load-1",
+          "label_zh": "第一塊小積木",
+          "label_en": "First Block",
+          "feedback_zh": "第一塊積木放上了，橋面保持平穩，沒有晃動！",
+          "feedback_en": "First block placed! The deck remains perfectly balanced without wobbling.",
+          "is_correct": true
+        },
+        {
+          "id": "load-2",
+          "label_zh": "第二塊小積木",
+          "label_en": "Second Block",
+          "feedback_zh": "第二塊積木放上了，橋樑依然穩固！測試順利完成！",
+          "feedback_en": "Second block placed! The bridge holds firm. Load test completed!",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "parent_dashboard": {
+    "session_date": "DEMO SESSION",
+    "activity_title_zh": "形狀城的造橋實驗",
+    "activity_title_en": "Shape City Bridge Experiment",
+    "observation_summary_zh": "孩子完成了形狀探索與橋拱搭建，主動觀察了三角形與圓形在受力時的差異，並在失敗後嘗試調整支點。",
+    "observation_summary_en": "The child explored structural shapes, observed differences between triangles and rolling circles, and adjusted support positions after an initial tilt.",
+    "metrics": [
+      {
+        "label_zh": "探索形狀種類",
+        "label_en": "Shapes Explored",
+        "value": "3 種"
+      },
+      {
+        "label_zh": "嘗試修正次數",
+        "label_en": "Re-alignment Attempts",
+        "value": "2 次"
+      },
+      {
+        "label_zh": "引導模式",
+        "label_en": "Learning Style",
+        "value": "觀察與實作"
+      }
+    ],
+    "reflection_questions_zh": [
+      "「為什麼圓形的積木滾走了，但三角形可以站得好好的？」",
+      "「如果橋的兩邊不一樣高，可以怎麼調整？」",
+      "「在我們生活周遭，你在哪裡看過三角形的鋼架？」"
+    ],
+    "reflection_questions_en": [
+      "“Why did the round block roll away, while the triangle stood firm?”",
+      "“What could we adjust if one side of the bridge is higher than the other?”",
+      "“Where do you see triangle frames in real buildings around us?”"
+    ],
+    "home_extension_zh": "拿出一套家用積木或紙盒，和孩子一起用紙板搭一座跨越兩張椅子的簡易小橋，測試能放幾本書。",
+    "home_extension_en": "Use cardboard and wooden blocks between two chairs to build a simple span, counting how many small books it holds."
+  },
+  "teacher_dashboard": {
+    "module_name_zh": "BRIDGE LAB 01 · 結構與平衡基礎",
+    "module_name_en": "BRIDGE LAB 01 · Foundations of Balance & Structure",
+    "duration_zh": "28 分鐘（建議一堂課）",
+    "duration_en": "28 Minutes (Single Lesson Scaffold)",
+    "schedule": [
+      {
+        "time": "00:00 - 08:00",
+        "phase_zh": "繪本共讀與問題發想",
+        "phase_en": "Shared Story Reading & Problem Framing",
+        "desc_zh": "共讀《形狀城的第七座橋》，引導孩子說出『如果橋不見了，該怎麼辦？』",
+        "desc_en": "Read the story together and prompt: 'What can we do if the bridge is gone?'"
+      },
+      {
+        "time": "08:00 - 20:00",
+        "phase_zh": "小組實體建構與 3D 觀察",
+        "phase_en": "Group Physical Building & 3D Review",
+        "desc_zh": "分組使用 BRIDGE LAB 教具盒，比對 3D 模型的橋拱與立柱，親手搭出跨河通道。",
+        "desc_en": "Hands-on assembly with wooden kit parts, cross-referencing rotatable 3D model."
+      },
+      {
+        "time": "20:00 - 28:00",
+        "phase_zh": "承重測試與質性反思分享",
+        "phase_en": "Load Testing & Reflection Circle",
+        "desc_zh": "循序放上測試小積木，記錄哪組發現了橋面傾斜的原因，並分享解決心得。",
+        "desc_en": "Sequential block loading, documenting structural insights without score ranking."
+      }
+    ],
+    "qualitative_rubric_zh": [
+      {
+        "dimension": "結構探索",
+        "level": "能嘗試 2 種以上不同形狀的支撐方式"
+      },
+      {
+        "dimension": "原因說明",
+        "level": "能用自己的話描述橋面傾斜或穩定的原因"
+      },
+      {
+        "dimension": "團隊合作",
+        "level": "與組員分工放置橋墩與橋拱，並輪流測試"
+      }
+    ],
+    "qualitative_rubric_en": [
+      {
+        "dimension": "Structural Exploration",
+        "level": "Tries 2 or more shape arrangements for support"
+      },
+      {
+        "dimension": "Articulation",
+        "level": "Explains why the deck tilts or holds balance in own words"
+      },
+      {
+        "dimension": "Collaboration",
+        "level": "Shares assembly tasks and takes turns testing with peers"
+      }
+    ],
+    "privacy_statement_zh": "本示範介面僅展示單機模擬資料，不串接任何學童個資或雲端學生資料庫，符合兒童隱私保護規範。",
+    "privacy_statement_en": "Demonstration only. No student personally identifiable information (PII) is collected or stored."
+  },
+  "sixteen_shots_specification": [
+    {
+      "shot": "01",
+      "theme_zh": "PLAYFORM 品牌整合主視覺",
+      "theme_en": "PLAYFORM Integrated Brand Visual",
+      "title_zh": "PLAYFORM 品牌整合主視覺",
+      "title_en": "PLAYFORM Integrated Brand Visual",
+      "evidence_zh": "完整閉合外盒、精裝書、建構橋、任務卡 45° 俯視大景",
+      "evidence_en": "Closed packaging box, hardcover book, built bridge, activity cards from 45°",
+      "composition_zh": "不切主體、不重用其他大圖",
+      "composition_en": "Closed packaging box, hardcover book, built bridge, activity cards from 45°",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "02",
+      "theme_zh": "品牌識別系統",
+      "theme_en": "Brand Identity System",
+      "title_zh": "品牌識別系統",
+      "title_en": "Brand Identity System",
+      "evidence_zh": "PLAYFORM 向量標誌、比例網格、留白、安全空間、字級、色票",
+      "evidence_en": "Vector logo structure, grid, clearance, typography, color tokens",
+      "composition_zh": "禁止生成器假 LOGO 字",
+      "composition_en": "Vector logo structure, grid, clearance, typography, color tokens",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "03",
+      "theme_zh": "主角 IP 定稿",
+      "theme_en": "Hero Character IP Final",
+      "title_zh": "主角 IP 定稿",
+      "title_en": "Hero Character IP Final",
+      "evidence_zh": "LULO 路洛正側背同尺度；BEM 小熊與 PIP 兔子；表情與姿態庫",
+      "evidence_en": "Lulo front/side/back scale; Bem & Pip companions; expressions & poses",
+      "composition_zh": "人物每張不同臉，禁止公開真實照片",
+      "composition_en": "Lulo front/side/back scale; Bem & Pip companions; expressions & poses",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "04",
+      "theme_zh": "繪本裝幀與書體",
+      "theme_en": "Picture Book Binding & Object",
+      "title_zh": "繪本裝幀與書體",
+      "title_en": "Picture Book Binding & Object",
+      "evidence_zh": "封面、背封、等厚書脊、布紋與紙材局部、方形真實比例",
+      "evidence_en": "Front/back cover, spine, cloth texture, paper tactile macro, square 240mm",
+      "composition_zh": "禁止左右頁不等大、假字",
+      "composition_en": "Front/back cover, spine, cloth texture, paper tactile macro, square 240mm",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "05",
+      "theme_zh": "繪本代表跨頁 A",
+      "theme_en": "Key Spread A: River Gap",
+      "title_zh": "繪本代表跨頁 A",
+      "title_en": "Key Spread A: River Gap",
+      "evidence_zh": "雨後橋消失；一張完整 2:1 原創插畫在 16:9 展示板內完整呈現",
+      "evidence_en": "Post-rain empty gap; full 2:1 illustration shown without crop",
+      "composition_zh": "禁止左右岸被截斷",
+      "composition_en": "Post-rain empty gap; full 2:1 illustration shown without crop",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "06",
+      "theme_zh": "繪本代表跨頁 B",
+      "theme_en": "Key Spread B: Building Together",
+      "title_zh": "繪本代表跨頁 B",
+      "title_en": "Key Spread B: Building Together",
+      "evidence_zh": "三個夥伴合力搭橋、嘗試與修正，與 05 取景明顯不同",
+      "evidence_en": "Collaborative bridge building, trying and adjusting",
+      "composition_zh": "禁止換表情就稱新場景",
+      "composition_en": "Collaborative bridge building, trying and adjusting",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "07",
+      "theme_zh": "互動繪本",
+      "theme_en": "Interactive Picture Book",
+      "title_zh": "互動繪本",
+      "title_en": "Interactive Picture Book",
+      "evidence_zh": "手持平板正確比例、操作前後狀態、無障礙操作與文字",
+      "evidence_en": "Handheld tablet in context, before/after states, accessible text",
+      "composition_zh": "禁止靜態概念冒稱可操作軟體",
+      "composition_en": "Handheld tablet in context, before/after states, accessible text",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "08",
+      "theme_zh": "教具開箱",
+      "theme_en": "Learning Kit Unboxing",
+      "title_zh": "教具開箱",
+      "title_en": "Learning Kit Unboxing",
+      "evidence_zh": "外盒、內托、所有零件分類、任務卡、說明冊之完整俯拍",
+      "evidence_en": "Outer box, inner tray, component BOM, cards, manual overhead",
+      "composition_zh": "禁止 Q 版公仔塞入零件格、零件與 BOM 不符",
+      "composition_en": "Outer box, inner tray, component BOM, cards, manual overhead",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "09",
+      "theme_zh": "教具 3D 結構",
+      "theme_en": "Kit 3D Structural Breakdown",
+      "title_zh": "教具 3D 結構",
+      "title_en": "Kit 3D Structural Breakdown",
+      "evidence_zh": "真 GLB 組合與爆炸狀態、零件對位、連接機構",
+      "evidence_en": "Real GLB assembled and exploded states, joinery logic",
+      "composition_zh": "禁止只有渲染圖卻聲稱可量產",
+      "composition_en": "Real GLB assembled and exploded states, joinery logic",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "10",
+      "theme_zh": "3D 建造介面",
+      "theme_en": "3D Bridge Lab Interface",
+      "title_zh": "3D 建造介面",
+      "title_en": "3D Bridge Lab Interface",
+      "evidence_zh": "模型 360° 操作、組裝／拆解、復位及部件說明",
+      "evidence_en": "Realtime 360° orbit, assemble/explode, part inspector",
+      "composition_zh": "禁止用同一張圖重複 SHOT 09",
+      "composition_en": "Realtime 360° orbit, assemble/explode, part inspector",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "11",
+      "theme_zh": "兒童形狀任務",
+      "theme_en": "Child Shape Challenge",
+      "title_zh": "兒童形狀任務",
+      "title_en": "Child Shape Challenge",
+      "evidence_zh": "大觸控標的、一題一操作、錯誤引導與正向回饋",
+      "evidence_en": "Large touch targets, single question action, growth feedback",
+      "composition_zh": "禁止虛構遊戲成效分數",
+      "composition_en": "Large touch targets, single question action, growth feedback",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "12",
+      "theme_zh": "測試與修正狀態",
+      "theme_en": "Testing & Error Recovery",
+      "title_zh": "測試與修正狀態",
+      "title_en": "Testing & Error Recovery",
+      "evidence_zh": "橋墩偏移與矯正後可視化對比，真結構狀態不同",
+      "evidence_en": "Structural tilt vs corrected equilibrium dual-state visual",
+      "composition_zh": "禁止單純換按鈕色",
+      "composition_en": "Structural tilt vs corrected equilibrium dual-state visual",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "13",
+      "theme_zh": "親子使用場景",
+      "theme_en": "Family Hands-On Play",
+      "title_zh": "親子使用場景",
+      "title_en": "Family Hands-On Play",
+      "evidence_zh": "照護者與孩子手部實際搭建橋，材料比例可檢查",
+      "evidence_en": "Hands-on play close-up with caregiver and child",
+      "composition_zh": "禁止未授權真實使用者案例",
+      "composition_en": "Hands-on play close-up with caregiver and child",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "14",
+      "theme_zh": "家長端學習回饋",
+      "theme_en": "Parent Observation Dashboard",
+      "title_zh": "家長端學習回饋",
+      "title_en": "Parent Observation Dashboard",
+      "evidence_zh": "質性活動紀錄、親子提問、延伸活動，實際 RWD",
+      "evidence_en": "Qualitative reflection, dialogue prompts, home play extension",
+      "composition_zh": "禁止無來源成長百分比",
+      "composition_en": "Qualitative reflection, dialogue prompts, home play extension",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "15",
+      "theme_zh": "教師端課程管理",
+      "theme_en": "Teacher Lesson Planner",
+      "title_zh": "教師端課程管理",
+      "title_en": "Teacher Lesson Planner",
+      "evidence_zh": "28 分鐘教案、材料表、活動分組、質性觀察欄位",
+      "evidence_en": "28-minute lesson flow, material list, qualitative rubrics",
+      "composition_zh": "禁止虛構學校、學生個資",
+      "composition_en": "28-minute lesson flow, material list, qualitative rubrics",
+      "status": "Concept Plate · Static Design Visual"
+    },
+    {
+      "shot": "16",
+      "theme_zh": "教室品牌應用",
+      "theme_en": "Classroom Ecosystem Context",
+      "title_zh": "教室品牌應用",
+      "title_en": "Classroom Ecosystem Context",
+      "evidence_zh": "教室全景、海報／教具收納／場域導入，與主視覺不同機位",
+      "evidence_en": "Classroom wide view, poster display, modular kit storage",
+      "composition_zh": "禁止假合作學校 LOGO",
+      "composition_en": "Classroom wide view, poster display, modular kit storage",
+      "status": "Concept Plate · Static Design Visual"
+    }
+  ],
+  "sixteen_case_shots": [
+    {
+      "id": "01",
+      "num": 1,
+      "section": "品牌與角色",
+      "section_en": "Brand & Character Identity",
+      "title": "品牌全貌與教具主視覺",
+      "title_en": "Brand Overview & Kit Visual",
+      "purpose": "案例開場，交代產品系統全貌",
+      "purpose_en": "Case opening, presenting the complete product system",
+      "src": "assets/case13/shot-01.jpg",
+      "alt": "PLAYFORM 橋樑教具、提盒、精裝繪本與任務卡設計視覺。"
+    },
+    {
+      "id": "02",
+      "num": 2,
+      "section": "品牌與角色",
+      "section_en": "Brand & Character Identity",
+      "title": "品牌識別與色彩系統",
+      "title_en": "Brand Identity & Color System",
+      "purpose": "識別字標、正反白與七色規範",
+      "purpose_en": "Logotype, reversed usage, and seven-color specifications",
+      "src": "assets/case13/shot-02.jpg",
+      "alt": "PLAYFORM 字標、讓想像有形狀標語與品牌色彩系統。"
+    },
+    {
+      "id": "03",
+      "num": 3,
+      "section": "品牌與角色",
+      "section_en": "Brand & Character Identity",
+      "title": "角色 IP 與表情設定",
+      "title_en": "Character IP & Expression Sheet",
+      "purpose": "LULO 正側背、BEM、PIP 與表情",
+      "purpose_en": "LULO 3-views, BEM, PIP, and 5 facial expressions",
+      "src": "assets/case13/shot-03.jpg",
+      "alt": "粉色蝴蝶結寶寶路洛的三視圖，搭配小熊 BEM、兔子 PIP 與五種表情。"
+    },
+    {
+      "id": "04",
+      "num": 4,
+      "section": "故事與繪本",
+      "section_en": "Story & Picture Book",
+      "title": "精裝繪本實體設計",
+      "title_en": "Hardcover Picture Book Design",
+      "purpose": "封面、封底、書脊與布紋材質",
+      "purpose_en": "Cover, back cover, spine, and cloth texture details",
+      "src": "assets/case13/shot-04.jpg",
+      "alt": "形狀城的第七座橋精裝繪本封面、封底與書脊設計視覺。"
+    },
+    {
+      "id": "05",
+      "num": 5,
+      "section": "故事與繪本",
+      "section_en": "Story & Picture Book",
+      "title": "繪本跨頁 A：等待一座橋",
+      "title_en": "Picture Book Spread A: Waiting for a Bridge",
+      "purpose": "故事建立，雨後等待新的橋",
+      "purpose_en": "Narrative establishment: river gap after rain, waiting for a bridge",
+      "src": "assets/case13/shot-05.jpg",
+      "alt": "路洛、小熊與兔子觀察雨後河道，遠方為形狀城，繪本跨頁插畫。"
+    },
+    {
+      "id": "06",
+      "num": 6,
+      "section": "故事與繪本",
+      "section_en": "Story & Picture Book",
+      "title": "繪本跨頁 B：一起動手搭建",
+      "title_en": "Picture Book Spread B: Building Together",
+      "purpose": "故事推進，三個角色一起搭橋",
+      "purpose_en": "Narrative progression: three companions building the bridge span together",
+      "src": "assets/case13/shot-06.jpg",
+      "alt": "路洛與夥伴放上木拱構件，一起搭建橋樑的繪本跨頁插畫。"
+    },
+    {
+      "id": "07",
+      "num": 7,
+      "section": "故事與繪本",
+      "section_en": "Story & Picture Book",
+      "title": "互動故事繪本",
+      "title_en": "Interactive Storybook Interface",
+      "purpose": "故事情節與點選提示連動",
+      "purpose_en": "Story narrative linked with touch-interaction cues",
+      "src": "assets/case13/shot-07.jpg",
+      "alt": "平板上的故事繪本介面設計，呈現把橋放上去的操作提示。"
+    },
+    {
+      "id": "08",
+      "num": 8,
+      "section": "教具與操作",
+      "section_en": "Learning Kit & Manipulation",
+      "title": "開箱與收納結構",
+      "title_en": "Unboxing & Tray Packaging Structure",
+      "purpose": "盒蓋、分格內托、零件與紙品",
+      "purpose_en": "Full box lid, pulp molded tray compartments, wooden parts, and cards",
+      "src": "assets/case13/shot-08.jpg",
+      "alt": "完整展開的 PLAYFORM 教具盒，展示紙漿內托、木件、繩索與任務卡。"
+    },
+    {
+      "id": "09",
+      "num": 9,
+      "section": "教具與操作",
+      "section_en": "Learning Kit & Manipulation",
+      "title": "教具組裝與零件分解",
+      "title_en": "Kit Assembly & Exploded Components",
+      "purpose": "組裝關係、構件與材質細節",
+      "purpose_en": "Structural assembly relationships, joinery, and material textures",
+      "src": "assets/case13/shot-09.jpg",
+      "alt": "木拱橋組裝與零件分解的立體概念視覺。"
+    },
+    {
+      "id": "10",
+      "num": 10,
+      "section": "教具與操作",
+      "section_en": "Learning Kit & Manipulation",
+      "title": "3D 造橋操作介面",
+      "title_en": "3D Bridge Lab Workspace Interface",
+      "purpose": "桌面裝置的建構操作介面",
+      "purpose_en": "Desktop laptop 3D construction and manipulation interface",
+      "src": "assets/case13/shot-10.jpg",
+      "alt": "比例正常的筆電呈現 3D 造橋實驗室介面設計。"
+    },
+    {
+      "id": "11",
+      "num": 11,
+      "section": "教具與操作",
+      "section_en": "Learning Kit & Manipulation",
+      "title": "兒童形狀選擇任務",
+      "title_en": "Child Shape Discovery Challenge",
+      "purpose": "大點選範圍與選取狀態",
+      "purpose_en": "Large touch targets and active state feedback for toddlers",
+      "src": "assets/case13/shot-11.jpg",
+      "alt": "路洛引導兒童辨認拱形、正方形與三角形的任務介面設計。"
+    },
+    {
+      "id": "12",
+      "num": 12,
+      "section": "教具與操作",
+      "section_en": "Learning Kit & Manipulation",
+      "title": "支撐修正前後回饋",
+      "title_en": "Support Realignment Feedback",
+      "purpose": "具體展示支撐修正前後差異",
+      "purpose_en": "Visualized before-and-after comparison of bridge pier realignment",
+      "src": "assets/case13/shot-12.jpg",
+      "alt": "橋墩支撐位置調整前後的視覺回饋設計。"
+    },
+    {
+      "id": "13",
+      "num": 13,
+      "section": "使用情境與管理",
+      "section_en": "Context & Learning Portals",
+      "title": "親子共玩情境",
+      "title_en": "Parent-Child Collaborative Play Context",
+      "purpose": "成人協助、孩子動手的實體使用情境",
+      "purpose_en": "Adult-guided, child-centered hands-on bridge building scene",
+      "src": "assets/case13/shot-13.jpg",
+      "alt": "親子共同搭建木拱橋的使用情境示意。"
+    },
+    {
+      "id": "14",
+      "num": 14,
+      "section": "使用情境與管理",
+      "section_en": "Context & Learning Portals",
+      "title": "家長探索紀錄",
+      "title_en": "Parent Observation & Dialogue Portal",
+      "purpose": "家長端的觀察、對話與後續挑戰",
+      "purpose_en": "Qualitative observation log, family prompts, and home extensions",
+      "src": "assets/case13/shot-14.jpg",
+      "alt": "平板與手機上的家長探索紀錄介面設計。"
+    },
+    {
+      "id": "15",
+      "num": 15,
+      "section": "使用情境與管理",
+      "section_en": "Context & Learning Portals",
+      "title": "教師課程工作台",
+      "title_en": "Teacher Lesson Planner Dashboard",
+      "purpose": "教師端 28 分鐘教案與小組觀察",
+      "purpose_en": "28-minute modular lesson plan (8+12+8) and group rubric",
+      "src": "assets/case13/shot-15.jpg",
+      "alt": "教師工作台介面設計，包含 8、12、8 分鐘活動與小組觀察欄。"
+    },
+    {
+      "id": "16",
+      "num": 16,
+      "section": "使用情境與管理",
+      "section_en": "Context & Learning Portals",
+      "title": "教室品牌整合情境",
+      "title_en": "Classroom Brand Integration Context",
+      "purpose": "海報、教材、教具與教室空間整合",
+      "purpose_en": "Holistic integration of posters, learning materials, and physical kits in classroom",
+      "src": "assets/case13/shot-16.jpg",
+      "alt": "教師與孩子共同搭橋，搭配品牌海報與教材陳列的教室情境示意。"
+    }
+  ]
+}

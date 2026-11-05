@@ -1,0 +1,240 @@
+{
+  "passed": true,
+  "viewports": [
+    {
+      "viewport": "1440px_laptop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "hasOverflow": false
+    },
+    {
+      "viewport": "390px_mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "hasOverflow": false
+    },
+    {
+      "viewport": "320px_small_mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "hasOverflow": false
+    }
+  ],
+  "shotsAudit": [
+    {
+      "shotId": "01",
+      "title": "01 / 品牌全貌與教具主視覺",
+      "purpose": "展示目的：案例開場，交代產品系統全貌",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "02",
+      "title": "02 / 品牌識別與色彩系統",
+      "purpose": "展示目的：識別字標、正反白與七色規範",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "03",
+      "title": "03 / 角色 IP 與表情設定",
+      "purpose": "展示目的：LULO 正側背、BEM、PIP 與表情",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "04",
+      "title": "04 / 精裝繪本實體設計",
+      "purpose": "展示目的：封面、封底、書脊與布紋材質",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "05",
+      "title": "05 / 繪本跨頁 A：等待一座橋",
+      "purpose": "展示目的：故事建立，雨後等待新的橋",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "06",
+      "title": "06 / 繪本跨頁 B：一起動手搭建",
+      "purpose": "展示目的：故事推進，三個角色一起搭橋",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "07",
+      "title": "07 / 互動故事繪本",
+      "purpose": "展示目的：故事情節與點選提示連動",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "08",
+      "title": "08 / 開箱與收納結構",
+      "purpose": "展示目的：盒蓋、分格內托、零件與紙品",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "09",
+      "title": "09 / 教具組裝與零件分解",
+      "purpose": "展示目的：組裝關係、構件與材質細節",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "10",
+      "title": "10 / 3D 造橋操作介面",
+      "purpose": "展示目的：桌面裝置的建構操作介面",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "11",
+      "title": "11 / 兒童形狀選擇任務",
+      "purpose": "展示目的：大點選範圍與選取狀態",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "12",
+      "title": "12 / 支撐修正前後回饋",
+      "purpose": "展示目的：具體展示支撐修正前後差異",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "13",
+      "title": "13 / 親子共玩情境",
+      "purpose": "展示目的：成人協助、孩子動手的實體使用情境",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "14",
+      "title": "14 / 家長探索紀錄",
+      "purpose": "展示目的：家長端的觀察、對話與後續挑戰",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "15",
+      "title": "15 / 教師課程工作台",
+      "purpose": "展示目的：教師端 28 分鐘教案與小組觀察",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    {
+      "shotId": "16",
+      "title": "16 / 教室品牌整合情境",
+      "purpose": "展示目的：海報、教材、教具與教室空間整合",
+      "pass": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    }
+  ],
+  "lightboxTested": true,
+  "tabsTested": [
+    {
+      "tab": "storybook",
+      "name": "02 Interactive Book",
+      "visible": true
+    },
+    {
+      "tab": "threed",
+      "name": "03 3D Lab",
+      "visible": true
+    },
+    {
+      "tab": "learning",
+      "name": "04 Child Challenge",
+      "visible": true
+    },
+    {
+      "tab": "parents",
+      "name": "05 Parents",
+      "visible": true
+    },
+    {
+      "tab": "teachers",
+      "name": "06 Teachers",
+      "visible": true
+    },
+    {
+      "tab": "specs",
+      "name": "07 Specs & References",
+      "visible": true
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "01_desktop_hero_shot01_1440.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/01_desktop_hero_shot01_1440.png"
+    },
+    {
+      "name": "02_gallery_section1_brand_characters.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/02_gallery_section1_brand_characters.png"
+    },
+    {
+      "name": "03_gallery_section2_story_spreads.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/03_gallery_section2_story_spreads.png"
+    },
+    {
+      "name": "04_gallery_section3_kit_operations.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/04_gallery_section3_kit_operations.png"
+    },
+    {
+      "name": "05_gallery_section4_context_portals.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/05_gallery_section4_context_portals.png"
+    },
+    {
+      "name": "06_lightbox_shot01_open.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/06_lightbox_shot01_open.png"
+    },
+    {
+      "name": "07_lightbox_shot04_book_object.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/07_lightbox_shot04_book_object.png"
+    },
+    {
+      "name": "08_lightbox_shot05_spread_a.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/08_lightbox_shot05_spread_a.png"
+    },
+    {
+      "name": "09_lightbox_shot08_unboxing_lid.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/09_lightbox_shot08_unboxing_lid.png"
+    },
+    {
+      "name": "10_lightbox_shot10_laptop_proportions.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/10_lightbox_shot10_laptop_proportions.png"
+    },
+    {
+      "name": "11_responsive_390px_mobile_gallery.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/11_responsive_390px_mobile_gallery.png"
+    },
+    {
+      "name": "12_responsive_320px_mobile_gallery.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-case13-16shots/12_responsive_320px_mobile_gallery.png"
+    }
+  ],
+  "consoleErrors": [
+    "THREE.WebGLRenderer: Error creating WebGL context.",
+    "THREE.WebGLRenderer: Error creating WebGL context."
+  ]
+}

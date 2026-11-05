@@ -1,0 +1,134 @@
+{
+  "passed": true,
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "1920px (Desktop Full)",
+      "scrollWidth": 1905,
+      "innerWidth": 1920,
+      "hasOverflow": false
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "1440px (Standard Desktop)",
+      "scrollWidth": 1425,
+      "innerWidth": 1440,
+      "hasOverflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "768px (Tablet Portrait)",
+      "scrollWidth": 753,
+      "innerWidth": 768,
+      "hasOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "390px (Mobile Standard)",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "name": "320px (Mobile Small)",
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "hasOverflow": false
+    }
+  ],
+  "tabsTested": [],
+  "interactions": [
+    {
+      "type": "storybook",
+      "spread6": "SPREAD 06 / 16 · PAGE 11-12",
+      "feedback6": "琵普：「三角形的角角連在一起，最穩固！」",
+      "audioNotice": "提示：精裝繪本專業朗讀音檔錄製中，此處為單機無障礙輔助示範。"
+    },
+    {
+      "type": "3d_viewer",
+      "inspectorInitial": {
+        "title": "PLAYFORM 橋樑：組裝完成狀態",
+        "desc": "橋拱、立柱、基座與四塊橋面平板完整結合，展示重力分散與支點承托結構。",
+        "hasCanvas": true
+      },
+      "inspectorExploded": "PLAYFORM 橋樑：結構拆解狀態",
+      "inspectorChars": "原創角色三人組：LULO, BEM, PIP"
+    },
+    {
+      "type": "child_challenge",
+      "childFeedback": "太棒了！三角形的三個頂角互相鎖定，受力時最不容易改變形狀，是真實橋樑桁架中最常見的幾何！",
+      "mission2Title": "任務 02：對齊兩岸的橋墩"
+    },
+    {
+      "type": "parent_dashboard",
+      "parentMetricsCount": 3,
+      "parentPromptsCount": 3,
+      "parentResetNotice": "已重設示範學習紀錄。"
+    },
+    {
+      "type": "teacher_dashboard",
+      "teacherScheduleRows": 3,
+      "teacherRubricsCount": 3
+    },
+    {
+      "type": "specs_gallery",
+      "specsCardsCount": 16
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "01_playform_desktop_hero_1440.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/01_playform_desktop_hero_1440.png"
+    },
+    {
+      "name": "08_playform_mobile_390.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/08_playform_mobile_390.png"
+    },
+    {
+      "name": "09_playform_mobile_320.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/09_playform_mobile_320.png"
+    },
+    {
+      "name": "02_playform_storybook_reader.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/02_playform_storybook_reader.png"
+    },
+    {
+      "name": "03_playform_3d_webgl_viewer.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/03_playform_3d_webgl_viewer.png"
+    },
+    {
+      "name": "04_playform_child_challenge.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/04_playform_child_challenge.png"
+    },
+    {
+      "name": "05_playform_parent_dashboard.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/05_playform_parent_dashboard.png"
+    },
+    {
+      "name": "06_playform_teacher_dashboard.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/06_playform_teacher_dashboard.png"
+    },
+    {
+      "name": "07_playform_16_shot_specs.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/07_playform_16_shot_specs.png"
+    },
+    {
+      "name": "10_playform_bilingual_english.png",
+      "path": "/Users/howard/Desktop/Portfolio/brand/playform/presentation/evidence-local-v1/10_playform_bilingual_english.png"
+    }
+  ],
+  "consoleErrors": [
+    "THREE.WebGLRenderer: Error creating WebGL context.",
+    "THREE.WebGLRenderer: Error creating WebGL context."
+  ],
+  "bilingual": {
+    "enHeroTagline": "Make ideas take shape.",
+    "zhHeroTagline": "讓想像，有形狀。"
+  }
+}

@@ -260,5 +260,27 @@ window.HOWARD_PROJECTS = Object.freeze([
     cover: 'brand/civic-access/assets/mockups/shot-01.jpg',
     interactiveAsset: 'brand/civic-access/assets/mockups/shot-01.jpg',
     caseStudy: 'brand/civic-access/'
+  },
+  {
+    id: 'playform',
+    order: 13,
+    published: true,
+    title: 'PLAYFORM',
+    year: '2026',
+    category: {
+      en: 'Children\'s Education Brand / Picture Book / Interactive Product Concept',
+      'zh-TW': '兒童教育品牌／原創繪本／互動產品概念設計'
+    },
+    projectType: {
+      en: 'Children\'s Education Brand & Interactive Product Concept Design',
+      'zh-TW': '兒童教育品牌暨互動產品概念設計'
+    },
+    description: {
+      en: 'A concept design for a children\'s STEAM education brand, combining original character IP, a picture-book storyline, a bridge-building learning kit concept, a WebGL 3D prototype, child missions, and parent / teacher portals using demo data.',
+      'zh-TW': '兒童 STEAM 教育品牌概念設計，整合原創角色 IP、繪本故事、造橋教具概念、WebGL 3D 互動原型、兒童學習任務，以及使用示範資料的家長端與教師端。'
+    },
+    cover: 'brand/playform/assets/case13/shot-01.jpg',
+    interactiveAsset: 'brand/playform/assets/case13/shot-01.jpg',
+    caseStudy: 'brand/playform/'
   }
 ]);
