@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLAYFORM 13 V4｜視覺母稿審稿畫廊 (No-Crop Review)｜HOWARD HUANG</title>
+  <meta name="description" content="PLAYFORM 13 V4 視覺母稿審稿畫廊：以 100% 原始比例與 object-fit: contain 檢視 7 張未裁切美術方向母圖，核對 16 案例圖版與 16 跨頁腳本缺圖清單。">
+  <style>
+    :root {
+      --blue: #1A3F81;
+      --blue-dark: #112547;
+      --blue-light: #EEF3FA;
+      --yellow: #F7D75B;
+      --coral: #EF8C8C;
+      --cream: #FFF9ED;
+      --mint: #C7DFD6;
+      --ink: #1D2936;
+      --ink-muted: #536477;
+      --line: #D9D3C5;
+      --surface: #FFFFFF;
+      --surface-alt: #F6F1E5;
+      --radius: 16px;
+      --focus-ring: 3px solid #E27C44;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", sans-serif;
+      color: var(--ink);
+      background-color: var(--cream);
+      line-height: 1.6;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: clip;
+      background-color: var(--cream);
+      color: var(--ink);
+    }
+
+    :focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 20px;
+      background: var(--yellow);
+      color: var(--blue);
+      padding: 10px 18px;
+      font-weight: 800;
+      border-radius: 8px;
+      z-index: 1000;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 15px;
+    }
+
+    /* Header */
+    header {
+      background: var(--blue);
+      color: #FFFFFF;
+      padding: 24px clamp(16px, 4vw, 48px);
+      box-shadow: 0 4px 16px rgba(17, 37, 71, 0.2);
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+    }
+
+    .badge-alert {
+      background: #E85B24;
+      color: #FFFFFF;
+    }
+
+    .back-btn {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      transition: background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    /* Status Banner */
+    .status-bar {
+      background: #FFF0C9;
+      border-bottom: 1px solid #E8CD82;
+      padding: 12px clamp(16px, 4vw, 48px);
+      font-size: 13px;
+      color: #5C4505;
+    }
+
+    .status-bar-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px clamp(16px, 4vw, 48px) 64px;
+    }
+
+    /* Section intro */
+    .intro-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 40px);
+      margin-bottom: 36px;
+    }
+
+    .intro-title {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 900;
+      color: var(--blue);
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .intro-desc {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      max-width: 960px;
+      margin: 0 0 20px;
+    }
+
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .point-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .point-card h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .point-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* Board Articles */
+    .board-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 48px;
+      box-shadow: 0 6px 24px rgba(26, 63, 129, 0.05);
+    }
+
+    .board-figure {
+      margin: 0;
+      padding: clamp(16px, 3vw, 28px);
+      background: #EAE6DF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .board-figure img {
+      width: 100%;
+      height: auto;
+      max-height: 820px;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .board-body {
+      padding: clamp(20px, 3vw, 36px);
+    }
+
+    .board-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .board-index {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      color: var(--coral);
+      text-transform: uppercase;
+    }
+
+    .board-title {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 900;
+      color: var(--blue);
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .board-subtitle {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .analysis-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .analysis-box.positive {
+      border-left: 4px solid #2F9E44;
+    }
+
+    .analysis-box.warning {
+      border-left: 4px solid #E85B24;
+    }
+
+    .analysis-box h4 {
+      margin: 0 0 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .analysis-box p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    .tech-specs {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--ink-muted);
+      background: #F4EFE6;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      word-break: break-all;
+    }
+
+    /* Backlog Table */
+    .table-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3vw, 36px);
+      margin-bottom: 48px;
+      overflow-x: auto;
+    }
+
+    .table-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--blue);
+      margin: 0 0 8px;
+    }
+
+    .table-desc {
+      font-size: 14px;
+      color: var(--ink-muted);
+      margin: 0 0 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--surface-alt);
+      color: var(--blue);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag-hold {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #FFE8E8;
+      color: #C92A2A;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-ref {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #FFF0C9;
+      color: #7A5703;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-pass {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #E8F7ED;
+      color: #1B5E20;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--blue-dark);
+      color: #FFFFFF;
+      padding: 24px clamp(16px, 4vw, 48px);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 900px) {
+      .analysis-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#reviewMain" class="skip-link">跳至審稿內容 / Skip to review content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="brand-title">
+        <span>PLAYFORM 13 V4</span>
+        <span class="badge">NO-CROP VISUAL AUDIT</span>
+        <span class="badge badge-alert">PRODUCTION HOLD</span>
+      </div>
+      <div>
+        <a href="../index.html" class="back-btn">
+          <span>← 返回 CASE 13 互動案例主頁</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Status Bar -->
+  <aside class="status-bar" aria-label="審核狀態宣告">
+    <div class="status-bar-inner">
+      <div>
+        <strong>本機審稿模式：</strong>
+        <span>已接收 7 張原始構圖母稿（1672 × 941）；採用 object-fit: contain 完整呈現，絕無裁切；16 張正式作品圖標記 HOLD。</span>
+      </div>
+      <span class="badge" style="background:#5C4505; color:#FFF0C9;">LOCAL ONLY / ZERO DEPLOY</span>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main id="reviewMain">
+    <!-- Intro Card -->
+    <section class="intro-card" aria-labelledby="introHeading">
+      <h1 id="introHeading" class="intro-title">CASE 13 PLAYFORM｜V4 視覺母稿審稿畫廊</h1>
+      <p class="intro-desc">
+        針對 V3 被強制裁切、重複使用的舊圖版候選問題，本 V4 審稿頁改採 <strong>7 張未裁切的新版視覺母稿</strong>，所有圖片以原生比例與 <code>object-fit: contain</code> 完整展示，保留人物、書本、教具與文字邊界。本頁僅作為美術方向與設計展示審查，<strong>不冒稱已完成 16 張獨立商業攝影與 16 跨頁精修繪本</strong>。
+      </p>
+
+      <div class="key-points-grid">
+        <div class="point-card">
+          <h4>01 / 零裁切展示</h4>
+          <p>全圖採用 1672 × 941 原生像素輸出，絕不使用 <code>ImageOps.fit()</code> 或 CSS <code>cover</code>，完整保護構圖邊緣。</p>
+        </div>
+        <div class="point-card">
+          <h4>02 / 雙軌隔離保護</h4>
+          <p>審稿素材獨立收納於 <code>brand/playform/review/</code>，不覆蓋正式原型，不更動全站首頁註冊資料。</p>
+        </div>
+        <div class="point-card">
+          <h4>03 / 人工文字與品質核對</h4>
+          <p>逐圖檢查細微文字、標籤生成瑕疵與視覺真實度，不憑 SHA 通過即宣稱設計合格。</p>
+        </div>
+        <div class="point-card">
+          <h4>04 / 缺圖清單誠實標記</h4>
+          <p>對照 16 跨頁故事腳本與 16 案例圖版規範，未交付正式完稿者明確標示 HOLD。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Boards Review Section -->
+    <section aria-label="7 張視覺母稿逐張審查">
+      <!-- Board 01 -->
+      <article class="board-card" id="board-01">
+        <figure class="board-figure">
+          <img src="boards/01_CHARACTER_IP.png" alt="01_CHARACTER_IP：主角 IP 三視圖、表情與材質母版" loading="eager">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 01 / 07 · 01_CHARACTER_IP</span>
+            <span class="tag-ref">保留為角色母版 (ART DIRECTION REF)</span>
+          </div>
+          <h2 class="board-title">主角 IP｜三視圖、動作與材質設計</h2>
+          <div class="board-subtitle">LULO Q 版小女孩（粉色蝴蝶結、蕾絲領、珊瑚粉洋裝）立體造型探索</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>完整呈現小女孩角色的正面、側面、四分之三角度及 4 種生動表情（好奇、微笑、驚喜、專注），比例一致，且嚴格維持粉色大蝴蝶結、精緻蕾絲翻領與珊瑚粉洋裝的造型特徵。可作為後續繪本與 3D 角色製作的一致性參考母稿。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>目前為高解析 3D 渲染圖板，非具備骨架綁定 (Rigging) 與可動控制器之正式量產 3D 資產；亦非 SHOT 03（三角色同尺度對比）的最終輸出。需作為角色造型參考，不能宣稱動畫工程已完工。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (2,179.9 KB) / JPG (543.1 KB)<br>
+            SHA-256 (PNG)：<code>ae40d8e2306125ba031268deaf454102bcd8fb2774b2a9256cc13b2a089865c3</code><br>
+            SHA-256 (JPG)：<code>00dbf8a819defe1ae231907949c5e851da75d6b5ff20054627bb0b4987687f9c</code>
+          </div>
+        </div>
+      </article>
+
+      <!-- Board 02 -->
+      <article class="board-card" id="board-02">
+        <figure class="board-figure">
+          <img src="boards/02_PICTURE_BOOK_OBJECT.png" alt="02_PICTURE_BOOK_OBJECT：精裝書與內頁裝幀工藝母版" loading="lazy">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 02 / 07 · 02_PICTURE_BOOK_OBJECT</span>
+            <span class="tag-ref">保留為出版樣書概念 (BOOK OBJECT REF)</span>
+          </div>
+          <h2 class="board-title">精裝繪本裝幀｜封面、書脊與攤平跨頁</h2>
+          <div class="board-subtitle">《THE SEVENTH BRIDGE / 形狀城的第七座橋》實體出版工藝展示</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>展示精裝方形開本（240×240mm 提案規格）、書脊燙印厚度、攤平跨頁紙質溫潤感與封面主角插畫。排版大器，色調符合 Paper Cream 與 Learning Navy 規範，展現成熟的出版設計質感。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>圖版僅展示單冊外觀與選頁攤平示意，未包含全書 16 個跨頁的完整印刷檔案與出血打樣；不能代表 SHOT 04（封底／書脊微距材質）與 SHOT 05、06（獨立內頁）已完成。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (2,556.1 KB) / JPG (734.0 KB)<br>
+            SHA-256 (PNG)：<code>43c58d522b2375fa4862f67d61ec55bc04a4c00c2f5a7ca0f70b79d93df97883</code><br>
+            SHA-256 (JPG)：<code>a35ddb1e3fc44f18de667ff467f929825095cf70853ea5d22b66eac7ec559888</code>
+          </div>
+        </div>
+      </article>
+
+      <!-- Board 03 -->
+      <article class="board-card" id="board-03">
+        <figure class="board-figure">
+          <img src="boards/03_PICTURE_BOOK_SCENES.png" alt="03_PICTURE_BOOK_SCENES：繪本故事構圖與情節插畫示例" loading="lazy">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 03 / 07 · 03_PICTURE_BOOK_SCENES</span>
+            <span class="tag-ref">保留為故事敘事分鏡參考 (STORY SPREADS REF)</span>
+          </div>
+          <h2 class="board-title">繪本故事構圖｜多場景敘事與情節插畫示例</h2>
+          <div class="board-subtitle">河岸空白、積木探索、合作建造與完工過河之連續故事場景</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>展示 6 個核心情節關鍵畫面：雨後斷橋的困惑、拿著積木觀察、嘗試搭起橋拱、小女孩與夥伴在橋上慶祝。插畫風格溫暖細緻，色彩對比鮮明，有效確立全書的視覺基調。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>此圖版為多格情節概念合成板（Montage Board），並非 16 張獨立出版級雙跨頁印刷檔案；其文字僅為標題排版，缺少正式 16 跨頁的中英雙語內文排版。16 跨頁實體插畫列為 HOLD。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (2,837.3 KB) / JPG (850.2 KB)<br>
+            SHA-256 (PNG)：<code>f4890d1c6284d339eaa99328d3218f6e94b109d91908b2f28c936faf4c8fc3d9</code><br>
+            SHA-256 (JPG)：<code>cca5c7fdfaebad638f4632767a1d9c6f2693afee104a468368a4f499a3903f75</code>
+          </div>
+        </div>
+      </article>
+
+      <!-- Board 04 -->
+      <article class="board-card" id="board-04">
+        <figure class="board-figure">
+          <img src="boards/04_BRIDGE_LEARNING_KIT.png" alt="04_BRIDGE_LEARNING_KIT：教具組、收納盒與實體配件情境" loading="lazy">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 04 / 07 · 04_BRIDGE_LEARNING_KIT</span>
+            <span class="tag-ref">保留為教具盒包裝情境參考 (KIT PACKAGING REF)</span>
+          </div>
+          <h2 class="board-title">實體學習盒｜教具組件、抽屜外盒與配件情境</h2>
+          <div class="board-subtitle">BRIDGE LAB 01 實體教具成套收納與木質積木構件概念</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>工作桌俯拍視角，清楚呈現外盒封套、開合層次、拱形與立柱積木、任務卡片及配件擺放。柔和自然光質感極佳，呈現高端益智教具的品牌定位。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>人工校對發現部分微型包裝標籤存在 AI 生成殘缺字元（如「BPD」、「自本品06」、「RLELEORCN」）；且實體尚未量產，安全（EN71/CNS）與食品級無毒塗料認證尚未進行，不可宣稱量產合格品。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (2,307.4 KB) / JPG (626.2 KB)<br>
+            SHA-256 (PNG)：<code>98d76dea7e8a1cb00cf7afc743dd4221aae77b8f7096ae791f5b151399355a04</code><br>
+            SHA-256 (JPG)：<code>522b63d01b1e7c688e1293bbd49766e9733ef096717bc9369f14f3f1519f70cd</code>
+          </div>
+        </div>
+      </article>
+
+      <!-- Board 05 -->
+      <article class="board-card" id="board-05">
+        <figure class="board-figure">
+          <img src="boards/05_PRODUCT_ENGINEERING.png" alt="05_PRODUCT_ENGINEERING：橋樑結構、構件清單與包裝刀模設計" loading="lazy">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 05 / 07 · 05_PRODUCT_ENGINEERING</span>
+            <span class="tag-ref">保留為產品結構設計圖 (ENGINEERING SPEC REF)</span>
+          </div>
+          <h2 class="board-title">產品工程系統｜構件數量、卡榫邏輯與環保紙模包裝</h2>
+          <div class="board-subtitle">Product System / Joinery Logic (Anchor, Join, Secure) / Molded Pulp Tray</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>極具專業感的工業設計圖版：完整列出構件名稱（Bridge Arch Pieces x4, Columns x4, Base Plates x4 等）、三段卡榫邏輯（1. Anchor Fit & Lock, 2. Join Snap Fit, 3. Secure Press Lock）、刀模展開圖與環保紙漿內托 (Molded Paper Pulp)。展現嚴謹的產品系統規劃思維。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>圖版中的部分輔助說明文字出現微型拼字毛邊（如「Ricid Paperboard」應為 Rigid、「Buid •Lewn」應為 Build Learn）。此圖為設計概念示意，未經真實模具射出公差測試，不得宣稱已完成量產 CAD 驗證。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (2,184.7 KB) / JPG (569.8 KB)<br>
+            SHA-256 (PNG)：<code>9e5088707b91f68f034f3b572301d4c85c1faca9df7de9a1222ec3c2b85c4bec</code><br>
+            SHA-256 (JPG)：<code>de80ac298ba5506881db15648bc03c79c32e322b89ec4b5c2a4eca11560c29ce</code>
+          </div>
+        </div>
+      </article>
+
+      <!-- Board 06 -->
+      <article class="board-card" id="board-06">
+        <figure class="board-figure">
+          <img src="boards/06_CHILD_INTERACTION.png" alt="06_CHILD_INTERACTION：兒童數位操作與故事任務介面" loading="lazy">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 06 / 07 · 06_CHILD_INTERACTION</span>
+            <span class="tag-ref">保留為兒童介面視覺概念 (CHILD UI CONCEPT REF)</span>
+          </div>
+          <h2 class="board-title">兒童數位體驗｜平板互動造橋任務與即時回饋</h2>
+          <div class="board-subtitle">Child Experience / Bridge Adventure Interactive Interface</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>展示平板裝置上的兒童遊戲介面：3D 橋樑立於河面、小女孩角色在旁提示、底部提供大觸控熱區之形狀選擇，呈現親切活潑且專注於造橋任務的數位體驗。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>此圖版為平面概念 Mockup，真正的可操作行為需回歸本機已開發完成的 DOM/Canvas/WebGL 互動原型。且不能單憑此圖假裝完成 SHOT 07、10、11、12 四張各具獨立驗收目標之正式案圖。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (2,216.5 KB) / JPG (686.9 KB)<br>
+            SHA-256 (PNG)：<code>0e9c68e3b8bf8f6425a081285db8c8b852e447e6a0db2a4e9a363105230b0193</code><br>
+            SHA-256 (JPG)：<code>045d8e9c8ca0580723f4138cf38f377ba36401e714bf32c3a38165f4bbbad949</code>
+          </div>
+        </div>
+      </article>
+
+      <!-- Board 07 -->
+      <article class="board-card" id="board-07">
+        <figure class="board-figure">
+          <img src="boards/07_PARENT_TEACHER_PORTAL.png" alt="07_PARENT_TEACHER_PORTAL：家長陪伴指引與教師教學系統" loading="lazy">
+        </figure>
+        <div class="board-body">
+          <div class="board-meta">
+            <span class="board-index">BOARD 07 / 07 · 07_PARENT_TEACHER_PORTAL</span>
+            <span class="tag-ref">保留為成人端後台概念 (PORTAL ECOSYSTEM REF)</span>
+          </div>
+          <h2 class="board-title">家長與教師生態｜學習回饋、課堂鷹架與質性評量</h2>
+          <div class="board-subtitle">Parent Guidance / Teacher Lesson Planner & Classroom Facilitation</div>
+
+          <div class="analysis-grid">
+            <div class="analysis-box positive">
+              <h4>視覺成果與保留理由</h4>
+              <p>左右並列展示家長端（Today's Play, Activity Highlights, At-Home Extension）與教師端（Lesson Flow, Classroom Facilitation, Qualitative Assessment），清楚體現以質性觀察取代分數排名的教育產品思維。</p>
+            </div>
+            <div class="analysis-box warning">
+              <h4>限制與待重繪／後製缺口</h4>
+              <p>畫面中平板內的文字為線框概念示範，未達 2560×1440 正式案例圖清晰度；在真實系統中，家長端與教師端在資訊架構與權限上應嚴格分流，不能一張圖帶過。SHOT 14 與 SHOT 15 仍需獨立高解析產出，標記 HOLD。</p>
+            </div>
+          </div>
+
+          <div class="tech-specs">
+            規格：1672 × 941 RGB PNG (1,781.7 KB) / JPG (421.6 KB)<br>
+            SHA-256 (PNG)：<code>cc9c48f56ad76b16ae83ccbd567c1ac509d0ba8a562d89e1436137d924545ac0</code><br>
+            SHA-256 (JPG)：<code>a0a7a3f74f3852c54fba09d176ea078f2225a92415dfa1a57f2c652e39dd2586</code>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Cross-Reference Backlog Table -->
+    <section class="table-card" aria-labelledby="backlogHeading">
+      <h2 id="backlogHeading" class="table-title">對照驗收：16 張案例圖版缺圖清單 (Case Shots Backlog)</h2>
+      <p class="table-desc">
+        依據 <code>16_CASE_SHOT_SPEC_V1.md</code> 正式圖版規範，逐張核對 7 張新版視覺母圖對應度。未達獨立 2560×1440 商業完稿規格者，明確標示 <strong>HOLD</strong>，絕不以局部裁切湊數。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">SHOT</th>
+            <th scope="col">主題與設計證據目標</th>
+            <th scope="col">製作類型</th>
+            <th scope="col">V4 視覺母稿對應狀態</th>
+            <th scope="col">驗收判定</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SHOT 01</strong></td>
+            <td>品牌整合 Hero｜外盒、繪本、組好的一座橋及任務卡 45° 俯視</td>
+            <td>3D 模型＋實景攝影合成</td>
+            <td>Board 04 提供部分教具情境，缺少完整繪本、卡片與橋樑整合大構圖</td>
+            <td><span class="tag-hold">HOLD · 待正式完稿</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 02</strong></td>
+            <td>品牌識別系統｜深藍底符號結構大圖、反白版、色票與字級邊界</td>
+            <td>Illustrator 級向量排版</td>
+            <td>現有向量 SVG 交付完整；未有 2560×1440 正式橫式／直式規範大圖</td>
+            <td><span class="tag-hold">HOLD · 待正式完稿</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 03</strong></td>
+            <td>角色 IP 表情動作｜三角色各正側背視角、同尺度、至少 5 表情</td>
+            <td>原創插畫＋3D Turntable</td>
+            <td>Board 01 提供 LULO Q 版角色表情板；三角色尺度對比板尚缺</td>
+            <td><span class="tag-ref">PARTIAL · 參考母版就緒 / 待整合圖版</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 04</strong></td>
+            <td>繪本封面及精裝工藝｜精裝書正背封、書脊布紋燙印，深色亞麻布情境</td>
+            <td>產品 3D／寫實材質攝影</td>
+            <td>Board 02 提供樣書攤平概念；無正背封特寫與布紋燙印細節</td>
+            <td><span class="tag-hold">HOLD · 待獨立完稿</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 05</strong></td>
+            <td>繪本情節一：河上的空白｜雨後形狀城、斷橋兩端雙跨頁插畫</td>
+            <td>紙雕／繪本插畫</td>
+            <td>Board 03 包含河面情境縮圖；無 2560×1440 獨立全幅跨頁印刷原稿</td>
+            <td><span class="tag-hold">HOLD · 待獨立繪製</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 06</strong></td>
+            <td>繪本情節二：一起造橋｜廣角跨頁插畫，三角色合作嘗試支撐與傾斜</td>
+            <td>繪本插畫與開書 Mockup</td>
+            <td>Board 03 包含建橋動作縮圖；無獨立全幅開書完稿</td>
+            <td><span class="tag-hold">HOLD · 待獨立繪製</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 07</strong></td>
+            <td>互動繪本閱讀器｜手持平板情境，展示可選橋墩位置與側邊微互動</td>
+            <td>DOM 介面＋情境攝影</td>
+            <td>本機 DOM 原型可實測操作；情境情境合成圖未製作</td>
+            <td><span class="tag-ref">PROTOTYPE READY · 待情境合成</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 08</strong></td>
+            <td>實體學習盒拆封｜工作室俯拍，抽屜盒分隔內托、卡片與零件陳列</td>
+            <td>產品 3D／攝影</td>
+            <td>Board 04 提供俯拍情境；內托分層與零件 BOM 仍需修復標籤瑕疵</td>
+            <td><span class="tag-hold">HOLD · 待修復標籤與獨立完稿</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 09</strong></td>
+            <td>3D 結構與拆解｜潔淨空間，組好橋與爆炸圖並排、零件軸線標示</td>
+            <td>3D GLB Render</td>
+            <td>GLB 模型（組裝／拆解）已交付；未產出 2560×1440 正式並排渲染圖</td>
+            <td><span class="tag-hold">HOLD · 待正式渲染</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 10</strong></td>
+            <td>3D 即時建造器｜筆電介面顯示可旋轉橋樑、選取零件與組裝／拆解狀態</td>
+            <td>Three.js / WebGL</td>
+            <td>本機 WebGL/Canvas 雙模檢視器已正常運行；螢幕情境圖待合成</td>
+            <td><span class="tag-ref">PROTOTYPE READY · 待情境合成</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 11</strong></td>
+            <td>兒童形狀任務｜結構清晰之形狀選擇遊戲，一個指令一個選擇大熱區</td>
+            <td>實作介面與互動狀態</td>
+            <td>Board 06 提供介面概念；本機 3 段任務原型可實測；情境圖待出</td>
+            <td><span class="tag-ref">PROTOTYPE READY · 待情境出圖</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 12</strong></td>
+            <td>建造測試與錯誤復原｜動態圖解：橋面傾斜前／調整支點後明顯不同狀態</td>
+            <td>3D＋互動操作畫面</td>
+            <td>互動邏輯已於繪本 Spread 10 實作；獨立雙態對比視覺圖未出</td>
+            <td><span class="tag-hold">HOLD · 待繪製對比圖</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 13</strong></td>
+            <td>親子實體延伸活動｜木桌自然光，照護者與孩子使用實體積木近景特寫</td>
+            <td>真人情境攝影／合成</td>
+            <td>V4 視覺包未包含真人情境攝影</td>
+            <td><span class="tag-hold">HOLD · 待排程拍攝合成</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 14</strong></td>
+            <td>家長端學習回饋｜成人雜誌式 Dashboard，本次活動、提問與對話紀錄</td>
+            <td>功能 UI／RWD</td>
+            <td>Board 07 包含家長版面概念；本機已實作成人端 RWD；高解析完稿待出</td>
+            <td><span class="tag-ref">PROTOTYPE READY · 待高解析出圖</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 15</strong></td>
+            <td>教師端課程管理｜寬螢幕課表、時段規劃、分組領用與質性觀察紀錄</td>
+            <td>教師平台 UI／流程</td>
+            <td>Board 07 包含教師系統概念；本機已實作 28 分鐘課程表與規準；高解析完稿待出</td>
+            <td><span class="tag-ref">PROTOTYPE READY · 待高解析出圖</span></td>
+          </tr>
+          <tr>
+            <td><strong>SHOT 16</strong></td>
+            <td>教室情境／品牌最終應用｜教室全景，教師與孩子合作搭橋與成果海報</td>
+            <td>教室品牌環境與攝影</td>
+            <td>V4 視覺包未包含全景教室品牌環境攝影</td>
+            <td><span class="tag-hold">HOLD · 待環境設計合成</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 16 Story Spreads Status Table -->
+    <section class="table-card" aria-labelledby="spreadsHeading">
+      <h2 id="spreadsHeading" class="table-title">繪本出版進度：16 個故事跨頁插畫清單 (Picture Book Spreads Backlog)</h2>
+      <p class="table-desc">
+        依據 <code>16_SPREAD_STORY_SCRIPT_ZH_EN.md</code> 原創繪本腳本，現狀僅有腳本文字與概念縮圖，<strong>全書 16 個出版級獨立跨頁插畫全數列為 HOLD</strong>。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">跨頁編號</th>
+            <th scope="col">中文核心故事句</th>
+            <th scope="col">插畫焦點要求</th>
+            <th scope="col">V4 交付狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spread 01</td>
+            <td>形狀城的雨，滴答滴答，下了一整夜。早晨，小橋不見了。</td>
+            <td>拉遠全景；河的兩端出現空白</td>
+            <td><span class="tag-ref">SVG 概念圖已備 · 正式手繪出版稿 HOLD</span></td>
+          </tr>
+          <tr>
+            <td>Spread 02</td>
+            <td>路洛站在岸邊，往前看，又往後看。「要怎麼過去呢？」</td>
+            <td>路洛表情困惑，河流從視覺中間切開</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 03</td>
+            <td>「我們先量量看。」比姆拿出小量尺，一步、兩步、三步。</td>
+            <td>比姆沿河岸測量，畫面可見刻線標示</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 04</td>
+            <td>琵普滾來一個圓圓的積木。「這個可以嗎？」一路滾向草地。</td>
+            <td>速度線與幽默轉場，凸顯圓形滾動特點</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 05</td>
+            <td>比姆擺好一塊方方的積木。「如果站在它上面呢？」</td>
+            <td>穩定靜物對照，角色停下觀察底座</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 06</td>
+            <td>琵普拿起一個三角形。「角角可以連在一起。」</td>
+            <td>放大三角與接點，展示幾何互鎖穩定性</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 07</td>
+            <td>「先在兩邊，蓋起橋墩！」路洛和琵普把積木排好。</td>
+            <td>兩岸起建，積木有明確前後層次</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 08</td>
+            <td>比姆把橋拱慢慢放上去。它像一道微笑，跨過了水面。</td>
+            <td>拱形首次完整跨越，畫面出現微笑驚喜感</td>
+            <td><span class="tag-ref">SVG 概念圖已備 · 正式手繪出版稿 HOLD</span></td>
+          </tr>
+          <tr>
+            <td>Spread 09</td>
+            <td>橋面放好了。可是，左邊翹了起來。「還不能走！」</td>
+            <td>失敗不是危險事故，角色冷靜停下觀察傾斜</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 10</td>
+            <td>他們退後一點，看了又看。「原來橋墩沒有對齊。」</td>
+            <td>鏡頭拉遠，焦點回到支撐位置的調整</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 11</td>
+            <td>路洛扶住橋拱，比姆調距離，琵普把積木推回正中間。</td>
+            <td>三角色協力，各自發揮好奇、測量與試誤長處</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 12</td>
+            <td>先放上一塊小積木，沒有晃。再放第二塊，還是穩穩的。</td>
+            <td>漸進承重測試，橋面保持水平平衡</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 13</td>
+            <td>「我們成功了嗎？」琵普問。比姆說：「還可以再檢查一次。」</td>
+            <td>不急於歡呼，回到觀察與過程反思</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 14</td>
+            <td>路洛說：「原來，重新試一次，也是一種辦法。」</td>
+            <td>黃昏下橋樑剪影，散發成長思維自信感</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 15</td>
+            <td>小橋把兩岸連在一起。路過的人揮揮手說聲謝謝。</td>
+            <td>橋樑產生真實社會連結，構圖呼應開場空白</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+          <tr>
+            <td>Spread 16</td>
+            <td>第二天，形狀城飄來一朵奇怪的雲。「下次要蓋什麼？」</td>
+            <td>留下開放謎題，引導孩子回到實體積木自由創作</td>
+            <td><span class="tag-hold">HOLD · 待繪製正式雙跨頁</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Scope Note -->
+    <section class="intro-card" style="border-left: 4px solid var(--blue);" aria-label="隱私與治理聲明">
+      <h3 style="font-size:16px; margin:0 0 8px; color:var(--blue);">治理與隱私事實邊界 (Governance & Privacy Boundary)</h3>
+      <p style="font-size:13px; line-height:1.7; color:var(--ink-muted); margin:0;">
+        1. <strong>未成年人肖像保護</strong>：主角為設計化原創 IP，造型鎖定粉色大蝴蝶結、精緻蕾絲翻領與珊瑚粉洋裝；任何真實照片與私人資訊嚴格禁止進入公開 Git 倉庫。<br>
+        2. <strong>教具與材料邊界</strong>：所有 3D 模型與包裝為設計概念視覺化，未經真實模具射出、耐衝擊與 CNS/EN71 玩具安全法規檢驗，不得宣稱已量產。<br>
+        3. <strong>出版完稿界線</strong>：本交付包包含完整 16 跨頁中英文字腳本，但不等於 16 張印刷級繪本插畫完稿，嚴禁拿暫存概念板代替完整繪本出版品。
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    FLTL × HOWARD HUANG · CASE 13 PLAYFORM V4 NO-CROP REVIEW · LOCAL ONLY · ZERO DEPLOY
+  </footer>
+</body>
+</html>

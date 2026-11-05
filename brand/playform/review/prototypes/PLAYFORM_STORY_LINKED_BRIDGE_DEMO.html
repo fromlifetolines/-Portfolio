@@ -1,0 +1,45 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PLAYFORM｜故事與建構互動示範</title><style>
+:root{--ink:#1A3F81;--paper:#FAF6EE;--coral:#E88B91;--mint:#BFD6C3;--y:#EFC760}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:#193858;font:17px/1.65 system-ui,'Noto Sans TC',sans-serif}
+header{background:#1A3F81;color:white;padding:22px 5vw;display:flex;align-items:center;justify-content:space-between;gap:16px}
+header strong{font-size:24px;letter-spacing:.12em}main{max-width:1320px;margin:auto;padding:44px 22px 86px}
+h1{font-size:clamp(28px,4vw,52px);line-height:1.2;margin:0 0 18px}.eyebrow{font-size:13px;letter-spacing:.16em;color:var(--coral);font-weight:800}
+.reader{background:white;border-radius:20px;padding:22px;box-shadow:0 18px 50px #1A3F8114}
+.reader img{width:100%;height:auto;display:block;aspect-ratio:2 / 1;object-fit:contain;border-radius:10px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px;justify-content:space-between}
+button{appearance:none;border:1px solid #BAC9D0;background:white;color:var(--ink);font-weight:750;border-radius:14px;padding:14px 23px;min-height:52px;cursor:pointer;font-size:16px}
+button.primary,button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}button:focus-visible{outline:4px solid #E8A251;outline-offset:2px}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;margin-top:34px}.panel{background:white;border-radius:20px;padding:28px}
+.status{padding:12px 15px;background:#ECF5EF;border-radius:12px;min-height:56px}.svg-wrap{margin:15px 0 18px;background:linear-gradient(#D7E6E5,#B2D0D5);border-radius:16px;padding:14px}
+svg{display:block;max-width:100%;height:auto}.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+small{color:#566B7D}footer{padding:28px 5vw;border-top:1px solid #D8DFDE;font-size:13px;color:#607180}
+@media(max-width:760px){.grid{grid-template-columns:1fr}header{display:block}main{padding:30px 14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head><body>
+<header><strong>PLAYFORM</strong><span>BRIDGE LAB 01 / 原創故事 × 實體教具</span></header>
+<main><p class="eyebrow">CASE 13 / INTERACTIVE STORY DEMO</p><h1>形狀城的第七座橋</h1>
+<p>故事共有 16 個跨頁。閱讀由使用者手動控制；造橋互動屬展示用途，不收集個人資料。</p>
+<section class="reader" aria-label="繪本閱讀器"><img id="page" src="../02_PICTUREBOOK/16_SPREADS_WEB/spread-01.jpg" alt="繪本跨頁一：雨後形狀城，小橋不見了。">
+<div class="controls"><button type="button" id="prev">上一個跨頁</button><span id="pagecount" aria-live="polite">01 / 16</span><button type="button" id="next" class="primary">下一個跨頁</button></div></section>
+<section class="grid"><div class="panel"><p class="eyebrow">STORY-LINKED BUILDING</p><h2>幫路洛完成一座橋</h2>
+<p>依照繪本的步驟，選擇零件、放好橋墩，再加上橋拱。這是概念互動，不代表實際承重測試。</p>
+<div class="svg-wrap"><svg viewBox="0 0 700 370" role="img" aria-labelledby="bridgeTitle bridgeDesc"><title id="bridgeTitle">可操作橋樑建構示範</title><desc id="bridgeDesc">依使用者點選步驟呈現支柱、橋拱及橋面，完成後測試平衡。</desc><rect width="700" height="370" fill="#D7E8E9"/><path d="M0 225 Q180 209 340 220 T700 225 V370 H0Z" fill="#74B3C6"/><rect x="0" y="198" width="140" height="170" rx="8" fill="#98B5A1"/><rect x="560" y="198" width="140" height="170" rx="8" fill="#98B5A1"/>
+<g id="supports" visibility="hidden"><rect x="124" y="160" width="80" height="155" rx="12" fill="#376497"/><rect x="496" y="160" width="80" height="155" rx="12" fill="#376497"/></g>
+<g id="arch" visibility="hidden"><path d="M184 170 Q350 -85 516 170 L458 170 Q350 46 242 170Z" fill="#F0C461" stroke="#B98D58" stroke-width="7"/></g>
+<g id="deck" visibility="hidden"><rect x="183" y="114" width="334" height="53" rx="12" fill="#E48D99" stroke="#B7707D" stroke-width="5"/><path d="M206 127 H490" stroke="#FFF4E3" stroke-width="5"/></g>
+<g id="testObject" visibility="hidden"><rect x="335" y="64" width="61" height="49" rx="9" fill="#EEC557"/><circle cx="351" cy="83" r="5" fill="#24435C"/><circle cx="378" cy="83" r="5" fill="#24435C"/></g></svg></div>
+<div class="steps"><button id="supportBtn">① 放好兩邊橋墩</button><button id="archBtn">② 安裝拱形橋樑</button><button id="deckBtn">③ 放置橋面</button><button id="testBtn">④ 測試結構</button></div>
+<p id="feedback" role="status" aria-live="polite" class="status">從「放好兩邊橋墩」開始。</p><button id="resetBtn">重設</button></div>
+<div class="panel"><p class="eyebrow">ROLE OF THE MASCOT</p><h2>角色的回饋跟著故事走</h2>
+<img src="PLAYFORM_MASCOT_CELEBRATE_LOOP.gif" style="max-width:100%;border-radius:14px" alt="粉紅蝴蝶結 Q 版主角的歡呼動態示意">
+<p><strong>互動規則：</strong>每個步驟有明確目標，不設倒數或答錯扣分。朗讀、聲音提示與角色動畫均需提供控制選項。</p>
+<small>這是獨立演示原型；正式網頁仍以 Antigravity 本機分支現有互動功能為準。</small></div></section></main><footer>FLTL × HOWARD / PLAYFORM – original educational concept; no real child data or verified product safety claims.</footer>
+<script>
+(()=>{let page=1,step=0;const $=id=>document.getElementById(id);const descriptions=['雨後形狀城，小橋不見了。','路洛想知道怎麼過河。','比姆量一量河有多寬。','琵普試試圓形積木。','觀察穩定的方形底座。','觀察三角形連接。','在兩側建造橋墩。','慢慢放上橋拱。','橋面傾斜，停下來觀察。','檢查橋墩是否對齊。','三個朋友合作調整。','逐步測試結構。','再次檢查後分享想法。','路洛明白重新嘗試很重要。','橋連接了河的兩邊。','下一個問題等著朋友們。'];
+function show(){let p=String(page).padStart(2,'0');$('page').src='../02_PICTUREBOOK/16_SPREADS_WEB/spread-'+p+'.jpg';$('page').alt='繪本跨頁'+page+'：'+descriptions[page-1];$('pagecount').textContent=p+' / 16';$('prev').disabled=page===1;$('next').disabled=page===16}
+$('prev').addEventListener('click',()=>{page=Math.max(1,page-1);show()});$('next').addEventListener('click',()=>{page=Math.min(16,page+1);show()});show();
+const scenes=['supports','arch','deck','testObject'];const buttons=['supportBtn','archBtn','deckBtn','testBtn'];const msgs=['橋墩放好了。看看兩邊是否對齊。','橋拱放上去了。觀察它如何連結兩側。','橋面裝好了。下一步是測試。','模型示意完成！真實教具仍須進行安全與承重測試。'];
+function sync(){scenes.forEach((id,i)=>$(id).setAttribute('visibility',i<step?'visible':'hidden'));buttons.forEach((id,i)=>{$(id).disabled=i>step;$(id).setAttribute('aria-pressed',String(i<step))});$('feedback').textContent=step?msgs[step-1]:'從「放好兩邊橋墩」開始。'}
+buttons.forEach((id,i)=>$(id).addEventListener('click',()=>{if(step===i){step++;sync()}}));$('resetBtn').addEventListener('click',()=>{step=0;sync()});sync();})();
+</script></body></html>
