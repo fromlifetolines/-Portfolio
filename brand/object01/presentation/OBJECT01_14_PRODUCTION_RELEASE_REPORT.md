@@ -66,3 +66,4 @@
 - **320px (Narrow Mobile)**：`scrollWidth: 320`, `innerWidth: 320`, `overflow: false` ✅
 - **HTTP 狀態檢測**：42 項專屬靜態資產全數回傳 `HTTP 200 OK`，零 404 缺陷。
 - **首頁整合檢測**：`index.html` 正確渲染第 14 件專案卡片，輪播及網格計數器顯示 `01 / 14 WORKS: OBJECT/01`。
+
