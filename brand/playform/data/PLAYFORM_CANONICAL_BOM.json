@@ -1,0 +1,178 @@
+{
+  "project": "CASE 13 PLAYFORM 幾何實體教具與繪本系統",
+  "version": "V3.0_CANONICAL_LOCK",
+  "lockDate": "2026-11-06",
+  "author": "FLTL × HOWARD HUANG",
+  "canonicalDisclaimer": "概念設計工程 BOM 與母型字典鎖版。未經實體開模打樣前，所有尺寸、公差與材質規格均為概念設計基準，不宣稱取得實體 BSMI / EN71 安全檢驗合格。",
+  "modelsHash": {
+    "PLAYFORM_CHARACTER_TRIO.glb": "d38102377fa171a070eb0eef530bb6293ba15b5dfa4023719875bb5bc5b3feaa",
+    "PLAYFORM_BRIDGE_ASSEMBLED.glb": "11985338ad717462cb3d3dfc7d6c5bb883b27b4097f4ad17696c6df9b2767eb2",
+    "PLAYFORM_BRIDGE_EXPLODED.glb": "b6a836da10c813d100fb47271810432bc7e4c32b908332d744b6356784a0c86b"
+  },
+  "characterSystem": {
+    "heroProtagonist": {
+      "id": "CHAR-01",
+      "nameZh": "路洛",
+      "nameEn": "LULO",
+      "role": "想像與提問 (Curiosity & Open Loop)",
+      "archetype": "拱形 / 開放回環 (Keystone Arch)",
+      "geometry": {
+        "heightMm": 80,
+        "widthMm": 70,
+        "depthMm": 40,
+        "archRadiusMm": 35
+      },
+      "palette": {
+        "primary": "#F7D75B",
+        "primaryName": "櫻草暖黃 (Primrose Yellow)",
+        "accent": "#1A3F81",
+        "accentName": "普魯士藍 (Prussian Blue)",
+        "blush": "#EF8C8C",
+        "blushName": "珊瑚暖粉 (Coral Pink)"
+      },
+      "material": "實心山毛櫸木（櫸木質感概念設計） · 水性環保無毒玩具漆 · 雙腳內嵌定位磁吸模組",
+      "facialModules": ["Curious Open Eyes", "Blinking Laugh", "Thinking Wink"]
+    },
+    "companion1": {
+      "id": "CHAR-02",
+      "nameZh": "比姆",
+      "nameEn": "BEM",
+      "role": "測量與觀察 (Measurement & Observation)",
+      "archetype": "方塊 / 直尺基柱 (Block / Metric Ruler)",
+      "geometry": {
+        "heightMm": 90,
+        "widthMm": 60,
+        "depthMm": 40,
+        "chamferMm": 6
+      },
+      "palette": {
+        "primary": "#1A3F81",
+        "primaryName": "普魯士深藍 (Prussian Blue)",
+        "accent": "#F7D75B",
+        "accentName": "刻度金黃 (Metric Gold)",
+        "eyes": "#FFF9ED",
+        "eyesName": "乳白 (Warm Cream)"
+      },
+      "material": "實心山毛櫸木 · 雷射微雕刻度帶 (5mm 間距) · 磁吸定位底座"
+    },
+    "companion2": {
+      "id": "CHAR-03",
+      "nameZh": "琵普",
+      "nameEn": "PIP",
+      "role": "嘗試與修正 (Balance & Trial)",
+      "archetype": "楔形 / 穩固三角 (Wedge / Stable Triangle)",
+      "geometry": {
+        "heightMm": 70,
+        "widthMm": 75,
+        "depthMm": 40,
+        "baseAngleDeg": 60
+      },
+      "palette": {
+        "primary": "#EF8C8C",
+        "primaryName": "珊瑚暖粉 (Coral Pink)",
+        "accent": "#1A3F81",
+        "accentName": "深藍 (Prussian Blue)",
+        "cheeks": "#F7D75B",
+        "cheeksName": "金黃 (Golden Yellow)"
+      },
+      "material": "食品級耐撕裂觸感矽膠 (Shore A 45) · 軟質止滑穩固楔塊"
+    }
+  },
+  "bridgeComponentBOM": {
+    "summary": "14 件樺木合板幾何積木 + 4 件矽膠對位安全插銷 = 18 件橋樑模組套件",
+    "timberComponents": [
+      {
+        "partId": "BP-01",
+        "nameZh": "基座橋墩塊",
+        "nameEn": "Pier Footing Base Block",
+        "quantity": 4,
+        "dimensionsMm": "50 × 40 × 40",
+        "material": "18mm 歐洲樺木多層合板 (交叉層壓，外露深淺條紋)",
+        "finish": "天然蜂蠟塗裝 (Matte Beeswax)",
+        "cavitySlots": "頂部預留 Ø16mm × 8mm 沉頭對位孔"
+      },
+      {
+        "partId": "BP-02",
+        "nameZh": "直立立柱塊",
+        "nameEn": "Upright Column Pillar Block",
+        "quantity": 4,
+        "dimensionsMm": "70 × 40 × 40",
+        "material": "18mm 歐洲樺木多層合板",
+        "finish": "天然蜂蠟塗裝",
+        "cavitySlots": "上下兩端對位凹槽"
+      },
+      {
+        "partId": "BP-03",
+        "nameZh": "基石拱跨構件",
+        "nameEn": "Keystone Arch Span Segment",
+        "quantity": 2,
+        "dimensionsMm": "120 × 40 × 40",
+        "material": "客製弧形銑削樺木多層合板",
+        "finish": "側邊半透水性暖黃漆 (Pantone 1215C) + 頂面原木紋",
+        "cavitySlots": "中央拱冠對接咬合齒"
+      },
+      {
+        "partId": "BP-04",
+        "nameZh": "橋面縱梁板",
+        "nameEn": "Roadway Deck Plank",
+        "quantity": 4,
+        "dimensionsMm": "140 × 40 × 12",
+        "material": "12mm 樺木薄板",
+        "finish": "微壓印路面幾何導引槽",
+        "cavitySlots": "底面雙側限位防滑槽"
+      }
+    ],
+    "siliconeFasteners": [
+      {
+        "partId": "SP-01",
+        "nameZh": "雙軸對位彈性卡扣插銷",
+        "nameEn": "Dual-Axis Elastic Alignment Dowel",
+        "quantity": 4,
+        "dimensionsMm": "Ø16 × 25",
+        "material": "食品級無毒柔軟矽膠 (Shore A 40)",
+        "finish": "天青藍 (Pantone 2915C)",
+        "safetyFunction": "防止木件剛性滑移；無尖銳倒鉤，符合兒童吞嚥安全防護規範（直徑大於 16mm）"
+      }
+    ]
+  },
+  "packagingSystem": {
+    "outerCarton": {
+      "dimensionsMm": "356 × 276 × 88 (外徑)",
+      "internalClearVolumeMm": "350 × 270 × 85 (內淨容積)",
+      "structure": "天地蓋精裝紙盒 (350gsm 灰芯裱 157gsm 霧面銅版紙，壁厚 3.0mm)",
+      "trayMaterial": "100% 可自然降解甘蔗渣紙漿模塑 (Molded Pulp Tray)",
+      "trayDimensionsMm": "340 × 260 × 45 (外徑)",
+      "perimeterClearanceMm": "5.0 mm (周邊裝配裕度)",
+      "topClearanceMm": "40.0 mm (上層容納 210×210×18mm 精裝繪本與 100×140mm 任務卡盒)",
+      "assemblyVerification": "外盒內淨 350×270mm 容納內托 340×260mm，周邊均勻預留 5mm 間隙，實體裝配完全吻合"
+    },
+    "trayCavityConservation": {
+      "totalSlots": 21,
+      "breakdown": [
+        "4 × 基座橋墩凹槽 (BP-01)",
+        "4 × 直立立柱凹槽 (BP-02)",
+        "2 × 弧形拱跨凹槽 (BP-03)",
+        "4 × 橋面板平放槽 (BP-04)",
+        "4 × 矽膠插銷固定圓槽 (SP-01)",
+        "3 × 角色公仔專屬輪廓沉槽 (LULO, BEM, PIP)"
+      ],
+      "conservationCheck": "21 凹槽 1:1 對應 18 件教具與 3 件角色，絕無幽靈凹槽或多餘浮空零件"
+    }
+  },
+  "editorialSystem": {
+    "storybook": {
+      "formatMm": "210 × 210 正方形精裝本",
+      "pages": 36,
+      "binding": "穿線圓背精裝 · 2.5mm 荷蘭灰板包邊",
+      "paper": "140gsm 環保未塗佈米白畫刊紙（紙質概念提案）",
+      "storyArc": "路洛、比姆與琵普三人在河畔遇上斷崖，透過觀察幾何形狀與拱形原理合力造橋跨越河道的故事。"
+    },
+    "taskCards": {
+      "formatMm": "100 × 140 圓角厚卡",
+      "cardsCount": 16,
+      "paper": "450gsm 雙面灰芯對裱厚卡 · 防潑水霧面植物塗層",
+      "levels": ["Level 1: 基礎墩立", "Level 2: 拱心平衡", "Level 3: 長跨度懸挑", "Level 4: 自由結構挑戰"]
+    }
+  }
+}
+

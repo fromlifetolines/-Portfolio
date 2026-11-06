@@ -241,6 +241,7 @@
     currentCMF: 'silver', // 'silver', 'graphite', 'green'
     isLightOn: true
   };
+  window.state = state;
 
   // DOM Elements
   const langToggleBtn = document.getElementById('langToggle');
@@ -460,8 +461,8 @@
       this.scene = new THREE.Scene();
 
       // Camera
-      this.camera = new THREE.PerspectiveCamera(38, width / height, 0.05, 50);
-      this.camera.position.set(0.65, 0.45, 0.75);
+      this.camera = new THREE.PerspectiveCamera(38, width / height, 0.05, 20);
+      this.camera.position.set(0.65, 0.46, 1.05);
 
       // Renderer
       this.renderer = new THREE.WebGLRenderer({
@@ -474,7 +475,7 @@
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       this.renderer.outputEncoding = THREE.sRGBEncoding;
       this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = 1.15;
+      this.renderer.toneMappingExposure = 1.0;
       this.renderer.shadowMap.enabled = true;
       this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -482,10 +483,10 @@
       this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
       this.controls.enableDamping = true;
       this.controls.dampingFactor = 0.06;
-      this.controls.minDistance = 0.35;
-      this.controls.maxDistance = 2.0;
+      this.controls.minDistance = 0.4;
+      this.controls.maxDistance = 2.5;
       this.controls.maxPolarAngle = Math.PI / 2 + 0.05; // Don't go too far below floor
-      this.controls.target.set(0, 0.22, 0);
+      this.controls.target.set(0, 0.24, 0.08);
       this.controls.update();
 
       // Lighting Setup
@@ -504,60 +505,101 @@
     }
 
     setupLighting() {
-      // Key light
-      const keyLight = new THREE.DirectionalLight(0xfff8ee, 2.2);
-      keyLight.position.set(1.5, 2.5, 1.8);
+      // Key light - calibrated studio light with normalBias to eliminate shadow acne
+      const keyLight = new THREE.DirectionalLight(0xfff8ee, 1.4);
+      keyLight.position.set(1.2, 1.8, 1.4);
       keyLight.castShadow = true;
       keyLight.shadow.mapSize.width = 2048;
       keyLight.shadow.mapSize.height = 2048;
       keyLight.shadow.camera.near = 0.1;
-      keyLight.shadow.camera.far = 10;
-      keyLight.shadow.bias = -0.0005;
+      keyLight.shadow.camera.far = 3.5;
+      keyLight.shadow.camera.left = -0.35;
+      keyLight.shadow.camera.right = 0.35;
+      keyLight.shadow.camera.top = 0.65;
+      keyLight.shadow.camera.bottom = -0.15;
+      keyLight.shadow.bias = -0.0001;
+      keyLight.shadow.normalBias = 0.02; // Critical for smooth PBR curvature shadows
       this.scene.add(keyLight);
 
-      // Fill light
-      const fillLight = new THREE.DirectionalLight(0xccdcff, 1.2);
-      fillLight.position.set(-2, 1.5, -1);
+      // Fill light - soft cool fill for shadow graduation
+      const fillLight = new THREE.DirectionalLight(0xd0e0ff, 0.65);
+      fillLight.position.set(-1.5, 1.2, -0.8);
       this.scene.add(fillLight);
 
-      // Rim light
-      const rimLight = new THREE.DirectionalLight(0xffffff, 1.6);
-      rimLight.position.set(0, 3, -2.5);
+      // Rim light - sharp contour edge definition
+      const rimLight = new THREE.DirectionalLight(0xffffff, 0.85);
+      rimLight.position.set(0, 2.0, -1.8);
       this.scene.add(rimLight);
 
-      // Ambient light
-      const ambientLight = new THREE.AmbientLight(0x181a20, 1.5);
+      // Ambient light - controlled soft base
+      const ambientLight = new THREE.AmbientLight(0x222630, 0.6);
       this.scene.add(ambientLight);
 
-      // Ground plane to receive shadows
-      const shadowPlaneGeo = new THREE.PlaneGeometry(3, 3);
-      const shadowPlaneMat = new THREE.ShadowMaterial({ opacity: 0.35 });
-      const shadowPlane = new THREE.Mesh(shadowPlaneGeo, shadowPlaneMat);
-      shadowPlane.rotation.x = -Math.PI / 2;
-      shadowPlane.position.y = 0;
-      shadowPlane.receiveShadow = true;
-      this.scene.add(shadowPlane);
+      // Matte architectural tabletop plane to receive task light illumination and shadows
+      const deskGeo = new THREE.PlaneGeometry(2.4, 2.0);
+      const deskMat = new THREE.MeshStandardMaterial({
+        color: 0x15171e,
+        roughness: 0.86,
+        metalness: 0.08
+      });
+      const deskPlane = new THREE.Mesh(deskGeo, deskMat);
+      deskPlane.rotation.x = -Math.PI / 2;
+      deskPlane.position.set(0, -0.0005, 0.1);
+      deskPlane.receiveShadow = true;
+      this.scene.add(deskPlane);
+
+      // Downward Task Spotlight simulating optical diffuser cone illumination on desk
+      this.taskSpotLight = new THREE.SpotLight(0xFFF1D8, 3.8);
+      this.taskSpotLight.position.set(0, 0.45, 0.187);
+      this.taskSpotLight.target.position.set(0, 0, 0.187);
+      this.taskSpotLight.angle = Math.PI / 3.4; // ~53 deg cone
+      this.taskSpotLight.penumbra = 0.5;
+      this.taskSpotLight.decay = 1.4;
+      this.taskSpotLight.distance = 1.4;
+      this.taskSpotLight.castShadow = true;
+      this.taskSpotLight.shadow.mapSize.width = 1024;
+      this.taskSpotLight.shadow.mapSize.height = 1024;
+      this.taskSpotLight.shadow.bias = -0.0002;
+      this.scene.add(this.taskSpotLight);
+      this.scene.add(this.taskSpotLight.target);
+
+      // Diffuser localized glow point light
+      this.taskGlow = new THREE.PointLight(0xFFE5B5, 1.4, 0.7);
+      this.taskGlow.position.set(0, 0.435, 0.187);
+      this.scene.add(this.taskGlow);
     }
 
     loadModel() {
       const loader = new THREE.GLTFLoader();
-      const modelPath = 'assets/3d/OBJECT01_REDESIGN_MASTER.glb';
+      const modelPath = 'assets/3d/OBJECT01_V3_ALIGNED_MASTER.glb';
 
       loader.load(
         modelPath,
         (gltf) => {
           this.model = gltf.scene;
 
-          // Enable shadows and gather materials
+          // Scale from mm CAD units to meters (1/1000)
+          this.model.scale.set(0.001, 0.001, 0.001);
+          // Align base silicone pad bottom to ground contact at Y=0
+          this.model.position.y = 0.0006;
+
+          // Track parts and enable shadows
+          this.diffuserMesh = null;
+          this.accentMeshes = [];
+          this.shellMeshes = [];
+
           this.model.traverse((child) => {
             if (child.isMesh) {
               child.castShadow = true;
               child.receiveShadow = true;
 
-              // Identify parts by name or geometry
               const name = (child.name || '').toLowerCase();
-              if (name.includes('diffuser') || name.includes('lens')) {
+              if (name.includes('diffuser')) {
                 this.diffuserMesh = child;
+              } else if (name.includes('trim') || name.includes('accent') || name.includes('bezel') || name.includes('knob')) {
+                this.accentMeshes.push(child);
+              } else if (!name.includes('cable') && !name.includes('pad') && !name.includes('boot')) {
+                this.shellMeshes.push(child);
               }
             }
           });
@@ -581,60 +623,68 @@
       let accentColor, accentMetal, accentRough;
 
       if (cmfKey === 'silver') {
-        shellColor = new THREE.Color(0xD8DCE3);
+        shellColor = new THREE.Color(0xBDC3C7);
         shellMetal = 0.88;
         shellRough = 0.28;
-        accentColor = new THREE.Color(0xB5B8C0);
-        accentMetal = 0.92;
-        accentRough = 0.18;
+        accentColor = new THREE.Color(0x7F8C8D);
+        accentMetal = 0.94;
+        accentRough = 0.16;
       } else if (cmfKey === 'graphite') {
-        shellColor = new THREE.Color(0x23252A);
-        shellMetal = 0.35;
-        shellRough = 0.58;
-        accentColor = new THREE.Color(0x424650);
-        accentMetal = 0.75;
-        accentRough = 0.32;
+        shellColor = new THREE.Color(0x383B42);
+        shellMetal = 0.90;
+        shellRough = 0.32;
+        accentColor = new THREE.Color(0x1F2126);
+        accentMetal = 0.95;
+        accentRough = 0.18;
       } else if (cmfKey === 'green') {
-        shellColor = new THREE.Color(0x566D60);
-        shellMetal = 0.65;
-        shellRough = 0.40;
-        accentColor = new THREE.Color(0xA58862); // Warm champagne/brass accent
-        accentMetal = 0.82;
-        accentRough = 0.28;
+        shellColor = new THREE.Color(0x2B3D32); // Mineral Green (低彩度建築苔綠)
+        shellMetal = 0.86;
+        shellRough = 0.35;
+        accentColor = new THREE.Color(0xC8A46D); // Spun Brass / Champagne Gold (暖銅香檳金飾環)
+        accentMetal = 0.92;
+        accentRough = 0.22;
       }
 
-      this.model.traverse((child) => {
-        if (child.isMesh && child.material) {
-          const name = (child.name || '').toLowerCase();
-          
-          if (name.includes('diffuser')) {
-            // Optical diffuser
-            child.material.color = new THREE.Color(0xFFFBF4);
-            child.material.roughness = 0.35;
-            child.material.metalness = 0.05;
-            child.material.emissive = new THREE.Color(0xFFECC2);
-            child.material.emissiveIntensity = state.isLightOn ? 0.85 : 0.0;
-          } else if (name.includes('trim') || name.includes('bezel') || name.includes('knob') || name.includes('pivot')) {
-            // Accent / Metal hardware
-            child.material.color = accentColor;
-            child.material.metalness = accentMetal;
-            child.material.roughness = accentRough;
-          } else if (!name.includes('cable') && !name.includes('cord')) {
-            // Main housing shell & arms
-            child.material.color = shellColor;
-            child.material.metalness = shellMetal;
-            child.material.roughness = shellRough;
-          }
+      this.shellMeshes.forEach(child => {
+        if (child.material) {
+          child.material.color = shellColor;
+          child.material.metalness = shellMetal;
+          child.material.roughness = shellRough;
           child.material.needsUpdate = true;
         }
       });
+
+      this.accentMeshes.forEach(child => {
+        if (child.material) {
+          child.material.color = accentColor;
+          child.material.metalness = accentMetal;
+          child.material.roughness = accentRough;
+          child.material.needsUpdate = true;
+        }
+      });
+
+      if (this.diffuserMesh && this.diffuserMesh.material) {
+        this.diffuserMesh.material.color = state.isLightOn ? new THREE.Color(0xFFFBF4) : new THREE.Color(0x333333);
+        this.diffuserMesh.material.roughness = 0.35;
+        this.diffuserMesh.material.metalness = 0.05;
+        this.diffuserMesh.material.emissive = new THREE.Color(0xFFECC2);
+        this.diffuserMesh.material.emissiveIntensity = state.isLightOn ? 2.5 : 0.0;
+        this.diffuserMesh.material.needsUpdate = true;
+      }
     }
 
     toggleLight() {
       state.isLightOn = !state.isLightOn;
       if (this.diffuserMesh && this.diffuserMesh.material) {
-        this.diffuserMesh.material.emissiveIntensity = state.isLightOn ? 0.85 : 0.0;
+        this.diffuserMesh.material.emissiveIntensity = state.isLightOn ? 2.5 : 0.0;
+        this.diffuserMesh.material.color = state.isLightOn ? new THREE.Color(0xFFFBF4) : new THREE.Color(0x333333);
         this.diffuserMesh.material.needsUpdate = true;
+      }
+      if (this.taskSpotLight) {
+        this.taskSpotLight.intensity = state.isLightOn ? 3.8 : 0.0;
+      }
+      if (this.taskGlow) {
+        this.taskGlow.intensity = state.isLightOn ? 1.4 : 0.0;
       }
       const lightBtn = document.getElementById('btnToggleLight');
       if (lightBtn) {
@@ -646,8 +696,8 @@
 
     resetView() {
       if (this.controls && this.camera) {
-        this.camera.position.set(0.65, 0.45, 0.75);
-        this.controls.target.set(0, 0.22, 0);
+        this.camera.position.set(0.65, 0.46, 1.05);
+        this.controls.target.set(0, 0.24, 0.08);
         this.controls.update();
       }
     }

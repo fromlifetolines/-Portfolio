@@ -46,11 +46,11 @@
       "id": "04",
       "titleZh": "紙本申辦指南",
       "titleEn": "Printed Service Guidance",
-      "captionZh": "以手冊、文件清單與表單排版呈現實體資訊設計。",
-      "captionEn": "Printed materials that clarify procedures and requirements.",
+      "captionZh": "以紙本手冊、文件清單與表單排版呈現公共服務接觸點之編輯系統概念模擬（尚未打樣）。",
+      "captionEn": "Printed editorial system concept simulation for public service touchpoints (pre-sampling prototype).",
       "jpg": "assets/mockups/shot-04.jpg",
       "png": "assets/shots/shot-04.png",
-      "source": "imagegen 1672x941 -> upscale"
+      "source": "攝影式數位概念模擬（未實際打樣）"
     },
     {
       "id": "05",
