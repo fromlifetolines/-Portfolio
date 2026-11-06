@@ -1,0 +1,164 @@
+{
+  "unit": "mm",
+  "design_version": "V2_PARAMETRIC_REDESIGN",
+  "status": "CONCEPT_DESIGN_LOCK_PENDING_APPROVAL",
+  "disclaimer": "概念幾何與造型規範，未進行受力、機構壽命、電氣安全、散熱與量產公差之實體驗證。",
+  "dimensions": {
+    "base_diameter": 190,
+    "base_thickness": 15,
+    "base_chamfer": 2.5,
+    "base_collar_diameter": 24,
+    "base_collar_height": 12,
+    "base_collar_offset_y": -35,
+    "knob_diameter": 20,
+    "knob_height": 8,
+    "knob_offset_x": 38,
+    "knob_offset_y": 22,
+    "mast_diameter": 14,
+    "mast_height": 265,
+    "lower_joint_center_z": 277,
+    "lower_joint_diameter": 24,
+    "lower_joint_width": 26,
+    "lower_joint_pivot_pin_dia": 12,
+    "arm_length": 240,
+    "arm_diameter": 12,
+    "arm_nominal_angle_deg": 52,
+    "upper_joint_diameter": 22,
+    "upper_joint_width": 22,
+    "upper_joint_pivot_pin_dia": 11,
+    "neck_diameter": 12,
+    "neck_length": 45,
+    "head_external_diameter": 160,
+    "head_overall_thickness": 18,
+    "head_reveal_groove_width": 2,
+    "head_bezel_recess": 2.5,
+    "head_diffuser_diameter": 146,
+    "head_bracket_width": 22,
+    "cable_diameter": 4.2
+  },
+  "cmf": {
+    "CMF-01-SILVER": {
+      "name": "陽極銀 (Anodized Silver)",
+      "finish_desc": "微珠擊霧面陽極自然鋁，高光車削金屬飾環與轉軸飾蓋，乳白光學漫射板，深石墨抗折編織線",
+      "shell": {
+        "hex": 14014936,
+        "metalness": 0.88,
+        "roughness": 0.28
+      },
+      "accent": {
+        "hex": 11844282,
+        "metalness": 0.92,
+        "roughness": 0.18
+      },
+      "knob": {
+        "hex": 13686228,
+        "metalness": 0.85,
+        "roughness": 0.25
+      },
+      "fastener": {
+        "hex": 3817540,
+        "metalness": 0.8,
+        "roughness": 0.35
+      },
+      "diffuser": {
+        "hex": 16119798,
+        "metalness": 0.05,
+        "roughness": 0.4,
+        "emissive": 16774112,
+        "emissiveIntensity": 0.7
+      },
+      "rubber": {
+        "hex": 1579805,
+        "metalness": 0.1,
+        "roughness": 0.85
+      },
+      "cable": {
+        "hex": 2369580,
+        "metalness": 0.2,
+        "roughness": 0.75
+      }
+    },
+    "CMF-02-GRAPHITE": {
+      "name": "霧黑 (Matte Black / Fine Powdercoat)",
+      "finish_desc": "深炭黑細緻微絨粉體烤漆，槍色鈦金屬光澤飾環與軸蓋，溫潤柔光漫射板",
+      "shell": {
+        "hex": 1974563,
+        "metalness": 0.35,
+        "roughness": 0.58
+      },
+      "accent": {
+        "hex": 3685955,
+        "metalness": 0.75,
+        "roughness": 0.32
+      },
+      "knob": {
+        "hex": 2896181,
+        "metalness": 0.7,
+        "roughness": 0.3
+      },
+      "fastener": {
+        "hex": 1382426,
+        "metalness": 0.8,
+        "roughness": 0.4
+      },
+      "diffuser": {
+        "hex": 15921387,
+        "metalness": 0.05,
+        "roughness": 0.4,
+        "emissive": 16773334,
+        "emissiveIntensity": 0.7
+      },
+      "rubber": {
+        "hex": 1316376,
+        "metalness": 0.1,
+        "roughness": 0.9
+      },
+      "cable": {
+        "hex": 1842720,
+        "metalness": 0.15,
+        "roughness": 0.8
+      }
+    },
+    "CMF-03-MINERAL-GREEN": {
+      "name": "礦石綠 (Mineral Green / Architectural Sage)",
+      "finish_desc": "低彩度建築苔綠陽極氧化，暖銅香檳金車削飾環，大地色微霧光學板",
+      "shell": {
+        "hex": 5925474,
+        "metalness": 0.65,
+        "roughness": 0.4
+      },
+      "accent": {
+        "hex": 10782320,
+        "metalness": 0.82,
+        "roughness": 0.28
+      },
+      "knob": {
+        "hex": 10124390,
+        "metalness": 0.8,
+        "roughness": 0.28
+      },
+      "fastener": {
+        "hex": 2765614,
+        "metalness": 0.8,
+        "roughness": 0.35
+      },
+      "diffuser": {
+        "hex": 16184816,
+        "metalness": 0.05,
+        "roughness": 0.4,
+        "emissive": 16774374,
+        "emissiveIntensity": 0.7
+      },
+      "rubber": {
+        "hex": 1580058,
+        "metalness": 0.1,
+        "roughness": 0.85
+      },
+      "cable": {
+        "hex": 2237989,
+        "metalness": 0.2,
+        "roughness": 0.75
+      }
+    }
+  }
+}
