@@ -622,31 +622,47 @@
   }
 
   // --- Modal Lightbox (16 Shots High-Res Viewer) ---
+  let isLightboxOpen = false;
   let lastActiveElement = null;
 
-  function openLightbox(index) {
-    if (!appData || !appData.shots) return;
-    state.lightboxIndex = index;
-    const shot = appData.shots[index];
+  function renderLightboxAt(index) {
+    if (!appData || !Array.isArray(appData.shots) || appData.shots.length === 0) return;
+    const total = appData.shots.length;
+    const nextIdx = ((index % total) + total) % total;
+    state.lightboxIndex = nextIdx;
+    const shot = appData.shots[nextIdx];
     if (!shot) return;
 
-    lastActiveElement = document.activeElement;
-
-    if (el.lightboxImg) el.lightboxImg.src = shot.png;
-    if (el.lightboxNum) el.lightboxNum.textContent = `SHOT ${shot.id} / 16`;
+    if (el.lightboxImg) {
+      el.lightboxImg.src = shot.png;
+      el.lightboxImg.alt = `${shot.id} ${state.lang === 'zh-TW' ? shot.titleZh : shot.titleEn}`;
+    }
+    if (el.lightboxNum) el.lightboxNum.textContent = `SHOT ${shot.id} / ${total}`;
     if (el.lightboxTitle) el.lightboxTitle.textContent = state.lang === 'zh-TW' ? shot.titleZh : shot.titleEn;
     if (el.lightboxCaption) el.lightboxCaption.textContent = state.lang === 'zh-TW' ? shot.captionZh : shot.captionEn;
     if (el.lightboxSource) el.lightboxSource.textContent = `Source: ${shot.source} (2560×1440)`;
+  }
+
+  function openLightbox(index, trigger = document.activeElement) {
+    if (!appData || !appData.shots) return;
+    if (!isLightboxOpen) {
+      lastActiveElement = trigger;
+    }
+    renderLightboxAt(index);
+    isLightboxOpen = true;
 
     el.lightbox.classList.add('is-open');
     el.lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    if (el.lightboxCloseBtn) el.lightboxCloseBtn.focus();
+    if (trigger && !el.lightbox.contains(trigger)) {
+      if (el.lightboxCloseBtn) el.lightboxCloseBtn.focus();
+    }
   }
 
   function closeLightbox() {
     if (!el.lightbox) return;
+    isLightboxOpen = false;
     el.lightbox.classList.remove('is-open');
     el.lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -656,15 +672,11 @@
   }
 
   function nextLightbox() {
-    if (!appData || !appData.shots) return;
-    const nextIdx = (state.lightboxIndex + 1) % appData.shots.length;
-    openLightbox(nextIdx);
+    renderLightboxAt(state.lightboxIndex + 1);
   }
 
   function prevLightbox() {
-    if (!appData || !appData.shots) return;
-    const prevIdx = (state.lightboxIndex - 1 + appData.shots.length) % appData.shots.length;
-    openLightbox(prevIdx);
+    renderLightboxAt(state.lightboxIndex - 1);
   }
 
   // --- Bilingual Language Switcher (CA-14) ---
@@ -699,10 +711,15 @@
     renderChecklist();
     renderAttachedFiles();
     updateSidebarStatus();
+    if (isLightboxOpen) {
+      renderLightboxAt(state.lightboxIndex);
+    }
   }
 
   // --- Font Size Adjustment (A- / A / A+) ---
   function setFontSize(sizeKey) {
+    if (!['sm', 'md', 'lg'].includes(sizeKey)) return;
+    document.documentElement.setAttribute('data-font-size', sizeKey);
     document.body.setAttribute('data-font-size', sizeKey);
     el.fontButtons.forEach(btn => {
       const isActive = btn.getAttribute('data-font') === sizeKey;
