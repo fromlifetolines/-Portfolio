@@ -38,7 +38,7 @@
 
   async function init() {
     try {
-      const resp = await fetch('data/PLAYFORM_DEMO.json');
+      const resp = await fetch('data/PLAYFORM_DEMO.json?v=restored-20261106');
       state.demoData = await resp.json();
     } catch (e) {
       console.warn('Could not fetch PLAYFORM_DEMO.json directly; using fallback data', e);
