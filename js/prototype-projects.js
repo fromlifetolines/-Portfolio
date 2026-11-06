@@ -279,8 +279,8 @@ window.HOWARD_PROJECTS = Object.freeze([
       en: 'A concept design for a children\'s STEAM education brand, combining original character IP, a picture-book storyline, a bridge-building learning kit concept, a WebGL 3D prototype, child missions, and parent / teacher portals using demo data.',
       'zh-TW': '兒童 STEAM 教育品牌概念設計，整合原創角色 IP、繪本故事、造橋教具概念、WebGL 3D 互動原型、兒童學習任務，以及使用示範資料的家長端與教師端。'
     },
-    cover: 'brand/playform/assets/case13/shot-01.jpg',
-    interactiveAsset: 'brand/playform/assets/case13/shot-01.jpg',
+    cover: 'brand/playform/assets/case13/shot-04.jpg',
+    interactiveAsset: 'brand/playform/assets/case13/shot-04.jpg',
     caseStudy: 'brand/playform/'
   },
   {
@@ -301,8 +301,8 @@ window.HOWARD_PROJECTS = Object.freeze([
       en: 'A precision industrial desk lamp concept exploring minimalist architectural geometry, dual-pivot articulation, thin drum optical housing, triple CMF finishes, and honest design documentation without unverified engineering claims.',
       'zh-TW': '精密工業桌燈概念設計，探索極簡建築幾何、雙轉軸懸臂機構、薄型鼓形光學艙與三款 CMF 材質系列，並提供完整的概念設計細節與誠實的工程事實邊界。'
     },
-    cover: 'brand/object01/assets/case14/shot-01.jpg',
-    interactiveAsset: 'brand/object01/assets/case14/shot-01.jpg',
+    cover: 'brand/object01/assets/case14/shot-10.jpg',
+    interactiveAsset: 'brand/object01/assets/case14/shot-10.jpg',
     caseStudy: 'brand/object01/'
   }
 ]);
