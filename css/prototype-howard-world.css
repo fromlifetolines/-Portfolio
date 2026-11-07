@@ -2653,6 +2653,16 @@ html[lang="zh-TW"] .editorial-quote-text {
   align-items: center;
   justify-content: center;
 }
+
+/* CASE 13/14: full-artwork presentation, without cropping product/storybook edges. */
+#project-playform .helmet-project-extra-stage,
+#project-object01 .helmet-project-extra-stage {
+  aspect-ratio: 16 / 9;
+}
+#project-playform .helmet-project-extra-stage img,
+#project-object01 .helmet-project-extra-stage img {
+  object-fit: contain;
+}
 .helmet-project-extra-stage img {
   width: 100%;
   height: 100%;
