@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "id": "DESKTOP_HOME_OVERFLOW",
+      "desc": "Desktop homepage horizontal overflow",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "id": "HOME_CASE14_CARD_EXISTS",
+      "desc": "Homepage CASE 14 card located",
+      "pass": true,
+      "details": "src: brand/object01/assets/case14/shot-01.jpg"
+    },
+    {
+      "id": "MOBILE_HOME_OVERFLOW",
+      "desc": "Mobile homepage horizontal overflow",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "id": "DESKTOP_CASE_OVERFLOW",
+      "desc": "Desktop CASE 14 horizontal overflow",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "id": "HERO_VISUAL",
+      "desc": "Hero visual image captured",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "id": "SHOT_CARDS_COUNT",
+      "desc": "Total shot cards in gallery",
+      "pass": true,
+      "details": "count: 16"
+    },
+    {
+      "id": "SHOT01_SRC",
+      "desc": "SHOT 01 image src matches target",
+      "pass": true,
+      "details": "assets/case14/shot-01.jpg"
+    },
+    {
+      "id": "LIGHTBOX_01",
+      "desc": "SHOT 01 Lightbox opened with 2560x1440 PNG",
+      "pass": true,
+      "details": "assets/case14/shot-01.png"
+    },
+    {
+      "id": "SHOT08_SRC",
+      "desc": "SHOT 08 image src matches target",
+      "pass": true,
+      "details": "assets/case14/shot-08.jpg"
+    },
+    {
+      "id": "LIGHTBOX_08",
+      "desc": "SHOT 08 Lightbox opened with 2560x1440 PNG",
+      "pass": true,
+      "details": "assets/case14/shot-08.png"
+    },
+    {
+      "id": "SHOT13_IS_CONFIGURATOR",
+      "desc": "SHOT 13 remains 3D configurator",
+      "pass": true,
+      "details": "Title: 3D 配置器視覺規劃, Src: assets/case14/shot-13.jpg"
+    },
+    {
+      "id": "SHOT14_IS_PACKAGING",
+      "desc": "SHOT 14 is Packaging & Unboxing",
+      "pass": true,
+      "details": "Title: 包裝結構與模組收納, Src: assets/case14/shot-14.jpg"
+    },
+    {
+      "id": "LIGHTBOX_14",
+      "desc": "SHOT 14 Lightbox opened with 2560x1440 PNG",
+      "pass": true,
+      "details": "assets/case14/shot-14.png"
+    },
+    {
+      "id": "MOBILE_CASE_OVERFLOW",
+      "desc": "Mobile CASE 14 horizontal overflow",
+      "pass": true,
+      "details": ""
+    }
+  ],
+  "overflows": [],
+  "screenshots": []
+}

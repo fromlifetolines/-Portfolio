@@ -1,0 +1,59 @@
+{
+  "updated_at": "2026-11-07T04:16:25.020Z",
+  "files": [
+    {
+      "file": "shot-01.png",
+      "sha256": "45dfe580153d2072cd982320f594105c18ff99b1ea6478da116b7a0319b053dd",
+      "size": 235940,
+      "dimensions": "2560x1440"
+    },
+    {
+      "file": "shot-01.jpg",
+      "sha256": "0cf089edad3c27deeb49c6bce300628307278d0088e3dd6294154be6a14de745",
+      "size": 127381,
+      "dimensions": "1920x1080"
+    },
+    {
+      "file": "cover-original-20261107.jpg",
+      "sha256": "0cf089edad3c27deeb49c6bce300628307278d0088e3dd6294154be6a14de745",
+      "size": 127381,
+      "dimensions": "1920x1080"
+    },
+    {
+      "file": "shot-08.png",
+      "sha256": "1fa191ba2b1a28f2c05032ede7d2e17a7d2493f80fc9ae075d4496a028fabb84",
+      "size": 307272,
+      "dimensions": "2560x1440"
+    },
+    {
+      "file": "shot-08.jpg",
+      "sha256": "6f91e1072ef990001b449b77d23d6bcfc51e51330f035095b14846bc7c32e597",
+      "size": 218378,
+      "dimensions": "1920x1080"
+    },
+    {
+      "file": "shot-14.png",
+      "sha256": "4b9628b060686c47562890962748faf099cceb3c4818d376afefa0cac1577139",
+      "size": 238292,
+      "dimensions": "2560x1440"
+    },
+    {
+      "file": "shot-14.jpg",
+      "sha256": "b983d6af35eecfed06486872cb0aaa7c97c652f9d385cdcf448a4a6fb9a74c81",
+      "size": 200312,
+      "dimensions": "1920x1080"
+    },
+    {
+      "file": "shot-13.jpg (UNTOUCHED)",
+      "sha256": "aa29c8aa958e38400cc3d12dd898b8f0cfceb2db20c9878f4ca284337096b0b2",
+      "size": 86374,
+      "dimensions": "1920x1080"
+    },
+    {
+      "file": "shot-13.png (UNTOUCHED)",
+      "sha256": "b9cef5b24928fbf3248433c3ca84da55eac59ffd139cd08780c6ab1d7f721b04",
+      "size": 119878,
+      "dimensions": "2560x1440"
+    }
+  ]
+}
