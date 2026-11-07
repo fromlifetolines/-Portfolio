@@ -12,13 +12,13 @@
       index: 1,
       num: 'SHOT 01',
       group: 'part1',
-      jpg: 'assets/case14/shot-01.jpg?v=restored-20261106',
-      png: 'assets/case14/shot-01.png?v=restored-20261106',
-      titleZh: '品牌主視覺與產品全貌',
-      titleEn: 'Master Hero & Task Light Overview',
+      jpg: 'assets/case14/hero-editorial-20261107.svg',
+      png: 'assets/case14/hero-editorial-20261107.svg',
+      titleZh: '產品形象與閱讀情境',
+      titleEn: 'Product Portrait & Workspace Context',
       sub: 'ADJUSTABLE TASK LIGHT / INDUSTRIAL PRODUCT CONCEPT',
-      descZh: '開創性產品主視覺，呈現極簡建築幾何、雙轉軸懸臂、薄型鼓形光學燈頭與精密切削配重底座之整體比例。',
-      descEn: 'Master product hero showcasing architectural lines, dual-pivot articulation, thin drum optical head, and minimalist counterweight base.',
+      descZh: '以真實工作桌視覺情境呈現桌燈的造型比例、金屬材質與局部工作照明；屬概念視覺合成，非量產產品攝影。',
+      descEn: 'An editorial workspace portrait exploring the lamp’s proportions, metallic finish and focused task lighting; a design visualization rather than manufactured product photography.',
       noticeZh: '概念視覺提案 · 未宣稱已量產或完成安規認證',
       noticeEn: 'Design concept visual · Pending physical production & certifications'
     },
@@ -279,7 +279,7 @@
           <div class="shot-img-wrap">
             <img src="${shot.jpg}" width="1920" height="1080" alt="${title} — ${desc}" loading="lazy">
             <span class="shot-badge">${shot.num}</span>
-            <span class="shot-res-tag">2560×1440 PNG</span>
+            <span class="shot-res-tag">${shot.png.endsWith('.svg') ? 'VECTOR EDITORIAL' : 'DETAILED VIEW'}</span>
           </div>
         </button>
         <div class="shot-meta">
