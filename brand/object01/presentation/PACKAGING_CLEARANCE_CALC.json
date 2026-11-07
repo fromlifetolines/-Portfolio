@@ -1,0 +1,317 @@
+{
+  "schema_version": "FLTL_PACKAGING_CALC_V2_20261107",
+  "status": "CONCEPT_PENDING_ENGINEERING_VALIDATION",
+  "disclaimer": "包裝幾何容積與型腔配置驗算。未進行實體打樣、跌落震動（ISTA-2A）與量產模具縮水率驗證。",
+  "error_rectification": {
+    "critique_2_rib_formula_error": {
+      "previous_erroneous_claim": "(380 - 194 - 164) / 3 = 22.0 mm",
+      "mathematical_correction": "In 380 mm box: (380 - 194 - 164) / 3 = 7.33 mm. In 374 mm tray: (374 - 194 - 164) / 3 = 5.33 mm.",
+      "rectification_decision": "374x314 mm single-tier tray cannot achieve >=12 mm ribs when Base and Head are side-by-side. Corrected by adopting Enlarged Flat-Pack (410x310 mm tray / 436x336 mm carton) and Dual-Tier Nested Architecture."
+    },
+    "critique_3_box_buffer_error": {
+      "previous_erroneous_claim": "Carton 380x320 vs Tray 374x314 claimed 16 mm buffer.",
+      "mathematical_correction": "Outer margin is only (380 - 374) / 2 = 3.0 mm per side before deducting cardboard thickness.",
+      "rectification_decision": "Formally define Outer Carton, Board Thickness, Inner Carton, and Tray Outer with verified >=10 mm true perimeter buffer."
+    },
+    "critique_4_tolerance_terminology_error": {
+      "previous_erroneous_claim": "Base O190 in O194 cavity labeled as 徑向 +4 mm",
+      "mathematical_correction": "194 - 190 = 4.0 mm is diametral clearance (直徑間隙); unilateral radial clearance (單側徑向間隙) is exactly 2.0 mm.",
+      "rectification_decision": "Terminology corrected to: 直徑公差間隙 +4.0 mm / 單側徑向配合間隙 2.0 mm across all documentation."
+    }
+  },
+  "nominal_component_dimensions": {
+    "base": {
+      "outer_diameter_mm": 190.0,
+      "height_mm": 15.0,
+      "weight_kg_est": 2.2
+    },
+    "lamp_head": {
+      "outer_diameter_mm": 160.0,
+      "height_mm": 18.0,
+      "weight_kg_est": 0.45
+    },
+    "mast": {
+      "diameter_mm": 14.0,
+      "length_mm": 265.0,
+      "joint_envelope_mm": [
+        24.0,
+        26.0,
+        28.0
+      ]
+    },
+    "cantilever_arm": {
+      "diameter_mm": 12.0,
+      "length_mm": 240.0,
+      "joint_envelope_mm": [
+        22.0,
+        22.0,
+        45.0
+      ]
+    },
+    "power_accessories": {
+      "cable_coil_dia_mm": 85.0,
+      "adapter_box_mm": [
+        70.0,
+        45.0,
+        28.0
+      ]
+    }
+  },
+  "architectures": {
+    "architecture_A_enlarged_single_tier": {
+      "name": "Enlarged Flat-Pack Single-Tier Tray (加大單層展開托盤)",
+      "type": "Single-tier molded pulp tray (單層模塑紙漿)",
+      "carton": {
+        "outer_dimensions_mm": {
+          "width": 436.0,
+          "depth": 336.0,
+          "height": 62.0
+        },
+        "corrugated_board": "B-flute 3-ply single wall corrugated (厚度 3.0 mm)",
+        "inner_dimensions_mm": {
+          "width": 430.0,
+          "depth": 330.0,
+          "height": 56.0
+        }
+      },
+      "tray": {
+        "outer_dimensions_mm": {
+          "width": 410.0,
+          "depth": 310.0,
+          "height": 50.0
+        },
+        "wall_thickness_mm": 2.8,
+        "draft_angle_deg": 3.0,
+        "perimeter_cushion_buffer_mm": {
+          "left_right_per_side": 10.0,
+          "front_back_per_side": 10.0,
+          "top_bottom": 6.0
+        }
+      },
+      "cavities": [
+        {
+          "id": "CAV-01",
+          "part": "OBJ-01-A1 Cast Base Assembly",
+          "shape": "Circular with dual finger cutouts",
+          "cavity_dia_mm": 194.0,
+          "cavity_depth_mm": 20.0,
+          "center_coord_mm": {
+            "x": 117.0,
+            "y": 117.0
+          },
+          "bounding_box_mm": {
+            "x_min": 20.0,
+            "x_max": 214.0,
+            "y_min": 20.0,
+            "y_max": 214.0
+          },
+          "fit_clearance": {
+            "diametral_mm": 4.0,
+            "radial_mm": 2.0
+          },
+          "finger_notches": "2 x [20.0 x 30.0 x 18.0 mm] at 0 deg and 180 deg"
+        },
+        {
+          "id": "CAV-02",
+          "part": "OBJ-01-D Lamp Head Assembly",
+          "shape": "Circular with neck stem relief groove",
+          "cavity_dia_mm": 164.0,
+          "cavity_depth_mm": 22.0,
+          "center_coord_mm": {
+            "x": 318.0,
+            "y": 102.0
+          },
+          "bounding_box_mm": {
+            "x_min": 236.0,
+            "x_max": 400.0,
+            "y_min": 20.0,
+            "y_max": 184.0
+          },
+          "fit_clearance": {
+            "diametral_mm": 4.0,
+            "radial_mm": 2.0
+          },
+          "neck_relief": "14.0 x 50.0 mm extension channel"
+        },
+        {
+          "id": "CAV-03",
+          "part": "OBJ-01-B Vertical Mast Assembly",
+          "shape": "Longitudinal rectangular channel with joint pocket",
+          "channel_dims_mm": [
+            290.0,
+            24.0,
+            28.0
+          ],
+          "bounding_box_mm": {
+            "x_min": 20.0,
+            "x_max": 310.0,
+            "y_min": 232.0,
+            "y_max": 256.0
+          },
+          "fit_clearance": {
+            "axial_length_mm": 25.0,
+            "width_margin_mm": 10.0
+          }
+        },
+        {
+          "id": "CAV-04",
+          "part": "OBJ-01-C Cantilever Arm Assembly",
+          "shape": "Longitudinal rectangular channel with upper joint pocket",
+          "channel_dims_mm": [
+            275.0,
+            22.0,
+            24.0
+          ],
+          "bounding_box_mm": {
+            "x_min": 20.0,
+            "x_max": 295.0,
+            "y_min": 272.0,
+            "y_max": 294.0
+          },
+          "fit_clearance": {
+            "axial_length_mm": 35.0,
+            "width_margin_mm": 10.0
+          }
+        },
+        {
+          "id": "CAV-05",
+          "part": "Power Supply & Accessories",
+          "shape": "Rectangular partitioned box",
+          "channel_dims_mm": [
+            75.0,
+            62.0,
+            35.0
+          ],
+          "bounding_box_mm": {
+            "x_min": 322.0,
+            "x_max": 397.0,
+            "y_min": 232.0,
+            "y_max": 294.0
+          },
+          "fit_clearance": {
+            "envelope_margin_mm": 5.0
+          }
+        }
+      ],
+      "structural_ribs_verification": {
+        "rib_between_base_and_head_mm": {
+          "calculated_gap": 22.0,
+          "formula": "x_min_head (236.0) - x_max_base (214.0) = 22.0 mm",
+          "target_standard_mm": 12.0,
+          "status": "PASS (Calculated gap 22.0 mm >= 12.0 mm)"
+        },
+        "rib_between_base_and_mast_channel_mm": {
+          "calculated_gap": 18.0,
+          "formula": "y_min_mast (232.0) - y_max_base (214.0) = 18.0 mm",
+          "target_standard_mm": 12.0,
+          "status": "PASS (Calculated gap 18.0 mm >= 12.0 mm)"
+        },
+        "rib_between_mast_and_arm_channels_mm": {
+          "calculated_gap": 16.0,
+          "formula": "y_min_arm (272.0) - y_max_mast (256.0) = 16.0 mm",
+          "target_standard_mm": 12.0,
+          "status": "PASS (Calculated gap 16.0 mm >= 12.0 mm)"
+        },
+        "rib_between_head_and_accessories_mm": {
+          "calculated_gap": 48.0,
+          "formula": "y_min_accessories (232.0) - y_max_head (184.0) = 48.0 mm",
+          "target_standard_mm": 12.0,
+          "status": "PASS"
+        },
+        "tray_perimeter_flange_margins_mm": {
+          "left_wall_margin": 20.0,
+          "right_wall_margin": 10.0,
+          "front_wall_margin": 20.0,
+          "rear_wall_margin": 16.0,
+          "all_flanges_status": "PASS (All margins >= 10.0 mm)"
+        }
+      }
+    },
+    "architecture_B_dual_tier_nested": {
+      "name": "Dual-Tier Modular Cushioning Architecture (雙層分載嵌套托盤)",
+      "type": "Two-piece stacked molded pulp trays (雙層模塑紙漿)",
+      "rationale": "Isolates 2.2kg cast iron/aluminum base from delicate optical head in Z-axis, eliminating drop-shock collision hazard.",
+      "carton": {
+        "outer_dimensions_mm": {
+          "width": 390.0,
+          "depth": 330.0,
+          "height": 90.0
+        },
+        "corrugated_board": "B-flute 3-ply single wall corrugated (厚度 3.0 mm)",
+        "inner_dimensions_mm": {
+          "width": 384.0,
+          "depth": 324.0,
+          "height": 84.0
+        }
+      },
+      "tier_1_lower_heavy_base_tray": {
+        "outer_dimensions_mm": {
+          "width": 364.0,
+          "depth": 304.0,
+          "height": 38.0
+        },
+        "cavities": [
+          {
+            "part": "OBJ-01-A Cast Base",
+            "cavity_dia_mm": 194.0,
+            "center": [
+              152.0,
+              152.0
+            ],
+            "side_margins_mm": 55.0
+          },
+          {
+            "part": "Power Supply & Braided Cable",
+            "cavity_box_mm": [
+              140.0,
+              90.0,
+              32.0
+            ],
+            "side_margins_mm": 30.0
+          }
+        ],
+        "minimum_rib_wall_mm": 32.0
+      },
+      "tier_2_upper_light_optical_tray": {
+        "outer_dimensions_mm": {
+          "width": 364.0,
+          "depth": 304.0,
+          "height": 42.0
+        },
+        "cavities": [
+          {
+            "part": "OBJ-01-D Lamp Head",
+            "cavity_dia_mm": 164.0,
+            "center": [
+              102.0,
+              152.0
+            ]
+          },
+          {
+            "part": "OBJ-01-B Mast Assembly",
+            "cavity_channel_mm": [
+              290.0,
+              24.0,
+              26.0
+            ]
+          },
+          {
+            "part": "OBJ-01-C Arm Assembly",
+            "cavity_channel_mm": [
+              275.0,
+              22.0,
+              22.0
+            ]
+          }
+        ],
+        "minimum_rib_wall_mm": 24.0
+      }
+    }
+  },
+  "material_and_compliance_specification": {
+    "pulp_material_design_target": "Recycled Post-Consumer Wet-Press Paper Pulp (設計目標／待選材)",
+    "supplier_sourcing_status": "PENDING_SUPPLIER_QUOTATION_AND_TOOLING_DRAWING",
+    "drop_test_standard_target": "ISTA-2A / ASTM D4169 (設計目標基準，未實測)",
+    "verification_level": "PACKAGING_CONCEPT_UNTESTED"
+  }
+}

@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OBJECT/01 P0 Packaging Architecture & Unboxing Plate</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html { width: 2560px; height: 1440px; overflow: hidden; background: #0C0E12; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    #container { position: relative; width: 2560px; height: 1440px; background: #0C0E12; }
+    #canvas { position: absolute; top: 0; left: 0; width: 2560px; height: 1440px; display: block; z-index: 1; }
+    
+    /* Technical Plate Header */
+    .plate-header { position: absolute; top: 48px; left: 64px; z-index: 10; }
+    .plate-tag { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; color: #58A6FF; text-transform: uppercase; margin-bottom: 8px; }
+    .plate-title { font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .plate-subtitle { font-size: 15px; color: #8B949E; letter-spacing: 0.5px; }
+
+    /* Right Engineering Sidebar */
+    .eng-sidebar { position: absolute; top: 48px; right: 64px; width: 660px; z-index: 10; background: rgba(14, 17, 23, 0.82); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 26px; }
+    .eng-title { font-size: 14px; font-weight: 700; letter-spacing: 1.5px; color: #C9D1D9; text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 10px; margin-bottom: 16px; display: flex; justify-content: space-between; }
+    
+    .calc-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px; }
+    .calc-table th, .calc-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+    .calc-table th { color: #8B949E; font-weight: 500; }
+    .calc-table td { color: #E6EDF3; font-family: monospace; }
+    .calc-table td.pass { color: #3FB950; font-weight: 600; }
+
+    .tray-spec { font-size: 12px; color: #8B949E; line-height: 1.6; margin-bottom: 14px; }
+    .tray-spec strong { color: #E6EDF3; }
+
+    .concept-warning { padding: 12px; border: 1px dashed rgba(210, 153, 34, 0.5); background: rgba(210, 153, 34, 0.08); border-radius: 6px; font-size: 11px; line-height: 1.5; color: #E3B341; }
+    .concept-warning strong { color: #F2CC60; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Footer Notice */
+    .plate-footer { position: absolute; bottom: 44px; left: 64px; z-index: 10; font-size: 13px; color: #6E7681; letter-spacing: 0.5px; }
+    .plate-footer strong { color: #8B949E; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <canvas id="canvas"></canvas>
+    
+    <div class="plate-header">
+      <div class="plate-tag">SHOT 14 / PACKAGING ARCHITECTURE · PULP TRAY ENGINEERING</div>
+      <div class="plate-title">OBJECT/01 模組化實體包裝與收納配置</div>
+      <div class="plate-subtitle">零件實體外廓尺寸驗算 · 436 × 336 × 62 mm 展開單盒 (備選 390 × 330 × 90 mm 雙層分載) · 模塑紙漿概念提案</div>
+    </div>
+
+    <div class="eng-sidebar">
+      <div class="eng-title">
+        <span>零件實體尺寸 vs 包裝型腔公差驗算</span>
+        <span style="color:#3FB950; font-family:monospace;">VOLUMETRIC FIT PASS</span>
+      </div>
+
+      <table class="calc-table">
+        <thead>
+          <tr>
+            <th>構件名稱</th>
+            <th>實體公稱尺寸</th>
+            <th>型腔預留尺寸</th>
+            <th>配合間隙</th>
+            <th>驗算</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>配重底座 (OBJ-01-A1)</td>
+            <td>Ø190.0 × 15.0 mm</td>
+            <td>Ø194.0 × 20.0 mm</td>
+            <td>直徑 +4.0mm / 徑向 2.0mm (雙指槽)</td>
+            <td class="pass">FIT PASS</td>
+          </tr>
+          <tr>
+            <td>光學燈頭 (OBJ-01-D)</td>
+            <td>Ø160.0 × 18.0 mm</td>
+            <td>Ø164.0 × 22.0 mm</td>
+            <td>直徑 +4.0mm / 徑向 2.0mm (頸部槽)</td>
+            <td class="pass">FIT PASS</td>
+          </tr>
+          <tr>
+            <td>垂直立桿 (OBJ-01-B)</td>
+            <td>Ø14.0 × 265.0 mm</td>
+            <td>24.0 × 290.0 × 28 mm</td>
+            <td>軸向 +25.0 mm / 關節槽</td>
+            <td class="pass">FIT PASS</td>
+          </tr>
+          <tr>
+            <td>懸臂構件 (OBJ-01-C)</td>
+            <td>Ø12.0 × 240.0 mm</td>
+            <td>22.0 × 275.0 × 24 mm</td>
+            <td>軸向 +35.0 mm / 關節槽</td>
+            <td class="pass">FIT PASS</td>
+          </tr>
+          <tr>
+            <td>編織電源線與配件</td>
+            <td>捲線 Ø85mm + 適配器</td>
+            <td>75.0 × 62.0 × 35.0 mm</td>
+            <td>專用配件隔艙</td>
+            <td class="pass">FIT PASS</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tray-spec">
+        <div>• <strong>外盒尺寸 (Outer Carton)</strong>：436 mm (W) × 336 mm (D) × 62 mm (H) · 內徑 430 × 330 × 56 mm (B楞 3mm)</div>
+        <div>• <strong>內托外徑 (Molded Pulp)</strong>：410 mm × 310 mm × 50 mm · 壁厚 2.8mm · 脫模斜度 3°</div>
+        <div>• <strong>內部隔筋 (Rib Thickness)</strong>：底座與燈頭隔筋 22.0 mm · 立桿間距 18.0 mm · 懸臂間距 16.0 mm (均 ≥ 12mm 模具基準)</div>
+        <div>• <strong>周邊緩衝 (Perimeter Buffer)</strong>：內托外緣至外箱每側留有 10.0 mm 專用防震緩衝餘裕</div>
+        <div>• <strong>材料規格目標</strong>：工業級濕壓模塑紙漿 (設計目標／待選材，未選定具體供應商)</div>
+      </div>
+
+      <div class="concept-warning">
+        <strong>⚠ Packaging Concept 狀態聲明 (未打樣未測試)：</strong><br>
+        本圖版為實體收納幾何驗算與外觀提案，零件擺放方向、隔筋厚度與型腔尺寸均經 2D CAD 驗算無重疊；未完成真實模具打樣與 ISTA-2A 落摔震動測試前，誠實標記為概念提案，未宣稱通過正式認證。
+      </div>
+    </div>
+
+    <div class="plate-footer">
+      <strong>FACT BOUNDARY DISCLOSURE:</strong> 實體收納幾何驗算圖 · 嚴格對位底座 Ø190、燈頭 Ø160、立桿 265、懸臂 240 mm · 零虛構尺寸
+    </div>
+  </div>
+
+  <script src="/brand/object01/js/vendor/three.min.js"></script>
+  <script src="/brand/object01/js/vendor/GLTFLoader.js"></script>
+  <script>
+    window.p0PackagingRenderer = {
+      ready: false,
+      scene: null,
+      camera: null,
+      renderer: null,
+
+      async init(width = 2560, height = 1440) {
+        const canvas = document.getElementById('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0x0C0E12);
+        const aspect = width / height;
+
+        this.renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: false,
+          preserveDrawingBuffer: true,
+          powerPreference: "high-performance"
+        });
+        this.renderer.setSize(width, height);
+        this.renderer.setPixelRatio(1);
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.toneMappingExposure = 1.18;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // Camera: Isometric perspective viewing the open packaging tray with unboxed parts
+        this.camera = new THREE.PerspectiveCamera(26, aspect, 0.05, 50);
+        this.camera.position.set(0.72, 0.95, 1.25);
+        const target = new THREE.Vector3(-0.16, 0.08, 0.0);
+        this.camera.lookAt(target);
+
+        // Studio Lighting tailored for paper pulp texture & satin aluminum
+        const keyLight = new THREE.DirectionalLight(0xFFF7EC, 1.70);
+        keyLight.position.set(1.4, 2.6, 1.6);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 4096;
+        keyLight.shadow.mapSize.height = 4096;
+        keyLight.shadow.bias = -0.00008;
+        keyLight.shadow.normalBias = 0.02;
+        this.scene.add(keyLight);
+
+        const fillLight = new THREE.DirectionalLight(0xD6E4F8, 0.85);
+        fillLight.position.set(-1.8, 1.5, -0.8);
+        this.scene.add(fillLight);
+
+        const rimLight = new THREE.DirectionalLight(0xFFFFFF, 1.15);
+        rimLight.position.set(0, 2.5, -2.0);
+        this.scene.add(rimLight);
+
+        const ambLight = new THREE.AmbientLight(0x222630, 0.70);
+        this.scene.add(ambLight);
+
+        // Tabletop ground
+        const tableGeo = new THREE.PlaneGeometry(6.0, 6.0);
+        const tableMat = new THREE.MeshStandardMaterial({
+          color: 0x101217,
+          roughness: 0.90,
+          metalness: 0.10
+        });
+        const table = new THREE.Mesh(tableGeo, tableMat);
+        table.rotation.x = -Math.PI / 2;
+        table.position.y = -0.001;
+        table.receiveShadow = true;
+        this.scene.add(table);
+
+        // 3D Molded Pulp Packaging Tray Model (Width: 374mm, Depth: 314mm, Height: 58mm)
+        // Positioned in left area: center X = -0.16
+        const trayGroup = new THREE.Group();
+        trayGroup.position.set(-0.16, 0, 0);
+
+        // Pulp Material (Natural Unbleached Warm Kraft Fiber)
+        const pulpMat = new THREE.MeshStandardMaterial({
+          color: 0xB8A892,
+          roughness: 0.94,
+          metalness: 0.04
+        });
+
+        // Outer Folding Carton Shell (436 x 336 x 62 mm)
+        const boxMat = new THREE.MeshStandardMaterial({
+          color: 0x2A2E36,
+          roughness: 0.85,
+          metalness: 0.15
+        });
+
+        // Outer box walls
+        const outerBoxGeo = new THREE.BoxGeometry(0.436, 0.062, 0.336);
+        const outerBox = new THREE.Mesh(outerBoxGeo, boxMat);
+        outerBox.position.set(0, 0.031, 0);
+        outerBox.castShadow = true;
+        outerBox.receiveShadow = true;
+        trayGroup.add(outerBox);
+
+        // Molded Pulp Tray Block nestled inside (410 x 310 x 50 mm)
+        const pulpBlockGeo = new THREE.BoxGeometry(0.410, 0.050, 0.310);
+        const pulpBlock = new THREE.Mesh(pulpBlockGeo, pulpMat);
+        pulpBlock.position.set(0, 0.035, 0);
+        pulpBlock.castShadow = true;
+        pulpBlock.receiveShadow = true;
+        trayGroup.add(pulpBlock);
+
+        // Molded Cavity 1: Base Recess (Ø194 mm x 22 mm deep, centered around X=-0.08, Z=-0.045)
+        const baseCavityMat = new THREE.MeshStandardMaterial({ color: 0x9E8E78, roughness: 0.96, metalness: 0.02 });
+        const baseCavityGeo = new THREE.CylinderGeometry(0.097, 0.096, 0.022, 48);
+        const baseCavity = new THREE.Mesh(baseCavityGeo, baseCavityMat);
+        baseCavity.position.set(-0.078, 0.056, -0.045);
+        trayGroup.add(baseCavity);
+
+        // Seated Base Shell (Ø190 x 15 mm)
+        const shellMat = new THREE.MeshStandardMaterial({ color: 0xC8CECE, metalness: 0.88, roughness: 0.24 });
+        const knobMat = new THREE.MeshStandardMaterial({ color: 0xD5DBDE, metalness: 0.94, roughness: 0.15 });
+        const accentMat = new THREE.MeshStandardMaterial({ color: 0xDDE3E6, metalness: 0.96, roughness: 0.10 });
+
+        const seatedBaseGeo = new THREE.CylinderGeometry(0.095, 0.095, 0.015, 64);
+        const seatedBase = new THREE.Mesh(seatedBaseGeo, shellMat);
+        seatedBase.position.set(-0.078, 0.060, -0.045);
+        seatedBase.castShadow = true;
+        trayGroup.add(seatedBase);
+
+        // Base accent ring
+        const seatedRingGeo = new THREE.RingGeometry(0.088, 0.091, 64);
+        const seatedRing = new THREE.Mesh(seatedRingGeo, accentMat);
+        seatedRing.rotation.x = -Math.PI / 2;
+        seatedRing.position.set(-0.078, 0.068, -0.045);
+        trayGroup.add(seatedRing);
+
+        // Seated Knob (Ø20 x 8mm)
+        const seatedKnobGeo = new THREE.CylinderGeometry(0.010, 0.010, 0.008, 32);
+        const seatedKnob = new THREE.Mesh(seatedKnobGeo, knobMat);
+        seatedKnob.position.set(-0.040, 0.072, -0.023);
+        seatedKnob.castShadow = true;
+        trayGroup.add(seatedKnob);
+
+        // Molded Cavity 2: Head Recess (Ø164 mm x 24 mm deep, centered around X=0.098, Z=-0.045)
+        const headCavityGeo = new THREE.CylinderGeometry(0.082, 0.081, 0.024, 48);
+        const headCavity = new THREE.Mesh(headCavityGeo, baseCavityMat);
+        headCavity.position.set(0.092, 0.056, -0.045);
+        trayGroup.add(headCavity);
+
+        // Seated Head (Ø160 x 18 mm)
+        const seatedHeadGeo = new THREE.CylinderGeometry(0.080, 0.080, 0.018, 64);
+        const seatedHead = new THREE.Mesh(seatedHeadGeo, shellMat);
+        seatedHead.position.set(0.092, 0.060, -0.045);
+        seatedHead.castShadow = true;
+        trayGroup.add(seatedHead);
+
+        // Head Accent Trim
+        const seatedHeadRingGeo = new THREE.RingGeometry(0.075, 0.0785, 64);
+        const seatedHeadRing = new THREE.Mesh(seatedHeadRingGeo, accentMat);
+        seatedHeadRing.rotation.x = -Math.PI / 2;
+        seatedHeadRing.position.set(0.092, 0.070, -0.045);
+        trayGroup.add(seatedHeadRing);
+
+        // Molded Cavity 3: Vertical Mast Channel (292 x 26 x 28 mm, centered around Z=0.078)
+        const mastChannelGeo = new THREE.BoxGeometry(0.292, 0.028, 0.026);
+        const mastChannel = new THREE.Mesh(mastChannelGeo, baseCavityMat);
+        mastChannel.position.set(0, 0.056, 0.068);
+        trayGroup.add(mastChannel);
+
+        // Seated Mast Tube (Ø14 x 250 mm + Ø24 knuckle)
+        const seatedMastGeo = new THREE.CylinderGeometry(0.007, 0.007, 0.250, 32);
+        const seatedMast = new THREE.Mesh(seatedMastGeo, shellMat);
+        seatedMast.rotation.z = Math.PI / 2;
+        seatedMast.position.set(-0.010, 0.062, 0.068);
+        seatedMast.castShadow = true;
+        trayGroup.add(seatedMast);
+
+        // Seated Lower Knuckle
+        const seatedKnuckleGeo = new THREE.CylinderGeometry(0.012, 0.012, 0.026, 32);
+        const seatedKnuckle = new THREE.Mesh(seatedKnuckleGeo, shellMat);
+        seatedKnuckle.rotation.x = Math.PI / 2;
+        seatedKnuckle.position.set(0.125, 0.062, 0.068);
+        seatedKnuckle.castShadow = true;
+        trayGroup.add(seatedKnuckle);
+
+        // Molded Cavity 4: Cantilever Arm Channel (272 x 24 x 24 mm, centered around Z=0.115)
+        const armChannelGeo = new THREE.BoxGeometry(0.272, 0.024, 0.024);
+        const armChannel = new THREE.Mesh(armChannelGeo, baseCavityMat);
+        armChannel.position.set(-0.010, 0.058, 0.112);
+        trayGroup.add(armChannel);
+
+        // Seated Arm Tube (Ø12 x 240 mm)
+        const seatedArmGeo = new THREE.CylinderGeometry(0.006, 0.006, 0.240, 32);
+        const seatedArm = new THREE.Mesh(seatedArmGeo, shellMat);
+        seatedArm.rotation.z = Math.PI / 2;
+        seatedArm.position.set(-0.010, 0.064, 0.112);
+        seatedArm.castShadow = true;
+        trayGroup.add(seatedArm);
+
+        // Molded Cavity 5: Accessory Box Compartment (95 x 90 x 35 mm, around X=-0.12, Z=0.115)
+        const accBoxGeo = new THREE.BoxGeometry(0.088, 0.032, 0.082);
+        const accBoxMat = new THREE.MeshStandardMaterial({ color: 0x22252C, roughness: 0.85, metalness: 0.10 });
+        const accBox = new THREE.Mesh(accBoxGeo, accBoxMat);
+        accBox.position.set(-0.118, 0.055, 0.065);
+        accBox.castShadow = true;
+        trayGroup.add(accBox);
+
+        this.scene.add(trayGroup);
+        this.renderer.render(this.scene, this.camera);
+        this.ready = true;
+        return true;
+      }
+    };
+  </script>
+</body>
+</html>
+

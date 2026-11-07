@@ -1,0 +1,46 @@
+Node_Index,Node_Name,Parent_Index,Parent_Name,Has_Mesh,Mesh_Index,Mesh_Primitives_Count,Material_Name,Bounding_Box_MM_X_Y_Z,Functional_BOM_ID,Functional_BOM_Name_ZH,Assembly_Module,Engineering_Status
+00,OBJECT01_V3_ROOT,N/A,ROOT,FALSE,N/A,0,N/A,N/A,ROOT,場景頂層根節點,N/A,STRUCTURAL_GROUP
+01,OBJ-01-A_base_assembly,00,OBJECT01_V3_ROOT,FALSE,N/A,0,N/A,N/A,OBJ-01-A,底座總成 (Base Assembly),Base Assembly,STRUCTURAL_GROUP
+02,OBJ-01-A1_base_shell,01,OBJ-01-A_base_assembly,TRUE,mesh_0,1,Mat_Shell_CMF-01-SILVER,190 x 15 x 190,BOM-01,OBJ-01-A1 鑄造鋁合金底座外殼,Base Assembly,MODELED
+03,OBJ-01-A2_base_accent_ring,01,OBJ-01-A_base_assembly,TRUE,mesh_1,1,Mat_Accent_CMF-01-SILVER,182.4 x 182.4 x 0,BOM-02,OBJ-01-A2 底座頂部車削倒角飾環,Base Assembly,MODELED
+04,OBJ-01-A3_silicone_pad,01,OBJ-01-A_base_assembly,TRUE,mesh_2,1,Mat_Rubber_CMF-01-SILVER,174 x 1.2 x 174,BOM-03,OBJ-01-A3 底座防滑矽膠底墊,Base Assembly,MODELED
+05,OBJ-01-A4_mast_collar,01,OBJ-01-A_base_assembly,TRUE,mesh_3,1,Mat_Shell_CMF-01-SILVER,26 x 12 x 26,BOM-04,OBJ-01-A4 垂直立柱固定套環,Base Assembly,MODELED
+06,OBJ-01-A4_collar_trim,01,OBJ-01-A_base_assembly,TRUE,mesh_4,1,Mat_Accent_CMF-01-SILVER,25.6 x 25.6 x 1.2,BOM-05,OBJ-01-A4_trim 固定套環裝飾圈,Base Assembly,MODELED
+07,OBJ-01-A5_knob_assembly,01,OBJ-01-A_base_assembly,FALSE,N/A,0,N/A,N/A,OBJ-01-A5,旋鈕子裝配 (Knob Sub-assembly),Base Assembly,STRUCTURAL_GROUP
+08,unnamed_node_8,07,OBJ-01-A5_knob_assembly,TRUE,mesh_5,1,Mat_Knob_CMF-01-SILVER,20 x 8 x 20,BOM-06A,OBJ-01-A5-1 滾花調光旋鈕主體,Base Assembly,MODELED
+09,unnamed_node_9,07,OBJ-01-A5_knob_assembly,TRUE,mesh_6,1,Mat_Accent_CMF-01-SILVER,19.4 x 19.4 x 1.0,BOM-06B,OBJ-01-A5-2 旋鈕車削倒角襯環,Base Assembly,MODELED
+10,unnamed_node_10,07,OBJ-01-A5_knob_assembly,TRUE,mesh_7,1,Mat_Fastener_CMF-01-SILVER,1.6 x 0.4 x 1.6,BOM-06C,OBJ-01-A5-3 旋鈕刻度指示銷,Base Assembly,MODELED
+11,OBJ-01-A6_rear_strain_boot,01,OBJ-01-A_base_assembly,TRUE,mesh_8,1,Mat_Rubber_CMF-01-SILVER,12 x 12 x 12,BOM-07,OBJ-01-A6 後方防折走線軟膠套,Base Assembly,MODELED
+12,OBJ-01-B_mast_assembly,00,OBJECT01_V3_ROOT,FALSE,N/A,0,N/A,N/A,OBJ-01-B,垂直立桿總成 (Mast Assembly),Mast Assembly,STRUCTURAL_GROUP
+13,OBJ-01-B1_vertical_mast,12,OBJ-01-B_mast_assembly,TRUE,mesh_9,1,Mat_Shell_CMF-01-SILVER,14 x 250 x 14,BOM-08,OBJ-01-B1 實心擠型鋁合金垂直立桿,Mast Assembly,MODELED
+14,OBJ-01-B2_lower_joint,12,OBJ-01-B_mast_assembly,FALSE,N/A,0,N/A,N/A,OBJ-01-B2,下轉軸子裝配 (Lower Joint Sub-assembly),Mast Assembly,STRUCTURAL_GROUP
+15,unnamed_node_15,14,OBJ-01-B2_lower_joint,TRUE,mesh_10,1,Mat_Shell_CMF-01-SILVER,24 x 26 x 24,BOM-09A,OBJ-01-B2-1 下轉軸旋轉主體,Mast Assembly,MODELED
+16,unnamed_node_16,14,OBJ-01-B2_lower_joint,TRUE,mesh_11,1,Mat_Accent_CMF-01-SILVER,12 x 1.2 x 12,BOM-09B,OBJ-01-B2-2 阻尼摩擦墊圈 (左),Mast Assembly,MODELED
+17,unnamed_node_17,14,OBJ-01-B2_lower_joint,TRUE,mesh_12,1,Mat_Fastener_CMF-01-SILVER,4.33 x 0.6 x 5.0,BOM-09C,OBJ-01-B2-3 同軸樞軸主銷螺絲 (左),Mast Assembly,MODELED
+18,unnamed_node_18,14,OBJ-01-B2_lower_joint,TRUE,mesh_13,1,Mat_Accent_CMF-01-SILVER,12 x 1.2 x 12,BOM-09D,OBJ-01-B2-4 軸端精密車削金屬飾蓋 (右),Mast Assembly,MODELED
+19,unnamed_node_19,14,OBJ-01-B2_lower_joint,TRUE,mesh_14,1,Mat_Fastener_CMF-01-SILVER,4.33 x 0.6 x 5.0,BOM-09E,OBJ-01-B2-5 樞軸緊固螺帽 (右),Mast Assembly,MODELED
+20,unnamed_node_20,14,OBJ-01-B2_lower_joint,TRUE,mesh_15,1,Mat_Fastener_CMF-01-SILVER,8 x 14 x 6,BOM-09F,OBJ-01-B2-6 機械限位止動銷,Mast Assembly,MODELED
+21,unnamed_node_21,14,OBJ-01-B2_lower_joint,TRUE,mesh_16,1,Mat_Rubber_CMF-01-SILVER,8.8 x 8.8 x 2.4,BOM-09G,OBJ-01-B2-7 走線防磨密封軟膠襯套,Mast Assembly,MODELED
+22,OBJ-01-C_cantilever_assembly,00,OBJECT01_V3_ROOT,FALSE,N/A,0,N/A,N/A,OBJ-01-C,主懸臂總成 (Cantilever Assembly),Cantilever Assembly,STRUCTURAL_GROUP
+23,OBJ-01-C1_cantilever_arm,22,OBJ-01-C_cantilever_assembly,TRUE,mesh_17,1,Mat_Shell_CMF-01-SILVER,12 x 240 x 12,BOM-10,OBJ-01-C1 主懸臂管體,Cantilever Assembly,MODELED
+24,unnamed_node_24,22,OBJ-01-C_cantilever_assembly,TRUE,mesh_18,1,Mat_Accent_CMF-01-SILVER,16 x 16 x 1.6,BOM-10A,OBJ-01-C1-1 走線固定金屬束環 (前),Cantilever Assembly,MODELED
+25,unnamed_node_25,22,OBJ-01-C_cantilever_assembly,TRUE,mesh_19,1,Mat_Accent_CMF-01-SILVER,16 x 16 x 1.6,BOM-10B,OBJ-01-C1-2 走線固定金屬束環 (後),Cantilever Assembly,MODELED
+26,OBJ-01-C2_upper_joint,22,OBJ-01-C_cantilever_assembly,FALSE,N/A,0,N/A,N/A,OBJ-01-C2,上轉軸子裝配 (Upper Joint Sub-assembly),Cantilever Assembly,STRUCTURAL_GROUP
+27,unnamed_node_27,26,OBJ-01-C2_upper_joint,TRUE,mesh_20,1,Mat_Shell_CMF-01-SILVER,22 x 22 x 22,BOM-11A,OBJ-01-C2-1 上轉軸俯仰主體,Cantilever Assembly,MODELED
+28,unnamed_node_28,26,OBJ-01-C2_upper_joint,TRUE,mesh_21,1,Mat_Accent_CMF-01-SILVER,11.0 x 1.0 x 11.0,BOM-11B,OBJ-01-C2-2 上軸阻尼摩擦墊圈,Cantilever Assembly,MODELED
+29,unnamed_node_29,26,OBJ-01-C2_upper_joint,TRUE,mesh_22,1,Mat_Fastener_CMF-01-SILVER,3.81 x 0.5 x 4.4,BOM-11C,OBJ-01-C2-3 上軸樞軸定位螺絲,Cantilever Assembly,MODELED
+30,unnamed_node_30,26,OBJ-01-C2_upper_joint,TRUE,mesh_23,1,Mat_Accent_CMF-01-SILVER,11.0 x 1.0 x 11.0,BOM-11D,OBJ-01-C2-4 上軸金屬同心裝飾蓋,Cantilever Assembly,MODELED
+31,unnamed_node_31,26,OBJ-01-C2_upper_joint,TRUE,mesh_24,1,Mat_Fastener_CMF-01-SILVER,3.81 x 0.5 x 4.4,BOM-11E,OBJ-01-C2-5 上軸機械限位插銷,Cantilever Assembly,MODELED
+32,OBJ-01-C3_neck_stem,22,OBJ-01-C_cantilever_assembly,TRUE,mesh_25,1,Mat_Shell_CMF-01-SILVER,12 x 45.0 x 12,BOM-12,OBJ-01-C3 燈頭連接頸管,Cantilever Assembly,MODELED
+33,OBJ-01-D_lamp_head_assembly,00,OBJECT01_V3_ROOT,FALSE,N/A,0,N/A,N/A,OBJ-01-D,燈頭總成 (Lamp Head Assembly),Lamp Head Assembly,STRUCTURAL_GROUP
+34,OBJ-01-D1_top_housing_cap,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_26,1,Mat_Shell_CMF-01-SILVER,160 x 10 x 160,BOM-13,OBJ-01-D1 鋁合金光學艙頂蓋,Lamp Head Assembly,MODELED
+35,OBJ-01-D2_accent_trim_ring,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_27,1,Mat_Accent_CMF-01-SILVER,157.0 x 2 x 157.0,BOM-14,OBJ-01-D2 中段高光車削裝飾環,Lamp Head Assembly,MODELED
+36,OBJ-01-D3_lower_bezel_rim,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_28,1,Mat_Shell_CMF-01-SILVER,160 x 6 x 160,BOM-15,OBJ-01-D3 下出光圈邊框壓環,Lamp Head Assembly,MODELED
+37,OBJ-01-D4_optical_diffuser,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_29,1,Mat_Diffuser_CMF-01-SILVER,146 x 2 x 146,BOM-16,OBJ-01-D4 微稜鏡光學漫射板,Lamp Head Assembly,MODELED
+38,OBJ-01-D5_mounting_bracket,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_30,1,Mat_Shell_CMF-01-SILVER,22 x 14 x 20,BOM-17A,OBJ-01-D5 燈頭鉸鏈固定支架 (Yoke),Lamp Head Assembly,MODELED
+39,unnamed_node_39,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_31,1,Mat_Fastener_CMF-01-SILVER,3.2 x 0.8 x 3.2,BOM-17B,OBJ-01-D5-1 燈頭俯仰阻尼緊固螺絲 (左),Lamp Head Assembly,MODELED
+40,unnamed_node_40,33,OBJ-01-D_lamp_head_assembly,TRUE,mesh_32,1,Mat_Fastener_CMF-01-SILVER,3.2 x 0.8 x 3.2,BOM-17C,OBJ-01-D5-2 燈頭俯仰阻尼緊固螺絲 (右),Lamp Head Assembly,MODELED
+41,OBJ-01-E1_braided_power_cable,00,OBJECT01_V3_ROOT,TRUE,mesh_33,1,Mat_Cable_CMF-01-SILVER,4 x 465.67 x 215.81,BOM-18,OBJ-01-E1 外部深石墨抗折編織電源線,Cable Assembly,MODELED
+RES-01,OBJ-01-RES-BALLAST,01,OBJ-01-A_base_assembly,FALSE,N/A,0,Cast Iron (Target),Ø160 x 10 (Target Cavity),BOM-RES-01,底座內部配重塊 (預留鑄鐵空間，重量待實測),Base Assembly,CONCEPT_RESERVATION
+RES-02,OBJ-01-RES-PCBA,01,OBJ-01-A_base_assembly,FALSE,N/A,0,FR4 PCBA (Target),50 x 30 x 8 (Target Enclosure),BOM-RES-02,LED 驅動與調光控制板 (待電子工程佈局),Base Assembly,CONCEPT_RESERVATION
+RES-03,OBJ-01-RES-LED-MODULE,33,OBJ-01-D_lamp_head_assembly,FALSE,N/A,0,Aluminum MCPCB (Target),Ø140 x 1.6 (Target Substrate),BOM-RES-03,高演色 LED 發光模組 (待光學配光曲線測試),Lamp Head Assembly,CONCEPT_RESERVATION

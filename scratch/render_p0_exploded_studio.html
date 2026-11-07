@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OBJECT/01 P0 Master Exploded Assembly Plate</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html { width: 2560px; height: 1440px; overflow: hidden; background: #0C0E12; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    #container { position: relative; width: 2560px; height: 1440px; background: #0C0E12; }
+    #canvas { position: absolute; top: 0; left: 0; width: 2560px; height: 1440px; display: block; z-index: 1; }
+    #overlay { position: absolute; top: 0; left: 0; width: 2560px; height: 1440px; z-index: 2; pointer-events: none; }
+    
+    /* Technical Plate Header */
+    .plate-header { position: absolute; top: 48px; left: 64px; z-index: 10; }
+    .plate-tag { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; color: #58A6FF; text-transform: uppercase; margin-bottom: 8px; }
+    .plate-title { font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .plate-subtitle { font-size: 15px; color: #8B949E; letter-spacing: 0.5px; }
+
+    /* Specification Grid in Right Column */
+    .bom-sidebar { position: absolute; top: 48px; right: 64px; width: 620px; z-index: 10; background: rgba(14, 17, 23, 0.78); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 24px; }
+    .bom-title { font-size: 14px; font-weight: 700; letter-spacing: 1.5px; color: #C9D1D9; text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; }
+    .bom-list { list-style: none; font-size: 12px; line-height: 1.6; color: #8B949E; }
+    .bom-item { display: flex; margin-bottom: 4px; }
+    .bom-num { width: 34px; color: #58A6FF; font-family: monospace; font-weight: 600; }
+    .bom-name { flex: 1; color: #E6EDF3; }
+    .bom-dim { color: #8B949E; font-family: monospace; }
+
+    /* Concept Reserved Block */
+    .reserved-box { margin-top: 14px; padding: 12px; border: 1px dashed rgba(210, 153, 34, 0.4); background: rgba(210, 153, 34, 0.06); border-radius: 6px; font-size: 11px; line-height: 1.5; color: #D29922; }
+    .reserved-title { font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Footer Notice */
+    .plate-footer { position: absolute; bottom: 44px; left: 64px; z-index: 10; font-size: 13px; color: #6E7681; letter-spacing: 0.5px; }
+    .plate-footer strong { color: #8B949E; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <canvas id="canvas"></canvas>
+    
+    <div class="plate-header">
+      <div class="plate-tag">SHOT 08 / EXPLODED ASSEMBLY · V3 CAD MASTER</div>
+      <div class="plate-title">OBJECT/01 模組化裝配與零件拓撲</div>
+      <div class="plate-subtitle">同源參數化 3D 母型展開 · 42 場景節點 / 34 Mesh 網格 / 17 功能裝配項 · 零虛構零件</div>
+    </div>
+
+    <div class="bom-sidebar">
+      <div class="bom-title">
+        <span>BOM 零件表 (17 功能裝配項 / 34 Mesh)</span>
+        <span style="color:#58A6FF; font-family:monospace;">17 PARTS AUDITED</span>
+      </div>
+      <ul class="bom-list">
+        <li class="bom-item"><span class="bom-num">01</span><span class="bom-name">OBJ-01-A3 底座防滑矽膠底墊</span><span class="bom-dim">Ø174 × 1.2 mm</span></li>
+        <li class="bom-item"><span class="bom-num">02</span><span class="bom-name">OBJ-01-A1 鑄造鋁合金底座外殼</span><span class="bom-dim">Ø190 × 15.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">03</span><span class="bom-name">OBJ-01-A2 底座頂部車削倒角飾環</span><span class="bom-dim">Ø182.4 mm</span></li>
+        <li class="bom-item"><span class="bom-num">04</span><span class="bom-name">OBJ-01-A4 垂直立柱固定套環與飾圈</span><span class="bom-dim">Ø26.0 × 12.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">05</span><span class="bom-name">OBJ-01-A5 滾花調光旋鈕機構 (旋鈕+基座+指示銷)</span><span class="bom-dim">Ø20.0 × 8.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">06</span><span class="bom-name">OBJ-01-A6 後方走線防拉扯軟膠出線套</span><span class="bom-dim">12.0 × 12.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">07</span><span class="bom-name">OBJ-01-B1 實心擠型鋁合金垂直立桿</span><span class="bom-dim">Ø14.0 × 250.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">08</span><span class="bom-name">OBJ-01-B2 下轉軸裝配 (主體/端蓋/摩擦墊/緊固銷)</span><span class="bom-dim">Ø24.0 × 26.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">09</span><span class="bom-name">OBJ-01-C1 主懸臂管與走線固定夾環</span><span class="bom-dim">Ø12.0 × 240.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">10</span><span class="bom-name">OBJ-01-C2 上轉軸俯仰裝配 (主體/端蓋/摩擦墊/插銷)</span><span class="bom-dim">Ø22.0 × 22.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">11</span><span class="bom-name">OBJ-01-C3 燈頭連接頸管</span><span class="bom-dim">Ø12.0 × 45.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">12</span><span class="bom-name">OBJ-01-D5 燈頭鉸鏈固定支架與阻尼螺絲</span><span class="bom-dim">22.0 × 14.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">13</span><span class="bom-name">OBJ-01-D1 鋁合金光學艙頂蓋</span><span class="bom-dim">Ø160.0 × 10.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">14</span><span class="bom-name">OBJ-01-D2 中段高光車削裝飾環</span><span class="bom-dim">Ø157.0 × 2.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">15</span><span class="bom-name">OBJ-01-D3 下出光圈邊框壓環</span><span class="bom-dim">Ø160.0 × 6.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">16</span><span class="bom-name">OBJ-01-D4 微稜鏡光學漫射板</span><span class="bom-dim">Ø146.0 × 2.0 mm</span></li>
+        <li class="bom-item"><span class="bom-num">17</span><span class="bom-name">OBJ-01-E1 外部深石墨抗折編織電源線</span><span class="bom-dim">Ø4.0 mm × 1.8 m</span></li>
+      </ul>
+
+      <div class="reserved-box">
+        <div class="reserved-title">⚠ 概念預留項 (3D 模型未建置 / 待實體驗證)</div>
+        <div>• <strong>BOM-RES-01 底座內部配重塊</strong>：預留鑄鐵空間，重量待實體樣機力矩平衡測試確定。</div>
+        <div>• <strong>BOM-RES-02 LED 驅動與調光 PCBA</strong>：電路板待電子硬體佈局定案。</div>
+        <div>• <strong>BOM-RES-03 高演色 LED 發光模組</strong>：待光學配光曲線與散熱測試定案。</div>
+      </div>
+    </div>
+
+    <div class="plate-footer">
+      <strong>FACT BOUNDARY DISCLOSURE:</strong> 概念幾何裝配圖 · 零件編號與裝配軸線完全依據 OBJECT01_V3_ALIGNED_MASTER.glb · 未宣稱量產認證
+    </div>
+  </div>
+
+  <script src="/brand/object01/js/vendor/three.min.js"></script>
+  <script src="/brand/object01/js/vendor/GLTFLoader.js"></script>
+  <script>
+    window.p0ExplodedRenderer = {
+      ready: false,
+      scene: null,
+      camera: null,
+      renderer: null,
+      model: null,
+      nodesMap: {},
+
+      async init(width = 2560, height = 1440) {
+        const canvas = document.getElementById('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0x0C0E12);
+        const aspect = width / height;
+
+        this.renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: false,
+          preserveDrawingBuffer: true,
+          powerPreference: "high-performance"
+        });
+        this.renderer.setSize(width, height);
+        this.renderer.setPixelRatio(1);
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.toneMappingExposure = 1.18;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // Camera: Isometric perspective viewing the entire explosion span
+        this.camera = new THREE.PerspectiveCamera(28, aspect, 0.05, 50);
+        // Slightly shifted left to leave room for the right sidebar
+        this.camera.position.set(1.10, 0.72, 1.42);
+        const target = new THREE.Vector3(-0.08, 0.35, 0.06);
+        this.camera.lookAt(target);
+
+        // High-contrast Studio Lighting for clear part edge definition
+        const keyLight = new THREE.DirectionalLight(0xFFF8EE, 1.80);
+        keyLight.position.set(1.5, 2.5, 1.8);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 4096;
+        keyLight.shadow.mapSize.height = 4096;
+        keyLight.shadow.bias = -0.00008;
+        keyLight.shadow.normalBias = 0.02;
+        this.scene.add(keyLight);
+
+        const fillLight = new THREE.DirectionalLight(0xDCE7FC, 0.85);
+        fillLight.position.set(-2.0, 1.5, -1.0);
+        this.scene.add(fillLight);
+
+        const rimLight = new THREE.DirectionalLight(0xFFFFFF, 1.25);
+        rimLight.position.set(0, 2.6, -2.2);
+        this.scene.add(rimLight);
+
+        const ambLight = new THREE.AmbientLight(0x242832, 0.70);
+        this.scene.add(ambLight);
+
+        // Floor Shadow
+        const floorGeo = new THREE.PlaneGeometry(6.0, 6.0);
+        const floorMat = new THREE.MeshStandardMaterial({
+          color: 0x0F1116,
+          roughness: 0.90,
+          metalness: 0.10
+        });
+        const floor = new THREE.Mesh(floorGeo, floorMat);
+        floor.rotation.x = -Math.PI / 2;
+        floor.position.set(0, -0.0006, 0.2);
+        floor.receiveShadow = true;
+        this.scene.add(floor);
+
+        // Load Master GLB Model
+        const loader = new THREE.GLTFLoader();
+        return new Promise((resolve, reject) => {
+          loader.load(
+            '/brand/object01/assets/3d/OBJECT01_V3_ALIGNED_MASTER.glb',
+            (gltf) => {
+              this.model = gltf.scene;
+              this.model.scale.set(0.001, 0.001, 0.001);
+              this.model.position.y = 0.0006;
+
+              // Materials: PBR Metallic
+              const shellMat = new THREE.MeshStandardMaterial({
+                color: 0xC8CECE,
+                metalness: 0.88,
+                roughness: 0.24
+              });
+
+              const accentMat = new THREE.MeshStandardMaterial({
+                color: 0xDDE3E6,
+                metalness: 0.96,
+                roughness: 0.10
+              });
+
+              const knobMat = new THREE.MeshStandardMaterial({
+                color: 0xD5DBDE,
+                metalness: 0.94,
+                roughness: 0.15
+              });
+
+              const diffuserMat = new THREE.MeshStandardMaterial({
+                color: 0xFFF8EE,
+                emissive: 0xFFE5B5,
+                emissiveIntensity: 0.85,
+                metalness: 0.04,
+                roughness: 0.35
+              });
+
+              const cableMat = new THREE.MeshStandardMaterial({
+                color: 0x22252A,
+                metalness: 0.15,
+                roughness: 0.80
+              });
+
+              const rubberMat = new THREE.MeshStandardMaterial({
+                color: 0x16181C,
+                metalness: 0.10,
+                roughness: 0.88
+              });
+
+              const fastenerMat = new THREE.MeshStandardMaterial({
+                color: 0x444A50,
+                metalness: 0.85,
+                roughness: 0.30
+              });
+
+              this.model.traverse((child) => {
+                if (child.isMesh) {
+                  child.castShadow = true;
+                  child.receiveShadow = true;
+                  const name = (child.name || '').toLowerCase();
+                  if (name.includes('diffuser')) {
+                    child.material = diffuserMat;
+                  } else if (name.includes('knob') || name.includes('dial')) {
+                    child.material = knobMat;
+                  } else if (name.includes('trim') || name.includes('accent') || name.includes('ring') || name.includes('bezel')) {
+                    child.material = accentMat;
+                  } else if (name.includes('cable')) {
+                    child.material = cableMat;
+                  } else if (name.includes('pad') || name.includes('boot') || name.includes('guide')) {
+                    child.material = rubberMat;
+                  } else if (name.includes('screw') || name.includes('pin') || name.includes('fastener')) {
+                    child.material = fastenerMat;
+                  } else {
+                    child.material = shellMat;
+                  }
+                }
+                if (child.name) {
+                  this.nodesMap[child.name] = child;
+                }
+              });
+
+              // Apply Exploded Offsets strictly along physical assembly axes
+              this.applyExplodedOffsets();
+
+              this.scene.add(this.model);
+              this.renderer.render(this.scene, this.camera);
+              this.ready = true;
+              resolve(true);
+            },
+            undefined,
+            err => reject(err)
+          );
+        });
+      },
+
+      applyExplodedOffsets() {
+        const move = (name, dx, dy, dz) => {
+          const node = this.nodesMap[name];
+          if (node) {
+            node.position.x += dx;
+            node.position.y += dy;
+            node.position.z += dz;
+          }
+        };
+
+        // 1. BASE ASSEMBLY (OBJ-01-A)
+        move('OBJ-01-A3_silicone_pad', 0, -42, 0);
+        move('OBJ-01-A2_base_accent_ring', 0, 28, 0);
+        move('OBJ-01-A4_mast_collar', 0, 56, 0);
+        move('OBJ-01-A4_collar_trim', 0, 76, 0);
+        move('OBJ-01-A5_knob_assembly', 42, 10, 24);
+        move('OBJ-01-A6_rear_strain_boot', 0, 0, -48);
+
+        // 2. VERTICAL MAST ASSEMBLY (OBJ-01-B)
+        move('OBJ-01-B1_vertical_mast', 0, 75, 0);
+        move('OBJ-01-B2_lower_joint', 0, 142, 0);
+
+        // 3. CANTILEVER ARM ASSEMBLY (OBJ-01-C)
+        move('OBJ-01-C_cantilever_assembly', 0, 185, 62);
+
+        // 4. LAMP HEAD ASSEMBLY (OBJ-01-D)
+        move('OBJ-01-D_lamp_head_assembly', 0, 265, 115);
+        move('OBJ-01-D1_top_housing_cap', 0, 68, 0);
+        move('OBJ-01-D2_accent_trim_ring', 0, 28, 0);
+        move('OBJ-01-D3_lower_bezel_rim', 0, -26, 0);
+        move('OBJ-01-D4_optical_diffuser', 0, -68, 0);
+      }
+    };
+  </script>
+</body>
+</html>

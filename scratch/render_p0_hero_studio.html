@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OBJECT/01 P0 Master Hero Studio Renderer</title>
+  <style>
+    body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0E1015; }
+    #canvas { width: 100%; height: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script src="/brand/object01/js/vendor/three.min.js"></script>
+  <script src="/brand/object01/js/vendor/GLTFLoader.js"></script>
+  <script>
+    window.p0HeroRenderer = {
+      ready: false,
+      scene: null,
+      camera: null,
+      renderer: null,
+      model: null,
+
+      async init(width = 2560, height = 1440) {
+        const canvas = document.getElementById('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0x0E1015);
+        const aspect = width / height;
+
+        this.renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: false,
+          preserveDrawingBuffer: true,
+          powerPreference: "high-performance"
+        });
+        this.renderer.setSize(width, height);
+        this.renderer.setPixelRatio(1);
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.toneMappingExposure = 1.15;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // 1. GENERATE PROCEDURAL HIGH-DYNAMIC-RANGE STUDIO ENVIRONMENT
+        const pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+        pmremGenerator.compileEquirectangularShader();
+
+        const envScene = new THREE.Scene();
+        envScene.background = new THREE.Color(0x07090C);
+
+        // Softbox 1: Main Overhead Key (Warm Studio Light)
+        const sbKeyGeo = new THREE.PlaneGeometry(3.5, 3.5);
+        const sbKeyMat = new THREE.MeshBasicMaterial({ color: 0xFFF3E0 });
+        const sbKey = new THREE.Mesh(sbKeyGeo, sbKeyMat);
+        sbKey.position.set(2.2, 3.8, 2.0);
+        sbKey.lookAt(0, 0.2, 0);
+        envScene.add(sbKey);
+
+        // Softbox 2: Side Kicker / Rim (Cool Crisp Highlight)
+        const sbRimGeo = new THREE.PlaneGeometry(1.2, 4.0);
+        const sbRimMat = new THREE.MeshBasicMaterial({ color: 0xD0E2FF });
+        const sbRim = new THREE.Mesh(sbRimGeo, sbRimMat);
+        sbRim.position.set(-2.8, 2.5, -1.8);
+        sbRim.lookAt(0, 0.2, 0);
+        envScene.add(sbRim);
+
+        // Softbox 3: Frontal Broad Fill
+        const sbFillGeo = new THREE.PlaneGeometry(4.0, 2.0);
+        const sbFillMat = new THREE.MeshBasicMaterial({ color: 0x8898B0 });
+        const sbFill = new THREE.Mesh(sbFillGeo, sbFillMat);
+        sbFill.position.set(-0.5, 1.8, 3.2);
+        sbFill.lookAt(0, 0.2, 0);
+        envScene.add(sbFill);
+
+        // Studio Floor Reflection in Env
+        const sbFloorGeo = new THREE.PlaneGeometry(8, 8);
+        const sbFloorMat = new THREE.MeshBasicMaterial({ color: 0x12141A });
+        const sbFloor = new THREE.Mesh(sbFloorGeo, sbFloorMat);
+        sbFloor.rotation.x = -Math.PI / 2;
+        sbFloor.position.y = -0.5;
+        envScene.add(sbFloor);
+
+        const envRenderTarget = pmremGenerator.fromScene(envScene, 0.04);
+        this.scene.environment = envRenderTarget.texture;
+        envScene.clear();
+
+        // 2. CAMERA SETUP (Architectural 3/4 Perspective)
+        // 28 deg FOV (equivalent to ~80mm high-end medium-format product photography)
+        this.camera = new THREE.PerspectiveCamera(28, aspect, 0.05, 50);
+        this.camera.position.set(0.66, 0.40, 0.92);
+        this.camera.lookAt(new THREE.Vector3(0.01, 0.23, 0.07));
+
+        // 3. PHYSICAL STUDIO LIGHTS
+        // Key Directional Light
+        const keyLight = new THREE.DirectionalLight(0xFFF7EC, 1.60);
+        keyLight.position.set(1.6, 2.8, 1.8);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 4096;
+        keyLight.shadow.mapSize.height = 4096;
+        keyLight.shadow.camera.near = 0.1;
+        keyLight.shadow.camera.far = 4.5;
+        keyLight.shadow.camera.left = -0.50;
+        keyLight.shadow.camera.right = 0.50;
+        keyLight.shadow.camera.top = 0.70;
+        keyLight.shadow.camera.bottom = -0.15;
+        keyLight.shadow.bias = -0.00008;
+        keyLight.shadow.normalBias = 0.025;
+        this.scene.add(keyLight);
+
+        // Rim Kicker Light
+        const rimLight = new THREE.DirectionalLight(0xDCE8FF, 1.15);
+        rimLight.position.set(-2.0, 2.2, -1.8);
+        this.scene.add(rimLight);
+
+        // Soft Front Fill
+        const fillLight = new THREE.DirectionalLight(0xA0B2C6, 0.55);
+        fillLight.position.set(-1.2, 1.0, 1.4);
+        this.scene.add(fillLight);
+
+        // Low Ambient
+        const ambLight = new THREE.AmbientLight(0x20242E, 0.60);
+        this.scene.add(ambLight);
+
+        // Seamless Cyclorama Studio Cove (Floor smoothly bending into background)
+        const coveRadius = 0.8;
+        const coveWidth = 8.0;
+        const coveDepth = 4.0;
+        const coveHeight = 4.0;
+        
+        // Simple 3-part cove: Floor, curve, back wall
+        const floorGeo = new THREE.PlaneGeometry(coveWidth, coveDepth);
+        const studioMat = new THREE.MeshStandardMaterial({
+          color: 0x12151B,
+          roughness: 0.88,
+          metalness: 0.10
+        });
+        const studioFloor = new THREE.Mesh(floorGeo, studioMat);
+        studioFloor.rotation.x = -Math.PI / 2;
+        studioFloor.position.set(0, -0.0006, 0.5);
+        studioFloor.receiveShadow = true;
+        this.scene.add(studioFloor);
+
+        const wallGeo = new THREE.PlaneGeometry(coveWidth, coveHeight);
+        const wallMat = new THREE.MeshStandardMaterial({
+          color: 0x0E1015,
+          roughness: 0.95,
+          metalness: 0.05
+        });
+        const studioWall = new THREE.Mesh(wallGeo, wallMat);
+        studioWall.position.set(0, coveHeight / 2, -coveDepth / 2 + 0.5);
+        studioWall.receiveShadow = true;
+        this.scene.add(studioWall);
+
+        // Task Light Cone (Warm desk task light shining down from head)
+        const taskSpot = new THREE.SpotLight(0xFFE8BF, 3.8);
+        taskSpot.position.set(0, 0.457, 0.187);
+        taskSpot.target.position.set(0, 0, 0.187);
+        taskSpot.angle = Math.PI / 3.4;
+        taskSpot.penumbra = 0.70;
+        taskSpot.decay = 1.35;
+        taskSpot.distance = 1.5;
+        taskSpot.castShadow = true;
+        this.scene.add(taskSpot);
+        this.scene.add(taskSpot.target);
+
+        // Diffuser Optical Translucency Glow
+        const diffuserPoint = new THREE.PointLight(0xFFDCA8, 1.5, 0.80);
+        diffuserPoint.position.set(0, 0.442, 0.187);
+        this.scene.add(diffuserPoint);
+
+        // 4. LOAD AND SHADE 100% CAD GLB MASTER MODEL
+        const loader = new THREE.GLTFLoader();
+        return new Promise((resolve, reject) => {
+          loader.load(
+            '/brand/object01/assets/3d/OBJECT01_V3_ALIGNED_MASTER.glb',
+            (gltf) => {
+              this.model = gltf.scene;
+              this.model.scale.set(0.001, 0.001, 0.001);
+              this.model.position.y = 0.0006;
+
+              // Materials: Fine bead-blasted satin anodized aluminum (CMF-01-SILVER)
+              const shellMat = new THREE.MeshStandardMaterial({
+                color: 0xC6CCCC,
+                metalness: 0.88,
+                roughness: 0.24,
+                envMapIntensity: 1.10
+              });
+
+              // Diamond-cut highlights & knurled dial: High-gloss precision metallic
+              const accentMat = new THREE.MeshStandardMaterial({
+                color: 0xDDE3E6,
+                metalness: 0.96,
+                roughness: 0.10,
+                envMapIntensity: 1.50
+              });
+
+              const knobMat = new THREE.MeshStandardMaterial({
+                color: 0xD5DBDE,
+                metalness: 0.94,
+                roughness: 0.14,
+                envMapIntensity: 1.35
+              });
+
+              const diffuserMat = new THREE.MeshStandardMaterial({
+                color: 0xFFF7EC,
+                emissive: 0xFFE0A8,
+                emissiveIntensity: 0.85,
+                metalness: 0.04,
+                roughness: 0.32
+              });
+
+              const cableMat = new THREE.MeshStandardMaterial({
+                color: 0x22252A,
+                metalness: 0.15,
+                roughness: 0.80
+              });
+
+              const rubberMat = new THREE.MeshStandardMaterial({
+                color: 0x16181C,
+                metalness: 0.10,
+                roughness: 0.88
+              });
+
+              const fastenerMat = new THREE.MeshStandardMaterial({
+                color: 0x42484E,
+                metalness: 0.85,
+                roughness: 0.28
+              });
+
+              this.model.traverse((child) => {
+                if (child.isMesh) {
+                  child.castShadow = true;
+                  child.receiveShadow = true;
+                  const name = (child.name || '').toLowerCase();
+                  if (name.includes('diffuser')) {
+                    child.material = diffuserMat;
+                  } else if (name.includes('knob') || name.includes('dial')) {
+                    child.material = knobMat;
+                  } else if (name.includes('trim') || name.includes('accent') || name.includes('ring') || name.includes('bezel')) {
+                    child.material = accentMat;
+                  } else if (name.includes('cable')) {
+                    child.material = cableMat;
+                  } else if (name.includes('pad') || name.includes('boot') || name.includes('guide')) {
+                    child.material = rubberMat;
+                  } else if (name.includes('screw') || name.includes('pin') || name.includes('fastener')) {
+                    child.material = fastenerMat;
+                  } else {
+                    child.material = shellMat;
+                  }
+                }
+              });
+
+              this.scene.add(this.model);
+              this.renderer.render(this.scene, this.camera);
+              this.ready = true;
+              resolve(true);
+            },
+            undefined,
+            err => reject(err)
+          );
+        });
+      }
+    };
+  </script>
+</body>
+</html>
