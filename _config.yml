@@ -1,0 +1,23 @@
+# GitHub Pages / Jekyll publish-only exclusions.
+# Content stays tracked in Git. Exclusions reduce the deployed Pages artifact.
+# Verified 2026-11-07: none of 113 public HTML/JS/CSS/JSON/MD files reference these directories.
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "node_modules"
+  - "vendor"
+  - ".github"
+  - "brand/split-09/presentation"
+  - "brand/playform/presentation"
+  - "brand/civic-access/presentation"
+  - "brand/playform/review"
+  - "brand/northline-trade/presentation"
+  - "brand/forno-27/presentation"
+  - "brand/forme-lab/presentation"
+  - "brand/island-index/presentation"
+  - "brand/object01/presentation"
+  - "brand/atlas-ops/presentation"
+  - "brand/linear-space/presentation"
+  - "brand/circuit-energy/presentation"
+  - "brand/field-supply/presentation"
+  - "brand/cross-section/presentation"
