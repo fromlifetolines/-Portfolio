@@ -25,3 +25,9 @@
 - Formal browser screenshots at desktop and mobile breakpoints remain a separate mandatory QA stage.
 - 3 approved original photos remain photographic imagery. Rebuilt vector illustrations are separately labelled conceptual design.
 - Independent render quality and exact geometry alignment to original images remain subject to art-director review.
+
+## Browser preflight 2026-11-07
+- Actual Chromium render checked on test branch for SHOT 03, 04, 05, 10, 13, 15, 16, including bilingual headings and 16:9 composition.
+- Distinct visual function confirmed; source image element count zero in all 13 SVGs.
+- Gallery and lightbox URL appended with versioned query string so previously cached 13 repeated-photo SVGs are not reused after deployment.
+- This is **conceptual editorial artwork**, not 13 independently photographed/reconstructed real products or mechanically verified manufacturing visualizations.
