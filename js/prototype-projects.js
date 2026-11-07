@@ -301,8 +301,8 @@ window.HOWARD_PROJECTS = Object.freeze([
       en: 'A precision industrial desk lamp concept exploring minimalist architectural geometry, dual-pivot articulation, thin drum optical housing, triple CMF finishes, and honest design documentation without unverified engineering claims.',
       'zh-TW': '精密工業桌燈概念設計，探索極簡建築幾何、雙轉軸懸臂機構、薄型鼓形光學艙與三款 CMF 材質系列，並提供完整的概念設計細節與誠實的工程事實邊界。'
     },
-    cover: 'brand/object01/assets/case14/cover-original-20261107.jpg',
-    interactiveAsset: 'brand/object01/assets/case14/cover-original-20261107.jpg',
+    cover: 'brand/object01/assets/case14/hero-editorial-20261107.svg',
+    interactiveAsset: 'brand/object01/assets/case14/hero-editorial-20261107.svg',
     caseStudy: 'brand/object01/'
   }
 ]);
