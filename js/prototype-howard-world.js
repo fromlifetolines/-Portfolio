@@ -1071,7 +1071,7 @@ function initProjectArchive() {
   if (!extra.length) return; // The current approved site has exactly one item.
   container.classList.add('is-multi');
   const safeText = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const safeLocal = value => typeof value === 'string' && !/^(?:[a-z]+:|\/\/)/i.test(value) && !value.includes('..') && /^[a-zA-Z0-9_.\/-]+$/.test(value) ? value : null;
+  const safeLocal = value => typeof value === 'string' && !/^(?:[a-z]+:|\/\/)/i.test(value) && !value.includes('..') && /^[a-zA-Z0-9_.\/-]+(?:\?v=[a-zA-Z0-9_-]+)?$/.test(value) ? value : null;
   for (const project of extra) {
     const cover = safeLocal(project.interactiveAsset || project.cover);
     const caseUrl = safeLocal(project.caseStudy);
