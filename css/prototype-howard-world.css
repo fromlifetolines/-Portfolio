@@ -2758,3 +2758,37 @@ html[lang="zh-TW"] .editorial-quote-text {
     font-size: 1.4rem;
   }
 }
+
+/* Cursor-driven portrait refraction and 3D creative field */
+.hero-creative-fluid-canvas {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+.hero-pointer-rig.has-creative-fluid .hero-creative-fluid-canvas { opacity: 1; }
+@media (pointer: coarse), (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .hero-creative-fluid-canvas { display: none !important; }
+}
+
+/* The portrait stays natural; only a local, cursor-driven print/refraction passes over it. */
+.hero-creative-fluid-canvas {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+.hero-pointer-rig.has-creative-fluid .hero-creative-fluid-canvas { opacity: 1; }
+@media (pointer: coarse), (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .hero-creative-fluid-canvas { display: none !important; }
+}
