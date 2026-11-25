@@ -187,11 +187,9 @@ function initMenuDrawer() {
 }
 
 /* ========================================================
-   05. HERO PORTRAIT STATE (Stable Seated Color Cutout)
-   - Baseline seated Howard color portrait (howard-hero-cutout.png)
-   - Clean, crisp, natural color presentation
-   - Zero distortion, zero black-and-white mask, zero image swap
-   - Maintained stable and crisp pending authentic gaze motion assets
+   05. HERO PORTRAIT BASE
+   - Preserve the original natural-color portrait as the stable image layer.
+   - The cursor lens adds a local print/refraction pass in section 07.
    ======================================================== */
 
 /* ========================================================
@@ -355,7 +353,7 @@ function initHeroContoursCanvas() {
 }
 
 /* ========================================================
-   07. HERO MULTI-DEPTH POINTER PARALLAX (Restrained Luxury Tilt)
+   07. HERO CREATIVE FLUID FIELD (Cursor-Driven Portrait Refraction + 3D)
    ======================================================== */
 function initHeroMultiDepthPointer() {
   const isTouch = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 900;
