@@ -304,12 +304,12 @@ function initHeroContoursCanvas() {
         const dx = px - mouseX;
         const dy = py - mouseY;
         const distToMouse = Math.sqrt(dx * dx + dy * dy);
-        const mouseEffectRadius = 240;
+        const mouseEffectRadius = 340;
 
         let mouseDisp = 0;
         if (distToMouse < mouseEffectRadius) {
           const factor = (1 - distToMouse / mouseEffectRadius);
-          mouseDisp = Math.sin(distToMouse * 0.08 - time * 3.5) * 14 * factor;
+          mouseDisp = Math.sin(distToMouse * 0.08 - time * 3.5) * 34 * factor;
         }
 
         const harmonicDisp = Math.sin(theta * 4 + time * 1.2 + r * 0.5) * 3.5 +
@@ -329,6 +329,25 @@ function initHeroContoursCanvas() {
       ctx.stroke();
     }
 
+    // Cursor-following 2D ink contours join the local portrait refraction.
+    const fluidRadius = Math.min(width, height) * 0.11;
+    ctx.lineWidth = 0.85;
+    for (let layer = 0; layer < 7; layer++) {
+      const radius = fluidRadius + layer * 10;
+      ctx.strokeStyle = `rgba(77, 84, 69, ${(0.072 - layer * 0.008).toFixed(3)})`;
+      ctx.beginPath();
+      for (let i = 0; i <= numPoints; i++) {
+        const theta = (i / numPoints) * Math.PI * 2;
+        const wobble = Math.sin(theta * 3 + time * 1.5 + layer * 0.45) * (5 + layer * 0.45) + Math.cos(theta * 5 - time * 0.9) * 2.8;
+        const flow = Math.sin(theta - time * 0.65) * 8;
+        const r = radius + wobble + flow;
+        const px = mouseX + Math.cos(theta) * r;
+        const py = mouseY + Math.sin(theta) * r * 0.9;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.stroke();
+    }
     ctx.restore();
   }
 
@@ -340,100 +359,217 @@ function initHeroContoursCanvas() {
    ======================================================== */
 function initHeroMultiDepthPointer() {
   const isTouch = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 900;
-  if (isTouch) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isTouch || reduceMotion || typeof THREE === 'undefined') return;
 
   const heroSec = document.getElementById('hero');
   const pointerRig = document.getElementById('heroPointerRig');
+  const portrait = document.getElementById('heroHowardImg');
   const editorialBadge = document.getElementById('heroEditorialBadge');
   const statusBlock = document.querySelector('.home-hero-status-block .status-block-content');
-  if (!heroSec || !pointerRig) return;
+  if (!heroSec || !pointerRig || !portrait) return;
 
-  let targetNormX = 0;
-  let targetNormY = 0;
-  let currNormX = 0;
-  let currNormY = 0;
+  let renderer;
+  let frameId = 0;
   let isHeroVisible = true;
-  let isRunning = false;
-  let animId = null;
+  let isPointerInside = false;
+  let active = 0;
+  let speed = 0;
+  let lastPointer = null;
+  let targetPointer = new THREE.Vector2(0.5, 0.5);
+  const currentPointer = new THREE.Vector2(0.5, 0.5);
+  const canvas = document.createElement('canvas');
+  canvas.className = 'hero-creative-fluid-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  pointerRig.appendChild(canvas);
 
-  function startParallax() {
-    if (!isRunning && isHeroVisible && !document.hidden) {
-      isRunning = true;
-      animId = requestAnimationFrame(renderParallax);
-    }
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
+  } catch (error) {
+    canvas.remove();
+    return;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 20);
+  camera.position.z = 10;
+  const texture = new THREE.Texture(portrait);
+  texture.needsUpdate = true;
+  if (typeof THREE.sRGBEncoding !== 'undefined') texture.encoding = THREE.sRGBEncoding;
+
+  const portraitMaterial = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    uniforms: {
+      uPortrait: { value: texture },
+      uPointer: { value: currentPointer.clone() },
+      uAspect: { value: 1 },
+      uActive: { value: 0 },
+      uSpeed: { value: 0 },
+      uTime: { value: 0 }
+    },
+    vertexShader: [
+      'varying vec2 vUv;',
+      'void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }'
+    ].join('\n'),
+    fragmentShader: [
+      'uniform sampler2D uPortrait;',
+      'uniform vec2 uPointer;',
+      'uniform float uAspect;',
+      'uniform float uActive;',
+      'uniform float uSpeed;',
+      'uniform float uTime;',
+      'varying vec2 vUv;',
+      'void main(){',
+      '  vec2 delta=(vUv-uPointer)*vec2(1.0,1.0/uAspect);',
+      '  float dist=length(delta);',
+      '  float radius=0.235;',
+      '  float lens=(1.0-smoothstep(radius*0.58,radius,dist))*uActive;',
+      '  if(lens<0.002){ gl_FragColor=vec4(0.0); return; }',
+      '  vec2 radial=normalize(delta+vec2(0.00001));',
+      '  float wave=sin(dist*92.0-uTime*5.2)*0.008;',
+      '  float pull=(0.018+uSpeed*0.018)*lens;',
+      '  vec2 warpedUv=vUv-radial*(wave+pull)*(1.0-dist/radius);',
+      '  vec4 photo=texture2D(uPortrait,warpedUv);',
+      '  vec3 paper=vec3(0.91,0.90,0.84);',
+      '  vec3 ink=vec3(0.18,0.20,0.17);',
+      '  float luminance=dot(photo.rgb,vec3(0.299,0.587,0.114));',
+      '  vec3 printTone=mix(ink,paper,smoothstep(0.12,0.86,luminance));',
+      '  float screen=0.92+0.08*sin(vUv.x*740.0)*sin(vUv.y*740.0);',
+      '  printTone*=screen;',
+      '  float treatment=smoothstep(0.08,0.9,lens)*0.68;'
+      '  vec3 color=mix(photo.rgb,printTone,treatment);',
+      '  float edge=1.0-smoothstep(radius*0.86,radius,dist);',
+      '  float rim=smoothstep(radius*0.62,radius*0.9,dist)*lens;',
+      '  color=mix(color,vec3(0.39,0.42,0.34),rim*0.22);',
+      '  gl_FragColor=vec4(color,photo.a*edge);',
+      '}'
+    ].join('\n')
+  });
+  const portraitPlane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), portraitMaterial);
+  scene.add(portraitPlane);
+
+  const field = new THREE.Group();
+  const ringColors = [0x626b56, 0x9d998b, 0x454b40];
+  const ringSpecs = [[0.205, 0.0028], [0.16, 0.0022], [0.112, 0.0018]];
+  const rings = ringSpecs.map((spec, index) => {
+    const material = new THREE.MeshBasicMaterial({ color: ringColors[index], transparent: true, opacity: 0, depthWrite: false });
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(spec[0], spec[1], 8, 112), material);
+    ring.rotation.x = index === 1 ? 0.94 : index === 2 ? -0.72 : 0.18;
+    ring.rotation.y = index === 0 ? 0.36 : -0.28;
+    ring.position.z = 1.1 + index * 0.015;
+    field.add(ring);
+    return ring;
+  });
+  const beadGeometry = new THREE.SphereGeometry(0.009, 12, 8);
+  const beads = [];
+  for (let i = 0; i < 6; i++) {
+    const bead = new THREE.Mesh(beadGeometry, new THREE.MeshBasicMaterial({ color: ringColors[i % ringColors.length], transparent: true, opacity: 0, depthWrite: false }));
+    const angle = (i / 6) * Math.PI * 2;
+    bead.position.set(Math.cos(angle) * 0.205, Math.sin(angle) * 0.205, 1.2);
+    field.add(bead);
+    beads.push(bead);
+  }
+  field.scale.setScalar(0.001);
+  scene.add(field);
+
+  function resize() {
+    const rect = portrait.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    canvas.style.left = '50%';
+    canvas.style.bottom = '0';
+    renderer.setSize(Math.round(rect.width), Math.round(rect.height), false);
+    portraitMaterial.uniforms.uAspect.value = rect.width / rect.height;
+    portraitMaterial.uniforms.uPortrait.value.needsUpdate = true;
   }
 
-  function stopParallax() {
-    isRunning = false;
-    if (animId) {
-      cancelAnimationFrame(animId);
-      animId = null;
+  function updatePointer(event) {
+    const rect = portrait.getBoundingClientRect();
+    targetPointer.set(
+      THREE.MathUtils.clamp((event.clientX - rect.left) / rect.width, 0, 1),
+      1 - THREE.MathUtils.clamp((event.clientY - rect.top) / rect.height, 0, 1)
+    );
+    isPointerInside = true;
+    if (lastPointer) {
+      const distance = Math.hypot(event.clientX - lastPointer.x, event.clientY - lastPointer.y);
+      speed = Math.min(1, distance / 38);
     }
+    lastPointer = { x: event.clientX, y: event.clientY };
+    requestRender();
   }
 
+  function leavePointer() {
+    isPointerInside = false;
+    lastPointer = null;
+    requestRender();
+  }
+
+  function requestRender() {
+    if (!frameId && isHeroVisible && !document.hidden) frameId = requestAnimationFrame(render);
+  }
+
+  function render() {
+    frameId = 0;
+    if (!isHeroVisible || document.hidden) return;
+    const targetActive = isPointerInside ? 1 : 0;
+    active += (targetActive - active) * (isPointerInside ? 0.12 : 0.075);
+    currentPointer.lerp(targetPointer, 0.2);
+    speed *= 0.94;
+    const uniforms = portraitMaterial.uniforms;
+    uniforms.uPointer.value.copy(currentPointer);
+    uniforms.uActive.value = active;
+    uniforms.uSpeed.value = speed;
+    uniforms.uTime.value += 0.016;
+
+    field.position.set(currentPointer.x * 2 - 1, currentPointer.y * 2 - 1, 0);
+    const desiredScale = isPointerInside ? 0.9 + speed * 0.2 : 0.001;
+    field.scale.lerp(new THREE.Vector3(desiredScale, desiredScale, desiredScale), 0.14);
+    field.rotation.z += 0.003 + speed * 0.016;
+    field.rotation.x += (currentPointer.y - 0.5) * 0.009;
+    rings.forEach((ring, index) => {
+      ring.material.opacity = active * (0.34 - index * 0.055);
+      ring.rotation.y += (index % 2 ? -1 : 1) * (0.002 + speed * 0.009);
+    });
+    beads.forEach((bead, index) => {
+      bead.material.opacity = active * 0.65;
+      const angle = (index / beads.length) * Math.PI * 2 + uniforms.uTime.value * (0.24 + speed * 0.4);
+      bead.position.x = Math.cos(angle) * 0.205;
+      bead.position.y = Math.sin(angle) * 0.205;
+    });
+    renderer.render(scene, camera);
+
+    if (isPointerInside || active > 0.006 || speed > 0.008) frameId = requestAnimationFrame(render);
+  }
+
+  portrait.addEventListener('pointermove', updatePointer, { passive: true });
+  portrait.addEventListener('pointerleave', leavePointer, { passive: true });
+  window.addEventListener('resize', resize, { passive: true });
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(portrait);
+  portrait.addEventListener('load', () => {
+    texture.needsUpdate = true;
+    resize();
+    requestRender();
+  }, { once: true });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       isHeroVisible = Boolean(entries[0] && entries[0].isIntersecting);
-      if (!isHeroVisible) {
-        stopParallax();
-      } else {
-        startParallax();
-      }
-    }, { rootMargin: '50px' });
+      if (isHeroVisible) requestRender();
+      else if (frameId) { cancelAnimationFrame(frameId); frameId = 0; }
+    }, { rootMargin: '40px' });
     observer.observe(heroSec);
   }
-
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stopParallax();
-    } else if (isHeroVisible) {
-      startParallax();
-    }
+    if (!document.hidden) requestRender();
+    else if (frameId) { cancelAnimationFrame(frameId); frameId = 0; }
   });
 
-  window.addEventListener('mousemove', (e) => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    targetNormX = (e.clientX - w / 2) / (w / 2);
-    targetNormY = (e.clientY - h / 2) / (h / 2);
-    if (isHeroVisible && !isRunning) {
-      startParallax();
-    }
-  }, { passive: true });
-
-  function renderParallax() {
-    if (!isHeroVisible || document.hidden) {
-      stopParallax();
-      return;
-    }
-
-    const diffX = targetNormX - currNormX;
-    const diffY = targetNormY - currNormY;
-    currNormX += diffX * 0.08;
-    currNormY += diffY * 0.08;
-
-    // Howard Figure: Kept completely stable in natural seated pose (NO tilt / NO cursor follow)
-    pointerRig.style.transform = 'none';
-
-    // Editorial Badge counter-drift
-    if (editorialBadge) {
-      editorialBadge.style.transform = `translate3d(calc(-50% + ${currNormX * -8}px), ${currNormY * -5}px, 0)`;
-    }
-
-    // Status Block counter-drift
-    if (statusBlock) {
-      statusBlock.style.transform = `translate3d(${currNormX * -8}px, ${currNormY * -5}px, 0)`;
-    }
-
-    // Stop updating if resting (within epsilon)
-    if (Math.abs(diffX) < 0.0005 && Math.abs(diffY) < 0.0005) {
-      stopParallax();
-    } else {
-      animId = requestAnimationFrame(renderParallax);
-    }
-  }
-
-  startParallax();
+  resize();
+  pointerRig.classList.add('has-creative-fluid');
+  requestRender();
 }
 
 /* ========================================================
